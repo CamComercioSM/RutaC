@@ -10,70 +10,16 @@
 </section>
 <section class="content">
 	<div class="box">
-		<div class="box-body">
-			<form id="formP" action="{{ action('Auth\RegisterController@register') }}" method="post">
-                {!! csrf_field() !!}
-                <input name="form" type="hidden" value="formP">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group has-feedback">
-                            <input type="text" id="nombreEmprendimiento" name="nombre_emprendimiento" class="form-control" placeholder="Nombre emprendimiento" value="">
-                            <span class="form-control-feedback glyphicon" id="alert_error_nombre_emprendimiento"></span>
-                            <span class="text-danger" id="error_nombre_emprendimiento"></span>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <div class="row">
-                	<div class="col-xs-12">
-                        <div class="form-group has-feedback">
-                            <input type="text" id="descripcionEmprendimiento" name="descripcion_emprendimiento" class="form-control" placeholder="Descripción emprendimiento" value="">
-                            <span class="form-control-feedback glyphicon" id="alert_error_descripcion_emprendimiento"></span>
-                            <span class="text-danger" id="error_descripcion_emprendimiento"></span>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <div class="row">
-                	<div class="col-xs-6">
-                        <div class="form-group has-feedback">
-                        	<input class="form-control" type="text" name="inicio_actividades" id="fechaInicio" placeholder="Fecha de inicio de actividades" value="">
-                            <span class="form-control-feedback glyphicon" id="alert_error_inicio_actividades"></span>
-                            <span class="text-danger" id="error_inicio_actividades"></span>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-xs-6">
-                        <div class="form-group has-feedback">
-                            <input type="number" id="ingresosVentas" name="ingresos_ventas" class="form-control" placeholder="Ingresos por ventas de los últimos meses" value="">
-                            <span class="form-control-feedback glyphicon" id="alert_error_ingresos_por_ventas"></span>
-                            <span class="text-danger" id="error_ingresos_por_ventas"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="form-group has-feedback">
-                            <input type="number" id="remuneracionEmprendedor" name="remuneracion_emprendedor" class="form-control" placeholder="Remuneración del emprendedor" value="">
-                            <span class="form-control-feedback glyphicon" id="alert_error_remuneracion_emprendedor"></span>
-                            <span class="text-danger" id="error_remuneracion_emprendedor"></span>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="button" id="btn-submit-emprendimiento" class="btn btn-primary btn-block btn-flat">Registrarme</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-		</div>
-	</div>
+        @include('rutac.usuario.forms.datos-empresas')
+    </div>
 </section>
 
 @endsection
 @section('style')
 <!-- bootstrap datepicker -->
+<link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
 <style>
     .box-body{
         padding: 30px;
@@ -83,6 +29,113 @@
 @section('footer')
 <!-- bootstrap datepicker -->
 <script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+
 <script type="text/javascript">
+    $(function () {
+        $('.select2').select2({
+            placeholder: 'Seleccione una opción'
+        })
+    });
+    
+    $("#btn-submit-empresa").click(function(){    
+        $('.capa').css("visibility", "visible");
+        $('#btn-submit-empresa').attr("disabled", true);
+        var values = getValues();
+        sendRequest(values);
+    });
+    function getValues(){
+        var values = new Object;        
+        var inputs = $("#formGuardarEmpresa").find('input, select');  
+        for(var i = 0; i< inputs.length; i++){
+            name = $(inputs[i]).attr('name');
+            value = $(inputs[i]).val();
+            values[name] = value;
+            $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
+            $("#error_"+name).html('');
+        }
+
+        return values;
+    }
+    function sendRequest(values){
+        $('#message-error').html('');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{url('validar_datos_empresa') }}",
+            dataType: 'json',
+            type: 'post',
+            data: values,
+            success: function(data){
+                if(data.status == 'Errors'){
+                    for(var key in data.errors){
+                        $("#error_"+key).html("");
+                        $("#alert_error_"+key).removeClass('general-error-color');
+                        if(data.errors[key] != ""){                            
+                            $("input[name='"+key+"'], select[name='"+key+"'], textarea[name='"+key+"']").parents().eq(0).addClass('has-error');
+                            $("#error_"+key).html(data.errors[key]);
+                            $("#alert_error_"+key).addClass('general-error-color');
+                            html = "<div class='alert alert-danger'>Tiene algunos errores, verifique la información.</div>";
+                            $('html, body').animate({scrollTop: '0px'}, 0);
+                            $('#message-error').html(html);
+                        }
+                    }
+                    $('.capa').css("visibility", "hidden");
+                    $('#btn-submit-empresa').attr("disabled", false);
+                }
+                if(data.status == 'Ok'){
+                    if(data.existe){
+                        $('#formGuardarEmpresa').attr('action', '{{action("EmpresaController@restablecerEmpresa")}}');
+                    }else{
+                        $('#formGuardarEmpresa').attr('action', '{{action("EmpresaController@guardarEmpresa")}}');
+                    }
+                    $("#formGuardarEmpresa").submit();
+                }
+            },
+            error: function(xhr, data, error){
+                //console.log(xhr.responseText);
+                console.log('Ocurrió un error');
+            }
+        });
+    }
+
+    $('#departamento_empresa').change(function() {
+        $('#municipio_empresa')
+            .find('option')
+            .remove()
+            .end()
+            .append('<option value="">Seleccione una opción</option>')
+            .val('Seleccione una opción');
+        buscarMunicipiosE($('#departamento_empresa').val());
+    });
+    function buscarMunicipiosE(departamento){
+        $.ajax({
+            url: "{{url('buscar_municipios')}}/"+departamento,
+            type: 'get',
+            dataType: 'json',
+            success: function(data){
+                $.each(data, function (i, item) {
+                    $('#municipio_empresa').append($('<option>', { 
+                        value: item.id_municipio,
+                        text : item.municipio 
+                    }));
+                });
+                $('#municipio_empresa').prop('disabled', false);
+            },
+            error: function(xhr, data, error){
+                console.log("Ocurrió un error");
+            }
+        });
+    }
+
+    $('#fecha_constitucion').datepicker({
+        format: "yyyy-mm-dd",
+        language: "es",
+        autoclose: true
+    })
+</script>
 
 @endsection

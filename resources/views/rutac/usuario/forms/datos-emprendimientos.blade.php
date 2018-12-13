@@ -6,6 +6,7 @@
 	<div class="box-body">
 		<div class="show" id="datos-usuarios">
 			<input type="hidden" name="emprendimientoID" id="emprendimientoID" value="@if(isset($emprendimientos)) {{$emprendimientos->emprendimientoID}} @endif">
+			<input type="hidden" name="from" id="from" value="{{$from}}">
 			<div class="row">
 		        <div class="col-xs-12">
 		            <label>Nombre emprendimiento</label>
@@ -73,8 +74,14 @@
 	</div>
 	<div class="box-footer">
 		<div class="options">
+			@if(strpos($_SERVER['REQUEST_URI'],'completar-perfil') !== false) 
 			<button type="button" id="btn-button-atras-emprendimientos" class="btn btn-default btn-sm">Atras</button>
+			@endif
+			@if($from == 'crear')
+			<button type="button" id="btn-submit-emprendimiento" class="btn btn-primary btn-sm">Guardar</button>
+			@else
 			<button type="submit" id="btn-submit" class="btn btn-primary btn-sm">Guardar</button>
+			@endif
 		</div>
 	</div>
 </form>

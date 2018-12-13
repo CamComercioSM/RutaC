@@ -3,53 +3,35 @@
 @section('title','RutaC | Dignostico')
 
 @section('content')
-<section class="content-header">
-	<h1>
-		DIAGNÓSTICO PARA {{$diagnosticos_secciones->tipo_diagnosticoNOMBRE}}
-	</h1>
-</section>
+
 <section class="content">
-	@if(session("message_error"))
-		<div class="alert alert-danger " role="alert">
-			<i class="fa fa-danger"></i> {{session("message_error")}}
-		</div>
-	@endif
-	@if(session("message_success"))
-        <div class="alert alert-success " role="alert">
-             {{session("message_success")}}
-        </div>
+	<div class="text-right form-group">
+      <a class="btn btn-primary" href="{{ action('RutaController@iniciarRuta') }}"><i class="fa fa-arrow-left"></i> Volver</a>
+    </div> 
+	<div class="callout callout-info">
+		@if($diagnostico->diagnosticoESTADO == 'Finalizado')
+		<h4>¡FELICITACIONES!</h4>
+        <p>Ha respondido todas las secciones, a continuación los resultados y la ruta a seguir.</p>
+		@else
+		<h4>EVALUACIÓN PARA: {{$diagnosticoPara}}</h4>
+        <p>Deberá responder cada una de las siguientes secciones para obtener un diagnóstico completo y la Ruta para mejorar.</p>
+		@endif
+    </div>
+    @if($diagnostico->diagnosticoESTADO == 'Finalizado')
+	<div class="text-center" style="padding-top: 10px; padding-right: 12px; padding-bottom: 15px">
+		<a class="btn btn-primary btn-lg" href="{{ action('DiagnosticosController@showResultadosDiagnostico',[$tipo,$diagnostico->diagnosticoID]) }}" style="width:200px;">
+	            <i class="fa fa-file-text-o"></i> Ver Resultados
+	        </a>
+		<a class="btn @if($diagnostico->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-lg" href="{{ action('RutaController@verRuta',[$diagnostico->ruta->rutaID]) }}" style="width:200px;">
+            <i class="fa fa-line-chart"></i> Ver Ruta
+        </a>
+    	
+    </div>
     @endif
-    <div class="row">
-    	<div class="col-md-12">
-	    	<div class="box">
-	    		<div class="box-body">
-	    			<div class="col-md-3">
-	    				@if($diagnostico->diagnosticoESTADO == 'Finalizado') 
-	    					@if(strpos($_SERVER['REQUEST_URI'],'emprendimiento') !== false) 
-								<a href="{{ action('DiagnosticoController@getRutaEmprendimiento',[$unidad,$diagnostico->diagnosticoID]) }}" class="btn btn-primary btn-sm"  > Obtener Ruta de Crecimiento </a>
-							@endif
-							@if(strpos($_SERVER['REQUEST_URI'],'empresa') !== false) 
-								<a href="{{ action('DiagnosticoController@getRutaEmpresa',[$unidad,$diagnostico->diagnosticoID]) }}" class="btn btn-primary btn-sm"  > Obtener Ruta de Crecimiento </a>
-							@endif
-	    				@else
-	    					<a href="javascript:void(0)" class="btn btn-primary btn-sm" disabled data-toggle="tooltip" title="Aun no has completado la evaluación"> Obtener Ruta de Crecimiento </a>
-	    				@endif
-	    			</div>
-	    		</div>
-	    	</div>
-	    </div>
-	</div>
-	<div class="row">
-		<div class="col-md-12">
-			<h1>
-				ANALISIS DE CRECIMIENTO
-			</h1>
-		</div>
-	</div>
 	<div class="row">
 	@foreach($diagnosticos_secciones->seccionesPreguntas as $key=> $seccionPregunta)
 		<div class="col-md-4">
-			<div class="box @if($seccionPregunta->estadoSeccion == 'Finalizado') box-success @else box-primary @endif ">
+			<div class="box @if($seccionPregunta->estadoSeccion == 'Finalizado') box-success @else @if($seccionPregunta->estadoSeccion == 'Guardado') box-warning @endif @endif">
 				<div class="box-header with-border">
 					<h4>{{$seccionPregunta->seccion_preguntaNOMBRE}} <i class="fa fa-info-circle" data-toggle="tooltip" title="{{$seccionPregunta->preguntas}} preguntas"></i></h4>
 				</div>
@@ -75,15 +57,14 @@
 				<div class="box-footer" style="padding: 10px 30px;">
 					<div class="options">
 						@if($seccionPregunta->estadoSeccion == 'Finalizado') 
-							<a href="javascript:void(0)" class="btn btn-success btn-sm"  > Completado </a>
-						@else 
-							@if(strpos($_SERVER['REQUEST_URI'],'emprendimiento') !== false) 
-								<a href="{{ action('DiagnosticoController@showEmprendimientoDiagnosticoSeccion',[$unidad, $seccionPregunta->seccion_preguntaID]) }}" class="btn btn-primary btn-sm"  > Iniciar Evaluación </a>
-							@endif
-							@if(strpos($_SERVER['REQUEST_URI'],'empresa') !== false) 
-								<a href="{{ action('DiagnosticoController@showEmpresaDiagnosticoSeccion',[$unidad, $seccionPregunta->seccion_preguntaID]) }}" class="btn btn-primary btn-sm"  > Iniciar Evaluación </a>
-							@endif
+							<a href="{{ action('DiagnosticosController@verResultadoSeccion',[$tipo,$diagnostico->diagnosticoID, $seccionPregunta->seccion_preguntaID]) }}" class="btn btn-success btn-sm"  > Completado </a>
 							
+						@else
+							@if($seccionPregunta->estadoSeccion == 'Guardado') 
+								<a href="{{ action('DiagnosticosController@showEvaluarSeccion',[$tipo,$diagnostico->diagnosticoID, $seccionPregunta->seccion_preguntaID]) }}" class="btn btn-warning btn-sm"  > Continuar Evaluación </a>
+							@else
+								<a href="{{ action('DiagnosticosController@showEvaluarSeccion',[$tipo,$diagnostico->diagnosticoID, $seccionPregunta->seccion_preguntaID]) }}" class="btn btn-primary btn-sm"  > Iniciar Evaluación </a>
+							@endif
 						@endif
 					</div>
 				</div>
@@ -92,8 +73,9 @@
 		@if((((2 * $key) % 3) == 1))
 		<div class="col-md-12"></div>
 		@endif
-		
 	@endforeach
+	</div>
+	
 </section>
 @endsection
 @section('style')
@@ -105,7 +87,6 @@
 		margin-top: 10px;
 	}
 </style>
-
 
 @endsection
 @section('footer')

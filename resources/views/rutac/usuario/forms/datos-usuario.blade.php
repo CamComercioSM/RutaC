@@ -4,6 +4,7 @@
 		<h4>Datos de Usuario</h4>
 	</div>
 	<div class="box-body">
+		<input type="hidden" name="from" id="from" value="{{$from}}">
 		<div class="row">
 		    <div class="col-xs-3">
 		        <label>Documento de identidad</label>
@@ -14,7 +15,7 @@
 		    <div class="col-xs-4">
 		        <label>Nombre Completo</label>
 		        <div class="form-group has-feedback">
-		            <input type="text" id="nombre_completo" name="nombre_completo" class="form-control" placeholder="Nombre Completo" value="{{$usuario->dato_usuarioNOMBRE_COMPLETO}}">
+		            <input type="text" id="nombre_completo" name="nombre_completo" class="form-control" placeholder="Nombre Completo" value="{{$usuario->dato_usuarioNOMBRES}} {{$usuario->dato_usuarioAPELLIDOS}}">
 		            <span class="form-control-feedback glyphicon" id="alert_error_nombre_completo"></span>
 		            <span class="text-danger" id="error_nombre_completo"></span>
 		        </div>
@@ -53,10 +54,10 @@
 		    <div class="col-xs-3">
 		        <label>Departamento</label>
 		        <div class="form-group has-feedback">
-		            <select name="departamento_residencia" id="departamento_residencia" class="form-control select2" type="text">
-		            	<option value="0">Seleccione una opción</option>
+		            <select name="departamento_residencia" id="departamento_residencia" class="form-control select2" type="text" style="width: 100%;">
+		            	<option value="">Seleccione una opción</option>
 		                @foreach($repositoryDepartamentos as $dept)
-		                <option value="{{$dept->id_departamento}}">{{$dept->departamento}}</option>
+		                	<option value="{{$dept->id_departamento}}" @if($usuario->dato_usuarioDEPARTAMENTO_RESIDENCIA == $dept->departamento) selected @endif>{{$dept->departamento}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -64,8 +65,12 @@
 		    <div class="col-xs-3">
 		        <label>Municipio</label>
 		        <div class="form-group has-feedback">
-		            <select name="municipio_residencia" id="municipio_residencia" class="form-control select2" type="text" disabled>
-		            	<option value="0">Seleccione una opción</option>
+		            <select name="municipio_residencia" id="municipio_residencia" class="form-control select2" type="text" disabled style="width: 100%;">
+		            	@if($usuario->dato_usuarioMUNICIPIO_RESIDENCIA)
+		            		<option value="">{{$usuario->dato_usuarioMUNICIPIO_RESIDENCIA}}</option>
+		            	@else
+		            		<option value="">Seleccione una opción</option>
+		            	@endif
 		            </select>
 		        </div>
 		    </div>
@@ -75,7 +80,7 @@
 			<div class="col-xs-9">
 		        <label>Dirección</label>
 		        <div class="form-group has-feedback">
-		            <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Dirección" value="">
+		            <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Dirección" value="{{$usuario->dato_usuarioDIRECCION}}">
 		            <span class="form-control-feedback glyphicon" id="alert_error_direccion"></span>
 		            <span class="text-danger" id="error_direccion"></span>
 		        </div>
@@ -83,7 +88,7 @@
 		    <div class="col-xs-3">
 		        <label>Telefóno</label>
 		        <div class="form-group has-feedback">
-		            <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Telefóno" value="">
+		            <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Telefóno" value="{{$usuario->dato_usuarioTELEFONO}}">
 		            <span class="form-control-feedback glyphicon" id="alert_error_telefono"></span>
 		            <span class="text-danger" id="error_telefono"></span>
 		        </div>
@@ -95,7 +100,7 @@
 			<div class="col-xs-3">
 		        <label>Fecha de nacimiento</label>
 		        <div class="form-group has-feedback">
-		        	<input class="form-control" type="text" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Año-Mes-Día" value="">
+		        	<input class="form-control" type="text" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Año-Mes-Día" value="{{$usuario->dato_usuarioFECHA_NACIMIENTO}}">
 		    		<span class="form-control-feedback glyphicon" id="alert_error_fecha_nacimiento"></span>
 		            <span class="text-danger" id="error_fecha_nacimiento"></span>
 		        </div>
@@ -109,10 +114,10 @@
 		    <div class="col-xs-3">
 		        <label>Departamento</label>
 		        <div class="form-group has-feedback">
-		            <select name="departamento_nacimiento" id="departamento_nacimiento" class="form-control select2" type="text">
-		            	<option value="0">Seleccione una opción</option>
-		                @foreach($repositoryDepartamentos as $dept)
-		                <option value="{{$dept->id_departamento}}">{{$dept->departamento}}</option>
+		            <select name="departamento_nacimiento" id="departamento_nacimiento" class="form-control select2" type="text" style="width: 100%;">
+		            	<option value="">Seleccione una opción</option>
+		            	@foreach($repositoryDepartamentos as $dept)
+		                	<option value="{{$dept->id_departamento}}" @if($usuario->dato_usuarioDEPARTAMENTO_NACIMIENTO == $dept->departamento) selected @endif>{{$dept->departamento}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -120,8 +125,12 @@
 		    <div class="col-xs-3">
 		        <label>Municipio</label>
 		        <div class="form-group has-feedback">
-		            <select name="municipio_nacimiento" id="municipio_nacimiento" class="form-control select2" type="text" disabled>
-		            	<option value="0">Seleccione una opción</option>
+		            <select name="municipio_nacimiento" id="municipio_nacimiento" class="form-control select2" type="text" disabled style="width: 100%;">
+		            	@if($usuario->dato_usuarioMUNICIPIO_NACIMIENTO)
+		            		<option value="">{{$usuario->dato_usuarioMUNICIPIO_NACIMIENTO}}</option>
+		            	@else
+		            		<option value="">Seleccione una opción</option>
+		            	@endif
 		            </select>
 		        </div>
 		    </div>
@@ -135,7 +144,7 @@
 		        	<select name="nivel_estudios" id="nivel_estudios" class="form-control" type="text">
 		            	<option value="">Seleccione una opción</option>
 		            	@foreach($repository->nivelEstudios() as $nivel)
-		                <option value="{{$nivel}}">{{$nivel}}</option>
+		                	<option value="{{$nivel}}" @if($usuario->dato_usuarioNIVEL_ESTUDIO == $nivel) selected @endif>{{$nivel}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -143,10 +152,10 @@
 		    <div class="col-xs-3">
 		    	<label>Profesión</label>
 		        <div class="form-group">
-		        	<select name="profesion" id="profesion" class="form-control select2" type="text">
+		        	<select name="profesion" id="profesion" class="form-control select2" type="text" style="width: 100%;">
 		            	<option value="">Seleccione una opción</option>
 		            	@foreach($repository->profesion() as $profesion)
-		                <option value="{{$profesion}}">{{$profesion}}</option>
+		                	<option value="{{$profesion}}" @if($usuario->dato_usuarioPROFESION_OCUPACION == $profesion) selected @endif>{{$profesion}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -157,7 +166,7 @@
 		        	<select name="cargo" id="cargo" class="form-control" type="text">
 		            	<option value="">Seleccione una opción</option>
 		            	@foreach($repository->cargo() as $cargo)
-		                <option value="{{$cargo}}">{{$cargo}}</option>
+		                	<option value="{{$cargo}}" @if($usuario->dato_usuarioCARGO == $cargo) selected @endif>{{$cargo}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -168,7 +177,7 @@
 		        	<select name="remuneracion" id="remuneracion" class="form-control" type="text">
 		            	<option value="">Seleccione una opción</option>
 		            	@foreach($repository->remuneracion() as $remuneracion)
-		                <option value="{{$remuneracion}}">{{$remuneracion}}</option>
+		                	<option value="{{$remuneracion}}" @if($usuario->dato_usuarioREMUNERACION == $remuneracion) selected @endif>{{$remuneracion}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -181,7 +190,7 @@
 		        	<select name="grupo_etnico" id="grupo_etnico" class="form-control" type="text">
 		            	<option value="">Ninguno</option>
 		            	@foreach($repository->grupoEtnico() as $grupoEtnico)
-		                <option value="{{$grupoEtnico}}">{{$grupoEtnico}}</option>
+		                	<option value="{{$grupoEtnico}}" @if($usuario->dato_usuarioGRUPO_ETNICO == $grupoEtnico) selected @endif>{{$grupoEtnico}}</option>
 		                @endforeach
 		            </select>
 		        </div>
@@ -191,21 +200,26 @@
 		    	<input type="hidden" name="discapacidad" id="discapacidad" value="{{$usuario->dato_usuarioDISCAPACIDAD}}">
 		        <div class="form-group has-feedback">
 		            <label id="rSi">
-		                <input type="radio" name="radioDiscapacidad" class="minimal" value="Si"> Si
+		                <input type="radio" name="radioDiscapacidad" class="minimal" value="Si" @if($usuario->dato_usuarioDISCAPACIDAD == 'Si') checked @endif> Si
 		            </label>
 		            <label id="rNo" style="margin-left: 20px;">
-		                <input type="radio" name="radioDiscapacidad" class="minimal" value="No"> No
+		                <input type="radio" name="radioDiscapacidad" class="minimal" value="No" @if($usuario->dato_usuarioDISCAPACIDAD == 'No') checked @endif> No
 		            </label>
 		        </div>
 		    </div>
 		    <div class="col-xs-3">
 		    	<label>Idiomas</label>
 		        <div class="form-group">
-		        	<select name="idiomas" class="form-control select2" multiple="multiple" data-placeholder="Seleccione una opción" style="width: 100%;">
-		        		<option value="">Seleccione una opción</option>
+		        	<select name="idiomas[]" id="idiomas" class="form-control select2" multiple="multiple" data-placeholder="Seleccione una opción" style="width: 100%;">
 		        		@foreach($repository->idiomas() as $idiomas)
-		                <option value="{{$idiomas}}">{{$idiomas}}</option>
-		                @endforeach
+			        		@php ($siono = 0) @endphp
+			        		@foreach(explode('-', $usuario->dato_usuarioIDIOMAS) as $idioma)
+			        			@if($idiomas == $idioma)
+			        				@php ($siono = 1) @endphp
+			        			@endif
+			        		@endforeach
+			        		<option value="{{$idiomas}}" @if($siono == 1) selected @endif>{{$idiomas}}</option>
+			        	@endforeach	
 		        	</select>
 		        </div>
 		    </div>

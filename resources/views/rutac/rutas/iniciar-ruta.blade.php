@@ -7,131 +7,53 @@
 <section class="content-header"></section>
 
 <section class="content">
-    @if(session("message_success"))
-        <div class="alert alert-success " role="alert">
-             {{session("message_success")}}
-        </div>
-    @endif
-    @if(session("message_error"))
-        <div class="alert alert-danger " role="alert">
-            <i class="fa fa-danger"></i> {{session("message_error")}}
-        </div>
-    @endif
-    <h1>Emprendimientos Registrados</h1>
-    <div class="row">
-    @foreach($emprendimientos as $emprendimiento)
-        <div class="col-md-3">
-            <div class="card hovercard">
-                <div class="info">
-                    <div class="title">
-                        {{$emprendimiento->emprendimientoNOMBRE}}
-                    </div>
-                    <div class="desc">{{$emprendimiento->emprendimientoDESCRIPCION}}</div>
-                </div>
-                <div class="bottom">
-                    @if(isset($emprendimiento->diagnosticos->diagnosticoESTADO))
-                        @switch($emprendimiento->diagnosticos->diagnosticoESTADO)
-                            @case('Activo')
-                                <a class="btn btn-primary btn-sm" href="emprendimiento/{{$emprendimiento->emprendimientoID}}/diagnostico/" data-toggle="tooltip" title="Iniciar diagnóstico">
-                                    <i class="fa fa-plus-circle"></i>
-                                </a>
-                            @break
-                            @case('En Proceso')
-                                <a class="btn btn-primary btn-sm" href="emprendimiento/{{$emprendimiento->emprendimientoID}}/diagnostico/" data-toggle="tooltip" title="Continuar diagnóstico">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </a>
-                            @break
-                            @case('Finalizado')
-                                <a class="btn btn-primary btn-sm" href="emprendimiento/{{$emprendimiento->emprendimientoID}}/diagnostico/" data-toggle="tooltip" title="Ver resultados">
-                                    <i class="fa fa-file-text-o"></i>
-                                </a>
-                            @break
-                            @default
-                                -
-                        @endswitch
-                    @else
-                        -
-                    @endif
-                    <a class="btn btn-success btn-sm" href="{{ url('emprendimiento', $emprendimiento->emprendimientoID) }}" data-toggle="tooltip" title="Ver emprendimiento">
-                        <i class="fa fa-eye"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" href="emprendimiento/{{$emprendimiento->emprendimientoID}}/editar" data-toggle="tooltip" title="Editar emprendimiento">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    @endforeach
-        <div class="col-md-3">
-            <a href="{{ action('RutaController@showFormAgregarEmprendimiento') }}">
-                <div class="card hovercard">
-                    <div class="info">
-                        <span class="glyphicon glyphicon-plus plusIcon"></span><br>
-                        <div class="title">Agregar nuevo emprendimiento</div>
-                    </div>
-                </div>
-            </a>
-        </div>
+    @if(Auth::user()->confirmed != 1)
+    <div class="callout callout-warning">
+        <h4>Tu cuenta aún no ha sido verificada, para verficarla debes ir a tu bandeja de correo electrónico buscar el correo de Bienvenido a Ruta C y darle clic al enlace que allí aparece.</h4>
+        <a class="btn btn-primary btn-sm" href="{{ action('UserController@reenviarCodigo') }}"> Reenvía el código</a>
     </div>
-
-    <h1>Empresas Registradas</h1>
-    <div class="row">
-    @foreach($empresas as $empresa)
-        <div class="col-md-3">
-            <div class="card hovercard">
-                <div class="info">
-                    <div class="title">
-                        {{$empresa->empresaRAZON_SOCIAL}}
-                    </div>
-                    <div class="desc">Nit: {{$empresa->empresaNIT}}</div>
-                </div>
-                <div class="bottom">
-                    @if(isset($empresa->diagnosticos->diagnosticoESTADO))
-                        @switch($empresa->diagnosticos->diagnosticoESTADO)
-                            @case('Activo')
-                                <a class="btn btn-primary btn-sm" href="empresa/{{$empresa->empresaID}}/diagnostico/" data-toggle="tooltip" title="Iniciar diagnóstico">
-                                    <i class="fa fa-plus-circle"></i>
-                                </a>
-                            @break
-                            @case('En Proceso')
-                                <a class="btn btn-primary btn-sm" href="empresa/{{$empresa->empresaID}}/diagnostico/" data-toggle="tooltip" title="Continuar diagnóstico">
-                                    <i class="fa fa-pencil-square-o"></i>
-                                </a>
-                            @break
-                            @case('Finalizado')
-                                <a class="btn btn-primary btn-sm" href="empresa/{{$empresa->empresaID}}/diagnostico/" data-toggle="tooltip" title="Ver resultados">
-                                    <i class="fa fa-file-text-o"></i>
-                                </a>
-                            @break
-                            @default
-                                -
-                        @endswitch
-                    @else
-                        <a class="btn btn-primary btn-sm" href="empresa/{{$empresa->empresaID}}/diagnostico/" data-toggle="tooltip" title="Iniciar diagnóstico">
-                            <i class="fa fa-plus-circle"></i>
+    @endif
+    @if($emprendimientos->count() > 0 && $empresas->count() > 0)
+        @include('rutac.rutas.includes.emprendimientos')
+        @include('rutac.rutas.includes.empresas')
+    @else
+        @if($emprendimientos->count() > 0)
+            @include('rutac.rutas.includes.emprendimientos')
+            @include('rutac.rutas.includes.empresas')
+        @else
+            @if($empresas->count() > 0)
+                @include('rutac.rutas.includes.empresas')
+                @include('rutac.rutas.includes.emprendimientos')
+            @else
+                <h1></h1>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="@if(Auth::user()->confirmed == 1) {{ action('RutaController@showFormAgregarEmprendimiento') }} @else javascript:void(0) @endif" @if(Auth::user()->confirmed != 1) class="showModal" @endif>
+                            <div class="card hovercard">
+                                <div class="info">
+                                    <i class="fa fa-plus plusIcon"></i><br>
+                                    <div class="title">Agregar nuevo emprendimiento</div>
+                                </div>
+                            </div>
                         </a>
-                    @endif
-                    <a class="btn btn-success btn-sm" href="{{ url('empresa', $empresa->empresaID) }}" data-toggle="tooltip" title="Ver empresa">
-                        <i class="fa fa-eye"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" href="empresa/{{$empresa->empresaID}}/editar" data-toggle="tooltip" title="Editar empresa">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    @endforeach
-        <div class="col-md-3">
-            <a href="{{ action('RutaController@showFormAgregarEmpresa') }}">
-                <div class="card hovercard">
-                    <div class="info">
-                        <span class="glyphicon glyphicon-plus plusIcon"></span><br>
-                        <div class="title">Agregar nueva empresa</div>
                     </div>
                 </div>
-            </a>
-        </div>
-    </div>
+                <h1></h1>
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="@if(Auth::user()->confirmed == 1) {{ action('RutaController@showFormAgregarEmpresa') }} @else javascript:void(0) @endif" @if(Auth::user()->confirmed != 1) class="showModal" @endif>
+                            <div class="card hovercard">
+                                <div class="info">
+                                    <i class="fa fa-plus plusIcon"></i><br>
+                                    <div class="title">Agregar nueva empresa</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            @endif
+        @endif
+    @endif
 </section>
 @endsection
 @section('style')
@@ -157,59 +79,82 @@
 </style>
 @endsection
 @section('footer')
-<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-<script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
-
+@if(Auth::user()->confirmed != 1)
+<div class="control-sidebar-bg"></div>
+<div class="modal fade" id="modal-no-confirmado">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="col-lg-12">
+                        <div class="col-lg-12">
+                            <p class="parr">Tu cuenta aún no ha sido verificada, para verficarla debes ir a tu bandeja de correo electrónico buscar el correo de Bienvenido a Ruta C y darle clic al enlace que allí aparece.</p>
+                            <hr>
+                            <p class="parr">¿No encuentras el correo? <a class="btn btn-primary btn-sm" href="{{ action('UserController@reenviarCodigo') }}"> Reenvía el código</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
-
-    $("input[name='emprendimiento_id[]']").change(function(){
-        var length = $("input[name='emprendimiento_id[]']:checked").length;
-        if(length > 0){            
-            $("#btn_delete_emprendimiento").removeAttr('disabled');
-        }
-        else{
-            $("#btn_delete_emprendimiento").attr('disabled', 'disabled');
-        }
+    $('.showModal').click(function(){
+        $('#modal-no-confirmado').modal('show');
     });
-
-
-	$(function () {
-	    $("#tabla-diagnosticos").DataTable({
-	      "paging": false,
-	      "lengthChange": true,
-	      "searching": false,
-	      "ordering": false,
-	      "info": false,
-	      "autoWidth": false,
-	      "lengthMenu": [[5, 10, -1], [5, 10, "Todos"]],
-	      "pageLength": 10,
-		  "language": {
-				"sProcessing":    "Procesando...",
-				"sLengthMenu":    "Mostrar _MENU_ registros",
-				"sZeroRecords":   "No se encontraron resultados",
-				"sEmptyTable":    "Ningún dato disponible en esta tabla",
-				"sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-				"sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
-				"sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
-				"sInfoPostFix":   "",
-				"sSearch":        "Buscar:",
-				"sUrl":           "",
-				"sInfoThousands":  ",",
-				"sLoadingRecords": "Cargando...",
-				"oPaginate": {
-					"sFirst":    "Primero",
-					"sLast":    "Último",
-					"sNext":    "Siguiente",
-					"sPrevious": "Anterior"
-				},
-				"oAria": {
-					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-				}
-			}
-	    });
-	    
-	  });
 </script>
+@endif
+@if(isset($diagnosticoEmpresaEstado))
+@if($diagnosticoEmpresaEstado->tipo_diagnosticoESTADO == 'Inactivo')
+<div class="control-sidebar-bg"></div>
+<div class="modal fade" id="modal-tipo-empresa">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="col-lg-12">
+                        <div class="col-lg-12">
+                            <p class="parr">El diagnóstico para empresa no está disponible por el momento</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.showModalEmpresa').click(function(){
+        $('#modal-tipo-empresa').modal('show');
+    });
+</script>
+@endif
+@endif
+@if(isset($diagnosticoEmprendimientoEstado))
+@if($diagnosticoEmprendimientoEstado->tipo_diagnosticoESTADO == 'Inactivo')
+<div class="control-sidebar-bg"></div>
+<div class="modal fade" id="modal-tipo-emprendimiento">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="col-lg-12">
+                        <div class="col-lg-12">
+                            <p class="parr">El diagnóstico para emprendimiento no está disponible por el momento</p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.showModalEmprendimiento').click(function(){
+        $('#modal-tipo-emprendimiento').modal('show');
+    });
+</script>
+@endif
+@endif
 @endsection

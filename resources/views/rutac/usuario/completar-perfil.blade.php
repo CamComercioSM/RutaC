@@ -1,41 +1,34 @@
-@extends('rutac.app')
+@extends('rutac.layouts.width')
 
 @section('title','RutaC | Completar perfil')
 
 @section('content')
 <section class="content-header">
-	<h1>
+	<h1 class="one">
 		Completa tu perfil
 	</h1>
 </section>
 <section class="content">
-	@if(session("message_success"))
-        <div class="alert alert-success " role="alert">
-             {{session("message_success")}}
-        </div>
-    @endif
-    @if(session("message_error"))
-        <div class="alert alert-danger " role="alert">
-            <i class="fa fa-danger"></i> {{session("message_error")}}
-        </div>
-    @endif
-	<div class="box">
-		<div id="datos-usuario" class="show">
-		    @include('rutac.usuario.forms.datos-usuario')
-		</div>
-		<div id="datos-empresas" class="hidden">    
-		    @include('rutac.usuario.forms.datos-empresas')
-		</div>
-		<div id="datos-emprendimientos" class="hidden">
-		    @include('rutac.usuario.forms.datos-emprendimientos')
-		</div>
-	</div>
+    <div class="row container">
+    	<div class="box col-xs-12 col-md-offset-1">
+    		<div id="datos-usuario" class="show">
+    		    @include('rutac.usuario.forms.datos-usuario')
+    		</div>
+    		<div id="datos-empresas" class="hidden">    
+    		    @include('rutac.usuario.forms.datos-empresas')
+    		</div>
+    		<div id="datos-emprendimientos" class="hidden">
+    		    @include('rutac.usuario.forms.datos-emprendimientos')
+    		</div>
+    	</div>
+    </div>
 </section>
 
 @endsection
 @section('style')
 <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+
 <style>
     .parr{
         font-size: 17.5px;
@@ -45,7 +38,8 @@
 </style>
 @endsection
 @section('footer')
-
+<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <div class="control-sidebar-bg"></div>
 <div class="modal fade" id="modal-welcome">
     <div class="modal-dialog">
@@ -59,7 +53,7 @@
                 <div class="box-body">
                     <div class="col-lg-12">
                         <div class="col-lg-12">
-                            <p class="parr">Bienvenido, Aliquam fermentum volutpat dui in sodales. Praesent commodo iaculis vehicula. Morbi rhoncus vehicula dui eget dictum. Phasellus accumsan risus nec convallis rhoncus. Proin enim odio, condimentum eget condimentum eu, dictum id dui. Ut bibendum porttitor pharetra. Quisque sit amet libero sed eros imperdiet scelerisque eget sed libero. Suspendisse consequat eu mauris vitae auctor.</p>
+                            <p class="parr">Bienvenido, antes de continuar debes completar los siguientes datos personales y de la idea o negocio.</p>
                         </div>
                     </div>
                 </div>
@@ -71,21 +65,16 @@
     </div>
 </div>
 
-
-
-<script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script type="text/javascript">
-	$(function () {
-        $('.select2').select2()
-    })
-
-    $(window).on('load',function(){
-        $('#modal-welcome').modal('show');
+    $(function () {
+        $('#departamento_residencia,#idiomas,#departamento_nacimiento,#profesion,#departamento_empresa,#municipio_empresa').select2({
+            placeholder: 'Seleccione una opción'
+        });
+        $('#idiomas').select2();
     });
+    var tipoIdentificacion = '1';
 
-	
-	$('#rMujer').click(function(){
+    $('#rMujer').click(function(){
     	$("#genero").val("Mujer");
     });
     $('#rHombre').click(function(){
@@ -101,21 +90,12 @@
     $('#rNo').click(function(){
     	$("#discapacidad").val("No");
     });
-
     
-	
-
     $('#btn-guardar-datos-usuarios').click(function(){
-    	var values = getValuesFormDatosUsuarios();
+        $('.capa').css("visibility", "hidden");
+        $('#btn-submit').attr("disabled", false);
+        var values = getValuesFormDatosUsuarios();
         guardarDatosUsuarios(values);
-    });
-    $('#btn-button-atras-empresas').click(function(){
-    	$("#datos-empresas").removeClass("show").addClass("hidden");
-    	$("#datos-usuario").removeClass("hidden").addClass("show");
-    });
-    $('#btn-button-atras-emprendimientos').click(function(){
-    	$("#datos-emprendimientos").removeClass("show").addClass("hidden");
-    	$("#datos-usuario").removeClass("hidden").addClass("show");
     });
 
 	$('#departamento_residencia').change(function() {
@@ -138,15 +118,6 @@
 		;
         buscarMunicipiosN($('#departamento_nacimiento').val());
 	});
-	$('#departamento_empresa').change(function() {
-		$('#municipio_empresa')
-		    .find('option')
-		    .remove()
-		    .end()
-		    .append('<option value="0">Seleccione una opción</option>')
-		    .val('Seleccione una opción');
-        buscarMunicipiosE($('#departamento_empresa').val());
-	});
 
     function buscarMunicipiosR(departamento){
         $.ajax({
@@ -154,6 +125,9 @@
             type: 'get',
             dataType: 'json',
             success: function(data){
+                $('#municipio_residencia').select2({
+                    placeholder: 'Seleccione una opción'
+                })
                 $.each(data, function (i, item) {
 				    $('#municipio_residencia').append($('<option>', { 
 				        value: item.id_municipio,
@@ -173,6 +147,9 @@
             type: 'get',
             dataType: 'json',
             success: function(data){
+                $('#municipio_nacimiento').select2({
+                    placeholder: 'Seleccione una opción'
+                })
                 $.each(data, function (i, item) {
 				    $('#municipio_nacimiento').append($('<option>', { 
 				        value: item.id_municipio,
@@ -180,25 +157,6 @@
 				    }));
 				});
 				$('#municipio_nacimiento').prop('disabled', false);
-            },
-            error: function(xhr, data, error){
-                console.log("Ocurrió un error");
-            }
-        });
-    }
-    function buscarMunicipiosE(departamento){
-        $.ajax({
-            url: "{{url('buscar_municipios')}}/"+departamento,
-            type: 'get',
-            dataType: 'json',
-            success: function(data){
-                $.each(data, function (i, item) {
-				    $('#municipio_empresa').append($('<option>', { 
-				        value: item.id_municipio,
-				        text : item.municipio 
-				    }));
-				});
-				$('#municipio_empresa').prop('disabled', false);
             },
             error: function(xhr, data, error){
                 console.log("Ocurrió un error");
@@ -221,6 +179,8 @@
             success: function(data){
                 console.log(data);
                 if(data.status == 'Errors'){
+                    $('.capa').css("visibility", "hidden");
+                    $('#btn-guardar-datos-usuarios').attr("disabled", false);
                     for(var key in data.errors){
                         $("#error_"+key).html("");
                         $("#alert_error_"+key).removeClass('glyphicon-alert general-error-color');
@@ -235,7 +195,8 @@
                     }
                 }
                 if(data.status == 'Ok'){
-                    console.log("OK");
+                    $('.capa').css("visibility", "hidden");
+                    $('#btn-guardar-datos-usuarios').attr("disabled", false);
                     @if(isset($emprendimientos))
 			    		$("#datos-usuario").removeClass("show").addClass("hidden");
 				        $("#datos-emprendimientos").removeClass("hidden").addClass("show");
@@ -248,8 +209,9 @@
                 }
             },
             error: function(xhr, data, error){
+                $('.capa').css("visibility", "hidden");
+                $('#btn-guardar-datos-usuarios').attr("disabled", false);
                 console.log('Ocurrió un error');
-                console.log(xhr.responseText);
             }
         });
     }
@@ -264,130 +226,181 @@
                 value = $(inputs[i]).val();    
             }
             values[name] = value;
-            $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
-            $("#error_"+name).html('');
+            if(!name.includes("idiomas")){
+                $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');
+                $("#error_"+name).html('');
+            }
         }
         return values;
     }
 
-    function guardarEmpresa(values){
-        $('#message-error').html('');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{url('guardar-empresa') }}",
-            dataType: 'json',
-            type: 'post',
-            data: values,
-            success: function(data){
-                console.log(data);
-                if(data.status == 'Errors'){
-                    for(var key in data.errors){
-                        $("#error_"+key).html("");
-                        $("#alert_error_"+key).removeClass('glyphicon-alert general-error-color');
-                        if(data.errors[key] != ""){                            
-                            $("input[name='"+key+"'], select[name='"+key+"'], textarea[name='"+key+"']").parents().eq(0).addClass('has-error');
-                            $("#error_"+key).html(data.errors[key]);
-                            $("#alert_error_"+key).addClass('glyphicon-alert general-error-color');
-                            html = "<div class='alert alert-danger'>Tiene algunos errores, verifique la información.</div>";
-                            $('html, body').animate({scrollTop: '0px'}, 0);
-                            $('#message-error').html(html);
-                        }
-                    }
-                }
-                if(data.status == 'Ok'){
-                    console.log("OK");
-                    //$("#formRegistro").submit();                    
-                }
-            },
-            error: function(xhr, data, error){
-                console.log('Ocurrió un error');
-                console.log(xhr.responseText);
-            }
-        });
-    }
-    function getValuesFormEmpresa(){
-        var values = new Object;        
-        var inputs = $("#formGuardarEmpresa").find('input, select');  
-        for(var i = 0; i< inputs.length; i++){
-            name = $(inputs[i]).attr('name');
-            if(name == 'radio'){
-                value = $("input:radio[name=radio]:checked").val()
-            }else{
-                value = $(inputs[i]).val();    
-            }
-            values[name] = value;
-            $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
-            $("#error_"+name).html('');
-        }
-        return values;
-    }
-
-    function guardarEmprendimiento(values){
-        $('#message-error').html('');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{url('guardar-empresa') }}",
-            dataType: 'json',
-            type: 'post',
-            data: values,
-            success: function(data){
-                console.log(data);
-                if(data.status == 'Errors'){
-                    for(var key in data.errors){
-                        $("#error_"+key).html("");
-                        $("#alert_error_"+key).removeClass('glyphicon-alert general-error-color');
-                        if(data.errors[key] != ""){                            
-                            $("input[name='"+key+"'], select[name='"+key+"'], textarea[name='"+key+"']").parents().eq(0).addClass('has-error');
-                            $("#error_"+key).html(data.errors[key]);
-                            $("#alert_error_"+key).addClass('glyphicon-alert general-error-color');
-                            html = "<div class='alert alert-danger'>Tiene algunos errores, verifique la información.</div>";
-                            $('html, body').animate({scrollTop: '0px'}, 0);
-                            $('#message-error').html(html);
-                        }
-                    }
-                }
-                if(data.status == 'Ok'){
-                    console.log("OK");
-                    //$("#formRegistro").submit();                    
-                }
-            },
-            error: function(xhr, data, error){
-                console.log('Ocurrió un error');
-                console.log(xhr.responseText);
-            }
-        });
-    }
-    function getValuesFormEmprendimiento(){
-        var values = new Object;        
-        var inputs = $("#formGuardarEmprendimiento").find('input, select');  
-        for(var i = 0; i< inputs.length; i++){
-            name = $(inputs[i]).attr('name');
-            if(name == 'radio'){
-                value = $("input:radio[name=radio]:checked").val()
-            }else{
-                value = $(inputs[i]).val();    
-            }
-            values[name] = value;
-            $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
-            $("#error_"+name).html('');
-        }
-        return values;
-    }
-
-
-    $('#fecha_nacimiento,#inicio_actividades,#fecha_constitucion').datepicker({
+    $('#fecha_nacimiento').datepicker({
         format: "yyyy-mm-dd",
         language: "es",
         autoclose: true
     })
+
+    @if(isset($empresas))
+        $('#btn-button-atras-empresas').click(function(){
+            $("#datos-empresas").removeClass("show").addClass("hidden");
+            $("#datos-usuario").removeClass("hidden").addClass("show");
+        });
+        $('#departamento_empresa').change(function() {
+            $('#municipio_empresa')
+                .find('option')
+                .remove()
+                .end()
+                .append('<option value="0">Seleccione una opción</option>')
+                .val('Seleccione una opción');
+            buscarMunicipiosE($('#departamento_empresa').val());
+        });
+        function guardarEmpresa(values){
+            $('#message-error').html('');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{url('guardar-empresa') }}",
+                dataType: 'json',
+                type: 'post',
+                data: values,
+                success: function(data){
+                    console.log(data);
+                    if(data.status == 'Errors'){
+                        for(var key in data.errors){
+                            $("#error_"+key).html("");
+                            $("#alert_error_"+key).removeClass('glyphicon-alert general-error-color');
+                            if(data.errors[key] != ""){                            
+                                $("input[name='"+key+"'], select[name='"+key+"'], textarea[name='"+key+"']").parents().eq(0).addClass('has-error');
+                                $("#error_"+key).html(data.errors[key]);
+                                $("#alert_error_"+key).addClass('glyphicon-alert general-error-color');
+                                html = "<div class='alert alert-danger'>Tiene algunos errores, verifique la información.</div>";
+                                $('html, body').animate({scrollTop: '0px'}, 0);
+                                $('#message-error').html(html);
+                            }
+                        }
+                    }
+                    if(data.status == 'Ok'){
+                        console.log("OK");
+                        //$("#formRegistro").submit();                    
+                    }
+                },
+                error: function(xhr, data, error){
+                    console.log('Ocurrió un error');
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+        function buscarMunicipiosE(departamento){
+            $.ajax({
+                url: "{{url('buscar_municipios')}}/"+departamento,
+                type: 'get',
+                dataType: 'json',
+                success: function(data){
+                    $.each(data, function (i, item) {
+                        $('#municipio_empresa').append($('<option>', { 
+                            value: item.id_municipio,
+                            text : item.municipio 
+                        }));
+                    });
+                    $('#municipio_empresa').prop('disabled', false);
+                },
+                error: function(xhr, data, error){
+                    console.log("Ocurrió un error");
+                }
+            });
+        }
+        function getValuesFormEmpresa(){
+            var values = new Object;        
+            var inputs = $("#formGuardarEmpresa").find('input, select');  
+            for(var i = 0; i< inputs.length; i++){
+                name = $(inputs[i]).attr('name');
+                if(name == 'radio'){
+                    value = $("input:radio[name=radio]:checked").val()
+                }else{
+                    value = $(inputs[i]).val();    
+                }
+                values[name] = value;
+                $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
+                $("#error_"+name).html('');
+            }
+            return values;
+        }
+        $('#fecha_constitucion').datepicker({
+            format: "yyyy-mm-dd",
+            language: "es",
+            autoclose: true
+        })
+    @endif
+
+    @if(isset($emprendimientos))
+        $('#btn-button-atras-emprendimientos').click(function(){
+            $("#datos-emprendimientos").removeClass("show").addClass("hidden");
+            $("#datos-usuario").removeClass("hidden").addClass("show");
+        });
+        function guardarEmprendimiento(values){
+            $('#message-error').html('');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{url('guardar-empresa') }}",
+                dataType: 'json',
+                type: 'post',
+                data: values,
+                success: function(data){
+                    console.log(data);
+                    if(data.status == 'Errors'){
+                        for(var key in data.errors){
+                            $("#error_"+key).html("");
+                            $("#alert_error_"+key).removeClass('glyphicon-alert general-error-color');
+                            if(data.errors[key] != ""){                            
+                                $("input[name='"+key+"'], select[name='"+key+"'], textarea[name='"+key+"']").parents().eq(0).addClass('has-error');
+                                $("#error_"+key).html(data.errors[key]);
+                                $("#alert_error_"+key).addClass('glyphicon-alert general-error-color');
+                                html = "<div class='alert alert-danger'>Tiene algunos errores, verifique la información.</div>";
+                                $('html, body').animate({scrollTop: '0px'}, 0);
+                                $('#message-error').html(html);
+                            }
+                        }
+                    }
+                    if(data.status == 'Ok'){
+                        console.log("OK");
+                        //$("#formRegistro").submit();                    
+                    }
+                },
+                error: function(xhr, data, error){
+                    console.log('Ocurrió un error');
+                    console.log(xhr.responseText);
+                }
+            });
+        }
+        function getValuesFormEmprendimiento(){
+            var values = new Object;        
+            var inputs = $("#formGuardarEmprendimiento").find('input, select');  
+            for(var i = 0; i< inputs.length; i++){
+                name = $(inputs[i]).attr('name');
+                if(name == 'radio'){
+                    value = $("input:radio[name=radio]:checked").val()
+                }else{
+                    value = $(inputs[i]).val();    
+                }
+                values[name] = value;
+                $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
+                $("#error_"+name).html('');
+            }
+            return values;
+        }
+        $('#inicio_actividades').datepicker({
+            format: "yyyy-mm-dd",
+            language: "es",
+            autoclose: true
+        })
+    @endif
 
 </script>
 

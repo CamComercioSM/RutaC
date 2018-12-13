@@ -19,6 +19,11 @@ class GeneralController extends Controller
         $this->repository = $repository;
     }
     
+    /**
+     * Trae los municipios del departamento
+     *
+     * @return array
+     */
     public function buscarMunicipios($departamento){
         $repository = $this->repository->municipios($departamento);
         return $repository;
