@@ -1,5 +1,5 @@
 @extends('administrador.index')
-@section('title','RutaC | Editar diagnóstico')
+
 @section('content')
 <section class="content-header">
 	<div class="row">
@@ -20,7 +20,7 @@
 						<div class="col-md-12">
 							<form id="formEditarDiagnostico" action="" method="post">
 							    {!! csrf_field() !!}
-                                <input name="idTipoDiagnostico" type="hidden" value="{{$tipoDiagnostico->tipo_diagnosticoID}}">
+							    <input name="idTipoDiagnostico" type="hidden" value="{{$tipoDiagnostico->tipo_diagnosticoID}}">
 							    <div class="box-body">
 								    <div class="row">
 								        <div class="col-xs-6">
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					<div class="row">
-                        <div class="col-md-12">
+					    <div class="col-md-12">
                             <h3 class="text-center">Mensajes de Feedback diagnóstico de {{$tipoDiagnostico->tipo_diagnosticoNOMBRE}}</h3>
                         </div>
 						<div class="col-md-12">
@@ -79,7 +79,7 @@
 							</table>
 						</div>
 					</div>
-                    <div class="row">
+					<div class="row">
                         <div class="col-md-12">
                             <h3 class="text-center">Secciones diagnóstico de {{$tipoDiagnostico->tipo_diagnosticoNOMBRE}}</h3>
                         </div>
@@ -297,7 +297,7 @@
             }
         });
     }
-
+    
 	$('#agregar-feedback').click(function(){
         var values = getValuesAgregarFeedback();
         agregarFeedback(values);
@@ -315,6 +315,7 @@
         return values;
     }
     function agregarFeedback(values){
+    	console.log(values);
         $('.capa').css("visibility", "visible");
         $('#agregar-feedback').attr("disabled", true);
         $('#message-error').html('');
@@ -350,7 +351,7 @@
                 if(data.status == 'Error'){
                     alert(data.mensaje);
                     $('.capa').css("visibility", "hidden");
-                    $('#agregar-feedback').attr("disabled", false);
+                    $('#editar-feedback').attr("disabled", false);
                 }
             },
             error: function(xhr, data, error){

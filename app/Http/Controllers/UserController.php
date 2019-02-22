@@ -168,7 +168,7 @@ class UserController extends Controller
             return back();
         }
     }
-
+    
     public function reenviarCodigo(Request $request){
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->first();
         if($usuario){

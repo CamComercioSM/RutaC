@@ -1,5 +1,5 @@
 @extends('administrador.index')
-@section('title','RutaC | Sección')
+
 @section('content')
 <section class="content-header">
 	<div class="row">
@@ -41,7 +41,7 @@
 								        <div class="col-xs-3">
 								            <label>Estado</label>
 								            <div class="form-group">
-                                                @if($seccionPregunta->feedback->count() <= 0 || $preguntas <= 0)
+			                                	@if($seccionPregunta->feedback->count() <= 0 || $preguntas <= 0)
                                                 El estado podrá ser cambiado hasta que agregue feedback y preguntas con sus respuestas
                                                 @else
                                                 <select name="estado" class="form-control">

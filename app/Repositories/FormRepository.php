@@ -20,7 +20,7 @@ class FormRepository
             'CE'=>'Cédula de extranjería'
         ];
     }
-
+    
     public function estado(){
         return [
             'Activo'=>'Activo',

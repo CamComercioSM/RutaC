@@ -30,12 +30,12 @@ class PublicController extends Controller
         $repository = $this->repository->municipios($departamento);
         return $repository;
     }
-	
-	public function getDocumento($file){
+    
+    public function getDocumento($file){
         $full_path = storage_path(env('PATH_DOCUMENTO').'/'.$file);
         return response()->download($full_path);
     }
-
+    
     public function verify($code, Request $request){
         if(Auth::user()){
             $user = User::where('confirmation_code', $code)->first();
@@ -65,7 +65,7 @@ class PublicController extends Controller
             return view('rutac.verificado');
         }
     }
-
+    
     public function actualizarDatos($code, Request $request){
         if(Auth::user()){
             $user = User::where('update_code', $code)->with('datoUsuario')->first();
@@ -114,7 +114,7 @@ class PublicController extends Controller
     public function nuevoRegistro(){
         return view('rutac.nuevo-registro');
     }
-
+    
     public function obtenerTipoIdentificacion($tipoIdentificacion){
         switch($tipoIdentificacion){
             case 'CC':

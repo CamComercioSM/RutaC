@@ -30,7 +30,7 @@ class EmprendimientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($emprendimiento,Request $request)
+    public function index($emprendimiento)
     {
         $emprendimiento = Emprendimiento::where('emprendimientoID',$emprendimiento)
                             ->with(["diagnosticosAll" => function($query){
@@ -40,8 +40,8 @@ class EmprendimientoController extends Controller
                                     ->orWhere('emprendimientoESTADO', 'En Proceso')
                                     ->orWhere('emprendimientoESTADO', 'Finalizado');
                             })->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
-       
-        if($emprendimiento){
+
+        if($emprendimiento){        
             foreach ($emprendimiento->diagnosticosAll as $keyD => $diagnostico) {
                 $competencias = DB::table('resultados_seccion')
                     ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
@@ -54,7 +54,7 @@ class EmprendimientoController extends Controller
             $from = 'editar';
             $historial = $this->gController->comprobarHistorial('emprendimiento',$emprendimiento->emprendimientoID);
             $diagnosticoEmprendimientoEstado = TipoDiagnostico::where('tipo_diagnosticoID','1')->select('tipo_diagnosticoESTADO')->first();
-            return view('rutac.emprendimientos.index',compact('emprendimiento','from','competencias','historial','diagnosticoEmprendimientoEstado'));
+            return view('rutac.emprendimientos.index',compact('emprendimiento','from','competencias','historial'));
         }
         $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
         return redirect()->action('RutaController@iniciarRuta');

@@ -5,13 +5,10 @@
 
 </section>
 <section class="content">
-	<div class="text-right form-group">
-      <a class="btn btn-primary" href="{{action('Admin\UsuarioController@usuariosAdmin')}}"><i class="fa fa-arrow-left"></i> Volver</a>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box box-primary">
-                <div class="box-header with-border">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="box box-primary">
+				<div class="box-header with-border">
                 	Agregar usuario administrador
                 </div>
                 <div class="box-body">
@@ -57,15 +54,15 @@
                 	<span id="message-error" style="margin-top: 5px;"></span>
                 	<button type="button" id="agregar-administrador" class="btn btn-primary ">Agregar administrador</button>
                 </div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </section>
 @endsection
 @section('footer')
 <script type="text/javascript">
 	$('#agregar-administrador').click(function(){
-        $('.capa').css("visibility", "visible");
+	    $('.capa').css("visibility", "visible");
         $('#agregar-administrador').attr("disabled", true);
     	var values = getValuesForm();
         guardarDatos(values);

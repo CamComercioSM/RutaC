@@ -8,7 +8,7 @@ class Ruta extends Model
 {
     protected $table = 'rutas';
     protected $primaryKey = 'rutaID';
-
+    
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones
@@ -18,7 +18,7 @@ class Ruta extends Model
     public function estaciones(){
         return $this->hasMany('App\Estacion','RUTAS_rutaID')->orderBy('estacionCUMPLIMIENTO', 'desc');
     }
-
+    
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones Administrador

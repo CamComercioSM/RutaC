@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 class DocumentosController extends Controller
 {
     /**
-     * Crea una nueva instancia de controlador.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -23,7 +23,7 @@ class DocumentosController extends Controller
     {
         $this->middleware('admin');
     }
-
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -38,32 +38,16 @@ class DocumentosController extends Controller
     }
 
     /**
-     * Esta función carga la vista de documentos
+     * Muestra la vista administrador de documentos
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $documentos = Material::where('TIPOS_MATERIALES_tipo_materialID','Documento')->where('material_ayudaESTADO','Activo')->get();
         return view('administrador.documentos.index',compact('documentos'));
     }
-	
-	/**
-     * Esta función devuelve la ruta donde está alojado el documento
-     *
-     * @return \Illuminate\Http\Response
-     */
-	public function getDocumento($file){
-        $full_path = storage_path(env('PATH_DOCUMENTO').'/'.$file);
-        return response()->download($full_path);
-    }
-	
-	/**
-     * Esta función agrega un nuevo documento
-     *
-     * @param request
-     * @return json
-     */
+
     public function agregarDocumento(Request $request){
         $rules = [];
         $rules['nombre_documento'] = 'required';
@@ -102,13 +86,7 @@ class DocumentosController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función edita un documento
-     *
-     * @param request
-     * @return json
-     */
+
     public function editarDocumento(Request $request){
         $rules = [];
         $rules['documentoIDE'] = 'required';
@@ -153,13 +131,7 @@ class DocumentosController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función elimina un documento
-     *
-     * @param request
-     * @return json
-     */
+
     public function eliminarDocumento(Request $request){
         $rules = [];
         $rules['documentoID'] = 'required';

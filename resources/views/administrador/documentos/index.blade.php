@@ -9,6 +9,7 @@
 	</div>
 </section>
 <section class="content">
+	<br><br>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box box-primary">
@@ -101,14 +102,14 @@
                             <label for="nombre_documento">Nombre Documento:</label>
                             <div class="form-group has-feedback">
                                 <input type="text" id="nombre_documento" name="nombre_documento" class="form-control" placeholder="Nombre del documento" value="">
-                                <span class="text-danger" id="error_nombre_documento_e"></span>
+                                <span class="text-danger" id="error_nombre_documento"></span>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <label for="archivo">Archivo:</label>
                             <div class="form-group has-feedback">
                                 <input type="file" id="archivoE" name="archivo" class="form-control">
-                                <span class="text-danger" id="error_archivo_e"></span>
+                                <span class="text-danger" id="error_archivo"></span>
                             </div>
                         </div>
                     </div>
@@ -283,7 +284,6 @@
     function editarDocumentoS(documentoID,nombreDocumento,urlDocumento){
         $('#documentoIDE').val(documentoID);
         $('#nombre_documento').val(nombreDocumento);
-        $('#archivoE').val(urlDocumento);
     }
     function eliminarDocumentoS(documentoID){
         $('#documentoID').val(documentoID);
@@ -303,7 +303,7 @@
 				"sProcessing":    "Procesando...",
 				"sLengthMenu":    "Mostrar _MENU_ registros",
 				"sZeroRecords":   "No se encontraron resultados",
-				"sEmptyTable":    "Ho se encontraron rutas",
+				"sEmptyTable":    "Ho se encontraron documentos",
 				"sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
 				"sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
 				"sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
@@ -324,6 +324,7 @@
 				}
 			}
 	    });
+	    
 	});
 </script>
 

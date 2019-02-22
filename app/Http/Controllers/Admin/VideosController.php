@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class VideosController extends Controller
 {
     /**
-     * Crea una nueva instancia de controlador.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class VideosController extends Controller
     {
         $this->middleware('admin');
     }
-
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -35,22 +35,16 @@ class VideosController extends Controller
     }
 
     /**
-     * Esta función carga la vista de vídeos
+     * Show the application dashboard.
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $videos = Material::where('TIPOS_MATERIALES_tipo_materialID','Video')->where('material_ayudaESTADO','Activo')->get();
         return view('administrador.videos.index',compact('videos'));
     }
-	
-	/**
-     * Esta función agrega un vídeo
-     *
-     * @param  request
-     * @return json
-     */
+    
     public function agregarVideo(Request $request){
         //$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
@@ -71,13 +65,13 @@ class VideosController extends Controller
             if($data['status'] != 'Errors'){
                 $data['status'] = 'Ok';
                 $data['mensaje'] = 'Material agregado correctamente';
-
+                
                 if(strpos($request->url_video, '?v=')){
                     $code_url = explode('?v=', $request->url_video);
                 }else{
                     $code_url = explode('youtu.be/', $request->url_video);
                 }
-
+                
                 $material = new Material;
                 $material->TIPOS_MATERIALES_tipo_materialID = 'Video';
                 $material->material_ayudaNOMBRE = $request->titulo_video;
@@ -89,13 +83,7 @@ class VideosController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función edita un vídeo
-     *
-     * @param  request
-     * @return json
-     */
+
     public function editarVideo(Request $request){
         //$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
@@ -117,13 +105,13 @@ class VideosController extends Controller
             if($data['status'] != 'Errors'){
                 $data['status'] = 'Ok';
                 $data['mensaje'] = 'Material editado correctamente';
-
+                
                 if(strpos($request->url_video, '?v=')){
                     $code_url = explode('?v=', $request->url_video);
                 }else{
                     $code_url = explode('youtu.be/', $request->url_video);
                 }
-
+                
                 $material = Material::where('material_ayudaID',$request->videoIDE)->where('TIPOS_MATERIALES_tipo_materialID','Video')->first();
                 if($material){
                     $material->material_ayudaNOMBRE = $request->titulo_video;
@@ -138,13 +126,7 @@ class VideosController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función elimina un vídeo
-     *
-     * @param  request
-     * @return json
-     */
+
     public function eliminarVideo(Request $request){
 
         $rules = [];

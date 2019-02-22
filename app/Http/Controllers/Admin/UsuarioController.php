@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Validator;
 class UsuarioController extends Controller
 {
     /**
-     * Crea una nueva instancia de controlador.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -26,30 +26,19 @@ class UsuarioController extends Controller
     }
 
     /**
-     * Esta función carga la vista de perfil
+     * Show the application dashboard.
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         return view('administrador.perfil.index');
     }
-	
-	/**
-     * Esta función carga la vista de crear usuario
-     *
-     * @return view
-     */
+    
     public function crearUsuario(){
         return view('administrador.perfil.crear-usuario');
     }
-	
-	/**
-     * Esta función actualiza el password del usuario
-     *
-     * @param  request
-     * @return json
-     */
+    
     public function actualizarPassword(Request $request){
         $rules = [];
         $rules['anterior_clave'] = 'required';
@@ -79,13 +68,7 @@ class UsuarioController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función crea un nuevo administrador
-     *
-     * @param  request
-     * @return json
-     */
+    
     public function crearAdministrador(Request $request){
         $rules = [];
         $rules['cedula'] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
@@ -112,18 +95,18 @@ class UsuarioController extends Controller
             $datoUsuario->dato_usuarioIDENTIFICACION = $request->cedula;
             $datoUsuario->save();
             $datoUsuarioID = $datoUsuario->dato_usuarioID;
-
+            
             $password = $this->generateRandomString();
 
             $nuevoUsuario = new User;
             $nuevoUsuario->usuarioEMAIL = $request->correo;
-            $nuevoUsuario->password = bcrypt($password);
+            $nuevoUsuario->password = bcrypt($this->generateRandomString());
             $nuevoUsuario->dato_usuarioID = $datoUsuarioID;
             $nuevoUsuario->tipoUsuario = 'Admin';
             $nuevoUsuario->confirmed = '1';
             $nuevoUsuario->password_generated = $password;
             $nuevoUsuario->save();
-
+            
             $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->nombres.' '.$request->apellidos;
             Mail::send(new RutaCMail($nuevoUsuario, 'nuevo_administrador'));
             
@@ -132,12 +115,7 @@ class UsuarioController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función genera un cadena de caracteres como contraseña para el administrador
-     *
-     * @return string
-     */
+
     function generateRandomString($length = 10) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -148,85 +126,27 @@ class UsuarioController extends Controller
         Log::info($randomString);
         return $randomString;
     }
-	
-	/**
+    
+    /**
      * Esta función muestra los usuarios administrador
      *
      * @return view
      */
     public function usuariosAdmin(){
-        $usuarios = User::with('datoUsuario')->where('usuarioID','<>', Auth::user()->usuarioID)->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
+        $usuarios = User::with('datoUsuario')->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
         return view('administrador.usuarios.index',compact('usuarios'));
     }
-	
-	public function editarUsuarioAdmin(Request $request){
-        $rules = [];
-        $rules['usuarioID'] = 'required';
-        $rules['nombre_usuario'] = 'required';
-        $rules['apellido_usuario'] = 'required';
-
-        if($request->clave){
-            $rules['clave'] = 'required|min:8';
-        }
-        
-        $validator = Validator::make($request->all(), $rules);
+    
+    public function eliminarUsuario($usuarioID){
+        $usuario = User::where('usuarioID',$usuarioID)->first();
         $data = [];
         $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
+        if($usuario){
+            $usuario->usuarioESTADO = 'Inactivo';
+            $usuario->save();
+            $data['status'] = 'OK';
         }else{
-            $usuario = User::where('usuarioID',$request->usuarioID)->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
-            if($usuario){
-                if($request->clave){
-                    DB::table('usuarios')
-                        ->where('usuarioID', $request->usuarioID)
-                        ->update(['password' => bcrypt($request->input('clave'))]);
-                }
-
-                DB::table('datos_usuarios')
-                        ->where('dato_usuarioID', $request->usuarioID)
-                        ->update(['dato_usuarioNOMBRES' => $request->input('nombre_usuario')],
-                                ['dato_usuarioAPELLIDOS' => $request->input('apellido_usuario')]);
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Usuario editado correctamente';
-            }else{
-                $data['status'] = 'Error';
-                $data['mensaje'] = 'Usuario no existe';
-            }
-        }
-        return json_encode($data);
-    }
-
-
-    public function eliminarUsuarioAdmin(Request $request){
-        $rules = [];
-        $rules['usuarioIDD'] = 'required';
-        
-        $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            $usuario = User::where('usuarioID',$request->usuarioIDD)->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
-            if($usuario){
-                DB::table('usuarios')
-                        ->where('usuarioID', $request->usuarioIDD)
-                        ->update(['usuarioESTADO' => 'Inactivo']);
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Usuario eliminado correctamente';
-            }else{
-                $data['status'] = 'Error';
-                $data['mensaje'] = 'Usuario no existe';
-            }
+            $data['status'] = 'ERROR';
         }
         return json_encode($data);
     }

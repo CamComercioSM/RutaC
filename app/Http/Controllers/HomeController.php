@@ -7,6 +7,9 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\GeneralController;
 
+use App\Mail\RutaCMail;
+use Illuminate\Support\Facades\Mail;
+
 class HomeController extends Controller
 {
     private $gController;
@@ -28,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $usuario = User::with('empresas','emprendimientos')->first();
+        $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
         $rutasEmpresas = [];
         //return $usuario;
         if($usuario->empresas->count() > 0){
@@ -75,5 +78,6 @@ class HomeController extends Controller
         
         return view('rutac.home',compact('rutas','emprendelo'));
     }
+
 
 }

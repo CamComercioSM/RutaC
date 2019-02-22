@@ -326,7 +326,7 @@
     function eliminarVideoS(videoID){
         $('#videoID').val(videoID);
     }
-    $(function () {
+	$(function () {
 	    $("#tabla-videos").DataTable({
 	      "paging": true,
 	      "lengthChange": true,
@@ -363,7 +363,6 @@
 	    });
 	    
 	});
-	
 </script>
 
 @endsection

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-
 use App\Http\Controllers\Controller;
 //use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
@@ -32,7 +31,7 @@ class ForgotPasswordController extends Controller
     {
         $this->middleware('guest');
     }
-
+    
     public function broker()
     {
         return Password::broker();
@@ -104,5 +103,4 @@ class ForgotPasswordController extends Controller
             ['usuarioEMAIL' => trans($response)]
         );
     }
-    
 }

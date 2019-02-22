@@ -9,11 +9,10 @@ use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
-    
-	/**
-     * Crea una nueva instancia de controlador.
-     * 
-     * @return Void
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
      */
     public function __construct()
     {
@@ -21,12 +20,13 @@ class AdminController extends Controller
     }
 
     /**
-     * Muestra el index del administrador
-     * 
+     * Show the application dashboard.
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        //return "ADMIN";
         return view('administrador.index');
     }
 

@@ -6,7 +6,6 @@ use Auth;
 use App\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Log;
 
 class ValidacionesController extends Controller
 {
@@ -72,6 +71,7 @@ class ValidacionesController extends Controller
         return json_encode($data);
     }
 
+    
     /**
      * Valida los datos de la empresa
      * @param  array $data

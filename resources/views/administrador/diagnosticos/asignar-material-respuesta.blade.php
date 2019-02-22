@@ -1,5 +1,5 @@
 @extends('administrador.index')
-@section('title','RutaC | Asignar material a respuesta')
+
 @section('content')
 <section class="content-header">
 	<div class="row">

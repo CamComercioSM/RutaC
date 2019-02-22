@@ -36,7 +36,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    
     /**
      * Send the password reset notification.
      *
@@ -47,7 +47,7 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
-
+    
     /**
      * Method to return the email for password reset
      *     

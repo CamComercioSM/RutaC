@@ -36,7 +36,7 @@ class EmpresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($empresa,Request $request)
+    public function index($empresa)
     {
         $empresa = Empresa::where('empresaID',$empresa)
                             ->with(["diagnosticosAll" => function($query){
@@ -46,7 +46,7 @@ class EmpresaController extends Controller
                                     ->orWhere('empresaESTADO', 'En Proceso')
                                     ->orWhere('empresaESTADO', 'Finalizado');
                             })->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
-
+        
         if($empresa){
             $empresa->facebook = "";
             $empresa->twitter = "";
@@ -66,7 +66,7 @@ class EmpresaController extends Controller
                     break;
                 }
             }
-
+    
             $empresa->nombreContactoCial = "";
             $empresa->correoContactoCial = "";
             $empresa->telefonoContactoCial = "";
@@ -85,7 +85,7 @@ class EmpresaController extends Controller
                     break;
                 }
             }
-
+    
             $empresa->nombreContactoTH = "";
             $empresa->correoContactoTH = "";
             $empresa->telefonoContactoTH = "";
@@ -107,7 +107,7 @@ class EmpresaController extends Controller
             $usuario = Auth::user()->datoUsuario;
             $repositoryDepartamentos = $this->repository->departamentos();
             $repository = $this->repository;
-
+    
             foreach ($empresa->diagnosticosAll as $keyD => $diagnostico) {
                 $competencias = DB::table('resultados_seccion')
                     ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
@@ -115,18 +115,18 @@ class EmpresaController extends Controller
                     ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
                     ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
                     ->get();
-
+    
                 $empresa->diagnosticosAll[$keyD]['competencias'] = $competencias;
             }
             $from = 'editar';
             $historial = $this->gController->comprobarHistorial('empresa',$empresa->empresaID);
             $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID','2')->select('tipo_diagnosticoESTADO')->first();
-            return view('rutac.empresas.index',compact('empresa','repository','usuario','repositoryDepartamentos','from','competencias','competenciaNombre','competenciaPromedio','historial','diagnosticoEmpresaEstado'));
+            return view('rutac.empresas.index',compact('empresa','repository','usuario','repositoryDepartamentos','from','competencias','competenciaNombre','competenciaPromedio','historial'));
         }
         $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
         return redirect()->action('RutaController@iniciarRuta');
     }
-
+    
     public function restablecerEmpresa(Request $request){
         $empresa = Empresa::where('empresaNIT',$request->nit)->where('empresaESTADO','Eliminado')->first();
         if($empresa){

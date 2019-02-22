@@ -25,7 +25,7 @@ class DiagnosticoController extends Controller
 {
     private $repository;
     /**
-     * Crea una nueva instancia de controlador.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -36,70 +36,27 @@ class DiagnosticoController extends Controller
     }
 
     /**
-     * Esta función carga la vista de los diagnósticos
+     * Show the application dashboard.
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-		/*
-        |---------------------------------------------------------------------------------------
-        | Busca los tipos de diagnósticos con sus secciones
-        |---------------------------------------------------------------------------------------
-        */
         $tipoDiagnosticos = TipoDiagnostico::with('seccionesDiagnosticos')->get();
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Carga la vista y envía los tipos de diagnósticos
-        |---------------------------------------------------------------------------------------
-        */
         return view('administrador.diagnosticos.index',compact('tipoDiagnosticos'));
     }
-	
-	/**
-     * Está función carga la vista para editar un tipo de diagnóstico
-     *
-     * @param id diagnósticos, id sección, request
-     * @return view
-     */
+
     public function showFormEditar($diagnostico, Request $request)
     {
-		/*
-        |---------------------------------------------------------------------------------------
-        | Busca el tipo de diagnóstico para editar con sus respectivos Feedback y Secciones
-        |---------------------------------------------------------------------------------------
-        */
         $tipoDiagnostico = TipoDiagnostico::where('tipo_diagnosticoID',$diagnostico)->with('retroDiagnostico','seccionesDiagnosticos')->first();
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Verifica si existe el tipo de diagnóstico
-        | Si existe: Carga la vista y envía el tipo de diagnóstico a editar
-        | Si no existe: Regresa a la vista principal de diagnósticos mostrando un mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($tipoDiagnostico){
-            return view('administrador.diagnosticos.editar',compact('tipoDiagnostico'));    
+            return view('administrador.diagnosticos.editar',compact('tipoDiagnostico','repositorioEstado'));    
         }
         $request->session()->flash("message_error", "Tipo de diagnóstico no existe");
         return redirect()->action('Admin\DiagnosticoController@index');
     }
-	
-	/**
-     * Está función edita el tipo de diagnóstico de la sección
-     *
-     * @param request
-     * @return json
-     */
+    
     public function editarTipoDiagnostico(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede editar el tipo de diagnóstico
-        | nombre_emprendimiento:    Es Obligatorio
-        | idTipoDiagnostico:        Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['nombre_emprendimiento'] = 'required';
         $rules['idTipoDiagnostico'] = 'required';
@@ -107,15 +64,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se guardan los datos del tipo del diagnóstico enviando un mensaje de satisfacción
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la edición:    Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -138,28 +86,11 @@ class DiagnosticoController extends Controller
         return json_encode($data);
     }
 
-	/**
-     * Está función carga la vista de una sección 
-     *
-     * @param id diagnósticos, id sección, request
-     * @return view
-     */
     public function seccion($diagnostico,$seccion, Request $request)
     {
-		/*
-        |---------------------------------------------------------------------------------------
-        | Cargan las competencias y las secciones de preguntas del diagnóstico
-        |---------------------------------------------------------------------------------------
-        */
         $competencias = Competencia::get();
         $seccionPregunta = SeccionPregunta::where('seccion_preguntaID',$seccion)->where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',$diagnostico)->with('preguntasSeccion','feedback')->first();
         $preguntas = 0;
-		/*
-        |---------------------------------------------------------------------------------------
-        | Si la sección existe carga la vista con la sección, competencias y preguntas
-        | Si la sección no existe regresa a la vista principal de diagnósticos mostrando un mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($seccionPregunta){
             foreach ($seccionPregunta->preguntasSeccion as $key => $pregunta) {
                 $seccionPregunta['preguntasSeccion'][$key]['competencia'] = $this->obtenerCompetencia($pregunta->COMPETENCIAS_competenciaID);
@@ -172,35 +103,15 @@ class DiagnosticoController extends Controller
         $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
         return redirect()->action('Admin\DiagnosticoController@index');
     }
-	
-	/**
-     * Está función agrega la sección
-     *
-     * @param request
-     * @return json
-     */
+    
     public function agregarSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede agregar la sección o no
-        | tipo_diagnosticoID: Es Obligatorio
-        | nombre_seccion:     Es Obligatorio
-        | peso_seccion:       Es Obligatorio, númerico y el valor va entre 0 y 5
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['tipo_diagnosticoID'] = 'required';
         $rules['nombre_seccion'] = 'required';
         $rules['peso_seccion'] = 'numeric|required|min:0|max:5';
 
-        /*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se crea la nueva sección enviando un mensaje de satisfacción
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la creación:   Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
+        Log::info($request);
+
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
@@ -229,22 +140,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función edita la sección
-     *
-     * @param request
-     * @return json
-     */
+
     public function editarSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede editar la sección o no
-        | idSeccion:      Es Obligatorio
-        | nombre_seccion: Es Obligatorio
-        | peso_seccion:   Es Obligatorio, númerico y el valor va entre 0 y 5
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['idSeccion'] = 'required';
         $rules['nombre_seccion'] = 'required';
@@ -253,14 +150,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se edita la sección correctamente
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la edición:    Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -285,21 +174,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función agrega la pregunta de la sección
-     *
-     * @param request
-     * @return json
-     */
+
     public function agregarPreguntaSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede agregar la pregunta de la sección
-        | seccionID: Es Obligatorio
-        | enunciado: Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['seccionID'] = 'required';
         $rules['enunciado'] = 'required';
@@ -307,14 +183,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se agrega la pregunta de la sección
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -341,38 +209,16 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función edita la pregunta de la sección
-     *
-     * @param request
-     * @return json
-     */
+
     public function editarPreguntaSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede editar la pregunta de la sección
-        | idPregunta: Es Obligatorio
-        | pregunta:   Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['idPregunta'] = 'required';
         $rules['pregunta'] = 'required';
-
+        
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
         if($validator->fails()){
-			
-			/*
-			|---------------------------------------------------------------------------------------
-			| Se validan los datos
-			| Si NO Falla:            Se edita la pregunta de la sección
-			| Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-			| Si Falla la edición:    Regresa a la vista y se muestra el mensaje de error
-			|---------------------------------------------------------------------------------------
-			*/
             $errors = $validator->errors();
             $data['status'] = 'Errors';
             foreach($rules as $key => $value){
@@ -402,87 +248,37 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función carga la vista para editar una pregunta
-     *
-     * @param id diagnóstico, id sección, id pregunta, request
-     * @return view
-     */
+
     public function editarPregunta($diagnostico,$seccion,$pregunta, Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se busca la pregunta que se va a editar junto con sus respuestas
-        |---------------------------------------------------------------------------------------
-        */
         $bloqueo_pregunta = 0;
         $preguntas = Pregunta::where('SECCIONES_PREGUNTAS_seccion_pregunta',$seccion)->where('preguntaID',$pregunta)->with('respuestasPregunta')->first();
-
+        
         if($preguntas){
-			/*
-            |---------------------------------------------------------------------------------------
-            | Carga la sección de la pregunta que fue buscada
-            |---------------------------------------------------------------------------------------
-            */
             $diagnosticoSeccion = SeccionPregunta::where('seccion_preguntaID',$preguntas->SECCIONES_PREGUNTAS_seccion_pregunta)->first();
-
+            
             if($diagnosticoSeccion){
                 if($diagnostico == $diagnosticoSeccion->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID){
-					/*
-                    |---------------------------------------------------------------------------------------
-                    | Se recorren todas las respuestas para obtener los materiales y servicios asociados
-                    |---------------------------------------------------------------------------------------
-                    */
                     foreach ($preguntas->respuestasPregunta as $key => $respuesta) {
                         $preguntas->respuestasPregunta[$key]['materiales'] = $this->obtenerMateriales($respuesta->respuestaID);
                         $preguntas->respuestasPregunta[$key]['servicios'] = $this->obtenerServicios($respuesta->respuestaID);
                     }
-					/*
-                    |---------------------------------------------------------------------------------------
-                    | Si no existen respuestas, la pregunta se cambia a inactiva para no ser mostrada en el formulario
-                    |---------------------------------------------------------------------------------------
-                    */
                     if(count($preguntas->respuestasPregunta) == 0){
                         $bloqueo_pregunta = 1;
                         $preguntas->preguntaESTADO = 'Inactivo';
                         $preguntas->save();
                     }
-
+                    
                     $competencias = Competencia::get();
-					/*
-                    |---------------------------------------------------------------------------------------
-                    | Carga la vista con las preguntas, diagnostico, sección y competencias
-                    |---------------------------------------------------------------------------------------
-                    */
                     return view('administrador.diagnosticos.editar-pregunta',compact('preguntas','diagnostico','seccion','competencias','bloqueo_pregunta'));
                 }
             }
         }
-        /*
-        |---------------------------------------------------------------------------------------
-        | Si la pregunta no existe regresa a la vista principal de diagnósticos mostrando un mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
+        
         $request->session()->flash("message_error", "Ocurrió un error");
         return redirect()->action('Admin\DiagnosticoController@index');
     }
-	
-	/**
-     * Está función agrega la respuesta de una pregunta
-     *
-     * @param request
-     * @return json
-     */
+
     public function agregarRespuesta(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede agregar la respuesta o no
-        | pregunta_ID:  Es Obligatorio
-        | presentacion: Es Obligatorio
-        | cumplimiento: Es Obligatorio númerico y que esté entre 0 y 1
-        | feedback:     Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['pregunta_ID'] = 'required';
         $rules['presentacion'] = 'required';
@@ -492,15 +288,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se agrega la respuesta
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la creación:   Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -525,41 +312,18 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función edita la respuesta de una pregunta
-     *
-     * @param request
-     * @return json
-     */
+
     public function editarRespuesta(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede editar la respuesta o no
-        | respuestaID:     Es Obligatorio
-        | preguntaID:      Es Obligatorio
-        | presentacion_ed: Es Obligatorio
-        | cumplimiento_ed: Es Obligatorio númerico y que esté entre 0 y 1
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['respuestaID'] = 'required';
         $rules['preguntaID'] = 'required';
         $rules['presentacion_ed'] = 'required';
         $rules['cumplimiento_ed'] = 'numeric|required|min:0|max:1';
+        //$rules['feedback_ed'] = 'required';
 
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se edita la respuesta
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la edición:    Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -590,21 +354,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función elimina la respuesta de una pregunta
-     *
-     * @param request
-     * @return json
-     */
+
     public function eliminarRespuesta(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede eliminar la respuesta o no
-        | respuestaID2: Es Obligatorio
-        | preguntaID2:  Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['respuestaID2'] = 'required';
         $rules['preguntaID2'] = 'required';
@@ -612,13 +363,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:             Se elimina la respuesta
-        | Si Falla la eliminación: Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if(!$validator->fails()){
             if($data['status'] != 'Errors'){
                 $respuesta = Respuesta::where('respuestaID',$request->respuestaID2)->where('PREGUNTAS_preguntaID',$request->preguntaID2)->first();
@@ -639,22 +383,7 @@ class DiagnosticoController extends Controller
         return json_encode($data);
     }
 
-	/**
-     * Está función agrega el feedback de una sección
-     *
-     * @param request
-     * @return json
-     */
     public function agregarFeedback(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede agregar el feedback o no
-        | tipoDiagnostico: Es Obligatorio
-        | nivel:           Es Obligatorio
-        | rango:           Es Obligatorio númerico y entre 0 y 100
-        | mensaje:         Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['tipoDiagnostico'] = 'required';
         $rules['nivel'] = 'required';
@@ -664,14 +393,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se agrega el feedback
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la creación:   Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -699,23 +420,7 @@ class DiagnosticoController extends Controller
         return json_encode($data);
     }
 
-	/**
-     * Está función edita el feedback de una sección
-     *
-     * @param request
-     * @return json
-     */
     public function editarFeedback(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede editar el feedback o no
-        | tipoDiagnostico: Es Obligatorio
-        | feedbackIDE:     Es Obligatorio
-        | nivel_e:         Es Obligatorio
-        | rango_e:         Es Obligatorio númerico y entre 0 y 100
-        | mensaje_e:       Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['tipoDiagnostico'] = 'required';
         $rules['feedbackIDE'] = 'required';
@@ -726,14 +431,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se edita el feedback
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la edición:    Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -765,20 +462,7 @@ class DiagnosticoController extends Controller
         return json_encode($data);
     }
 
-	/**
-     * Está función elimina el feedback de una sección
-     *
-     * @param request
-     * @return json
-     */
     public function eliminarFeedback(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede eliminar el feedback o no
-        | tipoDiagnostico: Es Obligatorio
-        | feedbackID:      Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['tipoDiagnostico'] = 'required';
         $rules['feedbackID'] = 'required';
@@ -786,15 +470,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:             Se elimina el feedback
-        | Si Falla la validación:  Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la eliminación: Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -817,23 +492,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función agrega el feedback de una sección
-     *
-     * @param request
-     * @return json
-     */
+
     public function agregarFeedbackSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede agregar el feedback a la sección o no
-        | seccionID: Es Obligatorio
-        | nivel:     Es Obligatorio
-        | rango:     Es Obligatorio númerico y entre 0 y 100
-        | mensaje:   Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['seccionID'] = 'required';
         $rules['nivel'] = 'required';
@@ -843,14 +503,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se agrega el feedback de la sección
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la creación:   Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -877,24 +529,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función edita el feedback de una sección
-     *
-     * @param request
-     * @return json
-     */
+
     public function editarFeedbackSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede editar el feedback a la sección o no
-        | seccionID:   Es Obligatorio
-        | feedbackIDE: Es Obligatorio
-        | nivel_e:     Es Obligatorio
-        | rango_e:     Es Obligatorio númerico y entre 0 y 100
-        | mensaje_e:   Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['seccionID'] = 'required';
         $rules['feedbackIDE'] = 'required';
@@ -905,14 +541,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se edita el feedback de la sección
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la edición:    Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -943,21 +571,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función elimina el feedback de una sección
-     *
-     * @param request
-     * @return json
-     */
+
     public function eliminarFeedbackSeccion(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede eliminar el feedback a la sección o no
-        | seccionID:  Es Obligatorio
-        | feedbackID: Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['seccionID'] = 'required';
         $rules['feedbackID'] = 'required';
@@ -965,14 +580,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:             Se elimina el feedback de la sección
-        | Si Falla la validación:  Regresa a la vista y muestra que campos no cumplen
-        | Si Falla la eliminación: Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $errors = $validator->errors();
             $data['status'] = 'Errors';
@@ -995,21 +602,8 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función cambia el orden de la pregunta (subir o bajar)
-     *
-     * @param request
-     * @return json
-     */
+
     public function cambiarOrdenPregunta(Request $request){
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se establecen las reglas para validar si se puede cambiar el orden de la pregunta o no
-        | accion:     Es Obligatorio (subir o bajar)
-        | preguntaID: Es Obligatorio
-        |---------------------------------------------------------------------------------------
-        */
         $rules = [];
         $rules['accion'] = 'required';
         $rules['preguntaID'] = 'required';
@@ -1017,14 +611,6 @@ class DiagnosticoController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-		/*
-        |---------------------------------------------------------------------------------------
-        | Se validan los datos
-        | Si NO Falla:            Se cambia el orden de la pregunta según la acción
-        | Si Falla la validación: Regresa a la vista y muestra que campos no cumplen
-        | Si Falla el cambio:     Regresa a la vista y se muestra el mensaje de error
-        |---------------------------------------------------------------------------------------
-        */
         if($validator->fails()){
             $data['status'] = 'Error';
             $data['mensaje'] = 'Ocurrió un error, intente nuevamente';
@@ -1060,13 +646,7 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función busca todos los materiales que están seleccionados o no de una respuesta
-     *
-     * @param request, id de la respuesta
-     * @return view
-     */
+
     public function asignarMaterialRespuestaView($respuesta, Request $request){
         $materiales = Material::where('material_ayudaESTADO','Activo')->get();
         foreach ($materiales as $key => $material) {
@@ -1079,13 +659,7 @@ class DiagnosticoController extends Controller
         }
         return view('administrador.diagnosticos.asignar-material-respuesta',compact('materiales','respuesta'));
     }
-	
-	/**
-     * Está función busca todos los servicios que están seleccionados o no de una respuesta
-     *
-     * @param request, id de la respuesta
-     * @return view
-     */
+
     public function asignarServicioRespuestaView($respuesta,  Request $request){
         $servicios = Servicio::where('servicio_ccsmESTADO','Activo')->get();
         foreach ($servicios as $key => $servicio) {
@@ -1098,13 +672,7 @@ class DiagnosticoController extends Controller
         }
         return view('administrador.diagnosticos.asignar-servicio-respuesta',compact('servicios','respuesta'));
     }
-	
-	/**
-     * Está función asigna los materiales que el usuario selecciona a una respuesta
-     *
-     * @param request
-     * @return json
-     */
+
     public function asignarMarerialRespuesta(Request $request){
         $respuesta = Respuesta::where('respuestaID',$request->respuestaID)->first();
         if($respuesta){
@@ -1153,13 +721,7 @@ class DiagnosticoController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Está función asigna los servicios que el usuario selecciona a una respuesta
-     *
-     * @param request
-     * @return json
-     */
+
     public function asignarServicioRespuesta(Request $request){
         Log::info($request);
         $respuesta = Respuesta::where('respuestaID',$request->respuestaID)->first();
@@ -1180,7 +742,7 @@ class DiagnosticoController extends Controller
 
                 if(count($servicios) > 0){
                     $data['status'] = 'Ok';
-                    $data['mensaje'] = 'Material asignado correctamente';
+                    $data['mensaje'] = 'Servicio asignado correctamente';
 
                     $inserccion = DB::transaction(function() use($request,$servicios){
                         $serviciosExistentes = ServicioRespuesta::where('RESPUESTAS_respuestaID',$request->respuestaID)->delete();

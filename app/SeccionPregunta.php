@@ -36,7 +36,7 @@ class SeccionPregunta extends Model
     {
         return $this->hasMany('App\RetroSeccion','SECCIONES_PREGUNTAS_seccion_pregunta');
     }
-
+    
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones Administrador

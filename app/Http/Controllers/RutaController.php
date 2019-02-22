@@ -75,7 +75,7 @@ class RutaController extends Controller
                 }
             }
         }
-        
+
         $rutas = [];
         if(!empty($rutasEmpresas) && !empty($rutasEmprendimientos)){
             $rutas = array_merge($rutasEmpresas,$rutasEmprendimientos);
@@ -103,7 +103,6 @@ class RutaController extends Controller
                         $query->latest();
                     }])->get();
         $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID','2')->select('tipo_diagnosticoESTADO')->first();
-
         $emprendimientos = Emprendimiento::where('USUARIOS_usuarioID',Auth::user()->usuarioID)
                     ->where('emprendimientoESTADO', 'Activo')->with(["diagnosticosAll" => function($query){
                         $query->latest();
@@ -127,17 +126,17 @@ class RutaController extends Controller
                     $unidadID = $diagnostico->EMPRESAS_empresaID;
                     $isEmpresa = $this->gController->comprobarEmpresa($diagnostico->EMPRESAS_empresaID);
                 }
-
+    
                 if($diagnostico->EMPRENDIMIENTOS_emprendimientoID != null){
                     $unidad = 'emprendimiento';
                     $unidadID = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
                     $isEmprendimiento = $this->gController->comprobarEmprendimiento($diagnostico->EMPRENDIMIENTOS_emprendimientoID);
                 }
-
+    
                 if($isEmpresa || $isEmprendimiento){
                     $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
                     $ruta->save();
-
+    
                     foreach ($ruta->estaciones as $key => $estacion) {
                         $ruta->estaciones[$key]['options'] = "";
                         if($estacion->TALLERES_tallerID){
@@ -153,7 +152,7 @@ class RutaController extends Controller
                         
                         if($estacion->MATERIALES_AYUDA_material_ayudaID){
                             $tipoMaterial = $this->gController->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
-
+    
                             if($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video'){
                                 $ruta->estaciones[$key]['text'] = "Ver el vídeo: ";
                                 $ruta->estaciones[$key]['boton'] = "Ver vídeo";
@@ -190,7 +189,7 @@ class RutaController extends Controller
         if($estacion){
             $estacion->estacionCUMPLIMIENTO = 'Si';
             $estacion->save();
-            $ruta = Ruta::where('rutaID',$ruta)->with('diagnostico','estaciones')->first();
+            $ruta = Ruta::where('rutaID',$ruta)->with('estaciones','estaciones')->first();
             $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
             $ruta->save();
 
@@ -201,7 +200,7 @@ class RutaController extends Controller
                 $ruta->rutaESTADO = 'Finalizado';
                 $ruta->save();
 
-                //Mail::send(new RutaCMail(Auth::user(), 'ruta_completa'));
+                Mail::send(new RutaCMail(Auth::user(), 'ruta_completa'));
             }
 
         }else{
@@ -276,7 +275,7 @@ class RutaController extends Controller
             $repository = $this->repository;
             $repositoryDepartamentos = $this->repository->departamentos();
             $from = "crear";
-            return view('rutac.rutas.agregar-empresa',compact('from','repository','repositoryDepartamentos','usuario'));    
+            return view('rutac.rutas.agregar-empresa',compact('from','repository','repositoryDepartamentos','usuario'));
         }
         $request->session()->flash("message_error", "Hubo un error, tu cuenta aún no ha sido verificada");
         return redirect()->action('RutaController@iniciarRuta');

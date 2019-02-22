@@ -19,7 +19,7 @@ class Pregunta extends Model
     {
         return $this->hasMany('App\Respuesta','PREGUNTAS_preguntaID')->with('servicio','material')->where('respuestaESTADO','Activo');
     }
-
+    
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones Administrador

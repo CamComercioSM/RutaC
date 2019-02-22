@@ -11,7 +11,7 @@ use App\Material;
 use App\Respuesta;
 use Carbon\Carbon;
 use App\Diagnostico;
-Use App\Competencia;
+use App\Competencia;
 use App\RetroSeccion;
 use App\Emprendimiento;
 use App\SeccionPregunta;
@@ -110,12 +110,8 @@ class GeneralController extends Controller
             $respuesta = Respuesta::where('respuestaID',$respuesta_id)->select('respuestaCUMPLIMIENTO')->first();   
             return $respuesta->respuestaCUMPLIMIENTO;
         }
-		if($tipo=='Feedback'){
-            $respuesta = Respuesta::where('respuestaID',$respuesta_id)->select('respuestaFEEDBACK')->first();   
-            return $respuesta->respuestaFEEDBACK;
-        }
     }
-
+    
     /**
      * Obtiene posibles respuestas de la pregunta
      *
@@ -133,7 +129,6 @@ class GeneralController extends Controller
      */
     public function obtenerFeedbackSeccion($seccion,$resultado){
         $feedback = RetroSeccion::where('SECCIONES_PREGUNTAS_seccion_pregunta',$seccion)->get();
-        Log::info('feedback: '.$feedback);
         $nivel = "";
         $mensaje = "";
         $minimo = 0;
@@ -227,7 +222,7 @@ class GeneralController extends Controller
         $tipoMaterial = Material::where('material_ayudaID',$material)->first();
         return $tipoMaterial;
     }
-
+    
     /**
      * Obtener datos del diagnóstico
      *
@@ -237,7 +232,7 @@ class GeneralController extends Controller
         $diagnostico = Diagnostico::where('diagnosticoID',$diagnostico_id)->first();
         return $diagnostico;
     }
-
+    
     /**
      * Obtiene el feedback del diagnóstico
      *
@@ -259,7 +254,7 @@ class GeneralController extends Controller
         }
         return $nivel.'-'.$mensaje.'-'.$id;
     }
-
+    
     /**
      * Comprueba si existe la empresa y es del usuario registrado
      *
@@ -275,7 +270,7 @@ class GeneralController extends Controller
         }
         return $tipoUnidad;
     }
-
+    
     /**
      * Comprueba si el usuario/emprendimiento cumple para mostrar link de emprendelo
      *
@@ -296,7 +291,7 @@ class GeneralController extends Controller
         }
         return 'no cumple';
     }
-
+    
     /**
      * Comprueba si se puede o no iniciar una nueva ruta
      *
@@ -310,15 +305,15 @@ class GeneralController extends Controller
         if($unidad == 'emprendimiento'){
             $rutas = Diagnostico::where('EMPRENDIMIENTOS_emprendimientoID',$unidadID)->with('rutaDiagnostico')->get();
         }
-
         foreach ($rutas as $key => $ruta) {
+            Log::info('ruta: '.$ruta->rutaDiagnostico->rutaESTADO);
             if($ruta->rutaDiagnostico->rutaESTADO == 'Activo' || $ruta->rutaDiagnostico->rutaESTADO == 'En Proceso'){
                 return 'No';
             }
         }
         return 'Si';        
     }
-
+    
     /**
      * Comprueba si se muestra el historial
      *

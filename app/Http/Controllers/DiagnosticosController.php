@@ -45,7 +45,7 @@ class DiagnosticosController extends Controller
 	}
 
 	public function iniciarDiagnostico($tipo,$unidad,Request $request){
-        if(!Auth::user()->confirmed){
+	    if(!Auth::user()->confirmed){
             $request->session()->flash("message_error", "Hubo un error, tu cuenta aún no ha sido verificada");
             return redirect()->action('RutaController@iniciarRuta');
         }
@@ -73,7 +73,7 @@ class DiagnosticosController extends Controller
 	            $diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $diagnosticos_secciones->tipo_diagnosticoID;
 	            $diagnostico->diagnosticoREALIZADO_POR = Auth::user()->datoUsuario->dato_usuarioNOMBRE_COMPLETO;
 	            $diagnostico->diagnosticoFECHA = Carbon::now();
-	            $diagnostico->diagnosticoNOMBRE = $diagnosticos_secciones->tipo_diagnosticoNOMBRE;
+	            $diagnostico->diagnosticoNOMBRE = $diagnosticoPara;
 	            $diagnostico->save();
 
 	            $ruta = new Ruta;
@@ -108,7 +108,7 @@ class DiagnosticosController extends Controller
 	            $diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $diagnosticos_secciones->tipo_diagnosticoID;
 	            $diagnostico->diagnosticoREALIZADO_POR = Auth::user()->datoUsuario->dato_usuarioNOMBRE_COMPLETO;
 	            $diagnostico->diagnosticoFECHA = Carbon::now();
-	            $diagnostico->diagnosticoNOMBRE = $diagnosticos_secciones->tipo_diagnosticoNOMBRE;
+	            $diagnostico->diagnosticoNOMBRE = $diagnosticoPara;
 	            $diagnostico->save();
 
 	            $ruta = new Ruta;
@@ -206,51 +206,51 @@ class DiagnosticosController extends Controller
                 })->first();
 
 		if($diagnostico){
-            $tipoExiste = 0;
+		    $tipoExiste = 0;
 			if($tipo == 'empresa'){
 				$unidad = $diagnostico->EMPRESAS_empresaID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
 			if($tipo == 'emprendimiento'){
 				$unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
-
-            if($tipoExiste == 1){
-                $tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
-                $seccionExiste = $this->gController->comprobarSeccionDiagnostico($tipoDiagnostico,$seccion);
-
-                if(!$tipoUnidad || !$seccionExiste){
-                    $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
-                    return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
-                }
-
-                $diagnosticos_seccion = TipoDiagnostico::where('tipo_diagnosticoID',$tipoDiagnostico)
+			
+			if($tipoExiste == 1){
+    			$tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
+    			$seccionExiste = $this->gController->comprobarSeccionDiagnostico($tipoDiagnostico,$seccion);
+    
+    			if(!$tipoUnidad || !$seccionExiste){
+    	            $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+    	            return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
+    	        }
+    
+    	        $diagnosticos_seccion = TipoDiagnostico::where('tipo_diagnosticoID',$tipoDiagnostico)
                                     ->with(["seccionesPreguntasFirst" => function($query) use ($seccion){
                                         $query->where('seccion_preguntaID',$seccion)->first();
                                     }])->first();
-
+    
                 $resultadoSeccion = ResultadoSeccion::where('seccionID',$seccion)->where('DIAGNOSTICOS_diagnosticoID',$diagnosticoID)->first();
-                
-                if($resultadoSeccion){
-                    if($resultadoSeccion->diagnostico_seccionESTADO != 'Finalizado'){
-                        $resultados_preguntas = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID',$resultadoSeccion->resultado_seccionID)->get();
-
-                        foreach ($resultados_preguntas as $key => $resultado) {
-                            $resultados_preguntas[$key]['respuestas'] = $this->gController->obtenerRespuestas($resultado->resultado_preguntaPREGUNTAID);
-                        }
-                        return view('rutac.diagnosticos.form',compact('diagnosticos_seccion','seccion','tipo','diagnostico','resultadoSeccion','resultados_preguntas','unidad'));
-                    }else{
+            	
+            	if($resultadoSeccion){
+            	    if($resultadoSeccion->diagnostico_seccionESTADO != 'Finalizado'){
+        	            $resultados_preguntas = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID',$resultadoSeccion->resultado_seccionID)->get();
+        
+        	            foreach ($resultados_preguntas as $key => $resultado) {
+        	                $resultados_preguntas[$key]['respuestas'] = $this->gController->obtenerRespuestas($resultado->resultado_preguntaPREGUNTAID);
+        	            }
+        	            return view('rutac.diagnosticos.form',compact('diagnosticos_seccion','seccion','tipo','diagnostico','resultadoSeccion','resultados_preguntas','unidad'));
+            	    }else{
                         return redirect()->action('DiagnosticosController@verResultadoSeccion',[$tipo,$diagnosticoID,$seccion]);
                     }
-                }
-				
-                return view('rutac.diagnosticos.form',compact('diagnosticos_seccion','seccion','tipo','diagnostico','resultadoSeccion','unidad'));
+    	        }
+    	        
+    	        return view('rutac.diagnosticos.form',compact('diagnosticos_seccion','seccion','tipo','diagnostico','resultadoSeccion','unidad'));
             }
 		}
-        $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+		$request->session()->flash("message_error", "Hubo un error, intente nuevamente");
         return redirect()->action('RutaController@iniciarRuta');
 	}
 
@@ -261,27 +261,27 @@ class DiagnosticosController extends Controller
                 })->with('ruta')->first();
 
 		if($diagnostico){
-            $tipoExiste = 0;
+		    $tipoExiste = 0;
 			if($tipo == 'empresa'){
 				$unidad = $diagnostico->EMPRESAS_empresaID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
 			if($tipo == 'emprendimiento'){
 				$unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
 
             if($tipoExiste == 1){
     			$tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
     			$seccionExiste = $this->gController->comprobarSeccionDiagnostico($tipoDiagnostico,$seccion);
-
+    
     			if(!$tipoUnidad || !$seccionExiste){
     	            $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
     	            return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
     	        }
-
+    
     	        $resultadoSeccion = ResultadoSeccion::where('seccionID',$seccion)->where('DIAGNOSTICOS_diagnosticoID',$diagnosticoID)->first();
                 $diagnosticos_seccion = TipoDiagnostico::where('tipo_diagnosticoID',$tipoDiagnostico)
                                         ->with(["seccionesPreguntasFirst" => function($query) use ($seccion){
@@ -323,13 +323,12 @@ class DiagnosticosController extends Controller
                             $resultadoPregunta->resultado_preguntaCOMPETENCIA = $this->gController->obtenerCompetenciaPregunta($pregunta->preguntaID);
                             $resultadoPregunta->resultado_preguntaPREGUNTAID = $pregunta->preguntaID;
                             $resultadoPregunta->resultado_preguntaCUMPLIMIENTO = $cumplimiento;
-							$resultadoPregunta->resultado_preguntaFEEDBACK = $this->gController->obtenerDatosRespuesta($respuesta,'Feedback');
                             $resultadoPregunta->resultado_preguntaESTADO = 'Respondida';
                             $resultadoPregunta->save();
                             $resultadoPreguntaID = $resultadoPregunta->resultado_preguntaID;
                             
                             $totalCumplimiento = $totalCumplimiento + $cumplimiento;
-
+    
                             $servicio = $this->gController->obtenerServicioRespuesta($respuesta);
                             if($servicio){
                                 $estacionExiste = Estacion::where('RUTAS_rutaID',$diagnostico->ruta->rutaID)->where('SERVICIOS_CCSM_servicio_ccsmID',$servicio->servicio_ccsmID)->first();
@@ -340,7 +339,7 @@ class DiagnosticosController extends Controller
                                     $estacion->estacionNOMBRE = $servicio->servicio_ccsmNOMBRE;
                                     $estacion->save();
                                     $estacionAyudaID = $estacion->estacionID;
-
+    
                                     $ayuda = new ResultadoPreguntaAyuda;
                                     $ayuda->ResultadoPreguntaID = $resultadoPreguntaID;
                                     $ayuda->EstacionAyudaID = $estacionAyudaID;
@@ -357,7 +356,7 @@ class DiagnosticosController extends Controller
                                     $estacion->estacionNOMBRE = $material->material_ayudaNOMBRE;
                                     $estacion->save();
                                     $estacionAyudaID = $estacion->estacionID;
-
+    
                                     $ayuda = new ResultadoPreguntaAyuda;
                                     $ayuda->ResultadoPreguntaID = $resultadoPreguntaID;
                                     $ayuda->EstacionAyudaID = $estacionAyudaID;
@@ -375,7 +374,7 @@ class DiagnosticosController extends Controller
                     }
                 }else{
                 	$resultadoPregunta = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID',$resultadoSeccion->resultado_seccionID)->where('resultado_preguntaESTADO','No Respondida')->get();
-
+    
                     $n = 0;
                     foreach ($resultadoPregunta as $key => $pregunta) {
                     	$respondida = 0;$respuesta = 0;
@@ -395,9 +394,9 @@ class DiagnosticosController extends Controller
                             $resultadoPregunta->resultado_preguntaCUMPLIMIENTO = $cumplimiento;
                             $resultadoPregunta->resultado_preguntaESTADO = 'Respondida';
                             $resultadoPregunta->save();
-
+    
                             $totalCumplimiento = $totalCumplimiento + $cumplimiento;
-
+    
                             $servicio = $this->gController->obtenerServicioRespuesta($respuesta);
                             if($servicio){
                                 $estacionExiste = Estacion::where('RUTAS_rutaID',$diagnostico->ruta->rutaID)->where('SERVICIOS_CCSM_servicio_ccsmID',$servicio->servicio_ccsmID)->first();
@@ -408,7 +407,7 @@ class DiagnosticosController extends Controller
                                     $estacion->estacionNOMBRE = $servicio->servicio_ccsmNOMBRE;
                                     $estacion->save();
                                     $estacionAyudaID = $estacion->estacionID;
-
+    
                                     $ayuda = new ResultadoPreguntaAyuda;
                                     $ayuda->ResultadoPreguntaID = $pregunta->resultado_preguntaID;
                                     $ayuda->EstacionAyudaID = $estacionAyudaID;
@@ -425,7 +424,7 @@ class DiagnosticosController extends Controller
                                     $estacion->estacionNOMBRE = $material->material_ayudaNOMBRE;
                                     $estacion->save();
                                     $estacionAyudaID = $estacion->estacionID;
-
+    
                                     $ayuda = new ResultadoPreguntaAyuda;
                                     $ayuda->ResultadoPreguntaID = $pregunta->resultado_preguntaID;
                                     $ayuda->EstacionAyudaID = $estacionAyudaID;
@@ -435,22 +434,22 @@ class DiagnosticosController extends Controller
                         }
                     }
                 }
-
+    
                 $rutaS = Ruta::where('rutaID',$diagnostico->ruta->rutaID)->first();
                 $rutaS->rutaESTADO = 'Activo';
                 $rutaS->save();
-
+    
                 $resultadoPregunta = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID',$resultadoSeccion->resultado_seccionID)->get();
-
+    
                 if($diagnosticos_seccion->seccionesPreguntasFirst->preguntas->count() == $resultadoPregunta->where('resultado_preguntaESTADO','Respondida')->count()){
                 	/**
                     * Se guarda el resultado de la sección y se obtiene la respectiva retroalimentación
                     */
-
+    
                     $totalCumplimiento = $resultadoPregunta->where('resultado_preguntaESTADO','Respondida')->sum('resultado_preguntaCUMPLIMIENTO');
-
+    
                     $totalPreguntas = $resultadoPregunta->count();
-
+    
                     $resultadoPromSeccion = $totalCumplimiento / $totalPreguntas;
                     $feedbackSeccion = explode("-",$this->gController->obtenerFeedbackSeccion($seccion,$resultadoPromSeccion*100));
                     $resultadoSeccion->diagnostico_seccionRESULTADO = $resultadoPromSeccion;
@@ -458,7 +457,7 @@ class DiagnosticosController extends Controller
                     $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK = $feedbackSeccion[1];
                     $resultadoSeccion->diagnostico_seccionESTADO = 'Finalizado';
                     $resultadoSeccion->save();
-
+    
                     $taller = $this->gController->obtenerTallerSeccion($feedbackSeccion[2]);
                     if($taller){
                         $tallerExiste = Estacion::where('RUTAS_rutaID',$diagnostico->ruta->rutaID)->where('TALLERES_tallerID',$taller->tallerID)->first();
@@ -469,7 +468,7 @@ class DiagnosticosController extends Controller
                             $estacion->estacionNOMBRE = $taller->tallerNOMBRE;
                             $estacion->save();
                             $estacionAyudaID = $estacion->estacionID;
-
+    
                             $resultadoSeccionEstacion = new ResultadoSeccionEstacion;
                             $resultadoSeccionEstacion->ResultadoSeccionID = $resultadoSeccion->resultado_seccionID;
                             $resultadoSeccionEstacion->EstacioAyudaID = $estacionAyudaID;
@@ -482,7 +481,7 @@ class DiagnosticosController extends Controller
                     * Si es valido se guarda el resultado del diagnóstico y cambia el estado a Finalizado
                     */
                     if($this->gController->calcularResultadoDiagnostico($diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID,$diagnosticoID)){
-
+    
                         $resultadoSeccion = ResultadoSeccion::where('DIAGNOSTICOS_diagnosticoID',$diagnosticoID)->get();
                         $rutaS->rutaESTADO = 'En Proceso';
                         $rutaS->save();
@@ -493,26 +492,26 @@ class DiagnosticosController extends Controller
                             $peso = $peso + $res->diagnostico_seccionPESO;
                             $seccionResultado = $seccionResultado + ($res->diagnostico_seccionPESO * $res->diagnostico_seccionRESULTADO);
                         }
-
+    
                         if($peso > 0){
                             $resultadoDiagnosticoPon = $seccionResultado / $peso;
                             $feedbackDiagnostico = explode("-",$this->gController->obtenerFeedbackDiagnostico($tipoDiagnostico,$resultadoDiagnosticoPon*100));
-
+    
                             $diagnostico->diagnosticoRESULTADO = $resultadoDiagnosticoPon;
                             $diagnostico->diagnosticoESTADO = 'Finalizado';
                             $diagnostico->diagnosticoNIVEL = $feedbackDiagnostico[0];
                             $diagnostico->diagnosticoMENSAJE = $feedbackDiagnostico[1];
                             $diagnostico->save();
-
+    
                             $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('datoUsuario')->first();
                             Mail::send(new RutaCMail($usuario, 'fin_diagnostico'));
                         }
-
+    
                     }
-
+    
                 }
                 $request->session()->flash("message_success", "Guardado correctamente");
-                return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad])->header('Cache-Control', 'no-store, no-cache, must-revalidate');
+                return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
             }else{
                 $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
                 return redirect()->action('RutaController@iniciarRuta');
@@ -529,37 +528,37 @@ class DiagnosticosController extends Controller
                 })->first();
 
 		if($diagnostico){
-            $tipoExiste = 0;
+		    $tipoExiste = 0;
 			if($tipo == 'empresa'){
 				$unidad = $diagnostico->EMPRESAS_empresaID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
 			if($tipo == 'emprendimiento'){
 				$unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
-
+            
             if($tipoExiste == 1){
-                $tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
-                $seccionExiste = $this->gController->comprobarSeccionDiagnostico($tipoDiagnostico,$seccion);
-
-                if(!$tipoUnidad || !$seccionExiste){
-                    $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
-                    return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
-                }
-
-                $resultadoSeccion = ResultadoSeccion::where('seccionID',$seccion)->where('DIAGNOSTICOS_diagnosticoID',$diagnosticoID)->with('resultadoPregunta')->first();
-                if($resultadoSeccion){
-                    $resultadoSeccion['diagnostico'] = $this->gController->obtenerDatosDiagnostico($diagnosticoID);
-                    return view('rutac.diagnosticos.resultado-seccion',compact('resultadoSeccion'));
-                }
-                $request->session()->flash("message_error", "La sección aun no ha sido evaluada");
-                return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
+    			$tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
+    			$seccionExiste = $this->gController->comprobarSeccionDiagnostico($tipoDiagnostico,$seccion);
+    
+    			if(!$tipoUnidad || !$seccionExiste){
+    	            $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+    	            return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
+    	        }
+    
+    	        $resultadoSeccion = ResultadoSeccion::where('seccionID',$seccion)->where('DIAGNOSTICOS_diagnosticoID',$diagnosticoID)->with('resultadoPregunta')->first();
+    	        if($resultadoSeccion){
+    	            $resultadoSeccion['diagnostico'] = $this->gController->obtenerDatosDiagnostico($diagnosticoID);
+    	            return view('rutac.diagnosticos.resultado-seccion',compact('resultadoSeccion'));
+    	        }
+    	        $request->session()->flash("message_error", "La sección aun no ha sido evaluada");
+    	        return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
             }
 	    }
-        $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+	    $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
         return redirect()->action('RutaController@iniciarRuta');
         
     }
@@ -570,26 +569,26 @@ class DiagnosticosController extends Controller
                 })->first();
 
     	if($diagnostico){
-            $tipoExiste = 0;
+    	    $tipoExiste = 0;
 			if($tipo == 'empresa'){
 				$unidad = $diagnostico->EMPRESAS_empresaID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
 			if($tipo == 'emprendimiento'){
 				$unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
-
+            
             if($tipoExiste == 1){
     			$tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
-
+    
     			if(!$tipoUnidad){
     	            $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
     	            return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
     	        }
-
+    
     	        /**
     	         * Carga el tipo de diagnóstico correspondiente para el emprendimiento
     	         */
@@ -617,17 +616,17 @@ class DiagnosticosController extends Controller
                     ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
                     ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
                     ->get();
-
+    
                     foreach ($diagnostico->resultadoSeccion as $key => $resultado) {
                         $resultadoNombre[$key] = $resultado->resultado_seccionNOMBRE;
                         $resultadoValor[$key] = number_format($resultado->diagnostico_seccionRESULTADO*100,2);
                     }
-
+    
                     foreach ($competencias as $key => $competencia) {
                         $competenciaNombre[$key] = $competencia->resultado_preguntaCOMPETENCIA;
                         $competenciaPromedio[$key] = number_format($competencia->promedio*100,2);
                     }
-
+    
                     return view('rutac.diagnosticos.resultados',compact('diagnostico','competencias','competenciaNombre','competenciaPromedio','resultadoNombre','resultadoValor','tipo'));
                 }
             }
@@ -639,26 +638,26 @@ class DiagnosticosController extends Controller
     public function mostrarResultadoAnterior($tipo,$diagnosticoID,Request $request){
     	$diagnostico = Diagnostico::where('diagnosticoID',$diagnosticoID)->where('diagnosticoESTADO', 'Finalizado')->first();
 		if($diagnostico){
-            $tipoExiste = 0;
+		    $tipoExiste = 0;
 			if($tipo == 'empresa'){
 				$unidad = $diagnostico->EMPRESAS_empresaID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
 			if($tipo == 'emprendimiento'){
 				$unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
 				$tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
-                $tipoExiste = 1;
+				$tipoExiste = 1;
 			}
-
+            
             if($tipoExiste == 1){
     			$tipoUnidad = $this->gController->comprobarTipo($tipo,$unidad);
-
+    
     			if(!$tipoUnidad){
     	            $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
     	            return redirect()->action('DiagnosticosController@continuarDiagnostico',[$tipo,$unidad]);
     	        }
-
+    
     	        if($tipo == 'empresa'){
     	        	$diagnosticos_secciones = TipoDiagnostico::where('tipo_diagnosticoID',$tipoDiagnostico)->with('seccionesPreguntas')->first();
     		        $diagnosticoPara = $tipoUnidad->empresaRAZON_SOCIAL;

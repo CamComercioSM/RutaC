@@ -22,7 +22,7 @@ class RutasController extends Controller
 {
     private $gController;
     /**
-     * Crea una nueva instancia de controlador.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -33,9 +33,9 @@ class RutasController extends Controller
     }
 
     /**
-     * Esta función carga la vista de rutas
+     * Show the application dashboard.
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -63,12 +63,7 @@ class RutasController extends Controller
         }
         return view('administrador.rutas.index',compact('rutas'));
     }
-	
-	/**
-     * Esta función carga la vista de todas las rutas
-     *
-     * @return view
-     */
+    
     public function todasRutas()
     {
         $rutas = Ruta::where('rutaESTADO','En Proceso')->orWhere('rutaESTADO','Finalizado')->orderBY('rutaCUMPLIMIENTO','ASC')->with('diagnostico','estaciones')->get();
@@ -95,13 +90,7 @@ class RutasController extends Controller
         }
         return view('administrador.rutas.todas-rutas',compact('rutas'));
     }
-	
-	/**
-     * Esta función carga la vista para revisar las rutas
-     *
-     * @param  id ruta, request
-     * @return view
-     */
+
     public function revisarRuta($ruta,Request $request){
         $ruta = Ruta::where('rutaID',$ruta)->with('diagnostico','estaciones')->first();
         
@@ -127,26 +116,20 @@ class RutasController extends Controller
                     $ruta->estaciones[$key]['text'] = "Adquirir el servicio de: ";
                 }
             }
-
+            
             $competencias = DB::table('resultados_seccion')
                 ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
                 ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID',$ruta->diagnostico->diagnosticoID)
                 ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
                 ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
                 ->get();
-
+                
             return view('administrador.rutas.revisar',compact('ruta','competencias'));
         }
         $request->session()->flash("message_error", "Ruta no existe");
         return redirect()->action('Admin\RutasController@index');
     }
-	
-	/**
-     * Esta función marca una estación
-     *
-     * @param  id estacion, id ruta
-     * @return json
-     */
+
     public function marcarEstacion($estacion,$ruta){
         $estacion = Estacion::where('estacionID',$estacion)->where('RUTAS_rutaID',$ruta)->first();
         
@@ -181,13 +164,27 @@ class RutasController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función obtiene el nombre de la idea o negocio
-     *
-     * @param  id tipo diagnóstico, id empresa o emprendimiento
-     * @return string
-     */
+    
+    public function desmarcarEstacion($estacion,$ruta){
+        $estacion = Estacion::where('estacionID',$estacion)->where('RUTAS_rutaID',$ruta)->first();
+        $data = [];
+        $data['status'] = '';
+        if($estacion){
+            $estacion->estacionCUMPLIMIENTO = 'No';
+            $estacion->save();
+            $ruta = Ruta::where('rutaID',$ruta)->with('diagnostico','estaciones')->first();
+            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
+            $ruta->save();
+
+            $data['status'] = 'OK';
+            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100;
+            $data['cumplimiento'] = number_format($cumplimiento,2);
+        }else{
+            $data['status'] = 'ERROR';
+        }
+        return json_encode($data);
+    }
+
     public function obtenerNombreIdeaNegocio($tipo_diagnostico,$id){
 
         if($tipo_diagnostico == 1){
@@ -198,13 +195,7 @@ class RutasController extends Controller
         }
         return $var->nombre;
     }
-	
-	/**
-     * Esta función obtiene el nombre del usuario
-     *
-     * @param  id usuario
-     * @return string
-     */
+
     public function obtenerUsuario($usuario){
         $usuario = User::where('usuarioID',$usuario)->with('datoUsuario')->first();
         return $usuario;

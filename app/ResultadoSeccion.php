@@ -18,6 +18,10 @@ class ResultadoSeccion extends Model
         'created_at', 'updated_at',
     ];
 
+    public function resultadoSeccion(){
+        return $this->hasMany('App\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
+    }
+    
     public function resultadoPregunta(){
         return $this->hasMany('App\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
     }

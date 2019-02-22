@@ -23,7 +23,7 @@ class ServiciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $servicios = Servicio::where('servicio_ccsmESTADO','Activo')->get();
         return view('rutac.servicios.index',compact('servicios'));
     }

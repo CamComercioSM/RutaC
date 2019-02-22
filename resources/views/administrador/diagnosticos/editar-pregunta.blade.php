@@ -1,5 +1,5 @@
 @extends('administrador.index')
-@section('title','RutaC | Editar pregunta')
+
 @section('content')
 <section class="content-header">
 	<div class="row">
@@ -44,12 +44,12 @@
 								        <div class="col-xs-4">
 								            <label>Estado</label>
 								            <div class="form-group">
-                                                @if($bloqueo_pregunta == '0')
+								                @if($bloqueo_pregunta == '0')
 			                                	<select name="estado" class="form-control">
 				                                	<option value="Activo" @if($preguntas->preguntaESTADO == 'Activo') selected @endif>Activo</option>
 				                                    <option value="Inactivo" @if($preguntas->preguntaESTADO == 'Inactivo') selected @endif>Inactivo</option>
 				                                </select>
-                                                @else
+				                                @else
                                                 <p>La pregunta estará inactiva hasta que se agreguen las respuestas</p>
                                                 @endif
 			                                </div>

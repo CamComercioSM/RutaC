@@ -20,7 +20,7 @@ class Diagnostico extends Model
     */
 
     public function resultadoSeccion(){
-        return $this->hasMany('App\ResultadoSeccion','DIAGNOSTICOS_diagnosticoID')->with('resultadoPregunta');
+        return $this->hasMany('App\ResultadoSeccion','DIAGNOSTICOS_diagnosticoID')->with('resultadoSeccion');
     }
 
     public function diagnosticos()
@@ -39,12 +39,12 @@ class Diagnostico extends Model
     public function ruta(){
         return $this->hasOne('App\Ruta','DIAGNOSTICOS_diagnosticoID')->with('estaciones');
     }
-
+    
     public function tipoDiagnostico()
     {
         return $this->belongsTo('App\TipoDiagnostico','TIPOS_DIAGNOSTICOS_tipo_diagnosticoID','tipo_diagnosticoID');
     }
-
+    
     public function rutaDiagnostico(){
         return $this->hasOne('App\Ruta','DIAGNOSTICOS_diagnosticoID');
     }

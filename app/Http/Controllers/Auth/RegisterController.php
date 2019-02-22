@@ -92,7 +92,7 @@ class RegisterController extends Controller
                 if($datos_consulta){
                     $hayCambios = $this->verificarCambios($data,$datos_consulta);
                 }
-                                
+                
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Datos Usuario y lo guarda
@@ -116,7 +116,7 @@ class RegisterController extends Controller
                 $datoUsuario->dato_usuarioTELEFONO = $data['telefono'];
                 $datoUsuario->save();
                 $datoUsuarioID = $datoUsuario->dato_usuarioID;
-                
+
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Usuario y lo guarda
@@ -148,7 +148,7 @@ class RegisterController extends Controller
                     $empresa->empresaRAZON_SOCIAL = $data['nombre_empresa'];
                     $empresa->save();
                 }
-
+                
                 $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
                 Mail::send(new RutaCMail($nuevoUsuario, 'registro_usuario'));
                 if($hayCambios){
@@ -160,7 +160,7 @@ class RegisterController extends Controller
                     $nuevoUsuario->personasCorreoPRINCIPAL = $data['correo_electronico'];
                     Mail::send(new RutaCMail($nuevoUsuario, 'actualizacion_datos'));
                 }
-
+                
                 return $nuevoUsuario;
 
             });
@@ -245,7 +245,7 @@ class RegisterController extends Controller
         }
         return "";
     }
-
+    
     public function verificarCambios($data,$datos_consulta){
         Log::info($data['nombres']."==".$datos_consulta['personaNOMBRES']);
         if($data['nombres'] != $datos_consulta['personaNOMBRES']){

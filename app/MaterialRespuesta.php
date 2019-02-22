@@ -19,7 +19,7 @@ class MaterialRespuesta extends Model
     {
         return $this->hasOne('App\Material','MATERIALES_AYUDA_material_ayudaID');
     }
-
+    
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones Administrador

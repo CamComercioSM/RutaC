@@ -29,9 +29,9 @@
 			                        </a>
 									@endforeach
 								</td>
-								<td class="text-center">{{$tipo->tipo_diagnosticoESTADO}}</td>
+								<td class="text-left">{{$tipo->tipo_diagnosticoESTADO}}</td>
 								<td class="text-center">
-									<a class="btn btn-warning btn-sm" href="{{action('Admin\DiagnosticoController@showFormEditar', ['diagnostico'=> $tipo->tipo_diagnosticoID ])}}">
+									<a class="btn btn-warning btn-sm" href="{{action('Admin\DiagnosticoController@showFormEditar', ['diagnostico'=> $tipo->tipo_diagnosticoID ])}}" style="width:100px;">
 			                            Editar
 			                        </a>
 			                        <a class="btn btn-primary btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-seccion" onclick="agregarSeccionS('{{$tipo->tipo_diagnosticoID}}');return false;">

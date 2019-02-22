@@ -19,7 +19,7 @@ class ServicioRespuesta extends Model
     {
         return $this->hasOne('App\Servicio','servicio_ccsmID');
     }
-
+    
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones Administrador

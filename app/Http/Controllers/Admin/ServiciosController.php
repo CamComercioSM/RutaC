@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class ServiciosController extends Controller
 {
     /**
-     * Crea una nueva instancia de controlador.
+     * Create a new controller instance.
      *
      * @return void
      */
@@ -22,22 +22,16 @@ class ServiciosController extends Controller
     }
 
     /**
-     * Esta función carga la vista de servicios
+     * Show the application dashboard.
      *
-     * @return view
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
         $servicios = Servicio::where('servicio_ccsmESTADO','Activo')->get();
         return view('administrador.servicios.index',compact('servicios'));
     }
-	
-	/**
-     * Esta función agrega un servicio
-     *
-     * @param  request
-     * @return json
-     */
+    
     public function agregarServicio(Request $request){
         //$regex = '/^(http?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
@@ -67,13 +61,7 @@ class ServiciosController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función edita un servicio
-     *
-     * @param  request
-     * @return json
-     */
+
     public function editarServicio(Request $request){
         //$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
@@ -109,13 +97,7 @@ class ServiciosController extends Controller
         }
         return json_encode($data);
     }
-	
-	/**
-     * Esta función elimina un servicio
-     *
-     * @param  request
-     * @return json
-     */
+
     public function eliminarServicio(Request $request){
         $rules = [];
         $rules['servicioID'] = 'required';

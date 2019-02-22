@@ -8,7 +8,7 @@ class Empresa extends Model
 {
     protected $table = 'empresas';
     protected $primaryKey = 'empresaID';
-
+    
     protected $hidden = [
         'created_at', 'updated_at',
     ];

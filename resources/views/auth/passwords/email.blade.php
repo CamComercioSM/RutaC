@@ -17,15 +17,15 @@
                     <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo electrónico</label>
+                        <div class="form-group{{ $errors->has('usuarioEMAIL') ? ' has-error' : '' }}">
+                            <label for="usuarioEMAIL" class="col-md-4 control-label">Correo electrónico</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="usuarioEMAIL" type="email" class="form-control" name="usuarioEMAIL" value="{{ old('usuarioEMAIL') }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('usuarioEMAIL'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('usuarioEMAIL') }}</strong>
                                     </span>
                                 @endif
                             </div>

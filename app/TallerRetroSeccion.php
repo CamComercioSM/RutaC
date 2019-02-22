@@ -9,7 +9,7 @@ class TallerRetroSeccion extends Model
     protected $table = 'talleres_has_retro_secciones';
     //protected $primaryKey = 'retro_secciones_retro_seccion_id';
 
-	/*
+    /*
     |---------------------------------------------------------------------------------------
     | Relaciones
     |---------------------------------------------------------------------------------------

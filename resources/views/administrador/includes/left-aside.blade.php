@@ -37,7 +37,7 @@
             </span>
             </a>
         </li>
-		<li class="{{ isActive('talleres*') }}">
+        <li class="{{ isActive('talleres*') }}">
             <a href="{{ action('Admin\TalleresController@index') }}">
                 <i class="fa fa-pencil"></i> <span>Talleres</span>
                 <span class="pull-right-container">
@@ -51,9 +51,16 @@
             </span>
             </a>
         </li>
-		<li class="{{ isActive('usuarios') }}">
+        <li class="{{ isActive('usuarios') }}">
             <a href="{{ action('Admin\UsuarioController@usuariosAdmin') }}">
                 <i class="fa fa-users"></i> <span>Usuarios</span>
+                <span class="pull-right-container">
+            </span>
+            </a>
+        </li>
+        <li class="{{ isActive('crear-usuario') }}">
+            <a href="{{ action('Admin\UsuarioController@crearUsuario') }}">
+                <i class="fa fa-user-plus"></i> <span>Crear usuario</span>
                 <span class="pull-right-container">
             </span>
             </a>

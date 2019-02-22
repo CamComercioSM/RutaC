@@ -12,10 +12,9 @@
                 	Actualizar contraseña
                 </div>
                 <div class="box-body">
-                	<form id="actualizarPassword" action="" role="form" method="post">
+                	<form id="actualizarPassword" action="{{ action('Admin\UsuarioController@actualizarPassword') }}" role="form" method="post">
 	                	{!! csrf_field() !!}
 	                    <div class="row">
-	                    	<input name="from" id="from" type="hidden" value="clientes">
 	                        <div class="col-xs-12">
 	                            <label for="anterior_clave">Contraseña anterior</label>
 	                            <div class="form-group has-feedback">

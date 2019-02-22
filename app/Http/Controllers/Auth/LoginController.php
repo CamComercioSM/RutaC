@@ -40,7 +40,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
+    
     /**
      * Handle a login request to the application.
      *
@@ -136,28 +136,11 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         if($user->tipoUsuario == 'Admin'){
-            return redirect('admin/rutas');
+            return redirect('admin');
         }
         if($user->perfilCompleto == 'No'){
             return redirect('completar-perfil');
         }
         return redirect('home');
     }
-
-    /**
-     * Log the user out of the application.
-     *
-     * @param \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    /*public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        $request->session()->flush();
-
-        $request->session()->regenerate();
-
-        return redirect('/');
-    }*/
 }
