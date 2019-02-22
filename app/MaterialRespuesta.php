@@ -19,4 +19,15 @@ class MaterialRespuesta extends Model
     {
         return $this->hasOne('App\Material','MATERIALES_AYUDA_material_ayudaID');
     }
+    
+    /*
+    |---------------------------------------------------------------------------------------
+    | Relaciones Administrador
+    |---------------------------------------------------------------------------------------
+    */
+
+    public function materialAsociado()
+    {
+        return $this->belongsTo('App\Material','MATERIALES_AYUDA_material_ayudaID','material_ayudaID');
+    }
 }

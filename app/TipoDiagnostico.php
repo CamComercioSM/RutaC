@@ -41,5 +41,21 @@ class TipoDiagnostico extends Model
     {
         return $this->hasMany('App\SeccionPregunta','TIPOS_DIAGNOSTICOS_tipo_diagnosticoID')->with('preguntas')->where('seccion_preguntaESTADO','Activo');
     }
+    
+    /*
+    |---------------------------------------------------------------------------------------
+    | Relaciones Administrador
+    |---------------------------------------------------------------------------------------
+    */
+
+    public function retroDiagnostico()
+    {
+        return $this->hasMany('App\RetroDiagnostico','TIPOS_DIAGNOSTICOS_tipo_diagnosticoID','tipo_diagnosticoID')->where('retro_tipo_diagnosticoESTADO','Activo');
+    }
+    
+    public function seccionesDiagnosticos()
+    {
+        return $this->hasMany('App\SeccionPregunta','TIPOS_DIAGNOSTICOS_tipo_diagnosticoID');
+    }
 
 }

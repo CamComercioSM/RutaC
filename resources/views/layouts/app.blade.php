@@ -7,22 +7,22 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
-{{--    <link rel="stylesheet" href="{{ asset('bower_components/dist/css/bootstrap.min.css') }}">--}}    
+    <link rel="stylesheet" href="{{ URL::secure('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+{{--    <link rel="stylesheet" href="{{ URL::secure('bower_components/dist/css/bootstrap.min.css') }}">--}}    
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('bower_components/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('bower_components/Ionicons/css/ionicons.min.css') }}">
     <!-- jvectormap -->
-    <link rel="stylesheet" href="{{ asset('bower_components/jvectormap/jquery-jvectormap.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('bower_components/jvectormap/jquery-jvectormap.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('dist/css/AdminLTE.min.css') }}">
     
-    <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('plugins/iCheck/square/blue.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('dist/css/skins/_all-skins.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::secure('bower_components/select2/dist/css/select2.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,18 +34,23 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::secure('css/app.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ URL::secure('dist/img/rutac-icon.png') }}">
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    @yield('style')
 </head>
 <body class="hold-transition skin-black-light login-page layout-top-nav">
     <div class="wrapper">
+        <div class="capa">
+            <div class="loader"> </div>
+            <h2 style="color:#fff"> Espere un momento...</h2>
+        </div>
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -106,21 +111,24 @@
     </div>
 
     <!-- jQuery 3 -->
-    <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ URL::secure('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::secure('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ URL::secure('bower_components/fastclick/lib/fastclick.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ URL::secure('dist/js/adminlte.min.js') }}"></script>
     <!-- Sparkline -->
-    <script src="{{ asset('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ URL::secure('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
     <!-- SlimScroll -->
-    <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ URL::secure('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 
-    <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
+    <script src="{{ URL::secure('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
     <!-- iCheck -->
-    <script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="{{ URL::secure('plugins/iCheck/icheck.min.js') }}"></script>
+    
+    <script src="{{ asset('dist/js/apiSicam.js') }}"></script>
+    
     <script>
         $(function () {
             $('input').iCheck({
@@ -130,7 +138,9 @@
             });
         });
         $(function () {
-            $('.select2').select2()
+            $('.select2').select2({
+                placeholder: 'Seleccione una opción'
+            })
         });
     </script>
 

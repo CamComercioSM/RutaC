@@ -9,10 +9,6 @@ class Emprendimiento extends Model
     protected $table = 'emprendimientos';
     protected $primaryKey = 'emprendimientoID';
 
-    protected $hidden = [
-        'created_at', 'updated_at',
-    ];
-
     /*
     |---------------------------------------------------------------------------------------
     | Relaciones
@@ -21,6 +17,10 @@ class Emprendimiento extends Model
 
     public function diagnosticos()
     {
-        return $this->hasOne('App\Diagnostico','EMPRENDIMIENTOS_emprendimientoID');
+        return $this->hasOne('App\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('ruta','tipoDiagnostico');
+    }
+    public function diagnosticosAll()
+    {
+        return $this->hasMany('App\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('resultadoSeccion','ruta');
     }
 }

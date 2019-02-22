@@ -7,34 +7,28 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Inicio de Sesión</div>
                 <div class="panel-body">
+                    @if ($errors->has('usuarioEMAIL'))
+                        <span class="help-block text-center" style="color: #dd4b39;">
+                            <strong>{{ $errors->first('usuarioEMAIL') }}</strong>
+                        </span>
+                    @endif
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo electrónico</label>
+                        <div class="form-group{{ $errors->has('usuarioEMAIL') ? ' has-error' : '' }}">
+                            <label for="usuarioEMAIL" class="col-md-4 control-label">Correo electrónico</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="usuarioEMAIL" value="{{ old('usuarioEMAIL') }}" required autofocus>
+                                <input id="usuarioEMAIL" type="email" class="form-control" name="usuarioEMAIL" value="{{ old('usuarioEMAIL') }}" required>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('usuarioEMAIL') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 

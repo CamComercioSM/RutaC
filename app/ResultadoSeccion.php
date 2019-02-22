@@ -14,14 +14,15 @@ class ResultadoSeccion extends Model
      *
      * @var array
      */
-    /*protected $hidden = [
-        'password', 'remember_token',
-    ];*/
     protected $hidden = [
         'created_at', 'updated_at',
     ];
 
     public function resultadoSeccion(){
+        return $this->hasMany('App\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
+    }
+    
+    public function resultadoPregunta(){
         return $this->hasMany('App\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
     }
     

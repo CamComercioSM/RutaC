@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Servicio;
 use Illuminate\Http\Request;
 
 class ServiciosController extends Controller
@@ -13,7 +14,7 @@ class ServiciosController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('user');
     }
 
     /**
@@ -23,6 +24,7 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-        return view('rutac.servicios.index');
+        $servicios = Servicio::where('servicio_ccsmESTADO','Activo')->get();
+        return view('rutac.servicios.index',compact('servicios'));
     }
 }

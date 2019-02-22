@@ -17,8 +17,14 @@ class FormRepository
     public function tipoDocumentos(){
         return [
             'CC'=>'Cédula de ciudadanía',
-            'CE'=>'Cédula de extranjería',
-            'NIT'=>'NIT'
+            'CE'=>'Cédula de extranjería'
+        ];
+    }
+    
+    public function estado(){
+        return [
+            'Activo'=>'Activo',
+            'Inactivo'=>'Inactivo'
         ];
     }
 
@@ -57,7 +63,8 @@ class FormRepository
             'Más de $4.000.000',
             'Más de $5.000.000',
             'Más de $10.000.000',
-            'Más de $15.000.000'
+            'Más de $15.000.000',
+            'Prefiero no decirlo'
         ];
     }
 
@@ -73,7 +80,6 @@ class FormRepository
 
     public function idiomas(){
         return [
-            'Seleccione una opción',
             'Alemán',
             'Arabe',
             'Catalan',

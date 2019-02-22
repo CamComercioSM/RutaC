@@ -8,10 +8,12 @@ use App\Municipio;
 use App\DatoUsuario;
 use App\Departamento;
 use App\Emprendimiento;
+use App\Mail\RutaCMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Repositories\FormRepository;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -83,25 +85,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         try{
             $usuario = DB::transaction(function() use($data){
+                $hayCambios = false;
+                $datos_consulta = json_decode($data['datos_consulta'], true);
+                if($datos_consulta){
+                    $hayCambios = $this->verificarCambios($data,$datos_consulta);
+                }
                 
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Datos Usuario y lo guarda
                 |---------------------------------------------------------------------------------------
                 */
-
+                if (strpos($data['tipo_documento'], '-') !== false) {
+                    $tipo_doc = explode("-", $data['tipo_documento']);
+                    $tipo_documento = $tipo_doc[1];
+                }else{
+                    $tipo_documento = $data['tipo_documento'];
+                }
                 $datoUsuario = new DatoUsuario;
                 $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
-                $datoUsuario->dato_usuarioTIPO_IDENTIFICACION = $data['tipo_documento'];
+                $datoUsuario->dato_usuarioNOMBRES = $data['nombres'];
+                $datoUsuario->dato_usuarioAPELLIDOS = $data['apellidos'];
+                $datoUsuario->dato_usuarioTIPO_IDENTIFICACION = $tipo_documento;
                 $datoUsuario->dato_usuarioIDENTIFICACION = $data['numero_documento'];
-                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $this->obtenerDepartamento($data['direccion']);
-                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $this->obtenerMunicipio($data['direccion']);
+                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $this->obtenerDepartamento($data['departamento_residencia']);
+                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $this->obtenerMunicipio($data['municipio_residencia']);
                 $datoUsuario->dato_usuarioDIRECCION = $data['direccion'];
                 $datoUsuario->dato_usuarioTELEFONO = $data['telefono'];
-
                 $datoUsuario->save();
                 $datoUsuarioID = $datoUsuario->dato_usuarioID;
 
@@ -114,11 +126,16 @@ class RegisterController extends Controller
                 $nuevoUsuario->usuarioEMAIL = $data['correo_electronico'];
                 $nuevoUsuario->password = bcrypt($data['password']);
                 $nuevoUsuario->dato_usuarioID = $datoUsuarioID;
+                $nuevoUsuario->confirmation_code = str_random(25);
+                if($hayCambios){
+                    $nuevoUsuario->update_code = str_random(25);
+                }
                 $nuevoUsuario->save();
                 $usuarioID = $nuevoUsuario->usuarioID;
 
                 if($data['radio'] == '1'){
                     $emprendimiento = new Emprendimiento;
+                    $emprendimiento->USUARIOS_usuarioID = $usuarioID;
                     $emprendimiento->emprendimientoNOMBRE = $data['nombre_emprendimiento'];
                     $emprendimiento->emprendimientoDESCRIPCION = $data['descripcion_emprendimiento'];
                     $emprendimiento->save();
@@ -130,6 +147,18 @@ class RegisterController extends Controller
                     $empresa->empresaNIT = $data['nit'];
                     $empresa->empresaRAZON_SOCIAL = $data['nombre_empresa'];
                     $empresa->save();
+                }
+                
+                $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
+                Mail::send(new RutaCMail($nuevoUsuario, 'registro_usuario'));
+                if($hayCambios){
+                    $nuevoUsuario->personaNOMBRES = $data['nombres'];
+                    $nuevoUsuario->personaAPELLIDOS = $data['apellidos'];
+                    $nuevoUsuario->ciudadRESIDENCIA = $this->obtenerMunicipio($data['municipio_residencia']);
+                    $nuevoUsuario->direccionDOMICILIO = $data['direccion'];
+                    $nuevoUsuario->telefonoCELULAR = $data['telefono'];
+                    $nuevoUsuario->personasCorreoPRINCIPAL = $data['correo_electronico'];
+                    Mail::send(new RutaCMail($nuevoUsuario, 'actualizacion_datos'));
                 }
                 
                 return $nuevoUsuario;
@@ -154,41 +183,27 @@ class RegisterController extends Controller
      */
     public function validate_register(Request $request)
     {        
-        //return $request->radio;
         //$regex = '/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/';
-
-        if($request->radio == '2'){
-            $rules = [
-                'nombre_empresa'    => 'required|max:255',
-                'nit'              => 'required|unique:empresas,empresaNIT|max:255',
-                'nombres'          => 'required|max:255',
-                'apellidos'        => 'required|max:255',
-                'numero_documento'  => 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric',
-                'ciudad'           => 'required|max:255',
-                'direccion'        => 'required|max:255',
-                'correo_electronico'=> 'email|unique:usuarios,usuarioEMAIL|max:255',
-                'telefono'         => 'required|numeric',
-                'password'         => 'required|min:6',
-                'repetir_password' => 'same:password',
-                'termino_y_condiciones_de_uso'         => 'required'
-            ];
-        }
+        $rules = [];
         if($request->radio == '1'){
-            $rules = [
-                'nombre_emprendimiento'=> 'required|max:255',
-                'descripcion_emprendimiento'=> 'required|max:255',
-                'nombres'          => 'required|max:255',
-                'apellidos'        => 'required|max:255',
-                'numero_documento'  => 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric',
-                'ciudad'           => 'required|max:255',
-                'direccion'        => 'required|max:255',
-                'correo_electronico'=> 'email|unique:usuarios,usuarioEMAIL|max:255',
-                'telefono'         => 'required|numeric',
-                'password'         => 'required|min:6',
-                'repetir_password' => 'same:password',
-                'termino_y_condiciones_de_uso'         => 'required'
-            ];
+            $rules["nombre_emprendimiento"] = 'required|max:255';
+            $rules["descripcion_emprendimiento"] = 'required|max:255';
         }
+        if($request->radio == '2'){
+            $rules["nombre_empresa"] = 'required|max:255';
+            $rules["nit"] = 'required|unique:empresas,empresaNIT|max:255';
+        }
+        $rules["nombres"] = 'required|max:255';
+        $rules["apellidos"] = 'required|max:255';
+        $rules["numero_documento"] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
+        $rules["departamento_residencia"] = 'required';
+        $rules["municipio_residencia"] = 'required';
+        $rules["direccion"] = 'required|max:255';
+        $rules["correo_electronico"] = 'email|unique:usuarios,usuarioEMAIL|max:255';
+        $rules["telefono"] = 'required|numeric';
+        $rules["password"] = 'required|min:6';
+        $rules["repetir_password"] = 'same:password';
+        $rules["tipo_documento"] = 'required';
         
         $validator = Validator::make($request->all(), $rules);
         
@@ -202,7 +217,13 @@ class RegisterController extends Controller
             }
         }else{
             if($data['status'] != 'Errors'){
-                $data['status'] = 'Ok';
+                if($request->termino_y_condiciones_de_uso == 0){
+                    $data['message'] = "Debe aceptar los Términos y condiciones para continuar";
+                    $data['status'] = 'Agreement Error';
+                }
+                else{
+                    $data['status'] = 'Ok';
+                }
             }
         }
         
@@ -223,5 +244,33 @@ class RegisterController extends Controller
             return $municipio->municipio;    
         }
         return "";
+    }
+    
+    public function verificarCambios($data,$datos_consulta){
+        Log::info($data['nombres']."==".$datos_consulta['personaNOMBRES']);
+        if($data['nombres'] != $datos_consulta['personaNOMBRES']){
+            return true;
+        }
+        Log::info($data['apellidos']."==".$datos_consulta['personaAPELLIDOS']);
+        if($data['apellidos'] != $datos_consulta['personaAPELLIDOS']){
+            return true;
+        }
+        Log::info($this->obtenerMunicipio($data['municipio_residencia'])."==".$datos_consulta['ciudadRESIDENCIA']);
+        if($this->obtenerMunicipio($data['municipio_residencia']) == $datos_consulta['ciudadRESIDENCIA']){
+            return true;
+        }
+        Log::info($data['direccion']."==".$datos_consulta['direccionDOMICILIO']);
+        if($data['direccion'] != $datos_consulta['direccionDOMICILIO']){
+            return true;
+        }
+        Log::info($data['telefono']."==".$datos_consulta['telefonoCELULAR']);
+        if($data['telefono'] != $datos_consulta['telefonoCELULAR']){
+            return true;
+        }
+        Log::info($data['correo_electronico']."==".$datos_consulta['personasCorreoPRINCIPAL']);
+        if($data['correo_electronico'] != $datos_consulta['personasCorreoPRINCIPAL']){
+            return true;
+        }
+        return false;
     }
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Material;
 use Illuminate\Http\Request;
 
 class MaterialesController extends Controller
 {
+    protected $per_page_number = 6;
     /**
      * Create a new controller instance.
      *
@@ -13,7 +16,7 @@ class MaterialesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('user');
     }
 
     /**
@@ -21,8 +24,16 @@ class MaterialesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('rutac.materiales.index');
+        $videos = Material::where('TIPOS_MATERIALES_tipo_materialID','Video')->orderBY('material_ayudaID','DESC')->paginate($this->per_page_number);
+        $documentos = Material::where('TIPOS_MATERIALES_tipo_materialID','Documento')->where('material_ayudaESTADO','Activo')->get();
+        
+        if($request->ajax()){
+            return ['videos'=>view('rutac.materiales.ajax')->with(compact('videos'))->render(),
+                'next_page'=>$videos->nextPageUrl()
+            ];
+        }
+        return view('rutac.materiales.index',compact('videos','documentos'));
     }
 }

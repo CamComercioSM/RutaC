@@ -29,7 +29,7 @@ class Diagnostico extends Model
     }
 
     public function emprendimiento(){
-        return $this->hasOne('App\Emprendimiento','emprendimientoID');
+        return $this->hasOne('App\Emprendimiento','emprendimientoID','EMPRENDIMIENTOS_emprendimientoID');
     }
 
     public function empresa(){
@@ -37,6 +37,15 @@ class Diagnostico extends Model
     }
 
     public function ruta(){
+        return $this->hasOne('App\Ruta','DIAGNOSTICOS_diagnosticoID')->with('estaciones');
+    }
+    
+    public function tipoDiagnostico()
+    {
+        return $this->belongsTo('App\TipoDiagnostico','TIPOS_DIAGNOSTICOS_tipo_diagnosticoID','tipo_diagnosticoID');
+    }
+    
+    public function rutaDiagnostico(){
         return $this->hasOne('App\Ruta','DIAGNOSTICOS_diagnosticoID');
     }
 

@@ -29,12 +29,23 @@ class SeccionPregunta extends Model
 
     public function preguntas()
     {
-        return $this->hasMany('App\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->where('preguntaESTADO','Activo');
+        return $this->hasMany('App\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->where('preguntaESTADO','Activo')->orderBy('preguntaORDEN', 'asc');
     }
 
     public function feedback()
     {
         return $this->hasMany('App\RetroSeccion','SECCIONES_PREGUNTAS_seccion_pregunta');
+    }
+    
+    /*
+    |---------------------------------------------------------------------------------------
+    | Relaciones Administrador
+    |---------------------------------------------------------------------------------------
+    */
+
+    public function preguntasSeccion()
+    {
+        return $this->hasMany('App\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->orderBy('preguntaESTADO', 'asc')->orderBy('preguntaORDEN', 'asc');
     }
 
 }
