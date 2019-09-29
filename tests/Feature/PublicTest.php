@@ -32,7 +32,7 @@ class PublicTest extends TestCase
     /** @test */
     function carga_vista_documento()
     {
-        //$this->assertTrue(true);
+        $this->assertTrue(true);
         //$this->get('documento/xxxx')->assertStatus(200);
     }
 }
