@@ -14,8 +14,8 @@ class UsuariosTableSeeder extends Seeder
         DB::table('usuarios')->insert(
         	[
         		'dato_usuarioID' => '1',
-        		'usuarioEMAIL' => 'Administrador',
-        		'password' => 'Ruta C',
+        		'usuarioEMAIL' => 'admin@rutac.com',
+        		'password' => bcrypt('123456'),
         		'perfilCompleto' => 'Si',
         		'tipoUsuario' => 'Admin',
         		'confirmed' => '1'
