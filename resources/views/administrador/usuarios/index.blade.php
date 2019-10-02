@@ -15,35 +15,70 @@
 		<div class="col-md-12">
 			<div class="box box-primary">
 				<div class="box-body">
-					<table id="tabla-usuarios" class="table table-bordered table-hover">
-						<thead>
-							<tr>
-								<th class="text-center">#</th>
-								<th class="text-center">Nombre Administrador</th>
-                                <th class="text-center">Correo</th>
-								<th class="text-center" ></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($usuarios as $key=> $usuario)
-							<tr>
-								<td class="text-center">{{$key+1}}</td>
-								<td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
-								<td class="text-left">{{$usuario->usuarioEMAIL}}</td>
-								<td class="text-center">
-									@if($usuario->usuarioID != Auth::user()->usuarioID)
-									<a class="btn btn-warning btn-xs" href="">
-			                            Editar
-			                        </a>
-			                        <a class="btn btn-danger btn-xs" onclick="eliminarUsuario('{{$usuario->usuarioID}}');return false;" href="javascript:void(0)">
-			                            Eliminar
-			                        </a>
-			                        @endif
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
+					<div class="nav-tabs-custom">
+						<ul class="nav nav-tabs">
+                            <li class="active"><a href="#usuarios-rutac" data-toggle="tab">Usuarios RutaC</a></li>
+                            <li><a href="#usuarios-admin" data-toggle="tab">Usuarios Administradores</a></li>
+                        </ul>
+                        <div class="tab-content">
+                        	<div class="active tab-pane" id="usuarios-rutac">
+                                <div class="text-right form-group">
+                                    <a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarUsuarios') }}"><i class="fa fa-file-excel-o"></i> Exportar Usuarios</a>
+                                </div>
+                        		<table class="table table-bordered table-hover tabla-sistema">
+                        			<thead>
+										<tr>
+											<th class="text-center">#</th>
+											<th class="text-center">Documento</th>
+											<th class="text-center">Nombre Completo</th>
+			                                <th class="text-center">Correo</th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach($usuarios as $key=> $usuario)
+										<tr>
+											<td class="text-center">{{$key+1}}</td>
+											<td class="text-left">{{$usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$usuario->datoUsuario->dato_usuarioIDENTIFICACION}}</td>
+											<td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
+											<td class="text-left">{{$usuario->usuarioEMAIL}}</td>
+										</tr>
+										@endforeach
+									</tbody>
+                        		</table>
+                        	</div>
+                        	<div class="tab-pane" id="usuarios-admin">
+                        		<table class="table table-bordered table-hover tabla-sistema">
+									<thead>
+										<tr>
+											<th class="text-center">#</th>
+											<th class="text-center">Nombre Administrador</th>
+			                                <th class="text-center">Correo</th>
+											<th class="text-center" ></th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach($administradores as $key=> $usuario)
+										<tr>
+											<td class="text-center">{{$key+1}}</td>
+											<td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
+											<td class="text-left">{{$usuario->usuarioEMAIL}}</td>
+											<td class="text-center">
+												@if($usuario->usuarioID != Auth::user()->usuarioID)
+												<a class="btn btn-warning btn-xs" href="">
+						                            Editar
+						                        </a>
+						                        <a class="btn btn-danger btn-xs" onclick="eliminarUsuario('{{$usuario->usuarioID}}');return false;" href="javascript:void(0)">
+						                            Eliminar
+						                        </a>
+						                        @endif
+											</td>
+										</tr>
+										@endforeach
+									</tbody>
+								</table>
+                        	</div>
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>
@@ -51,8 +86,6 @@
 </section>
 @endsection
 @section('footer')
-<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
 <div class="control-sidebar-bg"></div>
 <div class="modal fade" id="modal-eliminar">
@@ -110,44 +143,6 @@
             }
         });
     });
-
-	$(function () {
-	    $("#tabla-usuarios").DataTable({
-	      "paging": true,
-	      "lengthChange": true,
-	      "searching": true,
-	      "ordering": false,
-	      "info": false,
-	      "autoWidth": false,
-	      "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, "All"]],
-	      "pageLength": 100,
-		  "language": {
-				"sProcessing":    "Procesando...",
-				"sLengthMenu":    "Mostrar _MENU_ registros",
-				"sZeroRecords":   "No se encontraron resultados",
-				"sEmptyTable":    "Ho se encontraron usuarios",
-				"sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-				"sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
-				"sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
-				"sInfoPostFix":   "",
-				"sSearch":        "Buscar:",
-				"sUrl":           "",
-				"sInfoThousands":  ",",
-				"sLoadingRecords": "Cargando...",
-				"oPaginate": {
-					"sFirst":    "Primero",
-					"sLast":    "Último",
-					"sNext":    "Siguiente",
-					"sPrevious": "Anterior"
-				},
-				"oAria": {
-					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-				}
-			}
-	    });
-	    
-	});
 </script>
 
 @endsection
