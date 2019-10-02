@@ -104,6 +104,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/agregar-taller', 'Admin\TalleresController@agregarTaller');
     Route::post('admin/editar-taller', 'Admin\TalleresController@editarTaller');
     Route::post('admin/eliminar-taller', 'Admin\TalleresController@eliminarTaller');
+
+    Route::get('admin/competencias', 'Admin\CompetenciaController@index');
+    Route::post('admin/agregar-competencia', 'Admin\CompetenciaController@agregarCompetencia');
+    Route::post('admin/editar-competencia', 'Admin\CompetenciaController@editarCompetencia');
+    Route::post('admin/eliminar-competencia', 'Admin\CompetenciaController@eliminarCompetencia');
     
     Route::get('admin/usuario', 'Admin\UsuarioController@index');
     Route::get('admin/usuarios', 'Admin\UsuarioController@usuariosAdmin');
@@ -111,6 +116,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/actualizar-password', 'Admin\UsuarioController@actualizarPassword');
     Route::post('admin/crear-administrador', 'Admin\UsuarioController@crearAdministrador');
     Route::get('admin/eliminar-usuario/{usuarioID}', 'Admin\UsuarioController@eliminarUsuario');
+
+    Route::get('admin/export/usuarios', 'Admin\ExportController@exportarUsuarios');
 
     Route::get('admin/logout', 'Auth\LoginController@logout');
 

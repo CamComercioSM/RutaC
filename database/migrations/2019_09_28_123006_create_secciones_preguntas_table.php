@@ -15,7 +15,7 @@ class CreateSeccionesPreguntasTable extends Migration
     {
         Schema::create('secciones_preguntas', function (Blueprint $table) {
             $table->increments('seccion_preguntaID');
-            $table->integer('TIPO_DIAGNOSTICOS_tipo_diagnosticoID')->unsigned();
+            $table->integer('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID')->unsigned();
             $table->string('seccion_preguntaNOMBRE',45);
             $table->integer('seccion_preguntaPESO');
             $table->enum('seccion_preguntaESTADO',['Activo', 'Inactivo'])->default('Activo');
@@ -23,7 +23,7 @@ class CreateSeccionesPreguntasTable extends Migration
         });
 
         Schema::table('secciones_preguntas', function($table) {
-            $table->foreign('TIPO_DIAGNOSTICOS_tipo_diagnosticoID')->references('tipo_diagnosticoID')->on('tipos_diagnosticos');
+            $table->foreign('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', 'tipos_t_diag')->references('tipo_diagnosticoID')->on('tipos_diagnosticos');
         });
     }
 
