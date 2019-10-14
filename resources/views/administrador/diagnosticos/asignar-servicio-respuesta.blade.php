@@ -21,7 +21,7 @@
                             <br>
                             <form action="" role="form" method="post">
                                 <input name="respuestaID" id="respuestaID" type="hidden" value="{{$respuesta}}">
-    							<table id="tabla-servicios" class="table table-bordered table-hover">
+    							<table class="table table-bordered table-hover tabla-sistema">
                                     <thead>
                                         <tr>
                                             <th class="text-center"></th>
@@ -57,8 +57,6 @@
     </style>
 @endsection
 @section('footer')
-<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 
 <script type="text/javascript">
 	$('#agregar-servicio').click(function(){
@@ -121,43 +119,7 @@
             }
         });
     }
-    
-	$(function () {
-        $("#tabla-servicios").DataTable({
-          "paging": true,
-          "lengthChange": true,
-          "searching": true,
-          "ordering": false,
-          "info": false,
-          "autoWidth": false,
-          "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, "All"]],
-          "pageLength": 100,
-          "language": {
-                "sProcessing":    "Procesando...",
-                "sLengthMenu":    "Mostrar _MENU_ registros",
-                "sZeroRecords":   "No se encontraron resultados",
-                "sEmptyTable":    "Ho se encontraron servicios",
-                "sInfo":          "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "sInfoEmpty":     "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
-                "sInfoPostFix":   "",
-                "sSearch":        "Buscar:",
-                "sUrl":           "",
-                "sInfoThousands":  ",",
-                "sLoadingRecords": "Cargando...",
-                "oPaginate": {
-                    "sFirst":    "Primero",
-                    "sLast":    "Último",
-                    "sNext":    "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "oAria": {
-                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-                }
-            }
-        });
-    });
+
 </script>
 
 @endsection

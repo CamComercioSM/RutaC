@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use Auth;
 use App\Material;
 use Carbon\Carbon;
@@ -155,6 +156,8 @@ class DocumentosController extends Controller
 
                     $material->material_ayudaESTADO = 'Eliminado';
                     $material->save();
+
+                    DB::table('materiales_ayuda_has_respuestas')->where('MATERIALES_AYUDA_material_ayudaID', $request->documentoID)->delete();
                 }else{
                     $data['status'] = 'Error';
                     $data['mensaje'] = 'Error eliminando el material';

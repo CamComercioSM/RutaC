@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use Auth;
 use App\Material;
 use Illuminate\Http\Request;
@@ -149,6 +150,8 @@ class VideosController extends Controller
                 if($material){
                     $material->material_ayudaESTADO = 'Eliminado';
                     $material->save();
+
+                    DB::table('materiales_ayuda_has_respuestas')->where('MATERIALES_AYUDA_material_ayudaID', $request->videoID)->delete();
                 }else{
                     $data['status'] = 'Error';
                     $data['mensaje'] = 'Error eliminando el material';

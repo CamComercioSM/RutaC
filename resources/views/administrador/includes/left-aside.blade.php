@@ -44,6 +44,13 @@
             </span>
             </a>
         </li>
+        <li class="{{ isActive('competencias*') }}">
+            <a href="{{ action('Admin\CompetenciaController@index') }}">
+                <i class="fa fa-rocket"></i> <span>Competencias</span>
+                <span class="pull-right-container">
+            </span>
+            </a>
+        </li>
         <li class="{{ isActive('mi-perfil') }}">
             <a href="{{ action('Admin\UsuarioController@index') }}">
                 <i class="fa fa-user"></i> <span>Mi perfil</span>

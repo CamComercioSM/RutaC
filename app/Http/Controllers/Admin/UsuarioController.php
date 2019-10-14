@@ -133,8 +133,9 @@ class UsuarioController extends Controller
      * @return view
      */
     public function usuariosAdmin(){
-        $usuarios = User::with('datoUsuario')->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
-        return view('administrador.usuarios.index',compact('usuarios'));
+        $usuarios = User::with('datoUsuario')->where('tipoUsuario','Usuario')->where('usuarioESTADO','Activo')->get();
+        $administradores = User::with('datoUsuario')->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
+        return view('administrador.usuarios.index',compact('usuarios','administradores'));
     }
     
     public function eliminarUsuario($usuarioID){
