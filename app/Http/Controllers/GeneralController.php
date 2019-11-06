@@ -270,6 +270,17 @@ class GeneralController extends Controller
         }
         return $tipoUnidad;
     }
+
+    public function comprobarTipoAdmin($tipo,$id){
+        $tipoUnidad = null;
+        if($tipo == 'empresa'){
+            $tipoUnidad = Empresa::where('empresaID',$id)->first();
+        }
+        if($tipo == 'emprendimiento'){
+            $tipoUnidad = Emprendimiento::where('emprendimientoID',$id)->first();
+        }
+        return $tipoUnidad;
+    }
     
     /**
      * Comprueba si el usuario/emprendimiento cumple para mostrar link de emprendelo

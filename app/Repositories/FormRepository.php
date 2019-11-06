@@ -28,7 +28,7 @@ class FormRepository
         ];
     }
 
-    public function nivelEstudios(){
+    public static function nivelEstudios(){
         return [
             'Básica Primaria',
             'Básica Secundaria',
@@ -39,7 +39,7 @@ class FormRepository
         ];
     }
 
-    public function cargo(){
+    public static function cargo(){
         return [
             'Gerente',
             'Administrador',
@@ -53,7 +53,7 @@ class FormRepository
         ];
     }
 
-    public function remuneracion(){
+    public static function remuneracion(){
         return [
             'Menos de $700.000',
             'Más de $700.000',
@@ -68,7 +68,7 @@ class FormRepository
         ];
     }
 
-    public function grupoEtnico(){
+    public static function grupoEtnico(){
         return [
             'Rrom (Gitanos)',
             'Indígenas',
@@ -78,7 +78,7 @@ class FormRepository
         ];
     }
 
-    public function idiomas(){
+    public static function idiomas(){
         return [
             'Alemán',
             'Arabe',
@@ -99,7 +99,7 @@ class FormRepository
         ];
     }
 
-    public function departamentos(){
+    public static function departamentos(){
         return Departamento::select('id_departamento','departamento')->get();
     }
 
@@ -107,9 +107,8 @@ class FormRepository
         return Municipio::where('departamento_id',$departamento)->select('id_municipio','municipio')->get();
     }
 
-    public function tipoEmpresas(){
+    public static function tipoEmpresas(){
         return [
-            'Seleccione una opción',
             'Persona natural comerciante',
             'Empresa unipersonal',
             'Sociedades por Acciones Simplificadas (S.A.S)',
@@ -140,7 +139,7 @@ class FormRepository
         ];
     }
 
-    public function activosTotales(){
+    public static function activosTotales(){
          return [
             'Inferior a 500 SMMLV',
             'Entre 501 y 5.000 SMMLV',
@@ -148,7 +147,7 @@ class FormRepository
         ];
     }
 
-    public function profesion(){
+    public static function profesion(){
         return [
             '2111'=>'Físicos y Astrónomos',
             '2112'=>'Meteorólogos',

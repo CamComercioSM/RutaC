@@ -121,7 +121,7 @@ class EmpresaController extends Controller
             $from = 'editar';
             $historial = $this->gController->comprobarHistorial('empresa',$empresa->empresaID);
             $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID','2')->select('tipo_diagnosticoESTADO')->first();
-            return view('rutac.empresas.index',compact('empresa','repository','usuario','repositoryDepartamentos','from','competencias','competenciaNombre','competenciaPromedio','historial'));
+            return view('rutac.empresas.index',compact('empresa','repository','usuario','repositoryDepartamentos','from','competencias','competenciaNombre','competenciaPromedio','historial','diagnosticoEmpresaEstado'));
         }
         $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
         return redirect()->action('RutaController@iniciarRuta');

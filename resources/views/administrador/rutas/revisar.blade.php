@@ -8,7 +8,7 @@
 </section>
 <section class="content">
     <div class="text-right form-group">
-      <a class="btn btn-primary" href="{{ action('Admin\RutasController@todasRutas') }}"><i class="fa fa-arrow-left"></i> Volver</a>
+      <a class="btn btn-primary" href="{{ URL::previous() }}"><i class="fa fa-arrow-left"></i> Volver</a>
     </div>
     <div class="box">
         <div class="box-header with-border">
