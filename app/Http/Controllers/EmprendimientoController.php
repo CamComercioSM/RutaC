@@ -94,8 +94,8 @@ class EmprendimientoController extends Controller
             $emprendimiento->emprendimientoNOMBRE = $request->nombre_emprendimiento;
             $emprendimiento->emprendimientoDESCRIPCION = $request->descripcion_emprendimiento;
             $emprendimiento->emprendimientoINICIOACTIVIDADES = $request->inicio_actividades;
-            $emprendimiento->emprendimientoINGRESOS = $request->ingresos_ventas;
-            $emprendimiento->emprendimientoREMUNERACION = $request->remuneracion_emprendedor;
+            $emprendimiento->emprendimientoINGRESOS = str_replace(',','',$data->ingresos_ventas);
+            $emprendimiento->emprendimientoREMUNERACION = str_replace(',','',$data->remuneracion_emprendedor);
             $emprendimiento->save();
 
             $request->session()->flash("message_success", "Emprendimiento actualizado correctamente");

@@ -85,6 +85,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/diagnosticos/asignar-material-respuesta', 'Admin\DiagnosticoController@asignarMarerialRespuesta');
     Route::get('admin/diagnosticos/asignar-servicio-respuesta', 'Admin\DiagnosticoController@asignarServicioRespuesta');
 
+    Route::get('admin/diagnostico/ver-historico/{tipo}/{id}', 'Admin\DiagnosticoController@verHistorico');
+    Route::get('admin/diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'Admin\DiagnosticoController@mostrarResultadoAnterior');
+    Route::get('admin/diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'Admin\DiagnosticoController@verResultadoSeccion');
+    Route::get('admin/diagnostico/ver-resultado/{tipo}/{diagnostico}', 'Admin\DiagnosticoController@showResultadosDiagnostico');
+
     Route::get('admin/videos', 'Admin\VideosController@index');
     Route::post('admin/agregar-video', 'Admin\VideosController@agregarVideo');
     Route::post('admin/editar-video', 'Admin\VideosController@editarVideo');
@@ -109,6 +114,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/agregar-competencia', 'Admin\CompetenciaController@agregarCompetencia');
     Route::post('admin/editar-competencia', 'Admin\CompetenciaController@editarCompetencia');
     Route::post('admin/eliminar-competencia', 'Admin\CompetenciaController@eliminarCompetencia');
+    Route::post('admin/activar-competencia', 'Admin\CompetenciaController@activarCompetencia');
     
     Route::get('admin/usuario', 'Admin\UsuarioController@index');
     Route::get('admin/usuarios', 'Admin\UsuarioController@usuariosAdmin');
@@ -117,7 +123,21 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/crear-administrador', 'Admin\UsuarioController@crearAdministrador');
     Route::get('admin/eliminar-usuario/{usuarioID}', 'Admin\UsuarioController@eliminarUsuario');
 
+    Route::get('admin/usuario/{usuarioID}', 'Admin\UsuarioController@verUsuario');
+    Route::post('admin/usuario-guardar', 'Admin\UsuarioController@guardarPerfil');
+
+    Route::get('admin/empresas', 'Admin\EmpresaController@index');
+    Route::get('admin/empresa/{empresaID}', 'Admin\EmpresaController@verEmpresa');
+    Route::post('admin/empresa/{empresaID}/editar', 'Admin\EmpresaController@editarEmpresa');
+
+    Route::get('admin/emprendimientos', 'Admin\EmprendimientoController@index');
+    Route::get('admin/emprendimiento/{emprendimientoID}', 'Admin\EmprendimientoController@verEmprendimiento');
+    Route::post('emprendimiento/{emprendimientoID}/editar', 'Admin\EmprendimientoController@editarEmprendimiento');
+
     Route::get('admin/export/usuarios', 'Admin\ExportController@exportarUsuarios');
+    Route::get('admin/export/empresas', 'Admin\ExportController@exportarEmpresas');
+    Route::get('admin/export/emprendimientos', 'Admin\ExportController@exportarEmprendimientos');
+    Route::get('admin/export/rutas', 'Admin\ExportController@exportarRutas');
 
     Route::get('admin/logout', 'Auth\LoginController@logout');
 

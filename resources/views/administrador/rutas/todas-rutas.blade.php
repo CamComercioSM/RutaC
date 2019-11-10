@@ -12,6 +12,9 @@
 		<div class="col-md-12">
 			<div class="box box-primary">
 				<div class="box-body">
+					<div class="text-right form-group">
+                        <a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarRutas') }}"><i class="fa fa-file-excel-o"></i> Exportar Rutas</a>
+                    </div>
 					<table class="table table-bordered table-hover tabla-sistema">
 						<thead>
 							<tr>
@@ -49,13 +52,23 @@
 								<td class="text-right">{{$ruta->completadas}}/{{$ruta->total}}</td>
 								<td class="text-center">
 									@if($ruta->rutaESTADO == 'En Proceso')
-										<a class="btn btn-warning btn-sm" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
+										<a class="btn btn-warning btn-xs" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
 				                            Revisar
 				                        </a>
 				                    @else
-				                    	<a class="btn btn-success btn-sm" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
+				                    	<a class="btn btn-success btn-xs" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
 				                            Ver ruta
 				                        </a>
+				                    @endif
+				                    @if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == '1')
+				                    <a class="btn btn-primary btn-xs" href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',['emprendimiento',$ruta->diagnostico->diagnosticoID]) }}" style="width:120px;">
+                                        <i class="fa fa-file-text-o"></i> Ver Resultados
+                                    </a>
+				                    @endif
+				                    @if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == '2')
+				                    <a class="btn btn-primary btn-xs" href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',['empresa',$ruta->diagnostico->diagnosticoID]) }}" style="width:120px;">
+                                        <i class="fa fa-file-text-o"></i> Ver Resultados
+                                    </a>
 				                    @endif
 								</td>
 							</tr>

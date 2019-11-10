@@ -10,6 +10,8 @@ use App\Respuesta;
 use App\Competencia;
 use App\RetroSeccion;
 use App\SeccionPregunta;
+use App\ResultadoSeccion;
+use App\Diagnostico;
 use App\TipoDiagnostico;
 use App\RetroDiagnostico;
 use App\ServicioRespuesta;
@@ -20,6 +22,13 @@ use Illuminate\Support\Facades\Log;
 use App\Repositories\FormRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\GeneralController;
+
+use App\Repositories\CompetenciaRepository;
+use App\Repositories\DiagnosticoRepository;
+use App\Repositories\SeccionPreguntaRepository;
+use App\Repositories\TipoDiagnosticoRepository;
+use App\Repositories\ResultadoSeccionRepository;
 
 class DiagnosticoController extends Controller
 {
@@ -29,10 +38,18 @@ class DiagnosticoController extends Controller
      *
      * @return void
      */
-    public function __construct(FormRepository $repository)
+    public function __construct(
+        FormRepository $repository, GeneralController $gController, CompetenciaRepository $competenciaRepository, DiagnosticoRepository $diagnosticoRepository, SeccionPreguntaRepository $seccionPreguntaRepository, ResultadoSeccionRepository $resultadoSeccionRepository, TipoDiagnosticoRepository $tipoDiagnosticoRepository
+    )
     {
         $this->middleware('admin');
         $this->repository = $repository;
+        $this->gController = $gController;
+        $this->competenciaRepository = $competenciaRepository;
+        $this->diagnosticoRepository = $diagnosticoRepository;
+        $this->seccionPreguntaRepository = $seccionPreguntaRepository;
+        $this->resultadoSeccionRepository = $resultadoSeccionRepository;
+        $this->tipoDiagnosticoRepository = $tipoDiagnosticoRepository;
     }
 
     /**
@@ -88,7 +105,7 @@ class DiagnosticoController extends Controller
 
     public function seccion($diagnostico,$seccion, Request $request)
     {
-        $competencias = Competencia::get();
+        $competencias = Competencia::where('competenciaESTADO','Activo')->get();
         $seccionPregunta = SeccionPregunta::where('seccion_preguntaID',$seccion)->where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',$diagnostico)->with('preguntasSeccion','feedback')->first();
         $preguntas = 0;
         if($seccionPregunta){
@@ -268,7 +285,7 @@ class DiagnosticoController extends Controller
                         $preguntas->save();
                     }
                     
-                    $competencias = Competencia::get();
+                    $competencias = Competencia::where('competenciaESTADO','Activo')->get();
                     return view('administrador.diagnosticos.editar-pregunta',compact('preguntas','diagnostico','seccion','competencias','bloqueo_pregunta'));
                 }
             }
@@ -834,6 +851,265 @@ class DiagnosticoController extends Controller
             }    
         }
         return "";
+    }
+
+    public function verHistorico($tipo,$unidad,Request $request){
+        if($tipo == 'empresa'){
+            $seccionesPreguntas = $this->seccionPreguntaRepository->obtenerSeccionesPreguntaEmpresa();
+            $diagnosticos = $this->diagnosticoRepository->obtenerDiagnosticosEmpresa($unidad);
+
+            $seccionesLabel = array();
+            $resultadosSeccion = array();
+
+            foreach ($seccionesPreguntas as $keyS => $seccion) {
+                $seccionesLabel[$keyS] = $seccion->seccion_preguntaNOMBRE;
+            }
+            foreach ($diagnosticos as $keyD => $diagnostico) {
+                foreach ($seccionesPreguntas as $keyS => $seccion) {
+                    $resultadoSeccion = $this->resultadoSeccionRepository->obtenerResultadosSeccion($seccion->seccion_preguntaNOMBRE,$diagnostico->diagnosticoID);
+                    $resultado = round($resultadoSeccion->diagnostico_seccionRESULTADO*100, 2);
+                    $resultadosSeccion[$keyD][$keyS] = $resultado;
+                }
+            }
+
+            //$competencias = $this->competenciaRepository->obtenerCompetenciasXDiagnostico($diagnostico->diagnosticoID);
+
+            $competenciaNombre = array();
+            $competenciaPromedio = array();
+
+            foreach ($diagnosticos as $keyD => $diagnostico) {
+                $competencias = $this->competenciaRepository->obtenerCompetenciasXDiagnostico($diagnostico->diagnosticoID);
+
+                foreach ($competencias as $key => $competencia) {
+                    if($competencia->resultado_preguntaCOMPETENCIA != null){
+                        $competenciaNombre[$key] = $competencia->resultado_preguntaCOMPETENCIA;
+                        $competenciaPromedio[$keyD][$key] = number_format($competencia->promedio*100,2);
+                    }
+                }
+            }
+
+
+        }
+        if($tipo == 'emprendimiento'){
+            $seccionesPreguntas = $this->seccionPreguntaRepository->obtenerSeccionesPreguntaEmprendimiento();
+            $diagnosticos = $this->diagnosticoRepository->obtenerDiagnosticosEmprendimiento($unidad);
+
+            $seccionesLabel = array();
+            $resultadosSeccion = array();
+
+            foreach ($seccionesPreguntas as $keyS => $seccion) {
+                $seccionesLabel[$keyS] = $seccion->seccion_preguntaNOMBRE;
+            }
+            foreach ($diagnosticos as $keyD => $diagnostico) {
+                foreach ($seccionesPreguntas as $keyS => $seccion) {
+                    $resultadoSeccion = $this->resultadoSeccionRepository->obtenerResultadosSeccion($seccion->seccion_preguntaNOMBRE,$diagnostico->diagnosticoID);
+                    $resultado = round($resultadoSeccion->diagnostico_seccionRESULTADO*100, 2);
+                    $resultadosSeccion[$keyD][$keyS] = $resultado;
+                }
+            }
+
+            //$competencias = $this->competenciaRepository->obtenerCompetenciasXDiagnostico($diagnostico->diagnosticoID);
+
+            $competenciaNombre = array();
+            $competenciaPromedio = array();
+
+            foreach ($diagnosticos as $keyD => $diagnostico) {
+                $competencias = $this->competenciaRepository->obtenerCompetenciasXDiagnostico($diagnostico->diagnosticoID);
+
+                foreach ($competencias as $key => $competencia) {
+                    if($competencia->resultado_preguntaCOMPETENCIA != null){
+                        $competenciaNombre[$key] = $competencia->resultado_preguntaCOMPETENCIA;
+                        $competenciaPromedio[$keyD][$key] = number_format($competencia->promedio*100,2);
+                    }
+                }
+            }
+        }
+
+        return view('administrador.diagnosticos.detalles.historicos',compact('seccionesLabel','resultadosSeccion','diagnosticos','competenciaNombre','competenciaPromedio','unidad','tipo')); 
+    }
+
+    public function mostrarResultadoAnterior($tipo,$diagnosticoID,Request $request){
+        $diagnostico = $this->diagnosticoRepository->obtenerDiagnostico($diagnosticoID);
+
+        if($diagnostico){
+            $tipoExiste = 0;
+            if($tipo == 'empresa'){
+                $unidad = $diagnostico->EMPRESAS_empresaID;
+                $tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
+                $tipoExiste = 1;
+            }
+            if($tipo == 'emprendimiento'){
+                $unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
+                $tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
+                $tipoExiste = 1;
+            }
+            
+            if($tipoExiste == 1){
+                $tipoUnidad = $this->gController->comprobarTipoAdmin($tipo,$unidad);
+    
+                if(!$tipoUnidad){
+                    $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+                    return redirect()->action('Admin\EmprendimientoController@index');
+                }
+  
+                if($tipo == 'empresa'){
+
+                    $diagnosticos_secciones = $this->tipoDiagnosticoRepository->obtenerDiagnosticosSecciones($tipoDiagnostico);
+
+                    $diagnosticoPara = $tipoUnidad->empresaRAZON_SOCIAL;
+                    foreach ($diagnosticos_secciones->seccionesPreguntas as $key => $seccion) {
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['preguntas'] = Pregunta::where('SECCIONES_PREGUNTAS_seccion_pregunta',$seccion->seccion_preguntaID)->where('preguntaESTADO','Activo')->count();
+                        $resultadoSeccion =  ResultadoSeccion::where('seccionID',$seccion->seccion_preguntaID)->where('DIAGNOSTICOS_diagnosticoID',$diagnostico->diagnosticoID)->first();
+                        if($resultadoSeccion){
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['resultado'] = $resultadoSeccion->diagnostico_seccionRESULTADO;
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['nivel'] = $resultadoSeccion->diagnostico_seccionNIVEL;
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['feedback'] = $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK;
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['estadoSeccion'] = $resultadoSeccion->diagnostico_seccionESTADO;
+                        }else{
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['resultado'] = "";
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['nivel'] = "";
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['feedback'] = "";
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['estadoSeccion'] = "";
+                        }
+                    }
+                    return view('administrador.diagnosticos.detalles.resultado-anterior',compact('diagnostico','diagnosticos_secciones','unidad','diagnosticoPara','tipo'));          
+                }
+                if($tipo == 'emprendimiento'){
+                    $diagnosticos_secciones = TipoDiagnostico::where('tipo_diagnosticoID',env('DIAGNOSTICO_EMPRENDIMIENTO'))->with('seccionesPreguntas')->first();
+                    $diagnosticoPara = $tipoUnidad->emprendimientoNOMBRE;
+                    foreach ($diagnosticos_secciones->seccionesPreguntas as $key => $seccion) {
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['preguntas'] = Pregunta::where('SECCIONES_PREGUNTAS_seccion_pregunta',$seccion->seccion_preguntaID)->where('preguntaESTADO','Activo')->count();
+                        $resultadoSeccion =  ResultadoSeccion::where('seccionID',$seccion->seccion_preguntaID)->where('DIAGNOSTICOS_diagnosticoID',$diagnostico->diagnosticoID)->first();
+                        if($resultadoSeccion){
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['resultado'] = $resultadoSeccion->diagnostico_seccionRESULTADO;
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['nivel'] = $resultadoSeccion->diagnostico_seccionNIVEL;
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['feedback'] = $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK;
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['estadoSeccion'] = $resultadoSeccion->diagnostico_seccionESTADO;
+                        }else{
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['resultado'] = "";
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['nivel'] = "";
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['feedback'] = "";
+                            $diagnosticos_secciones->seccionesPreguntas[$key]['estadoSeccion'] = "";
+                        }
+                    }
+                    return view('administrador.diagnosticos.detalles.resultado-anterior',compact('diagnostico','diagnosticos_secciones','unidad','diagnosticoPara','tipo')); 
+                }
+            }
+        }
+        $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+        return redirect()->action('Admin\EmprendimientoController@index');
+    }
+
+    public function verResultadoSeccion($tipo,$diagnosticoID,$seccion,Request $request){
+        $diagnostico = Diagnostico::where('diagnosticoID',$diagnosticoID)->where(function ($query) {
+                    $query->where('diagnosticoESTADO', 'Activo')
+                          ->orWhere('diagnosticoESTADO', 'En Proceso')
+                          ->orWhere('diagnosticoESTADO', 'Finalizado');
+                })->first();
+
+        if($diagnostico){
+            $tipoExiste = 0;
+            if($tipo == 'empresa'){
+                $unidad = $diagnostico->EMPRESAS_empresaID;
+                $tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
+                $tipoExiste = 1;
+            }
+            if($tipo == 'emprendimiento'){
+                $unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
+                $tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
+                $tipoExiste = 1;
+            }
+            
+            if($tipoExiste == 1){
+                $tipoUnidad = $this->gController->comprobarTipoAdmin($tipo,$unidad);
+                $seccionExiste = $this->gController->comprobarSeccionDiagnostico($tipoDiagnostico,$seccion);
+    
+                if(!$tipoUnidad || !$seccionExiste){
+                    $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+                    return redirect()->action('Admin\EmprendimientoController@index');
+                }
+    
+                $resultadoSeccion = ResultadoSeccion::where('seccionID',$seccion)->where('DIAGNOSTICOS_diagnosticoID',$diagnosticoID)->with('resultadoPregunta')->first();
+                if($resultadoSeccion){
+                    $resultadoSeccion['diagnostico'] = $this->gController->obtenerDatosDiagnostico($diagnosticoID);
+                    return view('administrador.diagnosticos.detalles.resultado-seccion',compact('resultadoSeccion','tipo','diagnosticoID'));
+                }
+            }
+        }
+        $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+        return redirect()->action('Admin\EmprendimientoController@index');
+    }
+
+    public function showResultadosDiagnostico($tipo,$diagnosticoID,Request $request){
+        $diagnostico = Diagnostico::where('diagnosticoID',$diagnosticoID)->where(function ($query) {
+                    $query->where('diagnosticoESTADO', 'Finalizado');
+                })->first();
+
+        if($diagnostico){
+            $tipoExiste = 0;
+            if($tipo == 'empresa'){
+                $unidad = $diagnostico->EMPRESAS_empresaID;
+                $tipoDiagnostico = env('DIAGNOSTICO_EMPRESA');
+                $tipoExiste = 1;
+            }
+            if($tipo == 'emprendimiento'){
+                $unidad = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
+                $tipoDiagnostico = env('DIAGNOSTICO_EMPRENDIMIENTO');
+                $tipoExiste = 1;
+            }
+            
+            if($tipoExiste == 1){
+                $tipoUnidad = $this->gController->comprobarTipoAdmin($tipo,$unidad);
+    
+                if(!$tipoUnidad){
+                    $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+                    return redirect()->action('Admin\EmprendimientoController@index');
+                }
+    
+                /**
+                 * Carga el tipo de diagnóstico correspondiente para el emprendimiento
+                 */
+                $diagnosticos_secciones = TipoDiagnostico::where('tipo_diagnosticoID',$tipoDiagnostico)->with('seccionesPreguntas')->first();
+                
+                foreach ($diagnosticos_secciones->seccionesPreguntas as $key => $seccion) {
+                    $diagnosticos_secciones->seccionesPreguntas[$key]['preguntas'] = Pregunta::where('SECCIONES_PREGUNTAS_seccion_pregunta',$seccion->seccion_preguntaID)->where('preguntaESTADO','Activo')->count();
+                    $resultadoSeccion =  ResultadoSeccion::where('seccionID',$seccion->seccion_preguntaID)->where('DIAGNOSTICOS_diagnosticoID',$diagnostico->diagnosticoID)->first();
+                    if($resultadoSeccion){
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['resultado'] = $resultadoSeccion->diagnostico_seccionRESULTADO;
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['nivel'] = $resultadoSeccion->diagnostico_seccionNIVEL;
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['feedback'] = $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK;
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['estadoSeccion'] = $resultadoSeccion->diagnostico_seccionESTADO;
+                    }else{
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['resultado'] = "";
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['nivel'] = "";
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['feedback'] = "";
+                        $diagnosticos_secciones->seccionesPreguntas[$key]['estadoSeccion'] = "";
+                    }
+                }
+                if($diagnostico->diagnosticoESTADO == 'Finalizado'){
+                    $competencias = DB::table('resultados_seccion')
+                    ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
+                    ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID',$diagnosticoID)
+                    ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
+                    ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
+                    ->get();
+    
+                    foreach ($diagnostico->resultadoSeccion as $key => $resultado) {
+                        $resultadoNombre[$key] = $resultado->resultado_seccionNOMBRE;
+                        $resultadoValor[$key] = number_format($resultado->diagnostico_seccionRESULTADO*100,2);
+                    }
+    
+                    foreach ($competencias as $key => $competencia) {
+                        $competenciaNombre[$key] = $competencia->resultado_preguntaCOMPETENCIA;
+                        $competenciaPromedio[$key] = number_format($competencia->promedio*100,2);
+                    }
+    
+                    return view('administrador.diagnosticos.detalles.resultados',compact('diagnostico','competencias','competenciaNombre','competenciaPromedio','resultadoNombre','resultadoValor','tipo'));
+                }
+            }
+        }
+        $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+        return redirect()->action('Admin\EmprendimientoController@index');
     }
 
 }

@@ -41,7 +41,7 @@ class CompetenciaController extends Controller
      */
     public function index()
     {
-        $competencias = Competencia::where('competenciaESTADO','Activo')->get();
+        $competencias = Competencia::orderBy('competenciaORDEN')->orderBy('competenciaESTADO')->get();
         return view('administrador.competencias.index',compact('competencias'));
     }
 
@@ -151,6 +151,43 @@ class CompetenciaController extends Controller
                 }else{
                     $data['status'] = 'Error';
                     $data['mensaje'] = 'Error eliminando la competencia';
+                }
+            }
+        }
+        return json_encode($data);
+    }
+
+    /**
+     * Esta función activa una competencia
+     *
+     * @param  request
+     * @return json
+     */
+    public function activarCompetencia(Request $request){
+
+        $rules = [];
+        $rules['competenciaIDA'] = 'required';
+
+        $validator = Validator::make($request->all(), $rules);
+        $data = [];
+        $data['status'] = '';
+        if($validator->fails()){
+            $errors = $validator->errors();
+            $data['status'] = 'Errors';
+            foreach($rules as $key => $value){
+                $data['errors'][$key] = $errors->first($key);                              
+            }
+        }else{
+            if($data['status'] != 'Errors'){
+                $data['status'] = 'Ok';
+                $data['mensaje'] = 'Competencia activada correctamente';
+                $competencia = Competencia::where('competenciaID',$request->competenciaIDA)->first();
+                if($competencia){
+                    $competencia->competenciaESTADO = 'Activo';
+                    $competencia->save();
+                }else{
+                    $data['status'] = 'Error';
+                    $data['mensaje'] = 'Error activando la competencia';
                 }
             }
         }

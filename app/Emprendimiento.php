@@ -23,4 +23,8 @@ class Emprendimiento extends Model
     {
         return $this->hasMany('App\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('resultadoSeccion','ruta');
     }
+    public function usuario()
+    {
+        return $this->belongsTo('App\User','USUARIOS_usuarioID')->with('datoUsuario');
+    }
 }

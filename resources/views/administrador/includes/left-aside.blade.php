@@ -51,9 +51,16 @@
             </span>
             </a>
         </li>
-        <li class="{{ isActive('mi-perfil') }}">
-            <a href="{{ action('Admin\UsuarioController@index') }}">
-                <i class="fa fa-user"></i> <span>Mi perfil</span>
+        <li class="{{ isActive('empresas') }}">
+            <a href="{{ action('Admin\EmpresaController@index') }}">
+                <i class="fa fa-dot-circle-o"></i> <span>Empresas</span>
+                <span class="pull-right-container">
+            </span>
+            </a>
+        </li>
+        <li class="{{ isActive('emprendimientos') }}">
+            <a href="{{ action('Admin\EmprendimientoController@index') }}">
+                <i class="fa fa-dot-circle-o"></i> <span>Emprendimiento</span>
                 <span class="pull-right-container">
             </span>
             </a>
@@ -65,9 +72,9 @@
             </span>
             </a>
         </li>
-        <li class="{{ isActive('crear-usuario') }}">
-            <a href="{{ action('Admin\UsuarioController@crearUsuario') }}">
-                <i class="fa fa-user-plus"></i> <span>Crear usuario</span>
+        <li class="{{ isActive('mi-perfil') }}">
+            <a href="{{ action('Admin\UsuarioController@index') }}">
+                <i class="fa fa-user"></i> <span>Mi perfil</span>
                 <span class="pull-right-container">
             </span>
             </a>

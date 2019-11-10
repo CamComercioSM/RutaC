@@ -1,15 +1,6 @@
 @extends('administrador.index')
 @section('title','RutaC | Rutas')
 @section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-8">
-			<a class="btn btn-primary" href="{{action('Admin\UsuarioController@crearUsuario')}}">
-                Crear usuario
-            </a>
-		</div>
-	</div>
-</section>
 <section class="content">
 	<div class="row">
 		<div class="col-md-12">
@@ -32,6 +23,7 @@
 											<th class="text-center">Documento</th>
 											<th class="text-center">Nombre Completo</th>
 			                                <th class="text-center">Correo</th>
+                                            <th></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -41,12 +33,18 @@
 											<td class="text-left">{{$usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$usuario->datoUsuario->dato_usuarioIDENTIFICACION}}</td>
 											<td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
 											<td class="text-left">{{$usuario->usuarioEMAIL}}</td>
+                                            <td class="text-center">
+                                                <a class="btn btn-primary btn-xs" href="{{action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ])}}" style="width:50px;">Ver</a>
+                                            </td>
 										</tr>
 										@endforeach
 									</tbody>
                         		</table>
                         	</div>
                         	<div class="tab-pane" id="usuarios-admin">
+                                <div class="text-right form-group">
+                                    <a class="btn btn-sm btn-primary" href="{{ action('Admin\UsuarioController@crearUsuario') }}">Crear usuario</a>
+                                </div>
                         		<table class="table table-bordered table-hover tabla-sistema">
 									<thead>
 										<tr>

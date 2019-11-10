@@ -29,8 +29,15 @@
 								<td class="text-left">{{$competencia->competenciaNOMBRE}}</td>
 								<td class="text-center">{{$competencia->competenciaESTADO}}</td>
                                 <th class="text-center">
+                                    @if($competencia->competenciaNOMBRE != 'Ninguno')
                                     <a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-competencia" onclick="editarCompetenciaS('{{$competencia->competenciaID}}','{{$competencia->competenciaNOMBRE}}','{{$competencia->competenciaNOMBRE}}');return false;">Editar</a>
+                                    @if($competencia->competenciaESTADO == 'Activo')
                                     <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-competencia" onclick="eliminarCompetenciaS('{{$competencia->competenciaID}}');return false;">Eliminar</a>
+                                    @endif
+                                    @if($competencia->competenciaESTADO == 'Inactivo')
+                                    <a class="btn btn-success btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-activar-competencia" onclick="activarCompetenciaS('{{$competencia->competenciaID}}');return false;">Activar</a>
+                                    @endif
+                                    @endif
                                 </th>
 							</tr>
 							@endforeach
@@ -132,6 +139,32 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
                     <button type="button" id="eliminar-competencia" class="btn btn-primary">Eliminar Competencia</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="modal-activar-competencia">
+    <div class="modal-dialog">
+        <form id="activarCompetencia" action="" role="form" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Activar competencia</h4>
+                </div>
+                <div class="modal-body">
+                    {!! csrf_field() !!}
+                    <input name="competenciaIDA" id="competenciaIDA" type="hidden" value="">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            ¿Seguro que desea activar esta competencia?
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="activar-competencia" class="btn btn-primary">Activar Competencia</button>
                 </div>
             </div>
         </form>
@@ -314,12 +347,66 @@
         });
     }
 
+    $('#activar-competencia').click(function(){
+        var values = getValuesActivarCompetencia();
+        activarCompetencia(values);
+    });
+    function getValuesActivarCompetencia(){
+        var values = new Object;        
+        var inputs = $("#activarCompetencia").find('input, select');  
+        for(var i = 0; i< inputs.length; i++){
+            name = $(inputs[i]).attr('name');
+            value = $(inputs[i]).val();
+            values[name] = value;
+            $("input[name='"+name+"'], select[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
+            $("#error_"+name).html('');
+        }
+        return values;
+    }
+    function activarCompetencia(values){
+        $('#modal-activar-competencia').modal('hide');
+        $('.capa').css("visibility", "visible");
+        $('#activar-competencia').attr("disabled", true);
+        $('#message-error').html('');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{url('admin/activar-competencia') }}",
+            dataType: 'json',
+            type: 'post',
+            data: values,
+            success: function(data){
+                console.log(data);
+                if(data.status == 'Ok'){
+                    alert(data.mensaje);
+                    window.location.href = "{{URL::to('admin/competencias')}}"
+                }
+                if(data.status == 'Error'){
+                    alert(data.mensaje);
+                    $('.capa').css("visibility", "hidden");
+                    $('#activar-competencia').attr("disabled", false);
+                }
+            },
+            error: function(xhr, data, error){
+                alert('Ocurrió un error');
+                $('.capa').css("visibility", "hidden");
+                $('#activar-competencia').attr("disabled", false);
+            }
+        });
+    }
+
     function editarCompetenciaS(competenciaID,nombreCompetencia){
         $('#competenciaIDE').val(competenciaID);
         $('#nombre_competencia').val(nombreCompetencia);
     }
     function eliminarCompetenciaS(competenciaID){
         $('#competenciaID').val(competenciaID);
+    }
+    function activarCompetenciaS(competenciaID){
+        $('#competenciaIDA').val(competenciaID);
     }
 </script>
 

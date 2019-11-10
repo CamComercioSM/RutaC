@@ -27,4 +27,8 @@ class Empresa extends Model
     {
         return $this->hasMany('App\Diagnostico','EMPRESAS_empresaID')->with('resultadoSeccion','ruta');
     }
+    public function usuario()
+    {
+        return $this->belongsTo('App\User','USUARIOS_usuarioID')->with('datoUsuario');
+    }
 }
