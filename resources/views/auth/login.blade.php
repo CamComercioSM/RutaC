@@ -3,7 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-3">
+            <div class="box">
+                <div class="register-box-body" style="text-align: justify;">
+                    <img src="public/dist/img/mails/01.png" style="max-width: 100%" >
+                    <h2><b>BIENVENIDOS A RUTA C</b></h2>
+                    <p>Ruta C es un programa de acompañamiento que ofrece la Cámara de Comercio de Santa Marta para el Magdalena a través del cual podrás determinar una ruta que te permita fortalecer tu actividad empresarial o tu idea de negocios. </p>
+                </div>
+            </div>
+        </div>        
+        <div class="col-md-7">
             <div class="panel panel-default">
                 <div class="panel-heading">Inicio de Sesión</div>
                 <div class="panel-body">
