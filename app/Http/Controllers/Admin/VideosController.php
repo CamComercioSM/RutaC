@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use Auth;
-use App\Material;
+use App\Models\Material;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;

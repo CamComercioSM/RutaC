@@ -4,7 +4,7 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\Competencia;
+use App\Models\Competencia;
 use Carbon\Carbon;
 
 class CompetenciaRepository{

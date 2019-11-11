@@ -4,7 +4,7 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\SeccionPregunta;
+use App\Models\SeccionPregunta;
 use Carbon\Carbon;
 
 class SeccionPreguntaRepository{

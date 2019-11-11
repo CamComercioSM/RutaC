@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User;
-use App\Emprendimiento;
-use App\TipoDiagnostico;
+use App\Models\User;
+use App\Models\Emprendimiento;
+use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

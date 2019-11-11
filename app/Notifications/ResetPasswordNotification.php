@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-use App\User;
+use App\Models\User;
 use App\Mail\RutaCMail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

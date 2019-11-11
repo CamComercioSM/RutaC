@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,14 +17,14 @@ class Emprendimiento extends Model
 
     public function diagnosticos()
     {
-        return $this->hasOne('App\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('ruta','tipoDiagnostico');
+        return $this->hasOne('App\Models\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('ruta','tipoDiagnostico');
     }
     public function diagnosticosAll()
     {
-        return $this->hasMany('App\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('resultadoSeccion','ruta');
+        return $this->hasMany('App\Models\Diagnostico','EMPRENDIMIENTOS_emprendimientoID')->with('resultadoSeccion','ruta');
     }
     public function usuario()
     {
-        return $this->belongsTo('App\User','USUARIOS_usuarioID')->with('datoUsuario');
+        return $this->belongsTo('App\Models\User','USUARIOS_usuarioID')->with('datoUsuario');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\ResultadoSeccion;
+use App\Models\ResultadoSeccion;
 use Carbon\Carbon;
 
 class ResultadoSeccionRepository{

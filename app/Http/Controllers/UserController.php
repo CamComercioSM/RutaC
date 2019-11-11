@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User;
-use App\Municipio;
-use App\DatoUsuario;
-use App\Departamento;
+use App\Models\User;
+use App\Models\Municipio;
+use App\Models\DatoUsuario;
+use App\Models\Departamento;
 use App\Mail\RutaCMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

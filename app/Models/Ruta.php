@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +16,7 @@ class Ruta extends Model
     */
 
     public function estaciones(){
-        return $this->hasMany('App\Estacion','RUTAS_rutaID')->orderBy('estacionCUMPLIMIENTO', 'desc');
+        return $this->hasMany('App\Models\Estacion','RUTAS_rutaID')->orderBy('estacionCUMPLIMIENTO', 'desc');
     }
     
     /*
@@ -27,6 +27,6 @@ class Ruta extends Model
 
     public function diagnostico()
     {
-        return $this->belongsTo('App\Diagnostico','DIAGNOSTICOS_diagnosticoID','diagnosticoID')->with('resultadoSeccion');
+        return $this->belongsTo('App\Models\Diagnostico','DIAGNOSTICOS_diagnosticoID','diagnosticoID')->with('resultadoSeccion');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use Auth;
-use App\Material;
+use App\Models\Material;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

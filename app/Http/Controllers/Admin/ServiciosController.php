@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\Servicio;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;

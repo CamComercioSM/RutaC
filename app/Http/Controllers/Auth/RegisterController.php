@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use App\Empresa;
-use App\Municipio;
-use App\DatoUsuario;
-use App\Departamento;
-use App\Emprendimiento;
+use App\Models\User;
+use App\Models\Empresa;
+use App\Models\Municipio;
+use App\Models\DatoUsuario;
+use App\Models\Departamento;
+use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

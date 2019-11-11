@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,12 +29,12 @@ class SeccionPregunta extends Model
 
     public function preguntas()
     {
-        return $this->hasMany('App\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->where('preguntaESTADO','Activo')->orderBy('preguntaORDEN', 'asc');
+        return $this->hasMany('App\Models\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->where('preguntaESTADO','Activo')->orderBy('preguntaORDEN', 'asc');
     }
 
     public function feedback()
     {
-        return $this->hasMany('App\RetroSeccion','SECCIONES_PREGUNTAS_seccion_pregunta');
+        return $this->hasMany('App\Models\RetroSeccion','SECCIONES_PREGUNTAS_seccion_pregunta');
     }
     
     /*
@@ -45,7 +45,7 @@ class SeccionPregunta extends Model
 
     public function preguntasSeccion()
     {
-        return $this->hasMany('App\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->orderBy('preguntaESTADO', 'asc')->orderBy('preguntaORDEN', 'asc');
+        return $this->hasMany('App\Models\Pregunta','SECCIONES_PREGUNTAS_seccion_pregunta')->with('respuestas')->orderBy('preguntaESTADO', 'asc')->orderBy('preguntaORDEN', 'asc');
     }
 
 }

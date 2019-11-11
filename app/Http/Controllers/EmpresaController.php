@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User;
-use App\Empresa;
-use App\Municipio;
-use App\Departamento;
-use App\TipoDiagnostico;
+use App\Models\User;
+use App\Models\Empresa;
+use App\Models\Municipio;
+use App\Models\Departamento;
+use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;

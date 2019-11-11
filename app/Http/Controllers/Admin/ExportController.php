@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\User;
-use App\Ruta;
-use App\Empresa;
+use App\Models\User;
+use App\Models\Ruta;
+use App\Models\Empresa;
 use Carbon\Carbon;
-use App\Emprendimiento;
+use App\Models\Emprendimiento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;

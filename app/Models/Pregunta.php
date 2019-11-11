@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MaterialRespuesta extends Model
+class Pregunta extends Model
 {
-    protected $table = 'materiales_ayuda_has_respuestas';
-    public $timestamps = false;
+    protected $table = 'preguntas';
+    protected $primaryKey = 'preguntaID';
 
     /*
     |---------------------------------------------------------------------------------------
@@ -15,9 +15,9 @@ class MaterialRespuesta extends Model
     |---------------------------------------------------------------------------------------
     */
 
-    public function material()
+    public function respuestas()
     {
-        return $this->hasOne('App\Material','MATERIALES_AYUDA_material_ayudaID');
+        return $this->hasMany('App\Models\Respuesta','PREGUNTAS_preguntaID')->with('servicio','material')->where('respuestaESTADO','Activo');
     }
     
     /*
@@ -26,8 +26,8 @@ class MaterialRespuesta extends Model
     |---------------------------------------------------------------------------------------
     */
 
-    public function materialAsociado()
+    public function respuestasPregunta()
     {
-        return $this->belongsTo('App\Material','MATERIALES_AYUDA_material_ayudaID','material_ayudaID');
+        return $this->hasMany('App\Models\Respuesta','PREGUNTAS_preguntaID')->where('respuestaESTADO','Activo');
     }
 }

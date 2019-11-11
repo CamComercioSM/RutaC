@@ -4,9 +4,9 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\Municipio;
+use App\Models\Municipio;
 use Carbon\Carbon;
-use App\Departamento;
+use App\Models\Departamento;
 
 class DataRepository{
 	

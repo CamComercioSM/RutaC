@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,7 +16,7 @@ class TallerRetroSeccion extends Model
     */
 
     public function taller(){
-        return $this->hasMany('App\Taller','tallerID')->with('taller');
+        return $this->hasMany('App\Models\Taller','tallerID')->with('taller');
     }
 
 }
