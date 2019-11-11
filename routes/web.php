@@ -64,8 +64,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/diagnosticos/agregar-feedback-seccion', 'Admin\DiagnosticoController@agregarFeedbackSeccion');
     Route::post('admin/diagnosticos/editar-feedback-seccion', 'Admin\DiagnosticoController@editarFeedbackSeccion');
     Route::post('admin/diagnosticos/eliminar-feedback-seccion', 'Admin\DiagnosticoController@eliminarFeedbackSeccion');
-    
-    Route::post('admin/diagnosticos/editar', 'Admin\DiagnosticoController@editar');
+
+    Route::post('admin/diagnosticos/editar/tipo', 'Admin\DiagnosticoController@editarTipoDiagnostico');
     Route::get('admin/diagnosticos/seccion/{diagnostico}/{seccion}', 'Admin\DiagnosticoController@seccion');
     Route::get('admin/diagnosticos/seccion/editar-pregunta/{diagnostico}/{seccion}/{pregunta}', 'Admin\DiagnosticoController@editarPregunta');
     

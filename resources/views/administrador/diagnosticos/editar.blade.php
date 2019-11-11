@@ -261,7 +261,7 @@
             }
         });
         $.ajax({
-            url: "{{url('admin/diagnosticos/editar/diagnostico') }}",
+            url: "{{url('admin/diagnosticos/editar/tipo') }}",
             dataType: 'json',
             type: 'post',
             data: values,
