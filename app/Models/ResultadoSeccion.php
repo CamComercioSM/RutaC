@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,11 +19,11 @@ class ResultadoSeccion extends Model
     ];
 
     public function resultadoSeccion(){
-        return $this->hasMany('App\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
+        return $this->hasMany('App\Models\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
     }
     
     public function resultadoPregunta(){
-        return $this->hasMany('App\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
+        return $this->hasMany('App\Models\ResultadoPregunta','RESULTADOS_SECCION_resultado_seccionID');
     }
     
 

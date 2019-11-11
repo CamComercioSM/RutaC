@@ -4,7 +4,7 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\Diagnostico;
+use App\Models\Diagnostico;
 use Carbon\Carbon;
 
 class DiagnosticoRepository{

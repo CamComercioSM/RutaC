@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServicioRespuesta extends Model
+class MaterialRespuesta extends Model
 {
-    protected $table = 'servicios_ccsm_has_respuestas';
+    protected $table = 'materiales_ayuda_has_respuestas';
     public $timestamps = false;
 
     /*
@@ -15,9 +15,9 @@ class ServicioRespuesta extends Model
     |---------------------------------------------------------------------------------------
     */
 
-    public function servicio()
+    public function material()
     {
-        return $this->hasOne('App\Servicio','servicio_ccsmID');
+        return $this->hasOne('App\Models\Material','MATERIALES_AYUDA_material_ayudaID');
     }
     
     /*
@@ -26,8 +26,8 @@ class ServicioRespuesta extends Model
     |---------------------------------------------------------------------------------------
     */
 
-    public function servicioAsociado()
+    public function materialAsociado()
     {
-        return $this->belongsTo('App\Servicio','SERVICIOS_CCSM_servicio_ccsmID','servicio_ccsmID');
+        return $this->belongsTo('App\Models\Material','MATERIALES_AYUDA_material_ayudaID','material_ayudaID');
     }
 }

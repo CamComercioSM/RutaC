@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pregunta extends Model
+class ServicioRespuesta extends Model
 {
-    protected $table = 'preguntas';
-    protected $primaryKey = 'preguntaID';
+    protected $table = 'servicios_ccsm_has_respuestas';
+    public $timestamps = false;
 
     /*
     |---------------------------------------------------------------------------------------
@@ -15,9 +15,9 @@ class Pregunta extends Model
     |---------------------------------------------------------------------------------------
     */
 
-    public function respuestas()
+    public function servicio()
     {
-        return $this->hasMany('App\Respuesta','PREGUNTAS_preguntaID')->with('servicio','material')->where('respuestaESTADO','Activo');
+        return $this->hasOne('App\Models\Servicio','servicio_ccsmID');
     }
     
     /*
@@ -26,8 +26,8 @@ class Pregunta extends Model
     |---------------------------------------------------------------------------------------
     */
 
-    public function respuestasPregunta()
+    public function servicioAsociado()
     {
-        return $this->hasMany('App\Respuesta','PREGUNTAS_preguntaID')->where('respuestaESTADO','Activo');
+        return $this->belongsTo('App\Models\Servicio','SERVICIOS_CCSM_servicio_ccsmID','servicio_ccsmID');
     }
 }

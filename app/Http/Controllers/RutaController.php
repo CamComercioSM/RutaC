@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\User;
-use App\Ruta;
-use App\Empresa;
-use App\Estacion;
-use App\Diagnostico;
-use App\Emprendimiento;
+use App\Models\User;
+use App\Models\Ruta;
+use App\Models\Empresa;
+use App\Models\Estacion;
+use App\Models\Diagnostico;
+use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
-use App\TipoDiagnostico;
+use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
-use App\ResultadoPreguntaAyuda;
+use App\Models\ResultadoPreguntaAyuda;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;

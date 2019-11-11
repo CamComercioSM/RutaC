@@ -4,7 +4,7 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\Empresa;
+use App\Models\Empresa;
 use Carbon\Carbon;
 use App\Repositories\DataRepository;
 

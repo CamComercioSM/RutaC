@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class ResultadoPreguntaAyuda extends Model
 
     public function resultadoPregunta()
     {
-        return $this->belongsTo('App\ResultadoPregunta','ResultadoPreguntaID','resultado_preguntaID');
+        return $this->belongsTo('App\Models\ResultadoPregunta','ResultadoPreguntaID','resultado_preguntaID');
     }
 }

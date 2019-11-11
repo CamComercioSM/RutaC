@@ -7,8 +7,8 @@
  */
 
 namespace App\Repositories;
-use App\Municipio;
-use App\Departamento;
+use App\Models\Municipio;
+use App\Models\Departamento;
 
 
 class FormRepository

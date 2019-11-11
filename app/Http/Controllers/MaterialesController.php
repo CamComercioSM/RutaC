@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Material;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class MaterialesController extends Controller

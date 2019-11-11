@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\Taller;
+use App\Models\Taller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;

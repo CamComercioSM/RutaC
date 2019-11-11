@@ -4,7 +4,7 @@ namespace App\Repositories;
 use DB;
 use Log;
 use Auth;
-use App\User;
+use App\Models\User;
 use Carbon\Carbon;
 
 class UsuarioRepository{

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\Ruta;
-use App\User;
-use App\Empresa;
-use App\Estacion;
-use App\Emprendimiento;
+use App\Models\Ruta;
+use App\Models\User;
+use App\Models\Empresa;
+use App\Models\Estacion;
+use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
 
 use Illuminate\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,11 +17,11 @@ class Respuesta extends Model
 
     public function servicio()
     {
-        return $this->hasMany('App\ServicioRespuesta','RESPUESTAS_respuestaID');
+        return $this->hasMany('App\Models\ServicioRespuesta','RESPUESTAS_respuestaID');
     }
 
     public function material()
     {
-        return $this->hasMany('App\ServicioRespuesta','RESPUESTAS_respuestaID');
+        return $this->hasMany('App\Models\ServicioRespuesta','RESPUESTAS_respuestaID');
     }
 }

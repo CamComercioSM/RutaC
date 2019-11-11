@@ -5,7 +5,7 @@ use DB;
 use Log;
 use Auth;
 use Carbon\Carbon;
-use App\Emprendimiento;
+use App\Models\Emprendimiento;
 
 class EmprendimientoRepository{
 	public function __construct(Emprendimiento $emprendimiento){
