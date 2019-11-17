@@ -180,11 +180,6 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <div class="g-recaptcha " data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">
                                 <div class="checkbox icheck has-feedback">
                                     <label>
                                         <div class="form-group has-feedback">
@@ -193,6 +188,13 @@
                                     </label>
                                     <span class="text-danger" id="error_termino_y_condiciones_de_uso"></span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="g-recaptcha" data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
+                                <span class="form-control-feedback" id="alert_error_g-recaptcha-response"></span>
+                                <span class="text-danger" id="error_g-recaptcha-response"></span>
                             </div>
                             <!-- /.col -->
                             <div class="col-xs-4">

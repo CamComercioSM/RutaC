@@ -33,6 +33,8 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="g-recaptcha " data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
+                                <span class="form-control-feedback" id="alert_error_g-recaptcha-response"></span>
+                                <span class="text-danger" id="error_g-recaptcha-response"></span>
                             </div>
                         </div>
                         <div class="form-group">
