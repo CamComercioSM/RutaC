@@ -43,6 +43,7 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     @yield('style')
 </head>
 <body class="hold-transition skin-black-light login-page layout-top-nav">
@@ -129,8 +130,6 @@
     
     <script src="{{ asset('dist/js/apiSicam.js') }}"></script>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    
     <script>
         $(function () {
             $('input').iCheck({
