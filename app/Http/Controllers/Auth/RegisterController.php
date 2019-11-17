@@ -204,7 +204,8 @@ class RegisterController extends Controller
         $rules["password"] = 'required|min:6';
         $rules["repetir_password"] = 'same:password';
         $rules["tipo_documento"] = 'required';
-        
+        $rules["g-recaptcha-response"] = 'required|recaptcha';
+
         $validator = Validator::make($request->all(), $rules);
         
         $data = [];

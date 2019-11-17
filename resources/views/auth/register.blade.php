@@ -179,6 +179,11 @@
                             <!-- /.col -->
                         </div>
                         <div class="row">
+                            <div class="col-xs-12">
+                                <div class="g-recaptcha " data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-xs-8">
                                 <div class="checkbox icheck has-feedback">
                                     <label>

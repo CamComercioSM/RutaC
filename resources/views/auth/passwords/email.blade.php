@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-6 col-md-offset-4">
                                 <div class="g-recaptcha " data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
                             </div>
                         </div>
