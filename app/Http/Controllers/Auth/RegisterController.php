@@ -185,6 +185,8 @@ class RegisterController extends Controller
     {        
         //$regex = '/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/';
         $rules = [];
+        $messages = [];
+
         if($request->radio == '1'){
             $rules["nombre_emprendimiento"] = 'required|max:255';
             $rules["descripcion_emprendimiento"] = 'required|max:255';
@@ -206,7 +208,10 @@ class RegisterController extends Controller
         $rules["tipo_documento"] = 'required';
         $rules["g-recaptcha-response"] = 'required|recaptcha';
 
-        $validator = Validator::make($request->all(), $rules);
+        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+
+        $validator = Validator::make($request->all(), $rules, $messages);
         
         $data = [];
         $data['status'] = '';
