@@ -128,6 +128,8 @@
     <script src="{{ URL::secure('plugins/iCheck/icheck.min.js') }}"></script>
     
     <script src="{{ asset('dist/js/apiSicam.js') }}"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     
     <script>
         $(function () {
