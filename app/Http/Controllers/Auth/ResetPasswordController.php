@@ -110,7 +110,6 @@ class ResetPasswordController extends Controller
             'token' => 'required',
             'usuarioEMAIL' => 'required|email',
             'password' => 'required|confirmed|min:6',
-            'g-recaptcha-response'=>'required|recaptcha',
         ];
     }
 

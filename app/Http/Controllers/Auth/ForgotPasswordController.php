@@ -76,7 +76,14 @@ class ForgotPasswordController extends Controller
      */
     protected function validateEmail(Request $request)
     {
-        $this->validate($request, ['usuarioEMAIL' => 'required|email']);
+        $messages = [];
+        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+
+        $this->validate($request, [
+            'usuarioEMAIL' => 'required|email',
+            'g-recaptcha-response'=>'required|recaptcha',
+        ], $messages);
     }
 
     /**
