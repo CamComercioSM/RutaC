@@ -66,18 +66,20 @@ class VideosController extends Controller
             if($data['status'] != 'Errors'){
                 $data['status'] = 'Ok';
                 $data['mensaje'] = 'Material agregado correctamente';
-                
-                if(strpos($request->url_video, '?v=')){
-                    $code_url = explode('?v=', $request->url_video);
+
+                parse_str( parse_url( $request->url_video, PHP_URL_QUERY ), $varUrl );
+                if(isset($varUrl['v'])){
+                    $code_url = $varUrl['v'];
                 }else{
-                    $code_url = explode('youtu.be/', $request->url_video);
+                    $a_url = explode('youtu.be/',$request->url_video);
+                    $code_url = $a_url[1];
                 }
-                
+
                 $material = new Material;
                 $material->TIPOS_MATERIALES_tipo_materialID = 'Video';
                 $material->material_ayudaNOMBRE = $request->titulo_video;
                 $material->material_ayudaURL = $request->url_video;
-                $material->material_ayudaCODIGO = $code_url[1];
+                $material->material_ayudaCODIGO = $code_url;
                 $material->material_ayudaESTADO = 'Activo';
                 $material->save();
             }
