@@ -23,7 +23,7 @@ class ReCaptcha
         );
 
         $body = json_decode((string)$response->getBody());
-        Log::info($body);
+        dd($body);
         return $body->success;
     }
 }
