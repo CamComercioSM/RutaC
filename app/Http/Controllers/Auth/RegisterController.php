@@ -208,11 +208,8 @@ class RegisterController extends Controller
         $rules["tipo_documento"] = 'required';
         $rules["g-recaptcha-response"] = 'required|recaptcha';
 
-        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido1';
-        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido2';
-
-        Log::info($request);
-        Log::info("----------------------------");
+        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
 
         $validator = Validator::make($request->all(), $rules, $messages);
         
