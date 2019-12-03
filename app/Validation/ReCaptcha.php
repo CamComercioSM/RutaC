@@ -3,6 +3,7 @@
 namespace App\Validation;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
 
 class ReCaptcha
 {
@@ -22,6 +23,7 @@ class ReCaptcha
         );
 
         $body = json_decode((string)$response->getBody());
+        Log::info($body);
         return $body->success;
     }
 }
