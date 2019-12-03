@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 //use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 
 class ForgotPasswordController extends Controller
@@ -79,6 +80,8 @@ class ForgotPasswordController extends Controller
         $messages = [];
         $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
         $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        Log::info($request);
+        Log::info("----------------------------");
 
         $this->validate($request, [
             'usuarioEMAIL' => 'required|email',
