@@ -45,6 +45,10 @@
     </script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     @yield('style')
+
+<script data-ad-client="ca-pub-5163385221124664" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
 </head>
 <body class="hold-transition skin-black-light login-page layout-top-nav">
     <div class="wrapper">
@@ -146,5 +150,20 @@
     </script>
 
     @yield('footer')
+        
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154856020-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-154856020-1'); 
+</script>         
+
+<script data-ad-client="ca-pub-5163385221124664" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
+    
 </body>
 </html>

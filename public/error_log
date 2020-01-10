@@ -1,1 +1,0 @@
-[15-Nov-2019 04:27:54 UTC] PHP Fatal error:  Out of memory (allocated 2097152) (tried to allocate 65536 bytes) in /home/ccsm/rutac/vendor/composer/ClassLoader.php on line 444

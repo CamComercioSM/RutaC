@@ -67,14 +67,14 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Inicio Sesión</a>
-                        <a href="{{ url('/registro') }}">Registro</a>
-                    @endauth
-                </div>
+            <div class="top-right links">
+                @auth
+                <a href="{{ url('/home') }}">Home</a>
+                @else
+                <a href="{{ route('login') }}">Inicio Sesión</a>
+                <a href="{{ url('/registro') }}">Registro</a>
+                @endauth
+            </div>
             @endif
 
             <div class="content">
@@ -83,5 +83,38 @@
                 </div>
             </div>
         </div>
-    </body>
+
+
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Ruta C -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5163385221124664"
+             data-ad-slot="2573249686"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154856020-1"></script>
+        <script>
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-154856020-1');
+        </script>         
+
+        <script data-ad-client="ca-pub-5163385221124664" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+    </body> 
+
+
 </html>

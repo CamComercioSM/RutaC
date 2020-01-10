@@ -56,15 +56,6 @@
                     <h3 class="profile-username text-center">PUBLICIDAD</h3>
                 </div>
                 <div class="box-body box-profile">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Palmasoft 728x90 -->
-<ins class="adsbygoogle"
-style="display:inline-block;width:728px;height:90px"
-data-ad-client="ca-pub-5163385221124664"
-data-ad-slot="7655078773"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
                 </div>
             </div>
             <div class="box box-primary">
