@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use Auth;
 use App\Models\User;
 use App\Models\Municipio;
@@ -212,6 +213,17 @@ class UsuarioController extends Controller
             $request->session()->flash("message_success", "Datos actualizados correctamente");
             return back();
         }
+        return json_encode($data);
+    }
+
+    public function resetPassword(Request $request){
+        $request['usuarioEMAIL'] = 'miguel5230@gmail.com';
+        (new \App\Http\Controllers\Auth\ForgotPasswordController)->sendResetLinkEmailFromAdmin($request);
+
+        $data = [];
+        $data['mensaje'] = 'Link enviado correctamente';
+        $data['status'] = 'Ok';
+
         return json_encode($data);
     }
 

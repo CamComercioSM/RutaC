@@ -123,6 +123,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/crear-administrador', 'Admin\UsuarioController@crearAdministrador');
     Route::get('admin/eliminar-usuario/{usuarioID}', 'Admin\UsuarioController@eliminarUsuario');
 
+    Route::post('admin/usuario/reset-password', 'Admin\UsuarioController@resetPassword');
+
     Route::get('admin/usuario/{usuarioID}', 'Admin\UsuarioController@verUsuario');
     Route::post('admin/usuario-guardar', 'Admin\UsuarioController@guardarPerfil');
 
