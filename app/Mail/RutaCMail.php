@@ -49,7 +49,7 @@ class RutaCMail extends Mailable
             case 'restablecer_clave':
                 return $this->to($this->data->usuarioEMAIL)
                 ->from(env('NOTIFY_EMAIL'), 'RutaC - Cámara de Comercio de Santa Marta para el Magdalena')
-                ->subject('Bienvenido a RutaC')
+                ->subject('Restablecimiento de contraseña')
                 ->view('rutac.mails.reset_password')->withData($this->data);
             break;
             case 'fin_diagnostico':
