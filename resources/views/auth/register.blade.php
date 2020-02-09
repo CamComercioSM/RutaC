@@ -6,209 +6,209 @@
     }
 </style>
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="box">
-                <div class="register-box-body" style="text-align: justify;">
-                    <img src="public/dist/img/mails/01.png" style="max-width: 100%" >
-                    <h2><b>BIENVENIDOS A RUTA C</b></h2>
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-6">
+                <div class="box">
+                    <div class="register-box-body" style="text-align: justify;">
+                        <img src="{{asset('/mails/01.png')}}" style="max-width: 100%" >
+                        <h2><b>BIENVENIDOS A RUTA C</b></h2>
 
-                    <p>Ruta C es un programa de acompañamiento que ofrece la Cámara de Comercio de Santa Marta para el Magdalena a través del cual podrás determinar una ruta que te permita fortalecer tu actividad empresarial o tu idea de negocios. </p>
+                        <p>Ruta C es un programa de acompañamiento que ofrece la Cámara de Comercio de Santa Marta para el Magdalena a través del cual podrás determinar una ruta que te permita fortalecer tu actividad empresarial o tu idea de negocios. </p>
 
-                    <p>Para disponer de esta herramienta debes:</p>
-                    <ul>
-                        <li>Registrate como nuevo usuario o inicia sesión.</li>
-                        <li>Registra tu idea o negocio.</li>
-                        <li>Completa el diagnóstico y obten los resultados del estado de tu idea o negocio.</li>
-                        <li>Sigue la ruta de crecimiento empresarial.</li>
-                    </ul>
+                        <p>Para disponer de esta herramienta debes:</p>
+                        <ul>
+                            <li>Registrate como nuevo usuario o inicia sesión.</li>
+                            <li>Registra tu idea o negocio.</li>
+                            <li>Completa el diagnóstico y obten los resultados del estado de tu idea o negocio.</li>
+                            <li>Sigue la ruta de crecimiento empresarial.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="box">
-                <div id="message-error" class="col-md-12" style="margin-top: 5px;"></div>
-                <div class="register-box-body">
-                    <h3 class="login-box-msg">Completa los siguientes datos</h3>
-                    <form id="formRegistro" action="{{ action('Auth\RegisterController@register') }}" method="post">
-                        {!! csrf_field() !!}
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <label id="rEmpresa">
-                                        <input type="radio" name="radio" class="minimal" value="2" checked> Registro Empresas
-                                    </label>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="message-error" class="col-md-12" style="margin-top: 5px;"></div>
+                        <h3 class="login-box-msg text-center">Completa los siguientes datos</h3>
+                        <form id="formRegistro" action="{{ action('Auth\RegisterController@register') }}" method="post">
+                            {!! csrf_field() !!}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <label id="rEmpresa">
+                                            <input type="radio" name="radio" class="minimal" value="2" checked> Registro Empresas
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <label id="rEmprendimiento">
+                                            <input type="radio" name="radio" class="minimal" value="1"> Registro Emprendimientos
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <label id="rEmprendimiento">
-                                        <input type="radio" name="radio" class="minimal" value="1"> Registro Emprendimientos
-                                    </label>
+                            <div class="col-md-12"><br></div>
+                            <div class="row show" id="camposEmpresa">
+                                <div class="col-md-12">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="formENit" name="nit" class="form-control" placeholder="NIT" value="">
+                                        <span class="form-control-feedback" id="alert_error_nit"></span>
+                                        <span class="text-danger" id="error_nit"></span>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="formENombreEmpresa" name="nombre_empresa" class="form-control" placeholder="Nombre o razón social de la empresa" value=""  maxlength="255">
+                                        <span class="form-control-feedback" id="alert_error_nombre_empresa"></span>
+                                        <span class="text-danger" id="error_nombre_empresa"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12"><br></div>
-                        <div class="row show" id="camposEmpresa">
-                            <div class="col-xs-12">
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="formENit" name="nit" class="form-control" placeholder="NIT" value="">
-                                    <span class="form-control-feedback" id="alert_error_nit"></span>
-                                    <span class="text-danger" id="error_nit"></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="formENombreEmpresa" name="nombre_empresa" class="form-control" placeholder="Nombre o razón social de la empresa" value=""  maxlength="255">
-                                    <span class="form-control-feedback" id="alert_error_nombre_empresa"></span>
-                                    <span class="text-danger" id="error_nombre_empresa"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row hidden" id="camposEmprendimiento">
-                            <div class="col-xs-12">
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="nombre_emprendimiento" name="nombre_emprendimiento" class="form-control" placeholder="Nombre emprendimiento" value="">
-                                    <span class="form-control-feedback" id="alert_error_nombre_emprendimiento"></span>
-                                    <span class="text-danger" id="error_nombre_emprendimiento"></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="descripcion_emprendimiento" name="descripcion_emprendimiento" class="form-control" placeholder="Descripción del emprendimiento" value=""  maxlength="255">
-                                    <span class="form-control-feedback" id="alert_error_descripcion_emprendimiento"></span>
-                                    <span class="text-danger" id="error_descripcion_emprendimiento"></span>
+                            <div class="row hidden" id="camposEmprendimiento">
+                                <div class="col-md-12">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="nombre_emprendimiento" name="nombre_emprendimiento" class="form-control" placeholder="Nombre emprendimiento" value="">
+                                        <span class="form-control-feedback" id="alert_error_nombre_emprendimiento"></span>
+                                        <span class="text-danger" id="error_nombre_emprendimiento"></span>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="descripcion_emprendimiento" name="descripcion_emprendimiento" class="form-control" placeholder="Descripción del emprendimiento" value=""  maxlength="255">
+                                        <span class="form-control-feedback" id="alert_error_descripcion_emprendimiento"></span>
+                                        <span class="text-danger" id="error_descripcion_emprendimiento"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group">
-                                    <select name="tipo_documento" id="tipo_documento" class="form-control" type="text">
-                                        <option value="">Tipo de documento</option>
-                                    </select>
-                                    <span class="form-control-feedback" id="alert_error_tipo_documento"></span>
-                                    <span class="text-danger" id="error_tipo_documento"></span>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select name="tipo_documento" id="tipo_documento" class="form-control" type="text">
+                                            <option value="">Tipo de documento</option>
+                                        </select>
+                                        <span class="form-control-feedback" id="alert_error_tipo_documento"></span>
+                                        <span class="text-danger" id="error_tipo_documento"></span>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="formENumeroDocumento" name="numero_documento" class="form-control" placeholder="No. Documento" value="">
+                                        <span class="form-control-feedback" id="alert_error_numero_documento"></span>
+                                        <span class="text-danger" id="error_numero_documento"></span>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="formENombres" name="nombres" class="form-control" placeholder="Nombres" value="">
+                                        <span class="form-control-feedback" id="alert_error_nombres"></span>
+                                        <span class="text-danger" id="error_nombres"></span>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="formEApellidos" name="apellidos" class="form-control" placeholder="Apellidos" value="">
+                                        <span class="form-control-feedback" id="alert_error_apellidos"></span>
+                                        <span class="text-danger" id="error_apellidos"></span>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <select name="departamento_residencia" id="departamento_residencia" class="form-control select_departamento" type="text">
+                                            <option value="">Departamento de residencia</option>
+                                            @foreach($repositoryDepartamentos as $dept)
+                                            <option value="{{$dept->id_departamento}}">{{$dept->departamento}}</option>
+                                            @endforeach
+                                        </select>
+                                        <span class="form-control-feedback" id="alert_error_departamento_residencia"></span>
+                                        <span class="text-danger" id="error_departamento_residencia"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <select name="municipio_residencia" id="municipio_residencia" class="form-control select_municipio" type="text" disabled>
+                                            <option value="">Municipio de residencia</option>
+                                        </select>
+                                        <span class="form-control-feedback" id="alert_error_municipio_residencia"></span>
+                                        <span class="text-danger" id="error_municipio_residencia"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- /.col -->
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="formENumeroDocumento" name="numero_documento" class="form-control" placeholder="No. Documento" value="">
-                                    <span class="form-control-feedback" id="alert_error_numero_documento"></span>
-                                    <span class="text-danger" id="error_numero_documento"></span>
+                            <div class="form-group has-feedback">
+                                <input type="text" id="formEDireccion" name="direccion" class="form-control" placeholder="Dirección de residencia" value="">
+                                <span class="form-control-feedback" id="alert_error_direccion"></span>
+                                <span class="text-danger" id="error_direccion"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="email" id="formECorreoElectronico" name="correo_electronico" class="form-control" placeholder="Correo electrónico" value="">
+                                        <span class="form-control-feedback" id="alert_error_correo_electronico"></span>
+                                        <span class="text-danger" id="error_correo_electronico"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="text" id="formETelefono" name="telefono" class="form-control" placeholder="Teléfono" value="">
+                                        <span class="form-control-feedback" id="alert_error_telefono"></span>
+                                        <span class="text-danger" id="error_telefono"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- /.col -->
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="formENombres" name="nombres" class="form-control" placeholder="Nombres" value="">
-                                    <span class="form-control-feedback" id="alert_error_nombres"></span>
-                                    <span class="text-danger" id="error_nombres"></span>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="password" id="formEPassword" name="password" class="form-control" placeholder="Contraseña" value="">
+                                        <span class="form-control-feedback" id="alert_error_password"></span>
+                                        <span class="text-danger" id="error_password"></span>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group has-feedback">
+                                        <input type="password" id="formERePassword" name="repetir_password" class="form-control" placeholder="Repita contraseña" value="">
+                                        <span class="form-control-feedback" id="alert_error_repetir_password"></span>
+                                        <span class="text-danger" id="error_repetir_password"></span>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkbox icheck has-feedback">
+                                        <label>
+                                            <div class="form-group has-feedback">
+                                                <input type="checkbox" id="formETerminos" name="termino_y_condiciones_de_uso"> He leído y acepto los <a onclick="return false;" href="javascript:void(0)" data-toggle="modal" data-target="#modal-terminos-condiciones">términos y condiciones de uso</a>
+                                            </div>
+                                        </label>
+                                        <span class="text-danger" id="error_termino_y_condiciones_de_uso"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- /.col -->
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="formEApellidos" name="apellidos" class="form-control" placeholder="Apellidos" value="">
-                                    <span class="form-control-feedback" id="alert_error_apellidos"></span>
-                                    <span class="text-danger" id="error_apellidos"></span>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="g-recaptcha" data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
+                                    <span class="form-control-feedback" id="alert_error_g-recaptcha-response"></span>
+                                    <span class="text-danger" id="error_g-recaptcha-response"></span>
                                 </div>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <select name="departamento_residencia" id="departamento_residencia" class="form-control select_departamento" type="text">
-                                        <option value="">Departamento de residencia</option>
-                                        @foreach($repositoryDepartamentos as $dept)
-                                        <option value="{{$dept->id_departamento}}">{{$dept->departamento}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="form-control-feedback" id="alert_error_departamento_residencia"></span>
-                                    <span class="text-danger" id="error_departamento_residencia"></span>
+                                <!-- /.col -->
+                                <div class="col-md-4">
+                                    <input name="datos_consulta" id="datos_consulta" type="hidden" value="">
+                                    <button type="button" id="btn-submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
                                 </div>
+                                <!-- /.col -->
                             </div>
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <select name="municipio_residencia" id="municipio_residencia" class="form-control select_municipio" type="text" disabled>
-                                        <option value="">Municipio de residencia</option>
-                                    </select>
-                                    <span class="form-control-feedback" id="alert_error_municipio_residencia"></span>
-                                    <span class="text-danger" id="error_municipio_residencia"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <input type="text" id="formEDireccion" name="direccion" class="form-control" placeholder="Dirección de residencia" value="">
-                            <span class="form-control-feedback" id="alert_error_direccion"></span>
-                            <span class="text-danger" id="error_direccion"></span>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="email" id="formECorreoElectronico" name="correo_electronico" class="form-control" placeholder="Correo electrónico" value="">
-                                    <span class="form-control-feedback" id="alert_error_correo_electronico"></span>
-                                    <span class="text-danger" id="error_correo_electronico"></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="text" id="formETelefono" name="telefono" class="form-control" placeholder="Teléfono" value="">
-                                    <span class="form-control-feedback" id="alert_error_telefono"></span>
-                                    <span class="text-danger" id="error_telefono"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="password" id="formEPassword" name="password" class="form-control" placeholder="Contraseña" value="">
-                                    <span class="form-control-feedback" id="alert_error_password"></span>
-                                    <span class="text-danger" id="error_password"></span>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-xs-6">
-                                <div class="form-group has-feedback">
-                                    <input type="password" id="formERePassword" name="repetir_password" class="form-control" placeholder="Repita contraseña" value="">
-                                    <span class="form-control-feedback" id="alert_error_repetir_password"></span>
-                                    <span class="text-danger" id="error_repetir_password"></span>
-                                </div>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="checkbox icheck has-feedback">
-                                    <label>
-                                        <div class="form-group has-feedback">
-                                            <input type="checkbox" id="formETerminos" name="termino_y_condiciones_de_uso"> He leído y acepto los <a onclick="return false;" href="javascript:void(0)" data-toggle="modal" data-target="#modal-terminos-condiciones">términos y condiciones de uso</a>
-                                        </div>
-                                    </label>
-                                    <span class="text-danger" id="error_termino_y_condiciones_de_uso"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <div class="g-recaptcha" data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
-                                <span class="form-control-feedback" id="alert_error_g-recaptcha-response"></span>
-                                <span class="text-danger" id="error_g-recaptcha-response"></span>
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-xs-4">
-                                <input name="datos_consulta" id="datos_consulta" type="hidden" value="">
-                                <button type="button" id="btn-submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 @section('footer')
 <div class="modal fade" id="modal-terminos-condiciones">
