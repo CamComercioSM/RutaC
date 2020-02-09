@@ -40,7 +40,8 @@
     @csrf
 </form>
 
-<script src="{{ asset(mix('js/app.js')) }}"></script>
+
 @stack('app-scripts')
 </body>
+<script src="{{ asset(mix('js/app.js')) }}"></script>
 </html>
