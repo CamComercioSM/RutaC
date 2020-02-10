@@ -29,11 +29,23 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <div id="message-error" class="col-md-12" style="margin-top: 5px;"></div>
+                        <div class="flex-grow-1">
+                            @include('layouts.__alert')
+                        </div>
                         <h3 class="login-box-msg text-center">Completa los siguientes datos</h3>
-                        <form id="formRegistro" action="{{ action('Auth\RegisterController@register') }}" method="post">
+
+                        <rc-form
+                                action="{{ action('Auth\RegisterController@register') }}"
+                                method="post"
+                        >
                             @include('auth.form.__register')
-                        </form>
+                            <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Registrarme') }}
+                                </button>
+                            </div>
+                        </rc-form>
+
                     </div>
                 </div>
             </div>

@@ -9,6 +9,8 @@ use App\Models\DatoUsuario;
 use App\Models\Departamento;
 use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -17,6 +19,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Repositories\FormRepository;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -60,16 +64,56 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            
-        ]);
+        $rules = [];
+        $rules["nombres"] = 'required|max:255';
+        $rules["apellidos"] = 'required|max:255';
+        $rules["numero_documento"] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
+        $rules["departamento_residencia"] = 'required';
+        $rules["municipio_residencia"] = 'required';
+        $rules["direccion"] = 'required|max:255';
+        $rules["correo_electronico"] = 'email|unique:usuarios,usuarioEMAIL|max:255';
+        $rules["telefono"] = 'required|numeric';
+        $rules["password"] = 'required|min:6';
+        $rules["repetir_password"] = 'same:password';
+        $rules["tipo_documento"] = 'required';
+        $rules["g-recaptcha-response"] = 'required|recaptcha';
+        $rules["termino_y_condiciones_de_uso"] = 'required|confirmed';
+
+        $messages = [];
+        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+
+        return Validator::make($data, $rules, $messages);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function register(Request $request)
+    {
+        $valid = $this->validator($request->all());
+
+        if ($valid->fails()) {
+            return back()
+            ->withErrors($valid->errors())
+                ->withInput();
+        }
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**
      * Muestra el formulario de registro de emprendimientos
      *
-     * @param array $data - Array de los datos del registro
-     * @return \App\User - Datos del usuario registrado
+     * @return Factory|View
      */
     public function showRegistrationForm(){
         $repository = $this->repository;
@@ -81,7 +125,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
@@ -126,9 +170,9 @@ class RegisterController extends Controller
                 $nuevoUsuario->usuarioEMAIL = $data['correo_electronico'];
                 $nuevoUsuario->password = bcrypt($data['password']);
                 $nuevoUsuario->dato_usuarioID = $datoUsuarioID;
-                $nuevoUsuario->confirmation_code = str_random(25);
+                $nuevoUsuario->confirmation_code = Str::random(25);
                 if($hayCambios){
-                    $nuevoUsuario->update_code = str_random(25);
+                    $nuevoUsuario->update_code = Str::random(25);
                 }
                 $nuevoUsuario->save();
                 $usuarioID = $nuevoUsuario->usuarioID;
@@ -173,6 +217,7 @@ class RegisterController extends Controller
             Log::error($e);
             dd("There was an error creating your account. Error: ".dd(config("custom_exceptions.".$e->getCode())));
         }
+        return null;
     }
 
     /**

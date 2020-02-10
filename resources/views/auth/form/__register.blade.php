@@ -9,6 +9,7 @@
                 @error('tipo_documento')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('tipo_documento') }}"
                 placeholder="{{ __('Tipo de documento') }}"
                 :options="{{ $tipos->toJson() }}"
         >
@@ -24,6 +25,7 @@
                 @error('numero_documento')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('numero_documento') }}"
                 autocomplete="off"
                 placeholder="No. Documento"
         ></rc-input>
@@ -39,6 +41,7 @@
                 @error('nombres')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('nombres') }}"
                 autocomplete="off"
                 placeholder="Nombres"
         ></rc-input>
@@ -53,6 +56,7 @@
                 @error('apellidos')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('apellidos') }}"
                 autocomplete="off"
                 placeholder="Apellidos"
         ></rc-input>
@@ -61,26 +65,27 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-        <rc-select
+        <rc-select-location
                 name="departamento_residencia"
                 id="departamento_residencia"
                 rules="required|numeric"
                 @error('departamento_residencia')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('departamento_residencia') }}"
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
+                sub-select="municipio_residencia"
         >
-        </rc-select>
+        </rc-select-location>
     </div>
 
-    <div class="col-md-6">
-        <div class="form-group has-feedback">
-            <select name="municipio_residencia" id="municipio_residencia" class="form-control select_municipio" type="text" disabled>
-                <option value="">Municipio de residencia</option>
+    <div class="form-group col-md-6">
+        <div class="form-group">
+            <select class='form-control' v-model='city'>
+                <option value='0' >Select State</option>
+                <option v-for='data in cities' :value='data.id'></option>
             </select>
-            <span class="form-control-feedback" id="alert_error_municipio_residencia"></span>
-            <span class="text-danger" id="error_municipio_residencia"></span>
         </div>
     </div>
 </div>
@@ -94,6 +99,7 @@
                 @error('direccion')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('direccion') }}"
                 autocomplete="off"
                 placeholder="Dirección de residencia"
         ></rc-input>
@@ -109,6 +115,7 @@
                 @error('correo_electronico')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('correo_electronico') }}"
                 autocomplete="off"
                 placeholder="Correo electrónico"
         ></rc-input>
@@ -123,6 +130,7 @@
                 @error('telefono')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('telefono') }}"
                 autocomplete="off"
                 placeholder="Teléfono"
         ></rc-input>
@@ -145,7 +153,7 @@
 
     <div class="form-group col-md-6">
         <rc-input
-                rules="required|min:6|confirmed:formEPassword"
+                rules="required|min:6|confirmed:password"
                 name="repetir_password"
                 id="formERePassword"
                 type="password"
@@ -158,27 +166,15 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="checkbox icheck has-feedback">
-            <label>
-                <div class="form-group has-feedback">
-                    <input type="checkbox" id="formETerminos" name="termino_y_condiciones_de_uso"> He leído y acepto los <a onclick="return false;" href="javascript:void(0)" data-toggle="modal" data-target="#modal-terminos-condiciones">términos y condiciones de uso</a>
-                </div>
-            </label>
-            <span class="text-danger" id="error_termino_y_condiciones_de_uso"></span>
-        </div>
+    <div class="form-group col-md-12">
+        <rc-checkbox
+                rules="required"
+                name="termino_y_condiciones_de_uso"
+                id="formETerminos"
+                label="He leído y acepto los términos y condiciones de uso"
+                @error('termino_y_condiciones_de_uso')
+                error="{{ $message }}"
+                @enderror
+        ></rc-checkbox>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-8">
-        <div class="g-recaptcha" data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
-        <span class="form-control-feedback" id="alert_error_g-recaptcha-response"></span>
-        <span class="text-danger" id="error_g-recaptcha-response"></span>
-    </div>
-    <!-- /.col -->
-    <div class="col-md-4">
-        <input name="datos_consulta" id="datos_consulta" type="hidden" value="">
-        <button type="button" id="btn-submit" class="btn btn-primary btn-block btn-flat">Registrarme</button>
-    </div>
-    <!-- /.col -->
 </div>
