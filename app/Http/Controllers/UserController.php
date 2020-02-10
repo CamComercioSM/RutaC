@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Repositories\FormRepository;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -172,7 +173,7 @@ class UserController extends Controller
     public function reenviarCodigo(Request $request){
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->first();
         if($usuario){
-            $usuario->confirmation_code = str_random(25);
+            $usuario->confirmation_code = Str::random(25);
             $usuario->save();
 
             Mail::send(new RutaCMail($usuario, 'reenvio_codigo'));
