@@ -400,7 +400,7 @@
 
     function getValuesForm(){
         var values = new Object;        
-        var inputs = $("#formRegistro").find('input, select');  
+        var inputs = $("#formRegistro").find('input, select, textarea');
         for(var i = 0; i< inputs.length; i++){
             name = $(inputs[i]).attr('name');
             if(name == 'radio'){

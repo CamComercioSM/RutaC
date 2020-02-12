@@ -1,0 +1,1980 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+#RewriteRule ^([a-z]+)\/?$ $1.php [NC]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+#RewriteRule ^([a-z]+)\/?$ $1.html [NC]
+
+</IfModule>
+# disable directory browsing
+Options All -Indexes
+
+# prevent folder listing
+IndexIgnore *
+
+# cache images and flash content for one month
+<FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf)$">
+	Header set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+# cache text, css, and javascript files for one week
+<FilesMatch ".(js|css|pdf|txt)$">
+	Header set Cache-Control "max-age=604800"
+</FilesMatch>
+
+SetEnvIfNoCase User-Agent ^$ bad_bot
+SetEnvIfNoCase User-Agent "^AESOP_com_SpiderMan" bad_bot
+SetEnvIfNoCase User-Agent "^Alexibot" bad_bot
+SetEnvIfNoCase User-Agent "Anonymouse.org" bad_bot
+SetEnvIfNoCase User-Agent "^asterias" bad_bot
+SetEnvIfNoCase User-Agent "^attach" bad_bot
+SetEnvIfNoCase User-Agent "^BackDoorBot" bad_bot
+SetEnvIfNoCase User-Agent "^BackWeb" bad_bot
+SetEnvIfNoCase User-Agent "Bandit" bad_bottest
+SetEnvIfNoCase User-Agent "^Baiduspider" bad_bot
+SetEnvIfNoCase User-Agent "^BatchFTP" bad_bot
+SetEnvIfNoCase User-Agent "^Bigfoot" bad_bot
+SetEnvIfNoCase User-Agent "^Black.Hole" bad_bot
+SetEnvIfNoCase User-Agent "^BlackWidow" bad_bot
+SetEnvIfNoCase User-Agent "^BlowFish" bad_bot
+SetEnvIfNoCase User-Agent "^Bot mailto:craftbot@yahoo.com" bad_bot
+SetEnvIfNoCase User-Agent "^BotALot" bad_bot
+SetEnvIfNoCase User-Agent "Buddy" bad_bot
+SetEnvIfNoCase User-Agent "^BuiltBotTough" bad_bot
+SetEnvIfNoCase User-Agent "^Bullseye" bad_bot
+SetEnvIfNoCase User-Agent "^BunnySlippers" bad_bot
+SetEnvIfNoCase User-Agent "^Cegbfeieh" bad_bot
+SetEnvIfNoCase User-Agent "^CheeseBot" bad_bot
+SetEnvIfNoCase User-Agent "^CherryPicker" bad_bot
+SetEnvIfNoCase User-Agent "^ChinaClaw" bad_bot
+SetEnvIfNoCase User-Agent "Collector" bad_bot
+SetEnvIfNoCase User-Agent "Copier" bad_bot
+SetEnvIfNoCase User-Agent "^CopyRightCheck" bad_bot
+SetEnvIfNoCase User-Agent "^cosmos" bad_bot
+SetEnvIfNoCase User-Agent "^Crescent" bad_bot
+SetEnvIfNoCase User-Agent "^Curl" bad_bot
+SetEnvIfNoCase User-Agent "^Custo" bad_bot
+SetEnvIfNoCase User-Agent "^DA" bad_bot
+SetEnvIfNoCase User-Agent "^DISCo" bad_bot
+SetEnvIfNoCase User-Agent "^DIIbot" bad_bot
+SetEnvIfNoCase User-Agent "^DittoSpyder" bad_bot
+SetEnvIfNoCase User-Agent "^Download" bad_bot
+SetEnvIfNoCase User-Agent "^Download Demon" bad_bot
+SetEnvIfNoCase User-Agent "^Download Devil" bad_bot
+SetEnvIfNoCase User-Agent "^Download Wonder" bad_bot
+SetEnvIfNoCase User-Agent "Downloader" bad_bot
+SetEnvIfNoCase User-Agent "^dragonfly" bad_bot
+SetEnvIfNoCase User-Agent "^Drip" bad_bot
+SetEnvIfNoCase User-Agent "^eCatch" bad_bot
+SetEnvIfNoCase User-Agent "^EasyDL" bad_bot
+SetEnvIfNoCase User-Agent "^ebingbong" bad_bot
+SetEnvIfNoCase User-Agent "^EirGrabber" bad_bot
+SetEnvIfNoCase User-Agent "^EmailCollector" bad_bot
+SetEnvIfNoCase User-Agent "^EmailSiphon" bad_bot
+SetEnvIfNoCase User-Agent "^EmailWolf" bad_bot
+SetEnvIfNoCase User-Agent "^EroCrawler" bad_bot
+SetEnvIfNoCase User-Agent "^Exabot" bad_bot
+SetEnvIfNoCase User-Agent "^Express WebPictures" bad_bot
+SetEnvIfNoCase User-Agent "Extractor" bad_bot
+SetEnvIfNoCase User-Agent "^EyeNetIE" bad_bot
+SetEnvIfNoCase User-Agent "^FileHound" bad_bot
+SetEnvIfNoCase User-Agent "^FlashGet" bad_bot
+SetEnvIfNoCase User-Agent "^Foobot" bad_bot
+SetEnvIfNoCase User-Agent "^flunky" bad_bot
+SetEnvIfNoCase User-Agent "^FrontPage" bad_bot
+SetEnvIfNoCase User-Agent "^GetRight" bad_bot
+SetEnvIfNoCase User-Agent "^GetSmart" bad_bot
+SetEnvIfNoCase User-Agent "^GetWeb!" bad_bot
+SetEnvIfNoCase User-Agent "^Go!Zilla" bad_bot
+SetEnvIfNoCase User-Agent "Google Wireless Transcoder" bad_bot
+SetEnvIfNoCase User-Agent "^Go-Ahead-Got-It" bad_bot
+SetEnvIfNoCase User-Agent "^gotit" bad_bot
+SetEnvIfNoCase User-Agent "Grabber" bad_bot
+SetEnvIfNoCase User-Agent "^GrabNet" bad_bot
+SetEnvIfNoCase User-Agent "^Grafula" bad_bot
+SetEnvIfNoCase User-Agent "^Harvest" bad_bot
+SetEnvIfNoCase User-Agent "^hloader" bad_bot
+SetEnvIfNoCase User-Agent "^HMView" bad_bot
+SetEnvIfNoCase User-Agent "^httplib" bad_bot
+SetEnvIfNoCase User-Agent "^HTTrack" bad_bot
+SetEnvIfNoCase User-Agent "^humanlinks" bad_bot
+SetEnvIfNoCase User-Agent "^ia_archiver" bad_bot
+SetEnvIfNoCase User-Agent "^IlseBot" bad_bot
+SetEnvIfNoCase User-Agent "^Image Stripper" bad_bot
+SetEnvIfNoCase User-Agent "^Image Sucker" bad_bot
+SetEnvIfNoCase User-Agent "Indy Library" bad_bot
+SetEnvIfNoCase User-Agent "^InfoNaviRobot" bad_bot
+SetEnvIfNoCase User-Agent "^InfoTekies" bad_bot
+SetEnvIfNoCase User-Agent "^Intelliseek" bad_bot
+SetEnvIfNoCase User-Agent "^InterGET" bad_bot
+SetEnvIfNoCase User-Agent "^Internet Ninja" bad_bot
+SetEnvIfNoCase User-Agent "^Iria" bad_bot
+SetEnvIfNoCase User-Agent "^Jakarta" bad_bot
+SetEnvIfNoCase User-Agent "^JennyBot" bad_bot
+SetEnvIfNoCase User-Agent "^JetCar" bad_bot
+SetEnvIfNoCase User-Agent "^JOC" bad_bot
+SetEnvIfNoCase User-Agent "^JustView" bad_bot
+SetEnvIfNoCase User-Agent "^Jyxobot" bad_bot
+SetEnvIfNoCase User-Agent "^Kenjin.Spider" bad_bot
+SetEnvIfNoCase User-Agent "^Keyword.Density" bad_bot
+SetEnvIfNoCase User-Agent "^larbin" bad_bot
+SetEnvIfNoCase User-Agent "^LeechFTP" bad_bot
+SetEnvIfNoCase User-Agent "^LexiBot" bad_bot
+SetEnvIfNoCase User-Agent "^lftp" bad_bot
+SetEnvIfNoCase User-Agent "^libWeb/clsHTTP" bad_bot
+SetEnvIfNoCase User-Agent "^likse" bad_bot
+SetEnvIfNoCase User-Agent "^LinkextractorPro" bad_bot
+SetEnvIfNoCase User-Agent "^LinkScan/8.1a.Unix" bad_bo
+SetEnvIfNoCase User-Agent "^LNSpiderguy" bad_bott
+SetEnvIfNoCase User-Agent "^LinkWalker" bad_bot
+SetEnvIfNoCase User-Agent "^lwp-trivial" bad_bot
+SetEnvIfNoCase User-Agent "^LWP::Simple" bad_bot
+SetEnvIfNoCase User-Agent "^Magnet" bad_bot
+SetEnvIfNoCase User-Agent "^Mag-Net" bad_bot
+SetEnvIfNoCase User-Agent "^MarkWatch" bad_bot
+SetEnvIfNoCase User-Agent "^Mass Downloader" bad_bot
+SetEnvIfNoCase User-Agent "^Mata.Hari" bad_bot
+SetEnvIfNoCase User-Agent "^Memo" bad_bot
+SetEnvIfNoCase User-Agent "^Microsoft.URL" bad_bot
+SetEnvIfNoCase User-Agent "^Microsoft URL Control" bad_bot
+SetEnvIfNoCase User-Agent "^MIDown tool" bad_bot
+SetEnvIfNoCase User-Agent "^MIIxpc" bad_bot
+SetEnvIfNoCase User-Agent "^Mirror" bad_bot
+SetEnvIfNoCase User-Agent "^Missigua Locator" bad_bot
+SetEnvIfNoCase User-Agent "^Mister PiX" bad_bot
+SetEnvIfNoCase User-Agent "^moget" bad_bot
+SetEnvIfNoCase User-Agent "^Mozilla/3.Mozilla/2.01" bad_bot
+SetEnvIfNoCase User-Agent "^Mozilla.*NEWT" bad_bot
+SetEnvIfNoCase User-Agent "^NAMEPROTECT" bad_bot
+SetEnvIfNoCase User-Agent "^Navroad" bad_bot
+SetEnvIfNoCase User-Agent "^NearSite" bad_bot
+SetEnvIfNoCase User-Agent "^NetAnts" bad_bot
+SetEnvIfNoCase User-Agent "^Netcraft" bad_bot
+SetEnvIfNoCase User-Agent "^NetMechanic" bad_bot
+SetEnvIfNoCase User-Agent "^NetSpider" bad_bot
+SetEnvIfNoCase User-Agent "^Net Vampire" bad_bot
+SetEnvIfNoCase User-Agent "^NetZIP" bad_bot
+SetEnvIfNoCase User-Agent "^NextGenSearchBot" bad_bot
+SetEnvIfNoCase User-Agent "^NG" bad_bot
+SetEnvIfNoCase User-Agent "^NICErsPRO" bad_bot
+SetEnvIfNoCase User-Agent "^NimbleCrawler" bad_bot
+SetEnvIfNoCase User-Agent "^Ninja" bad_bot
+SetEnvIfNoCase User-Agent "^NPbot" bad_bot
+SetEnvIfNoCase User-Agent "^Octopus" bad_bot
+SetEnvIfNoCase User-Agent "^Offline Explorer" bad_bot
+SetEnvIfNoCase User-Agent "^Offline Navigator" bad_bot
+SetEnvIfNoCase User-Agent "^Openfind" bad_bot
+SetEnvIfNoCase User-Agent "^OutfoxBot" bad_bot
+SetEnvIfNoCase User-Agent "^PageGrabber" bad_bot
+SetEnvIfNoCase User-Agent "^Papa Foto" bad_bot
+SetEnvIfNoCase User-Agent "^pavuk" bad_bot
+SetEnvIfNoCase User-Agent "^pcBrowser" bad_bot
+SetEnvIfNoCase User-Agent "^PHP version tracker" bad_bot
+SetEnvIfNoCase User-Agent "^Pockey" bad_bot
+SetEnvIfNoCase User-Agent "^ProPowerBot/2.14" bad_bot
+SetEnvIfNoCase User-Agent "^ProWebWalker" bad_bot
+SetEnvIfNoCase User-Agent "^psbot" bad_bot
+SetEnvIfNoCase User-Agent "^Pump" bad_bot
+SetEnvIfNoCase User-Agent "^QueryN.Metasearch" bad_bot
+SetEnvIfNoCase User-Agent "^RealDownload" bad_bot
+SetEnvIfNoCase User-Agent "Reaper" bad_bot
+SetEnvIfNoCase User-Agent "Recorder" bad_bot
+SetEnvIfNoCase User-Agent "^ReGet" bad_bot
+SetEnvIfNoCase User-Agent "^RepoMonkey" bad_bot
+SetEnvIfNoCase User-Agent "^RMA" bad_bot
+SetEnvIfNoCase User-Agent "Siphon" bad_bot
+SetEnvIfNoCase User-Agent "sitecheck.internetseer.com" bad_bot
+SetEnvIfNoCase User-Agent "^SiteSnagger" bad_bot
+SetEnvIfNoCase User-Agent "^SlySearch" bad_bot
+SetEnvIfNoCase User-Agent "^SmartDownload" bad_bot
+SetEnvIfNoCase User-Agent "^Snake" bad_bot
+SetEnvIfNoCase User-Agent "^Snapbot" bad_bot
+SetEnvIfNoCase User-Agent "^Snoopy" bad_bot
+SetEnvIfNoCase User-Agent "^sogou" bad_bot
+SetEnvIfNoCase User-Agent "^SpaceBison" bad_bot
+SetEnvIfNoCase User-Agent "^SpankBot" bad_bot
+SetEnvIfNoCase User-Agent "^spanner" bad_bot
+SetEnvIfNoCase User-Agent "^Sqworm" bad_bot
+SetEnvIfNoCase User-Agent "Stripper" bad_bot
+SetEnvIfNoCase User-Agent "Sucker" bad_bot
+SetEnvIfNoCase User-Agent "^SuperBot" bad_bot
+SetEnvIfNoCase User-Agent "^SuperHTTP" bad_bot
+SetEnvIfNoCase User-Agent "^Surfbot" bad_bot
+SetEnvIfNoCase User-Agent "^suzuran" bad_bot
+SetEnvIfNoCase User-Agent "^Szukacz/1.4" bad_bot
+SetEnvIfNoCase User-Agent "^tAkeOut" bad_bot
+SetEnvIfNoCase User-Agent "^Teleport" bad_bot
+SetEnvIfNoCase User-Agent "^Telesoft" bad_bot
+SetEnvIfNoCase User-Agent "^TurnitinBot/1.5" bad_bot
+SetEnvIfNoCase User-Agent "^The.Intraformant" bad_bot
+SetEnvIfNoCase User-Agent "^TheNomad" bad_bot
+SetEnvIfNoCase User-Agent "^TightTwatBot" bad_bot
+SetEnvIfNoCase User-Agent "^Titan" bad_bot
+SetEnvIfNoCase User-Agent "^toCrawl/UrlDispatcher" bad_bot
+SetEnvIfNoCase User-Agent "^True_Robot" bad_bot
+SetEnvIfNoCase User-Agent "^turingos" bad_bot
+SetEnvIfNoCase User-Agent "^TurnitinBot" bad_bot
+SetEnvIfNoCase User-Agent "^URLy.Warning" bad_bot
+SetEnvIfNoCase User-Agent "^Vacuum" bad_bot
+SetEnvIfNoCase User-Agent "^VCI" bad_bot
+SetEnvIfNoCase User-Agent "^VoidEYE" bad_bot
+SetEnvIfNoCase User-Agent "^Web Image Collector" bad_bot
+SetEnvIfNoCase User-Agent "^Web Sucker" bad_bot
+SetEnvIfNoCase User-Agent "^WebAuto" bad_bot
+SetEnvIfNoCase User-Agent "^WebBandit" bad_bot
+SetEnvIfNoCase User-Agent "^Webclipping.com" bad_bot
+SetEnvIfNoCase User-Agent "^WebCopier" bad_bot
+SetEnvIfNoCase User-Agent "^WebEMailExtrac.*" bad_bot
+SetEnvIfNoCase User-Agent "^WebEnhancer" bad_bot
+SetEnvIfNoCase User-Agent "^WebFetch" bad_bot
+SetEnvIfNoCase User-Agent "^WebGo IS" bad_bot
+SetEnvIfNoCase User-Agent "^Web.Image.Collector" bad_bot
+SetEnvIfNoCase User-Agent "^WebLeacher" bad_bot
+SetEnvIfNoCase User-Agent "^WebmasterWorldForumBot" bad_bot
+SetEnvIfNoCase User-Agent "^WebReaper" bad_bot
+SetEnvIfNoCase User-Agent "^WebSauger" bad_bot
+SetEnvIfNoCase User-Agent "^WebSite" bad_bot
+SetEnvIfNoCase User-Agent "^Website eXtractor" bad_bot
+SetEnvIfNoCase User-Agent "^Website Quester" bad_bot
+SetEnvIfNoCase User-Agent "^Webster" bad_bot
+SetEnvIfNoCase User-Agent "^WebStripper" bad_bot
+SetEnvIfNoCase User-Agent "^WebWhacker" bad_bot
+SetEnvIfNoCase User-Agent "^WebZIP" bad_bot
+SetEnvIfNoCase User-Agent "Whacker" bad_bot
+SetEnvIfNoCase User-Agent "^Widow" bad_bot
+SetEnvIfNoCase User-Agent "^WISENutbot" bad_bot
+SetEnvIfNoCase User-Agent "^WWWOFFLE" bad_bot
+SetEnvIfNoCase User-Agent "^WWW-Collector-E" bad_bot
+SetEnvIfNoCase User-Agent "^Xaldon" bad_bot
+SetEnvIfNoCase User-Agent "^Xenu" bad_bot
+SetEnvIfNoCase User-Agent "^Zeus" bad_bot
+SetEnvIfNoCase User-Agent "^Zyborg" bad_bot
+# block IP range by CIDR number
+<Limit GET POST PUT>
+	Order allow,deny
+	Allow from all
+Deny from 209.85.32.23
+Deny from env=spammer
+Deny from google.com 
+Deny from google.co.uk 
+Deny from google.de 
+Deny from google.es 
+Deny from google.com.au 
+Deny from google.co.id 
+Deny from google.co.nz 
+Deny from google.se 
+Deny from google.fi 
+Deny from google.dk 
+Deny from google.nl 
+Deny from google.fr 
+Deny from google.ca  
+Deny from google.it 
+Deny from google.be 
+Deny from google.ch 
+Deny from google.ie 
+Deny from google.no
+Deny from google.com.br 
+Deny from google.com.ar 
+Deny from google.com.co 
+Deny from google.com.cu 
+Deny from google.com.au 
+Deny from google.com.mx 
+Deny from google.cl 
+Deny from google.at 
+Deny from google.com.ru 
+Deny from google.pl 
+Deny from google.com.tr 
+Deny from google.com.ua 
+Deny from google.gr 
+Deny from google.co.jp 
+Deny from google.cn 
+Deny from google.com.my 
+Deny from google.co.th 
+Deny from google.co.in 
+Deny from google.co.kr 
+Deny from google.ro 
+Deny from google.com.tw 
+Deny from google.co.za 
+Deny from google.pt 
+Deny from 188.27.67.221
+Deny from 141.92.129.41
+Deny from 212.102.194.193
+Deny from 38.105.109.13
+Deny from 94.75.208.236
+Deny from 80.254.148.75
+Deny from 124.176.210.234
+Deny from 82.81.14.227
+Deny from 82.81
+Deny from 79.179.124.48
+Deny from 77.125.106.92
+Deny from 77.125
+Deny from .il
+Deny from 79.180
+Deny from 79.180.114.96
+Deny from 82.81.11.229
+Deny from 86.153.246.23
+Deny from 82.34.171.94
+Deny from 79.180.48.237
+Deny from 82.46.233.231
+Deny from 79.180.33.27
+Deny from 193.200.150.26
+Deny from 124.181.27.144
+Deny from 79.76.188.117
+Deny from 82.0.187.66
+Deny from 217.42.58.163
+Deny from 82.34.113.133
+Deny from 81.154.94.149
+Deny from 90.195.96.231
+Deny from 77.98.114.162
+Deny from 88.106.189.47
+Deny from 76.5.13.62
+Deny from 84.92.109.3
+Deny from 217.42.58.163
+Deny from 12.34.146.126
+Deny from 125.18.56.109
+Deny from 125.16.133.35
+Deny from red.bezeqint.net
+Deny from millersmiles.co.uk
+Deny from 217.42.58.163
+Deny from banksafeonline.org.uk
+Deny from 79.180.48.237
+Deny from 82.47.63.164
+Deny from 82.33.151.120
+Deny from 82.36.115.38
+Deny from 172.202.141.106
+Deny from 77.98.251.100
+Deny from 128.232.110.18
+Deny from 130.191.107.117
+Deny from 130.76.32.16
+Deny from 131.251.0.53
+Deny from 137.110.222.77
+Deny from 138.253.103.20
+Deny from 143.127.3.10
+Deny from 148.168.40.4
+Deny from 163.221.52.175
+Deny from 172.190.239.53
+Deny from 193.5.216.100
+Deny from 194.203.250.250
+Deny from 194.72.238.67
+Deny from 195.214.79.22
+Deny from 195.93.21.105
+Deny from 195.93.21.129
+Deny from 195.93.21.136
+Deny from 195.93.21.70
+Deny from 202.4.237.25
+Deny from 202.73.163.19
+Deny from 202.73.163.20
+Deny from 202.75.200.7
+Deny from 202.75.200.9
+Deny from 209.147.
+Deny from 209.147.114.202
+Deny from 209.147.127.216
+Deny from 209.147.127.218
+Deny from 209.147.127.219
+Deny from 209.147.127.222
+Deny from 209.59.47.248
+Deny from 209.59.55.7
+Deny from 209.59.56.166
+Deny from 211.72.233.10
+Deny from 216.168.239.87
+Deny from 216.17.247.100
+Deny from 63.100.163.218
+Deny from 63.76.155.166
+Deny from 64.127.
+Deny from 64.127.103.136
+Deny from 64.127.103.138
+Deny from 64.127.98.128
+Deny from 64.127.98.50
+Deny from 64.27.13.93
+Deny from 64.34.162.150
+Deny from 65.110.
+Deny from 65.110.179.164
+Deny from 65.110.181.217
+Deny from 65.110.181.78
+Deny from 65.110.182.139
+Deny from 65.110.182.195
+Deny from 65.110.182.56
+Deny from 65.199.34.69
+Deny from 66.135.
+Deny from 66.135.213.75
+Deny from 66.135.40.79
+Deny from 66.139.77.201
+Deny from 66.148.91.86
+Deny from 66.16.
+Deny from 66.16.13.10
+Deny from 66.170.132.12
+Deny from 66.179.
+Deny from 66.179.210.152
+Deny from 66.179.210.153
+Deny from 66.179.210.169
+Deny from 66.179.210.181
+Deny from 66.179.210.253
+Deny from 66.179.22.39
+Deny from 66.180.82.88
+Deny from 66.194.6.132
+Deny from 66.194.6.136
+Deny from 66.227.46.235
+Deny from 66.249.66.136
+Deny from 66.31.67.249
+Deny from 66.36.231.203
+Deny from 66.77.136.123
+Deny from 68.111.223.249
+Deny from 69.26.94.123
+Deny from 71.105.129.43
+Deny from 71.6.196.245
+Deny from 72.128.124.10
+Deny from 72.13.36.7
+Deny from 72.14.163.84
+Deny from 72.3.137.83
+Deny from 74.53.202.82
+Deny from 75.3.251.62
+Deny from 79.180.33.27
+Deny from 80.176.191.254
+Deny from 80.178.
+Deny from 80.178.164.165
+Deny from 80.178.233.97
+Deny from 80.6.93.148
+Deny from 81.152.0.194
+Deny from 81.153.73.112
+Deny from 81.173.119.129
+Deny from 81.179.50.161
+Deny from 83.252.109.165
+Deny from 84.103.175.127
+Deny from 84.136.255.210
+Deny from 84.65.49.1
+Deny from 86.131.47.254
+Deny from 86.133.166.100
+Deny from 87.69.
+Deny from 88.110.29.46
+Deny from 89.104.53.113
+Deny from 89.104.63.167
+Deny from 89.241.28.199
+Deny from 89.241.7.79
+Deny from 89.243.23.145
+Deny from internetidentity.com
+Deny from net.il
+Deny from castlecops.com
+Deny from .edu
+Deny from 192.117.178.10
+Deny from 199.103.32.16
+Deny from 216.138.114.147
+Deny from 24.53.120.157
+Deny from 64.251.14.50
+Deny from 69.128.12.34
+Deny from barak-online.net
+Deny from netcraft.com
+Deny from proxy.aol.com
+Deny from spamcop.net
+Deny from veritas.com
+Deny from 209.59.48.136
+Deny from 217.54.65.198
+Deny from 62.139.252.195
+Deny from 194.82.51.28
+Deny from 81.154.124.52
+Deny from 42.236.10.75
+Deny from 180.163.220.5
+Deny from 42.236.10.93
+Deny from 101.89.19.197
+Deny from 42.236.10.75
+Deny from 42.236.10.125
+Deny from 180.163.220.5
+Deny from 120.230.110.145
+Deny from 42.236.10.114
+Deny from 202.173.248.250
+Deny from 223.104.63.91
+Deny from 72.12.194.90
+Deny from 42.236.10.93
+Deny from 42.236.10.75
+Deny from 42.236.10.117
+Deny from 111.65.46.58
+Deny from 183.14.132.221
+Deny from 79.8.68.174
+Deny from 86.128.59.31
+Deny from 196.218.119.171
+Deny from 66.16.13.45
+Deny from 124.180.183.238
+Deny from 66.93.229.2
+Deny from 64.114.199.38
+Deny from 207.210.65.98
+Deny from 61.17.46.248
+Deny from 217.156.83.1
+Deny from 202.53.95.130
+Deny from 216.203.40.121
+Deny from 59.115.163.42
+Deny from 134.58.253.57
+Deny from 65.110.180.66
+Deny from 65.110.182.34
+Deny from 65.110.185.48
+Deny from 65.222.176.122
+Deny from 137.108.145.10
+Deny from 87.70.7.125
+Deny from 87.70.16.150
+Deny from 89.241.65.3
+Deny from 130.94.134.166
+Deny from 81.173.119.129
+Deny from 74.53.202.82
+Deny from 208.80.193.48
+Deny from 65.110.182.7
+Deny from 65.110.184.164
+Deny from 65.110.180.210
+Deny from 69.146.20.216
+Deny from 206.208.58.51
+Deny from 66.16.13.45
+Deny from 64.236.208.28
+Deny from 128.232.110.18
+Deny from 66.93.229.2
+Deny from 1.160.0.0/12
+Deny from 103.245.44.0/22
+Deny from 107.150.32.0/19
+Deny from 109.73.66.0/25
+Deny from 109.74.154.0/23
+Deny from 110.228.0.0/14
+Deny from 110.240.0.0/12
+Deny from 111.192.0.0/12
+Deny from 111.240.0.0/12
+Deny from 111.72.0.0/13
+Deny from 113.120.0.0/13
+Deny from 114.160.0.0/11
+Deny from 114.32.0.0/12
+Deny from 115.239.253.0/24
+Deny from 117.212.0.0/14
+Deny from 118.120.0.0/14
+Deny from 118.124.0.0/15
+Deny from 118.168.0.0/14
+Deny from 119.44.0.0/16
+Deny from 121.224.0.0/12
+Deny from 121.37.0.0/16
+Deny from 122.164.0.0/14
+Deny from 122.168.0.0/13
+Deny from 122.176.0.0/13
+Deny from 122.176.0.0/16
+Deny from 123.112.0.0/12
+Deny from 123.151.148.0/22
+Deny from 123.252.235.208/29
+Deny from 125.200.0.0/13
+Deny from 128.111.0.0/16
+Deny from 128.68.0.0/15
+Deny from 128.69.0.0/16
+Deny from 128.72.0.0/15
+Deny from 141.212.0.0/16
+Deny from 141.212.0.0/17
+Deny from 143.215.0.0/16
+Deny from 144.76.0.0/16
+Deny from 150.70.160.0/20
+Deny from 150.70.64.0/20
+Deny from 150.70.96.0/20
+Deny from 154.35.0.0/16
+Deny from 162.243.0.0/16
+Deny from 163.0.0.0/8
+Deny from 164.73.
+Deny from 165.228.0.0/16
+Deny from 171.80.0.0/14
+Deny from 173.10.240.0/21
+Deny from 173.226.0.0/15
+Deny from 173.255.192.0/18
+Deny from 173.8.0.0/13
+Deny from 174.129.0.0/16
+Deny from 176.14.0.0/16
+Deny from 176.192.0.0/14
+Deny from 176.195.0.0/16
+Deny from 176.32.72.0/21
+Deny from 177.52.180.
+Deny from 178.19.104.0/21
+Deny from 178.24.96.163
+Deny from 178.25.204.10
+Deny from 178.32.0.0/15
+Deny from 178.42.0.0/16
+Deny from 178.79.128.0/18
+Deny from 180.136.0.0/13
+Deny from 180.176.0.0/15
+Deny from 180.180.121.0/24
+Deny from 180.76.0.0/16
+Deny from 183.0.0.0/10
+Deny from 184.107.0.0/16
+Deny from 184.72.0.0/15
+Deny from 184.75.208.0/20
+Deny from 185.25.149.0/24
+Deny from 186.42.128.
+Deny from 186.46.0.
+Deny from 186.47.59.20
+Deny from 186.47.
+Deny from 188.165.0.0/16
+Deny from 188.168.248.0/22
+Deny from 188.244.32.0/21
+Deny from 188.75.64.0/18
+Deny from 188.98.0.0/18
+Deny from 188.98.64.0/20
+Deny from 188.99.0.0/16
+Deny from 192.232.213.166/32
+Deny from 192.99.0.0/16
+Deny from 193.71.0.0/16
+Deny from 195.159.140.0/22
+Deny from 195.159.140.196
+Deny from 195.168.0.0/16
+Deny from 195.182.80.128/28
+Deny from 195.214.79.0/24
+Deny from 195.88.252.0/23
+Deny from 198.20.69.72/29
+Deny from 198.50.128.0/17
+Deny from 198.50.152.0/22
+Deny from 199.241.144.0/22
+Deny from 199.30.228.0/22
+Deny from 199.48.144.0/22
+Deny from 2.190.0.0/16
+Deny from 200.196.48.
+Deny from 200.198.201.64/26
+Deny from 200.98.128.
+Deny from 200.98.160.
+Deny from 200.98.
+Deny from 201.49.208.0/20
+Deny from 202.191.128.0/17
+Deny from 202.28.0.0/15
+Deny from 202.56.255.48/28
+Deny from 203.118.62.96/27
+Deny from 203.171.224.0/21
+Deny from 203.31.216.176
+Deny from 203.88.192.0/19
+Deny from 204.101.161.0/24
+Deny from 204.118.31.0/24
+Deny from 207.102.0.0/16
+Deny from 207.189.96.0/19
+Deny from 208.48.224.0/19
+Deny from 208.49.0.0/16
+Deny from 208.50.0.0/17
+Deny from 208.80.192.0/21
+Deny from 208.91.112.0/22
+Deny from 209.133.0.0/17
+Deny from 209.139.192.0/18
+Deny from 209.139.197.112/28
+Deny from 209.30.0.0/16
+Deny from 212.152.32.0/19
+Deny from 212.8.79.64/26
+Deny from 216.130.192.0/20
+Deny from 216.145.17.0/24
+Deny from 216.177.128.0/20
+Deny from 216.201.128.0/17
+Deny from 216.201.222.0/27
+Deny from 216.38.192.0/19
+Deny from 217.149.63.64/27
+Deny from 217.23.128.0/20
+Deny from 218.6.0.0/17
+Deny from 219.143.41.168/29
+Deny from 219.96.0.0/11
+Deny from 220.181.0.0/16
+Deny from 221.232.0.0/14
+Deny from 222.216.0.0/15
+Deny from 222.218.0.0/16
+Deny from 223.112.0.0/14
+Deny from 223.116.0.0/15
+Deny from 223.216.0.0/14
+Deny from 223.64.0.0/11
+Deny from 223.96.0.0/12
+Deny from 23.20.0.0/14
+Deny from 23.234.192.0/18
+Deny from 24.172.0.0/16
+Deny from 27.16.0.0/12
+Deny from 31.3.152.0/22
+Deny from 37.140.192.0/22
+Deny from 37.252.238.0/24
+Deny from 37.52.0.0/14
+Deny from 37.59.0.0/16
+Deny from 38.0.0.0/8
+Deny from 38.100.21.0/24
+Deny from 38.229.0.0/16
+Deny from 4.0.0.0/8
+Deny from 41.228.32.0/21
+Deny from 46.137.0.0/17
+Deny from 46.188.0.0/17
+Deny from 46.188.0.0/18
+Deny from 46.36.32.0/19
+Deny from 46.73.0.0/16
+Deny from 5.135.0.0/16
+Deny from 5.35.208.0/21
+Deny from 5.39.219.116/30
+Deny from 5.39.219.120/29
+Deny from 5.39.219.128/25
+Deny from 50.16.0.0/14
+Deny from 50.30.32.0/20
+Deny from 50.97.0.0/16
+Deny from 50.97.98.128/26
+Deny from 54.192.0.0/12
+Deny from 54.204.0.0/15
+Deny from 54.206.0.0/16
+Deny from 54.208.0.0/13
+Deny from 54.208.0.0/15
+Deny from 54.216.0.0/14
+Deny from 54.220.0.0/15
+Deny from 54.224.0.0/12
+Deny from 54.234.0.0/15
+Deny from 54.240.0.0/12
+Deny from 58.208.0.0/12
+Deny from 59.174.0.0/15
+Deny from 60.160.0.0/15
+Deny from 60.242.0.0/16
+Deny from 61.138.0.0/18
+Deny from 61.172.0.0/15
+Deny from 62.149.224.0/19
+Deny from 62.90.0.0/16
+Deny from 62.99.77.165
+Deny from 64.124.0.0/15
+Deny from 64.19.64.0/19
+Deny from 64.212.0.0/14
+Deny from 64.55.0.0/16
+Deny from 64.62.128.0/17
+Deny from 64.62.160.0/24
+Deny from 64.90.160.0/19
+Deny from 66.129.64.0/18
+Deny from 66.129.97.240/28
+Deny from 66.249.64.0/19
+Deny from 66.55.0.0/18
+Deny from 66.55.29.0/26
+Deny from 66.55.29.0/29
+Deny from 67.205.64.0/18
+Deny from 67.217.160.0/19
+Deny from 68.71.52.0/25
+Deny from 69.162.80.216/29
+Deny from 69.163.128.0/17
+Deny from 69.164.111.192/27
+Deny from 69.164.192.0/19
+Deny from 69.58.176.0/20
+Deny from 70.96.0.0/14
+Deny from 72.12.209.240/29
+Deny from 72.167.0.0/16
+Deny from 72.20.36.128/25
+Deny from 72.55.154.0/24
+Deny from 72.64.0.0/15
+Deny from 74.217.0.0/16
+Deny from 74.52.0.0/14
+Deny from 77.93.32.0/22
+Deny from 78.129.173.128/25
+Deny from 78.157.192.0/19
+Deny from 78.46.218.248/29
+Deny from 79.134.64.0/19
+Deny from 79.134.64.0/24
+Deny from 79.134.73.0/24
+Deny from 79.185.0.0/16
+Deny from 79.191.0.0/16
+Deny from 8.0.0.0/8
+Deny from 80.219.68.35
+Deny from 80.82.64.0/20
+Deny from 81.27.124.0/22
+Deny from 83.24.0.0/13
+Deny from 83.31.0.0/16
+Deny from 83.4.0.0/14
+Deny from 83.8.0.0/14
+Deny from 84.14.214.192/27
+Deny from 84.237.85.0/24
+Deny from 85.13.198.128/25
+Deny from 85.143.164.0/22
+Deny from 85.17.94.0/24
+Deny from 85.204.0.0/20
+Deny from 87.242.72.0/21
+Deny from 87.245.187.224/28
+Deny from 87.249.110.176/28
+Deny from 88.165.150.0/23
+Deny from 88.165.152.0/21
+Deny from 88.165.160.0/19
+Deny from 88.165.192.0/18
+Deny from 88.166.0.0/15
+Deny from 88.168.0.0/14
+Deny from 88.172.0.0/15
+Deny from 88.190.15.0/24
+Deny from 88.208.192.0/19
+Deny from 88.208.224.0/20
+Deny from 88.208.240.0/21
+Deny from 88.208.248.0/22
+Deny from 89.178.0.0/16
+Deny from 89.190.192.0/19
+Deny from 89.248.160.0/24
+Deny from 89.79.83.166
+Deny from 91.121.160.0/19
+Deny from 91.194.90.0/23
+Deny from 91.212.136.0/24
+Deny from 91.22.217.20
+Deny from 91.22.223.140
+Deny from 91.22.234.69
+Deny from 91.22.242.104
+Deny from 91.22.255.141
+Deny from 91.76.0.0/14
+Deny from 92.240.68.0/23
+Deny from 92.46.119.0/24
+Deny from 92.46.120.0/24
+Deny from 93.114.40.0/21
+Deny from 93.115.80.0/21
+Deny from 93.157.232.0/21
+Deny from 93.159.224.0/21
+Deny from 93.159.230.0/23
+Deny from 93.174.88.0/23
+Deny from 93.174.90.0/24
+Deny from 93.80.0.0/16
+Deny from 94.126.177.16/28
+Deny from 94.126.240.0/21
+Deny from 94.180.192.0/21
+Deny from 94.228.129.0/24
+Deny from 94.228.130.0/23
+Deny from 95.211.0.0/16
+Deny from 95.221.0.0/16
+Deny from 95.24.0.0/14
+Deny from 95.28.0.0/15
+Deny from 95.30.0.0/16
+Deny from 95.72.120.0/21
+Deny from 95.72.232.0/21
+Deny from 95.72.24.0/21
+Deny from 95.72.240.0/21
+Deny from 95.72.248.0/21
+Deny from 95.72.32.0/21
+Deny from 96.47.224.0/20
+Deny from 99.65.74.64/28
+Deny from 221.208.0.0/14
+Deny from 221.212.0.0/16
+Deny from 124.64.0.0/15
+Deny from 107.20.0.0/14
+Deny from 75.126.0.0/16
+Deny from 158.144.0.0/16
+Deny from 5.175.8.0/25
+Deny from 108.161.128.0/20
+Deny from 209.37.97.14
+Deny from 5.39.80.0/20
+Deny from 91.228.164.0/22
+Deny from 186.202.
+Deny from 174.16.0.0/12
+Deny from 71.6.128.0/17
+Deny from 5.255.253.0/24
+Deny from 90.189.0.0/19
+Deny from 217.69.128.0/21
+Deny from 157.54.0.0/15
+Deny from 157.56.0.0/14
+Deny from 157.60.0.0/16
+Deny from 107.178.192.0/18
+Deny from 118.244.0.0/16
+Deny from 192.81.128.0/21
+Deny from 37.140.141.0/26
+Deny from 37.9.84.0/22
+Deny from 210.144.0.0/12
+Deny from 113.16.0.0/15
+Deny from 222.176.0.0/13
+Deny from 54.176.0.0/12
+Deny from 178.68.0.0/18
+Deny from 65.52.0.0/14
+Deny from 95.220.0.0/16
+Deny from 84.177.59.245
+Deny from 66.85.128.0/18
+Deny from 192.155.208.0/20
+Deny from 176.61.138.0/24
+Deny from 178.25.216.183
+Deny from 174.139.0.0/16
+Deny from 64.69.64.0/19
+Deny from 194.90.88.0/24
+Deny from 204.93.128.0/17
+Deny from 94.102.49.0/24
+Deny from 54.72.0.0/13
+Deny from 54.80.0.0/12
+Deny from 54.72.0.0/15
+Deny from 62.140.253.0/24
+Deny from 62.140.253.0/24
+Deny from 37.144.0.0/14
+Deny from 109.163.234.0/28
+Deny from 173.193.120.240/29
+Deny from 95.72.112.0/21
+Deny from 192.210.128.0/17
+Deny from 84.177.10.227
+Deny from 128.204.203.103/32
+Deny from 84.177.20.186
+Deny from 220.178.0.0/15
+Deny from 220.180.0.0/16
+Deny from 65.111.190.0/24
+Deny from 77.247.181.160/28
+Deny from 103.12.8.0/23
+Deny from 59.44.0.0/14
+Deny from 188.162.32.0/21
+Deny from 130.207.0.0/16
+Deny from 178.238.237.0/24
+Deny from 66.187.149.80/28
+Deny from 72.12.192.0/19
+Deny from 128.74.0.0/15
+Deny from 86.63.99.99
+Deny from 124.133.239.160/27
+Deny from 178.140.0.0/17
+Deny from 46.22.166.0/24
+Deny from 64.246.160.0/19
+Deny from 195.91.128.0/17
+Deny from 64.120.128.0/17
+Deny from 173.255.112.0/20
+Deny from 61.147.0.0/16
+Deny from 94.100.16.0/24
+Deny from 94.100.17.0/25
+Deny from 213.81.140.52
+Deny from 162.213.24.0/21
+Deny from 217.79.181.0/24
+Deny from 217.79.182.0/23
+Deny from 223.4.0.0/14
+Deny from 183.192.0.0/10
+Deny from 114.104.0.0/14
+Deny from 61.147.0.0/16
+Deny from 117.24.0.0/13
+Deny from 174.36.192.0/18
+Deny from 162.247.72.0/22
+Deny from 37.130.227.128/29
+Deny from 213.81.140.54
+Deny from 213.81.140.50
+Deny from 198.74.228.0/22
+Deny from 173.234.0.0/16
+Deny from 89.234.68.64/26
+Deny from 85.114.128.0/21
+Deny from 76.164.224.0/20
+Deny from 76.164.192.0/19
+Deny from 86.104.134.0/24
+Deny from 178.175.139.0/24
+Deny from 95.130.9.0/24
+Deny from 188.95.104.0/22
+Deny from 188.95.108.0/23
+Deny from 109.173.0.0/18
+Deny from 76.74.128.0/17
+Deny from 5.199.142.0/24
+Deny from 94.23.0.0/18
+Deny from 46.182.106.0/24
+Deny from 94.242.192.0/18
+Deny from 213.81.140.36
+Deny from 95.167.110.232/29
+Deny from 141.0.169.0/24
+Deny from 92.242.32.0/20
+Deny from 62.210.0.0/17
+Deny from 81.7.135.128/26
+Deny from 223.252.0.0/17
+Deny from 37.112.0.0/21
+Deny from 46.105.32.0/19
+Deny from 46.242.0.0/18
+Deny from 188.65.76.128/25
+Deny from 188.244.40.0/21
+Deny from 114.240.0.0/12
+Deny from 116.224.0.0/12
+Deny from 95.154.230.0/24
+Deny from 91.194.84.0/23
+Deny from 79.77.28.227
+Deny from 69.72.247.0/24
+Deny from 91.203.36.0/22
+Deny from 109.188.138.0/23
+Deny from 218.56.0.0/14
+Deny from 82.145.220.0/22
+Deny from 216.145.0.0/19
+Deny from 66.249.0.0/19
+Deny from 158.181.128.0/17
+Deny from 80.79.119.192/26
+Deny from 202.53.8.0/24
+Deny from 82.221.105.0/24
+Deny from 108.62.0.0/16
+Deny from 213.253.0.0/18
+Deny from 107.170.0.0/16
+Deny from 194.72.238.0/24
+Deny from 83.222.232.214
+Deny from 61.145.231.0/24
+Deny from 195.154.0.0/17
+Deny from 188.190.96.0/19
+Deny from 23.251.128.0/19
+Deny from 175.101.0.0/16
+Deny from 109.73.65.0/25
+Deny from 69.174.240.0/20
+Deny from 62.210.128.0/17
+Deny from 91.200.12.0/22
+Deny from 78.130.205.0/24
+Deny from 209.190.113.80/28
+Deny from 213.73.22.128/26
+Deny from 220.104.0.0/13
+Deny from 136.186.0.0/16
+Deny from 119.63.192.0/21
+Deny from 202.46.32.0/19
+Deny from 185.10.104.0/22
+Deny from 199.193.112.0/21
+Deny from 64.233.160.0/19
+Deny from 161.69.0.0/16
+Deny from 162.253.64.0/22
+Deny from 202.117.0.0/18
+Deny from 173.203.224.0/22
+Deny from 174.142.0.0/16
+Deny from 98.136.0.0/14
+Deny from 109.74.192.0/21
+Deny from 95.24.0.0/14
+Deny from 95.28.0.0/15
+Deny from 95.30.0.0/16
+Deny from 109.187.128.0/17
+Deny from 162.222.176.0/21
+Deny from 61.191.0.0/16
+Deny from 109.73.66.128/25
+Deny from 66.249.64.0/19
+Deny from 107.178.192.0/18
+Deny from 216.163.176.0/20
+Deny from 194.153.113.0/24
+Deny from 85.25.236.0/22
+Deny from 69.64.32.0/19
+Deny from 199.217.112.0/21
+Deny from 89.145.108.192/27
+Deny from 62.94.96.88/29
+Deny from 93.186.16.0/21
+Deny from 199.116.168.0/21
+Deny from 206.253.224.0/23
+Deny from 206.253.226.0/24
+Deny from 50.112.0.0/16
+Deny from 193.200.173.0/24
+Deny from 193.200.173.0/24
+Deny from 209.160.0.0/18
+Deny from 209.160.64.0/20
+Deny from 148.251.0.0/16
+Deny from 131.181.0.0/16
+Deny from 199.19.248.0/21
+Deny from 89.202.197.128/27
+Deny from 194.81.192.0/20
+Deny from 50.201.125.0/24
+Deny from 199.16.196.0/22
+Deny from 109.190.0.0/16
+Deny from 64.74.0.0/16
+Deny from 64.72.128.0/19
+Deny from 50.56.0.0/15
+Deny from 222.190.118.0/24
+Deny from 2.92.0.0/15
+Deny from 188.168.144.0/21
+Deny from 64.235.144.0/20
+Deny from 37.187.32.0/22
+Deny from 89.145.95.0/24
+Deny from 37.58.100.224/27
+Deny from 182.71.212.72/29
+Deny from 128.208.0.0/16
+Deny from 115.28.0.0/15
+Deny from 69.64.64.0/19
+Deny from 66.23.224.0/20
+Deny from 5.254.248.0/22
+Deny from 37.187.0.0/19
+Deny from 203.195.128.0/17
+Deny from 182.18.0.0/17
+Deny from 76.74.0.0/17
+Deny from 188.40.106.192/26
+Deny from 109.248.96.0/19
+Deny from 121.128.0.0/10
+Deny from 201.198.0.
+Deny from 117.78.12.0/22
+Deny from 180.210.224.0/19
+Deny from 61.228.0.0/14
+Deny from 121.196.0.0/14
+Deny from 211.69.128.0/20
+Deny from 67.20.48.0/20
+Deny from 213.165.80.0/20
+Deny from 187.33.0.
+Deny from 202.104.0.0/16
+Deny from 125.113.0.0/16
+Deny from 66.240.192.0/18
+Deny from 95.141.43.0/24
+Deny from 61.139.0.0/17
+Deny from 84.200.0.0/16
+Deny from 37.58.96.0/19
+Deny from 142.4.192.0/19
+Deny from 175.16.0.0/13
+Deny from 121.8.0.0/13
+Deny from 222.246.0.0/18
+Deny from 114.24.0.0/14
+Deny from 103.22.181.0/24
+Deny from 122.116.0.0/15
+Deny from 173.212.140.0/24
+Deny from 50.128.0.0/9
+Deny from 222.126.128.0/17
+Deny from 180.152.0.0/13
+Deny from 174.143.0.0/16
+Deny from 211.150.64.0/18
+Deny from 182.128.0.0/12
+Deny from 141.0.8.0/22
+Deny from 85.115.52.0/22
+Deny from 36.224.0.0/12
+Deny from 99.111.189.136/29
+Deny from 184.172.0.0/15
+Deny from 63.251.0.0/16
+Deny from 112.64.0.0/15
+Deny from 107.167.96.0/19
+Deny from 62.24.222.132
+Deny from 78.47.102.160/28
+Deny from 183.79.0.0/16
+Deny from 208.90.56.0/21
+Deny from 81.7.10.0/24
+Deny from 208.109.0.0/16
+Deny from 92.103.69.0/24
+Deny from 12.167.151.0/24
+Deny from 101.224.0.0/13
+Deny from 80.86.85.0/24
+Deny from 221.192.0.0/14
+Deny from 78.47.40.48/28
+Deny from 103.246.36.0/24
+Deny from 193.205.136.0/23
+Deny from 217.175.54.0/24
+Deny from 82.119.198.136/30
+Deny from 85.25.71.0/24
+Deny from 85.25.72.0/22
+Deny from 85.25.76.0/23
+Deny from 85.25.78.0/24
+Deny from 83.175.117.0/29
+Deny from 77.41.80.0/20
+Deny from 217.31.48.0/22
+Deny from 217.31.52.0/24
+Deny from 112.124.0.0/16
+Deny from 198.20.64.0/18
+Deny from 87.98.252.0/23
+Deny from 209.222.8.104/29
+Deny from 80.82.64.0/20
+Deny from 60.166.0.0/15
+Deny from 60.168.0.0/13
+Deny from 5.149.151.0/24
+Deny from 217.13.181.224/27
+Deny from 89.207.18.182/22
+Deny from 173.194.69.147/22
+Deny from 149.3.176.145/22
+Deny from 66.235.156.128/22
+Deny from 173.194.69.125/22
+Deny from 173.194.69.120/22
+Deny from 173.194.69.102/22
+Deny from 173.194.69.95/22
+Deny from 173.194.69.94/22
+Deny from 173.194.69.91/22
+Deny from 173.0.88.2/22
+Deny from 173.0.84.2/22
+Deny from 173.0.84.34/22
+Deny from 173.0.88.2/22
+Deny from 173.0.88.34/22
+Deny from 2.20.6.85/22
+Deny from 63.245.213.92/22
+Deny from 173.194.69.106/22
+Deny from 173.194.69.147/22
+Deny from 173.194.69.99/22
+Deny from 173.194.69.103/22
+Deny from 173.194.69.104/22
+Deny from 173.194.69.105/22
+Deny from 173.194.69.94/22
+Deny from 173.194.69.106/22
+Deny from 173.194.69.147/22
+Deny from 173.194.69.99/22
+Deny from 173.194.69.103/22
+Deny from 173.194.69.104/22
+Deny from 173.194.69.105/22
+Deny from 173.194.69.94/22
+Deny from 63.245.213.92/22
+Deny from 63.245.217.20/22
+Deny from 64.62.203.172/22
+Deny from 173.194.69.102/22
+Deny from 173.194.69.113/22
+Deny from 173.194.69.138/22
+Deny from 173.194.69.139/22
+Deny from 173.194.69.100/22
+Deny from 173.194.69.101/22
+Deny from 64.62.203.172/22
+Deny from 63.245.217.71/22
+Deny from 188.112.175.207/22
+Deny from 66.235.139.166/22
+Deny from 66.235.138.2/22
+Deny from 66.235.138.59/22
+Deny from 66.235.139.153/22
+Deny from 66.235.139.152/22
+Deny from 66.235.138.44/22
+Deny from 66.235.139.118/22
+Deny from 66.235.138.18/22
+Deny from 66.235.139.121/22
+Deny from 66.235.138.19/22
+Deny from 66.235.134.160/22
+Deny from 66.235.133.8/22
+Deny from 66.235.133.52/22
+Deny from 66.235.133.33/22
+Deny from 66.235.132.152/22
+Deny from 66.235.133.62/22
+Deny from 66.235.132.232/22
+Deny from 66.235.132.118/22
+Deny from 66.235.133.11/22
+Deny from 66.235.132.121/22
+Deny from 149.20.57.227
+Deny from 199.48.147.36
+Deny from 37.59.162.218
+Deny from 89.122.57.201
+Deny from 69.163.205.29
+Deny from 74.120.15.150
+Deny from 109.163.233.200
+Deny from 79.120.86.20
+Deny from 31.172.30.4
+Deny from 109.65.136.19
+Deny from 66.150.14.185
+Deny from 50.97.98.130
+Deny from 66.150.14.185
+Deny from 80.237.226.73
+Deny from 64.34.184.153
+Deny from 66.230.230.230
+Deny from 71.165.245.158
+Deny from 74.120.15.150
+Deny from 76.73.56.7
+Deny from 77.109.139.87
+Deny from 81.218.219.122
+Deny from 83.86.110.188
+Deny from 83.142.228.14
+Deny from 83.249.87.238
+Deny from 85.17.92.13
+Deny from 85.235.31.248
+Deny from 87.118.104.203
+Deny from 88.80.28.70
+Deny from 88.208.121.151
+Deny from 89.253.97.235
+Deny from 91.121.170.32
+Deny from 94.249.153.47
+Deny from 95.143.193.145
+Deny from 109.169.29.56
+Deny from 109.123.119.163
+Deny from 137.56.163.46
+Deny from 137.56.163.64
+Deny from 173.193.221.28
+Deny from 192.251.226.205
+Deny from 192.251.226.206
+Deny from 199.48.147.35
+Deny from 199.48.147.36
+Deny from 199.48.147.38
+Deny from 199.48.147.40
+Deny from 199.48.147.41
+Deny from 208.66.135.190
+Deny from 209.44.114.178
+Deny from 209.159.142.164
+Deny from 209.159.143.130
+Deny from 213.220.233.230
+Deny from 8.18.38.105 
+Deny from 62.141.58.13
+Deny from 62.163.180.154
+Deny from 77.171.107.207
+Deny from 78.47.251.152   
+Deny from 81.169.155.246
+Deny from 82.194.86.135
+Deny from 83.163.192.49
+Deny from 91.121.152.114 
+Deny from 91.213.50.235
+Deny from 93.167.245.178 
+Deny from 94.23.215.184
+Deny from 174.138.169.218
+Deny from 64.34.162.160 
+Deny from 66.249.9.107   
+Deny from 66.96.16.32 
+Deny from 78.107.233.68
+Deny from 78.107.237.16
+Deny from 83.170.92.9   
+Deny from 85.214.73.63 
+Deny from 91.124.187.225 
+Deny from 194.0.229.54
+Deny from 195.43.157.85 
+Deny from 212.78.238.92 
+Deny from 217.114.211.20  
+Deny from 62.24.222.132
+Deny from 62.24.222.131
+Deny from 66.235.133.14/22
+Deny from 63.229.4.212
+Deny from 66.135.207.155
+Deny from 66.77.136.153
+Deny from 64.122.169.98
+Deny from 54.217.8.129
+Deny from 38.100.21.113
+Deny from 96.47.226.21
+Deny from 54.197.81.106
+Deny from 68.168.131.216
+Deny from 65.17.253.220
+Deny from 78.151.209.28
+Deny from 66.135.207.155
+Deny from 207.102.138.158
+Deny from 209.139.197.125
+Deny from 66.77.136.153
+Deny from 66.77.136.123
+Deny from 72.64.146.136
+Deny from 124.178.234.95
+Deny from 67.15.182.35 
+Deny from 203.68.
+Deny from 218.58.124. 
+Deny from 218.58.125. 
+Deny from 62.194.7.
+Deny from 85.17.6.
+Deny from 194.213.
+Deny from 64.27.2.18
+Deny from 64.27.2.19 
+Deny from 212.187.116.
+Deny from 84.87.
+Deny from 222.252.
+Deny from 203.160.1.
+Deny from 82.60.1.
+Deny from 68.46.186.93
+Deny from 65.254.33.130 
+Deny from 82.131.195.
+Deny from 217.153. 
+Deny from 202.108.252. 
+Deny from 82.208.
+Deny from 193.47.80.41
+Deny from 66.234.139.194
+Deny from 80.96.
+Deny from 66.232.98.76
+Deny from 38.112.6.182
+Deny from 82.165.252.147
+Deny from 67.79.102.28
+Deny from 220.181.26.
+Deny from 64.62.136.196 
+Deny from 62.163.
+Deny from 195.113. 
+Deny from 213.185.106.
+Deny from 213.185.107.
+Deny from 67.184.49.166 
+Deny from 219.95.
+Deny from 66.221.106.76
+Deny from 81.93.165.
+Deny from 81.223.254.
+Deny from 87.123.74.
+Deny from 62.193.213.
+Deny from 86.120.
+Deny from 72.12.194.91. 
+Deny from 82.102.27.55. 
+Deny from 212.83.139.203. 
+Deny from 139.59.107.152. 
+Deny from 139.59.107.152. 
+Deny from . 
+Deny from . 
+Deny from . 
+Deny from . 
+Deny from . 
+Deny from 86.121. 
+Deny from 86.122. 
+Deny from 86.123. 
+Deny from 86.124. 
+Deny from 86.125. 
+Deny from 86.126. 
+Deny from 86.127. 
+Deny from 220.194.54.
+Deny from 210.51.167.
+Deny from 204.14.48.
+Deny from 66.180.170.47
+Deny from 217.160.75.202
+Deny from 84.12.54.237
+Deny from 65.19.154.24
+Deny from 216.32.73.122
+Deny from 63.160.77.236
+Deny from 12.44.181.220
+Deny from 12.44.172.92 
+Deny from 139.18.2.
+Deny from 70.85.193.178
+Deny from 82.80. 
+Deny from 82.81. 
+Deny from 213.180.128.
+Deny from 213.180.129. 
+Deny from 213.180.130. 
+Deny from 213.180.131. 
+Deny from 66.150.55.230 
+Deny from 67.15.175.114 
+Deny from 217.113.244.119 
+Deny from 194.224.199.
+Deny from 81.19.66.
+Deny from 213.176.126.
+Deny from 208.223.208.181
+Deny from 208.223.208.182 
+Deny from 208.223.208.183 
+Deny from 208.223.208.184 
+Deny from 208.223.208.185 
+Deny from 67.167.114.21 
+Deny from 194.44.42.
+Deny from 209.203.192.
+Deny from 209.203.193. 
+Deny from 209.203.194. 
+Deny from 209.203.195. 
+Deny from 209.203.196. 
+Deny from 209.203.197. 
+Deny from 209.203.198. 
+Deny from 209.203.199. 
+Deny from 209.203.200. 
+Deny from 209.203.201. 
+Deny from 209.203.202. 
+Deny from 209.203.203. 
+Deny from 209.203.204. 
+Deny from 209.203.205. 
+Deny from 209.203.206. 
+Deny from 209.203.207. 
+Deny from 139.59.4.194.
+Deny from 142.93.74.68.
+Deny from 139.59.107.152.
+Deny from 194.187.249.36.
+Deny from 46.101.94.163.
+Deny from 196.55.2.7.
+Deny from 167.86.94.107.
+Deny from 117.62.75.239.
+Deny from 165.227.163.166.
+Deny from 51.38.64.136.
+Deny from 167.86.94.107.
+Deny from 51.38.64.136.
+Deny from 92.23.58.207.
+Deny from 106.120.117.226.
+Deny from 14.152.69.91.
+Deny from 61.129.6.251.
+Deny from 101.89.239.232.
+Deny from 223.166.151.199.
+Deny from 180.163.220.4.
+Deny from 180.163.220.3.
+Deny from 203.247.145.133.
+Deny from 203.250.1.34.
+Deny from 211.193.192.216.
+Deny from 203.247.185.122.
+Deny from 211.193.204.65.
+Deny from 27.122.14.70.
+Deny from 188.166.63.71.
+Deny from 77.247.181.165.
+Deny from 105.112.96.233.
+Deny from 103.136.43.131.
+Deny from 77.111.245.142.
+Deny from 62.149.225.67.
+Deny from 157.230.173.0.
+Deny from 159.203.0.156.
+Deny from 167.114.101.64.
+Deny from 221.203.38.152.
+Deny from 180.163.220.68.
+Deny from 101.91.62.99.
+Deny from 61.144.248.17.
+Deny from 153.0.3.40.
+Deny from 61.144.248.17.
+Deny from 113.197.101.65.
+Deny from 194.88.228.90.
+Deny from 180.163.220.68.
+Deny from 61.129.6.251.
+Deny from 203.250.1.34.
+Deny from 211.193.192.216.
+Deny from 211.193.204.65.
+Deny from 64.62.175.
+Deny from 219.136.171. 
+Deny from 216.150.24.122 
+Deny from 216.150.24.123 
+Deny from 210.14.32.
+Deny from 220.132.126.
+Deny from 66.194.6.
+Deny from 12.17.130.27
+Deny from 65.164.129.91 
+Deny from 207.155.199.163 
+Deny from 208.252.91.3 
+Deny from 198.54.
+Deny from 66.132.132.63 
+Deny from 81.18.32.
+Deny from 81.18.33. 
+Deny from 81.18.34. 
+Deny from 81.18.35. 
+Deny from 81.18.36. 
+Deny from 81.18.37. 
+Deny from 81.18.38. 
+Deny from 81.18.39. 
+Deny from 81.18.40. 
+Deny from 81.18.41. 
+Deny from 81.18.42. 
+Deny from 81.18.43. 
+Deny from 81.18.44. 
+Deny from 81.18.45. 
+Deny from 81.18.46. 
+Deny from 81.18.47. 
+Deny from 192.115.134.
+Deny from 65.11.200.242 
+Deny from 65.75.128.30
+Deny from 204.8.168.
+Deny from 204.8.169. 
+Deny from 204.8.170. 
+Deny from 204.8.171. 
+Deny from 64.152.73. 
+Deny from 66.111.48.80
+Deny from 68.211.2.61
+Deny from 64.42.84.70
+Deny from 67.127.13.70
+Deny from 80.230.
+Deny from 80.250.32.
+Deny from 80.250.33. 
+Deny from 80.250.34. 
+Deny from 80.250.35. 
+Deny from 80.250.36. 
+Deny from 80.250.37. 
+Deny from 80.250.38. 
+Deny from 80.250.39. 
+Deny from 80.250.40. 
+Deny from 80.250.41. 
+Deny from 80.250.42. 
+Deny from 80.250.43. 
+Deny from 80.250.44. 
+Deny from 80.250.45. 
+Deny from 80.250.46. 
+Deny from 80.250.47. 
+Deny from 69.28.130.
+Deny from 213.8.
+Deny from 64.42.105.
+Deny from 141.85.
+Deny from 128.238.55.
+Deny from 67.68.89.
+Deny from 66.36.242.25
+Deny from 81.199.
+Deny from 195.111.
+Deny from 192.115.106.
+Deny from 204.94.59.
+Deny from 12.209.181.242
+Deny from 217.73.
+Deny from 217.218.
+Deny from 217.219.
+Deny from 216.53.84.61
+Deny from 169.132.149.100
+Deny from 213.226.16.
+Deny from 216.252.167.
+Deny from 65.102.
+Deny from 216.163.255.1
+Deny from 67.127.164.125
+Deny from 193.253.199.
+Deny from 80.179.254.
+Deny from 64.37.103.
+Deny from 69.61.12.100
+Deny from 69.61.12.101 
+Deny from 66.246.43.167 
+Deny from 64.124.14.
+Deny from 38.144.36.11
+Deny from 38.144.36.12 
+Deny from 38.144.36.13 
+Deny from 38.144.36.14 
+Deny from 38.144.36.15 
+Deny from 38.144.36.16 
+Deny from 38.144.36.17 
+Deny from 206.28.72. 
+Deny from 206.28.73. 
+Deny from 206.28.74. 
+Deny from 206.28.75. 
+Deny from 206.28.76. 
+Deny from 206.28.77. 
+Deny from 206.28.78. 
+Deny from 206.28.79. 
+Deny from 209.73.228.160
+Deny from 209.73.228.161 
+Deny from 209.73.228.162 
+Deny from 209.73.228.163 
+Deny from 209.73.228.164 
+Deny from 209.73.228.165 
+Deny from 209.73.228.166 
+Deny from 209.73.228.167 
+Deny from 209.73.228.168 
+Deny from 209.73.228.169 
+Deny from 209.73.228.170 
+Deny from 209.73.228.171 
+Deny from 209.73.228.172 
+Deny from 209.73.228.173 
+Deny from 209.73.228.174 
+Deny from 209.73.228.175 
+Deny from 158.108.
+Deny from 168.187.
+Deny from 168.188.
+Deny from 66.207.120.221
+Deny from 66.207.120.222 
+Deny from 66.207.120.223 
+Deny from 66.207.120.224 
+Deny from 66.207.120.225 
+Deny from 66.207.120.226 
+Deny from 66.207.120.227 
+Deny from 66.207.120.228 
+Deny from 66.207.120.229 
+Deny from 66.207.120.230 
+Deny from 66.207.120.231 
+Deny from 66.207.120.232 
+Deny from 66.207.120.233 
+Deny from 66.207.120.234 
+Deny from 66.207.120.235 
+Deny from 167.24.
+Deny from 192.118.48.247
+Deny from 192.118.48.248 
+Deny from 192.118.48.249 
+Deny from 67.209.128.
+Deny from 12.148.209.
+Deny from 12.148.196.
+Deny from 212.19.205. 
+Deny from 206.190.171.172
+Deny from 206.190.171.173 
+Deny from 206.190.171.174 
+Deny from 206.190.171.175 
+Deny from 211.157. 
+Deny from 211.74. 
+Deny from 64.14.202.182 
+Deny from 213.219.11.19 
+Deny from 193.220.178.
+Deny from 24.77.178.1
+Deny from 68.65.53.71
+Deny from 198.26.120.13
+Deny from 63.148.99.
+Deny from 65.118.41.
+Deny from 192.116.85.
+Deny from 62.119.21.
+Deny from 80.179.100.
+Deny from 80.248.64.50
+Deny from 64.106.213.
+Deny from 62.220.103.
+Deny from 128.227.180.215
+Deny from google.com
+Deny from paypal.com
+Deny from 112.2o7.com
+Deny from firefox.com
+Deny from apple.com
+Deny from env=stealthed	
+
+</Limit>
+RewriteEngine on
+# Options +FollowSymlinks
+RewriteCond %{HTTP_REFERER} google\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} google\.com
+RewriteCond %{HTTP_REFERER} paypal\.com
+RewriteCond %{HTTP_REFERER} firefox\.com
+RewriteRule .* - [F]
+RewriteCond %{HTTP_USER_AGENT} ^googlebot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Custo [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^HMView [OR] 
+RewriteCond %{HTTP_USER_AGENT} HTTrack [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR] 
+RewriteCond %{HTTP_USER_AGENT} Indy\ Library [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^larbin [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebWhacker [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Wget [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Widow [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR] 
+RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR] 
+RewriteCond %{HTTP_USER_AGENT} Yandex [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} zermelo [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^Zeus [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ZyBorg [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^-?$ [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "addresses\.com" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "agnitum" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} aipbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} alkaline [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "almaden" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} amfibi [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "anarchie" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} anonymous [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "applewebkit" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "art-online" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} arikus [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "aspseek" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} baidu [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "blackbox" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "bordermanager" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} botswana [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "bravobrian" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} bruinbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} btbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "caddbot" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ccubee [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} cfetch [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} cfnetwork [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} cherry.?picker [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} cjnetworkquality [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} claria [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} combine [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} contactbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} convera [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ConveraCrawler [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} cosmos [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} cowbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} cuill [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} crescent [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} dattatec [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} deepak [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} dloader [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "^DA \d\.\d " [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "DTS Agent" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "^download" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} diamond [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} dtaagent [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} dumbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} easydl [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} e?mail.?(collector|magnet|reaper|siphon|sweeper|harvest|collect|wolf) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Educate Search" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ejupiter [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} entrieva [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} exava.com [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} experimental [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} expired [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} express [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} extractor [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} faxobot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Fetch API Request" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "fast firstpage retriever" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "fetchbook\.info" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} findexa [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} findlinks [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} findwhat [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} flashget [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} FlickBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Franklin Locator" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} gais [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} gazz/ [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} geobot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} gethtmlcontent [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} getright [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} girafabot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} giveramp [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} go.?zilla [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} gonzo [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} grabber [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "green research" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "green research, inc." [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} gulper [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} harvest [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} hloader [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} hoowwwer [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} html2jpg [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} htmlparser [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "http generic" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} httpclient [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} httprequest [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} httrack [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ia_archiver [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ichiro [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "ie plagin" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "ie plugin" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} imagefetch [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "Indy Library" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Industry Program" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "^internet explorer$" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ineturl [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} innerprise [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} irlbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ithenticate [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} iupui [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} java [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} jetbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} joedog [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} k2spider [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} kuloko [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} lanshan [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} lcabotaccept [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} larbin [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} lapozz [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} law-x [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} linksmanager [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} linkwalker [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} lmcrawler [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} lmqueuebot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} loopimprovements [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "lwp\:\:simple" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "lwp-trivial" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "Mac Finder" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "Microsoft URL Control" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "mister pix" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "missauga" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "missigua" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} madlyrics [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} marvin [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} microsoftprototypecrawler [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} minirank [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} miva [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} mizzu [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} mj12 [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} majestic [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} mogren [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "mozilla\(ie compatible\)" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} MSIECrawler [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} MSFrontPage [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} msrbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} msproxy [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} msx [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} mvaclient [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "my session" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "NASA Search" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} netresearchserver [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} netsprint [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} netwhat [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} nextgensearch [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} nusearch [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} nutch [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} ocelli [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} offline [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} omniexplorer [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "onsinn.de" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} outfoxbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} nameprotect [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} naver [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} net.?(ants|mechanic|spider|vampire|zip) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} netcaptor [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} nicebot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} nicerspro [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ninja [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} nobody [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} noxtrum [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} NPBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "\ obot" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "^obot$" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} openfind [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} panopy [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} patwebbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} peerfactor [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} pipeline [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} plink [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "program shareware" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} plantynet [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "poe-component-client" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "polybot" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} psbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} picsearch [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} qarp [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} qcreep [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} quepasa [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "safari" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "^sew$" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} rampybot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} research [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} sbider [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} schibstedsok [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "scientec.de" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} scspider [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} scumbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} search-o-rama [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} searchsight [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} searchwarp [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} seekbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} seznambot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} shim-crawler [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} siphon [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} sitemapper [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} sitesell [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} skywalker [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} sleuth [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} SlySearch [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} snagger [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} societyrobot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "sohu agent" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} sohu-search [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} sonicquest [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} spider_pro [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} spiderku [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} spiderman [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} sproose [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} sqworm [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} stackrambler [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} steeler [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} SurveyBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} szukacz [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} tcf [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} tele(port|soft) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "test/0" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "test1" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "test 1" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "test rig" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "tsw bot" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} terrawiz [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} trademark [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} transgenikbot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} Turnitin [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} twiceler [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} twotrees [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "under the rainbow" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "unknown origin" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} unchaos [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} url2file [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} usyd-nlp  [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "vb openurl" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} visvo [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} votay [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} voyager [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} w3crobot [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} w3mir [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} wbdbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} weasel [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} weazel [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} web.?(auto|bandit|collector|copier|devil|downloader|fetch|hook|mole|miner|mirror|reaper|sauger|sucker|site|snake|stripper|weasel|zip) [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} webclipping [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} webbug [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} webcollage [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} webindexer [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} webpix [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} webrace [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} webspider [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} websquash [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "wells search" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} "wep search" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} wget [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} wise-guys.nl [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} "www.abot.com" [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} xirq [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} yottashopping [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} zao/ [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} zedzo [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} zeus [NC,OR] 
+RewriteCond %{HTTP_USER_AGENT} zspider [NC,OR] 
+RewriteCond %{HTTP_REFERER} iaea.org [NC,OR]
+RewriteCond %{HTTP_REFERER} wizard.yellowbrick.oz [NC,OR]
+RewriteCond %{HTTP_REFERER} brandimensions [NC,OR]
+RewriteCond %{HTTP_REFERER} imgurl= [NC,OR] 
+RewriteCond %{HTTP_REFERER} imgrefurl= [NC,OR] 
+RewriteCond %{REMOTE_ADDR} ^193.95.([1-2][0-9][0-9]). [NC,OR]
+RewriteCond %{REMOTE_ADDR} ^203.147.([0-4][0-9]). [NC,OR]
+RewriteCond %{REMOTE_ADDR} ^80.87.([3-9][0-9]). [NC,OR] 
+RewriteCond %{REMOTE_ADDR} ^80.88.(1[0-5][0-9]). [NC,OR] 
+RewriteCond %{REMOTE_ADDR} ^203.87.(1[2-9][0-9]). [NC,OR]
+RewriteCond %{REMOTE_ADDR} ^218.(1[0-9][0-9]). [NC,OR] 
+RewriteCond %{REMOTE_ADDR} ^211.([1-9][0-9]). [NC,OR]
+RewriteCond %{REMOTE_ADDR} ^66.150.55.(2[2-3][0-9]). [NC,OR]
+RewriteCond %{REMOTE_ADDR} ^64.110.([4-9][0-9]). [NC,OR] 
+RewriteCond %{REMOTE_ADDR} ^64.110.(1[0-8][0-9]). [NC] 
+RewriteCond %{HTTP_USER_AGENT} ^$
+RewriteRule ^.* - [F,L]
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} ^http(s)?://(www\.)?http://safebrowsing-cache.google.com/.*$ [NC]
+RewriteRule .* - [F,L]

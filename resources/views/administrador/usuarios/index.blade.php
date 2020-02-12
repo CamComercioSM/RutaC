@@ -33,6 +33,7 @@
                                     <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
                                     <td class="text-center">
                                         <a class="btn btn-primary btn-xs" href="{{action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ])}}" style="width:50px;">Ver</a>
+                                        <button type="button" data-toggle="modal" data-target="#modal-reset-password" class="btn btn-primary btn-xs">Restablecer Clave</button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -103,6 +104,33 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal-reset-password">
+    <div class="modal-dialog">
+        <form id="resetPassword" action="" role="form" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Restablecer Contraseña</h4>
+                </div>
+                <div class="modal-body">
+                    {!! csrf_field() !!}
+                    <input type="hidden" name="usuarioEMAIL" id="usuarioEMAIL" value="{{$usuario->usuarioEMAIL}}">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            Se enviará un link de restablecimiento de contraseña al correo: {{$usuario->usuarioEMAIL}}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                    <button type="button" id="reset-password" class="btn btn-primary">Restablecer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
     function eliminarUsuario(usuarioID){
         $('#usuarioID').val(usuarioID);
@@ -137,6 +165,61 @@
             }
         });
     });
+
+    $('#btn-reset-password').click(function(){
+        $('.capa').css("visibility", "visible");
+        $('#btn-reset-password').attr("disabled", true);
+    });
+
+    $('#reset-password').click(function(){
+        var values = getValuesResetPassword();
+        resetPassword(values);
+    });
+    function getValuesResetPassword(){
+        var values = new Object;
+        var inputs = $("#resetPassword").find('input, textarea');
+        for(var i = 0; i< inputs.length; i++){
+            name = $(inputs[i]).attr('name');
+            value = $(inputs[i]).val();
+            values[name] = value;
+            $("input[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');
+            $("#error_"+name).html('');
+        }
+        return values;
+    }
+    function resetPassword(values){
+        $('.capa').css("visibility", "visible");
+        $('#reset-password').attr("disabled", true);
+        $('#message-error').html('');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{url('admin/usuario/reset-password') }}",
+            dataType: 'json',
+            type: 'post',
+            data: values,
+            success: function(data){
+                console.log(data);
+                if(data.status == 'Ok'){
+                    alert(data.mensaje);
+                    window.location.href = ""
+                }
+                if(data.status == 'Error'){
+                    alert(data.mensaje);
+                    $('.capa').css("visibility", "hidden");
+                    $('#reset-password').attr("disabled", false);
+                }
+            },
+            error: function(xhr, data, error){
+                alert('Ocurrió un error');
+                $('.capa').css("visibility", "hidden");
+                $('#reset-password').attr("disabled", false);
+            }
+        });
+    }
 </script>
 
 @endsection

@@ -9,6 +9,7 @@ use App\Models\DatoUsuario;
 use App\Models\Departamento;
 use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -126,9 +127,9 @@ class RegisterController extends Controller
                 $nuevoUsuario->usuarioEMAIL = $data['correo_electronico'];
                 $nuevoUsuario->password = bcrypt($data['password']);
                 $nuevoUsuario->dato_usuarioID = $datoUsuarioID;
-                $nuevoUsuario->confirmation_code = str_random(25);
+                $nuevoUsuario->confirmation_code = Str::random(25);
                 if($hayCambios){
-                    $nuevoUsuario->update_code = str_random(25);
+                    $nuevoUsuario->update_code = Str::random(25);
                 }
                 $nuevoUsuario->save();
                 $usuarioID = $nuevoUsuario->usuarioID;
