@@ -17,11 +17,11 @@
                     v-bind="$attrs"
                     v-model="value"
                     :state="errors[0] ? false : null"
-                    @change='getCities()'
             >
                 <template v-slot:first v-if="placeholder">
                     <b-form-select-option :value="null" disabled>{{ placeholder }}</b-form-select-option>
                 </template>
+                <option v-for="city in cities" v-bind:value="city.id_municipio" >{{ city.municipio }}</option>
             </b-form-select>
             <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
         </b-form-group>
@@ -61,9 +61,6 @@
             placeholder: {
                 type: String,
                 default: null
-            },
-            subSelect: {
-                default: null
             }
         },
         computed: {
@@ -74,24 +71,25 @@
         data: function() {
             return {
                 value: null,
-                cities: ''
+                cities: [],
             }
         },
         methods: {
             addError(error) {
                 this.$refs.validationProvider.setErrors([this.error]);
             },
-            getCities: function(){
-                axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/'+this.value, {})
-                .then(function (response) {
-                    EventBus.$emit('cities', response.data);
-                });
+            clear: function(){
+                this.cities = [];
             }
         },
         created() {
             if (this.initialValue) {
                 this.value = this.initialValue;
             }
+            let vm = this;
+            EventBus.$on('cities', function (data) {
+                vm.cities = data;
+            })
         },
         mounted() {
             if (this.error) {

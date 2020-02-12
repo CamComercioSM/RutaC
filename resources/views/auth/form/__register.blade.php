@@ -75,18 +75,22 @@
                 initial-value="{{ old('departamento_residencia') }}"
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
-                sub-select="municipio_residencia"
         >
         </rc-select-location>
     </div>
 
     <div class="form-group col-md-6">
-        <div class="form-group">
-            <select class='form-control' v-model='city'>
-                <option value='0' >Select State</option>
-                <option v-for='data in cities' :value='data.id'></option>
-            </select>
-        </div>
+        <rc-select-city
+                name="municipio_residencia"
+                id="municipio_residencia"
+                rules="required|numeric"
+                @error('municipio_residencia')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('municipio_residencia') }}"
+                placeholder="{{ __('Municipio de residencia') }}"
+        >
+        </rc-select-city>
     </div>
 </div>
 <div class="row">

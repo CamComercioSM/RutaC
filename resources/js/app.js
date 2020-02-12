@@ -1,6 +1,7 @@
 require('./bootstrap');
 require('./font-awesome');
 require('./vee-validate');
+//require('./eventBus');
 
 window.Vue = require('vue');
 
@@ -14,17 +15,21 @@ import RCInput from "./components/inputs/RCInput";
 import RCCheckbox from "./components/inputs/RCCheckbox";
 import RCAlert from "./components/RCAlert";
 import RCSelectLocation from "./components/inputs/RCSelectLocation";
+import RCSelectCity from "./components/inputs/RCSelectCity";
 
 Vue.component('rc-select', RCSelect);
 Vue.component('rc-input', RCInput);
 Vue.component('rc-checkbox', RCCheckbox);
 Vue.component("rc-alert", RCAlert);
 Vue.component('rc-select-location', RCSelectLocation);
+Vue.component('rc-select-city', RCSelectCity);
 
 // Custom forms
 import RCForm from "./components/forms/RCForm";
 
 Vue.component('rc-form', RCForm);
+
+Vue.prototype.$eventHub = new Vue();
 
 const app = new Vue({
     el: '#app',
