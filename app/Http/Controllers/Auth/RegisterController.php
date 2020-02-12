@@ -76,12 +76,15 @@ class RegisterController extends Controller
         $rules["password"] = 'required|min:6';
         $rules["repetir_password"] = 'same:password';
         $rules["tipo_documento"] = 'required';
-        //$rules["g-recaptcha-response"] = 'required|recaptcha';
-        //$rules["termino_y_condiciones_de_uso"] = 'required|confirmed';
+        $rules["termino_y_condiciones_de_uso"] = 'required|confirmed';
 
         $messages = [];
-        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
-        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        if (config('app.env') == 'production') {
+            $rules["g-recaptcha-response"] = 'required|recaptcha';
+
+            $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+            $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        }
 
         return Validator::make($data, $rules, $messages);
     }
