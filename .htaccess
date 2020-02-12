@@ -7,7 +7,6 @@ RedirectMatch 403 ^/.git/?$
 
 RewriteCond %{SERVER_PORT} 80 
 RewriteRule ^(.*)$ https://rutadecrecimiento.com/$1 [R,L]
-
 RewriteCond %{HTTP_HOST} ^(www.)?rutadecrecimiento.com$
 
 RewriteCond %{REQUEST_URI} !^/public/
