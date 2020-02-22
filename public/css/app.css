@@ -13768,3 +13768,8 @@ button[aria-label][data-balloon-pos] {
   content: "Seleccionar";
 }
 
+.main-content {
+  background: #fff;
+  padding: 15px;
+}
+

@@ -77106,7 +77106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_inputs_RCCheckbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/inputs/RCCheckbox */ "./resources/js/components/inputs/RCCheckbox.vue");
 /* harmony import */ var _components_RCAlert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/RCAlert */ "./resources/js/components/RCAlert.vue");
 /* harmony import */ var _components_inputs_RCSelectLocation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/inputs/RCSelectLocation */ "./resources/js/components/inputs/RCSelectLocation.vue");
-/* harmony import */ var _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/inputs/RCSelectCity */ "./resources/js/components/inputs/RCSelectCity.vue");
+/* harmony import */ var _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/inputs/RCSelectCity */ "./resources/js/components/inputs/RCSelectCity.vue");
 /* harmony import */ var _components_forms_RCForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/forms/RCForm */ "./resources/js/components/forms/RCForm.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -77131,7 +77131,7 @@ Vue.component('rc-input', _components_inputs_RCInput__WEBPACK_IMPORTED_MODULE_2_
 Vue.component('rc-checkbox', _components_inputs_RCCheckbox__WEBPACK_IMPORTED_MODULE_3__["default"]);
 Vue.component("rc-alert", _components_RCAlert__WEBPACK_IMPORTED_MODULE_4__["default"]);
 Vue.component('rc-select-location', _components_inputs_RCSelectLocation__WEBPACK_IMPORTED_MODULE_5__["default"]);
-Vue.component('rc-select-city', _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_8__["default"]); // Custom forms
+Vue.component('rc-select-city', _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_6__["default"]); // Custom forms
 
 
 Vue.component('rc-form', _components_forms_RCForm__WEBPACK_IMPORTED_MODULE_7__["default"]);

@@ -8,7 +8,7 @@
 <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', '3DS ACS') }}</title>
+    <title>{{ config('app.name', 'Ruta C') }}</title>
 
     <!-- Scripts -->
     <script>

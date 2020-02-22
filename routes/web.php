@@ -45,16 +45,16 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 |---------------------------------------------------------------------------------------
 */
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('admin', 'Admin\AdminController@index');
+    Route::get('admin', 'Admin\AdminController@index')->name('admin.index');
     Route::get('admin/documento/{file}', 'PublicController@getDocumento');
 
-    Route::get('admin/rutas', 'Admin\RutasController@index');
+    Route::get('admin/rutas', 'Admin\RutasController@index')->name('admin.rutas.index');
     Route::get('admin/todas-rutas', 'Admin\RutasController@todasRutas');
     Route::get('admin/rutas/revisar/{ruta}', 'Admin\RutasController@revisarRuta');
     Route::get('admin/marcar-estacion/{estacion}/{ruta}', 'Admin\RutasController@marcarEstacion');
     Route::get('admin/desmarcar-estacion/{estacion}/{ruta}', 'Admin\RutasController@desmarcarEstacion');
     
-    Route::get('admin/diagnosticos', 'Admin\DiagnosticoController@index');
+    Route::get('admin/diagnosticos', 'Admin\DiagnosticoController@index')->name('admin.diagnosticos.index');
     Route::get('admin/diagnosticos/editar/{diagnostico}', 'Admin\DiagnosticoController@showFormEditar');
     
     Route::post('admin/diagnosticos/agregar-feedback', 'Admin\DiagnosticoController@agregarFeedback');
@@ -90,34 +90,34 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'Admin\DiagnosticoController@verResultadoSeccion');
     Route::get('admin/diagnostico/ver-resultado/{tipo}/{diagnostico}', 'Admin\DiagnosticoController@showResultadosDiagnostico');
 
-    Route::get('admin/videos', 'Admin\VideosController@index');
+    Route::get('admin/videos', 'Admin\VideosController@index')->name('admin.videos.index');
     Route::post('admin/agregar-video', 'Admin\VideosController@agregarVideo');
     Route::post('admin/editar-video', 'Admin\VideosController@editarVideo');
     Route::post('admin/eliminar-video', 'Admin\VideosController@eliminarVideo');
     
-    Route::get('admin/documentos', 'Admin\DocumentosController@index');
+    Route::get('admin/documentos', 'Admin\DocumentosController@index')->name('admin.documentos.index');
     Route::post('admin/agregar-documento', 'Admin\DocumentosController@agregarDocumento');
     Route::post('admin/editar-documento', 'Admin\DocumentosController@editarDocumento');
     Route::post('admin/eliminar-documento', 'Admin\DocumentosController@eliminarDocumento');
     
-    Route::get('admin/servicios', 'Admin\ServiciosController@index');
+    Route::get('admin/servicios', 'Admin\ServiciosController@index')->name('admin.servicios.index');
     Route::post('admin/agregar-servicio', 'Admin\ServiciosController@agregarServicio');
     Route::post('admin/editar-servicio', 'Admin\ServiciosController@editarServicio');
     Route::post('admin/eliminar-servicio', 'Admin\ServiciosController@eliminarServicio');
     
-    Route::get('admin/talleres', 'Admin\TalleresController@index');
+    Route::get('admin/talleres', 'Admin\TalleresController@index')->name('admin.talleres.index');
     Route::post('admin/agregar-taller', 'Admin\TalleresController@agregarTaller');
     Route::post('admin/editar-taller', 'Admin\TalleresController@editarTaller');
     Route::post('admin/eliminar-taller', 'Admin\TalleresController@eliminarTaller');
 
-    Route::get('admin/competencias', 'Admin\CompetenciaController@index');
+    Route::get('admin/competencias', 'Admin\CompetenciaController@index')->name('admin.competencias.index');
     Route::post('admin/agregar-competencia', 'Admin\CompetenciaController@agregarCompetencia');
     Route::post('admin/editar-competencia', 'Admin\CompetenciaController@editarCompetencia');
     Route::post('admin/eliminar-competencia', 'Admin\CompetenciaController@eliminarCompetencia');
     Route::post('admin/activar-competencia', 'Admin\CompetenciaController@activarCompetencia');
     
-    Route::get('admin/usuario', 'Admin\UsuarioController@index');
-    Route::get('admin/usuarios', 'Admin\UsuarioController@usuariosAdmin');
+    Route::get('admin/usuario', 'Admin\UsuarioController@index')->name('admin.usuarios.perfil');
+    Route::get('admin/usuarios', 'Admin\UsuarioController@usuariosAdmin')->name('admin.usuarios.index');
     Route::get('admin/crear-usuario', 'Admin\UsuarioController@crearUsuario');
     Route::post('admin/actualizar-password', 'Admin\UsuarioController@actualizarPassword');
     Route::post('admin/crear-administrador', 'Admin\UsuarioController@crearAdministrador');
@@ -128,11 +128,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/usuario/{usuarioID}', 'Admin\UsuarioController@verUsuario');
     Route::post('admin/usuario-guardar', 'Admin\UsuarioController@guardarPerfil');
 
-    Route::get('admin/empresas', 'Admin\EmpresaController@index');
+    Route::get('admin/empresas', 'Admin\EmpresaController@index')->name('admin.empresas.index');
     Route::get('admin/empresa/{empresaID}', 'Admin\EmpresaController@verEmpresa');
     Route::post('admin/empresa/{empresaID}/editar', 'Admin\EmpresaController@editarEmpresa');
 
-    Route::get('admin/emprendimientos', 'Admin\EmprendimientoController@index');
+    Route::get('admin/emprendimientos', 'Admin\EmprendimientoController@index')->name('admin.emprendimientos.index');
     Route::get('admin/emprendimiento/{emprendimientoID}', 'Admin\EmprendimientoController@verEmprendimiento');
     Route::post('emprendimiento/{emprendimientoID}/editar', 'Admin\EmprendimientoController@editarEmprendimiento');
 
