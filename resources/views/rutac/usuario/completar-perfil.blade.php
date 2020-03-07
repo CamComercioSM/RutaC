@@ -1,4 +1,4 @@
-@extends('rutac.layouts.width')
+@extends('layouts.app')
 
 @section('title','RutaC | Completar perfil')
 
@@ -8,21 +8,21 @@
 		Completa tu perfil
 	</h1>
 </section>
-<section class="content">
-    <div class="row container">
-    	<div class="box col-xs-12 col-md-offset-1">
-    		<div id="datos-usuario" class="show">
-    		    @include('rutac.usuario.forms.datos-usuario')
-    		</div>
-    		<div id="datos-empresas" class="hidden">    
-    		    @include('rutac.usuario.forms.datos-empresas')
-    		</div>
-    		<div id="datos-emprendimientos" class="hidden">
-    		    @include('rutac.usuario.forms.datos-emprendimientos')
-    		</div>
-    	</div>
+<div class="container">
+    <div class="row justify-content">
+        <div class="col-md-12">
+            <div id="datos-usuario" class="show">
+                @include('rutac.usuario.forms.__dato_usuario')
+            </div>
+            <div id="datos-empresas" class="hidden">
+                @include('rutac.usuario.forms.datos-empresas')
+            </div>
+            <div id="datos-emprendimientos" class="hidden">
+                @include('rutac.usuario.forms.datos-emprendimientos')
+            </div>
+        </div>
     </div>
-</section>
+</div>
 
 @endsection
 @section('style')

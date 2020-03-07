@@ -28,19 +28,19 @@ class FormRepository
         ];
     }
 
-    public static function nivelEstudios(){
-        return [
+    public function nivelEstudios(){
+        return collect([
             'Básica Primaria',
             'Básica Secundaria',
             'Técnica',
             'Tecnólogo',
             'Pre grado',
             'Pos grado'
-        ];
+        ]);
     }
 
-    public static function cargo(){
-        return [
+    public function cargo(){
+        return collect([
             'Gerente',
             'Administrador',
             'Coordinador',
@@ -50,11 +50,11 @@ class FormRepository
             'Representante legal',
             'Auxiliar',
             'Varios'
-        ];
+        ]);
     }
 
-    public static function remuneracion(){
-        return [
+    public function remuneracion(){
+        return collect([
             'Menos de $700.000',
             'Más de $700.000',
             'Más de $1.000.000',
@@ -65,17 +65,17 @@ class FormRepository
             'Más de $10.000.000',
             'Más de $15.000.000',
             'Prefiero no decirlo'
-        ];
+        ]);
     }
 
-    public static function grupoEtnico(){
-        return [
+    public function grupoEtnico(){
+        return collect([
             'Rrom (Gitanos)',
             'Indígenas',
             'Afrocolombianos',
             'Raizales',
             'Otro'
-        ];
+        ]);
     }
 
     public static function idiomas(){
@@ -148,7 +148,7 @@ class FormRepository
     }
 
     public static function profesion(){
-        return [
+        return collect([
             '2111'=>'Físicos y Astrónomos',
             '2112'=>'Meteorólogos',
             '2114'=>'Geólogos  y Geofísicos',
@@ -474,7 +474,7 @@ class FormRepository
             '9333'=>' Bracero, coteros , estibadores de embarcaciones aéreas, marítimas y/o fluviales',
             '9611'=>'Recolectores de basura y material reciclable',
             '9613'=>'Barrenderos y afines'
-        ];
+        ]);
 
     }
 
