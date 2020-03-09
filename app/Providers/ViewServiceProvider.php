@@ -8,7 +8,9 @@ use App\Http\View\Composers\DocumentTypesComposer;
 use App\Http\View\Composers\EstudiosComposer;
 use App\Http\View\Composers\EtnicoComposer;
 use App\Http\View\Composers\ProfesionComposer;
+use App\Http\View\Composers\RangosActivosComposer;
 use App\Http\View\Composers\RemuneracionComposer;
+use App\Http\View\Composers\TiposEmpresaComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,7 +38,8 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(
             [
                 'auth.register',
-                'rutac.usuario.forms.__dato_usuario'
+                'rutac.usuario.forms.__dato_usuario',
+                'rutac.empresas.forms.__agregar_empresa'
             ],DepartamentosComposer::class
         );
 
@@ -49,5 +52,9 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['rutac.usuario.forms.__dato_usuario'],EtnicoComposer::class);
 
         View::composer(['rutac.usuario.forms.__dato_usuario'],CargoComposer::class);
+
+        View::composer(['rutac.empresas.forms.__agregar_empresa'],TiposEmpresaComposer::class);
+
+        View::composer(['rutac.empresas.forms.__agregar_empresa'],RangosActivosComposer::class);
     }
 }
