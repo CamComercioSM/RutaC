@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-@include('layouts.__favicon')
+    @include('layouts.__favicon')
 
 <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Ruta C') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script>
@@ -29,19 +29,20 @@
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
 </head>
 <body>
-<div id="app">
-    @include('layouts.nav.__top')
+    <div id="app">
+        @include('layouts.nav.__top')
 
-    <main class="py-4">
-        @yield('content')
-    </main>
-</div>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-    @csrf
-</form>
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
 
+    @stack('app-scripts')
 
-@stack('app-scripts')
+    @include('layouts.__footer')
 </body>
 <script src="{{ asset(mix('js/app.js')) }}"></script>
 </html>
