@@ -138,9 +138,10 @@ class LoginController extends Controller
         if($user->tipoUsuario == 'Admin'){
             return redirect('admin');
         }
-        if($user->perfilCompleto == 'No'){
+        /*if($user->perfilCompleto == 'No'){
             return redirect('completar-perfil');
-        }
+        }*/
+
         return redirect('home');
     }
 
