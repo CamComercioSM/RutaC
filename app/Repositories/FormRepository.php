@@ -107,8 +107,8 @@ class FormRepository
         return Municipio::where('departamento_id',$departamento)->select('id_municipio','municipio')->get();
     }
 
-    public static function tipoEmpresas(){
-        return [
+    public function tipoEmpresas(){
+        return collect([
             'Persona natural comerciante',
             'Empresa unipersonal',
             'Sociedades por Acciones Simplificadas (S.A.S)',
@@ -119,7 +119,7 @@ class FormRepository
             'Sociedad en Comandita por Acciones (S.C.A.)',
             'Empresa Asociativa de Trabajo (E.A.T.)',
             'Sociedades Agrarias de Transformación (S.A.T)'
-        ];
+        ]);
     }
 
     public function redesSociales(){
@@ -139,12 +139,12 @@ class FormRepository
         ];
     }
 
-    public static function activosTotales(){
-         return [
+    public function activosTotales(){
+         return collect([
             'Inferior a 500 SMMLV',
             'Entre 501 y 5.000 SMMLV',
             'Entre 5.001 y 30.000 SMMLV'
-        ];
+        ]);
     }
 
     public static function profesion(){
