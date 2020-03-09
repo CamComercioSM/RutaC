@@ -1,80 +1,40 @@
-@extends('rutac.app')
+@extends('administrador.app')
 
 @section('title','RutaC | Materiales de ayuda')
 
-@section('content')
-<section class="content-header">
-	<h1>
-		Materiales de ayuda
-	</h1>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="nav-tabs-custom">
-			<ul class="nav nav-tabs">
-	            <li class="active"><a href="#videos" data-toggle="tab">Capsula de Videos</a></li>
-	            <li><a href="#documentos" data-toggle="tab">Documentos</a></li>
-	        </ul>
-	        <div class="tab-content">
-	        	<div class="active tab-pane" id="videos">
-        			<div class="row">
-						<div class="videos endless-pagination" data-next-page="{{$videos->nextPageUrl()}}">
-							@php $n = 1 @endphp
-							@foreach($videos as $key=> $video)
-							<div class="col-md-4">
-								<div class="box box-success">
-									<div class="box-header with-border">
-							            <h5 class="box-title">{{$video->material_ayudaNOMBRE}}</h5>
-							        </div>
-							        <div class="box-body">
-							        	<iframe class="box-center" width="100%" src="https://www.youtube.com/watch?v={{$video->material_ayudaCODIGO}}" frameborder="0" allowfullscreen></iframe>
-							        </div>
-								</div>
-							</div>
-							@if($n % 3 == 0)
-					        <div class="col-md-12"><br></div>
-					        @endif
-					        @php $n++ @endphp
-							@endforeach
-						</div>
-					</div>
-					<div class="loading" style="text-align: center;"><img src="{{ asset('dist/img/loading.gif') }}" style="width: 100px;height: 100px;"></div>
-        		</div>
-        		<div class="tab-pane" id="documentos">
-        			<div class="row">
-	        			@if(count($documentos) > 0)
-						<table id="tabla-documentos" class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<th class="text-center">Documento #</th>
-									<th class="text-center">Título documento</th>
-	                                <th class="text-center">URL documento</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach($documentos as $key=> $documento)
-								<tr>
-									<td class="text-center">{{$key+1}}</td>
-									<td class="text-left">{{$documento->material_ayudaNOMBRE}}</td>
-									<td class="text-left">
-	                                    <a href='documento/{{$documento->material_ayudaCODIGO}}'>{{$documento->material_ayudaCODIGO}}</a>
-	                                </td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
-						@else
-						<h3 class="text-center">No existen documentos</h3>
-						@endif
-					</diiv>
-        		</div>
-        	</div>
-        </div>
-
+@section('app-content')
+	<div class="container">
+		<div class="row justify-content">
+			<div class="col-md-12">
+				<h1>Materiales de ayuda</h1>
+			</div>
+		</div>
 	</div>
-</section>
+	<div class="container">
+		<div class="row justify-content">
+			<div class="col-md-12">
+				<div>
+					<b-card no-body>
+						<b-tabs card>
+							<b-tab title="Videos" active>
+								<b-card-text>
+									@include('rutac.materiales.__videos')
+								</b-card-text>
+							</b-tab>
+							<b-tab title="Documentos">
+								<b-card-text>
+									@include('rutac.materiales.__documentos')
+								</b-card-text>
+							</b-tab>
+						</b-tabs>
+					</b-card>
+				</div>
+			</div>
+		</div>
+	</div>
+
 @endsection
-@section('footer')
+@section('app-scripts')
 <script type="text/javascript">
     $(window).on('load',function(){
     	$('.loading').hide();

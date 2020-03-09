@@ -1,9 +1,8 @@
-@extends('rutac.app')
+@extends('administrador.app')
 
 @section('title','RutaC | Iniciar Ruta')
 
-
-@section('content')
+@section('app-content')
 <section class="content-header"></section>
 
 <section class="content">

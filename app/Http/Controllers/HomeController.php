@@ -27,10 +27,12 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
+        $tieneEntidad = $this->gController->comprobarEntidad();
+
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
         $rutasEmpresas = [];
         //return $usuario;
@@ -76,7 +78,7 @@ class HomeController extends Controller
         }
         $emprendelo = $this->gController->comprobarEmprendelo();
         
-        return view('rutac.home',compact('rutas','emprendelo'));
+        return view('rutac.home',compact('rutas','emprendelo', 'tieneEntidad'));
     }
 
 

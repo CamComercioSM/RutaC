@@ -16,7 +16,7 @@
                 </a>
                 @endif
                 @if($empresa->diagnosticosAll->count() == 1)
-                    @if($empresa->diagnosticosAll{0}->diagnosticoESTADO == 'Finalizado')
+                    @if($empresa->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
                     <a class="btn @if($empresa->diagnosticos->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$empresa->diagnosticos->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$empresa->diagnosticos->ruta->rutaESTADO}})">
                         <i class="fa fa-line-chart"></i> Ver ruta
                     </a>
@@ -36,24 +36,24 @@
                     @endif
                 @endif
                 @if($empresa->diagnosticosAll->count() >= 2)
-                    @if($empresa->diagnosticosAll{0}->diagnosticoESTADO == 'Finalizado')
-                    <a class="btn @if($empresa->diagnosticosAll{0}->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$empresa->diagnosticosAll{0}->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$empresa->diagnosticosAll{0}->ruta->rutaESTADO}})">
+                    @if($empresa->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
+                    <a class="btn @if($empresa->diagnosticosAll[0]->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$empresa->diagnosticosAll[0]->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$empresa->diagnosticosAll[0]->ruta->rutaESTADO}})">
                         <i class="fa fa-line-chart"></i> Ver ruta
                     </a>
                     <a class="btn btn-primary btn-sm" href="{{action('DiagnosticosController@continuarDiagnostico', ['tipo'=> 'empresa','id'=>$empresa->empresaID ])}}" data-toggle="tooltip" title="Ver últimos resultados">
                         <i class="fa fa-file-text-o"></i> Ver resultados
                     </a>
-                    @if($empresa->diagnosticosAll{0}->ruta->rutaESTADO == 'Finalizado')
+                    @if($empresa->diagnosticosAll[0]->ruta->rutaESTADO == 'Finalizado')
                         <div><br></div>
                         <a class="btn btn-primary btn-sm @if(Auth::user()->confirmed != 1) showModal @endif @if($diagnosticoEmpresaEstado->tipo_diagnosticoESTADO == 'Inactivo') showModalEmpresa @endif" href="@if(Auth::user()->confirmed == 0 || $diagnosticoEmpresaEstado->tipo_diagnosticoESTADO == 'Inactivo') javascript:void(0) @else {{action('DiagnosticosController@iniciarDiagnostico', ['tipo'=> 'empresa','id'=>$empresa->empresaID ])}} @endif" title="Iniciar diagnóstico" data-toggle="tooltip">
                             <i class="fa fa-plus-circle"></i> Iniciar nuevo diagnóstico
                         </a>
                     @endif
                     @else
-                    <a class="btn @if($empresa->diagnosticosAll{1}->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$empresa->diagnosticosAll{1}->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$empresa->diagnosticosAll{1}->ruta->rutaESTADO}})">
+                    <a class="btn @if($empresa->diagnosticosAll[1]->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$empresa->diagnosticosAll[1]->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$empresa->diagnosticosAll[1]->ruta->rutaESTADO}})">
                         <i class="fa fa-line-chart"></i> Ver ruta
                     </a>
-                    <a class="btn btn-primary btn-sm" href="{{action('DiagnosticosController@mostrarResultadoAnterior', ['tipo'=> 'empresa','id'=>$empresa->diagnosticosAll{1}->diagnosticoID ])}}" data-toggle="tooltip" title="Ver últimos resultados">
+                    <a class="btn btn-primary btn-sm" href="{{action('DiagnosticosController@mostrarResultadoAnterior', ['tipo'=> 'empresa','id'=>$empresa->diagnosticosAll[1]->diagnosticoID ])}}" data-toggle="tooltip" title="Ver últimos resultados">
                         <i class="fa fa-file-text-o"></i> Ver resultados
                     </a>
                     <div><br></div>

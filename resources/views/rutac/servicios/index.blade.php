@@ -1,35 +1,51 @@
-@extends('rutac.app')
+@extends('administrador.app')
 
 @section('title','RutaC | Servicios CCSM')
 
-@section('content')
-<section class="content-header">
-	<h1>
-		Servicios CCSM
-	</h1>
-</section>
-<section class="content">
-	<div class="row">
-		@php $n = 1 @endphp
-		@foreach($servicios as $key => $servicio)
-		<div class="col-md-4">
-            <a href="{{$servicio->servicio_ccsmURL}}" target="_blank">
-                <div class="card hovercard">
-                    <div class="info">
-                        <i class="fa fa-external-link plusIcon"></i><br>
-                        <div class="title">{{$servicio->servicio_ccsmNOMBRE}}</div>
-                    </div>
-                </div>
-            </a>
+@section('app-content')
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <h1>Servicios CCSM</h1>
+            </div>
         </div>
-        @if($n % 3 == 0)
-        <div class="col-md-12"><br></div>
-        @endif
-        @php $n++ @endphp
-        @endforeach
-	</div>
-</section>
-
+    </div>
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                @php $n = 1 @endphp
+                <b-container class="mb-3">
+                    <b-row cols="3">
+                        @foreach($servicios as $key => $servicio)
+                            <div style="padding: 5px">
+                                <b-card
+                                    title="{{$servicio->servicio_ccsmNOMBRE}}"
+                                    img-src="https://www.ccsm.org.co/images/servicios-empresariales/head-serviciosempresariales.png"
+                                    img-alt="Cámara de Comercio de Santa Marta para el Magdalena"
+                                    img-top
+                                    tag="article"
+                                    style="max-width: 20rem;"
+                                    class="mb-2"
+                                >
+                                    <b-button
+                                            href="{{$servicio->servicio_ccsmURL}}"
+                                            target="_blank"
+                                            variant="primary"
+                                    >
+                                        Ir al servicio
+                                    </b-button>
+                                </b-card>
+                            </div>
+                            @if($n % 3 == 0)
+                                <div class="col-md-12"><br></div>
+                            @endif
+                            @php $n++ @endphp
+                        @endforeach
+                    </b-row>
+                </b-container>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">

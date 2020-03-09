@@ -16,7 +16,7 @@
                 </a>
                 @endif
                 @if($emprendimiento->diagnosticosAll->count() == 1)
-                    @if($emprendimiento->diagnosticosAll{0}->diagnosticoESTADO == 'Finalizado')
+                    @if($emprendimiento->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
                     <a class="btn @if($emprendimiento->diagnosticos->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$emprendimiento->diagnosticos->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$emprendimiento->diagnosticos->ruta->rutaESTADO}})">
                         <i class="fa fa-line-chart"></i> Ver ruta
                     </a>
@@ -36,24 +36,24 @@
                     @endif
                 @endif
                 @if($emprendimiento->diagnosticosAll->count() >= 2)
-                    @if($emprendimiento->diagnosticosAll{0}->diagnosticoESTADO == 'Finalizado')
-                    <a class="btn @if($emprendimiento->diagnosticosAll{0}->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$emprendimiento->diagnosticosAll{0}->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$emprendimiento->diagnosticosAll{0}->ruta->rutaESTADO}})">
+                    @if($emprendimiento->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
+                    <a class="btn @if($emprendimiento->diagnosticosAll[0]->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$emprendimiento->diagnosticosAll[0]->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$emprendimiento->diagnosticosAll[0]->ruta->rutaESTADO}})">
                         <i class="fa fa-line-chart"></i> Ver ruta
                     </a>
                     <a class="btn btn-primary btn-sm" href="{{action('DiagnosticosController@continuarDiagnostico', ['tipo'=> 'emprendimiento','id'=>$emprendimiento->emprendimientoID ])}}" data-toggle="tooltip" title="Ver últimos resultados">
                         <i class="fa fa-file-text-o"></i> Ver resultados
                     </a>
-                    @if($emprendimiento->diagnosticosAll{0}->ruta->rutaESTADO == 'Finalizado')
+                    @if($emprendimiento->diagnosticosAll[0]->ruta->rutaESTADO == 'Finalizado')
                         <div><br></div>
                         <a class="btn btn-primary btn-sm @if(Auth::user()->confirmed != 1) showModal @endif @if($diagnosticoEmprendimientoEstado->tipo_diagnosticoESTADO == 'Inactivo') showModalEmprendimiento @endif" href="@if(Auth::user()->confirmed == 0 || $diagnosticoEmprendimientoEstado->tipo_diagnosticoESTADO == 'Inactivo') javascript:void(0) @else {{action('DiagnosticosController@iniciarDiagnostico', ['tipo'=> 'emprendimiento','id'=>$emprendimiento->emprendimientoID ])}} @endif" title="Iniciar diagnóstico" data-toggle="tooltip">
                             <i class="fa fa-plus-circle"></i> Iniciar nuevo diagnóstico
                         </a>
                     @endif
                     @else
-                    <a class="btn @if($emprendimiento->diagnosticosAll{1}->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$emprendimiento->diagnosticosAll{1}->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$emprendimiento->diagnosticosAll{1}->ruta->rutaESTADO}})">
+                    <a class="btn @if($emprendimiento->diagnosticosAll[1]->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="ver-ruta/{{$emprendimiento->diagnosticosAll[1]->ruta->rutaID}}" data-toggle="tooltip" title="Ver ruta ({{$emprendimiento->diagnosticosAll[1]->ruta->rutaESTADO}})">
                         <i class="fa fa-line-chart"></i> Ver ruta
                     </a>
-                    <a class="btn btn-primary btn-sm" href="{{action('DiagnosticosController@mostrarResultadoAnterior', ['tipo'=> 'emprendimiento','id'=>$emprendimiento->diagnosticosAll{1}->diagnosticoID ])}}" data-toggle="tooltip" title="Ver últimos resultados">
+                    <a class="btn btn-primary btn-sm" href="{{action('DiagnosticosController@mostrarResultadoAnterior', ['tipo'=> 'emprendimiento','id'=>$emprendimiento->diagnosticosAll[1]->diagnosticoID ])}}" data-toggle="tooltip" title="Ver últimos resultados">
                         <i class="fa fa-file-text-o"></i> Ver resultados
                     </a>
                     <div><br></div>

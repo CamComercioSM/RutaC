@@ -1,8 +1,8 @@
-@extends('rutac.app')
+@extends('administrador.app')
 
 @section('title','Mi Perfil')
 
-@section('content')
+@section('app-content')
 <section class="content">
     @if(Auth::user()->confirmed != 1)
     <div class="callout callout-warning">
