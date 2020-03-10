@@ -22,13 +22,16 @@ class ComprobarEntidad
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
 
         if($usuario->empresas->count() > 0){
+            $request->session()->put('tiene_entidad', '1');
             return $next($request);
         }
 
         if($usuario->emprendimientos->count() > 0){
+            $request->session()->put('tiene_entidad', '1');
             return $next($request);
         }
 
+        $request->session()->put('tiene_entidad', '0');
         return redirect('/home');
     }
 }

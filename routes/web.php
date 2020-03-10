@@ -55,7 +55,7 @@ Route::namespace('Admin')
 Route::namespace('User')
     ->prefix('user')
     ->as('user.')
-    ->middleware('auth')
+    ->middleware(['auth','entidad'])
     ->group(base_path('routes/user/web.php'));
 
 Route::group(['middleware' => 'user'],function(){

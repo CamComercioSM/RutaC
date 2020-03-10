@@ -39,7 +39,7 @@ class ViewServiceProvider extends ServiceProvider
             [
                 'auth.register',
                 'rutac.usuario.forms.__dato_usuario',
-                'rutac.empresas.forms.__agregar_empresa'
+                'rutac.empresas.__form'
             ],DepartamentosComposer::class
         );
 
@@ -53,8 +53,8 @@ class ViewServiceProvider extends ServiceProvider
 
         View::composer(['rutac.usuario.forms.__dato_usuario'],CargoComposer::class);
 
-        View::composer(['rutac.empresas.forms.__agregar_empresa'],TiposEmpresaComposer::class);
+        View::composer(['rutac.empresas.__form'],TiposEmpresaComposer::class);
 
-        View::composer(['rutac.empresas.forms.__agregar_empresa'],RangosActivosComposer::class);
+        View::composer(['rutac.empresas.__form'],RangosActivosComposer::class);
     }
 }

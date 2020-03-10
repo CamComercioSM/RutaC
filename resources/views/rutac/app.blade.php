@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
-            @if($tieneEntidad ?? '')
+            @if(Session::get('tiene_entidad') == 1)
                 <div class="mr-5 dashboard-tabs d-none d-md-block">
                     @include('layouts.nav.__left')
                 </div>

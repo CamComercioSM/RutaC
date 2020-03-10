@@ -3,7 +3,7 @@
 @section('title','RutaC | Home')
 
 @section('app-content')
-    @if(!$tieneEntidad)
+    @if($tieneEntidad == 0)
         @include('rutac.includes.__crear_entidad')
     @else
         <div class="container">
