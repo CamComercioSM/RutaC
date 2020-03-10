@@ -1,6 +1,6 @@
 @extends('rutac.app')
 
-@section('title','RutaC | Agregar emprendimiento')
+@section('title','RutaC | Agregar empresa')
 
 @section('app-content')
     <div class="container">
@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-between align-content-center">
-                            <h5>{{ __('Agregar emprendimiento') }}</h5>
+                            <h5>{{ __('Agregar empresa') }}</h5>
                         </div>
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group btn-group-sm">
@@ -22,13 +22,13 @@
 
                     <div class="card-body">
                         <rc-form
-                                action="{{ route('user.emprendimientos.store') }}"
+                                action="{{ route('user.empresas.store') }}"
                                 method="post"
                         >
-                            @include('rutac.emprendimientos.__form')
+                            @include('rutac.empresas.__form')
                             <div class="d-flex justify-content-end">
                                 <button class="btn btn-primary" type="submit">
-                                    {{ __('Crear emprendimiento') }}
+                                    {{ __('Crear empresa') }}
                                 </button>
                             </div>
                         </rc-form>
