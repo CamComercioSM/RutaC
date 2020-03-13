@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\View\Composers\CargoComposer;
 use App\Http\View\Composers\DepartamentosComposer;
 use App\Http\View\Composers\DocumentTypesComposer;
+use App\Http\View\Composers\EstadoComposer;
 use App\Http\View\Composers\EstudiosComposer;
 use App\Http\View\Composers\EtnicoComposer;
 use App\Http\View\Composers\ProfesionComposer;
@@ -56,5 +57,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['rutac.empresas.__form'],TiposEmpresaComposer::class);
 
         View::composer(['rutac.empresas.__form'],RangosActivosComposer::class);
+
+        View::composer(['administrador.diagnosticos.partials.__editar_diagnostico'],EstadoComposer::class);
     }
 }

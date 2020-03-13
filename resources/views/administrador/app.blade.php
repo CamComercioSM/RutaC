@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between">
             <div class="mr-5 dashboard-tabs d-none d-md-block">
-                @include('layouts.nav.__left')
+                @include('layouts.nav.admin.__left')
             </div>
             <div class="flex-grow-1">
                 @include('layouts.__alert')

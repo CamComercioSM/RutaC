@@ -22,10 +22,10 @@ class FormRepository
     }
     
     public function estado(){
-        return [
+        return collect([
             'Activo'=>'Activo',
             'Inactivo'=>'Inactivo'
-        ];
+        ]);
     }
 
     public function nivelEstudios(){

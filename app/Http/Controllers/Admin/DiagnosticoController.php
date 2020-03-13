@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Diagnosticos\AgregarFeedbackFormRequest;
 use Auth;
 use App\Models\Servicio;
 use App\Models\Material;
@@ -55,7 +56,7 @@ class DiagnosticoController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -67,40 +68,37 @@ class DiagnosticoController extends Controller
     {
         $tipoDiagnostico = TipoDiagnostico::where('tipo_diagnosticoID',$diagnostico)->with('retroDiagnostico','seccionesDiagnosticos')->first();
         if($tipoDiagnostico){
-            return view('administrador.diagnosticos.editar',compact('tipoDiagnostico','repositorioEstado'));    
+            return view('administrador.diagnosticos.editar',compact('tipoDiagnostico'));
         }
         $request->session()->flash("message_error", "Tipo de diagnóstico no existe");
         return redirect()->action('Admin\DiagnosticoController@index');
     }
     
     public function editarTipoDiagnostico(Request $request){
+
         $rules = [];
-        $rules['nombre_emprendimiento'] = 'required';
+        $rules['nombreEmprendimiento'] = 'required';
         $rules['idTipoDiagnostico'] = 'required';
+        $rules['estado'] = 'required';
 
         $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
+
         if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
+            return redirect()->route('admin.diagnosticos.editar', [$request->idTipoDiagnostico])
+                ->withErrors(__('Ocurrió un error'));
+        } else {
             $tipoDiagnostico = TipoDiagnostico::where('tipo_diagnosticoID',$request->idTipoDiagnostico)->first();
             if($tipoDiagnostico){
-                $tipoDiagnostico->tipo_diagnosticoNOMBRE = $request->nombre_emprendimiento;
+                $tipoDiagnostico->tipo_diagnosticoNOMBRE = $request->nombreEmprendimiento;
                 $tipoDiagnostico->tipo_diagnosticoESTADO = $request->get('estado');
                 $tipoDiagnostico->save();
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Tipo de diagnóstico editado correctamente';
+                return redirect()->route('admin.diagnosticos.editar', [$request->idTipoDiagnostico])
+                    ->withSuccess(__('Diagnóstico editado correctamente'));
             }else{
-                $data['status'] = 'Error';
-                $data['mensaje'] = 'Ocurrió un error';
+                return redirect()->route('admin.diagnosticos.editar', [$request->idTipoDiagnostico])
+                    ->withErrors(__('Ocurrió un error'));
             }
         }
-        return json_encode($data);
     }
 
     public function seccion($diagnostico,$seccion, Request $request)
@@ -127,35 +125,22 @@ class DiagnosticoController extends Controller
         $rules['nombre_seccion'] = 'required';
         $rules['peso_seccion'] = 'numeric|required|min:0|max:5';
 
-        Log::info($request);
-
         $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            $seccion = SeccionPregunta::where('seccion_preguntaNOMBRE',$request->nombre_seccion)->where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',$request->tipo_diagnosticoID)->first();
-            if(!$seccion){
-                $nueva_seccion = new SeccionPregunta;
-                $nueva_seccion->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $request->tipo_diagnosticoID;
-                $nueva_seccion->seccion_preguntaNOMBRE = $request->nombre_seccion;
-                $nueva_seccion->seccion_preguntaPESO = $request->peso_seccion;
-                $nueva_seccion->seccion_preguntaESTADO = 'Inactivo';
-                $nueva_seccion->save();
 
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Sección agregada correctamente';
-            }else{
-                $data['status'] = 'Error';
-                $data['mensaje'] = 'Sección ya existe';
-            }
+        if($validator->fails()){
+            return redirect()->route('admin.diagnosticos.index')
+                ->withErrors(__('Ocurrió un error'));
+        } else {
+            $nueva_seccion = new SeccionPregunta;
+            $nueva_seccion->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $request->tipo_diagnosticoID;
+            $nueva_seccion->seccion_preguntaNOMBRE = $request->nombre_seccion;
+            $nueva_seccion->seccion_preguntaPESO = $request->peso_seccion;
+            $nueva_seccion->seccion_preguntaESTADO = 'Inactivo';
+            $nueva_seccion->save();
+
+            return redirect()->route('admin.diagnosticos.index', [$request->idTipoDiagnostico])
+                ->withSuccess(__('Diagnóstico editado correctamente'));
         }
-        return json_encode($data);
     }
 
     public function editarSeccion(Request $request){
@@ -400,41 +385,16 @@ class DiagnosticoController extends Controller
         return json_encode($data);
     }
 
-    public function agregarFeedback(Request $request){
-        $rules = [];
-        $rules['tipoDiagnostico'] = 'required';
-        $rules['nivel'] = 'required';
-        $rules['rango'] = 'numeric|required|min:0|max:100';
-        $rules['mensaje'] = 'required';
+    public function agregarFeedback(AgregarFeedbackFormRequest $request){
+        $feedback = new RetroDiagnostico;
+        $feedback->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $request->tipoDiagnostico;
+        $feedback->retro_tipo_diagnosticoRANGO = $request->rango;
+        $feedback->retro_tipo_diagnosticoNIVEL = $request->nivel;
+        $feedback->retro_tipo_diagnosticoMensaje = $request->mensaje;
+        $feedback->save();
 
-        $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            if($data['status'] != 'Errors'){
-                $feedbackExisteRango = RetroDiagnostico::where('retro_tipo_diagnosticoRANGO',$request->rango)->where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',$request->tipoDiagnostico)->first();
-                if(!$feedbackExisteRango){
-                    $data['status'] = 'Ok';
-                    $data['mensaje'] = 'Feedback agregado correctamente';
-                    $feedback = new RetroDiagnostico;
-                    $feedback->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $request->tipoDiagnostico;
-                    $feedback->retro_tipo_diagnosticoRANGO = $request->rango;
-                    $feedback->retro_tipo_diagnosticoNIVEL = $request->nivel;
-                    $feedback->retro_tipo_diagnosticoMensaje = $request->mensaje;
-                    $feedback->save();
-                }else{
-                    $data['status'] = 'Error';
-                    $data['mensaje'] = 'Rango del feedback ya exisste';
-                }
-            }
-        }
-        return json_encode($data);
+        return redirect()->route('admin.diagnosticos.editar', [$request->tipoDiagnostico])
+            ->withSuccess(__('Feedback creado correctamente'));
     }
 
     public function editarFeedback(Request $request){
@@ -595,29 +555,27 @@ class DiagnosticoController extends Controller
         $rules['feedbackID'] = 'required';
 
         $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
+
         if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            if($data['status'] != 'Errors'){
-                $feedback = RetroSeccion::where('retro_seccionID',$request->feedbackID)->where('SECCIONES_PREGUNTAS_seccion_pregunta',$request->seccionID)->first();
-                if($feedback){
-                    $data['status'] = 'Ok';
-                    $data['mensaje'] = 'Feedback eliminado correctamente';
-                    $feedback->retro_seccionESTADO = 'Inactivo';
-                    $feedback->save();
-                }else{
-                    $data['status'] = 'Error';
-                    $data['mensaje'] = 'Error eliminando el feedback';
-                }
+
+            return redirect()->route('admin.diagnosticos.editar', [$request->idTipoDiagnostico])
+                ->withErrors(__('Ocurrió un error'));
+        } else {
+            $feedback = RetroSeccion::where('retro_seccionID',$request->feedbackID)
+                ->where('SECCIONES_PREGUNTAS_seccion_pregunta',$request->seccionID)->first();
+
+            if($feedback){
+                $feedback->retro_seccionESTADO = 'Inactivo';
+                $feedback->save();
+
+                return redirect()->route('admin.diagnosticos.editar', [$request->idTipoDiagnostico])
+                    ->withSuccess(__('Feedback eliminado correctamente'));
+            }else{
+
+                return redirect()->route('admin.diagnosticos.editar', [$request->idTipoDiagnostico])
+                    ->withErrors(__('Ocurrió un error'));
             }
         }
-        return json_encode($data);
     }
 
     public function cambiarOrdenPregunta(Request $request){

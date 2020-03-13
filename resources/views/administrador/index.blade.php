@@ -8,7 +8,7 @@
 <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Ruta C') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script>
@@ -29,6 +29,7 @@
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
 </head>
 <body>
+@stack('modals')
 <div id="app">
     @include('layouts.nav.__top')
 
@@ -38,7 +39,7 @@
                 <div class="mr-5 dashboard-tabs d-none d-md-block">
                     @include('layouts.nav.admin.__left')
                 </div>
-                <div class="flex-grow-1 main-content">
+                <div class="flex-grow-1">
                     @include('layouts.__alert')
                     @yield('content')
                 </div>
@@ -57,6 +58,7 @@
 
 
 @stack('app-scripts')
+@yield('footer')
 </body>
 <script src="{{ asset(mix('js/app.js')) }}"></script>
 </html>
