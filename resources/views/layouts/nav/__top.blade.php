@@ -29,7 +29,7 @@
             @else
                 <li class="nav-item">
                     <b-nav-item-dropdown id="userActionsDropdown" lazy text="{{ Auth::user()->name }}" right>
-                        <b-dropdown-item href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('common.logout') }}</b-dropdown-item>
+                        <b-dropdown-item href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Cerrar Sesión') }}</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </li>
             @endguest

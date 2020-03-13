@@ -76,7 +76,7 @@ class RegisterController extends Controller
         $rules["password"] = 'required|min:6';
         $rules["repetir_password"] = 'same:password';
         $rules["tipo_documento"] = 'required';
-        $rules["termino_y_condiciones_de_uso"] = 'required|confirmed';
+        $rules["termino_y_condiciones_de_uso"] = 'required|accepted';
 
         $messages = [];
         if (config('app.env') == 'production') {

@@ -182,3 +182,11 @@
         ></rc-checkbox>
     </div>
 </div>
+
+<div class="row">
+    <div class="form-group col-md-8">
+        <div class="g-recaptcha" data-sitekey="{{env('RECAPTCHA_KEY')}}"></div>
+        <span class="form-control-feedback" id="alert_error_g-recaptcha-response"></span>
+        <span class="text-danger" id="error_g-recaptcha-response"></span>
+    </div>
+</div>
