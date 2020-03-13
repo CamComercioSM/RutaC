@@ -1,49 +1,51 @@
 @extends('administrador.index')
 @section('title','RutaC | Documentos')
 @section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-8">
-			<a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-documento"><i class="fa fa-file-o"></i> Agregar documento </a>
-		</div>
-	</div>
-</section>
-<section class="content">
-	<br><br>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<table class="table table-bordered table-hover tabla-sistema">
-						<thead>
-							<tr>
-								<th class="text-center">Documento #</th>
-								<th class="text-center">Título documento</th>
-                                <th class="text-center">URL documento</th>
-								<th class="text-center" style="width: 150px"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($documentos as $key=> $documento)
-							<tr>
-								<td class="text-center">{{$key+1}}</td>
-								<td class="text-left">{{$documento->material_ayudaNOMBRE}}</td>
-								<td class="text-left">
-                                    <a href='documento/{{$documento->material_ayudaCODIGO}}'>{{$documento->material_ayudaCODIGO}}</a>
-                                </td>
-								<td class="text-center">
-									<a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-documento" onclick="editarDocumentoS('{{$documento->material_ayudaID}}','{{$documento->material_ayudaNOMBRE}}','{{$documento->material_ayudaURL}}');return false;">Editar</a>
-			                        <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-documento" onclick="eliminarDocumentoS('{{$documento->material_ayudaID}}');return false;">Eliminar</a>
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5></h5>
+                        <div>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-documento"><i class="fa fa-file-o"></i> Agregar documento </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('Documento #') }}</th>
+                                    <th>{{ __('Título documento') }}</th>
+                                    <th>{{ __('URL documento') }}</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($documentos as $key=> $documento)
+                                    <tr>
+                                        <td class="text-center">{{$key+1}}</td>
+                                        <td class="text-left">{{$documento->material_ayudaNOMBRE}}</td>
+                                        <td class="text-left">
+                                            <a href='documento/{{$documento->material_ayudaCODIGO}}'>{{$documento->material_ayudaCODIGO}}</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-documento" onclick="editarDocumentoS('{{$documento->material_ayudaID}}','{{$documento->material_ayudaNOMBRE}}','{{$documento->material_ayudaURL}}');return false;">Editar</a>
+                                            <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-documento" onclick="eliminarDocumentoS('{{$documento->material_ayudaID}}');return false;">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer')
 
