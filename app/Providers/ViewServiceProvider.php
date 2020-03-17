@@ -39,20 +39,20 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(
             [
                 'auth.register',
-                'rutac.usuario.forms.__dato_usuario',
+                'rutac.usuario.forms.__datos_usuario',
                 'rutac.empresas.__form'
             ],DepartamentosComposer::class
         );
 
-        View::composer(['rutac.usuario.forms.__dato_usuario'],EstudiosComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'],EstudiosComposer::class);
 
-        View::composer(['rutac.usuario.forms.__dato_usuario'],ProfesionComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'],ProfesionComposer::class);
 
-        View::composer(['rutac.usuario.forms.__dato_usuario'],RemuneracionComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'],RemuneracionComposer::class);
 
-        View::composer(['rutac.usuario.forms.__dato_usuario'],EtnicoComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'],EtnicoComposer::class);
 
-        View::composer(['rutac.usuario.forms.__dato_usuario'],CargoComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'],CargoComposer::class);
 
         View::composer(['rutac.empresas.__form'],TiposEmpresaComposer::class);
 

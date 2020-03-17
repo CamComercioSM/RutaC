@@ -1,3 +1,5 @@
+import RCDatePicker from "./components/inputs/RCDatePicker";
+
 require('./bootstrap');
 require('./font-awesome');
 require('./vee-validate');
@@ -25,6 +27,7 @@ Vue.component("rc-alert", RCAlert);
 Vue.component('rc-select-location', RCSelectLocation);
 Vue.component('rc-select-city', RCSelectCity);
 Vue.component('rc-radio', RCRadio);
+Vue.component('rc-date-picker', RCDatePicker);
 
 // Custom forms
 import RCForm from "./components/forms/RCForm";

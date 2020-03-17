@@ -7155,6 +7155,99 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputs/RCDatePicker.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputs/RCDatePicker.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    ValidationProvider: vee_validate__WEBPACK_IMPORTED_MODULE_0__["ValidationProvider"]
+  },
+  props: {
+    vid: {
+      type: String
+    },
+    rules: {
+      type: [Object, String],
+      "default": ""
+    },
+    label: {
+      type: String,
+      dafault: null
+    },
+    description: {
+      type: String,
+      "default": null
+    },
+    error: {
+      "default": null
+    },
+    initialValue: {
+      "default": null
+    }
+  },
+  computed: {
+    formGroupID: function formGroupID() {
+      return 'fieldset-for-' + this.$attrs.id;
+    }
+  },
+  data: function data() {
+    return {
+      value: null
+    };
+  },
+  methods: {
+    addError: function addError(error) {
+      this.$refs.validationProvider.setErrors([this.error]);
+    }
+  },
+  created: function created() {
+    if (this.initialValue) {
+      this.value = this.initialValue;
+    }
+  },
+  mounted: function mounted() {
+    if (this.error) {
+      this.addError(this.error);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputs/RCInput.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputs/RCInput.vue?vue&type=script&lang=js& ***!
@@ -7644,7 +7737,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$refs.validationProvider.setErrors([this.error]);
     },
     getCities: function getCities() {
-      axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/' + this.value, {}).then(function (response) {
+      axios.get('https://rutadecrecimiento.com/public/buscar_municipios/' + this.value, {}).then(function (response) {
         _event_bus_js__WEBPACK_IMPORTED_MODULE_1__["default"].$emit('cities', response.data);
       });
     }
@@ -7678,9 +7771,7 @@ __webpack_require__.r(__webpack_exports__);
 // Utility Plugin for setting the configuration
 //
 
-var BVConfigPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])();
+var BVConfigPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])();
 
 /***/ }),
 
@@ -7743,9 +7834,7 @@ var isNumericLike = function isNumericLike(value) {
 }; // @vue/component
 
 
-var BAlert =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BAlert = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__["default"]],
   model: {
@@ -7915,9 +8004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var AlertPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var AlertPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BAlert: _alert__WEBPACK_IMPORTED_MODULE_0__["BAlert"]
   }
@@ -7974,9 +8061,7 @@ var props = _objectSpread({}, linkProps, {
   }
 }); // @vue/component
 
-var BBadge =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BBadge = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -8017,9 +8102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var BadgePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var BadgePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BBadge: _badge__WEBPACK_IMPORTED_MODULE_0__["BBadge"]
   }
@@ -8045,9 +8128,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BBreadcrumbItem =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BBreadcrumbItem = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BBreadcrumbItem',
   functional: true,
   props: _breadcrumb_link__WEBPACK_IMPORTED_MODULE_2__["props"],
@@ -8110,9 +8191,7 @@ var props = _objectSpread({}, Object(_link_link__WEBPACK_IMPORTED_MODULE_4__["pr
   }
 }); // @vue/component
 
-var BBreadcrumbLink =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BBreadcrumbLink = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BBreadcrumbLink',
   functional: true,
   props: props,
@@ -8175,9 +8254,7 @@ var props = {
   }
 }; // @vue/component
 
-var BBreadcrumb =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BBreadcrumb = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BBreadcrumb',
   functional: true,
   props: props,
@@ -8248,9 +8325,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var BreadcrumbPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
+var BreadcrumbPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
   components: {
     BBreadcrumb: _breadcrumb__WEBPACK_IMPORTED_MODULE_0__["BBreadcrumb"],
     BBreadcrumbItem: _breadcrumb_item__WEBPACK_IMPORTED_MODULE_1__["BBreadcrumbItem"],
@@ -8302,9 +8377,7 @@ var props = {
   }
 }; // @vue/component
 
-var BButtonGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BButtonGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -8342,9 +8415,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var ButtonGroupPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var ButtonGroupPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BButtonGroup: _button_group__WEBPACK_IMPORTED_MODULE_0__["BButtonGroup"],
     BBtnGroup: _button_group__WEBPACK_IMPORTED_MODULE_0__["BButtonGroup"]
@@ -8374,9 +8445,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ITEM_SELECTOR = ['.btn:not(.disabled):not([disabled]):not(.dropdown-item)', '.form-control:not(.disabled):not([disabled])', 'select:not(.disabled):not([disabled])', 'input[type="checkbox"]:not(.disabled)', 'input[type="radio"]:not(.disabled)'].join(','); // @vue/component
 
-var BButtonToolbar =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BButtonToolbar = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BButtonToolbar',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
@@ -8427,7 +8496,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     setItemFocus: function setItemFocus(item) {
       item && item.focus && item.focus();
     },
-    focusFirst: function focusFirst(evt) {
+    focusFirst: function focusFirst() {
       var items = this.getItems();
       this.setItemFocus(items[0]);
     },
@@ -8449,7 +8518,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         this.setItemFocus(items[0]);
       }
     },
-    focusLast: function focusLast(evt) {
+    focusLast: function focusLast() {
       var items = this.getItems().reverse();
       this.setItemFocus(items[0]);
     },
@@ -8500,9 +8569,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var ButtonToolbarPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var ButtonToolbarPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BButtonToolbar: _button_toolbar__WEBPACK_IMPORTED_MODULE_0__["BButtonToolbar"],
     BBtnToolbar: _button_toolbar__WEBPACK_IMPORTED_MODULE_0__["BButtonToolbar"]
@@ -8560,16 +8627,13 @@ var props = {
   }
 }; // @vue/component
 
-var BButtonClose =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BButtonClose = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
   render: function render(h, _ref) {
     var props = _ref.props,
         data = _ref.data,
-        listeners = _ref.listeners,
         slots = _ref.slots,
         scopedSlots = _ref.scopedSlots;
     var $slots = slots();
@@ -8620,19 +8684,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BButton", function() { return BButton; });
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
-/* harmony import */ var _utils_pluck_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/pluck-props */ "./node_modules/bootstrap-vue/esm/utils/pluck-props.js");
-/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
-/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
-/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
-/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
-/* harmony import */ var _utils_string__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
-/* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
+/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _utils_pluck_props__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/pluck-props */ "./node_modules/bootstrap-vue/esm/utils/pluck-props.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_string__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+/* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -8658,13 +8724,13 @@ var btnProps = {
   size: {
     type: String,
     default: function _default() {
-      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_4__["getComponentConfig"])(NAME, 'size');
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'size');
     }
   },
   variant: {
     type: String,
     default: function _default() {
-      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_4__["getComponentConfig"])(NAME, 'variant');
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'variant');
     }
   },
   type: {
@@ -8684,32 +8750,33 @@ var btnProps = {
     default: false
   },
   pressed: {
-    // tri-state prop: true, false or null
-    // => on, off, not a toggle
+    // Tri-state: `true`, `false` or `null`
+    // => On, off, not a toggle
     type: Boolean,
     default: null
   }
 };
-var linkProps = Object(_link_link__WEBPACK_IMPORTED_MODULE_9__["propsFactory"])();
+var linkProps = Object(_link_link__WEBPACK_IMPORTED_MODULE_10__["propsFactory"])();
 delete linkProps.href.default;
 delete linkProps.to.default;
-var linkPropKeys = Object(_utils_object__WEBPACK_IMPORTED_MODULE_7__["keys"])(linkProps);
+var linkPropKeys = Object(_utils_object__WEBPACK_IMPORTED_MODULE_8__["keys"])(linkProps);
 var props = _objectSpread({}, linkProps, {}, btnProps); // --- Helper methods ---
-// Returns true if a tag's name is name
+// Returns `true` if a tag's name equals `name`
 
 var tagIs = function tagIs(tag, name) {
-  return Object(_utils_string__WEBPACK_IMPORTED_MODULE_8__["toString"])(tag).toLowerCase() === Object(_utils_string__WEBPACK_IMPORTED_MODULE_8__["toString"])(name).toLowerCase();
-}; // Focus handler for toggle buttons.  Needs class of 'focus' when focused.
+  return Object(_utils_string__WEBPACK_IMPORTED_MODULE_9__["toString"])(tag).toLowerCase() === Object(_utils_string__WEBPACK_IMPORTED_MODULE_9__["toString"])(name).toLowerCase();
+}; // Focus handler for toggle buttons
+// Needs class of 'focus' when focused
 
 
 var handleFocus = function handleFocus(evt) {
   if (evt.type === 'focusin') {
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["addClass"])(evt.target, 'focus');
+    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["addClass"])(evt.target, 'focus');
   } else if (evt.type === 'focusout') {
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["removeClass"])(evt.target, 'focus');
+    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["removeClass"])(evt.target, 'focus');
   }
 }; // Is the requested button a link?
-// If tag prop is set to `a`, we use a b-link to get proper disabled handling
+// If tag prop is set to `a`, we use a <b-link> to get proper disabled handling
 
 
 var isLink = function isLink(props) {
@@ -8718,7 +8785,7 @@ var isLink = function isLink(props) {
 
 
 var isToggle = function isToggle(props) {
-  return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isBoolean"])(props.pressed);
+  return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isBoolean"])(props.pressed);
 }; // Is the button "really" a button?
 
 
@@ -8735,12 +8802,12 @@ var isNonStandardTag = function isNonStandardTag(props) {
 var computeClass = function computeClass(props) {
   var _ref;
 
-  return ["btn-".concat(props.variant || Object(_utils_config__WEBPACK_IMPORTED_MODULE_4__["getComponentConfig"])(NAME, 'variant')), (_ref = {}, _defineProperty(_ref, "btn-".concat(props.size), props.size), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'rounded-pill', props.pill), _defineProperty(_ref, 'rounded-0', props.squared && !props.pill), _defineProperty(_ref, "disabled", props.disabled), _defineProperty(_ref, "active", props.pressed), _ref)];
+  return ["btn-".concat(props.variant || Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'variant')), (_ref = {}, _defineProperty(_ref, "btn-".concat(props.size), props.size), _defineProperty(_ref, 'btn-block', props.block), _defineProperty(_ref, 'rounded-pill', props.pill), _defineProperty(_ref, 'rounded-0', props.squared && !props.pill), _defineProperty(_ref, "disabled", props.disabled), _defineProperty(_ref, "active", props.pressed), _ref)];
 }; // Compute the link props to pass to b-link (if required)
 
 
 var computeLinkProps = function computeLinkProps(props) {
-  return isLink(props) ? Object(_utils_pluck_props__WEBPACK_IMPORTED_MODULE_2__["default"])(linkPropKeys, props) : null;
+  return isLink(props) ? Object(_utils_pluck_props__WEBPACK_IMPORTED_MODULE_3__["default"])(linkPropKeys, props) : null;
 }; // Compute the attributes for a button
 
 
@@ -8748,11 +8815,12 @@ var computeAttrs = function computeAttrs(props, data) {
   var button = isButton(props);
   var link = isLink(props);
   var toggle = isToggle(props);
-  var nonStdTag = isNonStandardTag(props);
+  var nonStandardTag = isNonStandardTag(props);
+  var hashLink = link && props.href === '#';
   var role = data.attrs && data.attrs.role ? data.attrs.role : null;
   var tabindex = data.attrs ? data.attrs.tabindex : null;
 
-  if (nonStdTag) {
+  if (nonStandardTag || hashLink) {
     tabindex = '0';
   }
 
@@ -8761,28 +8829,27 @@ var computeAttrs = function computeAttrs(props, data) {
     type: button && !link ? props.type : null,
     // Disabled only set on "real" buttons
     disabled: button ? props.disabled : null,
-    // We add a role of button when the tag is not a link or button for ARIA.
-    // Don't bork any role provided in data.attrs when isLink or isButton
-    role: nonStdTag ? 'button' : role,
-    // We set the aria-disabled state for non-standard tags
-    'aria-disabled': nonStdTag ? String(props.disabled) : null,
+    // We add a role of button when the tag is not a link or button for ARIA
+    // Don't bork any role provided in `data.attrs` when `isLink` or `isButton`
+    // Except when link has `href` of `#`
+    role: nonStandardTag || hashLink ? 'button' : role,
+    // We set the `aria-disabled` state for non-standard tags
+    'aria-disabled': nonStandardTag ? String(props.disabled) : null,
     // For toggles, we need to set the pressed state for ARIA
     'aria-pressed': toggle ? String(props.pressed) : null,
-    // autocomplete off is needed in toggle mode to prevent some browsers from
-    // remembering the previous setting when using the back button.
+    // `autocomplete="off"` is needed in toggle mode to prevent some browsers
+    // from remembering the previous setting when using the back button
     autocomplete: toggle ? 'off' : null,
-    // Tab index is used when the component is not a button.
+    // `tabindex` is used when the component is not a button
     // Links are tabbable, but don't allow disabled, while non buttons or links
     // are not tabbable, so we mimic that functionality by disabling tabbing
-    // when disabled, and adding a tabindex of '0' to non buttons or non links.
+    // when disabled, and adding a `tabindex="0"` to non buttons or non links
     tabindex: props.disabled && !button ? '-1' : tabindex
   };
 }; // @vue/component
 
 
-var BButton =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BButton = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -8793,18 +8860,37 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         children = _ref2.children;
     var toggle = isToggle(props);
     var link = isLink(props);
+    var nonStandardTag = isNonStandardTag(props);
+    var hashLink = link && props.href === '#';
     var on = {
+      keydown: function keydown(evt) {
+        // When the link is a `href="#"` or a non-standard tag (has `role="button"`),
+        // we add a keydown handlers for SPACE/ENTER
+
+        /* istanbul ignore next */
+        if (props.disabled || !(nonStandardTag || hashLink)) {
+          return;
+        }
+
+        var keyCode = evt.keyCode; // Add SPACE handler for `href="#"` and ENTER handler for non-standard tags
+
+        if (keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].SPACE || keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].ENTER && nonStandardTag) {
+          var target = evt.currentTarget || evt.target;
+          evt.preventDefault();
+          target.click();
+        }
+      },
       click: function click(evt) {
         /* istanbul ignore if: blink/button disabled should handle this */
-        if (props.disabled && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isEvent"])(evt)) {
+        if (props.disabled && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isEvent"])(evt)) {
           evt.stopPropagation();
           evt.preventDefault();
         } else if (toggle && listeners && listeners['update:pressed']) {
-          // Send .sync updates to any "pressed" prop (if .sync listeners)
-          // Concat will normalize the value to an array
-          // without double wrapping an array value in an array.
-          Object(_utils_array__WEBPACK_IMPORTED_MODULE_3__["concat"])(listeners['update:pressed']).forEach(function (fn) {
-            if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isFunction"])(fn)) {
+          // Send `.sync` updates to any "pressed" prop (if `.sync` listeners)
+          // `concat()` will normalize the value to an array without
+          // double wrapping an array value in an array
+          Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(listeners['update:pressed']).forEach(function (fn) {
+            if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isFunction"])(fn)) {
               fn(!props.pressed);
             }
           });
@@ -8824,7 +8910,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       attrs: computeAttrs(props, data),
       on: on
     };
-    return h(link ? _link_link__WEBPACK_IMPORTED_MODULE_9__["BLink"] : props.tag, Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, componentData), children);
+    return h(link ? _link_link__WEBPACK_IMPORTED_MODULE_10__["BLink"] : props.tag, Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, componentData), children);
   }
 });
 
@@ -8850,14 +8936,1125 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ButtonPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var ButtonPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BButton: _button__WEBPACK_IMPORTED_MODULE_0__["BButton"],
     BBtn: _button__WEBPACK_IMPORTED_MODULE_0__["BButton"],
     BButtonClose: _button_close__WEBPACK_IMPORTED_MODULE_1__["BButtonClose"],
     BBtnClose: _button_close__WEBPACK_IMPORTED_MODULE_1__["BButtonClose"]
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/calendar/calendar.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/calendar/calendar.js ***!
+  \************************************************************************/
+/*! exports provided: BCalendar */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BCalendar", function() { return BCalendar; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/loose-equal */ "./node_modules/bootstrap-vue/esm/utils/loose-equal.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_date__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/date */ "./node_modules/bootstrap-vue/esm/utils/date.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_locale__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/locale */ "./node_modules/bootstrap-vue/esm/utils/locale.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _utils_string__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../icons/icons */ "./node_modules/bootstrap-vue/esm/icons/icons.js");
+/* harmony import */ var _icons_iconstack__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../icons/iconstack */ "./node_modules/bootstrap-vue/esm/icons/iconstack.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // --- Constants ---
+
+var NAME = 'BCalendar'; // Key Codes
+
+var UP = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].UP,
+    DOWN = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].DOWN,
+    LEFT = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].LEFT,
+    RIGHT = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].RIGHT,
+    PAGEUP = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].PAGEUP,
+    PAGEDOWN = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].PAGEDOWN,
+    HOME = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].HOME,
+    END = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].END,
+    ENTER = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].ENTER,
+    SPACE = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].SPACE; // --- BCalendar component ---
+// @vue/component
+
+var BCalendar = _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: NAME,
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_12__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_13__["default"]],
+  model: {
+    // Even though this is the default that Vue assumes, we need
+    // to add it for the docs to reflect that this is the model
+    // And also for some validation libraries to work
+    prop: 'value',
+    event: 'input'
+  },
+  props: {
+    value: {
+      type: [String, Date] // default: null
+
+    },
+    valueAsDate: {
+      // Always return the `v-model` value as a date object
+      type: Boolean,
+      default: false
+    },
+    initialDate: {
+      // This specifies the calendar year/month/day that will be shown when
+      // first opening the datepicker if no v-model value is provided
+      // Default is the current date (or `min`/`max`)
+      type: [String, Date],
+      default: null
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    min: {
+      type: [String, Date] // default: null
+
+    },
+    max: {
+      type: [String, Date] // default: null
+
+    },
+    dateDisabledFn: {
+      type: Function // default: null
+
+    },
+    startWeekday: {
+      // `0` (Sunday), `1` (Monday), ... `6` (Saturday)
+      // Day of week to start calendar on
+      type: [Number, String],
+      default: 0
+    },
+    locale: {
+      // Locale(s) to use
+      // Default is to use page/browser default setting
+      type: [String, Array] // default: null
+
+    },
+    direction: {
+      // 'ltr', 'rtl', or `null` (for auto detect)
+      type: String // default: null
+
+    },
+    selectedVariant: {
+      // Variant color to use for the selected date
+      type: String,
+      default: 'primary'
+    },
+    todayVariant: {
+      // Variant color to use for today's date (defaults to `variant`)
+      type: String // default: null
+
+    },
+    noHighlightToday: {
+      // Disable highlighting today's date
+      type: Boolean,
+      default: false
+    },
+    dateInfoFn: {
+      // Function to set a class of (classes) on the date cell
+      // if passed a string or an array
+      // TODO:
+      //   If the function returns an object, look for class prop for classes,
+      //   and other props for handling events/details/descriptions
+      type: Function // default: null
+
+    },
+    width: {
+      // Has no effect if prop `block` is set
+      type: String,
+      default: '270px'
+    },
+    block: {
+      // Makes calendar the full width of its parent container
+      type: Boolean,
+      default: false
+    },
+    hideHeader: {
+      // When true makes the selected date header `sr-only`
+      type: Boolean,
+      default: false
+    },
+    hidden: {
+      // When `true`, renders a comment node, but keeps the component instance active
+      // Mainly for <b-form-date>, so that we can get the component's value and locale
+      // But we might just use separate date formatters, using the resolved locale
+      // (adjusted for the gregorian calendar)
+      type: Boolean,
+      default: false
+    },
+    ariaControls: {
+      type: String // default: null
+
+    },
+    roleDescription: {
+      type: String // default: null
+
+    },
+    // Labels for buttons and keyboard shortcuts
+    labelPrevYear: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelPrevYear');
+      }
+    },
+    labelPrevMonth: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelPrevMonth');
+      }
+    },
+    labelCurrentMonth: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelCurrentMonth');
+      }
+    },
+    labelNextMonth: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelNextMonth');
+      }
+    },
+    labelNextYear: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelNextYear');
+      }
+    },
+    labelToday: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelToday');
+      }
+    },
+    labelSelected: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelSelected');
+      }
+    },
+    labelNoDateSelected: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelNoDateSelected');
+      }
+    },
+    labelCalendar: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelCalendar');
+      }
+    },
+    labelNav: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelNav');
+      }
+    },
+    labelHelp: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelHelp');
+      }
+    },
+    dateFormatOptions: {
+      // `Intl.DateTimeFormat` object
+      type: Object,
+      default: function _default() {
+        return {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          weekday: 'long'
+        };
+      }
+    }
+  },
+  data: function data() {
+    var selected = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.value) || '';
+    return {
+      // Selected date
+      selectedYMD: selected,
+      // Date in calendar grid that has `tabindex` of `0`
+      activeYMD: selected || Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["constrainDate"])(this.initialDate || this.getToday()), this.min, this.max),
+      // Will be true if the calendar grid has/contains focus
+      gridHasFocus: false,
+      // Flag to enable the `aria-live` region(s) after mount
+      // to prevent screen reader "outbursts" when mounting
+      isLive: false
+    };
+  },
+  computed: {
+    // TODO: Use computed props to convert `YYYY-MM-DD` to `Date` object
+    selectedDate: function selectedDate() {
+      // Selected as a `Date` object
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(this.selectedYMD);
+    },
+    activeDate: function activeDate() {
+      // Active as a `Date` object
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(this.activeYMD);
+    },
+    computedMin: function computedMin() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(this.min);
+    },
+    computedMax: function computedMax() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(this.max);
+    },
+    computedWeekStarts: function computedWeekStarts() {
+      // `startWeekday` is a prop (constrained to `0` through `6`)
+      return Math.max(Object(_utils_number__WEBPACK_IMPORTED_MODULE_10__["toInteger"])(this.startWeekday) || 0, 0) % 7;
+    },
+    computedLocale: function computedLocale() {
+      // Returns the resolved locale used by the calendar
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["resolveLocale"])(Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(this.locale).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]), 'gregory');
+    },
+    calendarLocale: function calendarLocale() {
+      // This locale enforces the gregorian calendar (for use in formatter functions)
+      // Needed because IE 11 resolves `ar-IR` as islamic-civil calendar
+      // and IE 11 (and some other browsers) do not support the `calendar` option
+      // And we currently only support the gregorian calendar
+      var fmt = new Intl.DateTimeFormat(this.computedLocale, {
+        calendar: 'gregory'
+      });
+      var calendar = fmt.resolvedOptions().calendar;
+      var locale = fmt.resolvedOptions().locale;
+      /* istanbul ignore if: mainly for IE 11 and a few other browsers, hard to test in JSDOM */
+
+      if (calendar !== 'gregory') {
+        // Ensure the locale requests the gregorian calendar
+        // Mainly for IE 11, and currently we can't handle non-gregorian calendars
+        // TODO: Should we always return this value?
+        locale = locale.replace(/-u-.+$/i, '').concat('-u-ca-gregory');
+      }
+
+      return locale;
+    },
+    calendarYear: function calendarYear() {
+      return this.activeDate.getFullYear();
+    },
+    calendarMonth: function calendarMonth() {
+      return this.activeDate.getMonth();
+    },
+    calendarFirstDay: function calendarFirstDay() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(this.calendarYear, this.calendarMonth, 1);
+    },
+    calendarDaysInMonth: function calendarDaysInMonth() {
+      // We create a new date as to not mutate the original
+      var date = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(this.calendarFirstDay);
+      date.setMonth(date.getMonth() + 1, 0);
+      return date.getDate();
+    },
+    computedVariant: function computedVariant() {
+      return "btn-".concat(this.selectedVariant || 'primary');
+    },
+    computedTodayVariant: function computedTodayVariant() {
+      return "btn-outline-".concat(this.todayVariant || this.selectedVariant || 'primary');
+    },
+    isRTL: function isRTL() {
+      // `true` if the language requested is RTL
+      var dir = Object(_utils_string__WEBPACK_IMPORTED_MODULE_11__["toString"])(this.direction).toLowerCase();
+
+      if (dir === 'rtl') {
+        /* istanbul ignore next */
+        return true;
+      } else if (dir === 'ltr') {
+        /* istanbul ignore next */
+        return false;
+      }
+
+      return Object(_utils_locale__WEBPACK_IMPORTED_MODULE_9__["isLocaleRTL"])(this.computedLocale);
+    },
+    context: function context() {
+      var selectedYMD = this.selectedYMD;
+      var selectedDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(selectedYMD);
+      var activeYMD = this.activeYMD;
+      var activeDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(activeYMD);
+      return {
+        // The current value of the `v-model`
+        selectedYMD: selectedYMD,
+        selectedDate: selectedDate,
+        selectedFormatted: selectedDate ? this.formatDateString(selectedDate) : this.labelNoDateSelected,
+        // Which date cell is considered active due to navigation
+        activeYMD: activeYMD,
+        activeDate: activeDate,
+        activeFormatted: activeDate ? this.formatDateString(activeDate) : '',
+        // `true` if the date is disabled (when using keyboard navigation)
+        disabled: this.dateDisabled(activeDate),
+        // Locales used in formatting dates
+        locale: this.computedLocale,
+        calendarLocale: this.calendarLocale,
+        rtl: this.isRTL
+      };
+    },
+    // Computed props that return a function reference
+    dateOutOfRange: function dateOutOfRange() {
+      // Check wether a date is within the min/max range
+      // returns a new function ref if the pops change
+      // We do this as we need to trigger the calendar computed prop
+      // to update when these props update
+      var min = this.computedMin;
+      var max = this.computedMax;
+      return function (date) {
+        // Handle both `YYYY-MM-DD` and `Date` objects
+        date = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(date);
+        return min && date < min || max && date > max;
+      };
+    },
+    dateDisabled: function dateDisabled() {
+      // Returns a function for validating if a date is within range
+      // We grab this variables first to ensure a new function ref
+      // is generated when the props value changes
+      // We do this as we need to trigger the calendar computed prop
+      // to update when these props update
+      var rangeFn = this.dateOutOfRange;
+      var disabledFn = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isFunction"])(this.dateDisabledFn) ? this.dateDisabledFn : function () {
+        return false;
+      }; // Return the function ref
+
+      return function (date) {
+        // Handle both `YYYY-MM-DD` and `Date` objects
+        date = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(date);
+        var ymd = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(date);
+        return !!(rangeFn(date) || disabledFn(ymd, date));
+      };
+    },
+    // Computed props that return date formatter functions
+    formatDateString: function formatDateString() {
+      // Returns a date formatter function
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDateFormatter"])(this.calendarLocale, _objectSpread({
+        // Ensure we have year, month, day shown for screen readers/ARIA
+        // If users really want to leave one of these out, they can
+        // pass `undefined` for the property value
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }, this.dateFormatOptions, {
+        // Ensure hours/minutes/seconds are not shown
+        // As we do not support the time portion (yet)
+        hour: undefined,
+        minute: undefined,
+        second: undefined,
+        // Ensure calendar is gregorian
+        calendar: 'gregory'
+      }));
+    },
+    formatYearMonth: function formatYearMonth() {
+      // Returns a date formatter function
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDateFormatter"])(this.calendarLocale, {
+        year: 'numeric',
+        month: 'long',
+        calendar: 'gregory'
+      });
+    },
+    formatWeekdayName: function formatWeekdayName() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDateFormatter"])(this.calendarLocale, {
+        weekday: 'long',
+        calendar: 'gregory'
+      });
+    },
+    formatWeekdayNameShort: function formatWeekdayNameShort() {
+      // Used as the header cells
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDateFormatter"])(this.calendarLocale, {
+        weekday: 'short',
+        calendar: 'gregory'
+      });
+    },
+    formatDay: function formatDay() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDateFormatter"])(this.calendarLocale, {
+        day: 'numeric',
+        calendar: 'gregory'
+      });
+    },
+    // Disabled states for the nav buttons
+    prevYearDisabled: function prevYearDisabled() {
+      var min = this.computedMin;
+      return this.disabled || min && Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["lastDateOfMonth"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneYearAgo"])(this.activeDate)) < min;
+    },
+    prevMonthDisabled: function prevMonthDisabled() {
+      var min = this.computedMin;
+      return this.disabled || min && Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["lastDateOfMonth"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneMonthAgo"])(this.activeDate)) < min;
+    },
+    thisMonthDisabled: function thisMonthDisabled() {
+      // TODO: We could/should check if today is out of range
+      return this.disabled;
+    },
+    nextMonthDisabled: function nextMonthDisabled() {
+      var max = this.computedMax;
+      return this.disabled || max && Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["firstDateOfMonth"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneMonthAhead"])(this.activeDate)) > max;
+    },
+    nextYearDisabled: function nextYearDisabled() {
+      var max = this.computedMax;
+      return this.disabled || max && Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["firstDateOfMonth"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneYearAhead"])(this.activeDate)) > max;
+    },
+    // Calendar generation
+    calendar: function calendar() {
+      var matrix = [];
+      var firstDay = this.calendarFirstDay;
+      var calendarYear = firstDay.getFullYear();
+      var calendarMonth = firstDay.getMonth();
+      var daysInMonth = this.calendarDaysInMonth;
+      var startIndex = firstDay.getDay(); // `0`..`6`
+
+      var weekOffset = (this.computedWeekStarts > startIndex ? 7 : 0) - this.computedWeekStarts; // TODO: Change `dateInfoFn` to handle events and notes as well as classes
+
+      var dateInfoFn = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isFunction"])(this.dateInfoFn) ? this.dateInfoFn : function () {
+        return {};
+      }; // Build the calendar matrix
+
+      var currentDay = 0 - weekOffset - startIndex;
+
+      for (var week = 0; week < 6 && currentDay < daysInMonth; week++) {
+        // For each week
+        matrix[week] = []; // The following could be a map function
+
+        for (var j = 0; j < 7; j++) {
+          // For each day in week
+          currentDay++;
+          var date = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(calendarYear, calendarMonth, currentDay);
+          var month = date.getMonth();
+          var dayYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(date);
+          var dayDisabled = this.dateDisabled(date); // TODO: This could be a normalizer method
+
+          var dateInfo = dateInfoFn(dayYMD, Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(dayYMD));
+          dateInfo = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isString"])(dateInfo) || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isArray"])(dateInfo) ? {
+            class: dateInfo
+          } : Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isPlainObject"])(dateInfo) ? _objectSpread({
+            class: ''
+          }, dateInfo) : {
+            class: ''
+          };
+          matrix[week].push({
+            ymd: dayYMD,
+            // Cell content
+            day: this.formatDay(date),
+            label: this.formatDateString(date),
+            // Flags for styling
+            isThisMonth: month === calendarMonth,
+            isDisabled: dayDisabled,
+            // TODO: Handle other dateInfo properties such as notes/events
+            info: dateInfo
+          });
+        }
+      }
+
+      return matrix;
+    },
+    calendarHeadings: function calendarHeadings() {
+      var _this = this;
+
+      return this.calendar[0].map(function (d) {
+        return {
+          text: _this.formatWeekdayNameShort(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(d.ymd)),
+          label: _this.formatWeekdayName(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(d.ymd))
+        };
+      });
+    }
+  },
+  watch: {
+    value: function value(newVal, oldVal) {
+      var selected = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(newVal) || '';
+      var old = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(oldVal) || '';
+
+      if (!Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["datesEqual"])(selected, old)) {
+        this.activeYMD = selected || this.activeYMD;
+        this.selectedYMD = selected;
+      }
+    },
+    selectedYMD: function selectedYMD(newYMD, oldYMD) {
+      // TODO:
+      //   Should we compare to `formatYMD(this.value)` and emit
+      //   only if they are different?
+      if (newYMD !== oldYMD) {
+        this.$emit('input', this.valueAsDate ? Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(newYMD) || null : newYMD || '');
+      }
+    },
+    context: function context(newVal, oldVal) {
+      if (!Object(_utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__["default"])(newVal, oldVal)) {
+        this.$emit('context', newVal);
+      }
+    },
+    hidden: function hidden(newVal) {
+      // Reset the active focused day when hidden
+      this.activeYMD = this.selectedYMD || Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.value || this.constrainDate(this.initialDate || this.getToday())); // Enable/disable the live regions
+
+      this.setLive(!newVal);
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.$nextTick(function () {
+      _this2.$emit('context', _this2.context);
+    });
+  },
+  mounted: function mounted() {
+    this.setLive(true);
+  },
+  activated: function activated()
+  /* istanbul ignore next */
+  {
+    this.setLive(true);
+  },
+  deactivated: function deactivated()
+  /* istanbul ignore next */
+  {
+    this.setLive(false);
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.setLive(false);
+  },
+  methods: {
+    // Public method(s)
+    focus: function focus() {
+      if (!this.disabled) {
+        try {
+          this.$refs.grid.focus();
+        } catch (_unused) {}
+      }
+    },
+    blur: function blur() {
+      try {
+        this.$refs.grid.blur();
+      } catch (_unused2) {}
+    },
+    // Private methods
+    setLive: function setLive(on) {
+      var _this3 = this;
+
+      if (on) {
+        this.$nextTick(function () {
+          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["requestAF"])(function () {
+            _this3.isLive = true;
+          });
+        });
+      } else {
+        this.isLive = false;
+      }
+    },
+    getToday: function getToday() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])());
+    },
+    constrainDate: function constrainDate(date) {
+      // Constrains a date between min and max
+      // returns a new `Date` object instance
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["constrainDate"])(date, this.computedMin, this.computedMax);
+    },
+    emitSelected: function emitSelected(date) {
+      var _this4 = this;
+
+      // Performed in a `$nextTick()` to (probably) ensure
+      // the input event has emitted first
+      this.$nextTick(function () {
+        _this4.$emit('selected', Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(date) || '', Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(date) || null);
+      });
+    },
+    // Event handlers
+    setGridFocusFlag: function setGridFocusFlag(evt) {
+      // Sets the gridHasFocus flag to make date "button" look focused
+      this.gridHasFocus = !this.disabled && evt.type === 'focus';
+    },
+    onKeydownWrapper: function onKeydownWrapper(evt) {
+      // Calendar keyboard navigation
+      // Handles PAGEUP/PAGEDOWN/END/HOME/LEFT/UP/RIGHT/DOWN
+      // Focuses grid after updating
+      var keyCode = evt.keyCode;
+      var altKey = evt.altKey;
+
+      if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])([PAGEUP, PAGEDOWN, END, HOME, LEFT, UP, RIGHT, DOWN], keyCode)) {
+        /* istanbul ignore next */
+        return;
+      }
+
+      evt.preventDefault();
+      evt.stopPropagation();
+      var activeDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(this.activeDate);
+      var checkDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(this.activeDate);
+      var day = activeDate.getDate();
+      var constrainedToday = this.constrainDate(this.getToday());
+      var isRTL = this.isRTL;
+
+      if (keyCode === PAGEUP) {
+        // PAGEUP - Previous month/year
+        activeDate = (altKey ? _utils_date__WEBPACK_IMPORTED_MODULE_6__["oneYearAgo"] : _utils_date__WEBPACK_IMPORTED_MODULE_6__["oneMonthAgo"])(activeDate); // We check the first day of month to be in rage
+
+        checkDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(activeDate);
+        checkDate.setDate(1);
+      } else if (keyCode === PAGEDOWN) {
+        // PAGEDOWN - Next month/year
+        activeDate = (altKey ? _utils_date__WEBPACK_IMPORTED_MODULE_6__["oneYearAhead"] : _utils_date__WEBPACK_IMPORTED_MODULE_6__["oneMonthAhead"])(activeDate); // We check the last day of month to be in rage
+
+        checkDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(activeDate);
+        checkDate.setMonth(checkDate.getMonth() + 1);
+        checkDate.setDate(0);
+      } else if (keyCode === LEFT) {
+        // LEFT - Previous day (or next day for RTL)
+        activeDate.setDate(day + (isRTL ? 1 : -1));
+        checkDate = activeDate;
+      } else if (keyCode === RIGHT) {
+        // RIGHT - Next day (or previous day for RTL)
+        activeDate.setDate(day + (isRTL ? -1 : 1));
+        checkDate = activeDate;
+      } else if (keyCode === UP) {
+        // UP - Previous week
+        activeDate.setDate(day - 7);
+        checkDate = activeDate;
+      } else if (keyCode === DOWN) {
+        // DOWN - Next week
+        activeDate.setDate(day + 7);
+        checkDate = activeDate;
+      } else if (keyCode === HOME) {
+        // HOME - Today
+        activeDate = constrainedToday;
+        checkDate = activeDate;
+      } else if (keyCode === END) {
+        // END - Selected date, or today if no selected date
+        activeDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(this.selectedDate) || constrainedToday;
+        checkDate = activeDate;
+      }
+
+      if (!this.dateOutOfRange(checkDate) && !Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["datesEqual"])(activeDate, this.activeDate)) {
+        // We only jump to date if within min/max
+        // We don't check for individual disabled dates though (via user function)
+        this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(activeDate);
+      } // Ensure grid is focused
+
+
+      this.focus();
+    },
+    onKeydownGrid: function onKeydownGrid(evt) {
+      // Pressing enter/space on grid to select active date
+      var keyCode = evt.keyCode;
+      var activeDate = this.activeDate;
+
+      if (keyCode === ENTER || keyCode === SPACE) {
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        if (!this.disabled && !this.readonly && !this.dateDisabled(activeDate)) {
+          this.selectedYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(activeDate);
+          this.emitSelected(activeDate);
+        } // Ensure grid is focused
+
+
+        this.focus();
+      }
+    },
+    onClickDay: function onClickDay(day) {
+      // Clicking on a date "button" to select it
+      var selectedDate = this.selectedDate;
+      var activeDate = this.activeDate;
+      var clickedDate = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["parseYMD"])(day.ymd);
+
+      if (!this.disabled && !day.isDisabled && !this.dateDisabled(clickedDate)) {
+        if (!this.readonly) {
+          // If readonly mode, we don't set the selected date, just the active date
+          // If the clicked date is equal to the already selected date, we don't update the model
+          this.selectedYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["datesEqual"])(clickedDate, selectedDate) ? selectedDate : clickedDate);
+          this.emitSelected(clickedDate);
+        }
+
+        this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["datesEqual"])(clickedDate, activeDate) ? activeDate : Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(clickedDate)); // Ensure grid is focused
+
+        this.focus();
+      }
+    },
+    gotoPrevYear: function gotoPrevYear() {
+      this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.constrainDate(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneYearAgo"])(this.activeDate)));
+    },
+    gotoPrevMonth: function gotoPrevMonth() {
+      this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.constrainDate(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneMonthAgo"])(this.activeDate)));
+    },
+    gotoCurrentMonth: function gotoCurrentMonth() {
+      // TODO: Maybe this goto date should be configurable?
+      this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.constrainDate(this.getToday()));
+    },
+    gotoNextMonth: function gotoNextMonth() {
+      this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.constrainDate(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneMonthAhead"])(this.activeDate)));
+    },
+    gotoNextYear: function gotoNextYear() {
+      this.activeYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.constrainDate(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["oneYearAhead"])(this.activeDate)));
+    },
+    onHeaderClick: function onHeaderClick() {
+      if (!this.disabled) {
+        this.activeYMD = this.selectedYMD || Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.getToday());
+        this.focus();
+      }
+    }
+  },
+  render: function render(h) {
+    var _this5 = this;
+
+    // If hidden prop is set, render just a placeholder node
+    if (this.hidden) {
+      return h();
+    }
+
+    var isRTL = this.isRTL;
+    var todayYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["formatYMD"])(this.getToday());
+    var selectedYMD = this.selectedYMD;
+    var activeYMD = this.activeYMD;
+    var highlightToday = !this.noHighlightToday;
+    var safeId = this.safeId; // Flag for making the `aria-live` regions live
+
+    var isLive = this.isLive; // Pre-compute some IDs
+    // This should be computed props
+
+    var idValue = safeId();
+    var idWidget = safeId('_calendar-wrapper_');
+    var idNav = safeId('_calendar-nav_');
+    var idGrid = safeId('_calendar-grid_');
+    var idGridCaption = safeId('_calendar-grid-caption_');
+    var idGridHelp = safeId('_calendar-grid-help_');
+    var idActive = activeYMD ? safeId("_cell-".concat(activeYMD, "_")) : null; // Header showing current selected date
+
+    var $header = h('output', {
+      staticClass: 'd-block text-center rounded border small p-1 mb-1',
+      class: {
+        'text-muted': this.disabled,
+        readonly: this.readonly || this.disabled
+      },
+      attrs: {
+        id: idValue,
+        for: idGrid,
+        role: 'status',
+        tabindex: this.disabled ? null : '-1',
+        // Mainly for testing purposes, as we do not know
+        // the exact format `Intl` will format the date string
+        'data-selected': Object(_utils_string__WEBPACK_IMPORTED_MODULE_11__["toString"])(selectedYMD),
+        // We wait until after mount to enable `aria-live`
+        // to prevent initial announcement on page render
+        'aria-live': isLive ? 'polite' : 'off',
+        'aria-atomic': isLive ? 'true' : null
+      },
+      on: {
+        // Transfer focus/click to focus grid
+        // and focus active date (or today if no selection)
+        click: this.onHeaderClick,
+        focus: this.onHeaderClick
+      }
+    }, this.selectedDate ? [// We use `bdi` elements here in case the label doesn't match the locale
+    // Although IE 11 does not deal with <BDI> at all (equivalent to a span)
+    h('bdi', {
+      staticClass: 'sr-only'
+    }, " (".concat(Object(_utils_string__WEBPACK_IMPORTED_MODULE_11__["toString"])(this.labelSelected), ") ")), h('bdi', {}, this.formatDateString(this.selectedDate))] : this.labelNoDateSelected || "\xA0" // '&nbsp;'
+    );
+    $header = h('header', {
+      class: this.hideHeader ? 'sr-only' : 'mb-1',
+      attrs: {
+        title: this.selectedDate ? this.labelSelectedDate || null : null
+      }
+    }, [$header]); // Content for the date navigation buttons
+
+    var $prevYearIcon = h(_icons_iconstack__WEBPACK_IMPORTED_MODULE_15__["BIconstack"], {
+      props: {
+        shiftV: 0.5,
+        flipH: isRTL
+      }
+    }, [h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconChevronLeft"], {
+      props: {
+        shiftH: -2
+      }
+    }), h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconChevronLeft"], {
+      props: {
+        shiftH: 2
+      }
+    })]);
+    var $prevMonthIcon = h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconChevronLeft"], {
+      props: {
+        shiftV: 0.5,
+        flipH: isRTL
+      }
+    });
+    var $thisMonthIcon = h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconCircleFill"], {
+      props: {
+        shiftV: 0.5
+      }
+    });
+    var $nextMonthIcon = h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconChevronLeft"], {
+      props: {
+        shiftV: 0.5,
+        flipH: !isRTL
+      }
+    });
+    var $nextYearIcon = h(_icons_iconstack__WEBPACK_IMPORTED_MODULE_15__["BIconstack"], {
+      props: {
+        shiftV: 0.5,
+        flipH: !isRTL
+      }
+    }, [h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconChevronLeft"], {
+      props: {
+        shiftH: -2
+      }
+    }), h(_icons_icons__WEBPACK_IMPORTED_MODULE_14__["BIconChevronLeft"], {
+      props: {
+        shiftH: 2
+      }
+    })]); // Utility to create the date navigation buttons
+
+    var makeNavBtn = function makeNavBtn(content, label, handler, btnDisabled, shortcut) {
+      return h('button', {
+        staticClass: 'btn btn-sm btn-outline-secondary border-0 flex-fill p-1 mx-1',
+        class: {
+          disabled: btnDisabled
+        },
+        attrs: {
+          title: label || null,
+          type: 'button',
+          'aria-label': label || null,
+          'aria-disabled': btnDisabled ? 'true' : null,
+          'aria-keyshortcuts': shortcut || null
+        },
+        on: btnDisabled ? {} : {
+          click: handler
+        }
+      }, [h('div', {
+        attrs: {
+          'aria-hidden': 'true'
+        }
+      }, [content])]);
+    }; // Generate the date navigation buttons
+
+
+    var $nav = h('div', {
+      staticClass: 'b-calendar-nav d-flex mx-n1 mb-1',
+      attrs: {
+        id: idNav,
+        role: 'group',
+        'aria-hidden': this.disabled ? 'true' : null,
+        'aria-label': this.labelNav || null,
+        'aria-controls': idGrid
+      }
+    }, [makeNavBtn($prevYearIcon, this.labelPrevYear, this.gotoPrevYear, this.prevYearDisabled, 'Alt+PageDown'), makeNavBtn($prevMonthIcon, this.labelPrevMonth, this.gotoPrevMonth, this.prevMonthDisabled, 'PageDown'), makeNavBtn($thisMonthIcon, this.labelCurrentMonth, this.gotoCurrentMonth, this.thisMonthDisabled, 'Home'), makeNavBtn($nextMonthIcon, this.labelNextMonth, this.gotoNextMonth, this.nextMonthDisabled, 'PageUp'), makeNavBtn($nextYearIcon, this.labelNextYear, this.gotoNextYear, this.nextYearDisabled, 'Alt+PageUp')]); // Caption for calendar grid
+
+    var $gridCaption = h('header', {
+      key: 'grid-caption',
+      staticClass: 'text-center font-weight-bold p-1 m-0',
+      class: {
+        'text-muted': this.disabled
+      },
+      attrs: {
+        id: idGridCaption,
+        'aria-live': isLive ? 'polite' : null,
+        'aria-atomic': isLive ? 'true' : null
+      }
+    }, this.formatYearMonth(this.calendarFirstDay)); // Calendar weekday headings
+
+    var $gridWeekDays = h('div', {
+      staticClass: 'row no-gutters border-bottom',
+      attrs: {
+        'aria-hidden': 'true'
+      }
+    }, this.calendarHeadings.map(function (d, idx) {
+      return h('small', {
+        key: idx,
+        staticClass: 'col text-truncate',
+        class: {
+          'text-muted': _this5.disabled
+        },
+        attrs: {
+          title: d.label === d.text ? null : d.label,
+          'aria-label': d.label
+        }
+      }, d.text);
+    })); // Calendar day grid
+
+    var $gridBody = this.calendar.map(function (week) {
+      var $cells = week.map(function (day, dIndex) {
+        var _class;
+
+        var isSelected = day.ymd === selectedYMD;
+        var isActive = day.ymd === activeYMD;
+        var isToday = day.ymd === todayYMD;
+        var idCell = safeId("_cell-".concat(day.ymd, "_")); // "fake" button
+
+        var $btn = h('span', {
+          staticClass: 'btn border-0 rounded-circle text-nowrap',
+          // Should we add some classes to signify if today/selected/etc?
+          class: (_class = {
+            // Give the fake button a focus ring
+            focus: isActive && _this5.gridHasFocus,
+            // Styling
+            disabled: day.isDisabled || _this5.disabled,
+            active: isSelected
+          }, _defineProperty(_class, _this5.computedVariant, isSelected), _defineProperty(_class, _this5.computedTodayVariant, isToday && highlightToday && !isSelected && day.isThisMonth), _defineProperty(_class, 'btn-outline-light', !(isToday && highlightToday) && !isSelected && !isActive), _defineProperty(_class, 'btn-light', !(isToday && highlightToday) && !isSelected && isActive), _defineProperty(_class, 'text-muted', !day.isThisMonth && !isSelected), _defineProperty(_class, 'text-dark', !(isToday && highlightToday) && !isSelected && !isActive && day.isThisMonth), _defineProperty(_class, 'font-weight-bold', (isSelected || day.isThisMonth) && !day.isDisabled), _class),
+          on: {
+            click: function click() {
+              return _this5.onClickDay(day);
+            }
+          }
+        }, day.day);
+        return h('div', // Cell with button
+        {
+          key: dIndex,
+          staticClass: 'col p-0',
+          class: day.isDisabled ? 'bg-light' : day.info.class || '',
+          attrs: {
+            id: idCell,
+            role: 'button',
+            'data-date': day.ymd,
+            // Primarily for testing purposes
+            // Only days in the month are presented as buttons to screen readers
+            'aria-hidden': day.isThisMonth ? null : 'true',
+            'aria-disabled': day.isDisabled || _this5.disabled ? 'true' : null,
+            'aria-label': [day.label, isSelected ? "(".concat(_this5.labelSelected, ")") : null, isToday ? "(".concat(_this5.labelToday, ")") : null].filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]).join(' '),
+            // NVDA doesn't convey `aria-selected`, but does `aria-current`,
+            // ChromeVox doesn't convey `aria-current`, but does `aria-selected`,
+            // so we set both attributes for robustness
+            'aria-selected': isSelected ? 'true' : null,
+            'aria-current': isSelected ? 'date' : null
+          }
+        }, [$btn]);
+      }); // Return the week "row"
+      // We use the first day of the weeks YMD value as a
+      // key for efficient DOM patching / element re-use
+
+      return h('div', {
+        key: week[0].ymd,
+        staticClass: 'row no-gutters'
+      }, $cells);
+    });
+    $gridBody = h('div', {
+      // A key is only required on the body if we add in transition support
+      // key: this.activeYMD.slice(0, -3),
+      staticClass: 'b-calendar-grid-body',
+      style: this.disabled ? {
+        pointerEvents: 'none'
+      } : {}
+    }, $gridBody);
+    var $gridHelp = h('footer', {
+      staticClass: 'border-top small text-muted text-center bg-light',
+      attrs: {
+        id: idGridHelp
+      }
+    }, [h('div', {
+      staticClass: 'small'
+    }, this.labelHelp)]);
+    var $grid = h('div', {
+      ref: 'grid',
+      staticClass: 'form-control h-auto text-center p-0 mb-0',
+      attrs: {
+        id: idGrid,
+        role: 'application',
+        tabindex: this.disabled ? null : '0',
+        'data-month': activeYMD.slice(0, -3),
+        // `YYYY-MM`, mainly for testing
+        'aria-roledescription': this.labelCalendar || null,
+        'aria-labelledby': idGridCaption,
+        'aria-describedby': idGridHelp,
+        // `aria-readonly` is not considered valid on `role="application"`
+        // https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
+        // 'aria-readonly': this.readonly && !this.disabled ? 'true' : null,
+        'aria-disabled': this.disabled ? 'true' : null,
+        'aria-activedescendant': idActive
+      },
+      on: {
+        keydown: this.onKeydownGrid,
+        focus: this.setGridFocusFlag,
+        blur: this.setGridFocusFlag
+      }
+    }, [$gridCaption, $gridWeekDays, $gridBody, $gridHelp]); // Optional bottom slot
+
+    var $slot = this.normalizeSlot('default');
+    $slot = $slot ? h('footer', {
+      staticClass: 'mt-2'
+    }, $slot) : h();
+    var $widget = h('div', {
+      staticClass: 'b-calendar-inner',
+      class: this.block ? 'd-block' : 'd-inline-block',
+      style: this.block ? {} : {
+        width: this.width
+      },
+      attrs: {
+        id: idWidget,
+        dir: isRTL ? 'rtl' : 'ltr',
+        lang: this.computedLocale || null,
+        role: 'group',
+        'aria-disabled': this.disabled ? 'true' : null,
+        // If datepicker controls an input, this will specify the ID of the input
+        'aria-controls': this.ariaControls || null,
+        // This should be a prop (so it can be changed to Date picker, etc, localized
+        'aria-roledescription': this.roleDescription || null,
+        'aria-describedby': [// Should the attr (if present) go last?
+        // Or should this attr be a prop?
+        this.$attrs['aria-describedby'], idValue, idGridHelp].filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]).join(' ')
+      },
+      on: {
+        keydown: this.onKeydownWrapper
+      }
+    }, [$header, $nav, $grid, $slot]); // Wrap in an outer div that can be styled
+
+    return h('div', {
+      staticClass: 'b-calendar',
+      // We use a style here rather than class `d-inline-block` so that users can
+      // override the display value (`d-*` classes use the `!important` flag)
+      style: this.block ? {} : {
+        display: 'inline-block'
+      }
+    }, [$widget]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/calendar/index.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/calendar/index.js ***!
+  \*********************************************************************/
+/*! exports provided: CalendarPlugin, BCalendar */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarPlugin", function() { return CalendarPlugin; });
+/* harmony import */ var _calendar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calendar */ "./node_modules/bootstrap-vue/esm/components/calendar/calendar.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCalendar", function() { return _calendar__WEBPACK_IMPORTED_MODULE_0__["BCalendar"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var CalendarPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  components: {
+    BCalendar: _calendar__WEBPACK_IMPORTED_MODULE_0__["BCalendar"]
   }
 });
 
@@ -8917,9 +10114,7 @@ var props = _objectSpread({}, Object(_utils_copy_props__WEBPACK_IMPORTED_MODULE_
   }
 }); // @vue/component
 
-var BCardBody =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardBody = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardBody',
   functional: true,
   props: props,
@@ -9001,9 +10196,7 @@ var props = _objectSpread({}, Object(_utils_copy_props__WEBPACK_IMPORTED_MODULE_
   }
 }); // @vue/component
 
-var BCardFooter =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardFooter = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardFooter',
   functional: true,
   props: props,
@@ -9054,9 +10247,7 @@ var props = {
   }
 }; // @vue/component
 
-var BCardGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardGroup',
   functional: true,
   props: props,
@@ -9116,9 +10307,7 @@ var props = _objectSpread({}, Object(_utils_copy_props__WEBPACK_IMPORTED_MODULE_
   }
 }); // @vue/component
 
-var BCardHeader =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardHeader = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardHeader',
   functional: true,
   props: props,
@@ -9196,9 +10385,7 @@ var props = _objectSpread({}, lazyProps, {
   }
 }); // @vue/component
 
-var BCardImgLazy =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardImgLazy = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardImgLazy',
   functional: true,
   props: props,
@@ -9294,9 +10481,7 @@ var props = {
   }
 }; // @vue/component
 
-var BCardImg =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardImg = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardImg',
   functional: true,
   props: props,
@@ -9364,9 +10549,7 @@ var props = {
   }
 }; // @vue/component
 
-var BCardSubTitle =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardSubTitle = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -9405,9 +10588,7 @@ var props = {
   }
 }; // @vue/component
 
-var BCardText =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardText = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardText',
   functional: true,
   props: props,
@@ -9449,9 +10630,7 @@ var props = {
   }
 }; // @vue/component
 
-var BCardTitle =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCardTitle = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCardTitle',
   functional: true,
   props: props,
@@ -9529,9 +10708,7 @@ var props = _objectSpread({}, _card_body__WEBPACK_IMPORTED_MODULE_8__["props"], 
   }
 }); // @vue/component
 
-var BCard =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCard = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCard',
   functional: true,
   props: props,
@@ -9649,9 +10826,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CardPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_10__["pluginFactory"])({
+var CardPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_10__["pluginFactory"])({
   components: {
     BCard: _card__WEBPACK_IMPORTED_MODULE_0__["BCard"],
     BCardHeader: _card_header__WEBPACK_IMPORTED_MODULE_1__["BCardHeader"],
@@ -9749,9 +10924,7 @@ var props = {
   }
 }; // @vue/component
 
-var BCarouselSlide =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCarouselSlide = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCarouselSlide',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   inject: {
@@ -9856,10 +11029,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
-/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
-/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
-/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
-/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+
 
 
 
@@ -9900,15 +11075,11 @@ var TransitionEndEvents = {
   MozTransition: 'transitionend',
   OTransition: 'otransitionend oTransitionEnd',
   transition: 'transitionend'
-};
-var EventOptions = {
-  passive: true,
-  capture: false
 }; // Return the browser specific transitionEnd event name
 
 var getTransitionEndEvent = function getTransitionEndEvent(el) {
   for (var name in TransitionEndEvents) {
-    if (!Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isUndefined"])(el.style[name])) {
+    if (!Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isUndefined"])(el.style[name])) {
       return TransitionEndEvents[name];
     }
   } // Fallback
@@ -9920,11 +11091,9 @@ var getTransitionEndEvent = function getTransitionEndEvent(el) {
 }; // @vue/component
 
 
-var BCarousel =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCarousel = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
-  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_9__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__["default"]],
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_10__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_11__["default"]],
   provide: function provide() {
     return {
       bvCarousel: this
@@ -10022,7 +11191,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       transitionEndEvent: null,
       slides: [],
       direction: null,
-      isPaused: !(Object(_utils_number__WEBPACK_IMPORTED_MODULE_8__["toInteger"])(this.interval) > 0),
+      isPaused: !(Object(_utils_number__WEBPACK_IMPORTED_MODULE_9__["toInteger"])(this.interval) > 0),
       // Touch event handling values
       touchStartX: 0,
       touchDeltaX: 0
@@ -10036,7 +11205,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   watch: {
     value: function value(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.setSlide(Object(_utils_number__WEBPACK_IMPORTED_MODULE_8__["toInteger"])(newVal) || 0);
+        this.setSlide(Object(_utils_number__WEBPACK_IMPORTED_MODULE_9__["toInteger"])(newVal) || 0);
       }
     },
     interval: function interval(newVal, oldVal) {
@@ -10074,7 +11243,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     this._animationTimeout = null;
     this._touchTimeout = null; // Set initial paused state
 
-    this.isPaused = !(Object(_utils_number__WEBPACK_IMPORTED_MODULE_8__["toInteger"])(this.interval) > 0);
+    this.isPaused = !(Object(_utils_number__WEBPACK_IMPORTED_MODULE_9__["toInteger"])(this.interval) > 0);
   },
   mounted: function mounted() {
     // Cache current browser transitionend event name
@@ -10177,7 +11346,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }
     },
     // Restart auto rotate slides when focus/hover leaves the carousel
-    restart: function restart(evt)
+    restart: function restart()
     /* istanbul ignore next: difficult to test */
     {
       if (!this.$el.contains(document.activeElement)) {
@@ -10230,7 +11399,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         var called = false;
         /* istanbul ignore next: difficult to test */
 
-        var onceTransEnd = function onceTransEnd(evt) {
+        var onceTransEnd = function onceTransEnd() {
           if (called) {
             return;
           }
@@ -10242,7 +11411,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             var events = _this2.transitionEndEvent.split(/\s+/);
 
             events.forEach(function (evt) {
-              return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOff"])(currentSlide, evt, onceTransEnd, EventOptions);
+              return Object(_utils_events__WEBPACK_IMPORTED_MODULE_7__["eventOff"])(currentSlide, evt, onceTransEnd, _utils_events__WEBPACK_IMPORTED_MODULE_7__["EVENT_OPTIONS_NO_CAPTURE"]);
             });
           }
 
@@ -10271,7 +11440,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         if (this.transitionEndEvent) {
           var events = this.transitionEndEvent.split(/\s+/);
           events.forEach(function (event) {
-            return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(currentSlide, event, onceTransEnd, EventOptions);
+            return Object(_utils_events__WEBPACK_IMPORTED_MODULE_7__["eventOn"])(currentSlide, event, onceTransEnd, _utils_events__WEBPACK_IMPORTED_MODULE_7__["EVENT_OPTIONS_NO_CAPTURE"]);
           });
         } // Fallback to setTimeout()
 
@@ -10615,12 +11784,14 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BCollapse", function() { return BCollapse; });
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
-/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
-/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
-/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
-/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
-/* harmony import */ var _utils_bv_collapse__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/bv-collapse */ "./node_modules/bootstrap-vue/esm/utils/bv-collapse.js");
-/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_bv_collapse__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/bv-collapse */ "./node_modules/bootstrap-vue/esm/utils/bv-collapse.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+
 
 
 
@@ -10637,18 +11808,11 @@ var EVENT_ACCORDION = 'bv::collapse::accordion'; // Private event we emit on `$r
 var EVENT_STATE_SYNC = 'bv::collapse::sync::state'; // Events we listen to on `$root`
 
 var EVENT_TOGGLE = 'bv::toggle::collapse';
-var EVENT_STATE_REQUEST = 'bv::request::collapse::state'; // Event listener options
+var EVENT_STATE_REQUEST = 'bv::request::collapse::state'; // @vue/component
 
-var EventOptions = {
-  passive: true,
-  capture: false
-}; // @vue/component
-
-var BCollapse =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BCollapse = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BCollapse',
-  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"]],
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_7__["default"]],
   model: {
     prop: 'visible',
     event: 'input'
@@ -10757,34 +11921,33 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     // Trigger state emit if needed
     this.show = false;
 
-    if (this.isNav && _utils_env__WEBPACK_IMPORTED_MODULE_4__["isBrowser"]) {
+    if (this.isNav && _utils_env__WEBPACK_IMPORTED_MODULE_1__["isBrowser"]) {
       this.setWindowEvents(false);
     }
   },
   methods: {
     setWindowEvents: function setWindowEvents(on) {
-      var method = on ? _utils_dom__WEBPACK_IMPORTED_MODULE_6__["eventOn"] : _utils_dom__WEBPACK_IMPORTED_MODULE_6__["eventOff"];
-      method(window, 'resize', this.handleResize, EventOptions);
-      method(window, 'orientationchange', this.handleResize, EventOptions);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_3__["eventOnOff"])(on, window, 'resize', this.handleResize, _utils_events__WEBPACK_IMPORTED_MODULE_3__["EVENT_OPTIONS_NO_CAPTURE"]);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_3__["eventOnOff"])(on, window, 'orientationchange', this.handleResize, _utils_events__WEBPACK_IMPORTED_MODULE_3__["EVENT_OPTIONS_NO_CAPTURE"]);
     },
     toggle: function toggle() {
       this.show = !this.show;
     },
-    onEnter: function onEnter(el) {
+    onEnter: function onEnter() {
       this.transitioning = true; // This should be moved out so we can add cancellable events
 
       this.$emit('show');
     },
-    onAfterEnter: function onAfterEnter(el) {
+    onAfterEnter: function onAfterEnter() {
       this.transitioning = false;
       this.$emit('shown');
     },
-    onLeave: function onLeave(el) {
+    onLeave: function onLeave() {
       this.transitioning = true; // This should be moved out so we can add cancellable events
 
       this.$emit('hide');
     },
-    onAfterLeave: function onAfterLeave(el) {
+    onAfterLeave: function onAfterLeave() {
       this.transitioning = false;
       this.$emit('hidden');
     },
@@ -10808,12 +11971,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // Check to see if the collapse has `display: block !important` set
       // We can't set `display: none` directly on `this.$el`, as it would
       // trigger a new transition to start (or cancel a current one)
-      var restore = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["hasClass"])(this.$el, 'show');
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["removeClass"])(this.$el, 'show');
-      var isBlock = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["getCS"])(this.$el).display === 'block';
+      var restore = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["hasClass"])(this.$el, 'show');
+      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["removeClass"])(this.$el, 'show');
+      var isBlock = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["getCS"])(this.$el).display === 'block';
 
       if (restore) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["addClass"])(this.$el, 'show');
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["addClass"])(this.$el, 'show');
       }
 
       return isBlock;
@@ -10822,12 +11985,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // If we are in a nav/navbar, close the collapse when non-disabled link clicked
       var el = evt.target;
 
-      if (!this.isNav || !el || Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["getCS"])(this.$el).display !== 'block') {
+      if (!this.isNav || !el || Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["getCS"])(this.$el).display !== 'block') {
         /* istanbul ignore next: can't test getComputedStyle in JSDOM */
         return;
       }
 
-      if (Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["matches"])(el, '.nav-link,.dropdown-item') || Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["closest"])('.nav-link,.dropdown-item', el)) {
+      if (Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["matches"])(el, '.nav-link,.dropdown-item') || Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["closest"])('.nav-link,.dropdown-item', el)) {
         if (!this.checkDisplayBlock()) {
           // Only close the collapse if it is not forced to be `display: block !important`
           this.show = false;
@@ -10860,7 +12023,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     handleResize: function handleResize() {
       // Handler for orientation/resize to set collapsed state in nav/navbar
-      this.show = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["getCS"])(this.$el).display === 'block';
+      this.show = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["getCS"])(this.$el).display === 'block';
     }
   },
   render: function render(h) {
@@ -10885,7 +12048,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         click: this.clickHandler
       }
     }, [this.normalizeSlot('default', scope)]);
-    return h(_utils_bv_collapse__WEBPACK_IMPORTED_MODULE_5__["BVCollapse"], {
+    return h(_utils_bv_collapse__WEBPACK_IMPORTED_MODULE_4__["BVCollapse"], {
       props: {
         appear: this.appear
       },
@@ -10919,9 +12082,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var CollapsePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var CollapsePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BCollapse: _collapse__WEBPACK_IMPORTED_MODULE_0__["BCollapse"]
   },
@@ -10961,9 +12122,7 @@ var props = {
   }
 }; // @vue/component
 
-var BDropdownDivider =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownDivider = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownDivider',
   functional: true,
   props: props,
@@ -11012,9 +12171,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BDropdownForm =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownForm = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownForm',
   functional: true,
   props: _objectSpread({}, _form_form__WEBPACK_IMPORTED_MODULE_2__["props"], {
@@ -11108,9 +12265,7 @@ var props = {
   }
 }; // @vue/component
 
-var BDropdownGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownGroup',
   functional: true,
   props: props,
@@ -11192,9 +12347,7 @@ var props = {
   }
 }; // @vue/component
 
-var BDropdownHeader =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownHeader = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownHeader',
   functional: true,
   props: props,
@@ -11262,9 +12415,7 @@ var props = {
   }
 }; // @vue/component
 
-var BDropdownItemButton =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownItemButton = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownItemButton',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__["default"]],
   inheritAttrs: false,
@@ -11337,9 +12488,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var props = Object(_link_link__WEBPACK_IMPORTED_MODULE_3__["propsFactory"])(); // @vue/component
 
-var BDropdownItem =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownItem = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownItem',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   inheritAttrs: false,
@@ -11409,9 +12558,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BDropdownText =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdownText = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BDropdownText',
   functional: true,
   props: {
@@ -11475,12 +12622,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BDropdown';
 var props = {
-  toggleText: {
-    // This really should be toggleLabel
+  text: {
+    // Button label
     type: String,
-    default: function _default() {
-      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_3__["getComponentConfig"])(NAME, 'toggleText');
-    }
+    default: ''
+  },
+  html: {
+    // Button label
+    type: String
   },
   size: {
     type: String,
@@ -11505,6 +12654,13 @@ var props = {
   toggleTag: {
     type: String,
     default: 'button'
+  },
+  toggleText: {
+    // This really should be toggleLabel
+    type: String,
+    default: function _default() {
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_3__["getComponentConfig"])(NAME, 'toggleText');
+    }
   },
   toggleClass: {
     type: [String, Array, Object],
@@ -11543,15 +12699,18 @@ var props = {
       return Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])(['button', 'submit', 'reset'], value);
     }
   },
+  lazy: {
+    // If true, only render menu contents when open
+    type: Boolean,
+    default: false
+  },
   role: {
     type: String,
     default: 'menu'
   }
 }; // @vue/component
 
-var BDropdown =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BDropdown = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__["default"]],
   props: props,
@@ -11715,9 +12874,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var DropdownPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_8__["pluginFactory"])({
+var DropdownPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_8__["pluginFactory"])({
   components: {
     BDropdown: _dropdown__WEBPACK_IMPORTED_MODULE_0__["BDropdown"],
     BDd: _dropdown__WEBPACK_IMPORTED_MODULE_0__["BDropdown"],
@@ -11780,9 +12937,7 @@ var props = {
   }
 }; // @vue/component
 
-var BEmbed =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BEmbed = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BEmbed',
   functional: true,
   props: props,
@@ -11819,9 +12974,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var EmbedPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var EmbedPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BEmbed: _embed__WEBPACK_IMPORTED_MODULE_0__["BEmbed"]
   }
@@ -11867,9 +13020,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormCheckboxGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormCheckboxGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormCheckboxGroup',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_form_radio_check_group__WEBPACK_IMPORTED_MODULE_4__["default"], // Includes render function
   _mixins_form_options__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__["default"]],
@@ -11922,9 +13073,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BFormCheckbox =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormCheckbox = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormCheckbox',
   mixins: [_mixins_form_radio_check__WEBPACK_IMPORTED_MODULE_5__["default"], // Includes shared render function
   _mixins_id__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_7__["default"]],
@@ -11979,14 +13128,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   watch: {
-    computedLocalChecked: function computedLocalChecked(newVal, oldVal) {
+    computedLocalChecked: function computedLocalChecked(newVal) {
       this.$emit('input', newVal);
 
       if (this.$refs && this.$refs.input) {
         this.$emit('update:indeterminate', this.$refs.input.indeterminate);
       }
     },
-    indeterminate: function indeterminate(newVal, oldVal) {
+    indeterminate: function indeterminate(newVal) {
       this.setIndeterminate(newVal);
     }
   },
@@ -12065,9 +13214,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FormCheckboxPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var FormCheckboxPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BFormCheckbox: _form_checkbox__WEBPACK_IMPORTED_MODULE_0__["BFormCheckbox"],
     BCheckbox: _form_checkbox__WEBPACK_IMPORTED_MODULE_0__["BFormCheckbox"],
@@ -12075,6 +13222,625 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
     BFormCheckboxGroup: _form_checkbox_group__WEBPACK_IMPORTED_MODULE_1__["BFormCheckboxGroup"],
     BCheckboxGroup: _form_checkbox_group__WEBPACK_IMPORTED_MODULE_1__["BFormCheckboxGroup"],
     BCheckGroup: _form_checkbox_group__WEBPACK_IMPORTED_MODULE_1__["BFormCheckboxGroup"]
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/form-datepicker/form-datepicker.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/form-datepicker/form-datepicker.js ***!
+  \**************************************************************************************/
+/*! exports provided: BFormDatepicker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BFormDatepicker", function() { return BFormDatepicker; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_bv_form_btn_label_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/bv-form-btn-label-control */ "./node_modules/bootstrap-vue/esm/utils/bv-form-btn-label-control.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_date__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/date */ "./node_modules/bootstrap-vue/esm/utils/date.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+/* harmony import */ var _calendar_calendar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../calendar/calendar */ "./node_modules/bootstrap-vue/esm/components/calendar/calendar.js");
+/* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../icons/icons */ "./node_modules/bootstrap-vue/esm/icons/icons.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+var NAME = 'BFormDatepicker'; // Fallback to BCalendar prop if no value found
+
+var getConfigFallback = function getConfigFallback(prop) {
+  return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, prop) || Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])('BCalendar', prop);
+}; // We create our props as a mixin so that we can control
+// where they appear in the props listing reference section
+
+
+var propsMixin = {
+  props: _objectSpread({
+    value: {
+      type: [String, Date],
+      default: null
+    },
+    valueAsDate: {
+      type: Boolean,
+      default: false
+    },
+    resetValue: {
+      type: [String, Date],
+      default: ''
+    },
+    initialDate: {
+      // This specifies the calendar year/month/day that will be shown when
+      // first opening the datepicker if no v-model value is provided
+      // Default is the current date (or `min`/`max`)
+      // Passed directly to <b-calendar>
+      type: [String, Date],
+      default: null
+    },
+    placeholder: {
+      type: String,
+      // Defaults to `labelNoDateSelected` from calendar context
+      default: null
+    },
+    size: {
+      type: String,
+      default: null
+    },
+    min: {
+      type: [String, Date],
+      default: null
+    },
+    max: {
+      type: [String, Date],
+      default: null
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    required: {
+      // If true adds the `aria-required` attribute
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: String,
+      default: null
+    },
+    form: {
+      type: String,
+      default: null
+    },
+    state: {
+      // Tri-state prop: `true`, `false` or `null`
+      type: Boolean,
+      default: null
+    },
+    dateDisabledFn: {
+      type: Function,
+      default: null
+    },
+    noCloseOnSelect: {
+      type: Boolean,
+      default: false
+    },
+    hideHeader: {
+      type: Boolean,
+      default: false
+    },
+    locale: {
+      type: [String, Array],
+      default: null
+    },
+    startWeekday: {
+      // `0` (Sunday), `1` (Monday), ... `6` (Saturday)
+      // Day of week to start calendar on
+      type: [Number, String],
+      default: 0
+    },
+    direction: {
+      type: String,
+      default: null
+    },
+    buttonOnly: {
+      type: Boolean,
+      default: false
+    },
+    buttonVariant: {
+      // Applicable in button only mode
+      type: String,
+      default: 'secondary'
+    },
+    calendarWidth: {
+      // Width of the calendar dropdown
+      type: String,
+      default: '270px'
+    },
+    selectedVariant: {
+      // Variant color to use for the selected date
+      type: String,
+      default: 'primary'
+    },
+    todayVariant: {
+      // Variant color to use for today's date (defaults to `variant`)
+      type: String,
+      default: null
+    },
+    noHighlightToday: {
+      // Disable highlighting today's date
+      type: Boolean,
+      default: false
+    },
+    todayButton: {
+      type: Boolean,
+      default: false
+    },
+    labelTodayButton: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelTodayButton');
+      }
+    },
+    todayButtonVariant: {
+      type: String,
+      default: 'outline-primary'
+    },
+    resetButton: {
+      type: Boolean,
+      default: false
+    },
+    labelResetButton: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelResetButton');
+      }
+    },
+    resetButtonVariant: {
+      type: String,
+      default: 'outline-danger'
+    },
+    closeButton: {
+      type: Boolean,
+      default: false
+    },
+    labelCloseButton: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelCloseButton');
+      }
+    },
+    closeButtonVariant: {
+      type: String,
+      default: 'outline-secondary'
+    },
+    // Labels for buttons and keyboard shortcuts
+    // These pick BCalendar global config if no BFormDate global config
+    labelPrevYear: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelPrevYear');
+      }
+    },
+    labelPrevMonth: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelPrevMonth');
+      }
+    },
+    labelCurrentMonth: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelCurrentMonth');
+      }
+    },
+    labelNextMonth: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelNextMonth');
+      }
+    },
+    labelNextYear: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelNextYear');
+      }
+    },
+    labelToday: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelToday');
+      }
+    },
+    labelSelected: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelSelected');
+      }
+    },
+    labelNoDateSelected: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelNoDateSelected');
+      }
+    },
+    labelCalendar: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelCalendar');
+      }
+    },
+    labelNav: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelNav');
+      }
+    },
+    labelHelp: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelHelp');
+      }
+    },
+    dateFormatOptions: {
+      // `Intl.DateTimeFormat` object
+      type: Object,
+      default: function _default() {
+        return {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          weekday: 'long'
+        };
+      }
+    },
+    // Dark mode
+    dark: {
+      type: Boolean,
+      default: false
+    },
+    // extra dropdown stuff
+    menuClass: {
+      type: [String, Array, Object],
+      default: null
+    }
+  }, _utils_bv_form_btn_label_control__WEBPACK_IMPORTED_MODULE_1__["dropdownProps"])
+}; // --- BFormDate component ---
+// @vue/component
+
+var BFormDatepicker = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: NAME,
+  // The mixins order determines the order of appearance in the props reference section
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_5__["default"], propsMixin],
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
+  data: function data() {
+    return {
+      // We always use `YYYY-MM-DD` value internally
+      localYMD: Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["formatYMD"])(this.value) || '',
+      // If the popup is open
+      isVisible: false,
+      // Context data from BCalendar
+      localLocale: null,
+      isRTL: false,
+      formattedValue: '',
+      activeYMD: ''
+    };
+  },
+  computed: {
+    calendarYM: function calendarYM() {
+      // Returns the calendar year/month
+      // Returns the `YYYY-MM` portion of the active calendar date
+      return this.activeYMD.slice(0, -3);
+    },
+    calendarProps: function calendarProps() {
+      // Use self for better minification, as `this` won't
+      // minimize and we reference it many times below
+      var self = this;
+      return {
+        hidden: !self.isVisible,
+        value: self.localYMD,
+        min: self.min,
+        max: self.max,
+        initialDate: self.initialDate,
+        readonly: self.readonly,
+        disabled: self.disabled,
+        locale: self.locale,
+        startWeekday: self.startWeekday,
+        direction: self.direction,
+        width: self.calendarWidth,
+        dateDisabledFn: self.dateDisabledFn,
+        selectedVariant: self.selectedVariant,
+        todayVariant: self.todayVariant,
+        hideHeader: self.hideHeader,
+        labelPrevYear: self.labelPrevYear,
+        labelPrevMonth: self.labelPrevMonth,
+        labelCurrentMonth: self.labelCurrentMonth,
+        labelNextMonth: self.labelNextMonth,
+        labelNextYear: self.labelNextYear,
+        labelToday: self.labelToday,
+        labelSelected: self.labelSelected,
+        labelNoDateSelected: self.labelNoDateSelected,
+        labelCalendar: self.labelCalendar,
+        labelNav: self.labelNav,
+        labelHelp: self.labelHelp,
+        dateFormatOptions: self.dateFormatOptions
+      };
+    },
+    computedLang: function computedLang() {
+      return (this.localLocale || '').replace(/-u-.*$/i, '') || null;
+    },
+    computedResetValue: function computedResetValue() {
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["formatYMD"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["constrainDate"])(this.resetValue)) || '';
+    }
+  },
+  watch: {
+    value: function value(newVal) {
+      this.localYMD = Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["formatYMD"])(newVal) || '';
+    },
+    localYMD: function localYMD(newVal) {
+      // We only update the v-model when the datepicker is open
+      if (this.isVisible) {
+        this.$emit('input', this.valueAsDate ? Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["parseYMD"])(newVal) || null : newVal || '');
+      }
+    },
+    calendarYM: function calendarYM(newVal, oldVal)
+    /* istanbul ignore next */
+    {
+      // Displayed calendar month has changed
+      // So possibly the calendar height has changed...
+      // We need to update popper computed position
+      if (newVal !== oldVal && oldVal) {
+        try {
+          this.$refs.control.updatePopper();
+        } catch (_unused) {}
+      }
+    }
+  },
+  methods: {
+    // Public methods
+    focus: function focus() {
+      if (!this.disabled) {
+        try {
+          this.$refs.control.focus();
+        } catch (_unused2) {}
+      }
+    },
+    blur: function blur() {
+      if (!this.disabled) {
+        try {
+          this.$refs.control.blur();
+        } catch (_unused3) {}
+      }
+    },
+    // Private methods
+    setAndClose: function setAndClose(ymd) {
+      var _this = this;
+
+      this.localYMD = ymd; // Close calendar popup, unless `noCloseOnSelect`
+
+      if (!this.noCloseOnSelect) {
+        this.$nextTick(function () {
+          _this.$refs.control.hide(true);
+        });
+      }
+    },
+    onSelected: function onSelected(ymd) {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        _this2.setAndClose(ymd);
+      });
+    },
+    onInput: function onInput(ymd) {
+      if (this.localYMD !== ymd) {
+        this.localYMD = ymd;
+      }
+    },
+    onContext: function onContext(ctx) {
+      var activeYMD = ctx.activeYMD,
+          isRTL = ctx.isRTL,
+          locale = ctx.locale,
+          selectedYMD = ctx.selectedYMD,
+          selectedFormatted = ctx.selectedFormatted;
+      this.isRTL = isRTL;
+      this.localLocale = locale;
+      this.formattedValue = selectedFormatted;
+      this.localYMD = selectedYMD;
+      this.activeYMD = activeYMD; // Re-emit the context event
+
+      this.$emit('context', ctx);
+    },
+    onTodayButton: function onTodayButton() {
+      // Set to today (or min/max if today is out of range)
+      this.setAndClose(Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["formatYMD"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["constrainDate"])(Object(_utils_date__WEBPACK_IMPORTED_MODULE_3__["createDate"])(), this.min, this.max)));
+    },
+    onResetButton: function onResetButton() {
+      this.setAndClose(this.computedResetValue);
+    },
+    onCloseButton: function onCloseButton() {
+      this.$refs.control.hide(true);
+    },
+    // Menu handlers
+    onShow: function onShow() {
+      this.isVisible = true;
+    },
+    onShown: function onShown() {
+      var _this3 = this;
+
+      this.$nextTick(function () {
+        try {
+          _this3.$refs.calendar.focus();
+        } catch (_unused4) {}
+      });
+    },
+    onHidden: function onHidden() {
+      this.isVisible = false;
+    },
+    // Render helpers
+    defaultButtonFn: function defaultButtonFn(_ref) {
+      var isHovered = _ref.isHovered,
+          hasFocus = _ref.hasFocus;
+      return this.$createElement(isHovered || hasFocus ? _icons_icons__WEBPACK_IMPORTED_MODULE_8__["BIconCalendarFill"] : _icons_icons__WEBPACK_IMPORTED_MODULE_8__["BIconCalendar"], {
+        props: {
+          scale: 1.25
+        },
+        attrs: {
+          'aria-hidden': 'true'
+        }
+      });
+    }
+  },
+  render: function render(h) {
+    var localYMD = this.localYMD;
+    var disabled = this.disabled;
+    var readonly = this.readonly;
+    var placeholder = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isUndefinedOrNull"])(this.placeholder) ? this.labelNoDateSelected : this.placeholder; // Optional footer buttons
+
+    var $footer = [];
+
+    if (this.todayButton) {
+      var label = this.labelTodayButton;
+      $footer.push(h(_button_button__WEBPACK_IMPORTED_MODULE_6__["BButton"], {
+        props: {
+          size: 'sm',
+          disabled: disabled || readonly,
+          variant: this.todayButtonVariant
+        },
+        attrs: {
+          'aria-label': label || null
+        },
+        on: {
+          click: this.onTodayButton
+        }
+      }, label));
+    }
+
+    if (this.resetButton) {
+      var _label = this.labelResetButton;
+      $footer.push(h(_button_button__WEBPACK_IMPORTED_MODULE_6__["BButton"], {
+        props: {
+          size: 'sm',
+          disabled: disabled || readonly,
+          variant: this.resetButtonVariant
+        },
+        attrs: {
+          'aria-label': _label || null
+        },
+        on: {
+          click: this.onResetButton
+        }
+      }, _label));
+    }
+
+    if (this.closeButton) {
+      var _label2 = this.labelCloseButton;
+      $footer.push(h(_button_button__WEBPACK_IMPORTED_MODULE_6__["BButton"], {
+        props: {
+          size: 'sm',
+          disabled: disabled,
+          variant: this.closeButtonVariant
+        },
+        attrs: {
+          'aria-label': _label2 || null
+        },
+        on: {
+          click: this.onCloseButton
+        }
+      }, _label2));
+    }
+
+    if ($footer.length > 0) {
+      $footer = [h('div', {
+        staticClass: 'b-form-date-controls d-flex flex-wrap',
+        class: {
+          'justify-content-between': $footer.length > 1,
+          'justify-content-end': $footer.length < 2
+        }
+      }, $footer)];
+    }
+
+    var $calendar = h(_calendar_calendar__WEBPACK_IMPORTED_MODULE_7__["BCalendar"], {
+      key: 'calendar',
+      ref: 'calendar',
+      staticClass: 'b-form-date-calendar',
+      props: this.calendarProps,
+      on: {
+        selected: this.onSelected,
+        input: this.onInput,
+        context: this.onContext
+      }
+    }, $footer);
+    return h(_utils_bv_form_btn_label_control__WEBPACK_IMPORTED_MODULE_1__["BVFormBtnLabelControl"], {
+      ref: 'control',
+      staticClass: 'b-form-datepicker',
+      props: _objectSpread({}, this.$props, {
+        // Overridden / computed props
+        id: this.safeId(),
+        rtl: this.isRTL,
+        lang: this.computedLang,
+        value: localYMD || '',
+        formattedValue: localYMD ? this.formattedValue : '',
+        placeholder: placeholder || '',
+        menuClass: [{
+          'bg-dark': !!this.dark,
+          'text-light': !!this.dark
+        }, this.menuClass]
+      }),
+      on: {
+        show: this.onShow,
+        shown: this.onShown,
+        hidden: this.onHidden
+      },
+      scopedSlots: {
+        'button-content': this.$scopedSlots['button-content'] || this.defaultButtonFn
+      }
+    }, [$calendar]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/form-datepicker/index.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/form-datepicker/index.js ***!
+  \****************************************************************************/
+/*! exports provided: FormDatepickerPlugin, BFormDatepicker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormDatepickerPlugin", function() { return FormDatepickerPlugin; });
+/* harmony import */ var _form_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form-datepicker */ "./node_modules/bootstrap-vue/esm/components/form-datepicker/form-datepicker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormDatepicker", function() { return _form_datepicker__WEBPACK_IMPORTED_MODULE_0__["BFormDatepicker"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var FormDatepickerPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  components: {
+    BFormDatepicker: _form_datepicker__WEBPACK_IMPORTED_MODULE_0__["BFormDatepicker"],
+    BDatepicker: _form_datepicker__WEBPACK_IMPORTED_MODULE_0__["BFormDatepicker"]
   }
 });
 
@@ -12122,13 +13888,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+ // --- Constants ---
 
 var NAME = 'BFormFile';
-var VALUE_EMPTY_DEPRECATED_MSG = 'Setting "value"/"v-model" to an empty string for reset is deprecated. Set to "null" instead.'; // @vue/component
+var VALUE_EMPTY_DEPRECATED_MSG = 'Setting "value"/"v-model" to an empty string for reset is deprecated. Set to "null" instead.'; // --- Helper methods ---
 
-var BFormFile =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var isValidValue = function isValidValue(value) {
+  return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isFile"])(value) || Object(_utils_array__WEBPACK_IMPORTED_MODULE_2__["isArray"])(value) && value.every(function (v) {
+    return isValidValue(v);
+  });
+}; // @vue/component
+
+
+var BFormFile = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_11__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_9__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_10__["default"], _mixins_form_custom__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_12__["default"]],
   inheritAttrs: false,
@@ -12146,14 +13918,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     value: {
       type: [_utils_safe_types__WEBPACK_IMPORTED_MODULE_5__["File"], Array],
       default: null,
-      validator: function validator(val) {
+      validator: function validator(value) {
         /* istanbul ignore next */
-        if (val === '') {
+        if (value === '') {
           Object(_utils_warn__WEBPACK_IMPORTED_MODULE_7__["warn"])(VALUE_EMPTY_DEPRECATED_MSG, NAME);
           return true;
         }
 
-        return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isUndefinedOrNull"])(val) || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isFile"])(val) || Object(_utils_array__WEBPACK_IMPORTED_MODULE_2__["isArray"])(val) && (val.length === 0 || val.every(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isFile"]));
+        return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isUndefinedOrNull"])(value) || isValidValue(value);
       }
     },
     accept: {
@@ -12279,16 +14051,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }
     },
     reset: function reset() {
+      // IE 11 doesn't support setting `$input.value` to `''` or `null`
+      // So we use this little extra hack to reset the value, just in case
+      // This also appears to work on modern browsers as well
+      // Wrapped in try in case IE 11 or mobile Safari crap out
       try {
-        // Wrapped in try in case IE 11 craps out
-        this.$refs.input.value = '';
-      } catch (e) {} // IE 11 doesn't support setting `input.value` to '' or null
-      // So we use this little extra hack to reset the value, just in case.
-      // This also appears to work on modern browsers as well.
+        var $input = this.$refs.input;
+        $input.value = '';
+        $input.type = '';
+        $input.type = 'file';
+      } catch (e) {}
 
-
-      this.$refs.input.type = '';
-      this.$refs.input.type = 'file';
       this.selectedFile = this.multiple ? [] : null;
     },
     onFileChange: function onFileChange(evt) {
@@ -12492,9 +14265,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var FormFilePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var FormFilePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BFormFile: _form_file__WEBPACK_IMPORTED_MODULE_0__["BFormFile"],
     BFile: _form_file__WEBPACK_IMPORTED_MODULE_0__["BFormFile"]
@@ -12966,7 +14737,7 @@ var BFormGroup = {
     // to them due to browser specific render issues, so we move the `form-row`
     // to an inner wrapper div when horizontal and using a fieldset
 
-    return h(isFieldset ? 'fieldset' : isHorizontal ? _layout_form_row__WEBPACK_IMPORTED_MODULE_12__["BFormRow"] : 'div', data, isHorizontal && isFieldset ? [h(_layout_form_row__WEBPACK_IMPORTED_MODULE_12__["BFormRow"], {}, [label, content])] : [label, content]);
+    return h(isFieldset ? 'fieldset' : isHorizontal ? _layout_form_row__WEBPACK_IMPORTED_MODULE_12__["BFormRow"] : 'div', data, isHorizontal && isFieldset ? [h(_layout_form_row__WEBPACK_IMPORTED_MODULE_12__["BFormRow"], [label, content])] : [label, content]);
   }
 };
 
@@ -12988,9 +14759,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var FormGroupPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var FormGroupPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BFormGroup: _form_group__WEBPACK_IMPORTED_MODULE_0__["BFormGroup"],
     BFormFieldset: _form_group__WEBPACK_IMPORTED_MODULE_0__["BFormGroup"]
@@ -13011,15 +14780,15 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BFormInput", function() { return BFormInput; });
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
-/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
-/* harmony import */ var _mixins_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/form */ "./node_modules/bootstrap-vue/esm/mixins/form.js");
-/* harmony import */ var _mixins_form_size__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/form-size */ "./node_modules/bootstrap-vue/esm/mixins/form-size.js");
-/* harmony import */ var _mixins_form_state__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../mixins/form-state */ "./node_modules/bootstrap-vue/esm/mixins/form-state.js");
-/* harmony import */ var _mixins_form_text__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/form-text */ "./node_modules/bootstrap-vue/esm/mixins/form-text.js");
-/* harmony import */ var _mixins_form_selection__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/form-selection */ "./node_modules/bootstrap-vue/esm/mixins/form-selection.js");
-/* harmony import */ var _mixins_form_validity__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/form-validity */ "./node_modules/bootstrap-vue/esm/mixins/form-validity.js");
-/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
-/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../mixins/form */ "./node_modules/bootstrap-vue/esm/mixins/form.js");
+/* harmony import */ var _mixins_form_size__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/form-size */ "./node_modules/bootstrap-vue/esm/mixins/form-size.js");
+/* harmony import */ var _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/form-state */ "./node_modules/bootstrap-vue/esm/mixins/form-state.js");
+/* harmony import */ var _mixins_form_text__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/form-text */ "./node_modules/bootstrap-vue/esm/mixins/form-text.js");
+/* harmony import */ var _mixins_form_selection__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/form-selection */ "./node_modules/bootstrap-vue/esm/mixins/form-selection.js");
+/* harmony import */ var _mixins_form_validity__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/form-validity */ "./node_modules/bootstrap-vue/esm/mixins/form-validity.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -13039,11 +14808,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var TYPES = ['text', 'password', 'email', 'number', 'url', 'tel', 'search', 'range', 'color', 'date', 'time', 'datetime', 'datetime-local', 'month', 'week']; // @vue/component
 
-var BFormInput =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormInput = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormInput',
-  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_form_text__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_form_selection__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_form_validity__WEBPACK_IMPORTED_MODULE_7__["default"]],
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_form_text__WEBPACK_IMPORTED_MODULE_7__["default"], _mixins_form_selection__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_form_validity__WEBPACK_IMPORTED_MODULE_9__["default"]],
   props: {
     // value prop defined in form-text mixin
     // value: { },
@@ -13051,7 +14818,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       type: String,
       default: 'text',
       validator: function validator(type) {
-        return Object(_utils_array__WEBPACK_IMPORTED_MODULE_8__["arrayIncludes"])(TYPES, type);
+        return Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])(TYPES, type);
       }
     },
     noWheel: {
@@ -13079,7 +14846,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   computed: {
     localType: function localType() {
       // We only allow certain types
-      return Object(_utils_array__WEBPACK_IMPORTED_MODULE_8__["arrayIncludes"])(TYPES, this.type) ? this.type : 'text';
+      return Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])(TYPES, this.type) ? this.type : 'text';
     }
   },
   watch: {
@@ -13108,22 +14875,20 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   methods: {
     setWheelStopper: function setWheelStopper(on) {
-      var input = this.$el; // We use native events, so that we don't interfere with propgation
+      var input = this.$el; // We use native events, so that we don't interfere with propagation
 
-      if (on) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOn"])(input, 'focus', this.onWheelFocus);
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOn"])(input, 'blur', this.onWheelBlur);
-      } else {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOff"])(input, 'focus', this.onWheelFocus);
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOff"])(input, 'blur', this.onWheelBlur);
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOff"])(document, 'wheel', this.stopWheel);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOnOff"])(on, input, 'focus', this.onWheelFocus);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOnOff"])(on, input, 'blur', this.onWheelBlur);
+
+      if (!on) {
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(document, 'wheel', this.stopWheel);
       }
     },
-    onWheelFocus: function onWheelFocus(evt) {
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOn"])(document, 'wheel', this.stopWheel);
+    onWheelFocus: function onWheelFocus() {
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(document, 'wheel', this.stopWheel);
     },
-    onWheelBlur: function onWheelBlur(evt) {
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_9__["eventOff"])(document, 'wheel', this.stopWheel);
+    onWheelBlur: function onWheelBlur() {
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(document, 'wheel', this.stopWheel);
     },
     stopWheel: function stopWheel(evt) {
       evt.preventDefault();
@@ -13188,9 +14953,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var FormInputPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var FormInputPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BFormInput: _form_input__WEBPACK_IMPORTED_MODULE_0__["BFormInput"],
     BInput: _form_input__WEBPACK_IMPORTED_MODULE_0__["BFormInput"]
@@ -13232,9 +14995,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormRadioGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormRadioGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormRadioGroup',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_form_radio_check_group__WEBPACK_IMPORTED_MODULE_4__["default"], // Includes render function
   _mixins_form_options__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__["default"]],
@@ -13283,9 +15044,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BFormRadio =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormRadio = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormRadio',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_form_radio_check__WEBPACK_IMPORTED_MODULE_5__["default"], // Includes shared render function
   _mixins_form__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_3__["default"]],
@@ -13317,7 +15076,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   watch: {
     // Radio Groups can only have a single value, so our watchers are simple
-    computedLocalChecked: function computedLocalChecked(newVal, oldVal) {
+    computedLocalChecked: function computedLocalChecked() {
       this.$emit('input', this.computedLocalChecked);
     }
   },
@@ -13358,9 +15117,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FormRadioPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var FormRadioPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BFormRadio: _form_radio__WEBPACK_IMPORTED_MODULE_0__["BFormRadio"],
     BRadio: _form_radio__WEBPACK_IMPORTED_MODULE_0__["BFormRadio"],
@@ -13393,9 +15150,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BFormSelectOptionGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormSelectOptionGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormSelectOptionGroup',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_form_options__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
@@ -13452,9 +15207,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormSelectOption =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormSelectOption = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -13512,9 +15265,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BFormSelect =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormSelect = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormSelect',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_form_size__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_form_custom__WEBPACK_IMPORTED_MODULE_7__["default"], _helpers_mixin_options__WEBPACK_IMPORTED_MODULE_9__["default"]],
   model: {
@@ -13563,10 +15314,10 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   watch: {
-    value: function value(newVal, oldVal) {
+    value: function value(newVal) {
       this.localValue = newVal;
     },
-    localValue: function localValue(newVal, oldVal) {
+    localValue: function localValue() {
       this.$emit('input', this.localValue);
     }
   },
@@ -13729,9 +15480,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FormSelectPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
+var FormSelectPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
   components: {
     BFormSelect: _form_select__WEBPACK_IMPORTED_MODULE_0__["BFormSelect"],
     BFormSelectOption: _form_select_option__WEBPACK_IMPORTED_MODULE_1__["BFormSelectOption"],
@@ -13739,6 +15488,673 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
     BSelect: _form_select__WEBPACK_IMPORTED_MODULE_0__["BFormSelect"],
     BSelectOption: _form_select_option__WEBPACK_IMPORTED_MODULE_1__["BFormSelectOption"],
     BSelectOptionGroup: _form_select_option_group__WEBPACK_IMPORTED_MODULE_2__["BFormSelectOptionGroup"]
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/form-spinbutton.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/form-spinbutton/form-spinbutton.js ***!
+  \**************************************************************************************/
+/*! exports provided: BFormSpinbutton */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BFormSpinbutton", function() { return BFormSpinbutton; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_locale__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/locale */ "./node_modules/bootstrap-vue/esm/utils/locale.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _utils_string__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../icons/icons */ "./node_modules/bootstrap-vue/esm/icons/icons.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+ // --- Constants ---
+
+var NAME = 'BFormSpinbutton';
+var UP = _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__["default"].UP,
+    DOWN = _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__["default"].DOWN,
+    HOME = _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__["default"].HOME,
+    END = _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__["default"].END,
+    PAGEUP = _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__["default"].PAGEUP,
+    PAGEDOWN = _utils_key_codes__WEBPACK_IMPORTED_MODULE_9__["default"].PAGEDOWN; // Default for spin button range and step
+
+var DEFAULT_MIN = 1;
+var DEFAULT_MAX = 100;
+var DEFAULT_STEP = 1; // Delay before auto-repeat in ms
+
+var DEFAULT_REPEAT_DELAY = 500; // Repeat interval in ms
+
+var DEFAULT_REPEAT_INTERVAL = 100; // Repeat rate increased after number of repeats
+
+var DEFAULT_REPEAT_THRESHOLD = 10; // Repeat speed multiplier (step multiplier, must be an integer)
+
+var DEFAULT_REPEAT_MULTIPLIER = 4; // --- Helper functions ---
+
+var defaultNumber = function defaultNumber(value) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  value = Object(_utils_number__WEBPACK_IMPORTED_MODULE_6__["toFloat"])(value);
+  return isNaN(value) ? defaultValue : value;
+};
+
+var defaultInteger = function defaultInteger(value) {
+  var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  value = Object(_utils_number__WEBPACK_IMPORTED_MODULE_6__["toInteger"])(value);
+  return isNaN(value) ? Math.abs(defaultValue) : value;
+}; // --- BFormSpinbutton ---
+// @vue/component
+
+
+var BFormSpinbutton = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: NAME,
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_10__["default"]],
+  inheritAttrs: false,
+  props: {
+    value: {
+      // Should this really be String, to match native number inputs?
+      type: Number,
+      default: null
+    },
+    min: {
+      type: [Number, String],
+      default: DEFAULT_MIN
+    },
+    max: {
+      type: [Number, String],
+      default: DEFAULT_MAX
+    },
+    step: {
+      type: [Number, String],
+      default: DEFAULT_STEP
+    },
+    wrap: {
+      type: Boolean,
+      default: false
+    },
+    formatterFn: {
+      type: Function // default: null
+
+    },
+    size: {
+      type: String // default: null
+
+    },
+    placeholder: {
+      type: String,
+      default: null
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    required: {
+      // Only affects the `aria-invalid` attribute
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: String // default: null
+
+    },
+    form: {
+      type: String // default: null
+
+    },
+    state: {
+      // Tri-state prop: `true`, `false`, or `null`
+      type: Boolean,
+      default: null
+    },
+    inline: {
+      type: Boolean,
+      default: false
+    },
+    vertical: {
+      type: Boolean,
+      default: false
+    },
+    ariaLabel: {
+      type: String,
+      default: null
+    },
+    ariaControls: {
+      type: String,
+      default: null
+    },
+    labelDecrement: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelDecrement');
+      }
+    },
+    labelIncrement: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelIncrement');
+      }
+    },
+    locale: {
+      type: [String, Array],
+      default: null
+    },
+    repeatDelay: {
+      type: [Number, String],
+      default: DEFAULT_REPEAT_DELAY
+    },
+    repeatInterval: {
+      type: [Number, String],
+      default: DEFAULT_REPEAT_INTERVAL
+    },
+    repeatThreshold: {
+      type: [Number, String],
+      default: DEFAULT_REPEAT_THRESHOLD
+    },
+    repeatStepMultiplier: {
+      type: [Number, String],
+      default: DEFAULT_REPEAT_MULTIPLIER
+    }
+  },
+  data: function data() {
+    return {
+      localValue: defaultNumber(this.value),
+      hasFocus: false
+    };
+  },
+  computed: {
+    computedStep: function computedStep() {
+      return defaultNumber(this.step, DEFAULT_STEP);
+    },
+    computedMin: function computedMin() {
+      return defaultNumber(this.min, DEFAULT_MIN);
+    },
+    computedMax: function computedMax() {
+      // We round down to the nearest maximum step value
+      var max = defaultNumber(this.max, DEFAULT_MAX);
+      var step = this.computedStep;
+      var min = this.computedMin;
+      return Math.floor((max - min) / step) * step + min;
+    },
+    computedDelay: function computedDelay() {
+      return defaultInteger(this.repeatDelay, DEFAULT_REPEAT_DELAY) || DEFAULT_REPEAT_DELAY;
+    },
+    computedInterval: function computedInterval() {
+      return defaultInteger(this.repeatInterval, DEFAULT_REPEAT_INTERVAL) || DEFAULT_REPEAT_INTERVAL;
+    },
+    computedThreshold: function computedThreshold() {
+      return defaultInteger(this.repeatThreshold, DEFAULT_REPEAT_THRESHOLD) || 1;
+    },
+    computedStepMultiplier: function computedStepMultiplier() {
+      return defaultInteger(this.repeatStepMultiplier, DEFAULT_REPEAT_MULTIPLIER) || 1;
+    },
+    computedPrecision: function computedPrecision() {
+      // Quick and dirty way to get the number of decimals
+      var step = this.computedStep;
+      return Math.floor(step) === step ? 0 : (step.toString().split('.')[1] || '').length;
+    },
+    computedMultiplier: function computedMultiplier() {
+      return Math.pow(10, this.computedPrecision || 0);
+    },
+    valueAsFixed: function valueAsFixed() {
+      var value = this.localValue;
+      return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isNull"])(value) ? '' : value.toFixed(this.computedPrecision);
+    },
+    computedLocale: function computedLocale() {
+      var locales = Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.locale).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_8__["default"]);
+      var nf = new Intl.NumberFormat(locales);
+      return nf.resolvedOptions().locale;
+    },
+    computedRTL: function computedRTL() {
+      return Object(_utils_locale__WEBPACK_IMPORTED_MODULE_5__["isLocaleRTL"])(this.computedLocale);
+    },
+    defaultFormatter: function defaultFormatter() {
+      // Returns and `Intl.NumberFormat` formatter method reference
+      var precision = this.computedPrecision;
+      var nf = new Intl.NumberFormat(this.computedLocale, {
+        style: 'decimal',
+        useGrouping: false,
+        minimumIntegerDigits: 1,
+        minimumFractionDigits: precision,
+        maximumFractionDigits: precision,
+        notation: 'standard'
+      }); // Return the format method reference
+
+      return nf.format;
+    }
+  },
+  watch: {
+    value: function value(_value) {
+      _value = Object(_utils_number__WEBPACK_IMPORTED_MODULE_6__["toFloat"])(_value); // Will be `NaN` if `value` is `null`
+
+      this.localValue = isNaN(_value) ? null : _value;
+    },
+    localValue: function localValue(value) {
+      this.$emit('input', value);
+    },
+    disabled: function disabled(_disabled) {
+      if (_disabled) {
+        this.clearRepeat();
+      }
+    },
+    readonly: function readonly(_readonly) {
+      if (_readonly) {
+        this.clearRepeat();
+      }
+    }
+  },
+  created: function created() {
+    // Create non reactive properties
+    this.$_autoDelayTimer = null;
+    this.$_autoRepeatTimer = null;
+    this.$_keyIsDown = false;
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.clearRepeat();
+  },
+  deactivated: function deactivated()
+  /* istanbul ignore next */
+  {
+    this.clearRepeat();
+  },
+  methods: {
+    // --- Public methods ---
+    focus: function focus() {
+      if (!this.disabled) {
+        try {
+          this.$refs.spinner.focus();
+        } catch (_unused) {}
+      }
+    },
+    blur: function blur() {
+      if (!this.disabled) {
+        try {
+          this.$refs.spinner.blur();
+        } catch (_unused2) {}
+      }
+    },
+    // --- Private methods ---
+    emitChange: function emitChange() {
+      this.$emit('change', this.localValue);
+    },
+    stepValue: function stepValue(direction) {
+      // Sets a new incremented or decremented value, supporting optional wrapping
+      // Direction is either +1 or -1 (or a multiple thereof)
+      var value = this.localValue;
+
+      if (!this.disabled && !Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isNull"])(value)) {
+        var step = this.computedStep * direction;
+        var min = this.computedMin;
+        var max = this.computedMax;
+        var multiplier = this.computedMultiplier;
+        var wrap = this.wrap; // We ensure that the value steps like a native input
+
+        value = Math.round((value - min) / step) * step + min + step; // We ensure that precision is maintained (decimals)
+
+        value = Math.round(value * multiplier) / multiplier; // Handle if wrapping is enabled
+
+        this.localValue = value > max ? wrap ? min : max : value < min ? wrap ? max : min : value;
+      }
+    },
+    onFocusBlur: function onFocusBlur(evt) {
+      if (!this.disabled) {
+        this.hasFocus = evt.type === 'focus';
+      } else {
+        this.hasFocus = false;
+      }
+    },
+    stepUp: function stepUp() {
+      var multiplier = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var value = this.localValue;
+
+      if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isNull"])(value)) {
+        this.localValue = this.computedMin;
+      } else {
+        this.stepValue(+1 * multiplier);
+      }
+    },
+    stepDown: function stepDown() {
+      var multiplier = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var value = this.localValue;
+
+      if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isNull"])(value)) {
+        this.localValue = this.wrap ? this.computedMax : this.computedMin;
+      } else {
+        this.stepValue(-1 * multiplier);
+      }
+    },
+    onKeydown: function onKeydown(evt) {
+      var keyCode = evt.keyCode,
+          altKey = evt.altKey,
+          ctrlKey = evt.ctrlKey,
+          metaKey = evt.metaKey;
+      /* istanbul ignore if */
+
+      if (this.disabled || this.readonly || altKey || ctrlKey || metaKey) {
+        return;
+      }
+
+      if (Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])([UP, DOWN, HOME, END, PAGEUP, PAGEDOWN], keyCode)) {
+        // https://w3c.github.io/aria-practices/#spinbutton
+        evt.preventDefault();
+        /* istanbul ignore if */
+
+        if (this.$_keyIsDown) {
+          // Keypress is already in progress
+          return;
+        }
+
+        this.resetTimers();
+
+        if (Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])([UP, DOWN], keyCode)) {
+          // The following use the custom auto-repeat handling
+          this.$_keyIsDown = true;
+
+          if (keyCode === UP) {
+            this.handleStepRepeat(evt, this.stepUp);
+          } else if (keyCode === DOWN) {
+            this.handleStepRepeat(evt, this.stepDown);
+          }
+        } else {
+          // These use native OS key repeating
+          if (keyCode === PAGEUP) {
+            this.stepUp(this.computedStepMultiplier);
+          } else if (keyCode === PAGEDOWN) {
+            this.stepDown(this.computedStepMultiplier);
+          } else if (keyCode === HOME) {
+            this.localValue = this.computedMin;
+          } else if (keyCode === END) {
+            this.localValue = this.computedMax;
+          }
+        }
+      }
+    },
+    onKeyup: function onKeyup(evt) {
+      // Emit a change event when the keyup happens
+      var keyCode = evt.keyCode,
+          altKey = evt.altKey,
+          ctrlKey = evt.ctrlKey,
+          metaKey = evt.metaKey;
+      /* istanbul ignore if */
+
+      if (this.disabled || this.readonly || altKey || ctrlKey || metaKey) {
+        return;
+      }
+
+      if (Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])([UP, DOWN, HOME, END, PAGEUP, PAGEDOWN], keyCode)) {
+        this.resetTimers();
+        this.$_keyIsDown = false;
+        evt.preventDefault();
+        this.emitChange();
+      }
+    },
+    handleStepRepeat: function handleStepRepeat(evt, stepper) {
+      var _this = this;
+
+      var _ref = evt || {},
+          type = _ref.type,
+          button = _ref.button;
+
+      if (!this.disabled && !this.readonly) {
+        /* istanbul ignore if */
+        if (type === 'mousedown' && button) {
+          // We only respond to left (main === 0) button clicks
+          return;
+        }
+
+        this.resetTimers(); // Step the counter initially
+
+        stepper(1);
+        var threshold = this.computedThreshold;
+        var multiplier = this.computedStepMultiplier;
+        var delay = this.computedDelay;
+        var interval = this.computedInterval; // Initiate the delay/repeat interval
+
+        this.$_autoDelayTimer = setTimeout(function () {
+          var count = 0;
+          _this.$_autoRepeatTimer = setInterval(function () {
+            // After N initial repeats, we increase the incrementing step amount
+            // We do this to minimize screen reader announcements of the value
+            // (values are announced every change, which can be chatty for SR users)
+            // And to make it easer to select a value when the range is large
+            stepper(count < threshold ? 1 : multiplier);
+            count++;
+          }, interval);
+        }, delay);
+      }
+    },
+    onMouseup: function onMouseup(evt) {
+      // `<body>` listener, only enabled when mousedown starts
+      var _ref2 = evt || {},
+          type = _ref2.type,
+          button = _ref2.button;
+      /* istanbul ignore if */
+
+
+      if (type === 'mouseup' && button) {
+        // Ignore non left button (main === 0) mouse button click
+        return;
+      }
+
+      evt.preventDefault();
+      this.resetTimers();
+      this.setMouseup(false); // Trigger the change event
+
+      this.emitChange();
+    },
+    setMouseup: function setMouseup(on) {
+      // Enable or disabled the body mouseup/touchend handlers
+      // Use try/catch to handle case when called server side
+      try {
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_3__["eventOnOff"])(on, document.body, 'mouseup', this.onMouseup, false);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_3__["eventOnOff"])(on, document.body, 'touchend', this.onMouseup, false);
+      } catch (_unused3) {}
+    },
+    resetTimers: function resetTimers() {
+      clearTimeout(this.$_autoDelayTimer);
+      clearInterval(this.$_autoRepeatTimer);
+    },
+    clearRepeat: function clearRepeat() {
+      this.resetTimers();
+      this.setMouseup(false);
+      this.$_keyIsDown = false;
+    }
+  },
+  render: function render(h) {
+    var _this2 = this,
+        _class;
+
+    var spinId = this.safeId();
+    var value = this.localValue;
+    var isVertical = this.vertical;
+    var isInline = this.inline && !isVertical;
+    var isDisabled = this.disabled;
+    var isReadonly = this.readonly && !isDisabled;
+    var isRequired = this.required && !isReadonly && !isDisabled;
+    var state = this.state;
+    var size = this.size;
+    var hasValue = !Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isNull"])(value);
+    var formatter = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isFunction"])(this.formatterFn) ? this.formatterFn : this.defaultFormatter;
+
+    var makeButton = function makeButton(stepper, label, IconCmp, keyRef, shortcut, btnDisabled) {
+      var $icon = h(IconCmp, {
+        props: {
+          scale: _this2.hasFocus ? 1.5 : 1.25
+        },
+        attrs: {
+          'aria-hidden': 'true'
+        }
+      });
+
+      var handler = function handler(evt) {
+        if (!isDisabled && !isReadonly) {
+          evt.preventDefault();
+
+          _this2.setMouseup(true);
+
+          try {
+            // Since we `preventDefault()`, we must manually focus the button
+            evt.currentTarget.focus();
+          } catch (_unused4) {}
+
+          _this2.handleStepRepeat(evt, stepper);
+        }
+      };
+
+      return h('button', {
+        key: keyRef || null,
+        ref: keyRef,
+        staticClass: 'btn btn-sm border-0 rounded-0',
+        class: {
+          'py-0': !isVertical
+        },
+        attrs: {
+          tabindex: '-1',
+          type: 'button',
+          disabled: isDisabled || isReadonly || btnDisabled,
+          'aria-disabled': isDisabled || isReadonly || btnDisabled ? 'true' : null,
+          'aria-controls': spinId,
+          'aria-label': label || null,
+          'aria-keyshortcuts': shortcut || null
+        },
+        on: {
+          mousedown: handler,
+          touchstart: handler
+        }
+      }, [h('div', {}, [$icon])]);
+    }; // TODO: Add button disabled state when `wrap` is `false` and at value max/min
+
+
+    var $increment = makeButton(this.stepUp, this.labelIncrement, _icons_icons__WEBPACK_IMPORTED_MODULE_11__["BIconPlus"], 'inc', 'ArrowUp');
+    var $decrement = makeButton(this.stepDown, this.labelDecrement, _icons_icons__WEBPACK_IMPORTED_MODULE_11__["BIconDash"], 'dec', 'ArrowDown');
+    var $hidden = h();
+
+    if (this.name && !isDisabled) {
+      $hidden = h('input', {
+        key: 'hidden',
+        attrs: {
+          type: 'hidden',
+          name: this.name,
+          form: this.form || null,
+          // TODO: Should this be set to '' if value is out of range?
+          value: this.valueAsFixed
+        }
+      });
+    }
+
+    var $spin = h( // We use 'output' element to make this accept a `<label for="id">` (Except IE)
+    'output', {
+      ref: 'spinner',
+      key: 'output',
+      staticClass: 'flex-grow-1',
+      class: {
+        'w-100': !isVertical && !isInline,
+        'd-flex': isVertical,
+        'align-self-center': !isVertical,
+        'align-items-center': isVertical,
+        'py-1': isVertical,
+        'px-1': !isVertical,
+        'mx-1': isVertical,
+        'border-top': isVertical,
+        'border-bottom': isVertical,
+        'border-left': !isVertical,
+        'border-right': !isVertical
+      },
+      attrs: _objectSpread({
+        dir: this.computedRTL ? 'rtl' : 'ltr'
+      }, this.$attrs, {
+        id: spinId,
+        role: 'spinbutton',
+        tabindex: isDisabled ? null : '0',
+        'aria-live': 'off',
+        'aria-label': this.ariaLabel || null,
+        'aria-controls': this.ariaControls || null,
+        // TODO: May want to check if the value is in range
+        'aria-invalid': state === false || !hasValue && isRequired ? 'true' : null,
+        'aria-required': isRequired ? 'true' : null,
+        // These attrs are required for role spinbutton
+        'aria-valuemin': Object(_utils_string__WEBPACK_IMPORTED_MODULE_7__["toString"])(this.computedMin),
+        'aria-valuemax': Object(_utils_string__WEBPACK_IMPORTED_MODULE_7__["toString"])(this.computedMax),
+        // These should be `null` if the value is out of range
+        // They must also be non-existent attrs if the value is out of range or `null`
+        'aria-valuenow': hasValue ? value : null,
+        'aria-valuetext': hasValue ? formatter(value) : null
+      })
+    }, [h('bdi', {
+      staticClass: 'w-100'
+    }, hasValue ? formatter(value) : this.placeholder || '')]);
+    return h('div', {
+      staticClass: 'b-form-spinbutton form-control p-0',
+      class: (_class = {
+        disabled: isDisabled,
+        readonly: isReadonly,
+        focus: this.hasFocus
+      }, _defineProperty(_class, "form-control-".concat(size), !!size), _defineProperty(_class, 'd-inline-flex', isInline || isVertical), _defineProperty(_class, 'd-flex', !isInline && !isVertical), _defineProperty(_class, 'align-items-stretch', !isVertical), _defineProperty(_class, 'flex-column', isVertical), _defineProperty(_class, 'is-valid', state === true), _defineProperty(_class, 'is-invalid', state === false), _class),
+      attrs: {
+        role: 'group',
+        lang: this.computedLocale,
+        tabindex: isDisabled ? null : '-1',
+        title: this.ariaLabel
+      },
+      on: {
+        keydown: this.onKeydown,
+        keyup: this.onKeyup,
+        // We use capture phase (`!` prefix) since focus and blur do not bubble
+        '!focus': this.onFocusBlur,
+        '!blur': this.onFocusBlur
+      }
+    }, isVertical ? [$increment, $hidden, $spin, $decrement] : [$decrement, $hidden, $spin, $increment]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/index.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/form-spinbutton/index.js ***!
+  \****************************************************************************/
+/*! exports provided: FormSpinbuttonPlugin, BFormSpinbutton */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormSpinbuttonPlugin", function() { return FormSpinbuttonPlugin; });
+/* harmony import */ var _form_spinbutton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form-spinbutton */ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/form-spinbutton.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSpinbutton", function() { return _form_spinbutton__WEBPACK_IMPORTED_MODULE_0__["BFormSpinbutton"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var FormSpinbuttonPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  components: {
+    BFormSpinbutton: _form_spinbutton__WEBPACK_IMPORTED_MODULE_0__["BFormSpinbutton"],
+    BSpinbutton: _form_spinbutton__WEBPACK_IMPORTED_MODULE_0__["BFormSpinbutton"]
   }
 });
 
@@ -13756,11 +16172,13 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BFormTag", function() { return BFormTag; });
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
-/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
-/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
-/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
-/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../badge/badge */ "./node_modules/bootstrap-vue/esm/components/badge/badge.js");
-/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
+/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _badge_badge__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../badge/badge */ "./node_modules/bootstrap-vue/esm/components/badge/badge.js");
+/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
+
 
 
 
@@ -13768,16 +16186,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NAME = 'BFormTag';
-var BFormTag =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormTag = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
-  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"]],
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["default"]],
   props: {
     variant: {
       type: String,
       default: function _default() {
-        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_1__["getComponentConfig"])(NAME, 'variant');
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'variant');
       }
     },
     disabled: {
@@ -13795,7 +16211,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     removeLabel: {
       type: String,
       default: function _default() {
-        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_1__["getComponentConfig"])(NAME, 'removeLabel');
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'removeLabel');
       }
     },
     tag: {
@@ -13804,40 +16220,53 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   methods: {
-    onClick: function onClick() {
-      this.$emit('remove');
+    onDelete: function onDelete(evt) {
+      var type = evt.type,
+          keyCode = evt.keyCode;
+
+      if (!this.disabled && (type === 'click' || type === 'keydown' && keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].DELETE)) {
+        this.$emit('remove');
+      }
     }
   },
   render: function render(h) {
     var tagId = this.safeId();
+    var tagLabelId = this.safeId('_taglabel_');
     var $remove = h();
 
     if (!this.disabled) {
-      $remove = h(_button_button_close__WEBPACK_IMPORTED_MODULE_5__["BButtonClose"], {
+      $remove = h(_button_button_close__WEBPACK_IMPORTED_MODULE_6__["BButtonClose"], {
         staticClass: 'b-form-tag-remove ml-1',
         props: {
           ariaLabel: this.removeLabel
         },
         attrs: {
-          'aria-controls': tagId
+          'aria-controls': tagId,
+          'aria-describedby': tagLabelId,
+          'aria-keyshortcuts': 'Delete'
         },
         on: {
-          click: this.onClick
+          click: this.onDelete,
+          keydown: this.onDelete
         }
       });
     }
 
     var $tag = h('span', {
-      staticClass: 'b-form-tag-content flex-grow-1 text-truncate'
+      staticClass: 'b-form-tag-content flex-grow-1 text-truncate',
+      attrs: {
+        id: tagLabelId
+      }
     }, this.normalizeSlot('default') || this.title || [h()]);
-    return h(_badge_badge__WEBPACK_IMPORTED_MODULE_4__["BBadge"], {
+    return h(_badge_badge__WEBPACK_IMPORTED_MODULE_5__["BBadge"], {
       staticClass: 'b-form-tag d-inline-flex align-items-baseline mw-100',
       class: {
         disabled: this.disabled
       },
       attrs: {
         id: tagId,
-        title: this.title || null
+        title: this.title || null,
+        'aria-labelledby': tagLabelId
       },
       props: {
         tag: this.tag,
@@ -13861,8 +16290,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BFormTags", function() { return BFormTags; });
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
-/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
-/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
 /* harmony import */ var _utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/loose-equal */ "./node_modules/bootstrap-vue/esm/utils/loose-equal.js");
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
@@ -13871,10 +16300,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_string__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
 /* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
 /* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
-/* harmony import */ var _form_tag__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./form-tag */ "./node_modules/bootstrap-vue/esm/components/form-tags/form-tag.js");
+/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
 /* harmony import */ var _form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../form/form-invalid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-invalid-feedback.js");
 /* harmony import */ var _form_form_text__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../form/form-text */ "./node_modules/bootstrap-vue/esm/components/form/form-text.js");
-/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+/* harmony import */ var _form_tag__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./form-tag */ "./node_modules/bootstrap-vue/esm/components/form-tags/form-tag.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -13911,7 +16340,11 @@ var NAME = 'BFormTags'; // Supported input types (for built in input)
 
 var TYPES = ['text', 'email', 'tel', 'url', 'number']; // Pre-compiled regular expressions for performance reasons
 
-var RX_SPACES = /[\s\uFEFF\xA0]+/g; // --- Utility methods ---
+var RX_SPACES = /[\s\uFEFF\xA0]+/g; // KeyCode constants
+
+var ENTER = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].ENTER,
+    BACKSPACE = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].BACKSPACE,
+    DELETE = _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__["default"].DELETE; // --- Utility methods ---
 // Escape special chars in string and replace
 // contiguous spaces with a whitespace match
 
@@ -13944,9 +16377,7 @@ var cleanTagsState = function cleanTagsState() {
 }; // @vue/component
 
 
-var BFormTags =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormTags = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_9__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__["default"]],
   model: {
@@ -14041,6 +16472,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'tagRemoveLabel');
       }
     },
+    tagRemovedLabel: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'tagRemovedLabel');
+      }
+    },
     tagValidator: {
       type: Function,
       default: null
@@ -14097,6 +16534,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       hasFocus: false,
       newTag: '',
       tags: [],
+      // Tags that were removed
+      removedTags: [],
       // Populated when tags are parsed
       tagsState: cleanTagsState()
     };
@@ -14127,7 +16566,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     computedSeparator: function computedSeparator() {
       // Merge the array into a string
-      return Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(this.separator).filter(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isString"]).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_1__["default"]).join('');
+      return Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(this.separator).filter(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isString"]).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]).join('');
     },
     computedSeparatorRegExp: function computedSeparatorRegExp() {
       // We use a computed prop here to precompile the RegExp
@@ -14174,10 +16613,18 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     value: function value(newVal) {
       this.tags = cleanTags(newVal);
     },
-    tags: function tags(newVal) {
+    tags: function tags(newVal, oldVal) {
       // Update the `v-model` (if it differs from the value prop)
       if (!Object(_utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__["default"])(newVal, this.value)) {
         this.$emit('input', newVal);
+      }
+
+      if (!Object(_utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__["default"])(newVal, oldVal)) {
+        newVal = Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(newVal).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]);
+        oldVal = Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(oldVal).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]);
+        this.removedTags = oldVal.filter(function (old) {
+          return !Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])(newVal, old);
+        });
       }
     },
     tagsState: function tagsState(newVal, oldVal) {
@@ -14243,6 +16690,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.focus();
     },
     removeTag: function removeTag(tag) {
+      var _this2 = this;
+
       /* istanbul ignore next */
       if (this.disabled) {
         return;
@@ -14256,7 +16705,9 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         return t !== tag;
       }); // Return focus to the input (if possible)
 
-      this.focus();
+      this.$nextTick(function () {
+        _this2.focus();
+      });
     },
     // --- Input element event handlers ---
     onInputInput: function onInputInput(evt) {
@@ -14312,20 +16763,24 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       var value = evt.target.value || '';
       /* istanbul ignore else: testing to be added later */
 
-      if (!this.noAddOnEnter && keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].ENTER) {
+      if (!this.noAddOnEnter && keyCode === ENTER) {
         // Attempt to add the tag when user presses enter
         evt.preventDefault();
         this.addTag();
-      } else if (this.removeOnDelete && keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].BACKSPACE && value === '') {
-        // Remove the last tag if the user pressed backspace and the input is empty
+      } else if (this.removeOnDelete && (keyCode === BACKSPACE || keyCode === DELETE) && value === '') {
+        // Remove the last tag if the user pressed backspace/delete and the input is empty
         evt.preventDefault();
-        this.tags.pop();
+        this.tags = this.tags.slice(0, -1);
       }
     },
     // --- Wrapper event handlers ---
     onClick: function onClick(evt) {
+      var _this3 = this;
+
       if (!this.disabled && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isEvent"])(evt) && evt.target === evt.currentTarget) {
-        this.$nextTick(this.focus);
+        this.$nextTick(function () {
+          _this3.focus();
+        });
       }
     },
     onFocusin: function onFocusin() {
@@ -14335,12 +16790,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.hasFocus = false;
     },
     handleAutofocus: function handleAutofocus() {
-      var _this2 = this;
+      var _this4 = this;
 
       this.$nextTick(function () {
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["requestAF"])(function () {
-          if (_this2.autofocus && !_this2.disabled) {
-            _this2.focus();
+          if (_this4.autofocus && !_this4.disabled) {
+            _this4.focus();
           }
         });
       });
@@ -14366,10 +16821,10 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // Normally only a single tag is provided, but copy/paste
       // can enter multiple tags in a single operation
 
-      return (separatorRe ? newTag.split(separatorRe) : [newTag]).map(_utils_string__WEBPACK_IMPORTED_MODULE_8__["trim"]).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_1__["default"]);
+      return (separatorRe ? newTag.split(separatorRe) : [newTag]).map(_utils_string__WEBPACK_IMPORTED_MODULE_8__["trim"]).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]);
     },
     parseTags: function parseTags(newTag) {
-      var _this3 = this;
+      var _this5 = this;
 
       // Takes `newTag` value and parses it into `validTags`,
       // `invalidTags`, and duplicate tags as an object
@@ -14384,12 +16839,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }; // Parse the unique tags
 
       tags.forEach(function (tag) {
-        if (Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])(_this3.tags, tag) || Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])(parsed.valid, tag)) {
+        if (Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])(_this5.tags, tag) || Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])(parsed.valid, tag)) {
           // Unique duplicate tags
           if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["arrayIncludes"])(parsed.duplicate, tag)) {
             parsed.duplicate.push(tag);
           }
-        } else if (_this3.validateTag(tag)) {
+        } else if (_this5.validateTag(tag)) {
           // We only add unique/valid tags
           parsed.valid.push(tag);
         } else {
@@ -14426,9 +16881,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           invalidTagText = _ref.invalidTagText,
           duplicateTagText = _ref.duplicateTagText,
           isInvalid = _ref.isInvalid,
-          invalidTags = _ref.invalidTags,
           isDuplicate = _ref.isDuplicate,
-          duplicateTags = _ref.duplicateTags,
           disabled = _ref.disabled,
           placeholder = _ref.placeholder,
           addButtonText = _ref.addButtonText,
@@ -14436,14 +16889,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           disableAddButton = _ref.disableAddButton;
       var h = this.$createElement; // Make the list of tags
 
-      var $tags = tags.map(function (tag, idx) {
+      var $tags = tags.map(function (tag) {
         tag = Object(_utils_string__WEBPACK_IMPORTED_MODULE_8__["toString"])(tag);
-        return h(_form_tag__WEBPACK_IMPORTED_MODULE_11__["BFormTag"], {
+        return h(_form_tag__WEBPACK_IMPORTED_MODULE_14__["BFormTag"], {
           key: "li-tag__".concat(tag),
           staticClass: 'mt-1 mr-1',
           class: tagClass,
           props: {
-            // 'BFormTag' will auto generate an ID
+            // `BFormTag` will auto generate an ID
             // so we do not need to set the ID prop
             tag: 'li',
             title: tag,
@@ -14463,7 +16916,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       var invalidFeedbackId = invalidTagText && isInvalid ? this.safeId('__invalid_feedback__') : null;
       var duplicateFeedbackId = duplicateTagText && isDuplicate ? this.safeId('__duplicate_feedback__') : null; // Compute the `aria-describedby` attribute value
 
-      var ariaDescribedby = [inputAttrs['aria-describedby'], invalidFeedbackId, duplicateFeedbackId].filter(_utils_identity__WEBPACK_IMPORTED_MODULE_1__["default"]).join(' '); // Input
+      var ariaDescribedby = [inputAttrs['aria-describedby'], invalidFeedbackId, duplicateFeedbackId].filter(_utils_identity__WEBPACK_IMPORTED_MODULE_2__["default"]).join(' '); // Input
 
       var $input = h('input', {
         ref: 'input',
@@ -14489,7 +16942,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         on: inputHandlers
       }); // Add button
 
-      var $button = h(_button_button__WEBPACK_IMPORTED_MODULE_14__["BButton"], {
+      var $button = h(_button_button__WEBPACK_IMPORTED_MODULE_11__["BButton"], {
         ref: 'button',
         staticClass: 'b-form-tags-button py-0',
         class: {
@@ -14520,26 +16973,24 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       var tagListId = this.safeId('__TAG__LIST__');
       var $field = h('li', {
         key: '__li-input__',
-        staticClass: 'd-inline-flex flex-grow-1 mt-1',
+        staticClass: 'flex-grow-1 mt-1',
         attrs: {
-          role: 'group',
+          role: 'none',
           'aria-live': 'off',
           'aria-controls': tagListId
         }
-      }, [$input, $button]); // Wrap in an unordered list element (we use a list for accessibility)
+      }, [h('div', {
+        staticClass: 'd-flex',
+        attrs: {
+          role: 'group'
+        }
+      }, [$input, $button])]); // Wrap in an unordered list element (we use a list for accessibility)
 
       var $ul = h('ul', {
         key: '_tags_list_',
         staticClass: 'list-unstyled mt-n1 mb-0 d-flex flex-wrap align-items-center',
         attrs: {
-          id: tagListId,
-          // Don't interrupt the user abruptly
-          // Although maybe this should be 'assertive'
-          // to provide immediate feedback of the tag added/removed
-          'aria-live': 'polite',
-          // Only read elements that have been added or removed
-          'aria-atomic': 'false',
-          'aria-relevant': 'additions removals'
+          id: tagListId
         }
       }, // `concat()` is faster than array spread when args are known to be arrays
       Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])($tags, $field)); // Assemble the feedback
@@ -14589,7 +17040,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   render: function render(h) {
-    var _this4 = this;
+    var _this6 = this;
 
     // Scoped slot properties
     var scope = {
@@ -14630,7 +17081,29 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       duplicateTagText: this.duplicateTagText
     }; // Generate the user interface
 
-    var $content = this.normalizeSlot('default', scope) || this.defaultRender(scope); // Add hidden inputs for form submission
+    var $content = this.normalizeSlot('default', scope) || this.defaultRender(scope); // Generate the `aria-live` region for the current value(s)
+
+    var $output = h('output', {
+      staticClass: 'sr-only',
+      attrs: {
+        id: this.safeId('_selected-tags_'),
+        role: 'status',
+        for: this.computedInputId,
+        'aria-live': this.hasFocus ? 'polite' : 'off',
+        'aria-atomic': 'true',
+        'aria-relevant': 'additions text'
+      }
+    }, this.tags.join(', ')); // Removed tag live region
+
+    var $removed = h('div', {
+      staticClass: 'sr-only',
+      attrs: {
+        id: this.safeId('_removed-tags_'),
+        role: 'status',
+        'aria-live': this.hasFocus ? 'assertive' : 'off',
+        'aria-atomic': 'true'
+      }
+    }, this.removedTags.length > 0 ? "(".concat(this.tagRemovedLabel, ") ").concat(this.removedTags.join(', ')) : ''); // Add hidden inputs for form submission
 
     var $hidden = h();
 
@@ -14643,8 +17116,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           attrs: {
             type: 'hidden',
             value: tag,
-            name: _this4.name,
-            form: _this4.form || null
+            name: _this6.name,
+            form: _this6.form || null
           }
         });
       });
@@ -14662,14 +17135,15 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       attrs: {
         id: this.safeId(),
         role: 'group',
-        tabindex: this.disabled || this.noOuterFocus ? null : '-1'
+        tabindex: this.disabled || this.noOuterFocus ? null : '-1',
+        'aria-describedby': this.safeId('_selected_')
       },
       on: {
         focusin: this.onFocusin,
         focusout: this.onFocusout,
         click: this.onClick
       }
-    }, Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])($content, $hidden));
+    }, Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])($output, $removed, $content, $hidden));
   }
 });
 
@@ -14695,9 +17169,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FormTagsPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var FormTagsPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BFormTags: _form_tags__WEBPACK_IMPORTED_MODULE_0__["BFormTags"],
     BTags: _form_tags__WEBPACK_IMPORTED_MODULE_0__["BFormTags"],
@@ -14750,9 +17222,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BFormTextarea =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormTextarea = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormTextarea',
   directives: {
     'b-visible': _directives_visible_visible__WEBPACK_IMPORTED_MODULE_1__["VBVisible"]
@@ -14823,7 +17293,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   watch: {
-    localValue: function localValue(newVal, oldVal) {
+    localValue: function localValue() {
       this.setHeight();
     }
   },
@@ -14961,12 +17431,530 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var FormTextareaPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var FormTextareaPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BFormTextarea: _form_textarea__WEBPACK_IMPORTED_MODULE_0__["BFormTextarea"],
     BTextarea: _form_textarea__WEBPACK_IMPORTED_MODULE_0__["BFormTextarea"]
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/form-timepicker/form-timepicker.js":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/form-timepicker/form-timepicker.js ***!
+  \**************************************************************************************/
+/*! exports provided: BFormTimepicker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BFormTimepicker", function() { return BFormTimepicker; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_bv_form_btn_label_control__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/bv-form-btn-label-control */ "./node_modules/bootstrap-vue/esm/utils/bv-form-btn-label-control.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+/* harmony import */ var _time_time__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../time/time */ "./node_modules/bootstrap-vue/esm/components/time/time.js");
+/* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../icons/icons */ "./node_modules/bootstrap-vue/esm/icons/icons.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+var NAME = 'BFormTimepicker'; // Fallback to BTime/BFormSpinbutton prop if no value found
+
+var getConfigFallback = function getConfigFallback(prop) {
+  return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, prop) || Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])('BTime', prop) || Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])('BFormSpinbutton', prop);
+}; // We create our props as a mixin so that we can control
+// where they appear in the props listing reference section
+
+
+var propsMixin = {
+  props: _objectSpread({
+    value: {
+      type: String,
+      default: ''
+    },
+    resetValue: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      // Defaults to `labelNoTime` from BTime context
+      default: null
+    },
+    size: {
+      type: String,
+      default: null
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    required: {
+      // If true adds the `aria-required` attribute
+      type: Boolean,
+      default: false
+    },
+    name: {
+      type: String,
+      default: null
+    },
+    form: {
+      type: String,
+      default: null
+    },
+    state: {
+      // Tri-state prop: `true`, `false` or `null`
+      type: Boolean,
+      default: null
+    },
+    hour12: {
+      // Tri-state prop: `true` => 12 hour, `false` => 24 hour, `null` => auto
+      type: Boolean,
+      default: null
+    },
+    locale: {
+      type: [String, Array],
+      default: null
+    },
+    showSeconds: {
+      type: Boolean,
+      default: false
+    },
+    hideHeader: {
+      type: Boolean,
+      default: false
+    },
+    secondsStep: {
+      type: [Number, String],
+      default: 1
+    },
+    minutesStep: {
+      type: [Number, String],
+      default: 1
+    },
+    buttonOnly: {
+      type: Boolean,
+      default: false
+    },
+    buttonVariant: {
+      // Applicable in button only mode
+      type: String,
+      default: 'secondary'
+    },
+    nowButton: {
+      type: Boolean,
+      default: false
+    },
+    labelNowButton: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelNowButton');
+      }
+    },
+    nowButtonVariant: {
+      type: String,
+      default: 'outline-primary'
+    },
+    resetButton: {
+      type: Boolean,
+      default: false
+    },
+    labelResetButton: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelResetButton');
+      }
+    },
+    resetButtonVariant: {
+      type: String,
+      default: 'outline-danger'
+    },
+    noCloseButton: {
+      type: Boolean,
+      default: false
+    },
+    labelCloseButton: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'labelCloseButton');
+      }
+    },
+    closeButtonVariant: {
+      type: String,
+      default: 'outline-secondary'
+    },
+    // Labels
+    // These fallback to BTime values
+    labelSelected: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelSelected');
+      }
+    },
+    labelNoTimeSelected: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelNoTimeSelected');
+      }
+    },
+    labelHours: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelHours');
+      }
+    },
+    labelMinutes: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelMinutes');
+      }
+    },
+    labelSeconds: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelSeconds');
+      }
+    },
+    labelAmpm: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelAmpm');
+      }
+    },
+    labelAm: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelAm');
+      }
+    },
+    labelPm: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelPm');
+      }
+    },
+    // These pick BTime or BFormSpinbutton global config if no BFormTimepicker global config
+    labelIncrement: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelIncrement');
+      }
+    },
+    labelDecrement: {
+      type: String,
+      default: function _default() {
+        return getConfigFallback('labelDecrement');
+      }
+    },
+    // extra dropdown stuff
+    menuClass: {
+      type: [String, Array, Object],
+      default: null
+    }
+  }, _utils_bv_form_btn_label_control__WEBPACK_IMPORTED_MODULE_1__["dropdownProps"])
+}; // --- BFormDate component ---
+// @vue/component
+
+var BFormTimepicker = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: NAME,
+  // The mixins order determines the order of appearance in the props reference section
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_4__["default"], propsMixin],
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
+  data: function data() {
+    return {
+      // We always use `HH:mm:ss` value internally
+      localHMS: this.value || '',
+      // Context data from BTime
+      localLocale: null,
+      isRTL: false,
+      formattedValue: '',
+      // If the menu is opened
+      isVisible: false
+    };
+  },
+  computed: {
+    computedLang: function computedLang() {
+      return (this.localLocale || '').replace(/-u-.*$/i, '') || null;
+    },
+    timeProps: function timeProps() {
+      // Props we pass to BTime
+      // Use self for better minification, as `this` won't
+      // minimize and we reference it many times below
+      var self = this;
+      return {
+        hidden: !self.isVisible,
+        value: self.localHMS,
+        // Passthrough props
+        readonly: self.readonly,
+        disabled: self.disabled,
+        locale: self.locale,
+        hour12: self.hour12,
+        hideHeader: self.hideHeader,
+        showSeconds: self.showSeconds,
+        secondsStep: self.secondsStep,
+        minutesStep: self.minutesStep,
+        labelNoTimeSelected: self.labelNoTimeSelected,
+        labelSelected: self.labelSelected,
+        labelHours: self.labelHours,
+        labelMinutes: self.labelMinutes,
+        labelSeconds: self.labelSeconds,
+        labelAmpm: self.labelAmpm,
+        labelAm: self.labelAm,
+        labelPm: self.labelPm,
+        labelIncrement: self.labelIncrement,
+        labelDecrement: self.labelDecrement
+      };
+    }
+  },
+  watch: {
+    value: function value(newVal) {
+      this.localHMS = newVal || '';
+    },
+    localHMS: function localHMS(newVal) {
+      // We only update hte v-model value when the timepicker
+      // is open, to prevent cursor jumps when bound to a
+      // text input in button only mode
+      if (this.isVisible) {
+        this.$emit('input', newVal || '');
+      }
+    }
+  },
+  methods: {
+    // Public methods
+    focus: function focus() {
+      if (!this.disabled) {
+        try {
+          this.$refs.control.focus();
+        } catch (_unused) {}
+      }
+    },
+    blur: function blur() {
+      if (!this.disabled) {
+        try {
+          this.$refs.control.blur();
+        } catch (_unused2) {}
+      }
+    },
+    // Private methods
+    setAndClose: function setAndClose(value) {
+      var _this = this;
+
+      this.localHMS = value;
+      this.$nextTick(function () {
+        _this.$refs.control.hide(true);
+      });
+    },
+    onInput: function onInput(hms) {
+      if (this.localHMS !== hms) {
+        this.localHMS = hms;
+      }
+    },
+    onContext: function onContext(ctx) {
+      var isRTL = ctx.isRTL,
+          locale = ctx.locale,
+          value = ctx.value,
+          formatted = ctx.formatted;
+      this.isRTL = isRTL;
+      this.localLocale = locale;
+      this.formattedValue = formatted;
+      this.localHMS = value || ''; // Re-emit the context event
+
+      this.$emit('context', ctx);
+    },
+    onNowButton: function onNowButton() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = this.showSeconds ? now.getSeconds() : 0;
+      var value = [hours, minutes, seconds].map(function (v) {
+        return "00".concat(v || '').slice(-2);
+      }).join(':');
+      this.setAndClose(value);
+    },
+    onResetButton: function onResetButton() {
+      this.setAndClose(this.resetValue);
+    },
+    onCloseButton: function onCloseButton() {
+      this.$refs.control.hide(true);
+    },
+    onShow: function onShow() {
+      this.isVisible = true;
+    },
+    onShown: function onShown() {
+      var _this2 = this;
+
+      this.$nextTick(function () {
+        try {
+          _this2.$refs.time.focus();
+        } catch (_unused3) {}
+      });
+    },
+    onHidden: function onHidden() {
+      this.isVisible = false;
+    },
+    // Render function helpers
+    defaultButtonFn: function defaultButtonFn(_ref) {
+      var isHovered = _ref.isHovered,
+          hasFocus = _ref.hasFocus;
+      return this.$createElement(isHovered || hasFocus ? _icons_icons__WEBPACK_IMPORTED_MODULE_7__["BIconClockFill"] : _icons_icons__WEBPACK_IMPORTED_MODULE_7__["BIconClock"], {
+        props: {
+          scale: 1.25
+        },
+        attrs: {
+          'aria-hidden': 'true'
+        }
+      });
+    }
+  },
+  render: function render(h) {
+    var localHMS = this.localHMS;
+    var disabled = this.disabled;
+    var readonly = this.readonly;
+    var placeholder = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isUndefinedOrNull"])(this.placeholder) ? this.labelNoTimeSelected : this.placeholder; // Footer buttons
+
+    var $footer = [];
+
+    if (this.nowButton) {
+      var label = this.labelNowButton;
+      $footer.push(h(_button_button__WEBPACK_IMPORTED_MODULE_5__["BButton"], {
+        staticClass: 'mx-1',
+        props: {
+          size: 'sm',
+          disabled: disabled || readonly,
+          variant: this.nowButtonVariant
+        },
+        attrs: {
+          'aria-label': label || null
+        },
+        on: {
+          click: this.onNowButton
+        }
+      }, label));
+    }
+
+    if (this.resetButton) {
+      var _label = this.labelResetButton;
+      $footer.push(h(_button_button__WEBPACK_IMPORTED_MODULE_5__["BButton"], {
+        staticClass: 'mx-1',
+        props: {
+          size: 'sm',
+          disabled: disabled || readonly,
+          variant: this.resetButtonVariant
+        },
+        attrs: {
+          'aria-label': _label || null
+        },
+        on: {
+          click: this.onResetButton
+        }
+      }, _label));
+    }
+
+    if (!this.noCloseButton) {
+      var _label2 = this.labelCloseButton;
+      $footer.push(h(_button_button__WEBPACK_IMPORTED_MODULE_5__["BButton"], {
+        staticClass: 'mx-1',
+        props: {
+          size: 'sm',
+          disabled: disabled,
+          variant: this.closeButtonVariant
+        },
+        attrs: {
+          'aria-label': _label2 || null
+        },
+        on: {
+          click: this.onCloseButton
+        }
+      }, _label2));
+    }
+
+    if ($footer.length > 0) {
+      $footer = [h('div', {
+        staticClass: 'b-form-date-controls d-flex flex-wrap mx-n1',
+        class: {
+          'justify-content-between': $footer.length > 1,
+          'justify-content-end': $footer.length < 2
+        }
+      }, $footer)];
+    }
+
+    var $time = h(_time_time__WEBPACK_IMPORTED_MODULE_6__["BTime"], {
+      ref: 'time',
+      staticClass: 'b-form-time-control',
+      props: this.timeProps,
+      on: {
+        input: this.onInput,
+        context: this.onContext
+      }
+    }, $footer);
+    return h(_utils_bv_form_btn_label_control__WEBPACK_IMPORTED_MODULE_1__["BVFormBtnLabelControl"], {
+      ref: 'control',
+      staticClass: 'b-form-timepicker',
+      props: _objectSpread({}, this.$props, {
+        // Overridden / computed props
+        id: this.safeId(),
+        rtl: this.isRTL,
+        lang: this.computedLang,
+        value: localHMS || '',
+        formattedValue: localHMS ? this.formattedValue : '',
+        placeholder: placeholder || ''
+      }),
+      on: {
+        show: this.onShow,
+        shown: this.onShown,
+        hidden: this.onHidden
+      },
+      scopedSlots: {
+        'button-content': this.$scopedSlots['button-content'] || this.defaultButtonFn
+      }
+    }, [$time]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/form-timepicker/index.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/form-timepicker/index.js ***!
+  \****************************************************************************/
+/*! exports provided: FormTimepickerPlugin, BFormTimepicker */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormTimepickerPlugin", function() { return FormTimepickerPlugin; });
+/* harmony import */ var _form_timepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./form-timepicker */ "./node_modules/bootstrap-vue/esm/components/form-timepicker/form-timepicker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTimepicker", function() { return _form_timepicker__WEBPACK_IMPORTED_MODULE_0__["BFormTimepicker"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var FormTimepickerPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  components: {
+    BFormTimepicker: _form_timepicker__WEBPACK_IMPORTED_MODULE_0__["BFormTimepicker"],
+    BTimepicker: _form_timepicker__WEBPACK_IMPORTED_MODULE_0__["BFormTimepicker"]
   }
 });
 
@@ -14998,9 +17986,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BFormDatalist =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormDatalist = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormDatalist',
   mixins: [_mixins_form_options__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
@@ -15078,9 +18064,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormInvalidFeedback =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormInvalidFeedback = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormInvalidFeedback',
   functional: true,
   props: props,
@@ -15148,9 +18132,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormText =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormText = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -15217,9 +18199,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormValidFeedback =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormValidFeedback = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormValidFeedback',
   functional: true,
   props: props,
@@ -15280,9 +18260,7 @@ var props = {
   }
 }; // @vue/component
 
-var BForm =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BForm = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BForm',
   functional: true,
   props: props,
@@ -15339,9 +18317,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var FormPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_6__["pluginFactory"])({
+var FormPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_6__["pluginFactory"])({
   components: {
     BForm: _form__WEBPACK_IMPORTED_MODULE_0__["BForm"],
     BFormDatalist: _form_datalist__WEBPACK_IMPORTED_MODULE_1__["BFormDatalist"],
@@ -15478,9 +18454,7 @@ var props = {
   }
 }; // @vue/component
 
-var BImgLazy =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BImgLazy = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   directives: {
     bVisible: _directives_visible_visible__WEBPACK_IMPORTED_MODULE_6__["VBVisible"]
@@ -15712,9 +18686,7 @@ var makeBlankImgSrc = function makeBlankImgSrc(width, height, color) {
 }; // @vue/component
 
 
-var BImg =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BImg = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -15800,9 +18772,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ImagePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var ImagePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BImg: _img__WEBPACK_IMPORTED_MODULE_0__["BImg"],
     BImgLazy: _img_lazy__WEBPACK_IMPORTED_MODULE_1__["BImgLazy"]
@@ -15829,40 +18799,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./button */ "./node_modules/bootstrap-vue/esm/components/button/index.js");
 /* harmony import */ var _button_group__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./button-group */ "./node_modules/bootstrap-vue/esm/components/button-group/index.js");
 /* harmony import */ var _button_toolbar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./button-toolbar */ "./node_modules/bootstrap-vue/esm/components/button-toolbar/index.js");
-/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./card */ "./node_modules/bootstrap-vue/esm/components/card/index.js");
-/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./carousel */ "./node_modules/bootstrap-vue/esm/components/carousel/index.js");
-/* harmony import */ var _collapse__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./collapse */ "./node_modules/bootstrap-vue/esm/components/collapse/index.js");
-/* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dropdown */ "./node_modules/bootstrap-vue/esm/components/dropdown/index.js");
-/* harmony import */ var _embed__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./embed */ "./node_modules/bootstrap-vue/esm/components/embed/index.js");
-/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./form */ "./node_modules/bootstrap-vue/esm/components/form/index.js");
-/* harmony import */ var _form_group__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./form-group */ "./node_modules/bootstrap-vue/esm/components/form-group/index.js");
+/* harmony import */ var _calendar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./calendar */ "./node_modules/bootstrap-vue/esm/components/calendar/index.js");
+/* harmony import */ var _card__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./card */ "./node_modules/bootstrap-vue/esm/components/card/index.js");
+/* harmony import */ var _carousel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./carousel */ "./node_modules/bootstrap-vue/esm/components/carousel/index.js");
+/* harmony import */ var _collapse__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./collapse */ "./node_modules/bootstrap-vue/esm/components/collapse/index.js");
+/* harmony import */ var _dropdown__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dropdown */ "./node_modules/bootstrap-vue/esm/components/dropdown/index.js");
+/* harmony import */ var _embed__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./embed */ "./node_modules/bootstrap-vue/esm/components/embed/index.js");
+/* harmony import */ var _form__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./form */ "./node_modules/bootstrap-vue/esm/components/form/index.js");
 /* harmony import */ var _form_checkbox__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./form-checkbox */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/index.js");
-/* harmony import */ var _form_radio__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./form-radio */ "./node_modules/bootstrap-vue/esm/components/form-radio/index.js");
-/* harmony import */ var _form_tags__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./form-tags */ "./node_modules/bootstrap-vue/esm/components/form-tags/index.js");
-/* harmony import */ var _form_input__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./form-input */ "./node_modules/bootstrap-vue/esm/components/form-input/index.js");
-/* harmony import */ var _form_textarea__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./form-textarea */ "./node_modules/bootstrap-vue/esm/components/form-textarea/index.js");
-/* harmony import */ var _form_file__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./form-file */ "./node_modules/bootstrap-vue/esm/components/form-file/index.js");
+/* harmony import */ var _form_datepicker__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./form-datepicker */ "./node_modules/bootstrap-vue/esm/components/form-datepicker/index.js");
+/* harmony import */ var _form_file__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./form-file */ "./node_modules/bootstrap-vue/esm/components/form-file/index.js");
+/* harmony import */ var _form_group__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./form-group */ "./node_modules/bootstrap-vue/esm/components/form-group/index.js");
+/* harmony import */ var _form_input__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./form-input */ "./node_modules/bootstrap-vue/esm/components/form-input/index.js");
+/* harmony import */ var _form_radio__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./form-radio */ "./node_modules/bootstrap-vue/esm/components/form-radio/index.js");
 /* harmony import */ var _form_select__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./form-select */ "./node_modules/bootstrap-vue/esm/components/form-select/index.js");
-/* harmony import */ var _image__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./image */ "./node_modules/bootstrap-vue/esm/components/image/index.js");
-/* harmony import */ var _input_group__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./input-group */ "./node_modules/bootstrap-vue/esm/components/input-group/index.js");
-/* harmony import */ var _jumbotron__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./jumbotron */ "./node_modules/bootstrap-vue/esm/components/jumbotron/index.js");
-/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./layout */ "./node_modules/bootstrap-vue/esm/components/layout/index.js");
-/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./link */ "./node_modules/bootstrap-vue/esm/components/link/index.js");
-/* harmony import */ var _list_group__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./list-group */ "./node_modules/bootstrap-vue/esm/components/list-group/index.js");
-/* harmony import */ var _media__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./media */ "./node_modules/bootstrap-vue/esm/components/media/index.js");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./modal */ "./node_modules/bootstrap-vue/esm/components/modal/index.js");
-/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./nav */ "./node_modules/bootstrap-vue/esm/components/nav/index.js");
-/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./navbar */ "./node_modules/bootstrap-vue/esm/components/navbar/index.js");
-/* harmony import */ var _pagination__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pagination */ "./node_modules/bootstrap-vue/esm/components/pagination/index.js");
-/* harmony import */ var _pagination_nav__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pagination-nav */ "./node_modules/bootstrap-vue/esm/components/pagination-nav/index.js");
-/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./popover */ "./node_modules/bootstrap-vue/esm/components/popover/index.js");
-/* harmony import */ var _progress__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./progress */ "./node_modules/bootstrap-vue/esm/components/progress/index.js");
-/* harmony import */ var _spinner__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/index.js");
-/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./table */ "./node_modules/bootstrap-vue/esm/components/table/index.js");
-/* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/index.js");
-/* harmony import */ var _toast__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./toast */ "./node_modules/bootstrap-vue/esm/components/toast/index.js");
-/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/index.js");
+/* harmony import */ var _form_spinbutton__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./form-spinbutton */ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/index.js");
+/* harmony import */ var _form_tags__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./form-tags */ "./node_modules/bootstrap-vue/esm/components/form-tags/index.js");
+/* harmony import */ var _form_textarea__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./form-textarea */ "./node_modules/bootstrap-vue/esm/components/form-textarea/index.js");
+/* harmony import */ var _form_timepicker__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./form-timepicker */ "./node_modules/bootstrap-vue/esm/components/form-timepicker/index.js");
+/* harmony import */ var _image__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./image */ "./node_modules/bootstrap-vue/esm/components/image/index.js");
+/* harmony import */ var _input_group__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./input-group */ "./node_modules/bootstrap-vue/esm/components/input-group/index.js");
+/* harmony import */ var _jumbotron__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./jumbotron */ "./node_modules/bootstrap-vue/esm/components/jumbotron/index.js");
+/* harmony import */ var _layout__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./layout */ "./node_modules/bootstrap-vue/esm/components/layout/index.js");
+/* harmony import */ var _link__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./link */ "./node_modules/bootstrap-vue/esm/components/link/index.js");
+/* harmony import */ var _list_group__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./list-group */ "./node_modules/bootstrap-vue/esm/components/list-group/index.js");
+/* harmony import */ var _media__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./media */ "./node_modules/bootstrap-vue/esm/components/media/index.js");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./modal */ "./node_modules/bootstrap-vue/esm/components/modal/index.js");
+/* harmony import */ var _nav__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./nav */ "./node_modules/bootstrap-vue/esm/components/nav/index.js");
+/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./navbar */ "./node_modules/bootstrap-vue/esm/components/navbar/index.js");
+/* harmony import */ var _overlay__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./overlay */ "./node_modules/bootstrap-vue/esm/components/overlay/index.js");
+/* harmony import */ var _pagination__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pagination */ "./node_modules/bootstrap-vue/esm/components/pagination/index.js");
+/* harmony import */ var _pagination_nav__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./pagination-nav */ "./node_modules/bootstrap-vue/esm/components/pagination-nav/index.js");
+/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./popover */ "./node_modules/bootstrap-vue/esm/components/popover/index.js");
+/* harmony import */ var _progress__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./progress */ "./node_modules/bootstrap-vue/esm/components/progress/index.js");
+/* harmony import */ var _spinner__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/index.js");
+/* harmony import */ var _table__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./table */ "./node_modules/bootstrap-vue/esm/components/table/index.js");
+/* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/index.js");
+/* harmony import */ var _time__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./time */ "./node_modules/bootstrap-vue/esm/components/time/index.js");
+/* harmony import */ var _toast__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./toast */ "./node_modules/bootstrap-vue/esm/components/toast/index.js");
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/index.js");
  // Component group plugins
+
+
+
+
+
 
 
 
@@ -15903,11 +18884,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
  // Main plugin to install all component group plugins
 
-var componentsPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])({
+var componentsPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])({
   plugins: {
     AlertPlugin: _alert__WEBPACK_IMPORTED_MODULE_1__["AlertPlugin"],
     BadgePlugin: _badge__WEBPACK_IMPORTED_MODULE_2__["BadgePlugin"],
@@ -15915,39 +18895,45 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])({
     ButtonPlugin: _button__WEBPACK_IMPORTED_MODULE_4__["ButtonPlugin"],
     ButtonGroupPlugin: _button_group__WEBPACK_IMPORTED_MODULE_5__["ButtonGroupPlugin"],
     ButtonToolbarPlugin: _button_toolbar__WEBPACK_IMPORTED_MODULE_6__["ButtonToolbarPlugin"],
-    CardPlugin: _card__WEBPACK_IMPORTED_MODULE_7__["CardPlugin"],
-    CarouselPlugin: _carousel__WEBPACK_IMPORTED_MODULE_8__["CarouselPlugin"],
-    CollapsePlugin: _collapse__WEBPACK_IMPORTED_MODULE_9__["CollapsePlugin"],
-    DropdownPlugin: _dropdown__WEBPACK_IMPORTED_MODULE_10__["DropdownPlugin"],
-    EmbedPlugin: _embed__WEBPACK_IMPORTED_MODULE_11__["EmbedPlugin"],
-    FormPlugin: _form__WEBPACK_IMPORTED_MODULE_12__["FormPlugin"],
-    FormGroupPlugin: _form_group__WEBPACK_IMPORTED_MODULE_13__["FormGroupPlugin"],
+    CalendarPlugin: _calendar__WEBPACK_IMPORTED_MODULE_7__["CalendarPlugin"],
+    CardPlugin: _card__WEBPACK_IMPORTED_MODULE_8__["CardPlugin"],
+    CarouselPlugin: _carousel__WEBPACK_IMPORTED_MODULE_9__["CarouselPlugin"],
+    CollapsePlugin: _collapse__WEBPACK_IMPORTED_MODULE_10__["CollapsePlugin"],
+    DropdownPlugin: _dropdown__WEBPACK_IMPORTED_MODULE_11__["DropdownPlugin"],
+    EmbedPlugin: _embed__WEBPACK_IMPORTED_MODULE_12__["EmbedPlugin"],
+    FormPlugin: _form__WEBPACK_IMPORTED_MODULE_13__["FormPlugin"],
     FormCheckboxPlugin: _form_checkbox__WEBPACK_IMPORTED_MODULE_14__["FormCheckboxPlugin"],
-    FormRadioPlugin: _form_radio__WEBPACK_IMPORTED_MODULE_15__["FormRadioPlugin"],
-    FormInputPlugin: _form_input__WEBPACK_IMPORTED_MODULE_17__["FormInputPlugin"],
-    FormTagsPlugin: _form_tags__WEBPACK_IMPORTED_MODULE_16__["FormTagsPlugin"],
-    FormTextareaPlugin: _form_textarea__WEBPACK_IMPORTED_MODULE_18__["FormTextareaPlugin"],
-    FormFilePlugin: _form_file__WEBPACK_IMPORTED_MODULE_19__["FormFilePlugin"],
+    FormDatepickerPlugin: _form_datepicker__WEBPACK_IMPORTED_MODULE_15__["FormDatepickerPlugin"],
+    FormFilePlugin: _form_file__WEBPACK_IMPORTED_MODULE_16__["FormFilePlugin"],
+    FormGroupPlugin: _form_group__WEBPACK_IMPORTED_MODULE_17__["FormGroupPlugin"],
+    FormInputPlugin: _form_input__WEBPACK_IMPORTED_MODULE_18__["FormInputPlugin"],
+    FormRadioPlugin: _form_radio__WEBPACK_IMPORTED_MODULE_19__["FormRadioPlugin"],
     FormSelectPlugin: _form_select__WEBPACK_IMPORTED_MODULE_20__["FormSelectPlugin"],
-    ImagePlugin: _image__WEBPACK_IMPORTED_MODULE_21__["ImagePlugin"],
-    InputGroupPlugin: _input_group__WEBPACK_IMPORTED_MODULE_22__["InputGroupPlugin"],
-    JumbotronPlugin: _jumbotron__WEBPACK_IMPORTED_MODULE_23__["JumbotronPlugin"],
-    LayoutPlugin: _layout__WEBPACK_IMPORTED_MODULE_24__["LayoutPlugin"],
-    LinkPlugin: _link__WEBPACK_IMPORTED_MODULE_25__["LinkPlugin"],
-    ListGroupPlugin: _list_group__WEBPACK_IMPORTED_MODULE_26__["ListGroupPlugin"],
-    MediaPlugin: _media__WEBPACK_IMPORTED_MODULE_27__["MediaPlugin"],
-    ModalPlugin: _modal__WEBPACK_IMPORTED_MODULE_28__["ModalPlugin"],
-    NavPlugin: _nav__WEBPACK_IMPORTED_MODULE_29__["NavPlugin"],
-    NavbarPlugin: _navbar__WEBPACK_IMPORTED_MODULE_30__["NavbarPlugin"],
-    PaginationPlugin: _pagination__WEBPACK_IMPORTED_MODULE_31__["PaginationPlugin"],
-    PaginationNavPlugin: _pagination_nav__WEBPACK_IMPORTED_MODULE_32__["PaginationNavPlugin"],
-    PopoverPlugin: _popover__WEBPACK_IMPORTED_MODULE_33__["PopoverPlugin"],
-    ProgressPlugin: _progress__WEBPACK_IMPORTED_MODULE_34__["ProgressPlugin"],
-    SpinnerPlugin: _spinner__WEBPACK_IMPORTED_MODULE_35__["SpinnerPlugin"],
-    TablePlugin: _table__WEBPACK_IMPORTED_MODULE_36__["TablePlugin"],
-    TabsPlugin: _tabs__WEBPACK_IMPORTED_MODULE_37__["TabsPlugin"],
-    ToastPlugin: _toast__WEBPACK_IMPORTED_MODULE_38__["ToastPlugin"],
-    TooltipPlugin: _tooltip__WEBPACK_IMPORTED_MODULE_39__["TooltipPlugin"]
+    FormSpinbuttonPlugin: _form_spinbutton__WEBPACK_IMPORTED_MODULE_21__["FormSpinbuttonPlugin"],
+    FormTagsPlugin: _form_tags__WEBPACK_IMPORTED_MODULE_22__["FormTagsPlugin"],
+    FormTextareaPlugin: _form_textarea__WEBPACK_IMPORTED_MODULE_23__["FormTextareaPlugin"],
+    FormTimepickerPlugin: _form_timepicker__WEBPACK_IMPORTED_MODULE_24__["FormTimepickerPlugin"],
+    ImagePlugin: _image__WEBPACK_IMPORTED_MODULE_25__["ImagePlugin"],
+    InputGroupPlugin: _input_group__WEBPACK_IMPORTED_MODULE_26__["InputGroupPlugin"],
+    JumbotronPlugin: _jumbotron__WEBPACK_IMPORTED_MODULE_27__["JumbotronPlugin"],
+    LayoutPlugin: _layout__WEBPACK_IMPORTED_MODULE_28__["LayoutPlugin"],
+    LinkPlugin: _link__WEBPACK_IMPORTED_MODULE_29__["LinkPlugin"],
+    ListGroupPlugin: _list_group__WEBPACK_IMPORTED_MODULE_30__["ListGroupPlugin"],
+    MediaPlugin: _media__WEBPACK_IMPORTED_MODULE_31__["MediaPlugin"],
+    ModalPlugin: _modal__WEBPACK_IMPORTED_MODULE_32__["ModalPlugin"],
+    NavPlugin: _nav__WEBPACK_IMPORTED_MODULE_33__["NavPlugin"],
+    NavbarPlugin: _navbar__WEBPACK_IMPORTED_MODULE_34__["NavbarPlugin"],
+    OverlayPlugin: _overlay__WEBPACK_IMPORTED_MODULE_35__["OverlayPlugin"],
+    PaginationPlugin: _pagination__WEBPACK_IMPORTED_MODULE_36__["PaginationPlugin"],
+    PaginationNavPlugin: _pagination_nav__WEBPACK_IMPORTED_MODULE_37__["PaginationNavPlugin"],
+    PopoverPlugin: _popover__WEBPACK_IMPORTED_MODULE_38__["PopoverPlugin"],
+    ProgressPlugin: _progress__WEBPACK_IMPORTED_MODULE_39__["ProgressPlugin"],
+    SpinnerPlugin: _spinner__WEBPACK_IMPORTED_MODULE_40__["SpinnerPlugin"],
+    TablePlugin: _table__WEBPACK_IMPORTED_MODULE_41__["TablePlugin"],
+    TabsPlugin: _tabs__WEBPACK_IMPORTED_MODULE_42__["TabsPlugin"],
+    TimePlugin: _time__WEBPACK_IMPORTED_MODULE_43__["TimePlugin"],
+    ToastPlugin: _toast__WEBPACK_IMPORTED_MODULE_44__["ToastPlugin"],
+    TooltipPlugin: _tooltip__WEBPACK_IMPORTED_MODULE_45__["TooltipPlugin"]
   }
 });
 
@@ -15985,9 +18971,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var InputGroupPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_5__["pluginFactory"])({
+var InputGroupPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_5__["pluginFactory"])({
   components: {
     BInputGroup: _input_group__WEBPACK_IMPORTED_MODULE_0__["BInputGroup"],
     BInputGroupAddon: _input_group_addon__WEBPACK_IMPORTED_MODULE_1__["BInputGroupAddon"],
@@ -16038,9 +19022,7 @@ var commonProps = {
   }
 }; // @vue/component
 
-var BInputGroupAddon =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BInputGroupAddon = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BInputGroupAddon',
   functional: true,
   props: _objectSpread({}, commonProps, {
@@ -16090,9 +19072,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BInputGroupAppend =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BInputGroupAppend = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BInputGroupAppend',
   functional: true,
   props: _input_group_addon__WEBPACK_IMPORTED_MODULE_2__["commonProps"],
@@ -16134,9 +19114,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BInputGroupPrepend =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BInputGroupPrepend = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BInputGroupPrepend',
   functional: true,
   props: _input_group_addon__WEBPACK_IMPORTED_MODULE_2__["commonProps"],
@@ -16177,9 +19155,7 @@ var props = {
   }
 }; // @vue/component
 
-var BInputGroupText =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BInputGroupText = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BInputGroupText',
   functional: true,
   props: props,
@@ -16261,9 +19237,7 @@ var props = {
   }
 }; // @vue/component
 
-var BInputGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BInputGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -16333,9 +19307,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var JumbotronPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var JumbotronPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BJumbotron: _jumbotron__WEBPACK_IMPORTED_MODULE_0__["BJumbotron"]
   }
@@ -16431,9 +19403,7 @@ var props = {
   }
 }; // @vue/component
 
-var BJumbotron =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BJumbotron = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -16712,9 +19682,7 @@ var props = {
   }
 }; // @vue/component
 
-var BContainer =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BContainer = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BContainer',
   functional: true,
   props: props,
@@ -16755,9 +19723,7 @@ var props = {
   }
 }; // @vue/component
 
-var BFormRow =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BFormRow = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BFormRow',
   functional: true,
   props: props,
@@ -16801,9 +19767,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var LayoutPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_4__["pluginFactory"])({
+var LayoutPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_4__["pluginFactory"])({
   components: {
     BContainer: _container__WEBPACK_IMPORTED_MODULE_0__["BContainer"],
     BRow: _row__WEBPACK_IMPORTED_MODULE_1__["BRow"],
@@ -16975,9 +19939,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var LinkPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var LinkPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BLink: _link__WEBPACK_IMPORTED_MODULE_0__["BLink"]
   }
@@ -17097,9 +20059,7 @@ var propsFactory = function propsFactory() {
 };
 var props = propsFactory(); // @vue/component
 
-var BLink =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BLink = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BLink',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__["default"]],
   inheritAttrs: false,
@@ -17200,7 +20160,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         'aria-disabled': this.disabled ? 'true' : null
       }),
       props: this.computedProps
-    }; // Add the event handlers. We must use `navtiveOn` for
+    }; // Add the event handlers. We must use `nativeOn` for
     // `<router-link>`/`<nuxt-link>` instead of `on`
 
     componentData[isRouterLink ? 'nativeOn' : 'on'] = _objectSpread({}, this.$listeners, {
@@ -17243,9 +20203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ListGroupPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var ListGroupPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BListGroup: _list_group__WEBPACK_IMPORTED_MODULE_0__["BListGroup"],
     BListGroupItem: _list_group_item__WEBPACK_IMPORTED_MODULE_1__["BListGroupItem"]
@@ -17310,9 +20268,7 @@ var props = _objectSpread({
   }
 }, linkProps); // @vue/component
 
-var BListGroupItem =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BListGroupItem = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: props,
@@ -17387,9 +20343,7 @@ var props = {
   }
 }; // @vue/component
 
-var BListGroup =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BListGroup = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BListGroup',
   functional: true,
   props: props,
@@ -17436,9 +20390,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MediaPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
+var MediaPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
   components: {
     BMedia: _media__WEBPACK_IMPORTED_MODULE_0__["BMedia"],
     BMediaAside: _media_aside__WEBPACK_IMPORTED_MODULE_1__["BMediaAside"],
@@ -17477,9 +20429,7 @@ var props = {
   }
 }; // @vue/component
 
-var BMediaAside =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BMediaAside = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BMediaAside',
   functional: true,
   props: props,
@@ -17519,9 +20469,7 @@ var props = {
   }
 }; // @vue/component
 
-var BMediaBody =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BMediaBody = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BMediaBody',
   functional: true,
   props: props,
@@ -17577,9 +20525,7 @@ var props = {
   }
 }; // @vue/component
 
-var BMedia =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BMedia = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BMedia',
   functional: true,
   props: props,
@@ -17606,7 +20552,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         }, $aside));
       }
 
-      childNodes.push(h(_media_body__WEBPACK_IMPORTED_MODULE_3__["BMediaBody"], {}, $default));
+      childNodes.push(h(_media_body__WEBPACK_IMPORTED_MODULE_3__["BMediaBody"], $default));
 
       if ($aside && props.rightAlign) {
         childNodes.push(h(_media_aside__WEBPACK_IMPORTED_MODULE_4__["BMediaAside"], {
@@ -17669,9 +20615,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var BvModalEvent =
-/*#__PURE__*/
-function (_BvEvent) {
+var BvModalEvent = /*#__PURE__*/function (_BvEvent) {
   _inherits(BvModalEvent, _BvEvent);
 
   function BvModalEvent(type) {
@@ -17760,7 +20704,7 @@ var PROP_NAME_PRIV = '_bv__modal'; // Base modal props that are allowed
 
 var BASE_PROPS = ['id'].concat(_toConsumableArray(Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["keys"])(Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["omit"])(_modal__WEBPACK_IMPORTED_MODULE_0__["props"], ['busy', 'lazy', 'noStacking', "static", 'visible'])))); // Fallback event resolver (returns undefined)
 
-var defaultResolver = function defaultResolver(bvModalEvt) {}; // Map prop names to modal slot names
+var defaultResolver = function defaultResolver() {}; // Map prop names to modal slot names
 
 
 var propsToSlots = {
@@ -17909,9 +20853,7 @@ var plugin = function plugin(Vue) {
   }; // BvModal instance class
 
 
-  var BvModal =
-  /*#__PURE__*/
-  function () {
+  var BvModal = /*#__PURE__*/function () {
     function BvModal(vm) {
       _classCallCheck(this, BvModal);
 
@@ -17974,7 +20916,7 @@ var plugin = function plugin(Vue) {
           msgBoxContent: message
         });
 
-        return makeMsgBox(this._vm, message, props, function (bvModalEvt) {
+        return makeMsgBox(this._vm, message, props, function () {
           // Always resolve to true for OK
           return true;
         });
@@ -18030,9 +20972,7 @@ var plugin = function plugin(Vue) {
   }
 };
 
-var BVModalPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_5__["pluginFactory"])({
+var BVModalPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_5__["pluginFactory"])({
   plugins: {
     plugin: plugin
   }
@@ -18074,9 +21014,7 @@ var Selector = {
   NAVBAR_TOGGLER: '.navbar-toggler'
 }; // @vue/component
 
-var ModalManager =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var ModalManager = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   data: function data() {
     return {
       modals: [],
@@ -18112,7 +21050,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["setAttr"])(document.body, 'data-modal-open-count', String(newCount));
       }
     },
-    modals: function modals(newVal, oldVal) {
+    modals: function modals(newVal) {
       var _this = this;
 
       this.checkScrollbar();
@@ -18315,9 +21253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ModalPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
+var ModalPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
   components: {
     BModal: _modal__WEBPACK_IMPORTED_MODULE_0__["BModal"]
   },
@@ -18353,25 +21289,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
-/* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
-/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
-/* harmony import */ var _utils_safe_types__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/safe-types */ "./node_modules/bootstrap-vue/esm/utils/safe-types.js");
-/* harmony import */ var _utils_transporter__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/transporter */ "./node_modules/bootstrap-vue/esm/utils/transporter.js");
-/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
-/* harmony import */ var _mixins_listen_on_document__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../mixins/listen-on-document */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-document.js");
-/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
-/* harmony import */ var _mixins_listen_on_window__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../mixins/listen-on-window */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-window.js");
-/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
-/* harmony import */ var _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../mixins/scoped-style-attrs */ "./node_modules/bootstrap-vue/esm/mixins/scoped-style-attrs.js");
-/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
-/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
-/* harmony import */ var _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./helpers/modal-manager */ "./node_modules/bootstrap-vue/esm/components/modal/helpers/modal-manager.js");
-/* harmony import */ var _helpers_bv_modal_event_class__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./helpers/bv-modal-event.class */ "./node_modules/bootstrap-vue/esm/components/modal/helpers/bv-modal-event.class.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_safe_types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/safe-types */ "./node_modules/bootstrap-vue/esm/utils/safe-types.js");
+/* harmony import */ var _utils_transporter__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/transporter */ "./node_modules/bootstrap-vue/esm/utils/transporter.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_listen_on_document__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../mixins/listen-on-document */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-document.js");
+/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
+/* harmony import */ var _mixins_listen_on_window__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../mixins/listen-on-window */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-window.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../mixins/scoped-style-attrs */ "./node_modules/bootstrap-vue/esm/mixins/scoped-style-attrs.js");
+/* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
+/* harmony import */ var _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./helpers/modal-manager */ "./node_modules/bootstrap-vue/esm/components/modal/helpers/modal-manager.js");
+/* harmony import */ var _helpers_bv_modal_event_class__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./helpers/bv-modal-event.class */ "./node_modules/bootstrap-vue/esm/components/modal/helpers/bv-modal-event.class.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -18406,11 +21344,6 @@ var OBSERVER_CONFIG = {
   characterData: true,
   attributes: true,
   attributeFilter: ['style', 'class']
-}; // Options for DOM event listeners
-
-var EVT_OPTIONS = {
-  passive: true,
-  capture: false
 }; // Query selector to find all tabbable elements
 // (includes tabindex="-1", which we filter out after)
 
@@ -18611,7 +21544,7 @@ var props = {
   },
   returnFocus: {
     // HTML Element, CSS selector string or Vue component instance
-    type: [_utils_safe_types__WEBPACK_IMPORTED_MODULE_11__["HTMLElement"], String, Object],
+    type: [_utils_safe_types__WEBPACK_IMPORTED_MODULE_12__["HTMLElement"], String, Object],
     default: null
   },
   headerCloseContent: {
@@ -18673,16 +21606,14 @@ var props = {
     default: null,
     validator: function validator(val) {
       /* istanbul ignore next */
-      return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_10__["isUndefinedOrNull"])(val) || Object(_utils_array__WEBPACK_IMPORTED_MODULE_5__["arrayIncludes"])(['ok', 'cancel', 'close'], val);
+      return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_11__["isUndefinedOrNull"])(val) || Object(_utils_array__WEBPACK_IMPORTED_MODULE_5__["arrayIncludes"])(['ok', 'cancel', 'close'], val);
     }
   }
 }; // @vue/component
 
-var BModal =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BModal = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
-  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_13__["default"], _mixins_listen_on_document__WEBPACK_IMPORTED_MODULE_14__["default"], _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_15__["default"], _mixins_listen_on_window__WEBPACK_IMPORTED_MODULE_16__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_17__["default"], _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_18__["default"]],
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_14__["default"], _mixins_listen_on_document__WEBPACK_IMPORTED_MODULE_15__["default"], _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_16__["default"], _mixins_listen_on_window__WEBPACK_IMPORTED_MODULE_17__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_18__["default"], _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_19__["default"]],
   inheritAttrs: false,
   model: {
     prop: 'visible',
@@ -18711,7 +21642,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       return_focus: this.returnFocus || null,
       // The following items are controlled by the modalManager instance
       scrollbarWidth: 0,
-      zIndex: _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_21__["modalManager"].getBaseZIndex(),
+      zIndex: _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_22__["modalManager"].getBaseZIndex(),
       isTop: true,
       isBodyOverflowing: false
     };
@@ -18792,7 +21723,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   mounted: function mounted() {
     // Set initial z-index as queried from the DOM
-    this.zIndex = _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_21__["modalManager"].getBaseZIndex(); // Listen for events from others to either open or close ourselves
+    this.zIndex = _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_22__["modalManager"].getBaseZIndex(); // Listen for events from others to either open or close ourselves
     // and listen to all modals to enable/disable enforce focus
 
     this.listenOnRoot('bv::show::modal', this.showHandler);
@@ -18829,14 +21760,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     // Private method to create a BvModalEvent object
     buildEvent: function buildEvent(type) {
-      var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return new _helpers_bv_modal_event_class__WEBPACK_IMPORTED_MODULE_22__["BvModalEvent"](type, _objectSpread({
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return new _helpers_bv_modal_event_class__WEBPACK_IMPORTED_MODULE_23__["BvModalEvent"](type, _objectSpread({
         // Default options
         cancelable: false,
         target: this.$refs.modal || this.$el || null,
         relatedTarget: null,
         trigger: null
-      }, opts, {
+      }, options, {
         // Options that can't be overridden
         vueTarget: this,
         componentId: this.safeId()
@@ -18940,7 +21871,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     // Private method to get the current document active element
     getActiveElement: function getActiveElement() {
       if (_utils_env__WEBPACK_IMPORTED_MODULE_8__["isBrowser"]) {
-        var activeElement = document.activeElement; // Note: On IE11, `document.activeElement` may be null.
+        var activeElement = document.activeElement; // Note: On IE 11, `document.activeElement` may be null.
         // So we test it for truthiness first.
         // https://github.com/bootstrap-vue/bootstrap-vue/issues/3206
         // Returning focus to document.body may cause unwanted scrolls, so we
@@ -18970,13 +21901,13 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       var _this = this;
 
       /* istanbul ignore next: commenting out for now until we can test stacking */
-      if (_helpers_modal_manager__WEBPACK_IMPORTED_MODULE_21__["modalManager"].modalsAreOpen && this.noStacking) {
+      if (_helpers_modal_manager__WEBPACK_IMPORTED_MODULE_22__["modalManager"].modalsAreOpen && this.noStacking) {
         // If another modal(s) is already open, wait for it(them) to close
         this.listenOnRootOnce('bv::modal::hidden', this.doShow);
         return;
       }
 
-      _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_21__["modalManager"].registerModal(this); // Place modal in DOM
+      _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_22__["modalManager"].registerModal(this); // Place modal in DOM
 
       this.isHidden = false;
       this.$nextTick(function () {
@@ -19000,27 +21931,36 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.setResizeEvent(true);
     },
     onEnter: function onEnter() {
-      this.isBlock = true;
-    },
-    onAfterEnter: function onAfterEnter() {
       var _this2 = this;
 
+      this.isBlock = true; // We add the `show` class 1 frame later
+      // `requestAF()` runs the callback before the next repaint, so we need
+      // two calls to guarantee the next frame has been rendered
+
+      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["requestAF"])(function () {
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["requestAF"])(function () {
+          _this2.isShow = true;
+        });
+      });
+    },
+    onAfterEnter: function onAfterEnter() {
+      var _this3 = this;
+
       this.checkModalOverflow();
-      this.isShow = true;
       this.isTransitioning = false; // We use `requestAF()` to allow transition hooks to complete
       // before passing control over to the other handlers
       // This will allow users to not have to use `$nextTick()` or `requestAF()`
       // when trying to pre-focus an element
 
       Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["requestAF"])(function () {
-        _this2.emitEvent(_this2.buildEvent('shown'));
+        _this3.emitEvent(_this3.buildEvent('shown'));
 
-        _this2.setEnforceFocus(true);
+        _this3.setEnforceFocus(true);
 
-        _this2.$nextTick(function () {
+        _this3.$nextTick(function () {
           // Delayed in a `$nextTick()` to allow users time to pre-focus
           // an element if the wish
-          _this2.focusFirst();
+          _this3.focusFirst();
         });
       });
     },
@@ -19034,21 +21974,21 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.isShow = false;
     },
     onAfterLeave: function onAfterLeave() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.isBlock = false;
       this.isTransitioning = false;
       this.isModalOverflowing = false;
       this.isHidden = true;
       this.$nextTick(function () {
-        _this3.isClosing = false;
-        _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_21__["modalManager"].unregisterModal(_this3);
+        _this4.isClosing = false;
+        _helpers_modal_manager__WEBPACK_IMPORTED_MODULE_22__["modalManager"].unregisterModal(_this4);
 
-        _this3.returnFocusTo(); // TODO: Need to find a way to pass the `trigger` property
+        _this4.returnFocusTo(); // TODO: Need to find a way to pass the `trigger` property
         //       to the `hidden` event, not just only the `hide` event
 
 
-        _this3.emitEvent(_this3.buildEvent('hidden'));
+        _this4.emitEvent(_this4.buildEvent('hidden'));
       });
     },
     // Event emitter
@@ -19061,21 +22001,21 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     // UI event handlers
     onDialogMousedown: function onDialogMousedown() {
-      var _this4 = this;
+      var _this5 = this;
 
       // Watch to see if the matching mouseup event occurs outside the dialog
       // And if it does, cancel the clickOut handler
       var modal = this.$refs.modal;
 
       var onceModalMouseup = function onceModalMouseup(evt) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["eventOff"])(modal, 'mouseup', onceModalMouseup, EVT_OPTIONS);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_9__["eventOff"])(modal, 'mouseup', onceModalMouseup, _utils_events__WEBPACK_IMPORTED_MODULE_9__["EVENT_OPTIONS_NO_CAPTURE"]);
 
         if (evt.target === modal) {
-          _this4.ignoreBackdropClick = true;
+          _this5.ignoreBackdropClick = true;
         }
       };
 
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["eventOn"])(modal, 'mouseup', onceModalMouseup, EVT_OPTIONS);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_9__["eventOn"])(modal, 'mouseup', onceModalMouseup, _utils_events__WEBPACK_IMPORTED_MODULE_9__["EVENT_OPTIONS_NO_CAPTURE"]);
     },
     onClickOut: function onClickOut(evt) {
       if (this.ignoreBackdropClick) {
@@ -19181,30 +22121,30 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     // Focus control handlers
     focusFirst: function focusFirst() {
-      var _this5 = this;
+      var _this6 = this;
 
       // Don't try and focus if we are SSR
       if (_utils_env__WEBPACK_IMPORTED_MODULE_8__["isBrowser"]) {
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["requestAF"])(function () {
-          var modal = _this5.$refs.modal;
-          var content = _this5.$refs.content;
+          var modal = _this6.$refs.modal;
+          var content = _this6.$refs.content;
 
-          var activeElement = _this5.getActiveElement(); // If the modal contains the activeElement, we don't do anything
+          var activeElement = _this6.getActiveElement(); // If the modal contains the activeElement, we don't do anything
 
 
           if (modal && content && !(activeElement && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["contains"])(content, activeElement))) {
-            var ok = _this5.$refs['ok-button'];
-            var cancel = _this5.$refs['cancel-button'];
-            var close = _this5.$refs['close-button']; // Focus the appropriate button or modal content wrapper
+            var ok = _this6.$refs['ok-button'];
+            var cancel = _this6.$refs['cancel-button'];
+            var close = _this6.$refs['close-button']; // Focus the appropriate button or modal content wrapper
 
-            var autoFocus = _this5.autoFocusButton;
+            var autoFocus = _this6.autoFocusButton;
             var el = autoFocus === 'ok' && ok ? ok.$el || ok : autoFocus === 'cancel' && cancel ? cancel.$el || cancel : autoFocus === 'close' && close ? close.$el || close : content; // Focus the element
 
             attemptFocus(el);
 
             if (el === content) {
               // Make sure top of modal is showing (if longer than the viewport)
-              _this5.$nextTick(function () {
+              _this6.$nextTick(function () {
                 modal.scrollTop = 0;
               });
             }
@@ -19219,7 +22159,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.return_focus = null;
       this.$nextTick(function () {
         // Is el a string CSS selector?
-        el = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_10__["isString"])(el) ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["select"])(el) : el;
+        el = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_11__["isString"])(el) ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["select"])(el) : el;
 
         if (el) {
           // Possibly could be a component reference
@@ -19245,7 +22185,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           var closeButton = h();
 
           if (!this.hideHeaderClose) {
-            closeButton = h(_button_button_close__WEBPACK_IMPORTED_MODULE_20__["BButtonClose"], {
+            closeButton = h(_button_button_close__WEBPACK_IMPORTED_MODULE_21__["BButtonClose"], {
               ref: 'close-button',
               props: {
                 content: this.headerCloseContent,
@@ -19269,7 +22209,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
               id: this.safeId('__BV_modal_title_')
             },
             domProps: domProps
-          }, [this.normalizeSlot('modal-title', this.slotScope) || Object(_utils_html__WEBPACK_IMPORTED_MODULE_9__["stripTags"])(this.title)]), closeButton];
+          }, [this.normalizeSlot('modal-title', this.slotScope) || Object(_utils_html__WEBPACK_IMPORTED_MODULE_10__["stripTags"])(this.title)]), closeButton];
         }
 
         header = h('header', {
@@ -19304,7 +22244,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             var cancelHtml = this.cancelTitleHtml ? {
               innerHTML: this.cancelTitleHtml
             } : null;
-            cancelButton = h(_button_button__WEBPACK_IMPORTED_MODULE_19__["BButton"], {
+            cancelButton = h(_button_button__WEBPACK_IMPORTED_MODULE_20__["BButton"], {
               ref: 'cancel-button',
               props: {
                 variant: this.cancelVariant,
@@ -19316,13 +22256,13 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
               }
             }, [this.normalizeSlot('modal-cancel') || (cancelHtml ? h('span', {
               domProps: cancelHtml
-            }) : Object(_utils_html__WEBPACK_IMPORTED_MODULE_9__["stripTags"])(this.cancelTitle))]);
+            }) : Object(_utils_html__WEBPACK_IMPORTED_MODULE_10__["stripTags"])(this.cancelTitle))]);
           }
 
           var okHtml = this.okTitleHtml ? {
             innerHTML: this.okTitleHtml
           } : null;
-          var okButton = h(_button_button__WEBPACK_IMPORTED_MODULE_19__["BButton"], {
+          var okButton = h(_button_button__WEBPACK_IMPORTED_MODULE_20__["BButton"], {
             ref: 'ok-button',
             props: {
               variant: this.okVariant,
@@ -19334,7 +22274,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             }
           }, [this.normalizeSlot('modal-ok') || (okHtml ? h('span', {
             domProps: okHtml
-          }) : Object(_utils_html__WEBPACK_IMPORTED_MODULE_9__["stripTags"])(this.okTitle))]);
+          }) : Object(_utils_html__WEBPACK_IMPORTED_MODULE_10__["stripTags"])(this.okTitle))]);
           modalFooter = [cancelButton, okButton];
         }
 
@@ -19470,7 +22410,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     if (this.static) {
       return this.lazy && this.isHidden ? h() : this.makeModal(h);
     } else {
-      return this.isHidden ? h() : h(_utils_transporter__WEBPACK_IMPORTED_MODULE_12__["BTransporterSingle"], {}, [this.makeModal(h)]);
+      return this.isHidden ? h() : h(_utils_transporter__WEBPACK_IMPORTED_MODULE_13__["BTransporterSingle"], [this.makeModal(h)]);
     }
   }
 });
@@ -19511,9 +22451,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var NavPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_6__["pluginFactory"])({
+var NavPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_6__["pluginFactory"])({
   components: {
     BNav: _nav__WEBPACK_IMPORTED_MODULE_0__["BNav"],
     BNavItem: _nav_item__WEBPACK_IMPORTED_MODULE_1__["BNavItem"],
@@ -19564,9 +22502,7 @@ var props = _objectSpread({}, Object(_utils_object__WEBPACK_IMPORTED_MODULE_2__[
   }
 }); // @vue/component
 
-var BNavForm =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavForm = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNavForm',
   functional: true,
   props: props,
@@ -19625,11 +22561,9 @@ __webpack_require__.r(__webpack_exports__);
 
  // -- Constants --
 
-var props = Object(_utils_pluck_props__WEBPACK_IMPORTED_MODULE_5__["default"])(['menuClass', 'toggleClass', 'noCaret', 'role'], _dropdown_dropdown__WEBPACK_IMPORTED_MODULE_1__["props"]); // @vue/component
+var props = Object(_utils_pluck_props__WEBPACK_IMPORTED_MODULE_5__["default"])(['text', 'html', 'menuClass', 'toggleClass', 'noCaret', 'role', 'lazy'], _dropdown_dropdown__WEBPACK_IMPORTED_MODULE_1__["props"]); // @vue/component
 
-var BNavItemDropdown =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavItemDropdown = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNavItemDropdown',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_2__["default"], _mixins_dropdown__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["default"]],
   props: props,
@@ -19730,9 +22664,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var props = Object(_link_link__WEBPACK_IMPORTED_MODULE_2__["propsFactory"])(); // @vue/component
 
-var BNavItem =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavItem = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNavItem',
   functional: true,
   props: _objectSpread({}, props, {
@@ -19783,15 +22715,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var props = {}; // @vue/component
 
-var BNavText =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavText = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNavText',
   functional: true,
   props: props,
   render: function render(h, _ref) {
-    var props = _ref.props,
-        data = _ref.data,
+    var data = _ref.data,
         children = _ref.children;
     return h('li', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, {
       staticClass: 'navbar-text'
@@ -19866,9 +22795,7 @@ var computeJustifyContent = function computeJustifyContent(value) {
 }; // @vue/component
 
 
-var BNav =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNav = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNav',
   functional: true,
   props: props,
@@ -19929,9 +22856,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var NavbarPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_7__["pluginFactory"])({
+var NavbarPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_7__["pluginFactory"])({
   components: {
     BNavbar: _navbar__WEBPACK_IMPORTED_MODULE_0__["BNavbar"],
     BNavbarNav: _navbar_nav__WEBPACK_IMPORTED_MODULE_1__["BNavbarNav"],
@@ -19984,9 +22909,7 @@ var props = _objectSpread({}, linkProps, {
   }
 }); // @vue/component
 
-var BNavbarBrand =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavbarBrand = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNavbarBrand',
   functional: true,
   props: props,
@@ -20036,9 +22959,7 @@ var computeJustifyContent = function computeJustifyContent(value) {
 }; // @vue/component
 
 
-var BNavbarNav =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavbarNav = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BNavbarNav',
   functional: true,
   props: props,
@@ -20087,9 +23008,7 @@ var EVENT_STATE = 'bv::collapse::state'; // This private event is NOT to be docu
 
 var EVENT_STATE_SYNC = 'bv::collapse::sync::state'; // @vue/component
 
-var BNavbarToggle =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavbarToggle = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   props: {
@@ -20201,9 +23120,7 @@ var props = {
   }
 }; // @vue/component
 
-var BNavbar =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BNavbar = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"]],
   props: props,
@@ -20245,6 +23162,241 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-vue/esm/components/overlay/index.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/overlay/index.js ***!
+  \********************************************************************/
+/*! exports provided: OverlayPlugin, BOverlay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OverlayPlugin", function() { return OverlayPlugin; });
+/* harmony import */ var _overlay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./overlay */ "./node_modules/bootstrap-vue/esm/components/overlay/overlay.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BOverlay", function() { return _overlay__WEBPACK_IMPORTED_MODULE_0__["BOverlay"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var OverlayPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  components: {
+    BOverlay: _overlay__WEBPACK_IMPORTED_MODULE_0__["BOverlay"]
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/overlay/overlay.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/overlay/overlay.js ***!
+  \**********************************************************************/
+/*! exports provided: BOverlay */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BOverlay", function() { return BOverlay; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_bv_transition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/bv-transition */ "./node_modules/bootstrap-vue/esm/utils/bv-transition.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _spinner_spinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../spinner/spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/spinner.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+var positionCover = {
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0
+};
+var BOverlay = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: 'BOverlay',
+  mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"]],
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    variant: {
+      type: String,
+      default: 'light'
+    },
+    bgColor: {
+      // Alternative to variant, allowing a specific
+      // CSS color to be applied to the overlay
+      type: String,
+      default: null
+    },
+    opacity: {
+      type: [Number, String],
+      default: 0.85,
+      validator: function validator(value) {
+        var number = Object(_utils_number__WEBPACK_IMPORTED_MODULE_2__["toFloat"])(value);
+        return number >= 0 && number <= 1;
+      }
+    },
+    blur: {
+      type: String,
+      default: '2px'
+    },
+    rounded: {
+      type: [Boolean, String],
+      default: false
+    },
+    noCenter: {
+      type: Boolean,
+      default: false
+    },
+    noFade: {
+      type: Boolean,
+      default: false
+    },
+    spinnerType: {
+      type: String,
+      default: 'border'
+    },
+    spinnerVariant: {
+      type: String,
+      default: null
+    },
+    spinnerSmall: {
+      type: Boolean,
+      default: false
+    },
+    overlayTag: {
+      type: String,
+      default: 'div'
+    },
+    wrapTag: {
+      type: String,
+      default: 'div'
+    },
+    noWrap: {
+      // If set, does not render the default slot
+      // and switches to absolute positioning
+      type: Boolean,
+      default: false
+    },
+    fixed: {
+      type: Boolean,
+      default: false
+    },
+    zIndex: {
+      type: [Number, String],
+      default: 10
+    }
+  },
+  computed: {
+    computedRounded: function computedRounded() {
+      var rounded = this.rounded;
+      return rounded === true || rounded === '' ? 'rounded' : !rounded ? '' : "rounded-".concat(rounded);
+    },
+    computedVariant: function computedVariant() {
+      return this.variant && !this.bgColor ? "bg-".concat(this.variant) : '';
+    },
+    overlayScope: function overlayScope() {
+      return {
+        spinnerType: this.spinnerType,
+        spinnerVariant: this.spinnerVariant || null,
+        spinnerSmall: this.spinnerSmall
+      };
+    }
+  },
+  methods: {
+    defaultOverlayFn: function defaultOverlayFn(_ref) {
+      var spinnerType = _ref.spinnerType,
+          spinnerVariant = _ref.spinnerVariant,
+          spinnerSmall = _ref.spinnerSmall;
+      return this.$createElement(_spinner_spinner__WEBPACK_IMPORTED_MODULE_4__["BSpinner"], {
+        props: {
+          type: spinnerType,
+          variant: spinnerVariant,
+          small: spinnerSmall
+        }
+      });
+    }
+  },
+  render: function render(h) {
+    var _this = this;
+
+    var $overlay = h();
+
+    if (this.show) {
+      var scope = this.overlayScope; // Overlay backdrop
+
+      var $background = h('div', {
+        staticClass: 'position-absolute',
+        class: [this.computedVariant, this.computedRounded],
+        style: _objectSpread({}, positionCover, {
+          opacity: this.opacity,
+          backgroundColor: this.bgColor || null,
+          backdropFilter: this.blur ? "blur(".concat(this.blur, ")") : null
+        })
+      }); // Overlay content
+
+      var $content = h('div', {
+        staticClass: 'position-absolute',
+        style: this.noCenter ? _objectSpread({}, positionCover) : {
+          top: '50%',
+          left: '50%',
+          transform: 'translateX(-50%) translateY(-50%)'
+        }
+      }, [this.normalizeSlot('overlay', scope) || this.defaultOverlayFn(scope)]); // Overlay positioning
+
+      $overlay = h(this.overlayTag, {
+        key: 'overlay',
+        staticClass: 'b-overlay',
+        class: {
+          'position-absolute': !this.noWrap || this.noWrap && !this.fixed,
+          'position-fixed': this.noWrap && this.fixed
+        },
+        style: _objectSpread({}, positionCover, {
+          zIndex: this.zIndex || 10
+        })
+      }, [$background, $content]);
+    } // Wrap in a fade transition
+
+
+    $overlay = h(_utils_bv_transition__WEBPACK_IMPORTED_MODULE_1__["BVTransition"], {
+      props: {
+        noFade: this.noFade,
+        appear: true
+      },
+      on: {
+        'after-enter': function afterEnter() {
+          return _this.$emit('shown');
+        },
+        'after-leave': function afterLeave() {
+          return _this.$emit('hidden');
+        }
+      }
+    }, [$overlay]);
+
+    if (this.noWrap) {
+      return $overlay;
+    }
+
+    return h(this.wrapTag, {
+      staticClass: 'b-overlay-wrap position-relative',
+      attrs: {
+        'aria-busy': this.show ? 'true' : null
+      }
+    }, this.noWrap ? [$overlay] : [this.normalizeSlot('default'), $overlay]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/esm/components/pagination-nav/index.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/components/pagination-nav/index.js ***!
@@ -20261,9 +23413,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var PaginationNavPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var PaginationNavPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BPaginationNav: _pagination_nav__WEBPACK_IMPORTED_MODULE_0__["BPaginationNav"]
   }
@@ -20381,9 +23531,7 @@ var props = {
 }; // The render function is brought in via the pagination mixin
 // @vue/component
 
-var BPaginationNav =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BPaginationNav = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_pagination__WEBPACK_IMPORTED_MODULE_10__["default"]],
   props: props,
@@ -20399,14 +23547,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   watch: {
-    numberOfPages: function numberOfPages(newVal, oldVal) {
+    numberOfPages: function numberOfPages() {
       var _this = this;
 
       this.$nextTick(function () {
         _this.setNumberOfPages();
       });
     },
-    pages: function pages(newVal, oldVal) {
+    pages: function pages() {
       var _this2 = this;
 
       this.$nextTick(function () {
@@ -20422,7 +23570,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
     if (this.$router) {
       // We only add the watcher if vue router is detected
-      this.$watch('$route', function (to, from) {
+      this.$watch('$route', function () {
         _this3.$nextTick(function () {
           Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["requestAF"])(function () {
             _this3.guessCurrentPage();
@@ -20667,9 +23815,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var PaginationPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var PaginationPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BPagination: _pagination__WEBPACK_IMPORTED_MODULE_0__["BPagination"]
   }
@@ -20739,9 +23885,7 @@ var sanitizeTotalRows = function sanitizeTotalRows(val) {
 // @vue/component
 
 
-var BPagination =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BPagination = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_pagination__WEBPACK_IMPORTED_MODULE_5__["default"]],
   props: props,
@@ -20830,11 +23974,11 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     makePage: function makePage(pageNum) {
       return pageNum;
     },
-    linkProps: function linkProps(pageNum) {
-      // Always '#' for pagination component
-      return {
-        href: '#'
-      };
+    linkProps: function linkProps() {
+      // No props, since we render a plain button
+
+      /* istanbul ignore next */
+      return {};
     }
   }
 });
@@ -20859,9 +24003,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BVPopoverTemplate'; // @vue/component
 
-var BVPopoverTemplate =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVPopoverTemplate = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   extends: _tooltip_helpers_bv_tooltip_template__WEBPACK_IMPORTED_MODULE_2__["BVTooltipTemplate"],
   computed: {
@@ -20925,9 +24067,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BVPopover'; // @vue/component
 
-var BVPopover =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVPopover = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   extends: _tooltip_helpers_bv_tooltip__WEBPACK_IMPORTED_MODULE_1__["BVTooltip"],
   computed: {
@@ -20964,9 +24104,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var PopoverPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var PopoverPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BPopover: _popover__WEBPACK_IMPORTED_MODULE_0__["BPopover"]
   },
@@ -20999,9 +24137,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NAME = 'BPopover';
-var BPopover =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BPopover = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   extends: _tooltip_tooltip__WEBPACK_IMPORTED_MODULE_3__["BTooltip"],
   inheritAttrs: false,
@@ -21095,9 +24231,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ProgressPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var ProgressPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BProgress: _progress__WEBPACK_IMPORTED_MODULE_0__["BProgress"],
     BProgressBar: _progress_bar__WEBPACK_IMPORTED_MODULE_1__["BProgressBar"]
@@ -21133,9 +24267,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BProgressBar'; // @vue/component
 
-var BProgressBar =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BProgressBar = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__["default"]],
   inject: {
@@ -21291,9 +24423,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BProgress'; // @vue/component
 
-var BProgress =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BProgress = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   provide: function provide() {
@@ -21393,9 +24523,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var SpinnerPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var SpinnerPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   components: {
     BSpinner: _spinner__WEBPACK_IMPORTED_MODULE_0__["BSpinner"]
   }
@@ -21426,9 +24554,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var NAME = 'BSpinner'; // @vue/component
 
-var BSpinner =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BSpinner = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   functional: true,
   props: {
@@ -21606,7 +24732,7 @@ var filterEvent = function filterEvent(evt) {
   }
 
   var label = el.tagName === 'LABEL' ? el : Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["closest"])('label', el); // If the label's form control is not disabled then we don't propagate event
-  // Modern browsers have `label.control` that references the associated input, but IE11
+  // Modern browsers have `label.control` that references the associated input, but IE 11
   // does not have this property on the label element, so we resort to DOM lookups
 
   if (label) {
@@ -22040,7 +25166,7 @@ var RX_SPACES = /[\s\uFEFF\xA0]+/g;
   },
   watch: {
     // Watch for debounce being set to 0
-    computedFilterDebounce: function computedFilterDebounce(newVal, oldVal) {
+    computedFilterDebounce: function computedFilterDebounce(newVal) {
       if (!newVal && this.$_filterTimer) {
         clearTimeout(this.$_filterTimer);
         this.$_filterTimer = null;
@@ -22052,7 +25178,7 @@ var RX_SPACES = /[\s\uFEFF\xA0]+/g;
       // We need a deep watcher in case the user passes
       // an object when using `filter-function`
       deep: true,
-      handler: function handler(newCriteria, oldCriteria) {
+      handler: function handler(newCriteria) {
         var _this = this;
 
         var timeout = this.computedFilterDebounce;
@@ -22074,7 +25200,6 @@ var RX_SPACES = /[\s\uFEFF\xA0]+/g;
     // Set visual state and emit events as required
     filteredCheck: function filteredCheck(_ref) {
       var filteredItems = _ref.filteredItems,
-          localItems = _ref.localItems,
           localFilter = _ref.localFilter;
       // Determine if the dataset is filtered or not
       var isFiltered = false;
@@ -22483,7 +25608,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     // Provider update triggering
-    items: function items(newVal, oldVal) {
+    items: function items(newVal) {
       // If a new provider has been specified, trigger an update
       if (this.hasProvider || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_1__["isFunction"])(newVal)) {
         this.$nextTick(this._providerUpdate);
@@ -22713,14 +25838,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.clearSelected();
       }
     },
-    selectable: function selectable(newVal, oldVal) {
+    selectable: function selectable(newVal) {
       this.clearSelected();
       this.setSelectionHandlers(newVal);
     },
-    selectMode: function selectMode(newVal, oldVal) {
+    selectMode: function selectMode() {
       this.clearSelected();
     },
-    hasSelectableRowClick: function hasSelectableRowClick(newVal, oldVal) {
+    hasSelectableRowClick: function hasSelectableRowClick(newVal) {
       this.clearSelected();
       this.setSelectionHandlers(!newVal);
     },
@@ -22771,7 +25896,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (this.isSelectable && length > 0) {
         this.selectedLastClicked = -1;
-        this.selectedRows = this.selectableIsMultiSelect ? Object(_utils_range__WEBPACK_IMPORTED_MODULE_2__["default"])(length).map(function (i) {
+        this.selectedRows = this.selectableIsMultiSelect ? Object(_utils_range__WEBPACK_IMPORTED_MODULE_2__["default"])(length).map(function () {
           return true;
         }) : [true];
       }
@@ -23014,7 +26139,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   watch: {
-    isSortable: function isSortable(newVal, oldVal)
+    isSortable: function isSortable(newVal)
     /* istanbul ignore next: pain in the butt to test */
     {
       if (newVal) {
@@ -23025,7 +26150,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.$off('head-clicked', this.handleSort);
       }
     },
-    sortDesc: function sortDesc(newVal, oldVal) {
+    sortDesc: function sortDesc(newVal) {
       if (newVal === this.localSortDesc) {
         /* istanbul ignore next */
         return;
@@ -23033,7 +26158,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.localSortDesc = newVal || false;
     },
-    sortBy: function sortBy(newVal, oldVal) {
+    sortBy: function sortBy(newVal) {
       if (newVal === this.localSortBy) {
         /* istanbul ignore next */
         return;
@@ -23370,7 +26495,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var $content = [];
 
     if (this.isTableSimple) {
-      $content.push(this.normalizeSlot('default', {}));
+      $content.push(this.normalizeSlot('default'));
     } else {
       // Build the `<caption>` (from caption mixin)
       $content.push(this.renderCaption ? this.renderCaption() : null); // Build the `<colgroup>`
@@ -23604,7 +26729,7 @@ var detailsSlotName = 'row-details';
 
       if (this.isStacked) {
         // We wrap in a DIV to ensure rendered as a single cell when visually stacked!
-        $childNodes = [h('div', {}, [$childNodes])];
+        $childNodes = [h('div', [$childNodes])];
       } // Render either a td or th cell
 
 
@@ -24645,16 +27770,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var TableLitePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
+var TableLitePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
   components: {
     BTableLite: _table_lite__WEBPACK_IMPORTED_MODULE_1__["BTableLite"]
   }
 });
-var TableSimplePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
+var TableSimplePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
   components: {
     BTableSimple: _table_simple__WEBPACK_IMPORTED_MODULE_2__["BTableSimple"],
     BTbody: _tbody__WEBPACK_IMPORTED_MODULE_3__["BTbody"],
@@ -24665,9 +27786,7 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
     BTh: _th__WEBPACK_IMPORTED_MODULE_8__["BTh"]
   }
 });
-var TablePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
+var TablePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_9__["pluginFactory"])({
   components: {
     BTable: _table__WEBPACK_IMPORTED_MODULE_0__["BTable"]
   },
@@ -24719,9 +27838,7 @@ __webpack_require__.r(__webpack_exports__);
  // b-table-lite component definition
 // @vue/component
 
-var BTableLite =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTableLite = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTableLite',
   // Order of mixins is important!
   // They are merged from first to last, followed by this component.
@@ -24759,9 +27876,7 @@ __webpack_require__.r(__webpack_exports__);
  // b-table-simple component definition
 // @vue/component
 
-var BTableSimple =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTableSimple = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTableSimple',
   // Order of mixins is important!
   // They are merged from first to last, followed by this component.
@@ -24837,9 +27952,7 @@ __webpack_require__.r(__webpack_exports__);
  // b-table component definition
 // @vue/component
 
-var BTable =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTable = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTable',
   // Order of mixins is important!
   // They are merged from first to last, followed by this component.
@@ -24883,9 +27996,7 @@ var props = {
   }
 }; // @vue/component
 
-var BTbody =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTbody = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTbody',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__["default"]],
   inheritAttrs: false,
@@ -24969,7 +28080,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       data.on = this.$listeners || {};
     }
 
-    return h(this.isTransitionGroup ? 'transition-group' : 'tbody', data, this.normalizeSlot('default', {}));
+    return h(this.isTransitionGroup ? 'transition-group' : 'tbody', data, this.normalizeSlot('default'));
   }
 });
 
@@ -25038,9 +28149,7 @@ var props = {
   }
 }; // @vue/component
 
-var BTd =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTd = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTableCell',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"]],
   inheritAttrs: false,
@@ -25210,9 +28319,7 @@ var props = {
   }
 }; // @vue/component
 
-var BTfoot =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTfoot = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTfoot',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__["default"]],
   inheritAttrs: false,
@@ -25283,7 +28390,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       attrs: this.tfootAttrs,
       // Pass down any native listeners
       on: this.$listeners
-    }, this.normalizeSlot('default', {}));
+    }, this.normalizeSlot('default'));
   }
 });
 
@@ -25304,9 +28411,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BTh =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTh = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTh',
   extends: _td__WEBPACK_IMPORTED_MODULE_1__["BTd"],
   computed: {
@@ -25348,9 +28453,7 @@ var props = {
   }
 }; // @vue/component
 
-var BThead =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BThead = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BThead',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__["default"]],
   inheritAttrs: false,
@@ -25419,7 +28522,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       attrs: this.theadAttrs,
       // Pass down any native listeners
       on: this.$listeners
-    }, this.normalizeSlot('default', {}));
+    }, this.normalizeSlot('default'));
   }
 });
 
@@ -25455,9 +28558,7 @@ var props = {
 var LIGHT = 'light';
 var DARK = 'dark'; // @vue/component
 
-var BTr =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTr = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTr',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__["default"]],
   inheritAttrs: false,
@@ -25468,7 +28569,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   inject: {
     bvTableRowGroup: {
-      defaut: function defaut()
+      default: function _default()
       /* istanbul ignore next */
       {
         return {};
@@ -25542,7 +28643,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       attrs: this.trAttrs,
       // Pass native listeners to child
       on: this.$listeners
-    }, this.normalizeSlot('default', {}));
+    }, this.normalizeSlot('default'));
   }
 });
 
@@ -25568,9 +28669,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var TabsPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var TabsPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BTabs: _tabs__WEBPACK_IMPORTED_MODULE_0__["BTabs"],
     BTab: _tab__WEBPACK_IMPORTED_MODULE_1__["BTab"]
@@ -25599,9 +28698,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // @vue/component
 
-var BTab =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTab = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTab',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_1__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__["default"]],
   inject: {
@@ -25636,6 +28733,10 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     titleLinkClass: {
       // Sniffed by tabs.js and added to nav 'a.nav-link'
       type: [String, Array, Object],
+      default: null
+    },
+    titleLinkAttributes: {
+      type: Object,
       default: null
     },
     disabled: {
@@ -25681,7 +28782,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   watch: {
-    localActive: function localActive(newVal, oldVal) {
+    localActive: function localActive(newVal) {
       // Make 'active' prop work with `.sync` modifier
       this.$emit('update:active', newVal);
     },
@@ -25840,9 +28941,7 @@ var notDisabled = function notDisabled(tab) {
 // @vue/component
 
 
-var BTabButtonHelper =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTabButtonHelper = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTabButtonHelper',
   inject: {
     bvTabs: {
@@ -25955,7 +29054,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       props: {
         disabled: this.tab.disabled
       },
-      attrs: {
+      attrs: _objectSpread({}, this.tab.titleLinkAttributes, {
         role: 'tab',
         id: this.id,
         // Roving tab index when keynav enabled
@@ -25964,7 +29063,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         'aria-setsize': this.setSize,
         'aria-posinset': this.posInSet,
         'aria-controls': this.controls
-      },
+      }),
       on: {
         click: this.handleEvt,
         keydown: this.handleEvt
@@ -25980,9 +29079,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   }
 }); // @vue/component
 
-var BTabs =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTabs = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTabs',
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_11__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_12__["default"]],
   provide: function provide() {
@@ -26084,11 +29181,11 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
   watch: {
-    currentTab: function currentTab(val, old) {
+    currentTab: function currentTab(newVal) {
       var index = -1; // Ensure only one tab is active at most
 
       this.tabs.forEach(function (tab, idx) {
-        if (val === idx && !tab.disabled) {
+        if (newVal === idx && !tab.disabled) {
           tab.localActive = true;
           index = idx;
         } else {
@@ -26098,18 +29195,18 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
       this.$emit('input', index);
     },
-    value: function value(val, old) {
-      if (val !== old) {
-        val = parseInt(val, 10);
-        val = isNaN(val) ? -1 : val;
-        old = parseInt(old, 10) || 0;
+    value: function value(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        newVal = parseInt(newVal, 10);
+        newVal = isNaN(newVal) ? -1 : newVal;
+        oldVal = parseInt(oldVal, 10) || 0;
         var tabs = this.tabs;
 
-        if (tabs[val] && !tabs[val].disabled) {
-          this.activateTab(tabs[val]);
+        if (tabs[newVal] && !tabs[newVal].disabled) {
+          this.activateTab(tabs[newVal]);
         } else {
           // Try next or prev tabs
-          if (val < old) {
+          if (newVal < oldVal) {
             this.previousTab();
           } else {
             this.nextTab();
@@ -26117,7 +29214,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         }
       }
     },
-    registeredTabs: function registeredTabs(newVal, oldVal) {
+    registeredTabs: function registeredTabs() {
       var _this = this;
 
       // Each b-tab will register/unregister itself.
@@ -26148,7 +29245,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         });
       }
     },
-    isMounted: function isMounted(newVal, oldVal) {
+    isMounted: function isMounted(newVal) {
       var _this3 = this;
 
       // Trigger an update after mounted.  Needed for tabs inside lazy modals.
@@ -26319,7 +29416,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       } // Set the current tab state to active
 
 
-      tabs.forEach(function (tab, idx) {
+      tabs.forEach(function (tab) {
         // tab.localActive = idx === tabIndex && !tab.disabled
         tab.localActive = false;
       });
@@ -26577,6 +29674,745 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-vue/esm/components/time/index.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/time/index.js ***!
+  \*****************************************************************/
+/*! exports provided: TimePlugin, BTime */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimePlugin", function() { return TimePlugin; });
+/* harmony import */ var _time__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./time */ "./node_modules/bootstrap-vue/esm/components/time/time.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTime", function() { return _time__WEBPACK_IMPORTED_MODULE_0__["BTime"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var TimePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  components: {
+    BTime: _time__WEBPACK_IMPORTED_MODULE_0__["BTime"]
+  }
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/time/time.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/time/time.js ***!
+  \****************************************************************/
+/*! exports provided: BTime */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BTime", function() { return BTime; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_identity__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
+/* harmony import */ var _utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/loose-equal */ "./node_modules/bootstrap-vue/esm/utils/loose-equal.js");
+/* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_date__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/date */ "./node_modules/bootstrap-vue/esm/utils/date.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_locale__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/locale */ "./node_modules/bootstrap-vue/esm/utils/locale.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _utils_string__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _form_spinbutton_form_spinbutton__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../form-spinbutton/form-spinbutton */ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/form-spinbutton.js");
+/* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../icons/icons */ "./node_modules/bootstrap-vue/esm/icons/icons.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+// BTime control (not form input control)
+ // Utilities
+
+
+
+
+
+
+
+
+
+
+
+ // Mixins
+
+
+ // Sub components used
+
+
+ // --- Constants ---
+
+var NAME = 'BTime';
+var NUMERIC = 'numeric';
+var LEFT = _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].LEFT,
+    RIGHT = _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].RIGHT; // Time string RegExpr (optional seconds)
+
+var RE_TIME = /^([0-1]?[0-9]|2[0-3]):[0-5]?[0-9](:[0-5]?[0-9])?$/; // --- Helpers ---
+// Fallback to BFormSpinbutton prop if no value found
+
+var getConfigFallback = function getConfigFallback(prop) {
+  return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, prop) || Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])('BFormSpinbutton', prop);
+};
+
+var padLeftZeros = function padLeftZeros(num) {
+  return "00".concat(num || '').slice(-2);
+};
+
+var parseHMS = function parseHMS(hms) {
+  hms = Object(_utils_string__WEBPACK_IMPORTED_MODULE_11__["toString"])(hms);
+  var hh = null,
+      mm = null,
+      ss = null;
+
+  if (RE_TIME.test(hms)) {
+    ;
+
+    var _hms$split$map$map = hms.split(':').map(_utils_number__WEBPACK_IMPORTED_MODULE_10__["toInteger"]).map(function (v) {
+      return isNaN(v) ? null : v;
+    });
+
+    var _hms$split$map$map2 = _slicedToArray(_hms$split$map$map, 3);
+
+    hh = _hms$split$map$map2[0];
+    mm = _hms$split$map$map2[1];
+    ss = _hms$split$map$map2[2];
+  }
+
+  return {
+    hours: Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isUndefinedOrNull"])(hh) ? null : hh,
+    minutes: Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isUndefinedOrNull"])(mm) ? null : mm,
+    seconds: Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isUndefinedOrNull"])(ss) ? null : ss,
+    ampm: Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isUndefinedOrNull"])(hh) || hh < 12 ? 0 : 1
+  };
+};
+
+var formatHMS = function formatHMS(_ref) {
+  var hours = _ref.hours,
+      minutes = _ref.minutes,
+      seconds = _ref.seconds;
+  var requireSeconds = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isNull"])(hours) || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isNull"])(minutes) || requireSeconds && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isNull"])(seconds)) {
+    return '';
+  }
+
+  var hms = [hours, minutes, requireSeconds ? seconds : 0];
+  return hms.map(padLeftZeros).join(':');
+}; // @vue/component
+
+
+var BTime = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: NAME,
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_12__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_13__["default"]],
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+    showSeconds: {
+      // If true, show the second spinbutton
+      type: Boolean,
+      default: false
+    },
+    hour12: {
+      // Explicitly force 12 or 24 hour time
+      // Default is to use resolved locale for 12/24 hour display
+      // Tri-state: `true` = 12, `false` = 24, `null` = auto
+      type: Boolean,
+      default: null
+    },
+    locale: {
+      type: [String, Array],
+      default: null
+    },
+    ariaLabelledby: {
+      // ID of label element
+      type: String,
+      default: null
+    },
+    secondsStep: {
+      type: [Number, String],
+      default: 1
+    },
+    minutesStep: {
+      type: [Number, String],
+      default: 1
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    hideHeader: {
+      type: Boolean,
+      default: false
+    },
+    labelNoTimeSelected: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelNoTimeSelected');
+      }
+    },
+    labelSelected: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelSelected');
+      }
+    },
+    labelHours: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelHours');
+      }
+    },
+    labelMinutes: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelMinutes');
+      }
+    },
+    labelSeconds: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelSeconds');
+      }
+    },
+    labelAmpm: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelAmpm');
+      }
+    },
+    labelAm: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelAm');
+      }
+    },
+    labelPm: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_5__["getComponentConfig"])(NAME, 'labelPm');
+      }
+    },
+    // Passed to the spin buttons
+    labelIncrement: {
+      type: String,
+      // Falls back to BFormSpinbutton label
+      default: function _default() {
+        return getConfigFallback('labelIncrement');
+      }
+    },
+    labelDecrement: {
+      type: String,
+      // Falls back to BFormSpinbutton label
+      default: function _default() {
+        return getConfigFallback('labelDecrement');
+      }
+    },
+    hidden: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    var parsed = parseHMS(this.value || '');
+    return {
+      // Spin button models
+      modelHours: parsed.hours,
+      modelMinutes: parsed.minutes,
+      modelSeconds: parsed.seconds,
+      modelAmpm: parsed.ampm,
+      // Internal flag to enable aria-live regions
+      isLive: false
+    };
+  },
+  computed: {
+    computedHMS: function computedHMS() {
+      var hours = this.modelHours;
+      var minutes = this.modelMinutes;
+      var seconds = this.modelSeconds;
+      return formatHMS({
+        hours: hours,
+        minutes: minutes,
+        seconds: seconds
+      }, this.showSeconds);
+    },
+    resolvedOptions: function resolvedOptions() {
+      // Resolved locale options
+      var locale = Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["concat"])(this.locale).filter(_utils_identity__WEBPACK_IMPORTED_MODULE_1__["default"]);
+      var options = {
+        hour: NUMERIC,
+        minute: NUMERIC,
+        second: NUMERIC
+      };
+
+      if (!Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isUndefinedOrNull"])(this.hour12)) {
+        // Force 12 or 24 hour clock
+        options.hour12 = !!this.hour12;
+      }
+
+      var dtf = new Intl.DateTimeFormat(locale, options);
+      var resolved = dtf.resolvedOptions();
+      var hour12 = resolved.hour12 || false; // IE 11 doesn't resolve the hourCycle, so we make
+      // an assumption and fall back to common values
+
+      var hourCycle = resolved.hourCycle || (hour12 ? 'h12' : 'h23');
+      return {
+        locale: resolved.locale,
+        hour12: hour12,
+        hourCycle: hourCycle
+      };
+    },
+    computedLocale: function computedLocale() {
+      return this.resolvedOptions.locale;
+    },
+    computedLang: function computedLang() {
+      return (this.computedLocale || '').replace(/-u-.*$/, '');
+    },
+    computedRTL: function computedRTL() {
+      return Object(_utils_locale__WEBPACK_IMPORTED_MODULE_9__["isLocaleRTL"])(this.computedLang);
+    },
+    computedHourCycle: function computedHourCycle() {
+      // h11, h12, h23, or h24
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Locale/hourCycle
+      // h12 - Hour system using 1–12. Corresponds to 'h' in patterns. The 12 hour clock, with midnight starting at 12:00 am
+      // h23 - Hour system using 0–23. Corresponds to 'H' in patterns. The 24 hour clock, with midnight starting at 0:00
+      // h11 - Hour system using 0–11. Corresponds to 'K' in patterns. The 12 hour clock, with midnight starting at 0:00 am
+      // h24 - Hour system using 1–24. Corresponds to 'k' in pattern. The 24 hour clock, with midnight starting at 24:00
+      // For h12 or h24, we visually format 00 hours as 12
+      return this.resolvedOptions.hourCycle;
+    },
+    is12Hour: function is12Hour() {
+      return !!this.resolvedOptions.hour12;
+    },
+    context: function context() {
+      return {
+        locale: this.computedLocale,
+        isRTL: this.computedRTL,
+        hourCycle: this.computedHourCycle,
+        hour12: this.is12Hour,
+        hours: this.modelHours,
+        minutes: this.modelMinutes,
+        seconds: this.showSeconds ? this.modelSeconds : 0,
+        value: this.computedHMS,
+        formatted: this.formattedTimeString
+      };
+    },
+    valueId: function valueId() {
+      return this.safeId() || null;
+    },
+    computedAriaLabelledby: function computedAriaLabelledby() {
+      return [this.ariaLabelledby, this.valueId].filter(_utils_identity__WEBPACK_IMPORTED_MODULE_1__["default"]).join(' ') || null;
+    },
+    timeFormatter: function timeFormatter() {
+      // Returns a formatter function reference
+      // The formatter converts the time to a localized string
+      var options = {
+        hour12: this.is12Hour,
+        hourCycle: this.computedHourCycle,
+        hour: NUMERIC,
+        minute: NUMERIC,
+        timeZone: 'UTC'
+      };
+
+      if (this.showSeconds) {
+        options.second = NUMERIC;
+      } // Formats the time as a localized string
+
+
+      return Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDateFormatter"])(this.computedLocale, options);
+    },
+    numberFormatter: function numberFormatter() {
+      // Returns a formatter function reference
+      // The formatter always formats as 2 digits and is localized
+      var nf = new Intl.NumberFormat(this.computedLocale, {
+        style: 'decimal',
+        minimumIntegerDigits: 2,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+        notation: 'standard'
+      });
+      return nf.format;
+    },
+    formattedTimeString: function formattedTimeString() {
+      var hours = this.modelHours;
+      var minutes = this.modelMinutes;
+      var seconds = this.showSeconds ? this.modelSeconds || 0 : 0;
+
+      if (this.computedHMS) {
+        return this.timeFormatter(Object(_utils_date__WEBPACK_IMPORTED_MODULE_6__["createDate"])(Date.UTC(0, 0, 1, hours, minutes, seconds)));
+      }
+
+      return this.labelNoTimeSelected || ' ';
+    }
+  },
+  watch: {
+    value: function value(newVal, oldVal) {
+      if (newVal !== oldVal && !Object(_utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__["default"])(parseHMS(newVal), parseHMS(this.computedHMS))) {
+        var _parseHMS = parseHMS(newVal),
+            hours = _parseHMS.hours,
+            minutes = _parseHMS.minutes,
+            seconds = _parseHMS.seconds,
+            ampm = _parseHMS.ampm;
+
+        this.modelHours = hours;
+        this.modelMinutes = minutes;
+        this.modelSeconds = seconds;
+        this.modelAmpm = ampm;
+      }
+    },
+    computedHMS: function computedHMS(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.$emit('input', newVal);
+      }
+    },
+    context: function context(newVal, oldVal) {
+      if (!Object(_utils_loose_equal__WEBPACK_IMPORTED_MODULE_3__["default"])(newVal, oldVal)) {
+        this.$emit('context', newVal);
+      }
+    },
+    modelAmpm: function modelAmpm(newVal, oldVal) {
+      var _this = this;
+
+      if (newVal !== oldVal) {
+        var hours = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_8__["isNull"])(this.modelHours) ? 0 : this.modelHours;
+        this.$nextTick(function () {
+          if (newVal === 0 && hours > 11) {
+            // Switched to AM
+            _this.modelHours = hours - 12;
+          } else if (newVal === 1 && hours < 12) {
+            // Switched to PM
+            _this.modelHours = hours + 12;
+          }
+        });
+      }
+    },
+    modelHours: function modelHours(newHours, oldHours) {
+      if (newHours !== oldHours) {
+        this.modelAmpm = newHours > 11 ? 1 : 0;
+      }
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.$nextTick(function () {
+      _this2.$emit('context', _this2.context);
+    });
+  },
+  mounted: function mounted() {
+    this.setLive(true);
+  },
+  activated: function activated()
+  /* istanbul ignore next */
+  {
+    this.setLive(true);
+  },
+  deactivated: function deactivated()
+  /* istanbul ignore next */
+  {
+    this.setLive(false);
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.setLive(false);
+  },
+  methods: {
+    // Public methods
+    focus: function focus() {
+      if (!this.disabled) {
+        try {
+          // We focus the first spin button
+          this.$refs.spinners[0].focus();
+        } catch (_unused) {}
+      }
+    },
+    blur: function blur() {
+      if (!this.disabled) {
+        try {
+          if (Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["contains"])(this.$el, document.activeElement)) {
+            document.activeElement.blur();
+          }
+        } catch (_unused2) {}
+      }
+    },
+    // Formatters for the spin buttons
+    formatHours: function formatHours(hh) {
+      var hourCycle = this.computedHourCycle; // We always store 0-23, but format based on h11/h12/h23/h24 formats
+
+      hh = this.is12Hour && hh > 12 ? hh - 12 : hh; // Determine how 00:00 and 12:00 are shown
+
+      hh = hh === 0 && hourCycle === 'h12' ? 12 : hh === 0 && hourCycle === 'h24' ? 24 : hh === 12 && hourCycle === 'h11' ? 0 : hh;
+      return this.numberFormatter(hh);
+    },
+    formatMinutes: function formatMinutes(mm) {
+      return this.numberFormatter(mm);
+    },
+    formatSeconds: function formatSeconds(ss) {
+      return this.numberFormatter(ss);
+    },
+    formatAmpm: function formatAmpm(ampm) {
+      // These should come from label props???
+      // `ampm` should always be a value of `0` or `1`
+      return ampm === 0 ? this.labelAm : ampm === 1 ? this.labelPm : '';
+    },
+    // Spinbutton on change handlers
+    setHours: function setHours(value) {
+      this.modelHours = value;
+    },
+    setMinutes: function setMinutes(value) {
+      this.modelMinutes = value;
+    },
+    setSeconds: function setSeconds(value) {
+      this.modelSeconds = value;
+    },
+    setAmpm: function setAmpm(value) {
+      this.modelAmpm = value;
+    },
+    onSpinLeftRight: function onSpinLeftRight() {
+      var evt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var type = evt.type,
+          keyCode = evt.keyCode;
+
+      if (!this.disabled && type === 'keydown' && (keyCode === LEFT || keyCode === RIGHT)) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        var spinners = this.$refs.spinners || [];
+        var index = spinners.map(function (cmp) {
+          return !!cmp.hasFocus;
+        }).indexOf(true);
+        index = index + (keyCode === LEFT ? -1 : 1);
+        index = index >= spinners.length ? 0 : index < 0 ? spinners.length - 1 : index;
+
+        try {
+          spinners[index].focus();
+        } catch (_unused3) {}
+      }
+    },
+    setLive: function setLive(on) {
+      var _this3 = this;
+
+      if (on) {
+        this.$nextTick(function () {
+          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_7__["requestAF"])(function () {
+            _this3.isLive = true;
+          });
+        });
+      } else {
+        this.isLive = false;
+      }
+    }
+  },
+  render: function render(h) {
+    var _this4 = this;
+
+    /* istanbul ignore if */
+    if (this.hidden) {
+      // If hidden, we just render a placeholder comment
+      return h();
+    }
+
+    var valueId = this.valueId;
+    var computedAriaLabelledby = this.computedAriaLabelledby;
+    var spinIds = []; // Helper method to render a spinbutton
+
+    var makeSpinbutton = function makeSpinbutton(handler, key, classes) {
+      var spinbuttonProps = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+      var id = _this4.safeId("_spinbutton_".concat(key, "_")) || null;
+      spinIds.push(id);
+      return h(_form_spinbutton_form_spinbutton__WEBPACK_IMPORTED_MODULE_14__["BFormSpinbutton"], {
+        key: key,
+        ref: 'spinners',
+        refInFor: true,
+        class: classes,
+        props: _objectSpread({
+          id: id,
+          placeholder: '--',
+          vertical: true,
+          required: true,
+          disabled: _this4.disabled,
+          readonly: _this4.readonly,
+          locale: _this4.computedLocale,
+          labelIncrement: _this4.labelIncrement,
+          labelDecrement: _this4.labelDecrement,
+          wrap: true,
+          ariaControls: valueId,
+          min: 0
+        }, spinbuttonProps),
+        on: {
+          // We use `change` event to minimize SR verbosity
+          // As the spinbutton will announce each value change
+          // and we don't want the formatted time to be announced
+          // on each value input if repeat is happening
+          change: handler
+        }
+      });
+    }; // Helper method to return a "colon" separator
+
+
+    var makeColon = function makeColon() {
+      return h('div', {
+        staticClass: 'd-flex flex-column',
+        class: {
+          'text-muted': _this4.disabled || _this4.readonly
+        },
+        attrs: {
+          'aria-hidden': 'true'
+        }
+      }, [h(_icons_icons__WEBPACK_IMPORTED_MODULE_15__["BIconCircleFill"], {
+        props: {
+          shiftV: 4,
+          scale: 0.5
+        }
+      }), h(_icons_icons__WEBPACK_IMPORTED_MODULE_15__["BIconCircleFill"], {
+        props: {
+          shiftV: -4,
+          scale: 0.5
+        }
+      })]);
+    };
+
+    var $spinners = []; // Hours
+
+    $spinners.push(makeSpinbutton(this.setHours, 'hours', '', {
+      value: this.modelHours,
+      max: 23,
+      step: 1,
+      formatterFn: this.formatHours,
+      ariaLabel: this.labelHours
+    })); // Spacer
+
+    $spinners.push(makeColon()); // Minutes
+
+    $spinners.push(makeSpinbutton(this.setMinutes, 'minutes', '', {
+      value: this.modelMinutes,
+      max: 59,
+      step: this.minutesStep || 1,
+      formatterFn: this.formatMinutes,
+      ariaLabel: this.labelMinutes
+    }));
+
+    if (this.showSeconds) {
+      // Spacer
+      $spinners.push(makeColon()); // Seconds
+
+      $spinners.push(makeSpinbutton(this.setSeconds, 'seconds', '', {
+        value: this.modelSeconds,
+        max: 59,
+        step: this.secondsStep || 1,
+        formatterFn: this.formatSeconds,
+        ariaLabel: this.labelSeconds
+      }));
+    } // AM/PM ?
+
+
+    if (this.is12Hour) {
+      // TODO:
+      //   If locale is RTL, unshift this instead of push?
+      //   And switch class `ml-2` to `mr-2`
+      //   Note some LTR locales (i.e. zh) also place AM/PM to the left
+      $spinners.push(makeSpinbutton(this.setAmpm, 'ampm', 'ml-2', {
+        value: this.modelAmpm,
+        max: 1,
+        formatterFn: this.formatAmpm,
+        ariaLabel: this.labelAmpm,
+        // We set `required` as `false`, since this always has a value
+        required: false
+      }));
+    } // Assemble spinners
+
+
+    $spinners = h('div', {
+      staticClass: 'd-flex align-items-center justify-content-center mx-auto',
+      attrs: {
+        role: 'group',
+        tabindex: this.disabled || this.readonly ? null : '-1',
+        'aria-labelledby': computedAriaLabelledby
+      },
+      on: {
+        keydown: this.onSpinLeftRight,
+        click: function click(evt)
+        /* istanbul ignore next */
+        {
+          if (evt.target === evt.currentTarget) {
+            _this4.focus();
+          }
+        }
+      }
+    }, $spinners); // Selected type display
+
+    var $value = h('output', {
+      staticClass: 'border rounded d-block p-1 small text-center',
+      class: {
+        disabled: this.disabled || this.readonly
+      },
+      attrs: {
+        id: valueId,
+        role: 'status',
+        for: spinIds.filter(_utils_identity__WEBPACK_IMPORTED_MODULE_1__["default"]).join(' ') || null,
+        tabindex: this.disabled ? null : '-1',
+        'aria-live': this.isLive ? 'polite' : 'off',
+        'aria-atomic': 'true'
+      },
+      on: {
+        // Transfer focus/click to focus hours spinner
+        click: this.focus,
+        focus: this.focus
+      }
+    }, [h('bdi', this.formattedTimeString), this.computedHMS ? h('span', {
+      staticClass: 'sr-only'
+    }, " (".concat(this.labelSelected, ") ")) : '']);
+    var $header = h('header', {
+      class: {
+        'sr-only': this.hideHeader,
+        'mb-2': !this.hideHeader
+      }
+    }, [$value]); // Optional bottom slot
+
+    var $slot = this.normalizeSlot('default');
+    $slot = $slot ? h('footer', {
+      staticClass: 'mt-2'
+    }, $slot) : h();
+    return h('div', {
+      staticClass: 'b-time d-inline-flex flex-column text-center',
+      attrs: {
+        role: 'group',
+        lang: this.computedLang || null,
+        'aria-labelledby': computedAriaLabelledby || null,
+        'aria-disabled': this.disabled ? 'true' : null,
+        'aria-readonly': this.readonly && !this.disabled ? 'true' : null
+      }
+    }, [$header, $spinners, $slot]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/esm/components/toast/helpers/bv-toast.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/components/toast/helpers/bv-toast.js ***!
@@ -26737,9 +30573,7 @@ var plugin = function plugin(Vue) {
   }; // Declare BvToast instance property class
 
 
-  var BvToast =
-  /*#__PURE__*/
-  function () {
+  var BvToast = /*#__PURE__*/function () {
     function BvToast(vm) {
       _classCallCheck(this, BvToast);
 
@@ -26817,9 +30651,7 @@ var plugin = function plugin(Vue) {
   }
 };
 
-var BVToastPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_5__["pluginFactory"])({
+var BVToastPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_5__["pluginFactory"])({
   plugins: {
     plugin: plugin
   }
@@ -26849,9 +30681,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var ToastPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
+var ToastPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_3__["pluginFactory"])({
   components: {
     BToast: _toast__WEBPACK_IMPORTED_MODULE_1__["BToast"],
     BToaster: _toaster__WEBPACK_IMPORTED_MODULE_2__["BToaster"]
@@ -26883,14 +30713,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/bv-event.class */ "./node_modules/bootstrap-vue/esm/utils/bv-event.class.js");
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
-/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
-/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
-/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
-/* harmony import */ var _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/scoped-style-attrs */ "./node_modules/bootstrap-vue/esm/mixins/scoped-style-attrs.js");
-/* harmony import */ var _toaster__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./toaster */ "./node_modules/bootstrap-vue/esm/components/toast/toaster.js");
-/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
-/* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_number__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../mixins/scoped-style-attrs */ "./node_modules/bootstrap-vue/esm/mixins/scoped-style-attrs.js");
+/* harmony import */ var _toaster__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./toaster */ "./node_modules/bootstrap-vue/esm/components/toast/toaster.js");
+/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
+/* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -26910,14 +30741,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
  // --- Constants ---
 
 var NAME = 'BToast';
-var MIN_DURATION = 1000;
-var EVENT_OPTIONS = {
-  passive: true,
-  capture: false
-}; // --- Props ---
+var MIN_DURATION = 1000; // --- Props ---
 
 var props = {
   id: {
@@ -27014,11 +30842,9 @@ var props = {
   }
 }; // @vue/component
 
-var BToast =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BToast = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
-  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_7__["default"], _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_9__["default"], _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_10__["default"]],
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_9__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__["default"], _mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_11__["default"]],
   inheritAttrs: false,
   model: {
     prop: 'visible',
@@ -27053,7 +30879,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     computedDuration: function computedDuration() {
       // Minimum supported duration is 1 second
-      return Math.max(Object(_utils_number__WEBPACK_IMPORTED_MODULE_6__["toInteger"])(this.autoHideDelay) || 0, MIN_DURATION);
+      return Math.max(Object(_utils_number__WEBPACK_IMPORTED_MODULE_7__["toInteger"])(this.autoHideDelay) || 0, MIN_DURATION);
     },
     computedToaster: function computedToaster() {
       return String(this.toaster);
@@ -27076,7 +30902,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         this.$emit('change', newVal);
       }
     },
-    toaster: function toaster(newVal)
+    toaster: function toaster()
     /* istanbul ignore next */
     {
       // If toaster target changed, make sure toaster exists
@@ -27166,12 +30992,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }
     },
     buildEvent: function buildEvent(type) {
-      var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       return new _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_3__["BvEvent"](type, _objectSpread({
         cancelable: false,
         target: this.$el || null,
         relatedTarget: null
-      }, opts, {
+      }, options, {
         vueTarget: this,
         componentId: this.safeId()
       }));
@@ -27189,7 +31015,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       if (!portal_vue__WEBPACK_IMPORTED_MODULE_1__["Wormhole"].hasTarget(this.computedToaster)) {
         var div = document.createElement('div');
         document.body.appendChild(div);
-        var toaster = new _toaster__WEBPACK_IMPORTED_MODULE_11__["BToaster"]({
+        var toaster = new _toaster__WEBPACK_IMPORTED_MODULE_12__["BToaster"]({
           parent: this.$root,
           propsData: {
             name: this.computedToaster
@@ -27212,12 +31038,11 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.timer = null;
     },
     setHoverHandler: function setHoverHandler(on) {
-      var method = on ? _utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"] : _utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOff"];
       var el = this.$refs['b-toast'];
-      method(el, 'mouseenter', this.onPause, EVENT_OPTIONS);
-      method(el, 'mouseleave', this.onUnPause, EVENT_OPTIONS);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOnOff"])(on, el, 'mouseenter', this.onPause, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOnOff"])(on, el, 'mouseleave', this.onUnPause, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
     },
-    onPause: function onPause(evt) {
+    onPause: function onPause() {
       // Determine time remaining, and then pause timer
       if (this.noAutoHide || this.noHoverPause || !this.timer || this.resumeDismiss) {
         return;
@@ -27230,7 +31055,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         this.resumeDismiss = Math.max(this.computedDuration - passed, MIN_DURATION);
       }
     },
-    onUnPause: function onUnPause(evt) {
+    onUnPause: function onUnPause() {
       // Restart timer with max of time remaining or 1 second
       if (this.noAutoHide || this.noHoverPause || !this.resumeDismiss) {
         this.resumeDismiss = this.dismissStarted = 0;
@@ -27288,10 +31113,10 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }
 
       if (!this.noCloseButton) {
-        $headerContent.push(h(_button_button_close__WEBPACK_IMPORTED_MODULE_12__["BButtonClose"], {
+        $headerContent.push(h(_button_button_close__WEBPACK_IMPORTED_MODULE_13__["BButtonClose"], {
           staticClass: 'ml-auto mb-1',
           on: {
-            click: function click(evt) {
+            click: function click() {
               _this5.hide();
             }
           }
@@ -27310,7 +31135,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
 
       var isLink = this.href || this.to;
-      var $body = h(isLink ? _link_link__WEBPACK_IMPORTED_MODULE_13__["BLink"] : 'div', {
+      var $body = h(isLink ? _link_link__WEBPACK_IMPORTED_MODULE_14__["BLink"] : 'div', {
         staticClass: 'toast-body',
         class: this.bodyClass,
         props: isLink ? {
@@ -27433,9 +31258,7 @@ var props = {
 
 }; // @vue/component
 
-var DefaultTransition =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var DefaultTransition = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   data: function data() {
     return {
       // Transition classes base name
@@ -27467,9 +31290,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   }
 }); // @vue/component
 
-var BToaster =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BToaster = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   props: props,
   data: function data() {
@@ -27603,9 +31424,7 @@ var OffsetMap = {
   LEFTBOTTOM: +1
 }; // @vue/component
 
-var BVPopper =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVPopper = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   props: {
     target: {
@@ -27849,9 +31668,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var NAME = 'BVTooltipTemplate'; // @vue/component
 
-var BVTooltipTemplate =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVTooltipTemplate = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   extends: _bv_popper__WEBPACK_IMPORTED_MODULE_3__["BVPopper"],
   mixins: [_mixins_scoped_style_attrs__WEBPACK_IMPORTED_MODULE_1__["default"]],
@@ -27964,11 +31781,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_noop__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/noop */ "./node_modules/bootstrap-vue/esm/utils/noop.js");
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
-/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
-/* harmony import */ var _utils_warn__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../utils/warn */ "./node_modules/bootstrap-vue/esm/utils/warn.js");
-/* harmony import */ var _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../utils/bv-event.class */ "./node_modules/bootstrap-vue/esm/utils/bv-event.class.js");
-/* harmony import */ var _bv_tooltip_template__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./bv-tooltip-template */ "./node_modules/bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip-template.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_warn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../utils/warn */ "./node_modules/bootstrap-vue/esm/utils/warn.js");
+/* harmony import */ var _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../utils/bv-event.class */ "./node_modules/bootstrap-vue/esm/utils/bv-event.class.js");
+/* harmony import */ var _bv_tooltip_template__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./bv-tooltip-template */ "./node_modules/bootstrap-vue/esm/components/tooltip/helpers/bv-tooltip-template.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -27990,6 +31808,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var NAME = 'BVTooltip'; // Modal container selector for appending tooltip/popover
 
 var MODAL_SELECTOR = '.modal-content'; // Modal `$root` hidden event
@@ -27997,12 +31816,7 @@ var MODAL_SELECTOR = '.modal-content'; // Modal `$root` hidden event
 var MODAL_CLOSE_EVENT = 'bv::modal::hidden'; // For dropdown sniffing
 
 var DROPDOWN_CLASS = 'dropdown';
-var DROPDOWN_OPEN_SELECTOR = '.dropdown-menu.show'; // Options for Native Event Listeners (since we never call preventDefault)
-
-var EvtOpts = {
-  passive: true,
-  capture: false
-}; // Data specific to popper and template
+var DROPDOWN_OPEN_SELECTOR = '.dropdown-menu.show'; // Data specific to popper and template
 // We don't use props, as we need reactivity (we can't pass reactive props)
 
 var templateData = {
@@ -28051,9 +31865,7 @@ var templateData = {
   html: false
 }; // @vue/component
 
-var BVTooltip =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVTooltip = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   props: {// None
   },
@@ -28084,10 +31896,10 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         hide: 0
       };
 
-      if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isPlainObject"])(this.delay)) {
+      if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isPlainObject"])(this.delay)) {
         delay.show = Math.max(parseInt(this.delay.show, 10) || 0, 0);
         delay.hide = Math.max(parseInt(this.delay.hide, 10) || 0, 0);
-      } else if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isNumber"])(this.delay) || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isString"])(this.delay)) {
+      } else if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isNumber"])(this.delay) || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isString"])(this.delay)) {
         delay.show = delay.hide = Math.max(parseInt(this.delay, 10) || 0, 0);
       }
 
@@ -28177,7 +31989,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         _this2.listen();
       } else {
         /* istanbul ignore next */
-        Object(_utils_warn__WEBPACK_IMPORTED_MODULE_8__["warn"])('Unable to find target element in document.', _this2.templateType);
+        Object(_utils_warn__WEBPACK_IMPORTED_MODULE_9__["warn"])('Unable to find target element in document.', _this2.templateType);
       }
     });
   },
@@ -28210,7 +32022,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     // --- Methods for creating and destroying the template ---
     getTemplate: function getTemplate() {
       // Overridden by BVPopover
-      return _bv_tooltip_template__WEBPACK_IMPORTED_MODULE_10__["BVTooltipTemplate"];
+      return _bv_tooltip_template__WEBPACK_IMPORTED_MODULE_11__["BVTooltipTemplate"];
     },
     updateData: function updateData() {
       var _this3 = this;
@@ -28219,8 +32031,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // Method for updating popper/template data
       // We only update data if it exists, and has not changed
       var titleUpdated = false;
-      Object(_utils_object__WEBPACK_IMPORTED_MODULE_7__["keys"])(templateData).forEach(function (prop) {
-        if (!Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isUndefined"])(data[prop]) && _this3[prop] !== data[prop]) {
+      Object(_utils_object__WEBPACK_IMPORTED_MODULE_8__["keys"])(templateData).forEach(function (prop) {
+        if (!Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isUndefined"])(data[prop]) && _this3[prop] !== data[prop]) {
           _this3[prop] = data[prop];
 
           if (prop === 'title') {
@@ -28333,7 +32145,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     show: function show() {
       var target = this.getTarget();
 
-      if (!target || !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["contains"])(document.body, target) || !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["isVisible"])(target) || this.dropdownOpen() || (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isUndefinedOrNull"])(this.title) || this.title === '') && (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isUndefinedOrNull"])(this.content) || this.content === '')) {
+      if (!target || !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["contains"])(document.body, target) || !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["isVisible"])(target) || this.dropdownOpen() || (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isUndefinedOrNull"])(this.title) || this.title === '') && (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isUndefinedOrNull"])(this.content) || this.content === '')) {
         // If trigger element isn't in the DOM or is not visible, or
         // is on an open dropdown toggle, or has no content, then
         // we exit without showing
@@ -28466,16 +32278,16 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // Destroy the template
       this.destroyTemplate(); // Emit a non-cancelable BvEvent 'shown'
 
-      this.emitEvent(this.buildEvent('hidden', {}));
+      this.emitEvent(this.buildEvent('hidden'));
     },
     // --- Utility methods ---
     getTarget: function getTarget() {
       // Handle case where target may be a component ref
       var target = this.target ? this.target.$el || this.target : null; // If an ID
 
-      target = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isString"])(target) ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["getById"])(target.replace(/^#/, '')) : target; // If a function
+      target = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isString"])(target) ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["getById"])(target.replace(/^#/, '')) : target; // If a function
 
-      target = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isFunction"])(target) ? target() : target; // If an element ref
+      target = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isFunction"])(target) ? target() : target; // If an element ref
 
       return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["isElement"])(target) ? target : null;
     },
@@ -28505,7 +32317,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       //   And if not, self destruct (if container got v-if'ed out of DOM)
       //   Or this could possibly be part of the visibility check
 
-      return container === false ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["closest"])(MODAL_SELECTOR, target) || body : Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_6__["isString"])(container) ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["getById"])(container.replace(/^#/, '')) || body : body;
+      return container === false ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["closest"])(MODAL_SELECTOR, target) || body : Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isString"])(container) ? Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["getById"])(container.replace(/^#/, '')) || body : body;
     },
     getBoundary: function getBoundary() {
       return this.boundary ? this.boundary.$el || this.boundary : 'scrollParent';
@@ -28589,15 +32401,15 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     // --- BvEvent helpers ---
     buildEvent: function buildEvent(type) {
-      var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
       // Defaults to a non-cancellable event
-      return new _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_9__["BvEvent"](type, _objectSpread({
+      return new _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_10__["BvEvent"](type, _objectSpread({
         cancelable: false,
         target: this.getTarget(),
         relatedTarget: this.getTemplateElement() || null,
         componentId: this.computedId,
         vueTarget: this
-      }, opts));
+      }, options));
     },
     emitEvent: function emitEvent(bvEvt) {
       // Emits a BvEvent on $root and this instance
@@ -28628,18 +32440,18 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
       this.computedTriggers.forEach(function (trigger) {
         if (trigger === 'click') {
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(el, 'click', _this6.handleEvent, EvtOpts);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOn"])(el, 'click', _this6.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
         } else if (trigger === 'focus') {
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(el, 'focusin', _this6.handleEvent, EvtOpts);
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(el, 'focusout', _this6.handleEvent, EvtOpts);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOn"])(el, 'focusin', _this6.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOn"])(el, 'focusout', _this6.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
         } else if (trigger === 'blur') {
           // Used to close $tip when element looses focus
 
           /* istanbul ignore next */
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(el, 'focusout', _this6.handleEvent, EvtOpts);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOn"])(el, 'focusout', _this6.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
         } else if (trigger === 'hover') {
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(el, 'mouseenter', _this6.handleEvent, EvtOpts);
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"])(el, 'mouseleave', _this6.handleEvent, EvtOpts);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOn"])(el, 'mouseenter', _this6.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOn"])(el, 'mouseleave', _this6.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
         }
       }, this);
     },
@@ -28655,7 +32467,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       this.setRootListener(false); // Clear out any active target listeners
 
       events.forEach(function (evt) {
-        target && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOff"])(target, evt, _this7.handleEvent, EvtOpts);
+        target && Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOff"])(target, evt, _this7.handleEvent, _utils_events__WEBPACK_IMPORTED_MODULE_6__["EVENT_OPTIONS_NO_CAPTURE"]);
       }, this);
     },
     setRootListener: function setRootListener(on) {
@@ -28717,9 +32529,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // Only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
-        var method = on ? _utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"] : _utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOff"];
         Object(_utils_array__WEBPACK_IMPORTED_MODULE_4__["from"])(document.body.children).forEach(function (el) {
-          method(el, 'mouseover', _this9.$_noop);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_6__["eventOnOff"])(on, el, 'mouseover', _this9.$_noop);
         });
       }
     },
@@ -28822,7 +32633,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         this.enable();
       }
     },
-    click: function click(evt) {
+    click: function click() {
       if (!this.$_enabled || this.dropdownOpen()) {
         /* istanbul ignore next */
         return;
@@ -28950,9 +32761,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var TooltipPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
+var TooltipPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
   components: {
     BTooltip: _tooltip__WEBPACK_IMPORTED_MODULE_0__["BTooltip"]
   },
@@ -28990,9 +32799,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BTooltip'; // @vue/component
 
-var BTooltip =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTooltip = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   props: {
     title: {
@@ -29146,18 +32953,18 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         }
       }
     },
-    disabled: function disabled(newVal, oldVal) {
+    disabled: function disabled(newVal) {
       if (newVal) {
         this.doDisable();
       } else {
         this.doEnable();
       }
     },
-    localShow: function localShow(show, oldVal) {
+    localShow: function localShow(newVal) {
       // TODO: May need to be done in a `$nextTick()`
-      this.$emit('update:show', show);
+      this.$emit('update:show', newVal);
     },
-    templateData: function templateData(newVal, oldVal) {
+    templateData: function templateData() {
       var _this = this;
 
       this.$nextTick(function () {
@@ -29167,7 +32974,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       });
     },
     // Watchers for title/content props (prop changes do not trigger the `updated()` hook)
-    templateTitleContent: function templateTitleContent(newVal, oldVal) {
+    templateTitleContent: function templateTitleContent() {
       this.$nextTick(this.updateContent);
     }
   },
@@ -29317,7 +33124,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     doClose: function doClose() {
       this.localShow && this.$_bv_toolpop && this.$_bv_toolpop.hide();
     },
-    doDisable: function doDisable(evt) {
+    doDisable: function doDisable() {
       this.$_bv_toolpop && this.$_bv_toolpop.disable();
     },
     doEnable: function doEnable() {
@@ -29335,6 +33142,102 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-vue/esm/directives/hover/hover.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/directives/hover/hover.js ***!
+  \******************************************************************/
+/*! exports provided: VBHover */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VBHover", function() { return VBHover; });
+/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+// v-b-hover directive
+
+
+ // --- Constants ---
+
+var PROP = '__BV_hover_handler__';
+var MOUSEENTER = 'mouseenter';
+var MOUSELEAVE = 'mouseleave'; // --- Utility methods ---
+
+var createListener = function createListener(handler) {
+  var listener = function listener(evt) {
+    handler(evt.type === MOUSEENTER, evt);
+  };
+
+  listener.fn = handler;
+  return listener;
+};
+
+var updateListeners = function updateListeners(on, el, listener) {
+  Object(_utils_events__WEBPACK_IMPORTED_MODULE_1__["eventOnOff"])(on, el, MOUSEENTER, listener, _utils_events__WEBPACK_IMPORTED_MODULE_1__["EVENT_OPTIONS_NO_CAPTURE"]);
+  Object(_utils_events__WEBPACK_IMPORTED_MODULE_1__["eventOnOff"])(on, el, MOUSELEAVE, listener, _utils_events__WEBPACK_IMPORTED_MODULE_1__["EVENT_OPTIONS_NO_CAPTURE"]);
+}; // --- Directive bind/unbind/update handler ---
+
+
+var directive = function directive(el, _ref) {
+  var _ref$value = _ref.value,
+      handler = _ref$value === void 0 ? null : _ref$value;
+
+  if (_utils_env__WEBPACK_IMPORTED_MODULE_0__["isBrowser"]) {
+    var listener = el[PROP];
+    var hasListener = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(listener);
+    var handlerChanged = !(hasListener && listener.fn === handler);
+
+    if (hasListener && handlerChanged) {
+      updateListeners(false, el, listener);
+      delete el[PROP];
+    }
+
+    if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(handler) && handlerChanged) {
+      el[PROP] = createListener(handler);
+      updateListeners(true, el, el[PROP]);
+    }
+  }
+}; // VBHover directive
+
+
+var VBHover = {
+  bind: directive,
+  componentUpdated: directive,
+  unbind: function unbind(el) {
+    directive(el, {
+      value: null
+    });
+  }
+};
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/directives/hover/index.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/directives/hover/index.js ***!
+  \******************************************************************/
+/*! exports provided: VBHoverPlugin, VBHover */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VBHoverPlugin", function() { return VBHoverPlugin; });
+/* harmony import */ var _hover__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hover */ "./node_modules/bootstrap-vue/esm/directives/hover/hover.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBHover", function() { return _hover__WEBPACK_IMPORTED_MODULE_0__["VBHover"]; });
+
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+
+
+var VBHoverPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+  directives: {
+    VBHover: _hover__WEBPACK_IMPORTED_MODULE_0__["VBHover"]
+  }
+});
+
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/esm/directives/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/directives/index.js ***!
@@ -29346,12 +33249,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "directivesPlugin", function() { return directivesPlugin; });
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
-/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal */ "./node_modules/bootstrap-vue/esm/directives/modal/index.js");
-/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./popover */ "./node_modules/bootstrap-vue/esm/directives/popover/index.js");
-/* harmony import */ var _scrollspy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scrollspy */ "./node_modules/bootstrap-vue/esm/directives/scrollspy/index.js");
-/* harmony import */ var _toggle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./toggle */ "./node_modules/bootstrap-vue/esm/directives/toggle/index.js");
-/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tooltip */ "./node_modules/bootstrap-vue/esm/directives/tooltip/index.js");
-/* harmony import */ var _visible__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./visible */ "./node_modules/bootstrap-vue/esm/directives/visible/index.js");
+/* harmony import */ var _hover__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hover */ "./node_modules/bootstrap-vue/esm/directives/hover/index.js");
+/* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./node_modules/bootstrap-vue/esm/directives/modal/index.js");
+/* harmony import */ var _popover__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./popover */ "./node_modules/bootstrap-vue/esm/directives/popover/index.js");
+/* harmony import */ var _scrollspy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scrollspy */ "./node_modules/bootstrap-vue/esm/directives/scrollspy/index.js");
+/* harmony import */ var _toggle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./toggle */ "./node_modules/bootstrap-vue/esm/directives/toggle/index.js");
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tooltip */ "./node_modules/bootstrap-vue/esm/directives/tooltip/index.js");
+/* harmony import */ var _visible__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./visible */ "./node_modules/bootstrap-vue/esm/directives/visible/index.js");
+
 
 
 
@@ -29360,16 +33265,15 @@ __webpack_require__.r(__webpack_exports__);
 
  // Main plugin for installing all directive plugins
 
-var directivesPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])({
+var directivesPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])({
   plugins: {
-    VBModalPlugin: _modal__WEBPACK_IMPORTED_MODULE_1__["VBModalPlugin"],
-    VBPopoverPlugin: _popover__WEBPACK_IMPORTED_MODULE_2__["VBPopoverPlugin"],
-    VBScrollspyPlugin: _scrollspy__WEBPACK_IMPORTED_MODULE_3__["VBScrollspyPlugin"],
-    VBTogglePlugin: _toggle__WEBPACK_IMPORTED_MODULE_4__["VBTogglePlugin"],
-    VBTooltipPlugin: _tooltip__WEBPACK_IMPORTED_MODULE_5__["VBTooltipPlugin"],
-    VBVisiblePlugin: _visible__WEBPACK_IMPORTED_MODULE_6__["VBVisiblePlugin"]
+    VBHoverPlugin: _hover__WEBPACK_IMPORTED_MODULE_1__["VBHoverPlugin"],
+    VBModalPlugin: _modal__WEBPACK_IMPORTED_MODULE_2__["VBModalPlugin"],
+    VBPopoverPlugin: _popover__WEBPACK_IMPORTED_MODULE_3__["VBPopoverPlugin"],
+    VBScrollspyPlugin: _scrollspy__WEBPACK_IMPORTED_MODULE_4__["VBScrollspyPlugin"],
+    VBTogglePlugin: _toggle__WEBPACK_IMPORTED_MODULE_5__["VBTogglePlugin"],
+    VBTooltipPlugin: _tooltip__WEBPACK_IMPORTED_MODULE_6__["VBTooltipPlugin"],
+    VBVisiblePlugin: _visible__WEBPACK_IMPORTED_MODULE_7__["VBVisiblePlugin"]
   }
 });
 
@@ -29391,9 +33295,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var VBModalPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var VBModalPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   directives: {
     VBModal: _modal__WEBPACK_IMPORTED_MODULE_0__["VBModal"]
   }
@@ -29414,8 +33316,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VBModal", function() { return VBModal; });
 /* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
-/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+
 
 
 
@@ -29424,9 +33328,6 @@ __webpack_require__.r(__webpack_exports__);
 var EVENT_SHOW = 'bv::show::modal'; // Prop name we use to store info on root element
 
 var PROPERTY = '__bv_modal_directive__';
-var EVENT_OPTS = {
-  passive: true
-};
 
 var getTarget = function getTarget(_ref) {
   var _ref$modifiers = _ref.modifiers,
@@ -29434,7 +33335,7 @@ var getTarget = function getTarget(_ref) {
       arg = _ref.arg,
       value = _ref.value;
   // Try value, then arg, otherwise pick last modifier
-  return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isString"])(value) ? value : Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isString"])(arg) ? arg : Object(_utils_object__WEBPACK_IMPORTED_MODULE_3__["keys"])(modifiers).reverse()[0];
+  return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(value) ? value : Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(arg) ? arg : Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["keys"])(modifiers).reverse()[0];
 };
 
 var getTriggerElement = function getTriggerElement(el) {
@@ -29485,12 +33386,12 @@ var bind = function bind(el, binding, vnode) {
 
     setRole(trigger); // Listen for click events
 
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(trigger, 'click', handler, EVENT_OPTS);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(trigger, 'click', handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_PASSIVE"]);
 
     if (trigger.tagName !== 'BUTTON' && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["getAttr"])(trigger, 'role') === 'button') {
       // If trigger isn't a button but has role button,
       // we also listen for `keydown.space` && `keydown.enter`
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(trigger, 'keydown', handler, EVENT_OPTS);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(trigger, 'keydown', handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_PASSIVE"]);
     }
   }
 };
@@ -29501,10 +33402,10 @@ var unbind = function unbind(el) {
   var handler = oldProp.handler;
 
   if (trigger && handler) {
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(trigger, 'click', handler, EVENT_OPTS);
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(trigger, 'keydown', handler, EVENT_OPTS);
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(el, 'click', handler, EVENT_OPTS);
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(el, 'keydown', handler, EVENT_OPTS);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(trigger, 'click', handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_PASSIVE"]);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(trigger, 'keydown', handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_PASSIVE"]);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(el, 'click', handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_PASSIVE"]);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(el, 'keydown', handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_PASSIVE"]);
   }
 
   delete el[PROPERTY];
@@ -29557,9 +33458,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var VBPopoverPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var VBPopoverPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   directives: {
     VBPopover: _popover__WEBPACK_IMPORTED_MODULE_0__["VBPopover"]
   }
@@ -29874,9 +33773,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var VBScrollspyPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var VBScrollspyPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   directives: {
     VBScrollspy: _scrollspy__WEBPACK_IMPORTED_MODULE_0__["VBScrollspy"]
   }
@@ -29896,9 +33793,10 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_observe_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/observe-dom */ "./node_modules/bootstrap-vue/esm/utils/observe-dom.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
-/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
-/* harmony import */ var _utils_warn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/warn */ "./node_modules/bootstrap-vue/esm/utils/warn.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
+/* harmony import */ var _utils_warn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/warn */ "./node_modules/bootstrap-vue/esm/utils/warn.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -29914,6 +33812,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 /*
  * ScrollSpy class definition
  */
+
 
 
 
@@ -29960,12 +33859,7 @@ var OffsetMethod = {
 
 var HREF_REGEX = /^.*(#[^#]+)$/; // Transition Events
 
-var TransitionEndEvents = ['webkitTransitionEnd', 'transitionend', 'otransitionend', 'oTransitionEnd']; // Options for events
-
-var EventOptions = {
-  passive: true,
-  capture: false
-};
+var TransitionEndEvents = ['webkitTransitionEnd', 'transitionend', 'otransitionend', 'oTransitionEnd'];
 /*
  * Utility Methods
  */
@@ -29974,7 +33868,7 @@ var EventOptions = {
 var toType = function toType(obj)
 /* istanbul ignore next: not easy to test */
 {
-  return Object(_utils_object__WEBPACK_IMPORTED_MODULE_3__["toString"])(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+  return Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["toString"])(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
 }; // Check config properties for expected types
 
 
@@ -29991,7 +33885,7 @@ var typeCheckConfig = function typeCheckConfig(componentName, config, configType
 
       if (!new RegExp(expectedTypes).test(valueType)) {
         /* istanbul ignore next */
-        Object(_utils_warn__WEBPACK_IMPORTED_MODULE_4__["warn"])("".concat(componentName, ": Option \"").concat(property, "\" provided type \"").concat(valueType, "\" but expected type \"").concat(expectedTypes, "\""));
+        Object(_utils_warn__WEBPACK_IMPORTED_MODULE_5__["warn"])("".concat(componentName, ": Option \"").concat(property, "\" provided type \"").concat(valueType, "\" but expected type \"").concat(expectedTypes, "\""));
       }
     }
   }
@@ -30007,9 +33901,7 @@ var typeCheckConfig = function typeCheckConfig(componentName, config, configType
 
 var ScrollSpy
 /* istanbul ignore next: not easy to test */
-=
-/*#__PURE__*/
-function () {
+= /*#__PURE__*/function () {
   function ScrollSpy(element, config, $root) {
     _classCallCheck(this, ScrollSpy);
 
@@ -30079,14 +33971,14 @@ function () {
       var scroller = this.getScroller();
 
       if (scroller && scroller.tagName !== 'BODY') {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(scroller, 'scroll', this, EventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(scroller, 'scroll', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
       }
 
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(window, 'scroll', this, EventOptions);
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(window, 'resize', this, EventOptions);
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(window, 'orientationchange', this, EventOptions);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(window, 'scroll', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(window, 'resize', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(window, 'orientationchange', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
       TransitionEndEvents.forEach(function (evtName) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(window, evtName, _this, EventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(window, evtName, _this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
       });
       this.setObservers(true); // Schedule a refresh
 
@@ -30101,14 +33993,14 @@ function () {
       this.setObservers(false);
 
       if (scroller && scroller.tagName !== 'BODY') {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(scroller, 'scroll', this, EventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(scroller, 'scroll', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
       }
 
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(window, 'scroll', this, EventOptions);
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(window, 'resize', this, EventOptions);
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(window, 'orientationchange', this, EventOptions);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(window, 'scroll', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(window, 'resize', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(window, 'orientationchange', this, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
       TransitionEndEvents.forEach(function (evtName) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(window, evtName, _this2, EventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(window, evtName, _this2, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
       });
     }
   }, {
@@ -30151,7 +34043,7 @@ function () {
   }, {
     key: "handleEvent",
     value: function handleEvent(evt) {
-      var type = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isString"])(evt) ? evt : evt.type;
+      var type = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(evt) ? evt : evt.type;
       var self = this;
 
       var resizeThrottle = function resizeThrottle() {
@@ -30270,7 +34162,7 @@ function () {
       }
 
       for (var i = this.$offsets.length; i--;) {
-        var isActiveTarget = this.$activeTarget !== this.$targets[i] && scrollTop >= this.$offsets[i] && (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isUndefined"])(this.$offsets[i + 1]) || scrollTop < this.$offsets[i + 1]);
+        var isActiveTarget = this.$activeTarget !== this.$targets[i] && scrollTop >= this.$offsets[i] && (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isUndefined"])(this.$offsets[i + 1]) || scrollTop < this.$offsets[i + 1]);
 
         if (isActiveTarget) {
           this.activate(this.$targets[i]);
@@ -30290,7 +34182,7 @@ function () {
         return null;
       } else if (Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["isElement"])(scroller.$el)) {
         scroller = scroller.$el;
-      } else if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isString"])(scroller)) {
+      } else if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(scroller)) {
         scroller = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["select"])(scroller);
       }
 
@@ -30580,9 +34472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var VBTogglePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var VBTogglePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   directives: {
     VBToggle: _toggle__WEBPACK_IMPORTED_MODULE_0__["VBToggle"]
   }
@@ -30773,9 +34663,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var VBTooltipPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var VBTooltipPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   directives: {
     VBTooltip: _tooltip__WEBPACK_IMPORTED_MODULE_0__["VBTooltip"]
   }
@@ -31087,9 +34975,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
 
 
-var VBVisiblePlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
+var VBVisiblePlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_1__["pluginFactory"])({
   directives: {
     VBVisible: _visible__WEBPACK_IMPORTED_MODULE_0__["VBVisible"]
   }
@@ -31157,9 +35043,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var OBSERVER_PROP_NAME = '__bv__visibility_observer';
 var onlyDgitsRE = /^\d+$/;
 
-var VisibilityObserver =
-/*#__PURE__*/
-function () {
+var VisibilityObserver = /*#__PURE__*/function () {
   function VisibilityObserver(el, options, vnode) {
     _classCallCheck(this, VisibilityObserver);
 
@@ -31391,6 +35275,10 @@ var commonIconProps = {
   shiftV: {
     type: [Number, String],
     default: 0
+  },
+  animation: {
+    type: String,
+    default: null
   }
 }; // Base attributes needed on all icons
 
@@ -31404,9 +35292,7 @@ var baseAttrs = {
 }; // Shared private base component to reduce bundle/runtime size
 // @vue/component
 
-var BVIconBase =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVIconBase = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BVIconBase',
   functional: true,
   props: _objectSpread({
@@ -31419,6 +35305,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   }, commonIconProps),
   render: function render(h, _ref) {
+    var _class;
+
     var data = _ref.data,
         props = _ref.props,
         children = _ref.children;
@@ -31428,7 +35316,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     var shiftH = Object(_utils_number__WEBPACK_IMPORTED_MODULE_4__["toFloat"])(props.shiftH) || 0;
     var shiftV = Object(_utils_number__WEBPACK_IMPORTED_MODULE_4__["toFloat"])(props.shiftV) || 0;
     var flipH = props.flipH;
-    var flipV = props.flipV; // Compute the transforms
+    var flipV = props.flipV;
+    var animation = props.animation; // Compute the transforms
     // Note that order is important as SVG transforms are applied in order from
     // left to right and we want flipping/scale to occur before rotation
     // Note shifting is applied separately
@@ -31459,9 +35348,15 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }, [$inner]);
     }
 
+    if (isStacked) {
+      // Wrap in an additional `<g>` for proper
+      // animation handling if stacked
+      $inner = h('g', {}, [$inner]);
+    }
+
     return h('svg', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])({
       staticClass: 'b-icon bi',
-      class: _defineProperty({}, "text-".concat(props.variant), !!props.variant),
+      class: (_class = {}, _defineProperty(_class, "text-".concat(props.variant), !!props.variant), _defineProperty(_class, "b-icon-animation-".concat(animation), !!animation), _class),
       attrs: baseAttrs,
       style: isStacked ? {} : {
         fontSize: fontScale === 1 ? null : "".concat(fontScale * 100, "%")
@@ -31526,9 +35421,7 @@ var makeIcon = function makeIcon(name, content) {
   var iconNameClass = "bi-".concat(Object(_utils_string__WEBPACK_IMPORTED_MODULE_2__["kebabCase"])(name));
   var svgContent = Object(_utils_string__WEBPACK_IMPORTED_MODULE_2__["trim"])(content || ''); // Return the icon component definition
 
-  return (
-    /*#__PURE__*/
-    _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  return (/*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       name: iconName,
       functional: true,
       props: _objectSpread({}, _icon_base__WEBPACK_IMPORTED_MODULE_3__["commonIconProps"], {
@@ -31582,9 +35475,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var RX_ICON_PREFIX = /^BIcon/; // Helper BIcon component
 // Requires the requested icon component to be installed
 
-var BIcon =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BIcon = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BIcon',
   functional: true,
   props: _objectSpread({
@@ -31948,7 +35839,7 @@ __webpack_require__.r(__webpack_exports__);
 // --- BEGIN AUTO-GENERATED FILE ---
 //
 // @IconsVersion: 1.0.0-alpha2
-// @Generated: 2020-02-01T18:38:07.347Z
+// @Generated: 2020-03-14T14:07:22.334Z
 //
 // This file is generated on each build. Do not edit this file!
 
@@ -31961,955 +35852,323 @@ __webpack_require__.r(__webpack_exports__);
  */
  // --- BootstrapVue custom icons ---
 
-var BIconBlank =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Blank', ''); // --- Bootstrap Icons ---
+var BIconBlank = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Blank', ''); // --- Bootstrap Icons ---
 
-var BIconAlarm =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Alarm', '<path fill-rule="evenodd" d="M10 17a6 6 0 100-12 6 6 0 000 12zm0 1a7 7 0 100-14 7 7 0 000 14z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v4a.5.5 0 01-.053.224l-1.5 3a.5.5 0 11-.894-.448L9.5 10.882V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path d="M2.86 7.387A2.5 2.5 0 116.387 3.86 8.035 8.035 0 002.86 7.387zM13.613 3.86a2.5 2.5 0 113.527 3.527 8.035 8.035 0 00-3.527-3.527z"/><path fill-rule="evenodd" d="M13.646 16.146a.5.5 0 01.708 0l1 1a.5.5 0 01-.708.708l-1-1a.5.5 0 010-.708zm-7.292 0a.5.5 0 00-.708 0l-1 1a.5.5 0 00.708.708l1-1a.5.5 0 000-.708zM7.5 2.5A.5.5 0 018 2h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M9 3h2v2H9V3z"/>');
-var BIconAlarmFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlarmFill', '<path fill-rule="evenodd" d="M7.5 2.5A.5.5 0 018 2h4a.5.5 0 010 1h-1v1.07a7.002 7.002 0 013.537 12.26l.817.816a.5.5 0 01-.708.708l-.924-.925A6.967 6.967 0 0110 18a6.967 6.967 0 01-3.722-1.07l-.924.924a.5.5 0 01-.708-.708l.817-.816A7.002 7.002 0 019 4.07V3H8a.5.5 0 01-.5-.5zM2.86 7.387A2.5 2.5 0 116.387 3.86 8.035 8.035 0 002.86 7.387zM15.5 3c-.753 0-1.429.333-1.887.86a8.035 8.035 0 013.527 3.527A2.5 2.5 0 0015.5 3zm-5 4a.5.5 0 00-1 0v3.882l-1.447 2.894a.5.5 0 10.894.448l1.5-3A.5.5 0 0010.5 11V7z" clip-rule="evenodd"/>');
-var BIconAlertCircle =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertCircle', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path d="M9.002 13a1 1 0 112 0 1 1 0 01-2 0zM9.1 6.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 6.995z"/>');
-var BIconAlertCircleFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertCircleFill', '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8.998 3a1 1 0 112 0 1 1 0 01-2 0zM10 6a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 6z" clip-rule="evenodd"/>');
-var BIconAlertOctagon =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertOctagon', '<path fill-rule="evenodd" d="M6.54 2.146A.5.5 0 016.893 2h6.214a.5.5 0 01.353.146l4.394 4.394a.5.5 0 01.146.353v6.214a.5.5 0 01-.146.353l-4.394 4.394a.5.5 0 01-.353.146H6.893a.5.5 0 01-.353-.146L2.146 13.46A.5.5 0 012 13.107V6.893a.5.5 0 01.146-.353L6.54 2.146zM7.1 3L3 7.1v5.8L7.1 17h5.8l4.1-4.1V7.1L12.9 3H7.1z" clip-rule="evenodd"/><rect width="2" height="2" x="9.002" y="12" rx="1"/><path d="M9.1 6.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 6.995z"/>');
-var BIconAlertOctagonFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertOctagonFill', '<path fill-rule="evenodd" d="M13.107 2a.5.5 0 01.353.146l4.394 4.394a.5.5 0 01.146.353v6.214a.5.5 0 01-.146.353l-4.394 4.394a.5.5 0 01-.353.146H6.893a.5.5 0 01-.353-.146L2.146 13.46A.5.5 0 012 13.107V6.893a.5.5 0 01.146-.353L6.54 2.146A.5.5 0 016.893 2h6.214zM9.002 13a1 1 0 112 0 1 1 0 01-2 0zM10 6a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 6z" clip-rule="evenodd"/>');
-var BIconAlertSquare =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><rect width="2" height="2" x="9.002" y="12" rx="1"/><path d="M9.1 6.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 6.995z"/>');
-var BIconAlertSquareFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertSquareFill', '<path fill-rule="evenodd" d="M2 4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm7.002 9a1 1 0 112 0 1 1 0 01-2 0zM10 6a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 6z" clip-rule="evenodd"/>');
-var BIconAlertTriangle =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertTriangle', '<path fill-rule="evenodd" d="M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L10.12 4.073a.146.146 0 00-.054-.057.13.13 0 00-.063-.016.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z" clip-rule="evenodd"/><rect width="2" height="2" x="9.002" y="13" rx="1"/><path d="M9.1 7.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 7.995z"/>');
-var BIconAlertTriangleFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertTriangleFill', '<path fill-rule="evenodd" d="M9.022 3.566a1.13 1.13 0 011.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H3.144c-.889 0-1.437-.99-.98-1.767L9.022 3.566zM9.002 14a1 1 0 112 0 1 1 0 01-2 0zM10 7a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 7z" clip-rule="evenodd"/>');
-var BIconArchive =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Archive', '<path fill-rule="evenodd" d="M4 7v7.5c0 .864.642 1.5 1.357 1.5h9.286c.715 0 1.357-.636 1.357-1.5V7h1v7.5c0 1.345-1.021 2.5-2.357 2.5H5.357C4.021 17 3 15.845 3 14.5V7h1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.5 9.5A.5.5 0 018 9h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zM17 4H3v2h14V4zM3 3a1 1 0 00-1 1v2a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/>');
-var BIconArchiveFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArchiveFill', '<path fill-rule="evenodd" d="M14.643 17C15.979 17 17 15.845 17 14.5V7H3v7.5C3 15.845 4.021 17 5.357 17h9.286zM8 9a.5.5 0 000 1h4a.5.5 0 000-1H8zM3 3a1 1 0 00-1 1v1.5a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/>');
-var BIconArrowBarBottom =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarBottom', '<path fill-rule="evenodd" d="M13.354 12.146a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 01.708-.708L10 14.793l2.646-2.647a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5V15a.5.5 0 01-1 0V8.5A.5.5 0 0110 8zM4 5.75a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowBarLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarLeft', '<path fill-rule="evenodd" d="M7.854 6.646a.5.5 0 00-.708 0l-3 3a.5.5 0 000 .708l3 3a.5.5 0 00.708-.708L5.207 10l2.647-2.646a.5.5 0 000-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 10a.5.5 0 00-.5-.5H5a.5.5 0 000 1h6.5a.5.5 0 00.5-.5zm2.5 6a.5.5 0 01-.5-.5v-11a.5.5 0 011 0v11a.5.5 0 01-.5.5z" clip-rule="evenodd"/>');
-var BIconArrowBarRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarRight', '<path fill-rule="evenodd" d="M12.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8 10a.5.5 0 01.5-.5H15a.5.5 0 010 1H8.5A.5.5 0 018 10zm-2.5 6a.5.5 0 01-.5-.5v-11a.5.5 0 011 0v11a.5.5 0 01-.5.5z" clip-rule="evenodd"/>');
-var BIconArrowBarUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarUp', '<path fill-rule="evenodd" d="M13.354 7.854a.5.5 0 000-.708l-3-3a.5.5 0 00-.708 0l-3 3a.5.5 0 10.708.708L10 5.207l2.646 2.647a.5.5 0 00.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 12a.5.5 0 00.5-.5V5a.5.5 0 00-1 0v6.5a.5.5 0 00.5.5zm-6 2.75a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowClockwise =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowClockwise', '<path fill-rule="evenodd" d="M10 4.5a5.5 5.5 0 105.5 5.5.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63l-.5.865A5.472 5.472 0 0010 4.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.646 1.646a.5.5 0 01.708 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 01-.708-.708L12.793 4.5l-2.147-2.146a.5.5 0 010-.708z" clip-rule="evenodd"/>');
-var BIconArrowCounterclockwise =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowCounterclockwise', '<path fill-rule="evenodd" d="M10 4.5A5.5 5.5 0 114.5 10a.5.5 0 00-1 0 6.5 6.5 0 103.25-5.63l.5.865A5.472 5.472 0 0110 4.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.354 1.646a.5.5 0 00-.708 0l-2.5 2.5a.5.5 0 000 .708l2.5 2.5a.5.5 0 10.708-.708L7.207 4.5l2.147-2.146a.5.5 0 000-.708z" clip-rule="evenodd"/>');
-var BIconArrowDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDown', '<path fill-rule="evenodd" d="M6.646 11.646a.5.5 0 01.708 0L10 14.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowDownLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDownLeft', '<path fill-rule="evenodd" d="M5 9.5a.5.5 0 01.5.5v4.5H10a.5.5 0 010 1H5a.5.5 0 01-.5-.5v-5a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-9 9a.5.5 0 01-.708-.708l9-9a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconArrowDownRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDownRight', '<path fill-rule="evenodd" d="M14 9.5a.5.5 0 01.5.5v5a.5.5 0 01-.5.5H9a.5.5 0 010-1h4.5V10a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.646 5.646a.5.5 0 01.708 0l9 9a.5.5 0 01-.708.708l-9-9a.5.5 0 010-.708z" clip-rule="evenodd"/>');
-var BIconArrowDownShort =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDownShort', '<path fill-rule="evenodd" d="M6.646 9.646a.5.5 0 01.708 0L10 12.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowLeft', '<path fill-rule="evenodd" d="M7.854 6.646a.5.5 0 010 .708L5.207 10l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 10a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowLeftRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowLeftRight', '<path fill-rule="evenodd" d="M12.146 9.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.793 13l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4 13a.5.5 0 01.5-.5H15a.5.5 0 010 1H4.5A.5.5 0 014 13zm3.854-9.354a.5.5 0 010 .708L5.207 7l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 7a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowLeftShort =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowLeftShort', '<path fill-rule="evenodd" d="M9.854 6.646a.5.5 0 010 .708L7.207 10l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowRepeat =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowRepeat', '<path fill-rule="evenodd" d="M4 9.5a.5.5 0 00-.5.5 6.5 6.5 0 0012.13 3.25.5.5 0 00-.866-.5A5.5 5.5 0 014.5 10a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.354 9.146a.5.5 0 00-.708 0l-2 2a.5.5 0 00.708.708L4 10.207l1.646 1.647a.5.5 0 00.708-.708l-2-2zM15.947 10.5a.5.5 0 00.5-.5 6.5 6.5 0 00-12.13-3.25.5.5 0 10.866.5A5.5 5.5 0 0115.448 10a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M18.354 8.146a.5.5 0 00-.708 0L16 9.793l-1.646-1.647a.5.5 0 00-.708.708l2 2a.5.5 0 00.708 0l2-2a.5.5 0 000-.708z" clip-rule="evenodd"/>');
-var BIconArrowRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowRight', '<path fill-rule="evenodd" d="M12.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4 10a.5.5 0 01.5-.5H15a.5.5 0 010 1H4.5A.5.5 0 014 10z" clip-rule="evenodd"/>');
-var BIconArrowRightShort =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowRightShort', '<path fill-rule="evenodd" d="M10.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6 10a.5.5 0 01.5-.5H13a.5.5 0 010 1H6.5A.5.5 0 016 10z" clip-rule="evenodd"/>');
-var BIconArrowUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUp', '<path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.646 4.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L10 5.707 7.354 8.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"/>');
-var BIconArrowUpDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpDown', '<path fill-rule="evenodd" d="M13 5.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.646 4.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L13 5.707l-2.646 2.647a.5.5 0 01-.708-.708l3-3zm-9 7a.5.5 0 01.708 0L7 14.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 4.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowUpLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpLeft', '<path fill-rule="evenodd" d="M4.5 6a.5.5 0 01.5-.5h5a.5.5 0 010 1H5.5V11a.5.5 0 01-1 0V6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.646 5.646a.5.5 0 01.708 0l9 9a.5.5 0 01-.708.708l-9-9a.5.5 0 010-.708z" clip-rule="evenodd"/>');
-var BIconArrowUpRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpRight', '<path fill-rule="evenodd" d="M8.5 6a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V6.5H9a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-9 9a.5.5 0 01-.708-.708l9-9a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconArrowUpShort =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpShort', '<path fill-rule="evenodd" d="M10 7.5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V8a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.646 6.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L10 7.707l-2.646 2.647a.5.5 0 01-.708-.708l3-3z" clip-rule="evenodd"/>');
-var BIconArrowsAngleContract =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsAngleContract', '<path fill-rule="evenodd" d="M11.5 4.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16.354 3.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0zm-7.5 7.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.036 11.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V12h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowsAngleExpand =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsAngleExpand', '<path fill-rule="evenodd" d="M4 11.5a.5.5 0 01.5.5v3.5H8a.5.5 0 010 1H4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.854 11.11a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.708-.707l4.5-4.5a.5.5 0 01.708 0zm7.464-7.464a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.707-.708l4.5-4.5a.5.5 0 01.707 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.5 4a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V4.5H12a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconArrowsCollapse =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsCollapse', '<path fill-rule="evenodd" d="M4 10a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11A.5.5 0 014 10zm6-7a.5.5 0 01.5.5V8a.5.5 0 01-1 0V3.5A.5.5 0 0110 3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 5.646a.5.5 0 010 .708l-2 2a.5.5 0 01-.708 0l-2-2a.5.5 0 11.708-.708L10 7.293l1.646-1.647a.5.5 0 01.708 0zM10 17a.5.5 0 00.5-.5V12a.5.5 0 00-1 0v4.5a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 14.354a.5.5 0 000-.708l-2-2a.5.5 0 00-.708 0l-2 2a.5.5 0 00.708.708L10 12.707l1.646 1.647a.5.5 0 00.708 0z" clip-rule="evenodd"/>');
-var BIconArrowsExpand =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsExpand', '<path fill-rule="evenodd" d="M4 10a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11A.5.5 0 014 10zm6-1.5a.5.5 0 00.5-.5V3.5a.5.5 0 00-1 0V8a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 5.854a.5.5 0 000-.708l-2-2a.5.5 0 00-.708 0l-2 2a.5.5 0 10.708.708L10 4.207l1.646 1.647a.5.5 0 00.708 0zM10 11.5a.5.5 0 01.5.5v4.5a.5.5 0 01-1 0V12a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 14.146a.5.5 0 010 .708l-2 2a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L10 15.793l1.646-1.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconArrowsFullscreen =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsFullscreen', '<path fill-rule="evenodd" d="M4 11.5a.5.5 0 01.5.5v3.5H8a.5.5 0 010 1H4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.854 11.11a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.708-.707l4.5-4.5a.5.5 0 01.708 0zm7.464-7.464a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.707-.708l4.5-4.5a.5.5 0 01.707 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.5 4a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V4.5H12a.5.5 0 01-.5-.5zm4.5 7.5a.5.5 0 00-.5.5v3.5H12a.5.5 0 000 1h4a.5.5 0 00.5-.5v-4a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.146 11.11a.5.5 0 000 .708l4.5 4.5a.5.5 0 00.708-.707l-4.5-4.5a.5.5 0 00-.708 0zM3.682 3.646a.5.5 0 000 .708l4.5 4.5a.5.5 0 10.707-.708l-4.5-4.5a.5.5 0 00-.707 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 4a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v4a.5.5 0 001 0V4.5H8a.5.5 0 00.5-.5z" clip-rule="evenodd"/>');
-var BIconAt =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('At', '<path fill-rule="evenodd" d="M15.106 9.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V7.206h-1.032v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907s-.601 1.914-1.538 1.914c-.895 0-1.442-.725-1.442-1.914z" clip-rule="evenodd"/>');
-var BIconAward =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Award', '<path d="M10 2l1.669.864 1.858.282.842 1.68 1.337 1.32L15.4 8l.306 1.854-1.337 1.32-.842 1.68-1.858.282L10 14l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L4.6 8l-.306-1.854 1.337-1.32.842-1.68 1.858-.282L10 2z"/><path d="M6 13.794V18l4-1 4 1v-4.206l-2.018.306L10 15.126 8.018 14.1 6 13.794z"/>');
-var BIconBackspace =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Backspace', '<path fill-rule="evenodd" d="M8.603 4h7.08a1 1 0 011 1v10a1 1 0 01-1 1h-7.08a1 1 0 01-.76-.35L3 10l4.844-5.65A1 1 0 018.603 4zm7.08-1a2 2 0 012 2v10a2 2 0 01-2 2h-7.08a2 2 0 01-1.519-.698L2.241 10.65a1 1 0 010-1.302L7.084 3.7A2 2 0 018.603 3h7.08z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.83 7.146a.5.5 0 000 .708l5 5a.5.5 0 00.707-.708l-5-5a.5.5 0 00-.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13.537 7.146a.5.5 0 010 .708l-5 5a.5.5 0 01-.708-.708l5-5a.5.5 0 01.707 0z" clip-rule="evenodd"/>');
-var BIconBackspaceFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BackspaceFill', '<path fill-rule="evenodd" d="M17.683 5a2 2 0 00-2-2h-7.08a2 2 0 00-1.519.698L2.241 9.35a1 1 0 000 1.302l4.843 5.65A2 2 0 008.603 17h7.08a2 2 0 002-2V5zM7.829 7.854a.5.5 0 11.707-.708l2.147 2.147 2.146-2.147a.5.5 0 11.707.708L11.39 10l2.146 2.146a.5.5 0 01-.707.708l-2.146-2.147-2.147 2.147a.5.5 0 01-.707-.708L9.976 10 7.829 7.854z" clip-rule="evenodd"/>');
-var BIconBackspaceReverse =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BackspaceReverse', '<path fill-rule="evenodd" d="M11.08 4H4a1 1 0 00-1 1v10a1 1 0 001 1h7.08a1 1 0 00.76-.35L16.682 10l-4.844-5.65A1 1 0 0011.08 4zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h7.08a2 2 0 001.519-.698l4.843-5.651a1 1 0 000-1.302L12.6 3.7a2 2 0 00-1.52-.7H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.854 7.146a.5.5 0 010 .708l-5 5a.5.5 0 01-.708-.708l5-5a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.146 7.146a.5.5 0 000 .708l5 5a.5.5 0 00.708-.708l-5-5a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
-var BIconBackspaceReverseFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BackspaceReverseFill', '<path fill-rule="evenodd" d="M2 5a2 2 0 012-2h7.08a2 2 0 011.519.698l4.843 5.651a1 1 0 010 1.302L12.6 16.3a2 2 0 01-1.52.7H4a2 2 0 01-2-2V5zm9.854 2.854a.5.5 0 00-.708-.708L9 9.293 6.854 7.146a.5.5 0 10-.708.708L8.293 10l-2.147 2.146a.5.5 0 00.708.708L9 10.707l2.146 2.147a.5.5 0 00.708-.708L9.707 10l2.147-2.146z" clip-rule="evenodd"/>');
-var BIconBarChart =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BarChart', '<path fill-rule="evenodd" d="M6 13H4v3h2v-3zm5-4H9v7h2V9zm5-5h-2v12h2V4zm-2-1a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1V4a1 1 0 00-1-1h-2zM8 9a1 1 0 011-1h2a1 1 0 011 1v7a1 1 0 01-1 1H9a1 1 0 01-1-1V9zm-5 4a1 1 0 011-1h2a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1v-3z" clip-rule="evenodd"/>');
-var BIconBarChartFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BarChartFill', '<rect width="4" height="5" x="3" y="12" rx="1"/><rect width="4" height="9" x="8" y="8" rx="1"/><rect width="4" height="14" x="13" y="3" rx="1"/>');
-var BIconBattery =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Battery', '<path fill-rule="evenodd" d="M14 7H4a1 1 0 00-1 1v4a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1zM4 6a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M16.5 11.5a1.5 1.5 0 000-3v3z"/>');
-var BIconBatteryCharging =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BatteryCharging', '<path d="M16.5 11.5a1.5 1.5 0 000-3v3z"/><path fill-rule="evenodd" d="M11.585 4.568a.5.5 0 01.226.579l-1.134 3.686h1.99a.5.5 0 01.364.843l-5.334 5.667a.5.5 0 01-.842-.49l1.135-3.686H6a.5.5 0 01-.364-.843l5.333-5.667a.5.5 0 01.616-.09z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.332 6H4a2 2 0 00-2 2v4a2 2 0 002 2h2.072l.307-1H4a1 1 0 01-1-1V8a1 1 0 011-1h3.391l.941-1zM6.45 8H4v4h1.313a1.5 1.5 0 01-.405-2.361L6.45 8zm.976 5l-.308 1H8.96l.21-.224h.001l.73-.776H8.53l-.085.09.028-.09H7.426zm1.354-1H7.733l.257-.833H6a.5.5 0 01-.364-.843l.793-.843L7.823 8h1.373l-2.039 2.167h1.51a.492.492 0 01.166.028.5.5 0 01.312.619L8.78 12zm.69 0h1.373l1.395-1.482.793-.842a.5.5 0 00-.364-.843h-1.99L10.933 8H9.887l-.166.54-.199.646a.5.5 0 00.478.647h1.51L9.47 12zm.725-5h1.046l.308-1H9.706l-.942 1h1.374l.085-.09-.028.09zm2.4-1l-.308 1H14a1 1 0 011 1v4a1 1 0 01-1 1h-2.724l-.942 1H14a2 2 0 002-2V8a2 2 0 00-2-2h-1.405zm-.378 6H14v-1.98a1.499 1.499 0 01-.241.341L12.217 12zM14 8.646V8h-.646a1.5 1.5 0 01.646.646z" clip-rule="evenodd"/>');
-var BIconBatteryFull =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BatteryFull', '<path fill-rule="evenodd" d="M14 7H4a1 1 0 00-1 1v4a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1zM4 6a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M4 8h10v4H4V8zm12.5 3.5a1.5 1.5 0 000-3v3z"/>');
-var BIconBell =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bell', '<path d="M10 18a2 2 0 002-2H8a2 2 0 002 2z"/><path fill-rule="evenodd" d="M10 3.918l-.797.161A4.002 4.002 0 006 8c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C14.134 10.197 14 8.628 14 8a4.002 4.002 0 00-3.203-3.92L10 3.917zM16.22 14c.223.447.482.801.78 1H3c.299-.199.557-.553.78-1C4.68 12.2 5 8.88 5 8c0-2.42 1.72-4.44 4.005-4.901a1 1 0 111.99 0A5.002 5.002 0 0115 8c0 .88.32 4.2 1.22 6z" clip-rule="evenodd"/>');
-var BIconBellFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BellFill', '<path d="M10 18a2 2 0 002-2H8a2 2 0 002 2zm.995-14.901a1 1 0 10-1.99 0A5.002 5.002 0 005 8c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>');
-var BIconBlockquoteLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BlockquoteLeft', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm5 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm-5 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M5.734 8.352a6.586 6.586 0 00-.445.275 1.94 1.94 0 00-.346.299 1.38 1.38 0 00-.252.369c-.058.129-.1.295-.123.498h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 01-.187.463c-.12.14-.289.21-.503.21-.336 0-.577-.109-.721-.327-.145-.223-.217-.514-.217-.873 0-.254.055-.485.164-.692.11-.21.242-.398.399-.562.16-.168.33-.31.51-.428.179-.117.33-.213.45-.287l.211.352zm2.168 0a6.588 6.588 0 00-.445.275 1.94 1.94 0 00-.346.299c-.113.12-.199.246-.257.375a1.75 1.75 0 00-.118.492h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 01-.187.463c-.12.14-.289.21-.504.21-.335 0-.576-.109-.72-.327-.145-.223-.217-.514-.217-.873 0-.254.055-.485.164-.692.11-.21.242-.398.398-.562.16-.168.33-.31.51-.428.18-.117.33-.213.451-.287l.211.352z"/>');
-var BIconBlockquoteRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BlockquoteRight', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M14.168 8.352c.184.105.332.197.445.275.114.074.229.174.346.299.11.117.193.24.252.369s.1.295.123.498h-.281c-.243 0-.432.06-.569.182-.14.117-.21.29-.21.521 0 .164.062.319.187.463.121.14.289.21.504.21.336 0 .576-.109.72-.327.145-.223.217-.514.217-.873 0-.254-.054-.485-.164-.692a2.436 2.436 0 00-.398-.562c-.16-.168-.33-.31-.51-.428-.18-.117-.33-.213-.451-.287l-.211.352zm-2.168 0c.184.105.332.197.445.275.114.074.229.174.346.299.113.12.2.246.258.375.055.125.094.289.117.492h-.281c-.242 0-.432.06-.569.182-.14.117-.21.29-.21.521 0 .164.062.319.187.463.121.14.289.21.504.21.336 0 .576-.109.72-.327.145-.223.217-.514.217-.873 0-.254-.054-.485-.164-.692a2.438 2.438 0 00-.398-.562c-.16-.168-.33-.31-.51-.428-.18-.117-.33-.213-.451-.287L12 8.352z"/>');
-var BIconBook =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Book', '<path fill-rule="evenodd" d="M5.214 3.072c1.599-.32 3.702-.363 5.14 1.074a.5.5 0 01.146.354v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 012 15.5v-11a.5.5 0 01.276-.447L2.5 4.5l-.224-.447.002-.001.004-.002.013-.006a5.116 5.116 0 01.22-.103 12.958 12.958 0 012.7-.869zM3 4.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V4.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 003 4.82z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.786 3.072c-1.598-.32-3.702-.363-5.14 1.074A.5.5 0 009.5 4.5v11a.5.5 0 00.854.354c.844-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0018 15.5v-11a.5.5 0 00-.276-.447L17.5 4.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM17 4.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.386-.023-3.426.56V4.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0117 4.82z" clip-rule="evenodd"/>');
-var BIconBookHalfFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BookHalfFill', '<path fill-rule="evenodd" d="M5.214 3.072c1.599-.32 3.702-.363 5.14 1.074a.5.5 0 01.146.354v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 012 15.5v-11a.5.5 0 01.276-.447L2.5 4.5l-.224-.447.002-.001.004-.002.013-.006a5.116 5.116 0 01.22-.103 12.958 12.958 0 012.7-.869zM3 4.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V4.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 003 4.82z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.786 3.072c-1.598-.32-3.702-.363-5.14 1.074A.5.5 0 009.5 4.5v11a.5.5 0 00.854.354c.844-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0018 15.5v-11a.5.5 0 00-.276-.447L17.5 4.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609z" clip-rule="evenodd"/>');
-var BIconBookmark =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bookmark', '<path fill-rule="evenodd" d="M10 14l5 3V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V5a1 1 0 00-1-1H7a1 1 0 00-1 1v10.234z" clip-rule="evenodd"/>');
-var BIconBookmarkFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BookmarkFill', '<path fill-rule="evenodd" d="M5 5a2 2 0 012-2h6a2 2 0 012 2v12l-5-3-5 3V5z" clip-rule="evenodd"/>');
-var BIconBootstrap =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bootstrap', '<path fill-rule="evenodd" d="M14 3H6a3 3 0 00-3 3v8a3 3 0 003 3h8a3 3 0 003-3V6a3 3 0 00-3-3zM6 2a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V6a4 4 0 00-4-4H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.537 14H7.062V5.545h3.398c1.588 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.482 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396zM8.375 6.658v2.467h1.558c1.16 0 1.764-.428 1.764-1.23 0-.78-.568-1.237-1.541-1.237H8.375zm1.898 6.229H8.375v-2.725h1.822c1.236 0 1.887.463 1.887 1.348 0 .896-.627 1.377-1.811 1.377z" clip-rule="evenodd"/>');
-var BIconBootstrapFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BootstrapFill', '<path fill-rule="evenodd" d="M6.002 2a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V6a4 4 0 00-4-4h-8zm1.06 12h3.475c1.804 0 2.888-.908 2.888-2.396 0-1.102-.761-1.916-1.904-2.034v-.1c.832-.14 1.482-.93 1.482-1.816 0-1.3-.955-2.11-2.543-2.11H7.063V14zm1.313-4.875V6.658h1.78c.974 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H8.375zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H8.375v2.725z" clip-rule="evenodd"/>');
-var BIconBootstrapReboot =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BootstrapReboot', '<path fill-rule="evenodd" d="M3.161 10a6.84 6.84 0 106.842-6.84.58.58 0 110-1.16 8 8 0 11-6.556 3.412l-.663-.577a.58.58 0 01.227-.997l2.52-.69a.58.58 0 01.728.633l-.332 2.592a.58.58 0 01-.956.364l-.643-.56A6.812 6.812 0 003.16 10zm5.228-.079V7.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.505 1.324-1.386 1.324h-1.6zm0 3.75v-2.828h1.57l1.498 2.828h1.314l-1.646-3.006c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H7.248v7.352h1.141z" clip-rule="evenodd"/>');
-var BIconBoxArrowBottomLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowBottomLeft', '<path fill-rule="evenodd" d="M15 3.5A1.5 1.5 0 0116.5 5v8a1.5 1.5 0 01-1.5 1.5h-4a.5.5 0 010-1h4a.5.5 0 00.5-.5V5a.5.5 0 00-.5-.5H7a.5.5 0 00-.5.5v4a.5.5 0 01-1 0V5A1.5 1.5 0 017 3.5h8zm-11 7a.5.5 0 00-.5.5v5a.5.5 0 00.5.5h5a.5.5 0 000-1H4.5V11a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.646 16.354a.5.5 0 00.708 0l8-8a.5.5 0 00-.708-.708l-8 8a.5.5 0 000 .708z" clip-rule="evenodd"/>');
-var BIconBoxArrowBottomRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowBottomRight', '<path fill-rule="evenodd" d="M5 3.5A1.5 1.5 0 003.5 5v8A1.5 1.5 0 005 14.5h4a.5.5 0 000-1H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v4a.5.5 0 001 0V5A1.5 1.5 0 0013 3.5H5zm11 7a.5.5 0 01.5.5v5a.5.5 0 01-.5.5h-5a.5.5 0 010-1h4.5V11a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16.354 16.354a.5.5 0 01-.708 0l-8-8a.5.5 0 11.708-.708l8 8a.5.5 0 010 .708z" clip-rule="evenodd"/>');
-var BIconBoxArrowDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowDown', '<path fill-rule="evenodd" d="M6.646 13.646a.5.5 0 01.708 0L10 16.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 4A1.5 1.5 0 016 2.5h8A1.5 1.5 0 0115.5 4v7a1.5 1.5 0 01-1.5 1.5h-1.5a.5.5 0 010-1H14a.5.5 0 00.5-.5V4a.5.5 0 00-.5-.5H6a.5.5 0 00-.5.5v7a.5.5 0 00.5.5h1.5a.5.5 0 010 1H6A1.5 1.5 0 014.5 11V4z" clip-rule="evenodd"/>');
-var BIconBoxArrowLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowLeft', '<path fill-rule="evenodd" d="M6.354 13.354a.5.5 0 000-.708L3.707 10l2.647-2.646a.5.5 0 10-.708-.708l-3 3a.5.5 0 000 .708l3 3a.5.5 0 00.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13.5 10a.5.5 0 00-.5-.5H4a.5.5 0 000 1h9a.5.5 0 00.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16 15.5a1.5 1.5 0 001.5-1.5V6A1.5 1.5 0 0016 4.5H9A1.5 1.5 0 007.5 6v1.5a.5.5 0 001 0V6a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v8a.5.5 0 01-.5.5H9a.5.5 0 01-.5-.5v-1.5a.5.5 0 00-1 0V14A1.5 1.5 0 009 15.5h7z" clip-rule="evenodd"/>');
-var BIconBoxArrowRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowRight', '<path fill-rule="evenodd" d="M13.646 13.354a.5.5 0 010-.708L16.293 10l-2.647-2.646a.5.5 0 01.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h9a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4 15.5A1.5 1.5 0 012.5 14V6A1.5 1.5 0 014 4.5h7A1.5 1.5 0 0112.5 6v1.5a.5.5 0 01-1 0V6a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v8a.5.5 0 00.5.5h7a.5.5 0 00.5-.5v-1.5a.5.5 0 011 0V14a1.5 1.5 0 01-1.5 1.5H4z" clip-rule="evenodd"/>');
-var BIconBoxArrowUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowUp', '<path fill-rule="evenodd" d="M6.646 6.354a.5.5 0 00.708 0L10 3.707l2.646 2.647a.5.5 0 00.708-.708l-3-3a.5.5 0 00-.708 0l-3 3a.5.5 0 000 .708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 13.5a.5.5 0 00.5-.5V4a.5.5 0 00-1 0v9a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 16A1.5 1.5 0 006 17.5h8a1.5 1.5 0 001.5-1.5V9A1.5 1.5 0 0014 7.5h-1.5a.5.5 0 000 1H14a.5.5 0 01.5.5v7a.5.5 0 01-.5.5H6a.5.5 0 01-.5-.5V9a.5.5 0 01.5-.5h1.5a.5.5 0 000-1H6A1.5 1.5 0 004.5 9v7z" clip-rule="evenodd"/>');
-var BIconBoxArrowUpLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowUpLeft', '<path fill-rule="evenodd" d="M16.5 15a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 15v-4a.5.5 0 011 0v4a.5.5 0 00.5.5h8a.5.5 0 00.5-.5V7a.5.5 0 00-.5-.5h-4a.5.5 0 010-1h4A1.5 1.5 0 0116.5 7v8zm-7-11a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v5a.5.5 0 001 0V4.5H9a.5.5 0 00.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.646 3.646a.5.5 0 000 .708l8 8a.5.5 0 00.708-.708l-8-8a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
-var BIconBoxArrowUpRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowUpRight', '<path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h8a1.5 1.5 0 001.5-1.5v-4a.5.5 0 00-1 0v4a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V7a.5.5 0 01.5-.5h4a.5.5 0 000-1H5A1.5 1.5 0 003.5 7v8zm7-11a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V4.5H11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16.354 3.646a.5.5 0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconBraces =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Braces', '<path d="M4.114 10.063V9.9c1.005-.102 1.497-.615 1.497-1.6V6.503c0-1.094.39-1.538 1.354-1.538h.273V4h-.376C5.25 4 4.49 4.759 4.49 6.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538v-1.798c0-.984-.492-1.497-1.497-1.6zM15.886 9.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V9.332c-1.114 0-1.49-.362-1.49-1.456V6.352C15.51 4.759 14.75 4 13.138 4h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V8.3c0 .984.492 1.497 1.497 1.6z"/>');
-var BIconBrightnessFillHigh =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessFillHigh', '<circle cx="10" cy="10" r="4"/><path fill-rule="evenodd" d="M10 2a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 0110 2zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM5 10a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zm10.657-5.657a.5.5 0 010 .707l-1.414 1.414a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L5.05 15.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM6.464 6.464a.5.5 0 01-.707 0L4.343 5.05a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707z" clip-rule="evenodd"/>');
-var BIconBrightnessFillLow =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessFillLow', '<circle cx="10" cy="10" r="4"/><circle cx="10" cy="4.5" r=".5"/><circle cx="10" cy="15.5" r=".5"/><circle cx="15.5" cy="10" r=".5" transform="rotate(90 15.5 10)"/><circle cx="4.5" cy="10" r=".5" transform="rotate(90 4.5 10)"/><circle cx="13.889" cy="6.111" r=".5" transform="rotate(45 13.89 6.11)"/><circle cx="6.111" cy="13.889" r=".5" transform="rotate(45 6.11 13.89)"/><circle cx="13.889" cy="13.889" r=".5" transform="rotate(135 13.89 13.89)"/><circle cx="6.111" cy="6.111" r=".5" transform="rotate(135 6.11 6.11)"/>');
-var BIconBrightnessHigh =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessHigh', '<path fill-rule="evenodd" d="M10 13a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8zm0-12a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 0110 2zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM5 10a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zm10.657-5.657a.5.5 0 010 .707l-1.414 1.414a.5.5 0 11-.707-.707l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L5.05 15.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM6.464 6.464a.5.5 0 01-.707 0L4.343 5.05a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707z" clip-rule="evenodd"/>');
-var BIconBrightnessLow =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessLow', '<path fill-rule="evenodd" d="M10 13a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"/><circle cx="10" cy="4.5" r=".5"/><circle cx="10" cy="15.5" r=".5"/><circle cx="15.5" cy="10" r=".5" transform="rotate(90 15.5 10)"/><circle cx="4.5" cy="10" r=".5" transform="rotate(90 4.5 10)"/><circle cx="13.889" cy="6.111" r=".5" transform="rotate(45 13.89 6.11)"/><circle cx="6.111" cy="13.889" r=".5" transform="rotate(45 6.11 13.89)"/><circle cx="13.889" cy="13.889" r=".5" transform="rotate(135 13.89 13.89)"/><circle cx="6.111" cy="6.111" r=".5" transform="rotate(135 6.11 6.11)"/>');
-var BIconBrush =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Brush', '<path d="M17.213 3.018a.572.572 0 01.755.05.57.57 0 01.058.746c-.941 1.268-3.982 5.293-6.426 7.736a12.89 12.89 0 01-1.952 1.596c-.508.339-1.167.234-1.599-.197-.416-.416-.53-1.047-.213-1.543.347-.542.888-1.273 1.643-1.977 2.521-2.35 6.476-5.44 7.734-6.411z"/><path d="M9 14a2 2 0 01-2 2c-1 0-2 0-3.5-.5s.5-1 1-1.5 1.395-2 2.5-2a2 2 0 012 2z"/>');
-var BIconBucket =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bucket', '<path fill-rule="evenodd" d="M10 3.5A4.5 4.5 0 005.5 8h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 0010 3.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.61 7.687A.5.5 0 014 7.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H6.802a1.5 1.5 0 01-1.464-1.175L3.512 8.108a.5.5 0 01.098-.42zm1.013.813l1.691 7.608a.5.5 0 00.488.392h6.396a.5.5 0 00.488-.392l1.69-7.608H4.624z" clip-rule="evenodd"/>');
-var BIconBucketFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BucketFill', '<path fill-rule="evenodd" d="M10 3.5A4.5 4.5 0 005.5 8h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 0010 3.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.61 7.687A.5.5 0 014 7.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H6.802a1.5 1.5 0 01-1.464-1.175L3.512 8.108a.5.5 0 01.098-.42z" clip-rule="evenodd"/>');
-var BIconBuilding =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Building', '<path fill-rule="evenodd" d="M17.285 2.089a.5.5 0 01.215.411v15a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5V16h-1v1.5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5v-6a.5.5 0 01.418-.493l5.582-.93V5.5a.5.5 0 01.324-.468l8-3a.5.5 0 01.46.057zM9.5 5.846V10.5a.5.5 0 01-.418.493l-5.582.93V17h8v-1.5a.5.5 0 01.5-.5h2a.5.5 0 01.5.5V17h2V3.221l-7 2.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 17.5v-7h1v7h-1z" clip-rule="evenodd"/><path d="M4.5 13h1v1h-1v-1zm2 0h1v1h-1v-1zm-2 2h1v1h-1v-1zm2 0h1v1h-1v-1zm6-10h1v1h-1V5zm2 0h1v1h-1V5zm-4 2h1v1h-1V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zm-2 2h1v1h-1V9zm2 0h1v1h-1V9zm-4 0h1v1h-1V9zm0 2h1v1h-1v-1zm2 0h1v1h-1v-1zm2 0h1v1h-1v-1zm-4 2h1v1h-1v-1zm2 0h1v1h-1v-1zm2 0h1v1h-1v-1z"/>');
-var BIconBullseye =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bullseye', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 15a5 5 0 100-10 5 5 0 000 10zm0 1a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 13a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"/><path d="M11.5 10a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>');
-var BIconCalendar =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Calendar', '<path fill-rule="evenodd" d="M16 2H4a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2zM3 5.857C3 5.384 3.448 5 4 5h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H4c-.552 0-1-.384-1-.857V5.857z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 9a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
-var BIconCalendarFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CalendarFill', '<path d="M2 4a2 2 0 012-2h12a2 2 0 012 2H2z"/><path fill-rule="evenodd" d="M2 5h16v11a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm6.5 4a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm-8 2a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm-8 2a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd"/>');
-var BIconCamera =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Camera', '<path d="M11 7c-1.657 0-4 1.343-4 3a4 4 0 014-4v1z"/><path fill-rule="evenodd" d="M16.333 5h-2.015A5.97 5.97 0 0011 4a5.972 5.972 0 00-3.318 1H3.667C2.747 5 2 5.746 2 6.667v6.666C2 14.253 2.746 15 3.667 15h4.015c.95.632 2.091 1 3.318 1a5.973 5.973 0 003.318-1h2.015c.92 0 1.667-.746 1.667-1.667V6.667C18 5.747 17.254 5 16.333 5zM3.5 7a.5.5 0 100-1 .5.5 0 000 1zm7.5 8a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/><path d="M4 5a1 1 0 011-1h1a1 1 0 010 2H5a1 1 0 01-1-1z"/>');
-var BIconCameraVideo =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CameraVideo', '<path fill-rule="evenodd" d="M4.667 5.5c-.645 0-1.167.522-1.167 1.167v6.666c0 .645.522 1.167 1.167 1.167h6.666c.645 0 1.167-.522 1.167-1.167V6.667c0-.645-.522-1.167-1.167-1.167H4.667zM2.5 6.667C2.5 5.47 3.47 4.5 4.667 4.5h6.666c1.197 0 2.167.97 2.167 2.167v6.666c0 1.197-.97 2.167-2.167 2.167H4.667A2.167 2.167 0 012.5 13.333V6.667z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13.25 7.65l2.768-1.605a.318.318 0 01.482.263v7.384c0 .228-.26.393-.482.264l-2.767-1.605-.502.865 2.767 1.605c.859.498 1.984-.095 1.984-1.129V6.308c0-1.033-1.125-1.626-1.984-1.128L12.75 6.785l.502.865z" clip-rule="evenodd"/>');
-var BIconCameraVideoFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CameraVideoFill', '<path d="M4.667 5h6.666C12.253 5 13 5.746 13 6.667v6.666c0 .92-.746 1.667-1.667 1.667H4.667C3.747 15 3 14.254 3 13.333V6.667C3 5.747 3.746 5 4.667 5z"/><path d="M9.404 10.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V6.308c0-.63-.692-1.01-1.233-.696L9.404 9.304a.802.802 0 000 1.393z"/>');
-var BIconCapslock =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Capslock', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H13.5v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 3.047zm7.076 7.453L10 3.731 3.654 10.5H6.5a1 1 0 011 1v1h5v-1a1 1 0 011-1h2.846zm-9.846 5a1 1 0 011-1h5a1 1 0 011 1v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1zm6 0h-5v1h5v-1z" clip-rule="evenodd"/>');
-var BIconCapslockFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CapslockFill', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H13.5v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 3.047zM6.5 15.5a1 1 0 011-1h5a1 1 0 011 1v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1z" clip-rule="evenodd"/>');
-var BIconChat =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Chat', '<path fill-rule="evenodd" d="M8.207 13.293L7.5 14a5.5 5.5 0 110-11h5a5.5 5.5 0 110 11s-1.807 2.169-4.193 2.818C7.887 16.933 7.449 17 7 17c.291-.389.488-.74.617-1.052C8.149 14.649 7.5 14 7.5 14c.707-.707.708-.707.708-.706h.001l.002.003.004.004.01.01a1.184 1.184 0 01.074.084c.039.047.085.108.134.183.097.15.206.36.284.626.114.386.154.855.047 1.394.717-.313 1.37-.765 1.895-1.201a10.266 10.266 0 001.013-.969l.05-.056.01-.012m0 0A1 1 0 0112.5 13a4.5 4.5 0 100-9h-5a4.5 4.5 0 000 9 1 1 0 01.707.293" clip-rule="evenodd"/>');
-var BIconChatFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChatFill', '<path fill-rule="evenodd" d="M7.5 14s.65.65.117 1.948A4.821 4.821 0 017 17c.449 0 .887-.067 1.307-.181C10.692 16.169 12.5 14 12.5 14a5.5 5.5 0 100-11h-5a5.5 5.5 0 100 11z" clip-rule="evenodd"/>');
-var BIconCheck =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Check', '<path fill-rule="evenodd" d="M15.854 5.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L8.5 12.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconCheckBox =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CheckBox', '<path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z" clip-rule="evenodd"/>');
-var BIconCheckCircle =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CheckCircle', '<path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4.5a5.5 5.5 0 105.5 5.5.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63.5.5 0 11-.5.865A5.472 5.472 0 0010 4.5z" clip-rule="evenodd"/>');
-var BIconChevronCompactDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactDown', '<path fill-rule="evenodd" d="M3.553 8.776a.5.5 0 01.67-.223L10 11.44l5.776-2.888a.5.5 0 11.448.894l-6 3a.5.5 0 01-.448 0l-6-3a.5.5 0 01-.223-.67z" clip-rule="evenodd"/>');
-var BIconChevronCompactLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactLeft', '<path fill-rule="evenodd" d="M11.224 3.553a.5.5 0 01.223.67L8.56 10l2.888 5.776a.5.5 0 11-.894.448l-3-6a.5.5 0 010-.448l3-6a.5.5 0 01.67-.223z" clip-rule="evenodd"/>');
-var BIconChevronCompactRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactRight', '<path fill-rule="evenodd" d="M8.776 3.553a.5.5 0 01.671.223l3 6a.5.5 0 010 .448l-3 6a.5.5 0 11-.894-.448L11.44 10 8.553 4.224a.5.5 0 01.223-.671z" clip-rule="evenodd"/>');
-var BIconChevronCompactUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactUp', '<path fill-rule="evenodd" d="M9.776 7.553a.5.5 0 01.448 0l6 3a.5.5 0 11-.448.894L10 8.56l-5.776 2.888a.5.5 0 11-.448-.894l6-3z" clip-rule="evenodd"/>');
-var BIconChevronDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronDown', '<path fill-rule="evenodd" d="M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>');
-var BIconChevronLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronLeft', '<path fill-rule="evenodd" d="M13.354 3.646a.5.5 0 010 .708L7.707 10l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconChevronRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronRight', '<path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/>');
-var BIconChevronUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronUp', '<path fill-rule="evenodd" d="M9.646 6.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L10 7.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>');
-var BIconCircle =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Circle', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/>');
-var BIconCircleFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CircleFill', '<circle cx="10" cy="10" r="8"/>');
-var BIconCircleHalf =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CircleHalf', '<path fill-rule="evenodd" d="M10 17V3a7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/>');
-var BIconCircleSlash =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CircleSlash', '<path fill-rule="evenodd" d="M10 1.5a8.5 8.5 0 100 17 8.5 8.5 0 000-17zM5.071 4.347a7.5 7.5 0 0110.582 10.582L5.071 4.347zm-.724.724a7.5 7.5 0 0010.582 10.582L4.347 5.071z" clip-rule="evenodd"/>');
-var BIconClock =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Clock', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm8-7a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4a.5.5 0 01.5.5V10a.5.5 0 01-.5.5H5.5a.5.5 0 010-1h4v-5A.5.5 0 0110 4z" clip-rule="evenodd"/>');
-var BIconClockFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ClockFill', '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM5.5 9.5h4v-5a.5.5 0 011 0V10a.5.5 0 01-.5.5H5.5a.5.5 0 010-1z" clip-rule="evenodd"/>');
-var BIconCloud =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Cloud', '<path fill-rule="evenodd" d="M6.887 9.2l-.964-.165A2.5 2.5 0 105.5 14h10a1.5 1.5 0 00.237-2.982l-1.038-.164.216-1.028a4 4 0 10-7.843-1.587l-.185.96zm9.084.341a5 5 0 00-9.88-1.492A3.5 3.5 0 105.5 15h9.999a2.5 2.5 0 00.394-4.968c.033-.16.06-.324.077-.49z" clip-rule="evenodd"/>');
-var BIconCloudDownload =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CloudDownload', '<path d="M6.887 7.2l-.964-.165A2.5 2.5 0 105.5 12H8v1H5.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0115.5 13H12v-1h3.5a1.5 1.5 0 00.237-2.981L14.7 8.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/><path fill-rule="evenodd" d="M7 14.5a.5.5 0 01.707 0L10 16.793l2.293-2.293a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L7 15.207a.5.5 0 010-.707z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 8z" clip-rule="evenodd"/>');
-var BIconCloudFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CloudFill', '<path fill-rule="evenodd" d="M5.5 15a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.5 2.5 0 0115.5 15h-10z" clip-rule="evenodd"/>');
-var BIconCloudUpload =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CloudUpload', '<path d="M6.887 8.2l-.964-.165A2.5 2.5 0 105.5 13H8v1H5.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0115.5 14H12v-1h3.5a1.5 1.5 0 00.237-2.982L14.7 9.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/><path fill-rule="evenodd" d="M7 10.854a.5.5 0 00.707 0L10 8.56l2.293 2.293a.5.5 0 00.707-.707L10.354 7.5a.5.5 0 00-.708 0L7 10.146a.5.5 0 000 .708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 8z" clip-rule="evenodd"/>');
-var BIconCode =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Code', '<path fill-rule="evenodd" d="M7.854 6.146a.5.5 0 010 .708L4.707 10l3.147 3.146a.5.5 0 01-.708.708l-3.5-3.5a.5.5 0 010-.708l3.5-3.5a.5.5 0 01.708 0zm4.292 0a.5.5 0 000 .708L15.293 10l-3.147 3.146a.5.5 0 00.708.708l3.5-3.5a.5.5 0 000-.708l-3.5-3.5a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
-var BIconCodeSlash =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CodeSlash', '<path fill-rule="evenodd" d="M6.854 6.146a.5.5 0 010 .708L3.707 10l3.147 3.146a.5.5 0 01-.708.708l-3.5-3.5a.5.5 0 010-.708l3.5-3.5a.5.5 0 01.708 0zm6.292 0a.5.5 0 000 .708L16.293 10l-3.147 3.146a.5.5 0 00.708.708l3.5-3.5a.5.5 0 000-.708l-3.5-3.5a.5.5 0 00-.708 0zm-.999-3.124a.5.5 0 01.33.625l-4 13a.5.5 0 11-.955-.294l4-13a.5.5 0 01.625-.33z" clip-rule="evenodd"/>');
-var BIconColumns =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Columns', '<path fill-rule="evenodd" d="M17 4H3v12h14V4zM3 3a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 16V4h1v12h-1zm0-8H3V7h6.5v1zm7.5 5h-6.5v-1H17v1z" clip-rule="evenodd"/>');
-var BIconColumnsGutters =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ColumnsGutters', '<path fill-rule="evenodd" d="M8 3H3v3h5V3zM3 2a1 1 0 00-1 1v3a1 1 0 001 1h5a1 1 0 001-1V3a1 1 0 00-1-1H3zm14 12h-5v3h5v-3zm-5-1a1 1 0 00-1 1v3a1 1 0 001 1h5a1 1 0 001-1v-3a1 1 0 00-1-1h-5zm-4-3H3v7h5v-7zM3 9a1 1 0 00-1 1v7a1 1 0 001 1h5a1 1 0 001-1v-7a1 1 0 00-1-1H3zm14-6h-5v7h5V3zm-5-1a1 1 0 00-1 1v7a1 1 0 001 1h5a1 1 0 001-1V3a1 1 0 00-1-1h-5z" clip-rule="evenodd"/>');
-var BIconCommand =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Command', '<path fill-rule="evenodd" d="M4 5.5A1.5 1.5 0 005.5 7H7V5.5a1.5 1.5 0 10-3 0zM8 8V5.5A2.5 2.5 0 105.5 8H8zm8-2.5A1.5 1.5 0 0114.5 7H13V5.5a1.5 1.5 0 013 0zM12 8V5.5A2.5 2.5 0 1114.5 8H12zm-8 6.5A1.5 1.5 0 015.5 13H7v1.5a1.5 1.5 0 01-3 0zM8 12v2.5A2.5 2.5 0 115.5 12H8zm8 2.5a1.5 1.5 0 00-1.5-1.5H13v1.5a1.5 1.5 0 003 0zM12 12v2.5a2.5 2.5 0 102.5-2.5H12z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 8H8v4h4V8zM7 7v6h6V7H7z" clip-rule="evenodd"/>');
-var BIconCompass =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Compass', '<path fill-rule="evenodd" d="M10 17.016a6.5 6.5 0 100-13 6.5 6.5 0 000 13zm0 1a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" clip-rule="evenodd"/><rect width="4" height="2" x="8" y="2" rx="1"/><path d="M8.94 9.44l4.95-2.83-2.83 4.95-4.95 2.83 2.83-4.95z"/>');
-var BIconCone =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Cone', '<path d="M9.03 3.88c.252-1.01 1.688-1.01 1.94 0L14 16H6L9.03 3.88z"/><path fill-rule="evenodd" d="M3.5 16a.5.5 0 01.5-.5h12a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconConeStriped =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ConeStriped', '<path fill-rule="evenodd" d="M9.879 13.015a.5.5 0 01.242 0l6 1.5a.5.5 0 01.037.96l-6 2a.499.499 0 01-.316 0l-6-2a.5.5 0 01.037-.96l6-1.5z" clip-rule="evenodd"/><path d="M13.885 14.538l-.72-2.877c-.862.212-1.964.339-3.165.339s-2.303-.127-3.165-.339l-.72 2.877c-.073.292-.002.6.256.756.49.295 1.545.706 3.629.706s3.14-.411 3.63-.706c.257-.155.328-.464.255-.756zM11.97 6.88l.953 3.811C12.159 10.878 11.14 11 10 11c-1.14 0-2.159-.122-2.923-.309L8.03 6.88C8.635 6.957 9.3 7 10 7s1.365-.043 1.97-.12zm-.245-.978L10.97 2.88c-.252-1.01-1.688-1.01-1.94 0L8.275 5.9C8.8 5.965 9.382 6 10 6c.618 0 1.2-.036 1.725-.098z"/>');
-var BIconController =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Controller', '<path fill-rule="evenodd" d="M13.119 4.693c.904.19 1.75.495 2.235.98.407.408.779 1.05 1.094 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.815-.059 1.602-.328 2.21a1.42 1.42 0 01-1.445.83c-.636-.067-1.115-.394-1.513-.773a11.307 11.307 0 01-.739-.809c-.126-.147-.25-.291-.368-.422-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.422-.243.283-.494.576-.739.81-.398.378-.877.705-1.513.772a1.42 1.42 0 01-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772.486-.485 1.331-.79 2.235-.98.932-.196 2.03-.292 3.119-.292 1.089 0 2.187.096 3.119.292zm-6.032.979c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 00-.748 2.295 12.35 12.35 0 00-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 00.426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.505.826-.912 1.943-1.854 3.965-1.854s3.139.942 3.965 1.854c.164.182.307.35.44.505.214.25.403.472.615.674.318.303.601.468.929.503a.42.42 0 00.426-.241c.18-.408.265-1.02.243-1.776a12.353 12.353 0 00-.339-2.406 13.753 13.753 0 00-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z" clip-rule="evenodd"/><path d="M13.5 8.026a.5.5 0 11-1 0 .5.5 0 011 0zm-1 1a.5.5 0 11-1 0 .5.5 0 011 0zm2 0a.5.5 0 11-1 0 .5.5 0 011 0zm-1 1.001a.5.5 0 11-1 0 .5.5 0 011 0zm-7-2.501h1v3h-1v-3z"/><path d="M5.5 8.526h3v1h-3v-1zM5.051 5.26a.5.5 0 01.354-.613l1.932-.518a.5.5 0 01.258.966l-1.932.518a.5.5 0 01-.612-.354zm9.976 0a.5.5 0 00-.353-.613l-1.932-.518a.5.5 0 10-.259.966l1.932.518a.5.5 0 00.612-.354z"/>');
-var BIconCreditCard =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CreditCard', '<path fill-rule="evenodd" d="M16 5H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1zM4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4z" clip-rule="evenodd"/><rect width="3" height="3" x="4" y="11" rx="1"/><path d="M3 7h14v2H3z"/>');
-var BIconCursor =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Cursor', '<path fill-rule="evenodd" d="M16.081 4.182a.5.5 0 01.104.557l-5.657 12.727a.5.5 0 01-.917-.006L7.57 12.694l-4.766-2.042a.5.5 0 01-.006-.917L15.525 4.08a.5.5 0 01.556.103zM4.25 10.184l3.897 1.67a.5.5 0 01.262.263l1.67 3.897L14.743 5.52 4.25 10.184z" clip-rule="evenodd"/>');
-var BIconCursorFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CursorFill', '<path fill-rule="evenodd" d="M16.081 4.182a.5.5 0 01.104.557l-5.657 12.727a.5.5 0 01-.917-.006L7.57 12.694l-4.766-2.042a.5.5 0 01-.006-.917L15.525 4.08a.5.5 0 01.556.103z" clip-rule="evenodd"/>');
-var BIconDash =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Dash', '<path fill-rule="evenodd" d="M5.5 10a.5.5 0 01.5-.5h8a.5.5 0 010 1H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconDiamond =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Diamond', '<path fill-rule="evenodd" d="M5.1 2.7a.5.5 0 01.4-.2h9a.5.5 0 01.4.2l2.976 3.974c.149.185.156.45.01.644L10.4 17.3a.5.5 0 01-.8 0l-7.5-10a.5.5 0 010-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H6.186l.963 2.995 5.704-.006zM7.47 7.495l5.062-.005L10 15.366 7.47 7.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM3.499 7.5l2.92-.003 2.193 6.82L3.5 7.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z" clip-rule="evenodd"/>');
-var BIconDiamondHalf =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DiamondHalf', '<path fill-rule="evenodd" d="M8.94 2.354a1.5 1.5 0 012.12 0l6.586 6.585a1.5 1.5 0 010 2.122l-6.585 6.585a1.5 1.5 0 01-2.122 0l-6.585-6.585a1.5 1.5 0 010-2.122l6.585-6.585zm1.06.56a.498.498 0 00-.354.147L3.061 9.646a.5.5 0 000 .707l6.585 6.586a.499.499 0 00.354.147V2.914z" clip-rule="evenodd"/>');
-var BIconDisplay =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Display', '<path d="M7.75 15.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H13a.5.5 0 010 1H7a.5.5 0 010-1h.75z"/><path fill-rule="evenodd" d="M15.991 5H4c-.325 0-.502.078-.602.145a.758.758 0 00-.254.302A1.46 1.46 0 003 6.01V12c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 00.538.143L4.01 13H16c.325 0 .502-.078.602-.145a.758.758 0 00.254-.302 1.464 1.464 0 00.143-.538L17 11.99V6c0-.325-.078-.502-.145-.602a.757.757 0 00-.302-.254A1.46 1.46 0 0015.99 5zM16 4H4C2 4 2 6 2 6v6c0 2 2 2 2 2h12c2 0 2-2 2-2V6c0-2-2-2-2-2z" clip-rule="evenodd"/>');
-var BIconDisplayFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DisplayFill', '<path d="M7.75 15.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H13a.5.5 0 010 1H7a.5.5 0 010-1h.75z"/><path fill-rule="evenodd" d="M15.991 5H4c-.325 0-.502.078-.602.145a.758.758 0 00-.254.302A1.46 1.46 0 003 6.01V12c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 00.538.143L4.01 13H16c.325 0 .502-.078.602-.145a.758.758 0 00.254-.302 1.464 1.464 0 00.143-.538L17 11.99V6c0-.325-.078-.502-.145-.602a.757.757 0 00-.302-.254A1.46 1.46 0 0015.99 5zM16 4H4C2 4 2 6 2 6v6c0 2 2 2 2 2h12c2 0 2-2 2-2V6c0-2-2-2-2-2z" clip-rule="evenodd"/><path d="M4 6h12v6H4z"/>');
-var BIconDocument =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Document', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/>');
-var BIconDocumentCode =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentCode', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.646 7.646a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L12.293 10l-1.647-1.646a.5.5 0 010-.708zm-1.292 0a.5.5 0 00-.708 0l-2 2a.5.5 0 000 .708l2 2a.5.5 0 00.708-.708L7.707 10l1.647-1.646a.5.5 0 000-.708z" clip-rule="evenodd"/>');
-var BIconDocumentDiff =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentDiff', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.5 13a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zM10 6.5a.5.5 0 01.5.5v4a.5.5 0 01-1 0V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.5 9a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconDocumentRichtext =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentRichtext', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 14a.5.5 0 01.5-.5h3a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm1.639-3.958l1.33.886 1.854-1.855a.25.25 0 01.289-.047L13.5 8v1.75a.5.5 0 01-.5.5H7a.5.5 0 01-.5-.5v-.5s1.54-1.274 1.639-1.208zM8.25 7a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd"/>');
-var BIconDocumentSpreadsheet =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentSpreadsheet', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15 8H5V7h10v1zm0 3H5v-1h10v1zm0 3H5v-1h10v1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 16V8h1v8H7zm4 0V8h1v8h-1z" clip-rule="evenodd"/>');
-var BIconDocumentText =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentText', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 14a.5.5 0 01.5-.5h3a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconDocuments =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Documents', '<path fill-rule="evenodd" d="M5 4h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6a1 1 0 00-1-1H5z" clip-rule="evenodd"/><path d="M7 2h8a2 2 0 012 2v10a2 2 0 01-2 2v-1a1 1 0 001-1V4a1 1 0 00-1-1H7a1 1 0 00-1 1H5a2 2 0 012-2z"/>');
-var BIconDocumentsAlt =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentsAlt', '<path fill-rule="evenodd" d="M5 3h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H5z" clip-rule="evenodd"/><path d="M15 6V5a2 2 0 012 2v6a2 2 0 01-2 2v-1a1 1 0 001-1V7a1 1 0 00-1-1z"/>');
-var BIconDot =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Dot', '<path fill-rule="evenodd" d="M10 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"/>');
-var BIconDownload =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Download', '<path fill-rule="evenodd" d="M2.5 10a.5.5 0 01.5.5V14a1 1 0 001 1h12a1 1 0 001-1v-3.5a.5.5 0 011 0V14a2 2 0 01-2 2H4a2 2 0 01-2-2v-3.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 9.5a.5.5 0 01.707 0L10 11.793 12.293 9.5a.5.5 0 01.707.707l-2.646 2.647a.5.5 0 01-.708 0L7 10.207A.5.5 0 017 9.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 3a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 3z" clip-rule="evenodd"/>');
-var BIconEggFried =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EggFried', '<path fill-rule="evenodd" d="M15.665 8.113a1 1 0 01-.667-.977L15 7a4 4 0 00-6.483-3.136 1 1 0 01-.8.2 4 4 0 00-3.693 6.61 1 1 0 01.2 1 4 4 0 006.67 4.087 1 1 0 011.262-.152 2.5 2.5 0 003.715-2.905 1 1 0 01.341-1.113 2.001 2.001 0 00-.547-3.478zM16 7c0 .057 0 .113-.003.17a3.001 3.001 0 01.822 5.216 3.5 3.5 0 01-5.201 4.065 5 5 0 01-8.336-5.109A5 5 0 017.896 3.08 5 5 0 0116 7z" clip-rule="evenodd"/><circle cx="10" cy="10" r="3"/>');
-var BIconEject =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Eject', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H3.656c-.876 0-1.33-1.045-.73-1.684L9.27 3.047zm7.076 7.453L10 3.731 3.654 10.5h12.692zM2.5 13.5a1 1 0 011-1h13a1 1 0 011 1v1a1 1 0 01-1 1h-13a1 1 0 01-1-1v-1zm14 0h-13v1h13v-1z" clip-rule="evenodd"/>');
-var BIconEjectFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EjectFill', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H3.656c-.876 0-1.33-1.045-.73-1.684L9.27 3.047zM2.5 13.5a1 1 0 011-1h13a1 1 0 011 1v1a1 1 0 01-1 1h-13a1 1 0 01-1-1v-1z" clip-rule="evenodd"/>');
-var BIconEnvelope =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Envelope', '<path fill-rule="evenodd" d="M16 5H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1zM4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.071 6.243a.5.5 0 01.686-.172L10 10.417l7.243-4.346a.5.5 0 11.514.858L10 11.583 2.243 6.93a.5.5 0 01-.172-.686z" clip-rule="evenodd"/>');
-var BIconEnvelopeFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EnvelopeFill', '<path d="M2.05 5.555L10 10.414l7.95-4.859A2 2 0 0016 4H4a2 2 0 00-1.95 1.555zM18 6.697l-5.875 3.59L18 13.743V6.697zm-.168 8.108l-6.675-3.926-1.157.707-1.157-.707-6.675 3.926A2 2 0 004 16h12a2 2 0 001.832-1.195zM2 13.743l5.875-3.456L2 6.697v7.046z"/>');
-var BIconEnvelopeOpen =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EnvelopeOpen', '<path fill-rule="evenodd" d="M2.243 8.929l.514-.858L10 12.417l7.243-4.346.514.858L10 13.583 2.243 8.93z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.184 12.68l-6.432 3.752-.504-.864 6.432-3.752.504.864zm1.632 0l6.432 3.752.504-.864-6.432-3.752-.504.864z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.47 3.318a1 1 0 00-.94 0l-6 3.2A1 1 0 003 7.4V16a1 1 0 001 1h12a1 1 0 001-1V7.4a1 1 0 00-.53-.882l-6-3.2zm-1.41-.883a2 2 0 011.882 0l6 3.2A2 2 0 0118 7.4V16a2 2 0 01-2 2H4a2 2 0 01-2-2V7.4a2 2 0 011.059-1.765l6-3.2z" clip-rule="evenodd"/>');
-var BIconEnvelopeOpenFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EnvelopeOpenFill', '<path fill-rule="evenodd" d="M10.941 2.435a2 2 0 00-1.882 0l-6 3.2A2 2 0 002 7.4v.125l8 4.889 8-4.889V7.4a2 2 0 00-1.059-1.765l-6-3.2zM18 8.697l-5.875 3.59L18 15.743V8.697zm-.168 8.108l-6.586-3.874-.088-.052-.897.548-.261.159-.26-.16-.897-.547-.09.052-6.585 3.874A2 2 0 004 18h12a2 2 0 001.832-1.195zM2 15.743l5.875-3.456L2 8.697v7.046z" clip-rule="evenodd"/>');
-var BIconEye =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Eye', '<path fill-rule="evenodd" d="M18 10s-3-5.5-8-5.5S2 10 2 10s3 5.5 8 5.5 8-5.5 8-5.5zM3.173 10a13.133 13.133 0 001.66 2.043C6.12 13.332 7.88 14.5 10 14.5c2.12 0 3.879-1.168 5.168-2.457A13.133 13.133 0 0016.828 10a13.133 13.133 0 00-1.66-2.043C13.879 6.668 12.119 5.5 10 5.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 003.172 10z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM6.5 10a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" clip-rule="evenodd"/>');
-var BIconEyeFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EyeFill', '<path d="M12.5 10a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/><path fill-rule="evenodd" d="M2 10s3-5.5 8-5.5 8 5.5 8 5.5-3 5.5-8 5.5S2 10 2 10zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" clip-rule="evenodd"/>');
-var BIconEyeSlash =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EyeSlash', '<path d="M15.359 13.238C17.06 11.72 18 10 18 10s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 0110 5.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0116.828 10c-.058.087-.122.183-.195.288a13.14 13.14 0 01-1.465 1.755c-.165.165-.337.328-.517.486l.708.709z"/><path d="M13.297 11.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z"/><path d="M5.35 7.47c-.18.16-.353.322-.518.487A13.134 13.134 0 003.172 10l.195.288c.335.48.83 1.12 1.465 1.755C6.121 13.332 7.881 14.5 10 14.5c.716 0 1.39-.133 2.02-.36l.77.772A7.027 7.027 0 0110 15.5c-5 0-8-5.5-8-5.5s.939-1.721 2.641-3.238l.708.709z"/><path fill-rule="evenodd" d="M15.646 16.354l-12-12 .708-.708 12 12-.708.707z" clip-rule="evenodd"/>');
-var BIconEyeSlashFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EyeSlashFill', '<path d="M12.79 14.912l-1.614-1.615a3.5 3.5 0 01-4.474-4.474l-2.06-2.06C2.938 8.278 2 10 2 10s3 5.5 8 5.5a7.027 7.027 0 002.79-.588zM7.21 5.088A7.028 7.028 0 0110 4.5c5 0 8 5.5 8 5.5s-.939 1.72-2.641 3.238l-2.062-2.062a3.5 3.5 0 00-4.474-4.474L7.21 5.088z"/><path d="M7.525 9.646a2.5 2.5 0 002.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 012.829 2.829z"/><path fill-rule="evenodd" d="M15.646 16.354l-12-12 .708-.708 12 12-.708.707z" clip-rule="evenodd"/>');
-var BIconFilter =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Filter', '<path fill-rule="evenodd" d="M7.5 13a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h8a.5.5 0 010 1H6a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h12a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconFlag =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Flag', '<path fill-rule="evenodd" d="M5.5 3a.5.5 0 01.5.5v13a.5.5 0 01-1 0v-13a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M5.762 4.558C6.735 3.909 7.348 3.5 8.5 3.5c.653 0 1.139.325 1.495.562l.032.022c.392.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 01.5.5v6a.5.5 0 01-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.718 2.718 0 0111 11.5c-.653 0-1.139-.325-1.495-.563l-.032-.021c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916a.5.5 0 11-.515-.858C6.735 9.909 7.348 9.5 8.5 9.5c.653 0 1.139.325 1.495.563l.032.021c.392.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.456-.204 1-.43 1.64-.512V4.543c-.433.074-.83.234-1.234.414l-.159.07c-.22.1-.453.205-.678.287A2.72 2.72 0 0111 5.5c-.653 0-1.139-.325-1.495-.562l-.032-.022c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916a.5.5 0 01-.554-.832l.04-.026z" clip-rule="evenodd"/>');
-var BIconFlagFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FlagFill', '<path fill-rule="evenodd" d="M5.5 3a.5.5 0 01.5.5v13a.5.5 0 01-1 0v-13a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M5.762 4.558C6.735 3.909 7.348 3.5 8.5 3.5c.653 0 1.139.325 1.495.562l.032.022c.392.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 01.5.5v6a.5.5 0 01-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.718 2.718 0 0111 11.5c-.653 0-1.139-.325-1.495-.563l-.032-.021c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916A.5.5 0 015.5 11V5a.5.5 0 01.223-.416l.04-.026z" clip-rule="evenodd"/>');
-var BIconFolder =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Folder', '<path d="M11.828 6a3 3 0 01-2.12-.879l-.83-.828A1 1 0 008.173 4H4.5a1 1 0 00-1 .981L3.546 6h-1L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5v1z"/><path fill-rule="evenodd" d="M15.81 6H4.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91h10.348a1 1 0 00.995-.91l.637-7A1 1 0 0015.81 6zM4.19 5a2 2 0 00-1.992 2.181l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5H4.19z" clip-rule="evenodd"/>');
-var BIconFolderFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FolderFill', '<path fill-rule="evenodd" d="M11.828 5h3.982a2 2 0 011.992 2.181l-.637 7A2 2 0 0115.174 16H4.826a2 2 0 01-1.991-1.819l-.637-7a1.99 1.99 0 01.342-1.31L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5zm-8.322.12C3.72 5.042 3.95 5 4.19 5h5.396l-.707-.707A1 1 0 008.172 4H4.5a1 1 0 00-1 .981l.006.139z" clip-rule="evenodd"/>');
-var BIconFolderSymlink =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FolderSymlink', '<path d="M11.828 6a3 3 0 01-2.12-.879l-.83-.828A1 1 0 008.173 4H4.5a1 1 0 00-1 .981L3.546 6h-1L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5v1z"/><path fill-rule="evenodd" d="M15.81 6H4.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91h10.348a1 1 0 00.995-.91l.637-7A1 1 0 0015.81 6zM4.19 5a2 2 0 00-1.992 2.181l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5H4.19z" clip-rule="evenodd"/><path d="M10.616 12.24l3.182-1.969a.442.442 0 000-.742l-3.182-1.97c-.27-.166-.616.036-.616.372V8.7c-.857 0-3.429 0-4 4.8 1.429-2.7 4-2.4 4-2.4v.769c0 .336.346.538.616.371z"/>');
-var BIconFolderSymlinkFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FolderSymlinkFill', '<path fill-rule="evenodd" d="M15.81 5h-3.982a2 2 0 01-1.414-.586l-.828-.828A2 2 0 008.172 3H4.5a2 2 0 00-2 2l.04.87a1.99 1.99 0 00-.342 1.311l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5zM4.19 5c-.24 0-.47.042-.684.12L3.5 4.98a1 1 0 011-.98h3.672a1 1 0 01.707.293L9.586 5H4.19zm9.608 5.271l-3.182 1.97c-.27.166-.616-.036-.616-.372V11.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z" clip-rule="evenodd"/>');
-var BIconFonts =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Fonts', '<path d="M14.258 5H5.747l-.082 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V5.602l.43.013c1.935.062 2.434.301 2.694 1.846h.479L14.258 5z"/>');
-var BIconForward =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Forward', '<path fill-rule="evenodd" d="M11.502 7.513a.144.144 0 00-.202.134V8.65a.5.5 0 01-.5.5H4.5v2.9h6.3a.5.5 0 01.5.5v1.003c0 .108.11.176.202.134l3.984-2.933a.522.522 0 01.042-.028.147.147 0 000-.252.523.523 0 01-.042-.028l-3.984-2.933zm-1.202.134a1.144 1.144 0 011.767-.96l3.994 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a1.144 1.144 0 01-1.767-.96v-.503H4a.5.5 0 01-.5-.5v-3.9a.5.5 0 01.5-.5h6.3v-.503z" clip-rule="evenodd"/>');
-var BIconForwardFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ForwardFill', '<path d="M11.77 14.11l4.012-2.953a.647.647 0 000-1.114L11.771 7.09a.644.644 0 00-.971.557V8.65H4v3.9h6.8v1.003c0 .505.545.808.97.557z"/>');
-var BIconGear =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Gear', '<path fill-rule="evenodd" d="M10.837 3.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 016.377 5.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 01-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 011.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 012.692 1.115l.094.319c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 012.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 011.115-2.693l.319-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 01-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159a1.873 1.873 0 01-2.693-1.115l-.094-.319zm-2.633-.283c.527-1.79 3.064-1.79 3.592 0l.094.319a.873.873 0 001.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 00.52 1.255l.319.094c1.79.527 1.79 3.064 0 3.592l-.319.094a.873.873 0 00-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 00-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 00-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 00-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 00.52-1.255l-.16-.292c-.892-1.64.901-3.433 2.541-2.54l.292.159a.873.873 0 001.255-.52l.094-.319z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 7.754a2.246 2.246 0 100 4.492 2.246 2.246 0 000-4.492zM6.754 10a3.246 3.246 0 116.492 0 3.246 3.246 0 01-6.492 0z" clip-rule="evenodd"/>');
-var BIconGearFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GearFill', '<path fill-rule="evenodd" d="M11.405 3.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 01-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 01.872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 012.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 012.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 01.872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 01-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 01-2.105-.872l-.1-.34zM10 12.93a2.929 2.929 0 100-5.858 2.929 2.929 0 000 5.858z" clip-rule="evenodd"/>');
-var BIconGearWide =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GearWide', '<path fill-rule="evenodd" d="M10.932 2.724c-.243-.97-1.621-.97-1.864 0l-.072.286a.96.96 0 01-1.622.434l-.205-.211c-.695-.72-1.889-.03-1.614.932l.08.283a.96.96 0 01-1.187 1.188l-.283-.081c-.962-.275-1.651.919-.932 1.614l.211.205a.96.96 0 01-.434 1.622l-.286.072c-.97.243-.97 1.621 0 1.864l.286.072a.96.96 0 01.434 1.622l-.211.205c-.72.695-.03 1.889.932 1.614l.283-.08a.96.96 0 011.188 1.187l-.081.283c-.275.962.919 1.651 1.614.932l.205-.211a.96.96 0 011.622.434l.072.286c.243.97 1.621.97 1.864 0l.072-.286a.96.96 0 011.622-.434l.205.211c.695.72 1.889.03 1.614-.932l-.08-.283a.96.96 0 011.187-1.188l.283.081c.962.275 1.651-.919.932-1.614l-.211-.205a.96.96 0 01.434-1.622l.286-.072c.97-.243.97-1.621 0-1.864l-.286-.072a.96.96 0 01-.434-1.622l.211-.205c.72-.695.03-1.889-.932-1.614l-.283.08a.96.96 0 01-1.188-1.187l.081-.283c.275-.962-.919-1.651-1.614-.932l-.205.211a.96.96 0 01-1.622-.434l-.072-.286zM10 15a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/>');
-var BIconGearWideConnected =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GearWideConnected', '<path fill-rule="evenodd" d="M10.932 2.724c-.243-.97-1.621-.97-1.864 0l-.072.286a.96.96 0 01-1.622.434l-.205-.211c-.695-.72-1.889-.03-1.614.932l.08.283a.96.96 0 01-1.187 1.188l-.283-.081c-.962-.275-1.651.919-.932 1.614l.211.205a.96.96 0 01-.434 1.622l-.286.072c-.97.243-.97 1.621 0 1.864l.286.072a.96.96 0 01.434 1.622l-.211.205c-.72.695-.03 1.889.932 1.614l.283-.08a.96.96 0 011.188 1.187l-.081.283c-.275.962.919 1.651 1.614.932l.205-.211a.96.96 0 011.622.434l.072.286c.243.97 1.621.97 1.864 0l.072-.286a.96.96 0 011.622-.434l.205.211c.695.72 1.889.03 1.614-.932l-.08-.283a.96.96 0 011.187-1.188l.283.081c.962.275 1.651-.919.932-1.614l-.211-.205a.96.96 0 01.434-1.622l.286-.072c.97-.243.97-1.621 0-1.864l-.286-.072a.96.96 0 01-.434-1.622l.211-.205c.72-.695.03-1.889-.932-1.614l-.283.08a.96.96 0 01-1.188-1.187l.081-.283c.275-.962-.919-1.651-1.614-.932l-.205.211a.96.96 0 01-1.622-.434l-.072-.286zM10 15a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.375 10L6.6 6.3l.8-.6 2.85 3.8H15v1h-4.75L7.4 14.3l-.8-.6L9.375 10z" clip-rule="evenodd"/>');
-var BIconGeo =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Geo', '<path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M9.5 6h1v9a.5.5 0 01-1 0V6z"/><path fill-rule="evenodd" d="M8.489 14.095a.5.5 0 01-.383.594c-.565.123-1.003.292-1.286.472-.302.192-.32.321-.32.339 0 .013.005.085.146.21.14.124.372.26.701.383.655.245 1.593.407 2.653.407s1.998-.162 2.653-.407c.329-.124.56-.259.701-.383.14-.125.146-.197.146-.21 0-.018-.018-.147-.32-.339-.283-.18-.721-.35-1.286-.472a.5.5 0 11.212-.977c.63.137 1.193.34 1.61.606.4.253.784.645.784 1.182 0 .402-.219.724-.483.958-.264.235-.618.423-1.013.57-.793.298-1.855.472-3.004.472s-2.21-.174-3.004-.471c-.395-.148-.749-.337-1.013-.571-.264-.234-.483-.556-.483-.958 0-.537.384-.929.783-1.182.418-.266.98-.47 1.611-.606a.5.5 0 01.595.383z" clip-rule="evenodd"/>');
-var BIconGraphDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GraphDown', '<path d="M2 2h1v16H2V2zm1 15h15v1H3v-1z"/><path fill-rule="evenodd" d="M16.39 11.041l-4.349-5.436L9 8.646 5.354 5l-.708.707L9 10.061l2.959-2.959 3.65 4.564.781-.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 11.854a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-4a.5.5 0 00-1 0v3.5h-3.5a.5.5 0 00-.5.5z" clip-rule="evenodd"/>');
-var BIconGraphUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GraphUp', '<path d="M2 2h1v16H2V2zm1 15h15v1H3v-1z"/><path fill-rule="evenodd" d="M16.39 6.312l-4.349 5.437L9 8.707l-3.646 3.647-.708-.708L9 7.293l2.959 2.958 3.65-4.563.781.624z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 5.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V6h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconGrid =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Grid', '<path fill-rule="evenodd" d="M9.5 4.5a1 1 0 00-1-1h-4a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4zm-1 7h-4v4h4v-4zm7 0h-4v4h4v-4zm0-7h-4v4h4v-4zm-7 0h-4v4h4v-4zm2 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4zm-6 6a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4zm7 0a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4z" clip-rule="evenodd"/>');
-var BIconGridFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GridFill', '<rect width="6" height="6" x="3.5" y="10.5" rx="1"/><rect width="6" height="6" x="10.5" y="10.5" rx="1"/><rect width="6" height="6" x="10.5" y="3.5" rx="1"/><rect width="6" height="6" x="3.5" y="3.5" rx="1"/>');
-var BIconHammer =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Hammer', '<path d="M11.812 3.952a.5.5 0 01-.312.89c-1.671 0-2.852.596-3.616 1.185L6.857 7.073V8.21a.5.5 0 01-.146.354L5.426 9.853a.5.5 0 01-.709 0L2.146 7.274a.5.5 0 010-.706l1.286-1.29a.5.5 0 01.354-.146H4.84c1.664-1.904 3.375-2.27 4.716-2.091a5.008 5.008 0 012.076.782l.18.129z"/><path fill-rule="evenodd" d="M8.012 5.5a.5.5 0 01.359.165l9.146 8.646A.5.5 0 0117.5 15L16 16.5a.5.5 0 01-.756-.056L6.598 7.297a.5.5 0 01.048-.65l1-1a.5.5 0 01.366-.147z" clip-rule="evenodd"/>');
-var BIconHash =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Hash', '<path d="M10.39 14.648a1.32 1.32 0 00-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304c.008-.04.016-.117.016-.164a.51.51 0 00-.516-.516.54.54 0 00-.539.43l-.523 2.554H9.617l.477-2.304c.008-.04.015-.117.015-.164a.512.512 0 00-.523-.516.539.539 0 00-.531.43L8.53 7.484H7.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H6.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H8.859l.532-2.563z"/>');
-var BIconHeart =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Heart', '<path fill-rule="evenodd" d="M10 4.748l-.717-.737C7.6 2.281 4.514 2.878 3.4 5.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.837-3.362.314-4.385-1.114-2.175-4.2-2.773-5.883-1.043L10 4.748zM10 17C-5.333 6.868 5.279-1.04 9.824 3.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C14.72-1.042 25.333 6.867 10 17z" clip-rule="evenodd"/>');
-var BIconHeartFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('HeartFill', '<path fill-rule="evenodd" d="M10 3.314C14.438-1.248 25.534 6.735 10 17-5.534 6.736 5.562-1.248 10 3.314z" clip-rule="evenodd"/>');
-var BIconHouse =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('House', '<path fill-rule="evenodd" d="M9.646 3.146a.5.5 0 01.708 0l6 6a.5.5 0 01.146.354v7a.5.5 0 01-.5.5h-4.5a.5.5 0 01-.5-.5v-4H9v4a.5.5 0 01-.5.5H4a.5.5 0 01-.5-.5v-7a.5.5 0 01.146-.354l6-6zM4.5 9.707V16H8v-4a.5.5 0 01.5-.5h3a.5.5 0 01.5.5v4h3.5V9.707l-5.5-5.5-5.5 5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15 4.5V8l-2-2V4.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>');
-var BIconHouseFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('HouseFill', '<path d="M8.5 12.995V16.5a.5.5 0 01-.5.5H4a.5.5 0 01-.5-.5v-7a.5.5 0 01.146-.354l6-6a.5.5 0 01.708 0l6 6a.5.5 0 01.146.354v7a.5.5 0 01-.5.5h-4a.5.5 0 01-.5-.5V13c0-.25-.25-.5-.5-.5H9c-.25 0-.5.25-.5.495z"/><path fill-rule="evenodd" d="M15 4.5V8l-2-2V4.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>');
-var BIconImage =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Image', '<path fill-rule="evenodd" d="M16.002 4h-12a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zm-12-1a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2h-12z" clip-rule="evenodd"/><path d="M12.648 9.646a.5.5 0 01.577-.093l3.777 1.947V16h-14v-2l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"/><path fill-rule="evenodd" d="M6.502 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"/>');
-var BIconImageAlt =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ImageAlt', '<path d="M12.648 8.646a.5.5 0 01.577-.093l4.777 3.947V17a1 1 0 01-1 1h-14a1 1 0 01-1-1v-2l3.646-4.354a.5.5 0 01.63-.062l2.66 2.773 3.71-4.71z"/><path fill-rule="evenodd" d="M6.5 7a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>');
-var BIconImageFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ImageFill', '<path fill-rule="evenodd" d="M2.002 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2h-12a2 2 0 01-2-2V5zm1 9l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71a.5.5 0 01.577-.094l3.777 1.947V15a1 1 0 01-1 1h-12a1 1 0 01-1-1v-1zm5-6.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>');
-var BIconImages =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Images', '<path fill-rule="evenodd" d="M14.002 6h-10a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V7a1 1 0 00-1-1zm-10-1a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-10z" clip-rule="evenodd"/><path d="M12.648 10.646a.5.5 0 01.577-.093l1.777 1.947V16h-12v-1l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"/><path fill-rule="evenodd" d="M6.502 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM6 4h10a1 1 0 011 1v8a1 1 0 01-1 1v1a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2h1a1 1 0 011-1z" clip-rule="evenodd"/>');
-var BIconInbox =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Inbox', '<path fill-rule="evenodd" d="M5.81 6.063A1.5 1.5 0 016.98 5.5h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624a.5.5 0 00-.39-.188H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 10.67a.5.5 0 01.375-.17H8a.5.5 0 01.5.5 1.5 1.5 0 003 0 .5.5 0 01.5-.5h5.5a.5.5 0 01.496.562l-.39 3.124a1.5 1.5 0 01-1.489 1.314H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zm.941.83l.32 2.562a.5.5 0 00.497.438h12.234a.5.5 0 00.496-.438l.32-2.562H12.45a2.5 2.5 0 01-4.9 0H3.066z" clip-rule="evenodd"/>');
-var BIconInboxFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InboxFill', '<path fill-rule="evenodd" d="M5.81 6.063A1.5 1.5 0 016.98 5.5h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624a.5.5 0 00-.39-.188H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 10.67a.5.5 0 01.375-.17h5a.5.5 0 01.5.5c0 .828.625 2 2 2s2-1.172 2-2a.5.5 0 01.5-.5h5a.5.5 0 01.496.562l-.39 3.124a1.5 1.5 0 01-1.489 1.314H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393z" clip-rule="evenodd"/>');
-var BIconInboxes =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Inboxes', '<path fill-rule="evenodd" d="M2.125 13.17A.5.5 0 012.5 13H8a.5.5 0 01.5.5 1.5 1.5 0 003 0 .5.5 0 01.5-.5h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 18H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zm.941.83l.32 2.562a.5.5 0 00.497.438h12.234a.5.5 0 00.496-.438l.32-2.562H12.45a2.5 2.5 0 01-4.9 0H3.066zM5.81 2.563A1.5 1.5 0 016.98 2h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624A.5.5 0 0013.02 3H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 7.17A.5.5 0 012.5 7H8a.5.5 0 01.5.5 1.5 1.5 0 003 0A.5.5 0 0112 7h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 12H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zm.941.83l.32 2.562a.5.5 0 00.497.438h12.234a.5.5 0 00.496-.438L16.933 8H12.45a2.5 2.5 0 01-4.9 0H3.066z" clip-rule="evenodd"/>');
-var BIconInboxesFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InboxesFill', '<path fill-rule="evenodd" d="M2.125 13.17A.5.5 0 012.5 13H8a.5.5 0 01.5.5 1.5 1.5 0 003 0 .5.5 0 01.5-.5h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 18H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zM5.81 2.563A1.5 1.5 0 016.98 2h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624A.5.5 0 0013.02 3H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 7.17A.5.5 0 012.5 7H8a.5.5 0 01.5.5 1.5 1.5 0 003 0A.5.5 0 0112 7h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 12H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393z" clip-rule="evenodd"/>');
-var BIconInfo =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Info', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm8-7a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/><path d="M10.93 8.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705z"/><circle cx="10" cy="6.5" r="1"/>');
-var BIconInfoFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InfoFill', '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705zM10 7.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
-var BIconInfoSquare =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InfoSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M10.93 8.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705z"/><circle cx="10" cy="6.5" r="1"/>');
-var BIconInfoSquareFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InfoSquareFill', '<path fill-rule="evenodd" d="M2 4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm8.93 4.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705zM10 7.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
-var BIconJustify =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Justify', '<path fill-rule="evenodd" d="M4 14.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconJustifyLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('JustifyLeft', '<path fill-rule="evenodd" d="M4 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconJustifyRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('JustifyRight', '<path fill-rule="evenodd" d="M8 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-4-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconKanban =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Kanban', '<path fill-rule="evenodd" d="M15.5 3h-11a1 1 0 00-1 1v12a1 1 0 001 1h11a1 1 0 001-1V4a1 1 0 00-1-1zm-11-1a2 2 0 00-2 2v12a2 2 0 002 2h11a2 2 0 002-2V4a2 2 0 00-2-2h-11z" clip-rule="evenodd"/><rect width="3" height="5" x="8.5" y="4" rx="1"/><rect width="3" height="9" x="4.5" y="4" rx="1"/><rect width="3" height="12" x="12.5" y="4" rx="1"/>');
-var BIconKanbanFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('KanbanFill', '<path fill-rule="evenodd" d="M4.5 2a2 2 0 00-2 2v12a2 2 0 002 2h11a2 2 0 002-2V4a2 2 0 00-2-2h-11zm5 2a1 1 0 00-1 1v3a1 1 0 001 1h1a1 1 0 001-1V5a1 1 0 00-1-1h-1zm-5 1a1 1 0 011-1h1a1 1 0 011 1v7a1 1 0 01-1 1h-1a1 1 0 01-1-1V5zm9-1a1 1 0 00-1 1v10a1 1 0 001 1h1a1 1 0 001-1V5a1 1 0 00-1-1h-1z" clip-rule="evenodd"/>');
-var BIconLaptop =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Laptop', '<path fill-rule="evenodd" d="M15.5 4h-11a.5.5 0 00-.5.5v7a.5.5 0 00.5.5h11a.5.5 0 00.5-.5v-7a.5.5 0 00-.5-.5zm-11-1A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13h11a1.5 1.5 0 001.5-1.5v-7A1.5 1.5 0 0015.5 3h-11z" clip-rule="evenodd"/><path d="M2.81 13.758A1 1 0 013.78 13h12.44a1 1 0 01.97.758l.5 2A1 1 0 0116.72 17H3.28a1 1 0 01-.97-1.242l.5-2z"/>');
-var BIconLayoutSidebar =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LayoutSidebar', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6 16V4h1v12H6z" clip-rule="evenodd"/>');
-var BIconLayoutSidebarReverse =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LayoutSidebarReverse', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13 16V4h1v12h-1z" clip-rule="evenodd"/>');
-var BIconLayoutSplit =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LayoutSplit', '<path fill-rule="evenodd" d="M1.5 5A2.5 2.5 0 014 2.5h12A2.5 2.5 0 0118.5 5v10a2.5 2.5 0 01-2.5 2.5H4A2.5 2.5 0 011.5 15V5zM4 3.5A1.5 1.5 0 002.5 5v10A1.5 1.5 0 004 16.5h12a1.5 1.5 0 001.5-1.5V5A1.5 1.5 0 0016 3.5h-5.5v13h-1v-13H4z" clip-rule="evenodd"/>');
-var BIconList =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('List', '<path fill-rule="evenodd" d="M4.5 13.5A.5.5 0 015 13h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm0-4A.5.5 0 015 9h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm0-4A.5.5 0 015 5h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconListCheck =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListCheck', '<path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zM5.854 4.146a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 11.708-.708L4 5.293l1.146-1.147a.5.5 0 01.708 0zm0 4a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 11.708-.708L4 9.293l1.146-1.147a.5.5 0 01.708 0zm0 4a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 01.708-.708l.146.147 1.146-1.147a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconListOl =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListOl', '<path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M3.713 13.865v-.474H4c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 01-.492.594v.033a.615.615 0 01.569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V11H3.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 00-.342.338v.041zM4.564 7h-.635V4.924h-.031l-.598.42v-.567l.629-.443h.635V7z"/>');
-var BIconListTask =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListTask', '<path fill-rule="evenodd" d="M4 4.5a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5V5a.5.5 0 00-.5-.5H4zM5 5H4v1h1V5z" clip-rule="evenodd"/><path d="M7 5.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zM7.5 9a.5.5 0 000 1h9a.5.5 0 000-1h-9zm0 4a.5.5 0 000 1h9a.5.5 0 000-1h-9z"/><path fill-rule="evenodd" d="M3.5 9a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5H4a.5.5 0 01-.5-.5V9zM4 9h1v1H4V9zm0 3.5a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5H4zm1 .5H4v1h1v-1z" clip-rule="evenodd"/>');
-var BIconListUl =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListUl', '<path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm-3 1a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
-var BIconLock =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Lock', '<path fill-rule="evenodd" d="M13.655 9H6.333c-.264 0-.398.068-.471.121a.73.73 0 00-.224.296 1.626 1.626 0 00-.138.59V15c0 .342.076.531.14.635.064.106.151.18.256.237a1.122 1.122 0 00.436.127l.013.001h7.322c.264 0 .398-.068.471-.121a.73.73 0 00.224-.296 1.627 1.627 0 00.138-.59V10c0-.342-.076-.531-.14-.635a.658.658 0 00-.255-.237 1.123 1.123 0 00-.45-.128zm.012-1H6.333C4.5 8 4.5 10 4.5 10v5c0 2 1.833 2 1.833 2h7.334c1.833 0 1.833-2 1.833-2v-5c0-2-1.833-2-1.833-2zM6.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
-var BIconLockFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LockFill', '<rect width="11" height="9" x="4.5" y="8" rx="2"/><path fill-rule="evenodd" d="M6.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
-var BIconMap =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Map', '<path fill-rule="evenodd" d="M17.817 2.613A.5.5 0 0118 3v13a.5.5 0 01-.402.49l-5 1a.502.502 0 01-.196 0L7.5 16.51l-4.902.98A.5.5 0 012 17V4a.5.5 0 01.402-.49l5-1a.5.5 0 01.196 0l4.902.98 4.902-.98a.5.5 0 01.415.103zM12 4.41l-4-.8v11.98l4 .8V4.41zm1 11.98l4-.8V3.61l-4 .8v11.98zm-6-.8V3.61l-4 .8v11.98l4-.8z" clip-rule="evenodd"/>');
-var BIconMic =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Mic', '<path d="M7 5a3 3 0 016 0v5a3 3 0 11-6 0V5z"/><path fill-rule="evenodd" d="M5.5 8.5A.5.5 0 016 9v1a4 4 0 008 0V9a.5.5 0 011 0v1a5 5 0 01-4.5 4.975V17h3a.5.5 0 010 1h-7a.5.5 0 010-1h3v-2.025A5 5 0 015 10V9a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
-var BIconMoon =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Moon', '<path d="M17.293 13.293A8 8 0 016.707 2.707a8.002 8.002 0 1010.586 10.586z"/>');
-var BIconMusicPlayer =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('MusicPlayer', '<path fill-rule="evenodd" d="M14 3H6a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1zM6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13 5H7v3h6V5zM7 4a1 1 0 00-1 1v3a1 1 0 001 1h6a1 1 0 001-1V5a1 1 0 00-1-1H7zm3 11a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/><circle cx="10" cy="13" r="1"/>');
-var BIconMusicPlayerFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('MusicPlayerFill', '<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 1a1 1 0 011-1h6a1 1 0 011 1v2.5a1 1 0 01-1 1H7a1 1 0 01-1-1V5zm7 8a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/><circle cx="10" cy="13" r="1"/>');
-var BIconOption =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Option', '<path fill-rule="evenodd" d="M2.5 4.5A.5.5 0 013 4h4a.5.5 0 01.439.26L13.297 15H17a.5.5 0 010 1h-4a.5.5 0 01-.439-.26L6.703 5H3a.5.5 0 01-.5-.5zm10 0A.5.5 0 0113 4h4a.5.5 0 010 1h-4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconOutlet =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Outlet', '<path fill-rule="evenodd" d="M5.34 4.994c.275-.338.68-.494 1.074-.494h7.172c.393 0 .798.156 1.074.494.578.708 1.84 2.534 1.84 5.006 0 2.472-1.262 4.297-1.84 5.006-.276.338-.68.494-1.074.494H6.414c-.394 0-.799-.156-1.074-.494C4.762 14.297 3.5 12.472 3.5 10c0-2.472 1.262-4.298 1.84-5.006zm1.074.506a.376.376 0 00-.299.126C5.599 6.259 4.5 7.863 4.5 10c0 2.137 1.099 3.74 1.615 4.374.06.073.163.126.3.126h7.17c.137 0 .24-.053.3-.126.516-.633 1.615-2.237 1.615-4.374 0-2.137-1.099-3.74-1.615-4.374a.376.376 0 00-.3-.126h-7.17z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8 7.5a.5.5 0 01.5.5v1.5a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v1.5a.5.5 0 01-1 0V8a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path d="M9 12v1h2v-1a1 1 0 10-2 0z"/>');
-var BIconPause =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Pause', '<path fill-rule="evenodd" d="M8 5.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v8a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
-var BIconPauseFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PauseFill', '<path d="M7.5 5.5A1.5 1.5 0 019 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5zm5 0A1.5 1.5 0 0114 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5z"/>');
-var BIconPen =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Pen', '<path fill-rule="evenodd" d="M7.707 15.707a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391L12.086 4.5a2 2 0 012.828 0l.586.586a2 2 0 010 2.828l-7.793 7.793zM5 13l7.793-7.793a1 1 0 011.414 0l.586.586a1 1 0 010 1.414L7 15l-3 1 1-3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.854 4.56a.5.5 0 00-.708 0L7.854 7.855a.5.5 0 11-.708-.708l3.293-3.292a1.5 1.5 0 012.122 0l.293.292a.5.5 0 11-.708.708l-.292-.293z" clip-rule="evenodd"/><path d="M15.293 3.207a1 1 0 011.414 0l.03.03a1 1 0 01.03 1.383L15.5 6 14 4.5l1.293-1.293z"/>');
-var BIconPencil =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Pencil', '<path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"/>');
-var BIconPeople =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('People', '<path fill-rule="evenodd" d="M17 16s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002zM9.022 15h7.956a.274.274 0 00.014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C15.688 12.629 14.718 12 13 12c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 00.022.004zm7.973.056v-.002zM13 9a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0zm-7.064 4.28a5.873 5.873 0 00-1.23-.247A7.334 7.334 0 007 11c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 017 15c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM6.92 12c-1.668.02-2.615.64-3.16 1.276C3.163 13.97 3 14.739 3 15h3c0-1.045.323-2.086.92-3zM3.5 7.5a3 3 0 116 0 3 3 0 01-6 0zm3-2a2 2 0 100 4 2 2 0 000-4z" clip-rule="evenodd"/>');
-var BIconPeopleFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PeopleFill', '<path fill-rule="evenodd" d="M9 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H9zm4-6a3 3 0 100-6 3 3 0 000 6zm-5.784 6A2.238 2.238 0 017 15c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 007 11c-4 0-5 3-5 4s1 1 1 1h4.216zM6.5 10a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>');
-var BIconPerson =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Person', '<path fill-rule="evenodd" d="M15 16s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002zM5.022 15h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C13.516 12.68 12.289 12 10 12c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002zM10 9a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>');
-var BIconPersonFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PersonFill', '<path fill-rule="evenodd" d="M5 16s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H5zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>');
-var BIconPhone =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Phone', '<path fill-rule="evenodd" d="M13 3H7a1 1 0 00-1 1v11a1 1 0 001 1h6a1 1 0 001-1V4a1 1 0 00-1-1zM7 2a2 2 0 00-2 2v11a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
-var BIconPhoneLandscape =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PhoneLandscape', '<path fill-rule="evenodd" d="M3.5 6.5v6a1 1 0 001 1h11a1 1 0 001-1v-6a1 1 0 00-1-1h-11a1 1 0 00-1 1zm-1 6a2 2 0 002 2h11a2 2 0 002-2v-6a2 2 0 00-2-2h-11a2 2 0 00-2 2v6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15.5 9.5a1 1 0 10-2 0 1 1 0 002 0z" clip-rule="evenodd"/>');
-var BIconPieChart =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PieChart', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 9.793V3h1v6.5H17v1h-6.793l-4.853 4.854-.708-.708L9.5 9.793z" clip-rule="evenodd"/>');
-var BIconPieChartFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PieChartFill', '<path d="M17.985 10.5h-7.778l-5.5 5.5a8 8 0 0013.277-5.5zM4 15.292A8 8 0 019.5 2.015v7.778l-5.5 5.5zm6.5-13.277V9.5h7.485A8.001 8.001 0 0010.5 2.015z"/>');
-var BIconPlay =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Play', '<path fill-rule="evenodd" d="M12.804 10L7 6.633v6.734L12.804 10zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C6.713 14.69 6 14.345 6 13.692V6.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>');
-var BIconPlayFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PlayFill', '<path d="M13.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/>');
-var BIconPlug =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Plug', '<path d="M6 7h8v3a4 4 0 01-8 0V7z"/><path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v3a.5.5 0 01-1 0V4a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v3a.5.5 0 01-1 0V4a.5.5 0 01.5-.5zM9.115 15.651c.256-.511.385-1.408.385-2.651h1c0 1.257-.121 2.36-.49 3.099-.191.381-.47.707-.87.877-.401.17-.845.15-1.298-.002-.961-.32-1.534-.175-1.851.046-.33.23-.491.615-.491.98h-1c0-.635.278-1.353.918-1.8.653-.456 1.58-.561 2.74-.174.297.099.478.078.592.03.115-.05.244-.161.365-.405z" clip-rule="evenodd"/>');
-var BIconPlus =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Plus', '<path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6a.5.5 0 010-1h3.5V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 10a.5.5 0 01.5-.5h4a.5.5 0 010 1h-3.5V14a.5.5 0 01-1 0v-4z" clip-rule="evenodd"/>');
-var BIconPower =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Power', '<path fill-rule="evenodd" d="M7.578 6.437a5 5 0 104.922.044l.5-.865a6 6 0 11-5.908-.053l.486.874z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 10V3h1v7h-1z" clip-rule="evenodd"/>');
-var BIconQuestion =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Question', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm8-7a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/><path d="M7.25 8.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>');
-var BIconQuestionFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('QuestionFill', '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.57 8.033H7.25C7.22 6.147 8.68 5.5 10.006 5.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H9.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z" clip-rule="evenodd"/>');
-var BIconQuestionSquare =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('QuestionSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M7.25 8.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>');
-var BIconQuestionSquareFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('QuestionSquareFill', '<path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm4.57 6.033H7.25C7.22 6.147 8.68 5.5 10.006 5.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H9.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z" clip-rule="evenodd"/>');
-var BIconReply =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Reply', '<path fill-rule="evenodd" d="M11.502 7.013a.144.144 0 00-.202.134V8.3a.5.5 0 01-.5.5c-.667 0-2.013.005-3.3.822-.984.624-1.99 1.76-2.595 3.876 1.02-.983 2.185-1.516 3.205-1.799a8.745 8.745 0 011.921-.306 7.468 7.468 0 01.798.008h.013l.005.001h.001l-.048.498.05-.498a.5.5 0 01.45.498v1.153c0 .108.11.176.202.134l3.984-2.933a.522.522 0 01.042-.028.147.147 0 000-.252.51.51 0 01-.042-.028l-3.984-2.933zM10.3 12.386a7.745 7.745 0 00-1.923.277c-1.326.368-2.896 1.201-3.94 3.08a.5.5 0 01-.933-.305c.464-3.71 1.886-5.662 3.46-6.66 1.245-.79 2.527-.942 3.336-.971v-.66a1.144 1.144 0 011.767-.96l3.994 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a1.144 1.144 0 01-1.767-.96v-.667z" clip-rule="evenodd"/>');
-var BIconReplyAll =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ReplyAll', '<path fill-rule="evenodd" d="M10.002 7.013a.144.144 0 00-.202.134V8.3a.5.5 0 01-.5.5c-.667 0-2.013.005-3.3.822-.984.624-1.99 1.76-2.595 3.876 1.02-.983 2.185-1.516 3.205-1.799a8.745 8.745 0 011.921-.306 7.47 7.47 0 01.798.008h.013l.005.001h.001L9.3 11.9l.05-.498a.5.5 0 01.45.498v1.153c0 .108.11.176.202.134l3.984-2.933a.522.522 0 01.042-.028.147.147 0 000-.252.51.51 0 01-.042-.028l-3.984-2.933zM8.8 12.386a7.745 7.745 0 00-1.923.277c-1.326.368-2.896 1.201-3.94 3.08a.5.5 0 01-.933-.305c.464-3.71 1.886-5.662 3.46-6.66 1.245-.79 2.527-.942 3.336-.971v-.66a1.144 1.144 0 011.767-.96l3.994 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a1.144 1.144 0 01-1.767-.96v-.667z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.868 6.293a.5.5 0 01.7-.106l3.993 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a.5.5 0 11-.593-.805l4.012-2.954a.523.523 0 01.042-.028.147.147 0 000-.252.512.512 0 01-.042-.028l-4.012-2.954a.5.5 0 01-.106-.699z" clip-rule="evenodd"/>');
-var BIconReplyAllFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ReplyAllFill', '<path d="M10.079 13.9l4.568-3.281a.719.719 0 000-1.238L10.079 6.1A.716.716 0 009 6.719V8c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/><path fill-rule="evenodd" d="M12.868 6.293a.5.5 0 01.7-.106l3.993 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a.5.5 0 11-.593-.805l4.012-2.954a.523.523 0 01.042-.028.147.147 0 000-.252.512.512 0 01-.042-.028l-4.012-2.954a.5.5 0 01-.106-.699z" clip-rule="evenodd"/>');
-var BIconReplyFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ReplyFill', '<path d="M11.079 13.9l4.568-3.281a.719.719 0 000-1.238L11.079 6.1A.716.716 0 0010 6.719V8c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>');
-var BIconScrewdriver =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Screwdriver', '<path fill-rule="evenodd" d="M2 3l1-1 3.081 2.2a1 1 0 01.419.815v.07a1 1 0 00.293.708L12.5 11.5l.914-.305a1 1 0 011.023.242l3.356 3.356a1 1 0 010 1.414l-1.586 1.586a1 1 0 01-1.414 0l-3.356-3.356a1 1 0 01-.242-1.023l.305-.914-5.707-5.707a1 1 0 00-.707-.293h-.071a1 1 0 01-.814-.419L2 3zm11.354 9.646a.5.5 0 00-.708.708l3 3a.5.5 0 00.708-.708l-3-3z" clip-rule="evenodd"/>');
-var BIconSearch =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Search', '<path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>');
-var BIconShield =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Shield', '<path fill-rule="evenodd" d="M7.443 3.991a60.17 60.17 0 00-2.725.802.454.454 0 00-.315.366C3.87 9.056 5.1 11.9 6.567 13.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0010 16.5a.774.774 0 00.097-.023c.072-.022.166-.058.282-.111.23-.106.524-.272.857-.5a10.198 10.198 0 002.197-2.093C14.9 11.9 16.13 9.056 15.597 5.159a.454.454 0 00-.315-.366c-.626-.2-1.682-.526-2.725-.802C11.491 3.71 10.51 3.5 10 3.5c-.51 0-1.49.21-2.557.491zm-.256-.966C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.113 61.113 0 012.772-.815z" clip-rule="evenodd"/>');
-var BIconShieldFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldFill', '<path fill-rule="evenodd" d="M7.187 3.025C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.113 61.113 0 012.772-.815z" clip-rule="evenodd"/>');
-var BIconShieldLock =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldLock', '<path fill-rule="evenodd" d="M7.443 3.991a60.17 60.17 0 00-2.725.802.454.454 0 00-.315.366C3.87 9.056 5.1 11.9 6.567 13.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0010 16.5a.774.774 0 00.097-.023c.072-.022.166-.058.282-.111.23-.106.524-.272.857-.5a10.198 10.198 0 002.197-2.093C14.9 11.9 16.13 9.056 15.597 5.159a.454.454 0 00-.315-.366c-.626-.2-1.682-.526-2.725-.802C11.491 3.71 10.51 3.5 10 3.5c-.51 0-1.49.21-2.557.491zm-.256-.966C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.113 61.113 0 012.772-.815z" clip-rule="evenodd"/><path d="M11.5 8.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M9.41 10.034a.5.5 0 01.494-.417h.156a.5.5 0 01.492.414l.347 2a.5.5 0 01-.493.585h-.835a.5.5 0 01-.493-.582l.333-2z"/>');
-var BIconShieldLockFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldLockFill', '<path fill-rule="evenodd" d="M7.187 3.025C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525a61.1 61.1 0 012.772.815c.527.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.368 9.365a11.19 11.19 0 01-2.417 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.105 61.105 0 012.772-.815zm3.328 6.884a1.5 1.5 0 10-1.06-.011.5.5 0 00-.044.136l-.333 2a.5.5 0 00.493.582h.835a.5.5 0 00.493-.585l-.347-2a.501.501 0 00-.037-.122z" clip-rule="evenodd"/>');
-var BIconShieldShaded =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldShaded', '<path fill-rule="evenodd" d="M7.443 3.991a60.17 60.17 0 00-2.725.802.454.454 0 00-.315.366C3.87 9.056 5.1 11.9 6.567 13.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0010 16.5a.774.774 0 00.097-.023c.072-.022.166-.058.282-.111a5.94 5.94 0 00.857-.5 10.198 10.198 0 002.197-2.093C14.9 11.9 16.13 9.056 15.597 5.159a.454.454 0 00-.315-.366c-.626-.2-1.682-.526-2.725-.802C11.491 3.71 10.51 3.5 10 3.5c-.51 0-1.49.21-2.557.491zm-.256-.966C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.526-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.105 61.105 0 012.772-.815z" clip-rule="evenodd"/><path d="M10 4.25c.909 0 3.188.685 4.254 1.022a.94.94 0 01.656.773c.814 6.424-4.13 9.452-4.91 9.452V4.25z"/>');
-var BIconShift =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Shift', '<path fill-rule="evenodd" d="M9.27 4.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H13.5v3a1 1 0 01-1 1h-5a1 1 0 01-1-1v-3H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 4.047zm7.076 7.453L10 4.731 3.654 11.5H6.5a1 1 0 011 1v3h5v-3a1 1 0 011-1h2.846z" clip-rule="evenodd"/>');
-var BIconShiftFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShiftFill', '<path fill-rule="evenodd" d="M9.27 4.047a1 1 0 011.46 0l6.345 6.769c.6.639.146 1.684-.73 1.684H13.5v3a1 1 0 01-1 1h-5a1 1 0 01-1-1v-3H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 4.047z" clip-rule="evenodd"/>');
-var BIconSkipBackward =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipBackward', '<path fill-rule="evenodd" d="M2.5 5.5A.5.5 0 013 6v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L10.5 10.752v2.94c0 .653-.713.998-1.233.696L3 10.752V14a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm7 1.133L3.696 10 9.5 13.367V6.633zm7.5 0L11.196 10 17 13.367V6.633z" clip-rule="evenodd"/>');
-var BIconSkipBackwardFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipBackwardFill', '<path stroke="currentColor" stroke-linecap="round" d="M14 6v8"/><path d="M13.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/>');
-var BIconSkipEnd =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipEnd', '<path fill-rule="evenodd" d="M14 5.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.804 10L7 6.633v6.734L12.804 10zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C6.713 14.69 6 14.345 6 13.692V6.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>');
-var BIconSkipEndFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipEndFill', '<path stroke="currentColor" stroke-linecap="round" d="M2.5 6v8"/><path d="M2.904 10.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V6.308c0-.63-.693-1.01-1.233-.696L2.904 9.304a.802.802 0 000 1.393z"/><path d="M10.404 10.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V6.308c0-.63-.692-1.01-1.233-.696l-6.363 3.692a.802.802 0 000 1.393z"/>');
-var BIconSkipForward =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipForward', '<path fill-rule="evenodd" d="M17.5 5.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-3.248l-6.267 3.636c-.52.302-1.233-.043-1.233-.696v-2.94l-6.267 3.636C2.713 14.69 2 14.345 2 13.692V6.308c0-.653.713-.998 1.233-.696L9.5 9.248v-2.94c0-.653.713-.998 1.233-.696L17 9.248V6a.5.5 0 01.5-.5zM3 6.633v6.734L8.804 10 3 6.633zm7.5 0v6.734L16.304 10 10.5 6.633z" clip-rule="evenodd"/>');
-var BIconSkipForwardFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipForwardFill', '<path stroke="currentColor" stroke-linecap="round" d="M17.5 6v8"/><path d="M9.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/><path d="M17.096 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.693-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/>');
-var BIconSkipStart =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipStart', '<path fill-rule="evenodd" d="M6.5 5.5A.5.5 0 006 6v8a.5.5 0 001 0V6a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.696 10L13.5 6.633v6.734L7.696 10zm-.792-.696a.802.802 0 000 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V6.308c0-.653-.713-.998-1.233-.696L6.904 9.304z" clip-rule="evenodd"/>');
-var BIconSkipStartFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipStartFill', '<path stroke="currentColor" stroke-linecap="round" d="M6.5 6v8"/><path d="M6.903 10.697l6.364 3.692c.54.313 1.232-.066 1.232-.697V6.308c0-.63-.692-1.01-1.232-.696L6.903 9.304a.802.802 0 000 1.393z"/>');
-var BIconSpeaker =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Speaker', '<path d="M11 6a1 1 0 11-2 0 1 1 0 012 0zm-2.5 6.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"/><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm6 4a2 2 0 11-4 0 2 2 0 014 0zm-2 3a3.5 3.5 0 100 7 3.5 3.5 0 000-7z" clip-rule="evenodd"/>');
-var BIconSquare =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Square', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/>');
-var BIconSquareFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SquareFill', '<rect width="16" height="16" x="2" y="2" rx="2"/>');
-var BIconSquareHalf =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SquareHalf', '<path fill-rule="evenodd" d="M10 3H4a1 1 0 00-1 1v12a1 1 0 001 1h6V3zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/>');
-var BIconStar =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Star', '<path fill-rule="evenodd" d="M4.866 16.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696-2.184-4.327a.513.513 0 00-.927 0L7.354 7.12l-4.898.696c-.441.062-.612.636-.282.95l3.522 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 00-.163-.505L3.71 8.745l4.052-.576a.525.525 0 00.393-.288l1.847-3.658 1.846 3.658c.08.157.226.264.393.288l4.053.575-2.907 2.77a.564.564 0 00-.163.506l.694 3.957-3.686-1.894a.503.503 0 00-.461 0z" clip-rule="evenodd"/>');
-var BIconStarFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StarFill', '<path d="M5.612 17.443c-.386.198-.824-.149-.746-.592l.83-4.73-3.522-3.356c-.33-.314-.16-.888.282-.95l4.898-.696 2.184-4.327c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L10 15.187l-4.389 2.256z"/>');
-var BIconStarHalf =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StarHalf', '<path fill-rule="evenodd" d="M7.354 7.119l2.184-4.327A.516.516 0 0110 2.5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0118 8.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L10 15.187l-4.389 2.256a.52.52 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73-3.522-3.356a.55.55 0 01-.172-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM10 14.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.907-2.77-4.053-.576a.525.525 0 01-.393-.288l-1.847-3.658-.001.003v9.8z" clip-rule="evenodd"/>');
-var BIconStop =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Stop', '<path fill-rule="evenodd" d="M5.5 7A1.5 1.5 0 017 5.5h6A1.5 1.5 0 0114.5 7v6a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 13V7zM7 6.5a.5.5 0 00-.5.5v6a.5.5 0 00.5.5h6a.5.5 0 00.5-.5V7a.5.5 0 00-.5-.5H7z" clip-rule="evenodd"/>');
-var BIconStopFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StopFill', '<path d="M7 5.5h6A1.5 1.5 0 0114.5 7v6a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 13V7A1.5 1.5 0 017 5.5z"/>');
-var BIconStopwatch =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Stopwatch', '<path fill-rule="evenodd" d="M10 17a6 6 0 100-12 6 6 0 000 12zm0 1a7 7 0 100-14 7 7 0 000 14z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6.5a.5.5 0 010-1h3V7a.5.5 0 01.5-.5zm-2.5-4A.5.5 0 018 2h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M9 3h2v2H9V3z"/>');
-var BIconStopwatchFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StopwatchFill', '<path fill-rule="evenodd" d="M7.5 2.5A.5.5 0 018 2h4a.5.5 0 010 1h-1v1.07A7.002 7.002 0 0110 18 7 7 0 019 4.07V3H8a.5.5 0 01-.5-.5zm3 4.5a.5.5 0 00-1 0v3.5h-3a.5.5 0 000 1H10a.5.5 0 00.5-.5V7z" clip-rule="evenodd"/>');
-var BIconSun =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Sun', '<path d="M5.5 10a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0z"/><path fill-rule="evenodd" d="M10.202 2.28a.25.25 0 00-.404 0l-.91 1.255a.25.25 0 01-.334.067L7.232 2.79a.25.25 0 00-.374.155l-.36 1.508a.25.25 0 01-.282.189l-1.532-.244a.25.25 0 00-.286.286l.244 1.532a.25.25 0 01-.189.282l-1.508.36a.25.25 0 00-.155.374l.812 1.322a.25.25 0 01-.067.333l-1.256.91a.25.25 0 000 .405l1.256.91a.25.25 0 01.067.334l-.812 1.322a.25.25 0 00.155.374l1.508.36a.25.25 0 01.19.282l-.245 1.532a.25.25 0 00.286.286l1.532-.244a.25.25 0 01.282.189l.36 1.508a.25.25 0 00.374.155l1.322-.812a.25.25 0 01.333.067l.91 1.256a.25.25 0 00.405 0l.91-1.256a.25.25 0 01.334-.067l1.322.812a.25.25 0 00.374-.155l.36-1.508a.25.25 0 01.282-.19l1.532.245a.25.25 0 00.286-.286l-.244-1.532a.25.25 0 01.189-.282l1.508-.36a.25.25 0 00.155-.374l-.812-1.322a.25.25 0 01.067-.333l1.256-.91a.25.25 0 000-.405l-1.256-.91a.25.25 0 01-.067-.334l.812-1.322a.25.25 0 00-.155-.374l-1.508-.36a.25.25 0 01-.19-.282l.245-1.532a.25.25 0 00-.286-.286l-1.532.244a.25.25 0 01-.282-.189l-.36-1.509a.25.25 0 00-.374-.154l-1.322.812a.25.25 0 01-.333-.067l-.91-1.256zM10 4.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11z" clip-rule="evenodd"/>');
-var BIconTable =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Table', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17 6H3V5h14v1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 17.5v-14h1v14H7zm5 0v-14h1v14h-1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17 10H3V9h14v1zm0 4H3v-1h14v1z" clip-rule="evenodd"/><path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v2H2V4z"/>');
-var BIconTablet =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tablet', '<path fill-rule="evenodd" d="M14 3.5H6a1 1 0 00-1 1v11a1 1 0 001 1h8a1 1 0 001-1v-11a1 1 0 00-1-1zm-8-1a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2v-11a2 2 0 00-2-2H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 15.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
-var BIconTabletLandscape =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TabletLandscape', '<path fill-rule="evenodd" d="M3.5 6v8a1 1 0 001 1h11a1 1 0 001-1V6a1 1 0 00-1-1h-11a1 1 0 00-1 1zm-1 8a2 2 0 002 2h11a2 2 0 002-2V6a2 2 0 00-2-2h-11a2 2 0 00-2 2v8z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15.5 10a1 1 0 10-2 0 1 1 0 002 0z" clip-rule="evenodd"/>');
-var BIconTag =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tag', '<path fill-rule="evenodd" d="M2.5 4A1.5 1.5 0 014 2.5h4.586a1.5 1.5 0 011.06.44l7 7a1.5 1.5 0 010 2.12l-4.585 4.586a1.5 1.5 0 01-2.122 0l-7-7a1.5 1.5 0 01-.439-1.06V4zM4 3.5a.5.5 0 00-.5.5v4.586a.5.5 0 00.146.353l7 7a.5.5 0 00.708 0l4.585-4.585a.5.5 0 000-.708l-7-7a.5.5 0 00-.353-.146H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 6.5a2 2 0 114 0 2 2 0 01-4 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/>');
-var BIconTagFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TagFill', '<path fill-rule="evenodd" d="M4 3a1 1 0 00-1 1v4.586a1 1 0 00.293.707l7 7a1 1 0 001.414 0l4.586-4.586a1 1 0 000-1.414l-7-7A1 1 0 008.586 3H4zm4 3.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>');
-var BIconTerminal =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Terminal', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8 11a.5.5 0 01.5-.5h3a.5.5 0 010 1h-3A.5.5 0 018 11zM5.146 6.146a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L6.793 8.5 5.146 6.854a.5.5 0 010-.708z" clip-rule="evenodd"/>');
-var BIconTerminalFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TerminalFill', '<path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm9.5 5.5h-3a.5.5 0 000 1h3a.5.5 0 000-1zm-6.354-.354L6.793 8.5 5.146 6.854a.5.5 0 11.708-.708l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708z" clip-rule="evenodd"/>');
-var BIconTextCenter =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextCenter', '<path fill-rule="evenodd" d="M6 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm2-3a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconTextIndentLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextIndentLeft', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm.646 2.146a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L6.293 10 4.646 8.354a.5.5 0 010-.708zM9 8.5a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm-5 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconTextIndentRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextIndentRight', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm10.646 2.146a.5.5 0 01.708.708L13.707 10l1.647 1.646a.5.5 0 01-.708.708l-2-2a.5.5 0 010-.708l2-2zM4 8.5a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconTextLeft =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextLeft', '<path fill-rule="evenodd" d="M4 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconTextRight =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextRight', '<path stroke="currentColor" stroke-linecap="round" d="M8.5 14.5h7m-11-3h11m-7-3h7m-11-3h11"/>');
-var BIconThreeDots =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ThreeDots', '<path fill-rule="evenodd" d="M5 11.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" clip-rule="evenodd"/>');
-var BIconThreeDotsVertical =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ThreeDotsVertical', '<path fill-rule="evenodd" d="M11.5 15a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>');
-var BIconToggleOff =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ToggleOff', '<path fill-rule="evenodd" d="M13 6a4 4 0 010 8h-3a4.992 4.992 0 002-4 4.992 4.992 0 00-2-4h3zm-6 8a4 4 0 110-8 4 4 0 010 8zm-5-4a5 5 0 005 5h6a5 5 0 000-10H7a5 5 0 00-5 5z" clip-rule="evenodd"/>');
-var BIconToggleOn =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ToggleOn', '<path fill-rule="evenodd" d="M7 5a5 5 0 000 10h6a5 5 0 000-10H7zm6 9a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"/>');
-var BIconToggles =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Toggles', '<path fill-rule="evenodd" d="M13.5 3h-7a2.5 2.5 0 000 5h7a2.5 2.5 0 000-5zm-7-1a3.5 3.5 0 100 7h7a3.5 3.5 0 100-7h-7zm0 9a3.5 3.5 0 100 7h7a3.5 3.5 0 100-7h-7zm7 6a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 5.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zM6.5 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>');
-var BIconTools =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tools', '<path fill-rule="evenodd" d="M2 3l1-1 3.081 2.2a1 1 0 01.419.815v.07a1 1 0 00.293.708L12.5 11.5l.914-.305a1 1 0 011.023.242l3.356 3.356a1 1 0 010 1.414l-1.586 1.586a1 1 0 01-1.414 0l-3.356-3.356a1 1 0 01-.242-1.023l.305-.914-5.707-5.707a1 1 0 00-.707-.293h-.071a1 1 0 01-.814-.419L2 3zm11.354 9.646a.5.5 0 00-.708.708l3 3a.5.5 0 00.708-.708l-3-3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17.898 4.223a3.003 3.003 0 01-3.679 3.674L7.878 14.15a3 3 0 11-2.027-2.027l6.252-6.341a3 3 0 013.675-3.68l-2.142 2.142L14 6l1.757.364 2.141-2.141zm-13.37 9.019L5 13l.471.242.529.026.287.445.445.287.026.529L7 15l-.242.471-.026.529-.445.287-.287.445-.529.026L5 17l-.471-.242L4 16.732l-.287-.445L3.268 16l-.026-.529L3 15l.242-.471.026-.529.445-.287.287-.445.529-.026z" clip-rule="evenodd"/>');
-var BIconTrash =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Trash', '<path d="M7.5 7.5A.5.5 0 018 8v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V8z"/><path fill-rule="evenodd" d="M16.5 5a1 1 0 01-1 1H15v9a2 2 0 01-2 2H7a2 2 0 01-2-2V6h-.5a1 1 0 01-1-1V4a1 1 0 011-1H8a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM6.118 6L6 6.059V15a1 1 0 001 1h6a1 1 0 001-1V6.059L13.882 6H6.118zM4.5 5V4h11v1h-11z" clip-rule="evenodd"/>');
-var BIconTrashFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TrashFill', '<path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>');
-var BIconTriangle =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Triangle', '<path fill-rule="evenodd" d="M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L10.12 4.073a.146.146 0 00-.054-.057.13.13 0 00-.063-.016.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z" clip-rule="evenodd"/>');
-var BIconTriangleFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TriangleFill', '<path fill-rule="evenodd" d="M9.022 3.566a1.13 1.13 0 011.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H3.144c-.889 0-1.437-.99-.98-1.767L9.022 3.566z" clip-rule="evenodd"/>');
-var BIconTriangleHalf =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TriangleHalf', '<path fill-rule="evenodd" d="M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017l6.857-.017V4a.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z" clip-rule="evenodd"/>');
-var BIconTrophy =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Trophy', '<path d="M5 3h10c-.495 3.467-.5 10-5 10S5.495 6.467 5 3zm0 15a1 1 0 011-1h8a1 1 0 011 1H5zm2-1a1 1 0 011-1h4a1 1 0 011 1H7z"/><path fill-rule="evenodd" d="M14.5 5a2 2 0 100 4 2 2 0 000-4zm-3 2a3 3 0 116 0 3 3 0 01-6 0zm-6-2a2 2 0 100 4 2 2 0 000-4zm-3 2a3 3 0 116 0 3 3 0 01-6 0z" clip-rule="evenodd"/><path d="M9 12h2v4H9v-4z"/><path d="M12 13c0 .552-.895 1-2 1s-2-.448-2-1 .895-1 2-1 2 .448 2 1z"/>');
-var BIconTv =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tv', '<path fill-rule="evenodd" d="M2.216 6H1.5v-.04l.005-.083a2.957 2.957 0 01.298-1.102c.154-.309.394-.633.763-.88C2.94 3.648 3.413 3.5 4 3.5h12.039l.083.005a2.958 2.958 0 011.102.298c.309.154.633.394.88.763.248.373.396.847.396 1.434v6H18h.5v.039l-.005.083a2.957 2.957 0 01-.298 1.102 2.257 2.257 0 01-.763.88c-.373.248-.847.396-1.434.396H3.961l-.083-.005a2.956 2.956 0 01-1.102-.298 2.254 2.254 0 01-.88-.763C1.648 13.06 1.5 12.588 1.5 12V6h.716zm.284.002v-.008l.003-.044a1.959 1.959 0 01.195-.726c.095-.191.23-.367.423-.495.19-.127.466-.229.879-.229h12.006l.044.003a1.958 1.958 0 01.726.195c.191.095.367.23.495.423.127.19.229.466.229.879v6.006l-.003.044a1.959 1.959 0 01-.195.726c-.095.191-.23.367-.423.495-.19.127-.466.229-.879.229H3.994l-.044-.003a1.96 1.96 0 01-.726-.195 1.256 1.256 0 01-.495-.423c-.127-.19-.229-.466-.229-.879V6.002zM4.003 13.5zm.497 2A.5.5 0 015 15h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
-var BIconTvFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TvFill', '<path fill-rule="evenodd" d="M4.5 15.5A.5.5 0 015 15h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zM4 4h12s2 0 2 2v6s0 2-2 2H4s-2 0-2-2V6s0-2 2-2z" clip-rule="evenodd"/>');
-var BIconType =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Type', '<path d="M4.244 15.081l.944-2.803H8.66l.944 2.803h1.257L7.54 5.75H6.322L3 15.081h1.244zm2.7-7.923l1.395 4.157h-2.83L6.91 7.158h.034zm9.146 7.027h.035v.896h1.128v-4.956c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.463v.732H14.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>');
-var BIconTypeBold =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeBold', '<path d="M10.21 15c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 001.852-2.14c0-1.51-1.162-2.46-3.014-2.46H5.843V15h4.368zM7.908 6.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H7.908V6.673zm0 6.788v-2.864h1.73c1.216 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H7.907z"/>');
-var BIconTypeH1 =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeH1', '<path d="M10.637 15V5.669H9.379V9.62H4.758V5.67H3.5V15h1.258v-4.273h4.62V15h1.259zm5.329 0V5.669h-1.244L12.5 7.316v1.265l2.16-1.565h.062V15h1.244z"/>');
-var BIconTypeH2 =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeH2', '<path d="M9.638 15V5.669H8.38V9.62H3.759V5.67H2.5V15h1.258v-4.273h4.62V15h1.259zm3.022-6.733v-.048c0-.889.63-1.668 1.716-1.668.957 0 1.675.608 1.675 1.572 0 .855-.554 1.504-1.067 2.085l-3.513 3.999V15H17.5v-1.094h-4.245v-.075l2.481-2.844c.875-.998 1.586-1.784 1.586-2.953 0-1.463-1.155-2.556-2.919-2.556-1.941 0-2.966 1.326-2.966 2.74v.049h1.223z"/>');
-var BIconTypeH3 =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeH3', '<path d="M9.637 15V5.669H8.379V9.62H3.758V5.67H2.5V15h1.258v-4.273h4.62V15h1.259zm3.625-4.273h1.018c1.142 0 1.935.67 1.949 1.675.013 1.005-.78 1.737-2.01 1.73-1.08-.007-1.853-.588-1.935-1.32h-1.176c.069 1.327 1.224 2.386 3.083 2.386 1.935 0 3.343-1.155 3.309-2.789-.027-1.51-1.251-2.16-2.037-2.249v-.068c.704-.123 1.764-.91 1.723-2.229-.035-1.353-1.176-2.4-2.954-2.385-1.873.006-2.857 1.162-2.898 2.358h1.196c.062-.69.711-1.299 1.696-1.299.998 0 1.695.622 1.695 1.525.007.922-.718 1.592-1.695 1.592h-.964v1.073z"/>');
-var BIconTypeItalic =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeItalic', '<path d="M9.991 13.674l1.538-7.219c.123-.595.246-.71 1.347-.807l.11-.52H9.211l-.11.52c1.06.096 1.128.212 1.005.807L8.57 13.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>');
-var BIconTypeStrikethrough =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeStrikethrough', '<path d="M10.527 15.164c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675l-.946-.207h3.45c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967zM8.602 8.5H7.167a2.776 2.776 0 01-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607 0 .31.083.581.27.814z"/><path fill-rule="evenodd" d="M17 10.5H3v-1h14v1z" clip-rule="evenodd"/>');
-var BIconTypeUnderline =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeUnderline', '<path d="M7.313 5.136h-1.23v6.405c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V5.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V5.136z"/><path fill-rule="evenodd" d="M14.5 17h-9v-1h9v1z" clip-rule="evenodd"/>');
-var BIconUnlock =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Unlock', '<path fill-rule="evenodd" d="M11.655 9H4.333c-.264 0-.398.068-.471.121a.73.73 0 00-.224.296 1.626 1.626 0 00-.138.59V15c0 .342.076.531.14.635.064.106.151.18.256.237a1.122 1.122 0 00.436.127l.013.001h7.322c.264 0 .398-.068.471-.121a.73.73 0 00.224-.296 1.627 1.627 0 00.138-.59V10c0-.342-.076-.531-.14-.635a.658.658 0 00-.255-.237 1.123 1.123 0 00-.45-.128zm.012-1H4.333C2.5 8 2.5 10 2.5 10v5c0 2 1.833 2 1.833 2h7.334c1.833 0 1.833-2 1.833-2v-5c0-2-1.833-2-1.833-2zM10.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
-var BIconUnlockFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('UnlockFill', '<path d="M2.5 10a2 2 0 012-2h7a2 2 0 012 2v5a2 2 0 01-2 2h-7a2 2 0 01-2-2v-5z"/><path fill-rule="evenodd" d="M10.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
-var BIconUpload =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Upload', '<path fill-rule="evenodd" d="M2.5 10a.5.5 0 01.5.5V14a1 1 0 001 1h12a1 1 0 001-1v-3.5a.5.5 0 011 0V14a2 2 0 01-2 2H4a2 2 0 01-2-2v-3.5a.5.5 0 01.5-.5zM7 6.854a.5.5 0 00.707 0L10 4.56l2.293 2.293A.5.5 0 1013 6.146L10.354 3.5a.5.5 0 00-.708 0L7 6.146a.5.5 0 000 .708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 4z" clip-rule="evenodd"/>');
-var BIconVolumeDown =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeDown', '<path fill-rule="evenodd" d="M10.717 5.55A.5.5 0 0111 6v8a.5.5 0 01-.812.39L7.825 12.5H5.5A.5.5 0 015 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zM10 7.04L8.312 8.39A.5.5 0 018 8.5H6v3h2a.5.5 0 01.312.11L10 12.96V7.04z" clip-rule="evenodd"/><path d="M12.707 13.182A4.486 4.486 0 0014.025 10a4.486 4.486 0 00-1.318-3.182L12 7.525A3.489 3.489 0 0113.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/>');
-var BIconVolumeDownFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeDownFill', '<path fill-rule="evenodd" d="M10.717 5.55A.5.5 0 0111 6v8a.5.5 0 01-.812.39L7.825 12.5H5.5A.5.5 0 015 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06z" clip-rule="evenodd"/><path d="M12.707 13.182A4.486 4.486 0 0014.025 10a4.486 4.486 0 00-1.318-3.182L12 7.525A3.489 3.489 0 0113.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/>');
-var BIconVolumeMute =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeMute', '<path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zM8 7.04L6.312 8.39A.5.5 0 016 8.5H4v3h2a.5.5 0 01.312.11L8 12.96V7.04zm7.854.606a.5.5 0 010 .708l-4 4a.5.5 0 01-.708-.708l4-4a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.146 7.646a.5.5 0 000 .708l4 4a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
-var BIconVolumeMuteFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeMuteFill', '<path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zm7.137 1.596a.5.5 0 010 .708l-4 4a.5.5 0 01-.708-.708l4-4a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.146 7.146a.5.5 0 000 .708l4 4a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
-var BIconVolumeUp =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeUp', '<path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zM8 7.04L6.312 8.39A.5.5 0 016 8.5H4v3h2a.5.5 0 01.312.11L8 12.96V7.04z" clip-rule="evenodd"/><path d="M13.536 16.01a8.473 8.473 0 002.49-6.01 8.473 8.473 0 00-2.49-6.01l-.708.707A7.476 7.476 0 0115.025 10c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M12.121 14.596A6.48 6.48 0 0014.025 10a6.48 6.48 0 00-1.904-4.596l-.707.707A5.483 5.483 0 0113.025 10a5.483 5.483 0 01-1.61 3.89l.706.706z"/><path d="M10.707 13.182A4.486 4.486 0 0012.025 10a4.486 4.486 0 00-1.318-3.182L10 7.525A3.489 3.489 0 0111.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/>');
-var BIconVolumeUpFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeUpFill', '<path d="M13.536 16.01a8.473 8.473 0 002.49-6.01 8.473 8.473 0 00-2.49-6.01l-.708.707A7.476 7.476 0 0115.025 10c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M12.121 14.596A6.48 6.48 0 0014.025 10a6.48 6.48 0 00-1.904-4.596l-.707.707A5.483 5.483 0 0113.025 10a5.483 5.483 0 01-1.61 3.89l.706.706z"/><path d="M10.707 13.182A4.486 4.486 0 0012.025 10a4.486 4.486 0 00-1.318-3.182L10 7.525A3.489 3.489 0 0111.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/><path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06z" clip-rule="evenodd"/>');
-var BIconWallet =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Wallet', '<path fill-rule="evenodd" d="M3.5 5a.5.5 0 00-.5.5v2h5a.5.5 0 01.5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 01.5-.5h5v-2a.5.5 0 00-.5-.5h-13zM17 8.5h-4.551a2.678 2.678 0 01-.443 1.042c-.393.546-1.043.958-2.006.958-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 017.551 8.5H3v6a.5.5 0 00.5.5h13a.5.5 0 00.5-.5v-6zm-15-3A1.5 1.5 0 013.5 4h13A1.5 1.5 0 0118 5.5v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 012 14.5v-9z" clip-rule="evenodd"/>');
-var BIconWatch =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Watch', '<path fill-rule="evenodd" d="M6 16.333v-1.86A5.985 5.985 0 014 10c0-1.777.772-3.374 2-4.472V3.667C6 2.747 6.746 2 7.667 2h4.666C13.253 2 14 2.746 14 3.667v1.86A5.985 5.985 0 0116 10a5.985 5.985 0 01-2 4.472v1.861c0 .92-.746 1.667-1.667 1.667H7.667C6.747 18 6 17.254 6 16.333zM15 10a5 5 0 10-10 0 5 5 0 0010 0z" clip-rule="evenodd"/><rect width="1" height="2" x="15.5" y="9" rx=".5"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v3a.5.5 0 01-.5.5H8a.5.5 0 010-1h1.5V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
-var BIconWifi =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Wifi', '<path fill-rule="evenodd" d="M8.858 13.858A1.991 1.991 0 0110 13.5c.425 0 .818.132 1.142.358L10 15l-1.142-1.142z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.731 14.024l.269.269.269-.269a1.506 1.506 0 00-.538 0zm-1.159-.576A2.49 2.49 0 0110 13c.53 0 1.023.165 1.428.448a.5.5 0 01.068.763l-1.143 1.143a.5.5 0 01-.707 0L8.504 14.21a.5.5 0 01.354-.853v.5l-.286-.41zM10 11.5a4.478 4.478 0 00-2.7.9.5.5 0 01-.6-.8c.919-.69 2.062-1.1 3.3-1.1s2.381.41 3.3 1.1a.5.5 0 01-.6.8 4.478 4.478 0 00-2.7-.9zm0-3c-1.833 0-3.51.657-4.814 1.748a.5.5 0 11-.642-.766A8.468 8.468 0 0110 7.5c2.076 0 3.98.745 5.456 1.982a.5.5 0 01-.642.766A7.468 7.468 0 0010 8.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 5.5c-2.657 0-5.082.986-6.932 2.613a.5.5 0 11-.66-.75A11.458 11.458 0 0110 4.5c2.91 0 5.567 1.08 7.592 2.862a.5.5 0 11-.66.751A10.458 10.458 0 0010 5.5z" clip-rule="evenodd"/>');
-var BIconWindow =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Window', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17 8H3V7h14v1z" clip-rule="evenodd"/><path d="M5 5.5a.5.5 0 11-1 0 .5.5 0 011 0zm1.5 0a.5.5 0 11-1 0 .5.5 0 011 0zm1.5 0a.5.5 0 11-1 0 .5.5 0 011 0z"/>');
-var BIconWrench =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Wrench', '<path fill-rule="evenodd" d="M2.102 4.223A3.004 3.004 0 005 8c.27 0 .532-.036.78-.103l6.342 6.252A3.003 3.003 0 0015 18a3 3 0 10-.851-5.878L7.897 5.781A3.004 3.004 0 004.223 2.1l2.141 2.142L6 6l-1.757.364-2.141-2.141zm13.37 9.019L15 13l-.471.242-.529.026-.287.445-.445.287-.026.529L13 15l.242.471.026.529.445.287.287.445.529.026L15 17l.471-.242.529-.026.287-.445.445-.287.026-.529L17 15l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" clip-rule="evenodd"/>');
-var BIconX =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('X', '<path fill-rule="evenodd" d="M5.646 5.646a.5.5 0 000 .708l8 8a.5.5 0 00.708-.708l-8-8a.5.5 0 00-.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
-var BIconXCircle =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XCircle', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.646 13.354l-6-6 .708-.708 6 6-.708.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.354 13.354l6-6-.708-.708-6 6 .708.708z" clip-rule="evenodd"/>');
-var BIconXCircleFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XCircleFill', '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7.354 6.646L10 9.293l2.646-2.647a.5.5 0 01.708.708L10.707 10l2.647 2.646a.5.5 0 01-.708.708L10 10.707l-2.646 2.647a.5.5 0 01-.708-.708L9.293 10 6.646 7.354a.5.5 0 11.708-.708z" clip-rule="evenodd"/>');
-var BIconXOctagon =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XOctagon', '<path fill-rule="evenodd" d="M6.54 2.146A.5.5 0 016.893 2h6.214a.5.5 0 01.353.146l4.394 4.394a.5.5 0 01.146.353v6.214a.5.5 0 01-.146.353l-4.394 4.394a.5.5 0 01-.353.146H6.893a.5.5 0 01-.353-.146L2.146 13.46A.5.5 0 012 13.107V6.893a.5.5 0 01.146-.353L6.54 2.146zM7.1 3L3 7.1v5.8L7.1 17h5.8l4.1-4.1V7.1L12.9 3H7.1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.293 10L6.646 7.354l.708-.708L10 9.293l2.646-2.647.708.708L10.707 10l2.647 2.646-.707.708L10 10.707l-2.646 2.647-.708-.707L9.293 10z" clip-rule="evenodd"/>');
-var BIconXOctagonFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XOctagonFill', '<path fill-rule="evenodd" d="M13.46 2.146A.5.5 0 0013.107 2H6.893a.5.5 0 00-.353.146L2.146 6.54A.5.5 0 002 6.893v6.214a.5.5 0 00.146.353l4.394 4.394a.5.5 0 00.353.146h6.214a.5.5 0 00.353-.146l4.394-4.394a.5.5 0 00.146-.353V6.893a.5.5 0 00-.146-.353L13.46 2.146zm-6.106 4.5L10 9.293l2.646-2.647a.5.5 0 01.708.708L10.707 10l2.647 2.646a.5.5 0 01-.708.708L10 10.707l-2.646 2.647a.5.5 0 01-.708-.708L9.293 10 6.646 7.354a.5.5 0 11.708-.708z" clip-rule="evenodd"/>');
-var BIconXSquare =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.293 10L6.646 7.354l.708-.708L10 9.293l2.646-2.647.708.708L10.707 10l2.647 2.646-.708.708L10 10.707l-2.646 2.647-.708-.707L9.293 10z" clip-rule="evenodd"/>');
-var BIconXSquareFill =
-/*#__PURE__*/
-Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XSquareFill', '<path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm3.354 4.646L10 9.293l2.646-2.647a.5.5 0 01.708.708L10.707 10l2.647 2.646a.5.5 0 01-.708.708L10 10.707l-2.646 2.647a.5.5 0 01-.708-.708L9.293 10 6.646 7.354a.5.5 0 11.708-.708z" clip-rule="evenodd"/>'); // --- END AUTO-GENERATED FILE ---
+var BIconAlarm = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Alarm', '<path fill-rule="evenodd" d="M10 17a6 6 0 100-12 6 6 0 000 12zm0 1a7 7 0 100-14 7 7 0 000 14z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v4a.5.5 0 01-.053.224l-1.5 3a.5.5 0 11-.894-.448L9.5 10.882V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path d="M2.86 7.387A2.5 2.5 0 116.387 3.86 8.035 8.035 0 002.86 7.387zM13.613 3.86a2.5 2.5 0 113.527 3.527 8.035 8.035 0 00-3.527-3.527z"/><path fill-rule="evenodd" d="M13.646 16.146a.5.5 0 01.708 0l1 1a.5.5 0 01-.708.708l-1-1a.5.5 0 010-.708zm-7.292 0a.5.5 0 00-.708 0l-1 1a.5.5 0 00.708.708l1-1a.5.5 0 000-.708zM7.5 2.5A.5.5 0 018 2h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M9 3h2v2H9V3z"/>');
+var BIconAlarmFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlarmFill', '<path fill-rule="evenodd" d="M7.5 2.5A.5.5 0 018 2h4a.5.5 0 010 1h-1v1.07a7.002 7.002 0 013.537 12.26l.817.816a.5.5 0 01-.708.708l-.924-.925A6.967 6.967 0 0110 18a6.967 6.967 0 01-3.722-1.07l-.924.924a.5.5 0 01-.708-.708l.817-.816A7.002 7.002 0 019 4.07V3H8a.5.5 0 01-.5-.5zM2.86 7.387A2.5 2.5 0 116.387 3.86 8.035 8.035 0 002.86 7.387zM15.5 3c-.753 0-1.429.333-1.887.86a8.035 8.035 0 013.527 3.527A2.5 2.5 0 0015.5 3zm-5 4a.5.5 0 00-1 0v3.882l-1.447 2.894a.5.5 0 10.894.448l1.5-3A.5.5 0 0010.5 11V7z" clip-rule="evenodd"/>');
+var BIconAlertCircle = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertCircle', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path d="M9.002 13a1 1 0 112 0 1 1 0 01-2 0zM9.1 6.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 6.995z"/>');
+var BIconAlertCircleFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertCircleFill', '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8.998 3a1 1 0 112 0 1 1 0 01-2 0zM10 6a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 6z" clip-rule="evenodd"/>');
+var BIconAlertOctagon = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertOctagon', '<path fill-rule="evenodd" d="M6.54 2.146A.5.5 0 016.893 2h6.214a.5.5 0 01.353.146l4.394 4.394a.5.5 0 01.146.353v6.214a.5.5 0 01-.146.353l-4.394 4.394a.5.5 0 01-.353.146H6.893a.5.5 0 01-.353-.146L2.146 13.46A.5.5 0 012 13.107V6.893a.5.5 0 01.146-.353L6.54 2.146zM7.1 3L3 7.1v5.8L7.1 17h5.8l4.1-4.1V7.1L12.9 3H7.1z" clip-rule="evenodd"/><rect width="2" height="2" x="9.002" y="12" rx="1"/><path d="M9.1 6.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 6.995z"/>');
+var BIconAlertOctagonFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertOctagonFill', '<path fill-rule="evenodd" d="M13.107 2a.5.5 0 01.353.146l4.394 4.394a.5.5 0 01.146.353v6.214a.5.5 0 01-.146.353l-4.394 4.394a.5.5 0 01-.353.146H6.893a.5.5 0 01-.353-.146L2.146 13.46A.5.5 0 012 13.107V6.893a.5.5 0 01.146-.353L6.54 2.146A.5.5 0 016.893 2h6.214zM9.002 13a1 1 0 112 0 1 1 0 01-2 0zM10 6a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 6z" clip-rule="evenodd"/>');
+var BIconAlertSquare = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><rect width="2" height="2" x="9.002" y="12" rx="1"/><path d="M9.1 6.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 6.995z"/>');
+var BIconAlertSquareFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertSquareFill', '<path fill-rule="evenodd" d="M2 4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm7.002 9a1 1 0 112 0 1 1 0 01-2 0zM10 6a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 6z" clip-rule="evenodd"/>');
+var BIconAlertTriangle = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertTriangle', '<path fill-rule="evenodd" d="M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L10.12 4.073a.146.146 0 00-.054-.057.13.13 0 00-.063-.016.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z" clip-rule="evenodd"/><rect width="2" height="2" x="9.002" y="13" rx="1"/><path d="M9.1 7.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 7.995z"/>');
+var BIconAlertTriangleFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('AlertTriangleFill', '<path fill-rule="evenodd" d="M9.022 3.566a1.13 1.13 0 011.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H3.144c-.889 0-1.437-.99-.98-1.767L9.022 3.566zM9.002 14a1 1 0 112 0 1 1 0 01-2 0zM10 7a.905.905 0 00-.9.995l.35 3.507a.553.553 0 001.1 0l.35-3.507A.905.905 0 0010 7z" clip-rule="evenodd"/>');
+var BIconArchive = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Archive', '<path fill-rule="evenodd" d="M4 7v7.5c0 .864.642 1.5 1.357 1.5h9.286c.715 0 1.357-.636 1.357-1.5V7h1v7.5c0 1.345-1.021 2.5-2.357 2.5H5.357C4.021 17 3 15.845 3 14.5V7h1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.5 9.5A.5.5 0 018 9h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zM17 4H3v2h14V4zM3 3a1 1 0 00-1 1v2a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/>');
+var BIconArchiveFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArchiveFill', '<path fill-rule="evenodd" d="M14.643 17C15.979 17 17 15.845 17 14.5V7H3v7.5C3 15.845 4.021 17 5.357 17h9.286zM8 9a.5.5 0 000 1h4a.5.5 0 000-1H8zM3 3a1 1 0 00-1 1v1.5a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/>');
+var BIconArrowBarBottom = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarBottom', '<path fill-rule="evenodd" d="M13.354 12.146a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 01.708-.708L10 14.793l2.646-2.647a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5V15a.5.5 0 01-1 0V8.5A.5.5 0 0110 8zM4 5.75a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowBarLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarLeft', '<path fill-rule="evenodd" d="M7.854 6.646a.5.5 0 00-.708 0l-3 3a.5.5 0 000 .708l3 3a.5.5 0 00.708-.708L5.207 10l2.647-2.646a.5.5 0 000-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 10a.5.5 0 00-.5-.5H5a.5.5 0 000 1h6.5a.5.5 0 00.5-.5zm2.5 6a.5.5 0 01-.5-.5v-11a.5.5 0 011 0v11a.5.5 0 01-.5.5z" clip-rule="evenodd"/>');
+var BIconArrowBarRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarRight', '<path fill-rule="evenodd" d="M12.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8 10a.5.5 0 01.5-.5H15a.5.5 0 010 1H8.5A.5.5 0 018 10zm-2.5 6a.5.5 0 01-.5-.5v-11a.5.5 0 011 0v11a.5.5 0 01-.5.5z" clip-rule="evenodd"/>');
+var BIconArrowBarUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowBarUp', '<path fill-rule="evenodd" d="M13.354 7.854a.5.5 0 000-.708l-3-3a.5.5 0 00-.708 0l-3 3a.5.5 0 10.708.708L10 5.207l2.646 2.647a.5.5 0 00.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 12a.5.5 0 00.5-.5V5a.5.5 0 00-1 0v6.5a.5.5 0 00.5.5zm-6 2.75a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowClockwise = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowClockwise', '<path fill-rule="evenodd" d="M10 4.5a5.5 5.5 0 105.5 5.5.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63l-.5.865A5.472 5.472 0 0010 4.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.646 1.646a.5.5 0 01.708 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 01-.708-.708L12.793 4.5l-2.147-2.146a.5.5 0 010-.708z" clip-rule="evenodd"/>');
+var BIconArrowCounterclockwise = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowCounterclockwise', '<path fill-rule="evenodd" d="M10 4.5A5.5 5.5 0 114.5 10a.5.5 0 00-1 0 6.5 6.5 0 103.25-5.63l.5.865A5.472 5.472 0 0110 4.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.354 1.646a.5.5 0 00-.708 0l-2.5 2.5a.5.5 0 000 .708l2.5 2.5a.5.5 0 10.708-.708L7.207 4.5l2.147-2.146a.5.5 0 000-.708z" clip-rule="evenodd"/>');
+var BIconArrowDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDown', '<path fill-rule="evenodd" d="M6.646 11.646a.5.5 0 01.708 0L10 14.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowDownLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDownLeft', '<path fill-rule="evenodd" d="M5 9.5a.5.5 0 01.5.5v4.5H10a.5.5 0 010 1H5a.5.5 0 01-.5-.5v-5a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-9 9a.5.5 0 01-.708-.708l9-9a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconArrowDownRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDownRight', '<path fill-rule="evenodd" d="M14 9.5a.5.5 0 01.5.5v5a.5.5 0 01-.5.5H9a.5.5 0 010-1h4.5V10a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.646 5.646a.5.5 0 01.708 0l9 9a.5.5 0 01-.708.708l-9-9a.5.5 0 010-.708z" clip-rule="evenodd"/>');
+var BIconArrowDownShort = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowDownShort', '<path fill-rule="evenodd" d="M6.646 9.646a.5.5 0 01.708 0L10 12.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowLeft', '<path fill-rule="evenodd" d="M7.854 6.646a.5.5 0 010 .708L5.207 10l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 10a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowLeftRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowLeftRight', '<path fill-rule="evenodd" d="M12.146 9.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.793 13l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4 13a.5.5 0 01.5-.5H15a.5.5 0 010 1H4.5A.5.5 0 014 13zm3.854-9.354a.5.5 0 010 .708L5.207 7l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 7a.5.5 0 01.5-.5h10.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowLeftShort = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowLeftShort', '<path fill-rule="evenodd" d="M9.854 6.646a.5.5 0 010 .708L7.207 10l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowRepeat = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowRepeat', '<path fill-rule="evenodd" d="M4 9.5a.5.5 0 00-.5.5 6.5 6.5 0 0012.13 3.25.5.5 0 00-.866-.5A5.5 5.5 0 014.5 10a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.354 9.146a.5.5 0 00-.708 0l-2 2a.5.5 0 00.708.708L4 10.207l1.646 1.647a.5.5 0 00.708-.708l-2-2zM15.947 10.5a.5.5 0 00.5-.5 6.5 6.5 0 00-12.13-3.25.5.5 0 10.866.5A5.5 5.5 0 0115.448 10a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M18.354 8.146a.5.5 0 00-.708 0L16 9.793l-1.646-1.647a.5.5 0 00-.708.708l2 2a.5.5 0 00.708 0l2-2a.5.5 0 000-.708z" clip-rule="evenodd"/>');
+var BIconArrowRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowRight', '<path fill-rule="evenodd" d="M12.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L14.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4 10a.5.5 0 01.5-.5H15a.5.5 0 010 1H4.5A.5.5 0 014 10z" clip-rule="evenodd"/>');
+var BIconArrowRightShort = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowRightShort', '<path fill-rule="evenodd" d="M10.146 6.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 10l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6 10a.5.5 0 01.5-.5H13a.5.5 0 010 1H6.5A.5.5 0 016 10z" clip-rule="evenodd"/>');
+var BIconArrowUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUp', '<path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.646 4.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L10 5.707 7.354 8.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"/>');
+var BIconArrowUpDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpDown', '<path fill-rule="evenodd" d="M13 5.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.646 4.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L13 5.707l-2.646 2.647a.5.5 0 01-.708-.708l3-3zm-9 7a.5.5 0 01.708 0L7 14.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 4.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowUpLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpLeft', '<path fill-rule="evenodd" d="M4.5 6a.5.5 0 01.5-.5h5a.5.5 0 010 1H5.5V11a.5.5 0 01-1 0V6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.646 5.646a.5.5 0 01.708 0l9 9a.5.5 0 01-.708.708l-9-9a.5.5 0 010-.708z" clip-rule="evenodd"/>');
+var BIconArrowUpRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpRight', '<path fill-rule="evenodd" d="M8.5 6a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V6.5H9a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-9 9a.5.5 0 01-.708-.708l9-9a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconArrowUpShort = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowUpShort', '<path fill-rule="evenodd" d="M10 7.5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V8a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.646 6.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L10 7.707l-2.646 2.647a.5.5 0 01-.708-.708l3-3z" clip-rule="evenodd"/>');
+var BIconArrowsAngleContract = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsAngleContract', '<path fill-rule="evenodd" d="M11.5 4.036a.5.5 0 01.5.5v3.5h3.5a.5.5 0 010 1h-4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16.354 3.646a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0zm-7.5 7.5a.5.5 0 010 .708l-4.5 4.5a.5.5 0 01-.708-.708l4.5-4.5a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.036 11.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V12h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowsAngleExpand = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsAngleExpand', '<path fill-rule="evenodd" d="M4 11.5a.5.5 0 01.5.5v3.5H8a.5.5 0 010 1H4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.854 11.11a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.708-.707l4.5-4.5a.5.5 0 01.708 0zm7.464-7.464a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.707-.708l4.5-4.5a.5.5 0 01.707 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.5 4a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V4.5H12a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconArrowsCollapse = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsCollapse', '<path fill-rule="evenodd" d="M4 10a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11A.5.5 0 014 10zm6-7a.5.5 0 01.5.5V8a.5.5 0 01-1 0V3.5A.5.5 0 0110 3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 5.646a.5.5 0 010 .708l-2 2a.5.5 0 01-.708 0l-2-2a.5.5 0 11.708-.708L10 7.293l1.646-1.647a.5.5 0 01.708 0zM10 17a.5.5 0 00.5-.5V12a.5.5 0 00-1 0v4.5a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 14.354a.5.5 0 000-.708l-2-2a.5.5 0 00-.708 0l-2 2a.5.5 0 00.708.708L10 12.707l1.646 1.647a.5.5 0 00.708 0z" clip-rule="evenodd"/>');
+var BIconArrowsExpand = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsExpand', '<path fill-rule="evenodd" d="M4 10a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11A.5.5 0 014 10zm6-1.5a.5.5 0 00.5-.5V3.5a.5.5 0 00-1 0V8a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 5.854a.5.5 0 000-.708l-2-2a.5.5 0 00-.708 0l-2 2a.5.5 0 10.708.708L10 4.207l1.646 1.647a.5.5 0 00.708 0zM10 11.5a.5.5 0 01.5.5v4.5a.5.5 0 01-1 0V12a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.354 14.146a.5.5 0 010 .708l-2 2a.5.5 0 01-.708 0l-2-2a.5.5 0 01.708-.708L10 15.793l1.646-1.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconArrowsFullscreen = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ArrowsFullscreen', '<path fill-rule="evenodd" d="M4 11.5a.5.5 0 01.5.5v3.5H8a.5.5 0 010 1H4a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.854 11.11a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.708-.707l4.5-4.5a.5.5 0 01.708 0zm7.464-7.464a.5.5 0 010 .708l-4.5 4.5a.5.5 0 11-.707-.708l4.5-4.5a.5.5 0 01.707 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.5 4a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V4.5H12a.5.5 0 01-.5-.5zm4.5 7.5a.5.5 0 00-.5.5v3.5H12a.5.5 0 000 1h4a.5.5 0 00.5-.5v-4a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.146 11.11a.5.5 0 000 .708l4.5 4.5a.5.5 0 00.708-.707l-4.5-4.5a.5.5 0 00-.708 0zM3.682 3.646a.5.5 0 000 .708l4.5 4.5a.5.5 0 10.707-.708l-4.5-4.5a.5.5 0 00-.707 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 4a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v4a.5.5 0 001 0V4.5H8a.5.5 0 00.5-.5z" clip-rule="evenodd"/>');
+var BIconAt = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('At', '<path fill-rule="evenodd" d="M15.106 9.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V7.206h-1.032v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907s-.601 1.914-1.538 1.914c-.895 0-1.442-.725-1.442-1.914z" clip-rule="evenodd"/>');
+var BIconAward = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Award', '<path d="M10 2l1.669.864 1.858.282.842 1.68 1.337 1.32L15.4 8l.306 1.854-1.337 1.32-.842 1.68-1.858.282L10 14l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L4.6 8l-.306-1.854 1.337-1.32.842-1.68 1.858-.282L10 2z"/><path d="M6 13.794V18l4-1 4 1v-4.206l-2.018.306L10 15.126 8.018 14.1 6 13.794z"/>');
+var BIconBackspace = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Backspace', '<path fill-rule="evenodd" d="M8.603 4h7.08a1 1 0 011 1v10a1 1 0 01-1 1h-7.08a1 1 0 01-.76-.35L3 10l4.844-5.65A1 1 0 018.603 4zm7.08-1a2 2 0 012 2v10a2 2 0 01-2 2h-7.08a2 2 0 01-1.519-.698L2.241 10.65a1 1 0 010-1.302L7.084 3.7A2 2 0 018.603 3h7.08z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.83 7.146a.5.5 0 000 .708l5 5a.5.5 0 00.707-.708l-5-5a.5.5 0 00-.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13.537 7.146a.5.5 0 010 .708l-5 5a.5.5 0 01-.708-.708l5-5a.5.5 0 01.707 0z" clip-rule="evenodd"/>');
+var BIconBackspaceFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BackspaceFill', '<path fill-rule="evenodd" d="M17.683 5a2 2 0 00-2-2h-7.08a2 2 0 00-1.519.698L2.241 9.35a1 1 0 000 1.302l4.843 5.65A2 2 0 008.603 17h7.08a2 2 0 002-2V5zM7.829 7.854a.5.5 0 11.707-.708l2.147 2.147 2.146-2.147a.5.5 0 11.707.708L11.39 10l2.146 2.146a.5.5 0 01-.707.708l-2.146-2.147-2.147 2.147a.5.5 0 01-.707-.708L9.976 10 7.829 7.854z" clip-rule="evenodd"/>');
+var BIconBackspaceReverse = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BackspaceReverse', '<path fill-rule="evenodd" d="M11.08 4H4a1 1 0 00-1 1v10a1 1 0 001 1h7.08a1 1 0 00.76-.35L16.682 10l-4.844-5.65A1 1 0 0011.08 4zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h7.08a2 2 0 001.519-.698l4.843-5.651a1 1 0 000-1.302L12.6 3.7a2 2 0 00-1.52-.7H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.854 7.146a.5.5 0 010 .708l-5 5a.5.5 0 01-.708-.708l5-5a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.146 7.146a.5.5 0 000 .708l5 5a.5.5 0 00.708-.708l-5-5a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
+var BIconBackspaceReverseFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BackspaceReverseFill', '<path fill-rule="evenodd" d="M2 5a2 2 0 012-2h7.08a2 2 0 011.519.698l4.843 5.651a1 1 0 010 1.302L12.6 16.3a2 2 0 01-1.52.7H4a2 2 0 01-2-2V5zm9.854 2.854a.5.5 0 00-.708-.708L9 9.293 6.854 7.146a.5.5 0 10-.708.708L8.293 10l-2.147 2.146a.5.5 0 00.708.708L9 10.707l2.146 2.147a.5.5 0 00.708-.708L9.707 10l2.147-2.146z" clip-rule="evenodd"/>');
+var BIconBarChart = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BarChart', '<path fill-rule="evenodd" d="M6 13H4v3h2v-3zm5-4H9v7h2V9zm5-5h-2v12h2V4zm-2-1a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1V4a1 1 0 00-1-1h-2zM8 9a1 1 0 011-1h2a1 1 0 011 1v7a1 1 0 01-1 1H9a1 1 0 01-1-1V9zm-5 4a1 1 0 011-1h2a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1v-3z" clip-rule="evenodd"/>');
+var BIconBarChartFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BarChartFill', '<rect width="4" height="5" x="3" y="12" rx="1"/><rect width="4" height="9" x="8" y="8" rx="1"/><rect width="4" height="14" x="13" y="3" rx="1"/>');
+var BIconBattery = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Battery', '<path fill-rule="evenodd" d="M14 7H4a1 1 0 00-1 1v4a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1zM4 6a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M16.5 11.5a1.5 1.5 0 000-3v3z"/>');
+var BIconBatteryCharging = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BatteryCharging', '<path d="M16.5 11.5a1.5 1.5 0 000-3v3z"/><path fill-rule="evenodd" d="M11.585 4.568a.5.5 0 01.226.579l-1.134 3.686h1.99a.5.5 0 01.364.843l-5.334 5.667a.5.5 0 01-.842-.49l1.135-3.686H6a.5.5 0 01-.364-.843l5.333-5.667a.5.5 0 01.616-.09z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.332 6H4a2 2 0 00-2 2v4a2 2 0 002 2h2.072l.307-1H4a1 1 0 01-1-1V8a1 1 0 011-1h3.391l.941-1zM6.45 8H4v4h1.313a1.5 1.5 0 01-.405-2.361L6.45 8zm.976 5l-.308 1H8.96l.21-.224h.001l.73-.776H8.53l-.085.09.028-.09H7.426zm1.354-1H7.733l.257-.833H6a.5.5 0 01-.364-.843l.793-.843L7.823 8h1.373l-2.039 2.167h1.51a.492.492 0 01.166.028.5.5 0 01.312.619L8.78 12zm.69 0h1.373l1.395-1.482.793-.842a.5.5 0 00-.364-.843h-1.99L10.933 8H9.887l-.166.54-.199.646a.5.5 0 00.478.647h1.51L9.47 12zm.725-5h1.046l.308-1H9.706l-.942 1h1.374l.085-.09-.028.09zm2.4-1l-.308 1H14a1 1 0 011 1v4a1 1 0 01-1 1h-2.724l-.942 1H14a2 2 0 002-2V8a2 2 0 00-2-2h-1.405zm-.378 6H14v-1.98a1.499 1.499 0 01-.241.341L12.217 12zM14 8.646V8h-.646a1.5 1.5 0 01.646.646z" clip-rule="evenodd"/>');
+var BIconBatteryFull = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BatteryFull', '<path fill-rule="evenodd" d="M14 7H4a1 1 0 00-1 1v4a1 1 0 001 1h10a1 1 0 001-1V8a1 1 0 00-1-1zM4 6a2 2 0 00-2 2v4a2 2 0 002 2h10a2 2 0 002-2V8a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M4 8h10v4H4V8zm12.5 3.5a1.5 1.5 0 000-3v3z"/>');
+var BIconBell = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bell', '<path d="M10 18a2 2 0 002-2H8a2 2 0 002 2z"/><path fill-rule="evenodd" d="M10 3.918l-.797.161A4.002 4.002 0 006 8c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C14.134 10.197 14 8.628 14 8a4.002 4.002 0 00-3.203-3.92L10 3.917zM16.22 14c.223.447.482.801.78 1H3c.299-.199.557-.553.78-1C4.68 12.2 5 8.88 5 8c0-2.42 1.72-4.44 4.005-4.901a1 1 0 111.99 0A5.002 5.002 0 0115 8c0 .88.32 4.2 1.22 6z" clip-rule="evenodd"/>');
+var BIconBellFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BellFill', '<path d="M10 18a2 2 0 002-2H8a2 2 0 002 2zm.995-14.901a1 1 0 10-1.99 0A5.002 5.002 0 005 8c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>');
+var BIconBlockquoteLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BlockquoteLeft', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm5 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm-5 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M5.734 8.352a6.586 6.586 0 00-.445.275 1.94 1.94 0 00-.346.299 1.38 1.38 0 00-.252.369c-.058.129-.1.295-.123.498h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 01-.187.463c-.12.14-.289.21-.503.21-.336 0-.577-.109-.721-.327-.145-.223-.217-.514-.217-.873 0-.254.055-.485.164-.692.11-.21.242-.398.399-.562.16-.168.33-.31.51-.428.179-.117.33-.213.45-.287l.211.352zm2.168 0a6.588 6.588 0 00-.445.275 1.94 1.94 0 00-.346.299c-.113.12-.199.246-.257.375a1.75 1.75 0 00-.118.492h.282c.242 0 .431.06.568.182.14.117.21.29.21.521a.697.697 0 01-.187.463c-.12.14-.289.21-.504.21-.335 0-.576-.109-.72-.327-.145-.223-.217-.514-.217-.873 0-.254.055-.485.164-.692.11-.21.242-.398.398-.562.16-.168.33-.31.51-.428.18-.117.33-.213.451-.287l.211.352z"/>');
+var BIconBlockquoteRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BlockquoteRight', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M14.168 8.352c.184.105.332.197.445.275.114.074.229.174.346.299.11.117.193.24.252.369s.1.295.123.498h-.281c-.243 0-.432.06-.569.182-.14.117-.21.29-.21.521 0 .164.062.319.187.463.121.14.289.21.504.21.336 0 .576-.109.72-.327.145-.223.217-.514.217-.873 0-.254-.054-.485-.164-.692a2.436 2.436 0 00-.398-.562c-.16-.168-.33-.31-.51-.428-.18-.117-.33-.213-.451-.287l-.211.352zm-2.168 0c.184.105.332.197.445.275.114.074.229.174.346.299.113.12.2.246.258.375.055.125.094.289.117.492h-.281c-.242 0-.432.06-.569.182-.14.117-.21.29-.21.521 0 .164.062.319.187.463.121.14.289.21.504.21.336 0 .576-.109.72-.327.145-.223.217-.514.217-.873 0-.254-.054-.485-.164-.692a2.438 2.438 0 00-.398-.562c-.16-.168-.33-.31-.51-.428-.18-.117-.33-.213-.451-.287L12 8.352z"/>');
+var BIconBook = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Book', '<path fill-rule="evenodd" d="M5.214 3.072c1.599-.32 3.702-.363 5.14 1.074a.5.5 0 01.146.354v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 012 15.5v-11a.5.5 0 01.276-.447L2.5 4.5l-.224-.447.002-.001.004-.002.013-.006a5.116 5.116 0 01.22-.103 12.958 12.958 0 012.7-.869zM3 4.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V4.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 003 4.82z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.786 3.072c-1.598-.32-3.702-.363-5.14 1.074A.5.5 0 009.5 4.5v11a.5.5 0 00.854.354c.844-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0018 15.5v-11a.5.5 0 00-.276-.447L17.5 4.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM17 4.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.386-.023-3.426.56V4.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0117 4.82z" clip-rule="evenodd"/>');
+var BIconBookHalfFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BookHalfFill', '<path fill-rule="evenodd" d="M5.214 3.072c1.599-.32 3.702-.363 5.14 1.074a.5.5 0 01.146.354v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 012 15.5v-11a.5.5 0 01.276-.447L2.5 4.5l-.224-.447.002-.001.004-.002.013-.006a5.116 5.116 0 01.22-.103 12.958 12.958 0 012.7-.869zM3 4.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V4.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 003 4.82z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.786 3.072c-1.598-.32-3.702-.363-5.14 1.074A.5.5 0 009.5 4.5v11a.5.5 0 00.854.354c.844-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0018 15.5v-11a.5.5 0 00-.276-.447L17.5 4.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609z" clip-rule="evenodd"/>');
+var BIconBookmark = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bookmark', '<path fill-rule="evenodd" d="M10 14l5 3V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V5a1 1 0 00-1-1H7a1 1 0 00-1 1v10.234z" clip-rule="evenodd"/>');
+var BIconBookmarkFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BookmarkFill', '<path fill-rule="evenodd" d="M5 5a2 2 0 012-2h6a2 2 0 012 2v12l-5-3-5 3V5z" clip-rule="evenodd"/>');
+var BIconBootstrap = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bootstrap', '<path fill-rule="evenodd" d="M14 3H6a3 3 0 00-3 3v8a3 3 0 003 3h8a3 3 0 003-3V6a3 3 0 00-3-3zM6 2a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V6a4 4 0 00-4-4H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.537 14H7.062V5.545h3.398c1.588 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.482 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396zM8.375 6.658v2.467h1.558c1.16 0 1.764-.428 1.764-1.23 0-.78-.568-1.237-1.541-1.237H8.375zm1.898 6.229H8.375v-2.725h1.822c1.236 0 1.887.463 1.887 1.348 0 .896-.627 1.377-1.811 1.377z" clip-rule="evenodd"/>');
+var BIconBootstrapFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BootstrapFill', '<path fill-rule="evenodd" d="M6.002 2a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V6a4 4 0 00-4-4h-8zm1.06 12h3.475c1.804 0 2.888-.908 2.888-2.396 0-1.102-.761-1.916-1.904-2.034v-.1c.832-.14 1.482-.93 1.482-1.816 0-1.3-.955-2.11-2.543-2.11H7.063V14zm1.313-4.875V6.658h1.78c.974 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H8.375zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H8.375v2.725z" clip-rule="evenodd"/>');
+var BIconBootstrapReboot = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BootstrapReboot', '<path fill-rule="evenodd" d="M3.161 10a6.84 6.84 0 106.842-6.84.58.58 0 110-1.16 8 8 0 11-6.556 3.412l-.663-.577a.58.58 0 01.227-.997l2.52-.69a.58.58 0 01.728.633l-.332 2.592a.58.58 0 01-.956.364l-.643-.56A6.812 6.812 0 003.16 10zm5.228-.079V7.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.505 1.324-1.386 1.324h-1.6zm0 3.75v-2.828h1.57l1.498 2.828h1.314l-1.646-3.006c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H7.248v7.352h1.141z" clip-rule="evenodd"/>');
+var BIconBoxArrowBottomLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowBottomLeft', '<path fill-rule="evenodd" d="M15 3.5A1.5 1.5 0 0116.5 5v8a1.5 1.5 0 01-1.5 1.5h-4a.5.5 0 010-1h4a.5.5 0 00.5-.5V5a.5.5 0 00-.5-.5H7a.5.5 0 00-.5.5v4a.5.5 0 01-1 0V5A1.5 1.5 0 017 3.5h8zm-11 7a.5.5 0 00-.5.5v5a.5.5 0 00.5.5h5a.5.5 0 000-1H4.5V11a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.646 16.354a.5.5 0 00.708 0l8-8a.5.5 0 00-.708-.708l-8 8a.5.5 0 000 .708z" clip-rule="evenodd"/>');
+var BIconBoxArrowBottomRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowBottomRight', '<path fill-rule="evenodd" d="M5 3.5A1.5 1.5 0 003.5 5v8A1.5 1.5 0 005 14.5h4a.5.5 0 000-1H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 01.5.5v4a.5.5 0 001 0V5A1.5 1.5 0 0013 3.5H5zm11 7a.5.5 0 01.5.5v5a.5.5 0 01-.5.5h-5a.5.5 0 010-1h4.5V11a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16.354 16.354a.5.5 0 01-.708 0l-8-8a.5.5 0 11.708-.708l8 8a.5.5 0 010 .708z" clip-rule="evenodd"/>');
+var BIconBoxArrowDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowDown', '<path fill-rule="evenodd" d="M6.646 13.646a.5.5 0 01.708 0L10 16.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 4A1.5 1.5 0 016 2.5h8A1.5 1.5 0 0115.5 4v7a1.5 1.5 0 01-1.5 1.5h-1.5a.5.5 0 010-1H14a.5.5 0 00.5-.5V4a.5.5 0 00-.5-.5H6a.5.5 0 00-.5.5v7a.5.5 0 00.5.5h1.5a.5.5 0 010 1H6A1.5 1.5 0 014.5 11V4z" clip-rule="evenodd"/>');
+var BIconBoxArrowLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowLeft', '<path fill-rule="evenodd" d="M6.354 13.354a.5.5 0 000-.708L3.707 10l2.647-2.646a.5.5 0 10-.708-.708l-3 3a.5.5 0 000 .708l3 3a.5.5 0 00.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13.5 10a.5.5 0 00-.5-.5H4a.5.5 0 000 1h9a.5.5 0 00.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16 15.5a1.5 1.5 0 001.5-1.5V6A1.5 1.5 0 0016 4.5H9A1.5 1.5 0 007.5 6v1.5a.5.5 0 001 0V6a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v8a.5.5 0 01-.5.5H9a.5.5 0 01-.5-.5v-1.5a.5.5 0 00-1 0V14A1.5 1.5 0 009 15.5h7z" clip-rule="evenodd"/>');
+var BIconBoxArrowRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowRight', '<path fill-rule="evenodd" d="M13.646 13.354a.5.5 0 010-.708L16.293 10l-2.647-2.646a.5.5 0 01.708-.708l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 10a.5.5 0 01.5-.5h9a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4 15.5A1.5 1.5 0 012.5 14V6A1.5 1.5 0 014 4.5h7A1.5 1.5 0 0112.5 6v1.5a.5.5 0 01-1 0V6a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v8a.5.5 0 00.5.5h7a.5.5 0 00.5-.5v-1.5a.5.5 0 011 0V14a1.5 1.5 0 01-1.5 1.5H4z" clip-rule="evenodd"/>');
+var BIconBoxArrowUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowUp', '<path fill-rule="evenodd" d="M6.646 6.354a.5.5 0 00.708 0L10 3.707l2.646 2.647a.5.5 0 00.708-.708l-3-3a.5.5 0 00-.708 0l-3 3a.5.5 0 000 .708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 13.5a.5.5 0 00.5-.5V4a.5.5 0 00-1 0v9a.5.5 0 00.5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 16A1.5 1.5 0 006 17.5h8a1.5 1.5 0 001.5-1.5V9A1.5 1.5 0 0014 7.5h-1.5a.5.5 0 000 1H14a.5.5 0 01.5.5v7a.5.5 0 01-.5.5H6a.5.5 0 01-.5-.5V9a.5.5 0 01.5-.5h1.5a.5.5 0 000-1H6A1.5 1.5 0 004.5 9v7z" clip-rule="evenodd"/>');
+var BIconBoxArrowUpLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowUpLeft', '<path fill-rule="evenodd" d="M16.5 15a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 15v-4a.5.5 0 011 0v4a.5.5 0 00.5.5h8a.5.5 0 00.5-.5V7a.5.5 0 00-.5-.5h-4a.5.5 0 010-1h4A1.5 1.5 0 0116.5 7v8zm-7-11a.5.5 0 00-.5-.5H4a.5.5 0 00-.5.5v5a.5.5 0 001 0V4.5H9a.5.5 0 00.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.646 3.646a.5.5 0 000 .708l8 8a.5.5 0 00.708-.708l-8-8a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
+var BIconBoxArrowUpRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BoxArrowUpRight', '<path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h8a1.5 1.5 0 001.5-1.5v-4a.5.5 0 00-1 0v4a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V7a.5.5 0 01.5-.5h4a.5.5 0 000-1H5A1.5 1.5 0 003.5 7v8zm7-11a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v5a.5.5 0 01-1 0V4.5H11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M16.354 3.646a.5.5 0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconBraces = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Braces', '<path d="M4.114 10.063V9.9c1.005-.102 1.497-.615 1.497-1.6V6.503c0-1.094.39-1.538 1.354-1.538h.273V4h-.376C5.25 4 4.49 4.759 4.49 6.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538v-1.798c0-.984-.492-1.497-1.497-1.6zM15.886 9.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V9.332c-1.114 0-1.49-.362-1.49-1.456V6.352C15.51 4.759 14.75 4 13.138 4h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V8.3c0 .984.492 1.497 1.497 1.6z"/>');
+var BIconBrightnessFillHigh = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessFillHigh', '<circle cx="10" cy="10" r="4"/><path fill-rule="evenodd" d="M10 2a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 0110 2zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM5 10a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zm10.657-5.657a.5.5 0 010 .707l-1.414 1.414a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L5.05 15.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM6.464 6.464a.5.5 0 01-.707 0L4.343 5.05a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707z" clip-rule="evenodd"/>');
+var BIconBrightnessFillLow = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessFillLow', '<circle cx="10" cy="10" r="4"/><circle cx="10" cy="4.5" r=".5"/><circle cx="10" cy="15.5" r=".5"/><circle cx="15.5" cy="10" r=".5" transform="rotate(90 15.5 10)"/><circle cx="4.5" cy="10" r=".5" transform="rotate(90 4.5 10)"/><circle cx="13.889" cy="6.111" r=".5" transform="rotate(45 13.89 6.11)"/><circle cx="6.111" cy="13.889" r=".5" transform="rotate(45 6.11 13.89)"/><circle cx="13.889" cy="13.889" r=".5" transform="rotate(135 13.89 13.89)"/><circle cx="6.111" cy="6.111" r=".5" transform="rotate(135 6.11 6.11)"/>');
+var BIconBrightnessHigh = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessHigh', '<path fill-rule="evenodd" d="M10 13a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8zm0-12a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 0110 2zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2a.5.5 0 01.5-.5zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM5 10a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zm10.657-5.657a.5.5 0 010 .707l-1.414 1.414a.5.5 0 11-.707-.707l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L5.05 15.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM6.464 6.464a.5.5 0 01-.707 0L4.343 5.05a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707z" clip-rule="evenodd"/>');
+var BIconBrightnessLow = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BrightnessLow', '<path fill-rule="evenodd" d="M10 13a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"/><circle cx="10" cy="4.5" r=".5"/><circle cx="10" cy="15.5" r=".5"/><circle cx="15.5" cy="10" r=".5" transform="rotate(90 15.5 10)"/><circle cx="4.5" cy="10" r=".5" transform="rotate(90 4.5 10)"/><circle cx="13.889" cy="6.111" r=".5" transform="rotate(45 13.89 6.11)"/><circle cx="6.111" cy="13.889" r=".5" transform="rotate(45 6.11 13.89)"/><circle cx="13.889" cy="13.889" r=".5" transform="rotate(135 13.89 13.89)"/><circle cx="6.111" cy="6.111" r=".5" transform="rotate(135 6.11 6.11)"/>');
+var BIconBrush = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Brush', '<path d="M17.213 3.018a.572.572 0 01.755.05.57.57 0 01.058.746c-.941 1.268-3.982 5.293-6.426 7.736a12.89 12.89 0 01-1.952 1.596c-.508.339-1.167.234-1.599-.197-.416-.416-.53-1.047-.213-1.543.347-.542.888-1.273 1.643-1.977 2.521-2.35 6.476-5.44 7.734-6.411z"/><path d="M9 14a2 2 0 01-2 2c-1 0-2 0-3.5-.5s.5-1 1-1.5 1.395-2 2.5-2a2 2 0 012 2z"/>');
+var BIconBucket = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bucket', '<path fill-rule="evenodd" d="M10 3.5A4.5 4.5 0 005.5 8h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 0010 3.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.61 7.687A.5.5 0 014 7.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H6.802a1.5 1.5 0 01-1.464-1.175L3.512 8.108a.5.5 0 01.098-.42zm1.013.813l1.691 7.608a.5.5 0 00.488.392h6.396a.5.5 0 00.488-.392l1.69-7.608H4.624z" clip-rule="evenodd"/>');
+var BIconBucketFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('BucketFill', '<path fill-rule="evenodd" d="M10 3.5A4.5 4.5 0 005.5 8h-1a5.5 5.5 0 1111 0h-1A4.5 4.5 0 0010 3.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.61 7.687A.5.5 0 014 7.5h12a.5.5 0 01.488.608l-1.826 8.217a1.5 1.5 0 01-1.464 1.175H6.802a1.5 1.5 0 01-1.464-1.175L3.512 8.108a.5.5 0 01.098-.42z" clip-rule="evenodd"/>');
+var BIconBuilding = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Building', '<path fill-rule="evenodd" d="M17.285 2.089a.5.5 0 01.215.411v15a.5.5 0 01-.5.5h-3a.5.5 0 01-.5-.5V16h-1v1.5a.5.5 0 01-.5.5H3a.5.5 0 01-.5-.5v-6a.5.5 0 01.418-.493l5.582-.93V5.5a.5.5 0 01.324-.468l8-3a.5.5 0 01.46.057zM9.5 5.846V10.5a.5.5 0 01-.418.493l-5.582.93V17h8v-1.5a.5.5 0 01.5-.5h2a.5.5 0 01.5.5V17h2V3.221l-7 2.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 17.5v-7h1v7h-1z" clip-rule="evenodd"/><path d="M4.5 13h1v1h-1v-1zm2 0h1v1h-1v-1zm-2 2h1v1h-1v-1zm2 0h1v1h-1v-1zm6-10h1v1h-1V5zm2 0h1v1h-1V5zm-4 2h1v1h-1V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zm-2 2h1v1h-1V9zm2 0h1v1h-1V9zm-4 0h1v1h-1V9zm0 2h1v1h-1v-1zm2 0h1v1h-1v-1zm2 0h1v1h-1v-1zm-4 2h1v1h-1v-1zm2 0h1v1h-1v-1zm2 0h1v1h-1v-1z"/>');
+var BIconBullseye = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Bullseye', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 15a5 5 0 100-10 5 5 0 000 10zm0 1a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 13a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"/><path d="M11.5 10a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>');
+var BIconCalendar = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Calendar', '<path fill-rule="evenodd" d="M16 2H4a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2zM3 5.857C3 5.384 3.448 5 4 5h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H4c-.552 0-1-.384-1-.857V5.857z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 9a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
+var BIconCalendarFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CalendarFill', '<path d="M2 4a2 2 0 012-2h12a2 2 0 012 2H2z"/><path fill-rule="evenodd" d="M2 5h16v11a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm6.5 4a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm-8 2a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm-8 2a1 1 0 11-2 0 1 1 0 012 0zm2 1a1 1 0 100-2 1 1 0 000 2zm4-1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd"/>');
+var BIconCamera = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Camera', '<path d="M11 7c-1.657 0-4 1.343-4 3a4 4 0 014-4v1z"/><path fill-rule="evenodd" d="M16.333 5h-2.015A5.97 5.97 0 0011 4a5.972 5.972 0 00-3.318 1H3.667C2.747 5 2 5.746 2 6.667v6.666C2 14.253 2.746 15 3.667 15h4.015c.95.632 2.091 1 3.318 1a5.973 5.973 0 003.318-1h2.015c.92 0 1.667-.746 1.667-1.667V6.667C18 5.747 17.254 5 16.333 5zM3.5 7a.5.5 0 100-1 .5.5 0 000 1zm7.5 8a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/><path d="M4 5a1 1 0 011-1h1a1 1 0 010 2H5a1 1 0 01-1-1z"/>');
+var BIconCameraVideo = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CameraVideo', '<path fill-rule="evenodd" d="M4.667 5.5c-.645 0-1.167.522-1.167 1.167v6.666c0 .645.522 1.167 1.167 1.167h6.666c.645 0 1.167-.522 1.167-1.167V6.667c0-.645-.522-1.167-1.167-1.167H4.667zM2.5 6.667C2.5 5.47 3.47 4.5 4.667 4.5h6.666c1.197 0 2.167.97 2.167 2.167v6.666c0 1.197-.97 2.167-2.167 2.167H4.667A2.167 2.167 0 012.5 13.333V6.667z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13.25 7.65l2.768-1.605a.318.318 0 01.482.263v7.384c0 .228-.26.393-.482.264l-2.767-1.605-.502.865 2.767 1.605c.859.498 1.984-.095 1.984-1.129V6.308c0-1.033-1.125-1.626-1.984-1.128L12.75 6.785l.502.865z" clip-rule="evenodd"/>');
+var BIconCameraVideoFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CameraVideoFill', '<path d="M4.667 5h6.666C12.253 5 13 5.746 13 6.667v6.666c0 .92-.746 1.667-1.667 1.667H4.667C3.747 15 3 14.254 3 13.333V6.667C3 5.747 3.746 5 4.667 5z"/><path d="M9.404 10.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V6.308c0-.63-.692-1.01-1.233-.696L9.404 9.304a.802.802 0 000 1.393z"/>');
+var BIconCapslock = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Capslock', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H13.5v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 3.047zm7.076 7.453L10 3.731 3.654 10.5H6.5a1 1 0 011 1v1h5v-1a1 1 0 011-1h2.846zm-9.846 5a1 1 0 011-1h5a1 1 0 011 1v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1zm6 0h-5v1h5v-1z" clip-rule="evenodd"/>');
+var BIconCapslockFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CapslockFill', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H13.5v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 3.047zM6.5 15.5a1 1 0 011-1h5a1 1 0 011 1v1a1 1 0 01-1 1h-5a1 1 0 01-1-1v-1z" clip-rule="evenodd"/>');
+var BIconChat = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Chat', '<path fill-rule="evenodd" d="M8.207 13.293L7.5 14a5.5 5.5 0 110-11h5a5.5 5.5 0 110 11s-1.807 2.169-4.193 2.818C7.887 16.933 7.449 17 7 17c.291-.389.488-.74.617-1.052C8.149 14.649 7.5 14 7.5 14c.707-.707.708-.707.708-.706h.001l.002.003.004.004.01.01a1.184 1.184 0 01.074.084c.039.047.085.108.134.183.097.15.206.36.284.626.114.386.154.855.047 1.394.717-.313 1.37-.765 1.895-1.201a10.266 10.266 0 001.013-.969l.05-.056.01-.012m0 0A1 1 0 0112.5 13a4.5 4.5 0 100-9h-5a4.5 4.5 0 000 9 1 1 0 01.707.293" clip-rule="evenodd"/>');
+var BIconChatFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChatFill', '<path fill-rule="evenodd" d="M7.5 14s.65.65.117 1.948A4.821 4.821 0 017 17c.449 0 .887-.067 1.307-.181C10.692 16.169 12.5 14 12.5 14a5.5 5.5 0 100-11h-5a5.5 5.5 0 100 11z" clip-rule="evenodd"/>');
+var BIconCheck = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Check', '<path fill-rule="evenodd" d="M15.854 5.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L8.5 12.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconCheckBox = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CheckBox', '<path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M3.5 15A1.5 1.5 0 005 16.5h10a1.5 1.5 0 001.5-1.5v-5a.5.5 0 00-1 0v5a.5.5 0 01-.5.5H5a.5.5 0 01-.5-.5V5a.5.5 0 01.5-.5h8a.5.5 0 000-1H5A1.5 1.5 0 003.5 5v10z" clip-rule="evenodd"/>');
+var BIconCheckCircle = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CheckCircle', '<path fill-rule="evenodd" d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4.5a5.5 5.5 0 105.5 5.5.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63.5.5 0 11-.5.865A5.472 5.472 0 0010 4.5z" clip-rule="evenodd"/>');
+var BIconChevronCompactDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactDown', '<path fill-rule="evenodd" d="M3.553 8.776a.5.5 0 01.67-.223L10 11.44l5.776-2.888a.5.5 0 11.448.894l-6 3a.5.5 0 01-.448 0l-6-3a.5.5 0 01-.223-.67z" clip-rule="evenodd"/>');
+var BIconChevronCompactLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactLeft', '<path fill-rule="evenodd" d="M11.224 3.553a.5.5 0 01.223.67L8.56 10l2.888 5.776a.5.5 0 11-.894.448l-3-6a.5.5 0 010-.448l3-6a.5.5 0 01.67-.223z" clip-rule="evenodd"/>');
+var BIconChevronCompactRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactRight', '<path fill-rule="evenodd" d="M8.776 3.553a.5.5 0 01.671.223l3 6a.5.5 0 010 .448l-3 6a.5.5 0 11-.894-.448L11.44 10 8.553 4.224a.5.5 0 01.223-.671z" clip-rule="evenodd"/>');
+var BIconChevronCompactUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronCompactUp', '<path fill-rule="evenodd" d="M9.776 7.553a.5.5 0 01.448 0l6 3a.5.5 0 11-.448.894L10 8.56l-5.776 2.888a.5.5 0 11-.448-.894l6-3z" clip-rule="evenodd"/>');
+var BIconChevronDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronDown', '<path fill-rule="evenodd" d="M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"/>');
+var BIconChevronLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronLeft', '<path fill-rule="evenodd" d="M13.354 3.646a.5.5 0 010 .708L7.707 10l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconChevronRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronRight', '<path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" clip-rule="evenodd"/>');
+var BIconChevronUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ChevronUp', '<path fill-rule="evenodd" d="M9.646 6.646a.5.5 0 01.708 0l6 6a.5.5 0 01-.708.708L10 7.707l-5.646 5.647a.5.5 0 01-.708-.708l6-6z" clip-rule="evenodd"/>');
+var BIconCircle = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Circle', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/>');
+var BIconCircleFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CircleFill', '<circle cx="10" cy="10" r="8"/>');
+var BIconCircleHalf = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CircleHalf', '<path fill-rule="evenodd" d="M10 17V3a7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/>');
+var BIconCircleSlash = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CircleSlash', '<path fill-rule="evenodd" d="M10 1.5a8.5 8.5 0 100 17 8.5 8.5 0 000-17zM5.071 4.347a7.5 7.5 0 0110.582 10.582L5.071 4.347zm-.724.724a7.5 7.5 0 0010.582 10.582L4.347 5.071z" clip-rule="evenodd"/>');
+var BIconClock = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Clock', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm8-7a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4a.5.5 0 01.5.5V10a.5.5 0 01-.5.5H5.5a.5.5 0 010-1h4v-5A.5.5 0 0110 4z" clip-rule="evenodd"/>');
+var BIconClockFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ClockFill', '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM5.5 9.5h4v-5a.5.5 0 011 0V10a.5.5 0 01-.5.5H5.5a.5.5 0 010-1z" clip-rule="evenodd"/>');
+var BIconCloud = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Cloud', '<path fill-rule="evenodd" d="M6.887 9.2l-.964-.165A2.5 2.5 0 105.5 14h10a1.5 1.5 0 00.237-2.982l-1.038-.164.216-1.028a4 4 0 10-7.843-1.587l-.185.96zm9.084.341a5 5 0 00-9.88-1.492A3.5 3.5 0 105.5 15h9.999a2.5 2.5 0 00.394-4.968c.033-.16.06-.324.077-.49z" clip-rule="evenodd"/>');
+var BIconCloudDownload = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CloudDownload', '<path d="M6.887 7.2l-.964-.165A2.5 2.5 0 105.5 12H8v1H5.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0115.5 13H12v-1h3.5a1.5 1.5 0 00.237-2.981L14.7 8.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/><path fill-rule="evenodd" d="M7 14.5a.5.5 0 01.707 0L10 16.793l2.293-2.293a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L7 15.207a.5.5 0 010-.707z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 8z" clip-rule="evenodd"/>');
+var BIconCloudFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CloudFill', '<path fill-rule="evenodd" d="M5.5 15a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.5 2.5 0 0115.5 15h-10z" clip-rule="evenodd"/>');
+var BIconCloudUpload = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CloudUpload', '<path d="M6.887 8.2l-.964-.165A2.5 2.5 0 105.5 13H8v1H5.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0115.5 14H12v-1h3.5a1.5 1.5 0 00.237-2.982L14.7 9.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/><path fill-rule="evenodd" d="M7 10.854a.5.5 0 00.707 0L10 8.56l2.293 2.293a.5.5 0 00.707-.707L10.354 7.5a.5.5 0 00-.708 0L7 10.146a.5.5 0 000 .708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 8z" clip-rule="evenodd"/>');
+var BIconCode = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Code', '<path fill-rule="evenodd" d="M7.854 6.146a.5.5 0 010 .708L4.707 10l3.147 3.146a.5.5 0 01-.708.708l-3.5-3.5a.5.5 0 010-.708l3.5-3.5a.5.5 0 01.708 0zm4.292 0a.5.5 0 000 .708L15.293 10l-3.147 3.146a.5.5 0 00.708.708l3.5-3.5a.5.5 0 000-.708l-3.5-3.5a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
+var BIconCodeSlash = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CodeSlash', '<path fill-rule="evenodd" d="M6.854 6.146a.5.5 0 010 .708L3.707 10l3.147 3.146a.5.5 0 01-.708.708l-3.5-3.5a.5.5 0 010-.708l3.5-3.5a.5.5 0 01.708 0zm6.292 0a.5.5 0 000 .708L16.293 10l-3.147 3.146a.5.5 0 00.708.708l3.5-3.5a.5.5 0 000-.708l-3.5-3.5a.5.5 0 00-.708 0zm-.999-3.124a.5.5 0 01.33.625l-4 13a.5.5 0 11-.955-.294l4-13a.5.5 0 01.625-.33z" clip-rule="evenodd"/>');
+var BIconColumns = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Columns', '<path fill-rule="evenodd" d="M17 4H3v12h14V4zM3 3a1 1 0 00-1 1v12a1 1 0 001 1h14a1 1 0 001-1V4a1 1 0 00-1-1H3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 16V4h1v12h-1zm0-8H3V7h6.5v1zm7.5 5h-6.5v-1H17v1z" clip-rule="evenodd"/>');
+var BIconColumnsGutters = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ColumnsGutters', '<path fill-rule="evenodd" d="M8 3H3v3h5V3zM3 2a1 1 0 00-1 1v3a1 1 0 001 1h5a1 1 0 001-1V3a1 1 0 00-1-1H3zm14 12h-5v3h5v-3zm-5-1a1 1 0 00-1 1v3a1 1 0 001 1h5a1 1 0 001-1v-3a1 1 0 00-1-1h-5zm-4-3H3v7h5v-7zM3 9a1 1 0 00-1 1v7a1 1 0 001 1h5a1 1 0 001-1v-7a1 1 0 00-1-1H3zm14-6h-5v7h5V3zm-5-1a1 1 0 00-1 1v7a1 1 0 001 1h5a1 1 0 001-1V3a1 1 0 00-1-1h-5z" clip-rule="evenodd"/>');
+var BIconCommand = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Command', '<path fill-rule="evenodd" d="M4 5.5A1.5 1.5 0 005.5 7H7V5.5a1.5 1.5 0 10-3 0zM8 8V5.5A2.5 2.5 0 105.5 8H8zm8-2.5A1.5 1.5 0 0114.5 7H13V5.5a1.5 1.5 0 013 0zM12 8V5.5A2.5 2.5 0 1114.5 8H12zm-8 6.5A1.5 1.5 0 015.5 13H7v1.5a1.5 1.5 0 01-3 0zM8 12v2.5A2.5 2.5 0 115.5 12H8zm8 2.5a1.5 1.5 0 00-1.5-1.5H13v1.5a1.5 1.5 0 003 0zM12 12v2.5a2.5 2.5 0 102.5-2.5H12z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 8H8v4h4V8zM7 7v6h6V7H7z" clip-rule="evenodd"/>');
+var BIconCompass = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Compass', '<path fill-rule="evenodd" d="M10 17.016a6.5 6.5 0 100-13 6.5 6.5 0 000 13zm0 1a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" clip-rule="evenodd"/><rect width="4" height="2" x="8" y="2" rx="1"/><path d="M8.94 9.44l4.95-2.83-2.83 4.95-4.95 2.83 2.83-4.95z"/>');
+var BIconCone = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Cone', '<path d="M9.03 3.88c.252-1.01 1.688-1.01 1.94 0L14 16H6L9.03 3.88z"/><path fill-rule="evenodd" d="M3.5 16a.5.5 0 01.5-.5h12a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconConeStriped = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ConeStriped', '<path fill-rule="evenodd" d="M9.879 13.015a.5.5 0 01.242 0l6 1.5a.5.5 0 01.037.96l-6 2a.499.499 0 01-.316 0l-6-2a.5.5 0 01.037-.96l6-1.5z" clip-rule="evenodd"/><path d="M13.885 14.538l-.72-2.877c-.862.212-1.964.339-3.165.339s-2.303-.127-3.165-.339l-.72 2.877c-.073.292-.002.6.256.756.49.295 1.545.706 3.629.706s3.14-.411 3.63-.706c.257-.155.328-.464.255-.756zM11.97 6.88l.953 3.811C12.159 10.878 11.14 11 10 11c-1.14 0-2.159-.122-2.923-.309L8.03 6.88C8.635 6.957 9.3 7 10 7s1.365-.043 1.97-.12zm-.245-.978L10.97 2.88c-.252-1.01-1.688-1.01-1.94 0L8.275 5.9C8.8 5.965 9.382 6 10 6c.618 0 1.2-.036 1.725-.098z"/>');
+var BIconController = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Controller', '<path fill-rule="evenodd" d="M13.119 4.693c.904.19 1.75.495 2.235.98.407.408.779 1.05 1.094 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.815-.059 1.602-.328 2.21a1.42 1.42 0 01-1.445.83c-.636-.067-1.115-.394-1.513-.773a11.307 11.307 0 01-.739-.809c-.126-.147-.25-.291-.368-.422-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.422-.243.283-.494.576-.739.81-.398.378-.877.705-1.513.772a1.42 1.42 0 01-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772.486-.485 1.331-.79 2.235-.98.932-.196 2.03-.292 3.119-.292 1.089 0 2.187.096 3.119.292zm-6.032.979c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 00-.748 2.295 12.35 12.35 0 00-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 00.426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.505.826-.912 1.943-1.854 3.965-1.854s3.139.942 3.965 1.854c.164.182.307.35.44.505.214.25.403.472.615.674.318.303.601.468.929.503a.42.42 0 00.426-.241c.18-.408.265-1.02.243-1.776a12.353 12.353 0 00-.339-2.406 13.753 13.753 0 00-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z" clip-rule="evenodd"/><path d="M13.5 8.026a.5.5 0 11-1 0 .5.5 0 011 0zm-1 1a.5.5 0 11-1 0 .5.5 0 011 0zm2 0a.5.5 0 11-1 0 .5.5 0 011 0zm-1 1.001a.5.5 0 11-1 0 .5.5 0 011 0zm-7-2.501h1v3h-1v-3z"/><path d="M5.5 8.526h3v1h-3v-1zM5.051 5.26a.5.5 0 01.354-.613l1.932-.518a.5.5 0 01.258.966l-1.932.518a.5.5 0 01-.612-.354zm9.976 0a.5.5 0 00-.353-.613l-1.932-.518a.5.5 0 10-.259.966l1.932.518a.5.5 0 00.612-.354z"/>');
+var BIconCreditCard = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CreditCard', '<path fill-rule="evenodd" d="M16 5H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1zM4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4z" clip-rule="evenodd"/><rect width="3" height="3" x="4" y="11" rx="1"/><path d="M3 7h14v2H3z"/>');
+var BIconCursor = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Cursor', '<path fill-rule="evenodd" d="M16.081 4.182a.5.5 0 01.104.557l-5.657 12.727a.5.5 0 01-.917-.006L7.57 12.694l-4.766-2.042a.5.5 0 01-.006-.917L15.525 4.08a.5.5 0 01.556.103zM4.25 10.184l3.897 1.67a.5.5 0 01.262.263l1.67 3.897L14.743 5.52 4.25 10.184z" clip-rule="evenodd"/>');
+var BIconCursorFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('CursorFill', '<path fill-rule="evenodd" d="M16.081 4.182a.5.5 0 01.104.557l-5.657 12.727a.5.5 0 01-.917-.006L7.57 12.694l-4.766-2.042a.5.5 0 01-.006-.917L15.525 4.08a.5.5 0 01.556.103z" clip-rule="evenodd"/>');
+var BIconDash = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Dash', '<path fill-rule="evenodd" d="M5.5 10a.5.5 0 01.5-.5h8a.5.5 0 010 1H6a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconDiamond = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Diamond', '<path fill-rule="evenodd" d="M5.1 2.7a.5.5 0 01.4-.2h9a.5.5 0 01.4.2l2.976 3.974c.149.185.156.45.01.644L10.4 17.3a.5.5 0 01-.8 0l-7.5-10a.5.5 0 010-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H6.186l.963 2.995 5.704-.006zM7.47 7.495l5.062-.005L10 15.366 7.47 7.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM3.499 7.5l2.92-.003 2.193 6.82L3.5 7.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z" clip-rule="evenodd"/>');
+var BIconDiamondHalf = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DiamondHalf', '<path fill-rule="evenodd" d="M8.94 2.354a1.5 1.5 0 012.12 0l6.586 6.585a1.5 1.5 0 010 2.122l-6.585 6.585a1.5 1.5 0 01-2.122 0l-6.585-6.585a1.5 1.5 0 010-2.122l6.585-6.585zm1.06.56a.498.498 0 00-.354.147L3.061 9.646a.5.5 0 000 .707l6.585 6.586a.499.499 0 00.354.147V2.914z" clip-rule="evenodd"/>');
+var BIconDisplay = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Display', '<path d="M7.75 15.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H13a.5.5 0 010 1H7a.5.5 0 010-1h.75z"/><path fill-rule="evenodd" d="M15.991 5H4c-.325 0-.502.078-.602.145a.758.758 0 00-.254.302A1.46 1.46 0 003 6.01V12c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 00.538.143L4.01 13H16c.325 0 .502-.078.602-.145a.758.758 0 00.254-.302 1.464 1.464 0 00.143-.538L17 11.99V6c0-.325-.078-.502-.145-.602a.757.757 0 00-.302-.254A1.46 1.46 0 0015.99 5zM16 4H4C2 4 2 6 2 6v6c0 2 2 2 2 2h12c2 0 2-2 2-2V6c0-2-2-2-2-2z" clip-rule="evenodd"/>');
+var BIconDisplayFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DisplayFill', '<path d="M7.75 15.5c.167-.333.25-.833.25-1.5h4c0 .667.083 1.167.25 1.5H13a.5.5 0 010 1H7a.5.5 0 010-1h.75z"/><path fill-rule="evenodd" d="M15.991 5H4c-.325 0-.502.078-.602.145a.758.758 0 00-.254.302A1.46 1.46 0 003 6.01V12c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 00.538.143L4.01 13H16c.325 0 .502-.078.602-.145a.758.758 0 00.254-.302 1.464 1.464 0 00.143-.538L17 11.99V6c0-.325-.078-.502-.145-.602a.757.757 0 00-.302-.254A1.46 1.46 0 0015.99 5zM16 4H4C2 4 2 6 2 6v6c0 2 2 2 2 2h12c2 0 2-2 2-2V6c0-2-2-2-2-2z" clip-rule="evenodd"/><path d="M4 6h12v6H4z"/>');
+var BIconDocument = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Document', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/>');
+var BIconDocumentCode = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentCode', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.646 7.646a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L12.293 10l-1.647-1.646a.5.5 0 010-.708zm-1.292 0a.5.5 0 00-.708 0l-2 2a.5.5 0 000 .708l2 2a.5.5 0 00.708-.708L7.707 10l1.647-1.646a.5.5 0 000-.708z" clip-rule="evenodd"/>');
+var BIconDocumentDiff = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentDiff', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.5 13a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zM10 6.5a.5.5 0 01.5.5v4a.5.5 0 01-1 0V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.5 9a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconDocumentRichtext = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentRichtext', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 14a.5.5 0 01.5-.5h3a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm1.639-3.958l1.33.886 1.854-1.855a.25.25 0 01.289-.047L13.5 8v1.75a.5.5 0 01-.5.5H7a.5.5 0 01-.5-.5v-.5s1.54-1.274 1.639-1.208zM8.25 7a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd"/>');
+var BIconDocumentSpreadsheet = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentSpreadsheet', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15 8H5V7h10v1zm0 3H5v-1h10v1zm0 3H5v-1h10v1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 16V8h1v8H7zm4 0V8h1v8h-1z" clip-rule="evenodd"/>');
+var BIconDocumentText = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentText', '<path fill-rule="evenodd" d="M6 3h8a2 2 0 012 2v10a2 2 0 01-2 2H6a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6.5 14a.5.5 0 01.5-.5h3a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5zm0-2a.5.5 0 01.5-.5h6a.5.5 0 010 1H7a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconDocuments = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Documents', '<path fill-rule="evenodd" d="M5 4h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V6a1 1 0 00-1-1H5z" clip-rule="evenodd"/><path d="M7 2h8a2 2 0 012 2v10a2 2 0 01-2 2v-1a1 1 0 001-1V4a1 1 0 00-1-1H7a1 1 0 00-1 1H5a2 2 0 012-2z"/>');
+var BIconDocumentsAlt = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('DocumentsAlt', '<path fill-rule="evenodd" d="M5 3h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2zm0 1a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V5a1 1 0 00-1-1H5z" clip-rule="evenodd"/><path d="M15 6V5a2 2 0 012 2v6a2 2 0 01-2 2v-1a1 1 0 001-1V7a1 1 0 00-1-1z"/>');
+var BIconDot = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Dot', '<path fill-rule="evenodd" d="M10 11.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"/>');
+var BIconDownload = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Download', '<path fill-rule="evenodd" d="M2.5 10a.5.5 0 01.5.5V14a1 1 0 001 1h12a1 1 0 001-1v-3.5a.5.5 0 011 0V14a2 2 0 01-2 2H4a2 2 0 01-2-2v-3.5a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 9.5a.5.5 0 01.707 0L10 11.793 12.293 9.5a.5.5 0 01.707.707l-2.646 2.647a.5.5 0 01-.708 0L7 10.207A.5.5 0 017 9.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 3a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 3z" clip-rule="evenodd"/>');
+var BIconEggFried = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EggFried', '<path fill-rule="evenodd" d="M15.665 8.113a1 1 0 01-.667-.977L15 7a4 4 0 00-6.483-3.136 1 1 0 01-.8.2 4 4 0 00-3.693 6.61 1 1 0 01.2 1 4 4 0 006.67 4.087 1 1 0 011.262-.152 2.5 2.5 0 003.715-2.905 1 1 0 01.341-1.113 2.001 2.001 0 00-.547-3.478zM16 7c0 .057 0 .113-.003.17a3.001 3.001 0 01.822 5.216 3.5 3.5 0 01-5.201 4.065 5 5 0 01-8.336-5.109A5 5 0 017.896 3.08 5 5 0 0116 7z" clip-rule="evenodd"/><circle cx="10" cy="10" r="3"/>');
+var BIconEject = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Eject', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H3.656c-.876 0-1.33-1.045-.73-1.684L9.27 3.047zm7.076 7.453L10 3.731 3.654 10.5h12.692zM2.5 13.5a1 1 0 011-1h13a1 1 0 011 1v1a1 1 0 01-1 1h-13a1 1 0 01-1-1v-1zm14 0h-13v1h13v-1z" clip-rule="evenodd"/>');
+var BIconEjectFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EjectFill', '<path fill-rule="evenodd" d="M9.27 3.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H3.656c-.876 0-1.33-1.045-.73-1.684L9.27 3.047zM2.5 13.5a1 1 0 011-1h13a1 1 0 011 1v1a1 1 0 01-1 1h-13a1 1 0 01-1-1v-1z" clip-rule="evenodd"/>');
+var BIconEnvelope = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Envelope', '<path fill-rule="evenodd" d="M16 5H4a1 1 0 00-1 1v8a1 1 0 001 1h12a1 1 0 001-1V6a1 1 0 00-1-1zM4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.071 6.243a.5.5 0 01.686-.172L10 10.417l7.243-4.346a.5.5 0 11.514.858L10 11.583 2.243 6.93a.5.5 0 01-.172-.686z" clip-rule="evenodd"/>');
+var BIconEnvelopeFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EnvelopeFill', '<path d="M2.05 5.555L10 10.414l7.95-4.859A2 2 0 0016 4H4a2 2 0 00-1.95 1.555zM18 6.697l-5.875 3.59L18 13.743V6.697zm-.168 8.108l-6.675-3.926-1.157.707-1.157-.707-6.675 3.926A2 2 0 004 16h12a2 2 0 001.832-1.195zM2 13.743l5.875-3.456L2 6.697v7.046z"/>');
+var BIconEnvelopeOpen = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EnvelopeOpen', '<path fill-rule="evenodd" d="M2.243 8.929l.514-.858L10 12.417l7.243-4.346.514.858L10 13.583 2.243 8.93z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.184 12.68l-6.432 3.752-.504-.864 6.432-3.752.504.864zm1.632 0l6.432 3.752.504-.864-6.432-3.752-.504.864z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10.47 3.318a1 1 0 00-.94 0l-6 3.2A1 1 0 003 7.4V16a1 1 0 001 1h12a1 1 0 001-1V7.4a1 1 0 00-.53-.882l-6-3.2zm-1.41-.883a2 2 0 011.882 0l6 3.2A2 2 0 0118 7.4V16a2 2 0 01-2 2H4a2 2 0 01-2-2V7.4a2 2 0 011.059-1.765l6-3.2z" clip-rule="evenodd"/>');
+var BIconEnvelopeOpenFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EnvelopeOpenFill', '<path fill-rule="evenodd" d="M10.941 2.435a2 2 0 00-1.882 0l-6 3.2A2 2 0 002 7.4v.125l8 4.889 8-4.889V7.4a2 2 0 00-1.059-1.765l-6-3.2zM18 8.697l-5.875 3.59L18 15.743V8.697zm-.168 8.108l-6.586-3.874-.088-.052-.897.548-.261.159-.26-.16-.897-.547-.09.052-6.585 3.874A2 2 0 004 18h12a2 2 0 001.832-1.195zM2 15.743l5.875-3.456L2 8.697v7.046z" clip-rule="evenodd"/>');
+var BIconEye = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Eye', '<path fill-rule="evenodd" d="M18 10s-3-5.5-8-5.5S2 10 2 10s3 5.5 8 5.5 8-5.5 8-5.5zM3.173 10a13.133 13.133 0 001.66 2.043C6.12 13.332 7.88 14.5 10 14.5c2.12 0 3.879-1.168 5.168-2.457A13.133 13.133 0 0016.828 10a13.133 13.133 0 00-1.66-2.043C13.879 6.668 12.119 5.5 10 5.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 003.172 10z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 7.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM6.5 10a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z" clip-rule="evenodd"/>');
+var BIconEyeFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EyeFill', '<path d="M12.5 10a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/><path fill-rule="evenodd" d="M2 10s3-5.5 8-5.5 8 5.5 8 5.5-3 5.5-8 5.5S2 10 2 10zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" clip-rule="evenodd"/>');
+var BIconEyeSlash = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EyeSlash', '<path d="M15.359 13.238C17.06 11.72 18 10 18 10s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 0110 5.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0116.828 10c-.058.087-.122.183-.195.288a13.14 13.14 0 01-1.465 1.755c-.165.165-.337.328-.517.486l.708.709z"/><path d="M13.297 11.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z"/><path d="M5.35 7.47c-.18.16-.353.322-.518.487A13.134 13.134 0 003.172 10l.195.288c.335.48.83 1.12 1.465 1.755C6.121 13.332 7.881 14.5 10 14.5c.716 0 1.39-.133 2.02-.36l.77.772A7.027 7.027 0 0110 15.5c-5 0-8-5.5-8-5.5s.939-1.721 2.641-3.238l.708.709z"/><path fill-rule="evenodd" d="M15.646 16.354l-12-12 .708-.708 12 12-.708.707z" clip-rule="evenodd"/>');
+var BIconEyeSlashFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('EyeSlashFill', '<path d="M12.79 14.912l-1.614-1.615a3.5 3.5 0 01-4.474-4.474l-2.06-2.06C2.938 8.278 2 10 2 10s3 5.5 8 5.5a7.027 7.027 0 002.79-.588zM7.21 5.088A7.028 7.028 0 0110 4.5c5 0 8 5.5 8 5.5s-.939 1.72-2.641 3.238l-2.062-2.062a3.5 3.5 0 00-4.474-4.474L7.21 5.088z"/><path d="M7.525 9.646a2.5 2.5 0 002.829 2.829l-2.83-2.829zm4.95.708l-2.829-2.83a2.5 2.5 0 012.829 2.829z"/><path fill-rule="evenodd" d="M15.646 16.354l-12-12 .708-.708 12 12-.708.707z" clip-rule="evenodd"/>');
+var BIconFilter = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Filter', '<path fill-rule="evenodd" d="M7.5 13a.5.5 0 01.5-.5h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h8a.5.5 0 010 1H6a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h12a.5.5 0 010 1H4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconFlag = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Flag', '<path fill-rule="evenodd" d="M5.5 3a.5.5 0 01.5.5v13a.5.5 0 01-1 0v-13a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M5.762 4.558C6.735 3.909 7.348 3.5 8.5 3.5c.653 0 1.139.325 1.495.562l.032.022c.392.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 01.5.5v6a.5.5 0 01-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.718 2.718 0 0111 11.5c-.653 0-1.139-.325-1.495-.563l-.032-.021c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916a.5.5 0 11-.515-.858C6.735 9.909 7.348 9.5 8.5 9.5c.653 0 1.139.325 1.495.563l.032.021c.392.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.456-.204 1-.43 1.64-.512V4.543c-.433.074-.83.234-1.234.414l-.159.07c-.22.1-.453.205-.678.287A2.72 2.72 0 0111 5.5c-.653 0-1.139-.325-1.495-.562l-.032-.022c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916a.5.5 0 01-.554-.832l.04-.026z" clip-rule="evenodd"/>');
+var BIconFlagFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FlagFill', '<path fill-rule="evenodd" d="M5.5 3a.5.5 0 01.5.5v13a.5.5 0 01-1 0v-13a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M5.762 4.558C6.735 3.909 7.348 3.5 8.5 3.5c.653 0 1.139.325 1.495.562l.032.022c.392.26.646.416.973.416.168 0 .356-.042.587-.126.187-.068.376-.153.593-.25.058-.027.117-.053.18-.08.57-.255 1.278-.544 2.14-.544a.5.5 0 01.5.5v6a.5.5 0 01-.5.5c-.638 0-1.18.21-1.734.457l-.159.07c-.22.1-.453.205-.678.287A2.718 2.718 0 0111 11.5c-.653 0-1.139-.325-1.495-.563l-.032-.021c-.391-.26-.646-.416-.973-.416-.833 0-1.218.246-2.223.916A.5.5 0 015.5 11V5a.5.5 0 01.223-.416l.04-.026z" clip-rule="evenodd"/>');
+var BIconFolder = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Folder', '<path d="M11.828 6a3 3 0 01-2.12-.879l-.83-.828A1 1 0 008.173 4H4.5a1 1 0 00-1 .981L3.546 6h-1L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5v1z"/><path fill-rule="evenodd" d="M15.81 6H4.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91h10.348a1 1 0 00.995-.91l.637-7A1 1 0 0015.81 6zM4.19 5a2 2 0 00-1.992 2.181l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5H4.19z" clip-rule="evenodd"/>');
+var BIconFolderFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FolderFill', '<path fill-rule="evenodd" d="M11.828 5h3.982a2 2 0 011.992 2.181l-.637 7A2 2 0 0115.174 16H4.826a2 2 0 01-1.991-1.819l-.637-7a1.99 1.99 0 01.342-1.31L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5zm-8.322.12C3.72 5.042 3.95 5 4.19 5h5.396l-.707-.707A1 1 0 008.172 4H4.5a1 1 0 00-1 .981l.006.139z" clip-rule="evenodd"/>');
+var BIconFolderSymlink = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FolderSymlink', '<path d="M11.828 6a3 3 0 01-2.12-.879l-.83-.828A1 1 0 008.173 4H4.5a1 1 0 00-1 .981L3.546 6h-1L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5v1z"/><path fill-rule="evenodd" d="M15.81 6H4.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91h10.348a1 1 0 00.995-.91l.637-7A1 1 0 0015.81 6zM4.19 5a2 2 0 00-1.992 2.181l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5H4.19z" clip-rule="evenodd"/><path d="M10.616 12.24l3.182-1.969a.442.442 0 000-.742l-3.182-1.97c-.27-.166-.616.036-.616.372V8.7c-.857 0-3.429 0-4 4.8 1.429-2.7 4-2.4 4-2.4v.769c0 .336.346.538.616.371z"/>');
+var BIconFolderSymlinkFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('FolderSymlinkFill', '<path fill-rule="evenodd" d="M15.81 5h-3.982a2 2 0 01-1.414-.586l-.828-.828A2 2 0 008.172 3H4.5a2 2 0 00-2 2l.04.87a1.99 1.99 0 00-.342 1.311l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5zM4.19 5c-.24 0-.47.042-.684.12L3.5 4.98a1 1 0 011-.98h3.672a1 1 0 01.707.293L9.586 5H4.19zm9.608 5.271l-3.182 1.97c-.27.166-.616-.036-.616-.372V11.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742z" clip-rule="evenodd"/>');
+var BIconFonts = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Fonts', '<path d="M14.258 5H5.747l-.082 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V5.602l.43.013c1.935.062 2.434.301 2.694 1.846h.479L14.258 5z"/>');
+var BIconForward = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Forward', '<path fill-rule="evenodd" d="M11.502 7.513a.144.144 0 00-.202.134V8.65a.5.5 0 01-.5.5H4.5v2.9h6.3a.5.5 0 01.5.5v1.003c0 .108.11.176.202.134l3.984-2.933a.522.522 0 01.042-.028.147.147 0 000-.252.523.523 0 01-.042-.028l-3.984-2.933zm-1.202.134a1.144 1.144 0 011.767-.96l3.994 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a1.144 1.144 0 01-1.767-.96v-.503H4a.5.5 0 01-.5-.5v-3.9a.5.5 0 01.5-.5h6.3v-.503z" clip-rule="evenodd"/>');
+var BIconForwardFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ForwardFill', '<path d="M11.77 14.11l4.012-2.953a.647.647 0 000-1.114L11.771 7.09a.644.644 0 00-.971.557V8.65H4v3.9h6.8v1.003c0 .505.545.808.97.557z"/>');
+var BIconGear = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Gear', '<path fill-rule="evenodd" d="M10.837 3.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 016.377 5.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 01-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 011.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 012.692 1.115l.094.319c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 012.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 011.115-2.693l.319-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 01-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159a1.873 1.873 0 01-2.693-1.115l-.094-.319zm-2.633-.283c.527-1.79 3.064-1.79 3.592 0l.094.319a.873.873 0 001.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 00.52 1.255l.319.094c1.79.527 1.79 3.064 0 3.592l-.319.094a.873.873 0 00-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 00-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 00-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 00-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 00.52-1.255l-.16-.292c-.892-1.64.901-3.433 2.541-2.54l.292.159a.873.873 0 001.255-.52l.094-.319z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 7.754a2.246 2.246 0 100 4.492 2.246 2.246 0 000-4.492zM6.754 10a3.246 3.246 0 116.492 0 3.246 3.246 0 01-6.492 0z" clip-rule="evenodd"/>');
+var BIconGearFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GearFill', '<path fill-rule="evenodd" d="M11.405 3.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 01-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 01.872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 012.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 012.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 01.872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 01-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 01-2.105-.872l-.1-.34zM10 12.93a2.929 2.929 0 100-5.858 2.929 2.929 0 000 5.858z" clip-rule="evenodd"/>');
+var BIconGearWide = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GearWide', '<path fill-rule="evenodd" d="M10.932 2.724c-.243-.97-1.621-.97-1.864 0l-.072.286a.96.96 0 01-1.622.434l-.205-.211c-.695-.72-1.889-.03-1.614.932l.08.283a.96.96 0 01-1.187 1.188l-.283-.081c-.962-.275-1.651.919-.932 1.614l.211.205a.96.96 0 01-.434 1.622l-.286.072c-.97.243-.97 1.621 0 1.864l.286.072a.96.96 0 01.434 1.622l-.211.205c-.72.695-.03 1.889.932 1.614l.283-.08a.96.96 0 011.188 1.187l-.081.283c-.275.962.919 1.651 1.614.932l.205-.211a.96.96 0 011.622.434l.072.286c.243.97 1.621.97 1.864 0l.072-.286a.96.96 0 011.622-.434l.205.211c.695.72 1.889.03 1.614-.932l-.08-.283a.96.96 0 011.187-1.188l.283.081c.962.275 1.651-.919.932-1.614l-.211-.205a.96.96 0 01.434-1.622l.286-.072c.97-.243.97-1.621 0-1.864l-.286-.072a.96.96 0 01-.434-1.622l.211-.205c.72-.695.03-1.889-.932-1.614l-.283.08a.96.96 0 01-1.188-1.187l.081-.283c.275-.962-.919-1.651-1.614-.932l-.205.211a.96.96 0 01-1.622-.434l-.072-.286zM10 15a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/>');
+var BIconGearWideConnected = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GearWideConnected', '<path fill-rule="evenodd" d="M10.932 2.724c-.243-.97-1.621-.97-1.864 0l-.072.286a.96.96 0 01-1.622.434l-.205-.211c-.695-.72-1.889-.03-1.614.932l.08.283a.96.96 0 01-1.187 1.188l-.283-.081c-.962-.275-1.651.919-.932 1.614l.211.205a.96.96 0 01-.434 1.622l-.286.072c-.97.243-.97 1.621 0 1.864l.286.072a.96.96 0 01.434 1.622l-.211.205c-.72.695-.03 1.889.932 1.614l.283-.08a.96.96 0 011.188 1.187l-.081.283c-.275.962.919 1.651 1.614.932l.205-.211a.96.96 0 011.622.434l.072.286c.243.97 1.621.97 1.864 0l.072-.286a.96.96 0 011.622-.434l.205.211c.695.72 1.889.03 1.614-.932l-.08-.283a.96.96 0 011.187-1.188l.283.081c.962.275 1.651-.919.932-1.614l-.211-.205a.96.96 0 01.434-1.622l.286-.072c.97-.243.97-1.621 0-1.864l-.286-.072a.96.96 0 01-.434-1.622l.211-.205c.72-.695.03-1.889-.932-1.614l-.283.08a.96.96 0 01-1.188-1.187l.081-.283c.275-.962-.919-1.651-1.614-.932l-.205.211a.96.96 0 01-1.622-.434l-.072-.286zM10 15a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.375 10L6.6 6.3l.8-.6 2.85 3.8H15v1h-4.75L7.4 14.3l-.8-.6L9.375 10z" clip-rule="evenodd"/>');
+var BIconGeo = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Geo', '<path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M9.5 6h1v9a.5.5 0 01-1 0V6z"/><path fill-rule="evenodd" d="M8.489 14.095a.5.5 0 01-.383.594c-.565.123-1.003.292-1.286.472-.302.192-.32.321-.32.339 0 .013.005.085.146.21.14.124.372.26.701.383.655.245 1.593.407 2.653.407s1.998-.162 2.653-.407c.329-.124.56-.259.701-.383.14-.125.146-.197.146-.21 0-.018-.018-.147-.32-.339-.283-.18-.721-.35-1.286-.472a.5.5 0 11.212-.977c.63.137 1.193.34 1.61.606.4.253.784.645.784 1.182 0 .402-.219.724-.483.958-.264.235-.618.423-1.013.57-.793.298-1.855.472-3.004.472s-2.21-.174-3.004-.471c-.395-.148-.749-.337-1.013-.571-.264-.234-.483-.556-.483-.958 0-.537.384-.929.783-1.182.418-.266.98-.47 1.611-.606a.5.5 0 01.595.383z" clip-rule="evenodd"/>');
+var BIconGraphDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GraphDown', '<path d="M2 2h1v16H2V2zm1 15h15v1H3v-1z"/><path fill-rule="evenodd" d="M16.39 11.041l-4.349-5.436L9 8.646 5.354 5l-.708.707L9 10.061l2.959-2.959 3.65 4.564.781-.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 11.854a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-4a.5.5 0 00-1 0v3.5h-3.5a.5.5 0 00-.5.5z" clip-rule="evenodd"/>');
+var BIconGraphUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GraphUp', '<path d="M2 2h1v16H2V2zm1 15h15v1H3v-1z"/><path fill-rule="evenodd" d="M16.39 6.312l-4.349 5.437L9 8.707l-3.646 3.647-.708-.708L9 7.293l2.959 2.958 3.65-4.563.781.624z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12 5.5a.5.5 0 01.5-.5h4a.5.5 0 01.5.5v4a.5.5 0 01-1 0V6h-3.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconGrid = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Grid', '<path fill-rule="evenodd" d="M9.5 4.5a1 1 0 00-1-1h-4a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4zm-1 7h-4v4h4v-4zm7 0h-4v4h4v-4zm0-7h-4v4h4v-4zm-7 0h-4v4h4v-4zm2 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4zm-6 6a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4zm7 0a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4z" clip-rule="evenodd"/>');
+var BIconGridFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('GridFill', '<rect width="6" height="6" x="3.5" y="10.5" rx="1"/><rect width="6" height="6" x="10.5" y="10.5" rx="1"/><rect width="6" height="6" x="10.5" y="3.5" rx="1"/><rect width="6" height="6" x="3.5" y="3.5" rx="1"/>');
+var BIconHammer = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Hammer', '<path d="M11.812 3.952a.5.5 0 01-.312.89c-1.671 0-2.852.596-3.616 1.185L6.857 7.073V8.21a.5.5 0 01-.146.354L5.426 9.853a.5.5 0 01-.709 0L2.146 7.274a.5.5 0 010-.706l1.286-1.29a.5.5 0 01.354-.146H4.84c1.664-1.904 3.375-2.27 4.716-2.091a5.008 5.008 0 012.076.782l.18.129z"/><path fill-rule="evenodd" d="M8.012 5.5a.5.5 0 01.359.165l9.146 8.646A.5.5 0 0117.5 15L16 16.5a.5.5 0 01-.756-.056L6.598 7.297a.5.5 0 01.048-.65l1-1a.5.5 0 01.366-.147z" clip-rule="evenodd"/>');
+var BIconHash = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Hash', '<path d="M10.39 14.648a1.32 1.32 0 00-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304c.008-.04.016-.117.016-.164a.51.51 0 00-.516-.516.54.54 0 00-.539.43l-.523 2.554H9.617l.477-2.304c.008-.04.015-.117.015-.164a.512.512 0 00-.523-.516.539.539 0 00-.531.43L8.53 7.484H7.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H6.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H8.859l.532-2.563z"/>');
+var BIconHeart = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Heart', '<path fill-rule="evenodd" d="M10 4.748l-.717-.737C7.6 2.281 4.514 2.878 3.4 5.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.837-3.362.314-4.385-1.114-2.175-4.2-2.773-5.883-1.043L10 4.748zM10 17C-5.333 6.868 5.279-1.04 9.824 3.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C14.72-1.042 25.333 6.867 10 17z" clip-rule="evenodd"/>');
+var BIconHeartFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('HeartFill', '<path fill-rule="evenodd" d="M10 3.314C14.438-1.248 25.534 6.735 10 17-5.534 6.736 5.562-1.248 10 3.314z" clip-rule="evenodd"/>');
+var BIconHouse = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('House', '<path fill-rule="evenodd" d="M9.646 3.146a.5.5 0 01.708 0l6 6a.5.5 0 01.146.354v7a.5.5 0 01-.5.5h-4.5a.5.5 0 01-.5-.5v-4H9v4a.5.5 0 01-.5.5H4a.5.5 0 01-.5-.5v-7a.5.5 0 01.146-.354l6-6zM4.5 9.707V16H8v-4a.5.5 0 01.5-.5h3a.5.5 0 01.5.5v4h3.5V9.707l-5.5-5.5-5.5 5.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15 4.5V8l-2-2V4.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>');
+var BIconHouseFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('HouseFill', '<path d="M8.5 12.995V16.5a.5.5 0 01-.5.5H4a.5.5 0 01-.5-.5v-7a.5.5 0 01.146-.354l6-6a.5.5 0 01.708 0l6 6a.5.5 0 01.146.354v7a.5.5 0 01-.5.5h-4a.5.5 0 01-.5-.5V13c0-.25-.25-.5-.5-.5H9c-.25 0-.5.25-.5.495z"/><path fill-rule="evenodd" d="M15 4.5V8l-2-2V4.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>');
+var BIconImage = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Image', '<path fill-rule="evenodd" d="M16.002 4h-12a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zm-12-1a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2h-12z" clip-rule="evenodd"/><path d="M12.648 9.646a.5.5 0 01.577-.093l3.777 1.947V16h-14v-2l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"/><path fill-rule="evenodd" d="M6.502 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd"/>');
+var BIconImageAlt = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ImageAlt', '<path d="M12.648 8.646a.5.5 0 01.577-.093l4.777 3.947V17a1 1 0 01-1 1h-14a1 1 0 01-1-1v-2l3.646-4.354a.5.5 0 01.63-.062l2.66 2.773 3.71-4.71z"/><path fill-rule="evenodd" d="M6.5 7a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>');
+var BIconImageFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ImageFill', '<path fill-rule="evenodd" d="M2.002 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2h-12a2 2 0 01-2-2V5zm1 9l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71a.5.5 0 01.577-.094l3.777 1.947V15a1 1 0 01-1 1h-12a1 1 0 01-1-1v-1zm5-6.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>');
+var BIconImages = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Images', '<path fill-rule="evenodd" d="M14.002 6h-10a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1V7a1 1 0 00-1-1zm-10-1a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-10z" clip-rule="evenodd"/><path d="M12.648 10.646a.5.5 0 01.577-.093l1.777 1.947V16h-12v-1l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71z"/><path fill-rule="evenodd" d="M6.502 11a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM6 4h10a1 1 0 011 1v8a1 1 0 01-1 1v1a2 2 0 002-2V5a2 2 0 00-2-2H6a2 2 0 00-2 2h1a1 1 0 011-1z" clip-rule="evenodd"/>');
+var BIconInbox = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Inbox', '<path fill-rule="evenodd" d="M5.81 6.063A1.5 1.5 0 016.98 5.5h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624a.5.5 0 00-.39-.188H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 10.67a.5.5 0 01.375-.17H8a.5.5 0 01.5.5 1.5 1.5 0 003 0 .5.5 0 01.5-.5h5.5a.5.5 0 01.496.562l-.39 3.124a1.5 1.5 0 01-1.489 1.314H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zm.941.83l.32 2.562a.5.5 0 00.497.438h12.234a.5.5 0 00.496-.438l.32-2.562H12.45a2.5 2.5 0 01-4.9 0H3.066z" clip-rule="evenodd"/>');
+var BIconInboxFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InboxFill', '<path fill-rule="evenodd" d="M5.81 6.063A1.5 1.5 0 016.98 5.5h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624a.5.5 0 00-.39-.188H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 10.67a.5.5 0 01.375-.17h5a.5.5 0 01.5.5c0 .828.625 2 2 2s2-1.172 2-2a.5.5 0 01.5-.5h5a.5.5 0 01.496.562l-.39 3.124a1.5 1.5 0 01-1.489 1.314H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393z" clip-rule="evenodd"/>');
+var BIconInboxes = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Inboxes', '<path fill-rule="evenodd" d="M2.125 13.17A.5.5 0 012.5 13H8a.5.5 0 01.5.5 1.5 1.5 0 003 0 .5.5 0 01.5-.5h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 18H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zm.941.83l.32 2.562a.5.5 0 00.497.438h12.234a.5.5 0 00.496-.438l.32-2.562H12.45a2.5 2.5 0 01-4.9 0H3.066zM5.81 2.563A1.5 1.5 0 016.98 2h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624A.5.5 0 0013.02 3H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 7.17A.5.5 0 012.5 7H8a.5.5 0 01.5.5 1.5 1.5 0 003 0A.5.5 0 0112 7h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 12H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zm.941.83l.32 2.562a.5.5 0 00.497.438h12.234a.5.5 0 00.496-.438L16.933 8H12.45a2.5 2.5 0 01-4.9 0H3.066z" clip-rule="evenodd"/>');
+var BIconInboxesFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InboxesFill', '<path fill-rule="evenodd" d="M2.125 13.17A.5.5 0 012.5 13H8a.5.5 0 01.5.5 1.5 1.5 0 003 0 .5.5 0 01.5-.5h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 18H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393zM5.81 2.563A1.5 1.5 0 016.98 2h6.04a1.5 1.5 0 011.17.563l3.7 4.625a.5.5 0 11-.78.624l-3.7-4.624A.5.5 0 0013.02 3H6.98a.5.5 0 00-.39.188l-3.7 4.624a.5.5 0 11-.78-.624l3.7-4.625z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M2.125 7.17A.5.5 0 012.5 7H8a.5.5 0 01.5.5 1.5 1.5 0 003 0A.5.5 0 0112 7h5.5a.5.5 0 01.496.562l-.39 3.124A1.5 1.5 0 0116.117 12H3.883a1.5 1.5 0 01-1.489-1.314l-.39-3.124a.5.5 0 01.121-.393z" clip-rule="evenodd"/>');
+var BIconInfo = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Info', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm8-7a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/><path d="M10.93 8.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705z"/><circle cx="10" cy="6.5" r="1"/>');
+var BIconInfoFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InfoFill', '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705zM10 7.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
+var BIconInfoSquare = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InfoSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M10.93 8.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705z"/><circle cx="10" cy="6.5" r="1"/>');
+var BIconInfoSquareFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('InfoSquareFill', '<path fill-rule="evenodd" d="M2 4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm8.93 4.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533l1.002-4.705zM10 7.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
+var BIconJustify = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Justify', '<path fill-rule="evenodd" d="M4 14.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconJustifyLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('JustifyLeft', '<path fill-rule="evenodd" d="M4 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconJustifyRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('JustifyRight', '<path fill-rule="evenodd" d="M8 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-4-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconKanban = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Kanban', '<path fill-rule="evenodd" d="M15.5 3h-11a1 1 0 00-1 1v12a1 1 0 001 1h11a1 1 0 001-1V4a1 1 0 00-1-1zm-11-1a2 2 0 00-2 2v12a2 2 0 002 2h11a2 2 0 002-2V4a2 2 0 00-2-2h-11z" clip-rule="evenodd"/><rect width="3" height="5" x="8.5" y="4" rx="1"/><rect width="3" height="9" x="4.5" y="4" rx="1"/><rect width="3" height="12" x="12.5" y="4" rx="1"/>');
+var BIconKanbanFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('KanbanFill', '<path fill-rule="evenodd" d="M4.5 2a2 2 0 00-2 2v12a2 2 0 002 2h11a2 2 0 002-2V4a2 2 0 00-2-2h-11zm5 2a1 1 0 00-1 1v3a1 1 0 001 1h1a1 1 0 001-1V5a1 1 0 00-1-1h-1zm-5 1a1 1 0 011-1h1a1 1 0 011 1v7a1 1 0 01-1 1h-1a1 1 0 01-1-1V5zm9-1a1 1 0 00-1 1v10a1 1 0 001 1h1a1 1 0 001-1V5a1 1 0 00-1-1h-1z" clip-rule="evenodd"/>');
+var BIconLaptop = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Laptop', '<path fill-rule="evenodd" d="M15.5 4h-11a.5.5 0 00-.5.5v7a.5.5 0 00.5.5h11a.5.5 0 00.5-.5v-7a.5.5 0 00-.5-.5zm-11-1A1.5 1.5 0 003 4.5v7A1.5 1.5 0 004.5 13h11a1.5 1.5 0 001.5-1.5v-7A1.5 1.5 0 0015.5 3h-11z" clip-rule="evenodd"/><path d="M2.81 13.758A1 1 0 013.78 13h12.44a1 1 0 01.97.758l.5 2A1 1 0 0116.72 17H3.28a1 1 0 01-.97-1.242l.5-2z"/>');
+var BIconLayoutSidebar = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LayoutSidebar', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M6 16V4h1v12H6z" clip-rule="evenodd"/>');
+var BIconLayoutSidebarReverse = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LayoutSidebarReverse', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13 16V4h1v12h-1z" clip-rule="evenodd"/>');
+var BIconLayoutSplit = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LayoutSplit', '<path fill-rule="evenodd" d="M1.5 5A2.5 2.5 0 014 2.5h12A2.5 2.5 0 0118.5 5v10a2.5 2.5 0 01-2.5 2.5H4A2.5 2.5 0 011.5 15V5zM4 3.5A1.5 1.5 0 002.5 5v10A1.5 1.5 0 004 16.5h12a1.5 1.5 0 001.5-1.5V5A1.5 1.5 0 0016 3.5h-5.5v13h-1v-13H4z" clip-rule="evenodd"/>');
+var BIconList = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('List', '<path fill-rule="evenodd" d="M4.5 13.5A.5.5 0 015 13h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm0-4A.5.5 0 015 9h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm0-4A.5.5 0 015 5h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconListCheck = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListCheck', '<path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zM5.854 4.146a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 11.708-.708L4 5.293l1.146-1.147a.5.5 0 01.708 0zm0 4a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 11.708-.708L4 9.293l1.146-1.147a.5.5 0 01.708 0zm0 4a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 01.708-.708l.146.147 1.146-1.147a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconListOl = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListOl', '<path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M3.713 13.865v-.474H4c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 01-.492.594v.033a.615.615 0 01.569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V11H3.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 00-.342.338v.041zM4.564 7h-.635V4.924h-.031l-.598.42v-.567l.629-.443h.635V7z"/>');
+var BIconListTask = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListTask', '<path fill-rule="evenodd" d="M4 4.5a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5V5a.5.5 0 00-.5-.5H4zM5 5H4v1h1V5z" clip-rule="evenodd"/><path d="M7 5.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zM7.5 9a.5.5 0 000 1h9a.5.5 0 000-1h-9zm0 4a.5.5 0 000 1h9a.5.5 0 000-1h-9z"/><path fill-rule="evenodd" d="M3.5 9a.5.5 0 01.5-.5h1a.5.5 0 01.5.5v1a.5.5 0 01-.5.5H4a.5.5 0 01-.5-.5V9zM4 9h1v1H4V9zm0 3.5a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h1a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5H4zm1 .5H4v1h1v-1z" clip-rule="evenodd"/>');
+var BIconListUl = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ListUl', '<path fill-rule="evenodd" d="M7 13.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm-3 1a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2zm0 4a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
+var BIconLock = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Lock', '<path fill-rule="evenodd" d="M13.655 9H6.333c-.264 0-.398.068-.471.121a.73.73 0 00-.224.296 1.626 1.626 0 00-.138.59V15c0 .342.076.531.14.635.064.106.151.18.256.237a1.122 1.122 0 00.436.127l.013.001h7.322c.264 0 .398-.068.471-.121a.73.73 0 00.224-.296 1.627 1.627 0 00.138-.59V10c0-.342-.076-.531-.14-.635a.658.658 0 00-.255-.237 1.123 1.123 0 00-.45-.128zm.012-1H6.333C4.5 8 4.5 10 4.5 10v5c0 2 1.833 2 1.833 2h7.334c1.833 0 1.833-2 1.833-2v-5c0-2-1.833-2-1.833-2zM6.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
+var BIconLockFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('LockFill', '<rect width="11" height="9" x="4.5" y="8" rx="2"/><path fill-rule="evenodd" d="M6.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
+var BIconMap = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Map', '<path fill-rule="evenodd" d="M17.817 2.613A.5.5 0 0118 3v13a.5.5 0 01-.402.49l-5 1a.502.502 0 01-.196 0L7.5 16.51l-4.902.98A.5.5 0 012 17V4a.5.5 0 01.402-.49l5-1a.5.5 0 01.196 0l4.902.98 4.902-.98a.5.5 0 01.415.103zM12 4.41l-4-.8v11.98l4 .8V4.41zm1 11.98l4-.8V3.61l-4 .8v11.98zm-6-.8V3.61l-4 .8v11.98l4-.8z" clip-rule="evenodd"/>');
+var BIconMic = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Mic', '<path d="M7 5a3 3 0 016 0v5a3 3 0 11-6 0V5z"/><path fill-rule="evenodd" d="M5.5 8.5A.5.5 0 016 9v1a4 4 0 008 0V9a.5.5 0 011 0v1a5 5 0 01-4.5 4.975V17h3a.5.5 0 010 1h-7a.5.5 0 010-1h3v-2.025A5 5 0 015 10V9a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
+var BIconMoon = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Moon', '<path d="M17.293 13.293A8 8 0 016.707 2.707a8.002 8.002 0 1010.586 10.586z"/>');
+var BIconMusicPlayer = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('MusicPlayer', '<path fill-rule="evenodd" d="M14 3H6a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V4a1 1 0 00-1-1zM6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M13 5H7v3h6V5zM7 4a1 1 0 00-1 1v3a1 1 0 001 1h6a1 1 0 001-1V5a1 1 0 00-1-1H7zm3 11a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/><circle cx="10" cy="13" r="1"/>');
+var BIconMusicPlayerFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('MusicPlayerFill', '<path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 1a1 1 0 011-1h6a1 1 0 011 1v2.5a1 1 0 01-1 1H7a1 1 0 01-1-1V5zm7 8a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/><circle cx="10" cy="13" r="1"/>');
+var BIconOption = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Option', '<path fill-rule="evenodd" d="M2.5 4.5A.5.5 0 013 4h4a.5.5 0 01.439.26L13.297 15H17a.5.5 0 010 1h-4a.5.5 0 01-.439-.26L6.703 5H3a.5.5 0 01-.5-.5zm10 0A.5.5 0 0113 4h4a.5.5 0 010 1h-4a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconOutlet = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Outlet', '<path fill-rule="evenodd" d="M5.34 4.994c.275-.338.68-.494 1.074-.494h7.172c.393 0 .798.156 1.074.494.578.708 1.84 2.534 1.84 5.006 0 2.472-1.262 4.297-1.84 5.006-.276.338-.68.494-1.074.494H6.414c-.394 0-.799-.156-1.074-.494C4.762 14.297 3.5 12.472 3.5 10c0-2.472 1.262-4.298 1.84-5.006zm1.074.506a.376.376 0 00-.299.126C5.599 6.259 4.5 7.863 4.5 10c0 2.137 1.099 3.74 1.615 4.374.06.073.163.126.3.126h7.17c.137 0 .24-.053.3-.126.516-.633 1.615-2.237 1.615-4.374 0-2.137-1.099-3.74-1.615-4.374a.376.376 0 00-.3-.126h-7.17z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8 7.5a.5.5 0 01.5.5v1.5a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v1.5a.5.5 0 01-1 0V8a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path d="M9 12v1h2v-1a1 1 0 10-2 0z"/>');
+var BIconPause = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Pause', '<path fill-rule="evenodd" d="M8 5.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v8a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
+var BIconPauseFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PauseFill', '<path d="M7.5 5.5A1.5 1.5 0 019 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5zm5 0A1.5 1.5 0 0114 7v6a1.5 1.5 0 01-3 0V7a1.5 1.5 0 011.5-1.5z"/>');
+var BIconPen = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Pen', '<path fill-rule="evenodd" d="M7.707 15.707a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391L12.086 4.5a2 2 0 012.828 0l.586.586a2 2 0 010 2.828l-7.793 7.793zM5 13l7.793-7.793a1 1 0 011.414 0l.586.586a1 1 0 010 1.414L7 15l-3 1 1-3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.854 4.56a.5.5 0 00-.708 0L7.854 7.855a.5.5 0 11-.708-.708l3.293-3.292a1.5 1.5 0 012.122 0l.293.292a.5.5 0 11-.708.708l-.292-.293z" clip-rule="evenodd"/><path d="M15.293 3.207a1 1 0 011.414 0l.03.03a1 1 0 01.03 1.383L15.5 6 14 4.5l1.293-1.293z"/>');
+var BIconPencil = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Pencil', '<path fill-rule="evenodd" d="M13.293 3.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM14 4l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.146 8.354l-2.5-2.5.708-.708 2.5 2.5-.708.708zM5 12v.5a.5.5 0 00.5.5H6v.5a.5.5 0 00.5.5H7v.5a.5.5 0 00.5.5H8v-1.5a.5.5 0 00-.5-.5H7v-.5a.5.5 0 00-.5-.5H5z" clip-rule="evenodd"/>');
+var BIconPeople = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('People', '<path fill-rule="evenodd" d="M17 16s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002zM9.022 15h7.956a.274.274 0 00.014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C15.688 12.629 14.718 12 13 12c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 00.022.004zm7.973.056v-.002zM13 9a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0zm-7.064 4.28a5.873 5.873 0 00-1.23-.247A7.334 7.334 0 007 11c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 017 15c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM6.92 12c-1.668.02-2.615.64-3.16 1.276C3.163 13.97 3 14.739 3 15h3c0-1.045.323-2.086.92-3zM3.5 7.5a3 3 0 116 0 3 3 0 01-6 0zm3-2a2 2 0 100 4 2 2 0 000-4z" clip-rule="evenodd"/>');
+var BIconPeopleFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PeopleFill', '<path fill-rule="evenodd" d="M9 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H9zm4-6a3 3 0 100-6 3 3 0 000 6zm-5.784 6A2.238 2.238 0 017 15c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 007 11c-4 0-5 3-5 4s1 1 1 1h4.216zM6.5 10a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>');
+var BIconPerson = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Person', '<path fill-rule="evenodd" d="M15 16s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002zM5.022 15h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C13.516 12.68 12.289 12 10 12c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002zM10 9a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z" clip-rule="evenodd"/>');
+var BIconPersonFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PersonFill', '<path fill-rule="evenodd" d="M5 16s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H5zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>');
+var BIconPhone = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Phone', '<path fill-rule="evenodd" d="M13 3H7a1 1 0 00-1 1v11a1 1 0 001 1h6a1 1 0 001-1V4a1 1 0 00-1-1zM7 2a2 2 0 00-2 2v11a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 15a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
+var BIconPhoneLandscape = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PhoneLandscape', '<path fill-rule="evenodd" d="M3.5 6.5v6a1 1 0 001 1h11a1 1 0 001-1v-6a1 1 0 00-1-1h-11a1 1 0 00-1 1zm-1 6a2 2 0 002 2h11a2 2 0 002-2v-6a2 2 0 00-2-2h-11a2 2 0 00-2 2v6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15.5 9.5a1 1 0 10-2 0 1 1 0 002 0z" clip-rule="evenodd"/>');
+var BIconPieChart = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PieChart', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 9.793V3h1v6.5H17v1h-6.793l-4.853 4.854-.708-.708L9.5 9.793z" clip-rule="evenodd"/>');
+var BIconPieChartFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PieChartFill', '<path d="M17.985 10.5h-7.778l-5.5 5.5a8 8 0 0013.277-5.5zM4 15.292A8 8 0 019.5 2.015v7.778l-5.5 5.5zm6.5-13.277V9.5h7.485A8.001 8.001 0 0010.5 2.015z"/>');
+var BIconPlay = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Play', '<path fill-rule="evenodd" d="M12.804 10L7 6.633v6.734L12.804 10zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C6.713 14.69 6 14.345 6 13.692V6.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>');
+var BIconPlayFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('PlayFill', '<path d="M13.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/>');
+var BIconPlug = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Plug', '<path d="M6 7h8v3a4 4 0 01-8 0V7z"/><path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v3a.5.5 0 01-1 0V4a.5.5 0 01.5-.5zm4 0a.5.5 0 01.5.5v3a.5.5 0 01-1 0V4a.5.5 0 01.5-.5zM9.115 15.651c.256-.511.385-1.408.385-2.651h1c0 1.257-.121 2.36-.49 3.099-.191.381-.47.707-.87.877-.401.17-.845.15-1.298-.002-.961-.32-1.534-.175-1.851.046-.33.23-.491.615-.491.98h-1c0-.635.278-1.353.918-1.8.653-.456 1.58-.561 2.74-.174.297.099.478.078.592.03.115-.05.244-.161.365-.405z" clip-rule="evenodd"/>');
+var BIconPlus = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Plus', '<path fill-rule="evenodd" d="M10 5.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6a.5.5 0 010-1h3.5V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 10a.5.5 0 01.5-.5h4a.5.5 0 010 1h-3.5V14a.5.5 0 01-1 0v-4z" clip-rule="evenodd"/>');
+var BIconPower = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Power', '<path fill-rule="evenodd" d="M7.578 6.437a5 5 0 104.922.044l.5-.865a6 6 0 11-5.908-.053l.486.874z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.5 10V3h1v7h-1z" clip-rule="evenodd"/>');
+var BIconQuestion = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Question', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm8-7a8 8 0 11-16 0 8 8 0 0116 0z" clip-rule="evenodd"/><path d="M7.25 8.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>');
+var BIconQuestionFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('QuestionFill', '<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.57 8.033H7.25C7.22 6.147 8.68 5.5 10.006 5.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H9.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z" clip-rule="evenodd"/>');
+var BIconQuestionSquare = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('QuestionSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path d="M7.25 8.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>');
+var BIconQuestionSquareFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('QuestionSquareFill', '<path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm4.57 6.033H7.25C7.22 6.147 8.68 5.5 10.006 5.5c1.397 0 2.673.73 2.673 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.355H9.117l-.007-.463c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.901 0-1.358.603-1.358 1.384zm1.251 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927z" clip-rule="evenodd"/>');
+var BIconReply = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Reply', '<path fill-rule="evenodd" d="M11.502 7.013a.144.144 0 00-.202.134V8.3a.5.5 0 01-.5.5c-.667 0-2.013.005-3.3.822-.984.624-1.99 1.76-2.595 3.876 1.02-.983 2.185-1.516 3.205-1.799a8.745 8.745 0 011.921-.306 7.468 7.468 0 01.798.008h.013l.005.001h.001l-.048.498.05-.498a.5.5 0 01.45.498v1.153c0 .108.11.176.202.134l3.984-2.933a.522.522 0 01.042-.028.147.147 0 000-.252.51.51 0 01-.042-.028l-3.984-2.933zM10.3 12.386a7.745 7.745 0 00-1.923.277c-1.326.368-2.896 1.201-3.94 3.08a.5.5 0 01-.933-.305c.464-3.71 1.886-5.662 3.46-6.66 1.245-.79 2.527-.942 3.336-.971v-.66a1.144 1.144 0 011.767-.96l3.994 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a1.144 1.144 0 01-1.767-.96v-.667z" clip-rule="evenodd"/>');
+var BIconReplyAll = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ReplyAll', '<path fill-rule="evenodd" d="M10.002 7.013a.144.144 0 00-.202.134V8.3a.5.5 0 01-.5.5c-.667 0-2.013.005-3.3.822-.984.624-1.99 1.76-2.595 3.876 1.02-.983 2.185-1.516 3.205-1.799a8.745 8.745 0 011.921-.306 7.47 7.47 0 01.798.008h.013l.005.001h.001L9.3 11.9l.05-.498a.5.5 0 01.45.498v1.153c0 .108.11.176.202.134l3.984-2.933a.522.522 0 01.042-.028.147.147 0 000-.252.51.51 0 01-.042-.028l-3.984-2.933zM8.8 12.386a7.745 7.745 0 00-1.923.277c-1.326.368-2.896 1.201-3.94 3.08a.5.5 0 01-.933-.305c.464-3.71 1.886-5.662 3.46-6.66 1.245-.79 2.527-.942 3.336-.971v-.66a1.144 1.144 0 011.767-.96l3.994 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a1.144 1.144 0 01-1.767-.96v-.667z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.868 6.293a.5.5 0 01.7-.106l3.993 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a.5.5 0 11-.593-.805l4.012-2.954a.523.523 0 01.042-.028.147.147 0 000-.252.512.512 0 01-.042-.028l-4.012-2.954a.5.5 0 01-.106-.699z" clip-rule="evenodd"/>');
+var BIconReplyAllFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ReplyAllFill', '<path d="M10.079 13.9l4.568-3.281a.719.719 0 000-1.238L10.079 6.1A.716.716 0 009 6.719V8c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/><path fill-rule="evenodd" d="M12.868 6.293a.5.5 0 01.7-.106l3.993 2.94a1.147 1.147 0 010 1.946l-3.994 2.94a.5.5 0 11-.593-.805l4.012-2.954a.523.523 0 01.042-.028.147.147 0 000-.252.512.512 0 01-.042-.028l-4.012-2.954a.5.5 0 01-.106-.699z" clip-rule="evenodd"/>');
+var BIconReplyFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ReplyFill', '<path d="M11.079 13.9l4.568-3.281a.719.719 0 000-1.238L11.079 6.1A.716.716 0 0010 6.719V8c-1.5 0-6 0-7 8 2.5-4.5 7-4 7-4v1.281c0 .56.606.898 1.079.62z"/>');
+var BIconScrewdriver = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Screwdriver', '<path fill-rule="evenodd" d="M2 3l1-1 3.081 2.2a1 1 0 01.419.815v.07a1 1 0 00.293.708L12.5 11.5l.914-.305a1 1 0 011.023.242l3.356 3.356a1 1 0 010 1.414l-1.586 1.586a1 1 0 01-1.414 0l-3.356-3.356a1 1 0 01-.242-1.023l.305-.914-5.707-5.707a1 1 0 00-.707-.293h-.071a1 1 0 01-.814-.419L2 3zm11.354 9.646a.5.5 0 00-.708.708l3 3a.5.5 0 00.708-.708l-3-3z" clip-rule="evenodd"/>');
+var BIconSearch = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Search', '<path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>');
+var BIconShield = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Shield', '<path fill-rule="evenodd" d="M7.443 3.991a60.17 60.17 0 00-2.725.802.454.454 0 00-.315.366C3.87 9.056 5.1 11.9 6.567 13.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0010 16.5a.774.774 0 00.097-.023c.072-.022.166-.058.282-.111.23-.106.524-.272.857-.5a10.198 10.198 0 002.197-2.093C14.9 11.9 16.13 9.056 15.597 5.159a.454.454 0 00-.315-.366c-.626-.2-1.682-.526-2.725-.802C11.491 3.71 10.51 3.5 10 3.5c-.51 0-1.49.21-2.557.491zm-.256-.966C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.113 61.113 0 012.772-.815z" clip-rule="evenodd"/>');
+var BIconShieldFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldFill', '<path fill-rule="evenodd" d="M7.187 3.025C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.113 61.113 0 012.772-.815z" clip-rule="evenodd"/>');
+var BIconShieldLock = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldLock', '<path fill-rule="evenodd" d="M7.443 3.991a60.17 60.17 0 00-2.725.802.454.454 0 00-.315.366C3.87 9.056 5.1 11.9 6.567 13.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0010 16.5a.774.774 0 00.097-.023c.072-.022.166-.058.282-.111.23-.106.524-.272.857-.5a10.198 10.198 0 002.197-2.093C14.9 11.9 16.13 9.056 15.597 5.159a.454.454 0 00-.315-.366c-.626-.2-1.682-.526-2.725-.802C11.491 3.71 10.51 3.5 10 3.5c-.51 0-1.49.21-2.557.491zm-.256-.966C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.113 61.113 0 012.772-.815z" clip-rule="evenodd"/><path d="M11.5 8.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/><path d="M9.41 10.034a.5.5 0 01.494-.417h.156a.5.5 0 01.492.414l.347 2a.5.5 0 01-.493.585h-.835a.5.5 0 01-.493-.582l.333-2z"/>');
+var BIconShieldLockFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldLockFill', '<path fill-rule="evenodd" d="M7.187 3.025C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525a61.1 61.1 0 012.772.815c.527.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.368 9.365a11.19 11.19 0 01-2.417 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.527-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.105 61.105 0 012.772-.815zm3.328 6.884a1.5 1.5 0 10-1.06-.011.5.5 0 00-.044.136l-.333 2a.5.5 0 00.493.582h.835a.5.5 0 00.493-.585l-.347-2a.501.501 0 00-.037-.122z" clip-rule="evenodd"/>');
+var BIconShieldShaded = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShieldShaded', '<path fill-rule="evenodd" d="M7.443 3.991a60.17 60.17 0 00-2.725.802.454.454 0 00-.315.366C3.87 9.056 5.1 11.9 6.567 13.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0010 16.5a.774.774 0 00.097-.023c.072-.022.166-.058.282-.111a5.94 5.94 0 00.857-.5 10.198 10.198 0 002.197-2.093C14.9 11.9 16.13 9.056 15.597 5.159a.454.454 0 00-.315-.366c-.626-.2-1.682-.526-2.725-.802C11.491 3.71 10.51 3.5 10 3.5c-.51 0-1.49.21-2.557.491zm-.256-.966C8.23 2.749 9.337 2.5 10 2.5c.662 0 1.77.249 2.813.525 1.066.282 2.14.614 2.772.815.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.192 11.192 0 01-2.418 2.3 6.942 6.942 0 01-1.007.586c-.27.124-.558.225-.796.225s-.526-.101-.796-.225a6.908 6.908 0 01-1.007-.586 11.192 11.192 0 01-2.418-2.3c-1.611-2.058-2.94-5.168-2.367-9.365A1.454 1.454 0 014.415 3.84a61.105 61.105 0 012.772-.815z" clip-rule="evenodd"/><path d="M10 4.25c.909 0 3.188.685 4.254 1.022a.94.94 0 01.656.773c.814 6.424-4.13 9.452-4.91 9.452V4.25z"/>');
+var BIconShift = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Shift', '<path fill-rule="evenodd" d="M9.27 4.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H13.5v3a1 1 0 01-1 1h-5a1 1 0 01-1-1v-3H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 4.047zm7.076 7.453L10 4.731 3.654 11.5H6.5a1 1 0 011 1v3h5v-3a1 1 0 011-1h2.846z" clip-rule="evenodd"/>');
+var BIconShiftFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ShiftFill', '<path fill-rule="evenodd" d="M9.27 4.047a1 1 0 011.46 0l6.345 6.769c.6.639.146 1.684-.73 1.684H13.5v3a1 1 0 01-1 1h-5a1 1 0 01-1-1v-3H3.654c-.875 0-1.328-1.045-.73-1.684L9.27 4.047z" clip-rule="evenodd"/>');
+var BIconSkipBackward = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipBackward', '<path fill-rule="evenodd" d="M2.5 5.5A.5.5 0 013 6v3.248l6.267-3.636c.52-.302 1.233.043 1.233.696v2.94l6.267-3.636c.52-.302 1.233.043 1.233.696v7.384c0 .653-.713.998-1.233.696L10.5 10.752v2.94c0 .653-.713.998-1.233.696L3 10.752V14a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm7 1.133L3.696 10 9.5 13.367V6.633zm7.5 0L11.196 10 17 13.367V6.633z" clip-rule="evenodd"/>');
+var BIconSkipBackwardFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipBackwardFill', '<path stroke="currentColor" stroke-linecap="round" d="M14 6v8"/><path d="M13.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/>');
+var BIconSkipEnd = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipEnd', '<path fill-rule="evenodd" d="M14 5.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0V6a.5.5 0 01.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.804 10L7 6.633v6.734L12.804 10zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C6.713 14.69 6 14.345 6 13.692V6.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>');
+var BIconSkipEndFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipEndFill', '<path stroke="currentColor" stroke-linecap="round" d="M2.5 6v8"/><path d="M2.904 10.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V6.308c0-.63-.693-1.01-1.233-.696L2.904 9.304a.802.802 0 000 1.393z"/><path d="M10.404 10.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V6.308c0-.63-.692-1.01-1.233-.696l-6.363 3.692a.802.802 0 000 1.393z"/>');
+var BIconSkipForward = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipForward', '<path fill-rule="evenodd" d="M17.5 5.5a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-3.248l-6.267 3.636c-.52.302-1.233-.043-1.233-.696v-2.94l-6.267 3.636C2.713 14.69 2 14.345 2 13.692V6.308c0-.653.713-.998 1.233-.696L9.5 9.248v-2.94c0-.653.713-.998 1.233-.696L17 9.248V6a.5.5 0 01.5-.5zM3 6.633v6.734L8.804 10 3 6.633zm7.5 0v6.734L16.304 10 10.5 6.633z" clip-rule="evenodd"/>');
+var BIconSkipForwardFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipForwardFill', '<path stroke="currentColor" stroke-linecap="round" d="M17.5 6v8"/><path d="M9.596 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/><path d="M17.096 10.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V6.308c0-.63.693-1.01 1.233-.696l6.363 3.692a.802.802 0 010 1.393z"/>');
+var BIconSkipStart = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipStart', '<path fill-rule="evenodd" d="M6.5 5.5A.5.5 0 006 6v8a.5.5 0 001 0V6a.5.5 0 00-.5-.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.696 10L13.5 6.633v6.734L7.696 10zm-.792-.696a.802.802 0 000 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V6.308c0-.653-.713-.998-1.233-.696L6.904 9.304z" clip-rule="evenodd"/>');
+var BIconSkipStartFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SkipStartFill', '<path stroke="currentColor" stroke-linecap="round" d="M6.5 6v8"/><path d="M6.903 10.697l6.364 3.692c.54.313 1.232-.066 1.232-.697V6.308c0-.63-.692-1.01-1.232-.696L6.903 9.304a.802.802 0 000 1.393z"/>');
+var BIconSpeaker = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Speaker', '<path d="M11 6a1 1 0 11-2 0 1 1 0 012 0zm-2.5 6.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"/><path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm6 4a2 2 0 11-4 0 2 2 0 014 0zm-2 3a3.5 3.5 0 100 7 3.5 3.5 0 000-7z" clip-rule="evenodd"/>');
+var BIconSquare = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Square', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/>');
+var BIconSquareFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SquareFill', '<rect width="16" height="16" x="2" y="2" rx="2"/>');
+var BIconSquareHalf = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('SquareHalf', '<path fill-rule="evenodd" d="M10 3H4a1 1 0 00-1 1v12a1 1 0 001 1h6V3zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/>');
+var BIconStar = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Star', '<path fill-rule="evenodd" d="M4.866 16.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696-2.184-4.327a.513.513 0 00-.927 0L7.354 7.12l-4.898.696c-.441.062-.612.636-.282.95l3.522 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 00-.163-.505L3.71 8.745l4.052-.576a.525.525 0 00.393-.288l1.847-3.658 1.846 3.658c.08.157.226.264.393.288l4.053.575-2.907 2.77a.564.564 0 00-.163.506l.694 3.957-3.686-1.894a.503.503 0 00-.461 0z" clip-rule="evenodd"/>');
+var BIconStarFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StarFill', '<path d="M5.612 17.443c-.386.198-.824-.149-.746-.592l.83-4.73-3.522-3.356c-.33-.314-.16-.888.282-.95l4.898-.696 2.184-4.327c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L10 15.187l-4.389 2.256z"/>');
+var BIconStarHalf = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StarHalf', '<path fill-rule="evenodd" d="M7.354 7.119l2.184-4.327A.516.516 0 0110 2.5c.183 0 .366.097.465.292l2.184 4.327 4.898.696A.537.537 0 0118 8.32a.55.55 0 01-.17.445l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L10 15.187l-4.389 2.256a.52.52 0 01-.146.05c-.341.06-.668-.254-.6-.642l.83-4.73-3.522-3.356a.55.55 0 01-.172-.403.59.59 0 01.084-.302.513.513 0 01.37-.245l4.898-.696zM10 14.027c.08 0 .16.018.232.056l3.686 1.894-.694-3.957a.564.564 0 01.163-.505l2.907-2.77-4.053-.576a.525.525 0 01-.393-.288l-1.847-3.658-.001.003v9.8z" clip-rule="evenodd"/>');
+var BIconStop = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Stop', '<path fill-rule="evenodd" d="M5.5 7A1.5 1.5 0 017 5.5h6A1.5 1.5 0 0114.5 7v6a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 13V7zM7 6.5a.5.5 0 00-.5.5v6a.5.5 0 00.5.5h6a.5.5 0 00.5-.5V7a.5.5 0 00-.5-.5H7z" clip-rule="evenodd"/>');
+var BIconStopFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StopFill', '<path d="M7 5.5h6A1.5 1.5 0 0114.5 7v6a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 13V7A1.5 1.5 0 017 5.5z"/>');
+var BIconStopwatch = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Stopwatch', '<path fill-rule="evenodd" d="M10 17a6 6 0 100-12 6 6 0 000 12zm0 1a7 7 0 100-14 7 7 0 000 14z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H6.5a.5.5 0 010-1h3V7a.5.5 0 01.5-.5zm-2.5-4A.5.5 0 018 2h4a.5.5 0 010 1H8a.5.5 0 01-.5-.5z" clip-rule="evenodd"/><path d="M9 3h2v2H9V3z"/>');
+var BIconStopwatchFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('StopwatchFill', '<path fill-rule="evenodd" d="M7.5 2.5A.5.5 0 018 2h4a.5.5 0 010 1h-1v1.07A7.002 7.002 0 0110 18 7 7 0 019 4.07V3H8a.5.5 0 01-.5-.5zm3 4.5a.5.5 0 00-1 0v3.5h-3a.5.5 0 000 1H10a.5.5 0 00.5-.5V7z" clip-rule="evenodd"/>');
+var BIconSun = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Sun', '<path d="M5.5 10a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0z"/><path fill-rule="evenodd" d="M10.202 2.28a.25.25 0 00-.404 0l-.91 1.255a.25.25 0 01-.334.067L7.232 2.79a.25.25 0 00-.374.155l-.36 1.508a.25.25 0 01-.282.189l-1.532-.244a.25.25 0 00-.286.286l.244 1.532a.25.25 0 01-.189.282l-1.508.36a.25.25 0 00-.155.374l.812 1.322a.25.25 0 01-.067.333l-1.256.91a.25.25 0 000 .405l1.256.91a.25.25 0 01.067.334l-.812 1.322a.25.25 0 00.155.374l1.508.36a.25.25 0 01.19.282l-.245 1.532a.25.25 0 00.286.286l1.532-.244a.25.25 0 01.282.189l.36 1.508a.25.25 0 00.374.155l1.322-.812a.25.25 0 01.333.067l.91 1.256a.25.25 0 00.405 0l.91-1.256a.25.25 0 01.334-.067l1.322.812a.25.25 0 00.374-.155l.36-1.508a.25.25 0 01.282-.19l1.532.245a.25.25 0 00.286-.286l-.244-1.532a.25.25 0 01.189-.282l1.508-.36a.25.25 0 00.155-.374l-.812-1.322a.25.25 0 01.067-.333l1.256-.91a.25.25 0 000-.405l-1.256-.91a.25.25 0 01-.067-.334l.812-1.322a.25.25 0 00-.155-.374l-1.508-.36a.25.25 0 01-.19-.282l.245-1.532a.25.25 0 00-.286-.286l-1.532.244a.25.25 0 01-.282-.189l-.36-1.509a.25.25 0 00-.374-.154l-1.322.812a.25.25 0 01-.333-.067l-.91-1.256zM10 4.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11z" clip-rule="evenodd"/>');
+var BIconTable = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Table', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17 6H3V5h14v1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7 17.5v-14h1v14H7zm5 0v-14h1v14h-1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17 10H3V9h14v1zm0 4H3v-1h14v1z" clip-rule="evenodd"/><path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v2H2V4z"/>');
+var BIconTablet = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tablet', '<path fill-rule="evenodd" d="M14 3.5H6a1 1 0 00-1 1v11a1 1 0 001 1h8a1 1 0 001-1v-11a1 1 0 00-1-1zm-8-1a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2v-11a2 2 0 00-2-2H6z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 15.5a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>');
+var BIconTabletLandscape = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TabletLandscape', '<path fill-rule="evenodd" d="M3.5 6v8a1 1 0 001 1h11a1 1 0 001-1V6a1 1 0 00-1-1h-11a1 1 0 00-1 1zm-1 8a2 2 0 002 2h11a2 2 0 002-2V6a2 2 0 00-2-2h-11a2 2 0 00-2 2v8z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M15.5 10a1 1 0 10-2 0 1 1 0 002 0z" clip-rule="evenodd"/>');
+var BIconTag = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tag', '<path fill-rule="evenodd" d="M2.5 4A1.5 1.5 0 014 2.5h4.586a1.5 1.5 0 011.06.44l7 7a1.5 1.5 0 010 2.12l-4.585 4.586a1.5 1.5 0 01-2.122 0l-7-7a1.5 1.5 0 01-.439-1.06V4zM4 3.5a.5.5 0 00-.5.5v4.586a.5.5 0 00.146.353l7 7a.5.5 0 00.708 0l4.585-4.585a.5.5 0 000-.708l-7-7a.5.5 0 00-.353-.146H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M4.5 6.5a2 2 0 114 0 2 2 0 01-4 0zm2-1a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/>');
+var BIconTagFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TagFill', '<path fill-rule="evenodd" d="M4 3a1 1 0 00-1 1v4.586a1 1 0 00.293.707l7 7a1 1 0 001.414 0l4.586-4.586a1 1 0 000-1.414l-7-7A1 1 0 008.586 3H4zm4 3.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>');
+var BIconTerminal = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Terminal', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M8 11a.5.5 0 01.5-.5h3a.5.5 0 010 1h-3A.5.5 0 018 11zM5.146 6.146a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L6.793 8.5 5.146 6.854a.5.5 0 010-.708z" clip-rule="evenodd"/>');
+var BIconTerminalFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TerminalFill', '<path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm9.5 5.5h-3a.5.5 0 000 1h3a.5.5 0 000-1zm-6.354-.354L6.793 8.5 5.146 6.854a.5.5 0 11.708-.708l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708z" clip-rule="evenodd"/>');
+var BIconTextCenter = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextCenter', '<path fill-rule="evenodd" d="M6 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm2-3a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm-2-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconTextIndentLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextIndentLeft', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm.646 2.146a.5.5 0 01.708 0l2 2a.5.5 0 010 .708l-2 2a.5.5 0 01-.708-.708L6.293 10 4.646 8.354a.5.5 0 010-.708zM9 8.5a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm-5 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconTextIndentRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextIndentRight', '<path fill-rule="evenodd" d="M4 5.5a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm10.646 2.146a.5.5 0 01.708.708L13.707 10l1.647 1.646a.5.5 0 01-.708.708l-2-2a.5.5 0 010-.708l2-2zM4 8.5a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h6a.5.5 0 010 1h-6a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconTextLeft = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextLeft', '<path fill-rule="evenodd" d="M4 14.5a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h7a.5.5 0 010 1h-7a.5.5 0 01-.5-.5zm0-3a.5.5 0 01.5-.5h11a.5.5 0 010 1h-11a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconTextRight = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TextRight', '<path stroke="currentColor" stroke-linecap="round" d="M8.5 14.5h7m-11-3h11m-7-3h7m-11-3h11"/>');
+var BIconThreeDots = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ThreeDots', '<path fill-rule="evenodd" d="M5 11.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm5 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" clip-rule="evenodd"/>');
+var BIconThreeDotsVertical = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ThreeDotsVertical', '<path fill-rule="evenodd" d="M11.5 15a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>');
+var BIconToggleOff = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ToggleOff', '<path fill-rule="evenodd" d="M13 6a4 4 0 010 8h-3a4.992 4.992 0 002-4 4.992 4.992 0 00-2-4h3zm-6 8a4 4 0 110-8 4 4 0 010 8zm-5-4a5 5 0 005 5h6a5 5 0 000-10H7a5 5 0 00-5 5z" clip-rule="evenodd"/>');
+var BIconToggleOn = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('ToggleOn', '<path fill-rule="evenodd" d="M7 5a5 5 0 000 10h6a5 5 0 000-10H7zm6 9a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"/>');
+var BIconToggles = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Toggles', '<path fill-rule="evenodd" d="M13.5 3h-7a2.5 2.5 0 000 5h7a2.5 2.5 0 000-5zm-7-1a3.5 3.5 0 100 7h7a3.5 3.5 0 100-7h-7zm0 9a3.5 3.5 0 100 7h7a3.5 3.5 0 100-7h-7zm7 6a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 5.5a3.5 3.5 0 11-7 0 3.5 3.5 0 017 0zM6.5 8a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd"/>');
+var BIconTools = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tools', '<path fill-rule="evenodd" d="M2 3l1-1 3.081 2.2a1 1 0 01.419.815v.07a1 1 0 00.293.708L12.5 11.5l.914-.305a1 1 0 011.023.242l3.356 3.356a1 1 0 010 1.414l-1.586 1.586a1 1 0 01-1.414 0l-3.356-3.356a1 1 0 01-.242-1.023l.305-.914-5.707-5.707a1 1 0 00-.707-.293h-.071a1 1 0 01-.814-.419L2 3zm11.354 9.646a.5.5 0 00-.708.708l3 3a.5.5 0 00.708-.708l-3-3z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17.898 4.223a3.003 3.003 0 01-3.679 3.674L7.878 14.15a3 3 0 11-2.027-2.027l6.252-6.341a3 3 0 013.675-3.68l-2.142 2.142L14 6l1.757.364 2.141-2.141zm-13.37 9.019L5 13l.471.242.529.026.287.445.445.287.026.529L7 15l-.242.471-.026.529-.445.287-.287.445-.529.026L5 17l-.471-.242L4 16.732l-.287-.445L3.268 16l-.026-.529L3 15l.242-.471.026-.529.445-.287.287-.445.529-.026z" clip-rule="evenodd"/>');
+var BIconTrash = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Trash', '<path d="M7.5 7.5A.5.5 0 018 8v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V8a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V8z"/><path fill-rule="evenodd" d="M16.5 5a1 1 0 01-1 1H15v9a2 2 0 01-2 2H7a2 2 0 01-2-2V6h-.5a1 1 0 01-1-1V4a1 1 0 011-1H8a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM6.118 6L6 6.059V15a1 1 0 001 1h6a1 1 0 001-1V6.059L13.882 6H6.118zM4.5 5V4h11v1h-11z" clip-rule="evenodd"/>');
+var BIconTrashFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TrashFill', '<path fill-rule="evenodd" d="M4.5 3a1 1 0 00-1 1v1a1 1 0 001 1H5v9a2 2 0 002 2h6a2 2 0 002-2V6h.5a1 1 0 001-1V4a1 1 0 00-1-1H12a1 1 0 00-1-1H9a1 1 0 00-1 1H4.5zm3 4a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7a.5.5 0 01.5-.5zM10 7a.5.5 0 01.5.5v7a.5.5 0 01-1 0v-7A.5.5 0 0110 7zm3 .5a.5.5 0 00-1 0v7a.5.5 0 001 0v-7z" clip-rule="evenodd"/>');
+var BIconTriangle = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Triangle', '<path fill-rule="evenodd" d="M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L10.12 4.073a.146.146 0 00-.054-.057.13.13 0 00-.063-.016.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z" clip-rule="evenodd"/>');
+var BIconTriangleFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TriangleFill', '<path fill-rule="evenodd" d="M9.022 3.566a1.13 1.13 0 011.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H3.144c-.889 0-1.437-.99-.98-1.767L9.022 3.566z" clip-rule="evenodd"/>');
+var BIconTriangleHalf = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TriangleHalf', '<path fill-rule="evenodd" d="M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017l6.857-.017V4a.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z" clip-rule="evenodd"/>');
+var BIconTrophy = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Trophy', '<path d="M5 3h10c-.495 3.467-.5 10-5 10S5.495 6.467 5 3zm0 15a1 1 0 011-1h8a1 1 0 011 1H5zm2-1a1 1 0 011-1h4a1 1 0 011 1H7z"/><path fill-rule="evenodd" d="M14.5 5a2 2 0 100 4 2 2 0 000-4zm-3 2a3 3 0 116 0 3 3 0 01-6 0zm-6-2a2 2 0 100 4 2 2 0 000-4zm-3 2a3 3 0 116 0 3 3 0 01-6 0z" clip-rule="evenodd"/><path d="M9 12h2v4H9v-4z"/><path d="M12 13c0 .552-.895 1-2 1s-2-.448-2-1 .895-1 2-1 2 .448 2 1z"/>');
+var BIconTv = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Tv', '<path fill-rule="evenodd" d="M2.216 6H1.5v-.04l.005-.083a2.957 2.957 0 01.298-1.102c.154-.309.394-.633.763-.88C2.94 3.648 3.413 3.5 4 3.5h12.039l.083.005a2.958 2.958 0 011.102.298c.309.154.633.394.88.763.248.373.396.847.396 1.434v6H18h.5v.039l-.005.083a2.957 2.957 0 01-.298 1.102 2.257 2.257 0 01-.763.88c-.373.248-.847.396-1.434.396H3.961l-.083-.005a2.956 2.956 0 01-1.102-.298 2.254 2.254 0 01-.88-.763C1.648 13.06 1.5 12.588 1.5 12V6h.716zm.284.002v-.008l.003-.044a1.959 1.959 0 01.195-.726c.095-.191.23-.367.423-.495.19-.127.466-.229.879-.229h12.006l.044.003a1.958 1.958 0 01.726.195c.191.095.367.23.495.423.127.19.229.466.229.879v6.006l-.003.044a1.959 1.959 0 01-.195.726c-.095.191-.23.367-.423.495-.19.127-.466.229-.879.229H3.994l-.044-.003a1.96 1.96 0 01-.726-.195 1.256 1.256 0 01-.495-.423c-.127-.19-.229-.466-.229-.879V6.002zM4.003 13.5zm.497 2A.5.5 0 015 15h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>');
+var BIconTvFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TvFill', '<path fill-rule="evenodd" d="M4.5 15.5A.5.5 0 015 15h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zM4 4h12s2 0 2 2v6s0 2-2 2H4s-2 0-2-2V6s0-2 2-2z" clip-rule="evenodd"/>');
+var BIconType = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Type', '<path d="M4.244 15.081l.944-2.803H8.66l.944 2.803h1.257L7.54 5.75H6.322L3 15.081h1.244zm2.7-7.923l1.395 4.157h-2.83L6.91 7.158h.034zm9.146 7.027h.035v.896h1.128v-4.956c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.463v.732H14.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>');
+var BIconTypeBold = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeBold', '<path d="M10.21 15c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 001.852-2.14c0-1.51-1.162-2.46-3.014-2.46H5.843V15h4.368zM7.908 6.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H7.908V6.673zm0 6.788v-2.864h1.73c1.216 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H7.907z"/>');
+var BIconTypeH1 = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeH1', '<path d="M10.637 15V5.669H9.379V9.62H4.758V5.67H3.5V15h1.258v-4.273h4.62V15h1.259zm5.329 0V5.669h-1.244L12.5 7.316v1.265l2.16-1.565h.062V15h1.244z"/>');
+var BIconTypeH2 = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeH2', '<path d="M9.638 15V5.669H8.38V9.62H3.759V5.67H2.5V15h1.258v-4.273h4.62V15h1.259zm3.022-6.733v-.048c0-.889.63-1.668 1.716-1.668.957 0 1.675.608 1.675 1.572 0 .855-.554 1.504-1.067 2.085l-3.513 3.999V15H17.5v-1.094h-4.245v-.075l2.481-2.844c.875-.998 1.586-1.784 1.586-2.953 0-1.463-1.155-2.556-2.919-2.556-1.941 0-2.966 1.326-2.966 2.74v.049h1.223z"/>');
+var BIconTypeH3 = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeH3', '<path d="M9.637 15V5.669H8.379V9.62H3.758V5.67H2.5V15h1.258v-4.273h4.62V15h1.259zm3.625-4.273h1.018c1.142 0 1.935.67 1.949 1.675.013 1.005-.78 1.737-2.01 1.73-1.08-.007-1.853-.588-1.935-1.32h-1.176c.069 1.327 1.224 2.386 3.083 2.386 1.935 0 3.343-1.155 3.309-2.789-.027-1.51-1.251-2.16-2.037-2.249v-.068c.704-.123 1.764-.91 1.723-2.229-.035-1.353-1.176-2.4-2.954-2.385-1.873.006-2.857 1.162-2.898 2.358h1.196c.062-.69.711-1.299 1.696-1.299.998 0 1.695.622 1.695 1.525.007.922-.718 1.592-1.695 1.592h-.964v1.073z"/>');
+var BIconTypeItalic = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeItalic', '<path d="M9.991 13.674l1.538-7.219c.123-.595.246-.71 1.347-.807l.11-.52H9.211l-.11.52c1.06.096 1.128.212 1.005.807L8.57 13.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>');
+var BIconTypeStrikethrough = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeStrikethrough', '<path d="M10.527 15.164c-2.153 0-3.589-1.107-3.705-2.81h1.23c.144 1.06 1.129 1.703 2.544 1.703 1.34 0 2.31-.705 2.31-1.675 0-.827-.547-1.374-1.914-1.675l-.946-.207h3.45c.468.437.675.994.675 1.697 0 1.826-1.436 2.967-3.644 2.967zM8.602 8.5H7.167a2.776 2.776 0 01-.099-.76c0-1.627 1.436-2.768 3.48-2.768 1.969 0 3.39 1.175 3.445 2.85h-1.23c-.11-1.08-.964-1.743-2.25-1.743-1.23 0-2.18.602-2.18 1.607 0 .31.083.581.27.814z"/><path fill-rule="evenodd" d="M17 10.5H3v-1h14v1z" clip-rule="evenodd"/>');
+var BIconTypeUnderline = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('TypeUnderline', '<path d="M7.313 5.136h-1.23v6.405c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V5.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V5.136z"/><path fill-rule="evenodd" d="M14.5 17h-9v-1h9v1z" clip-rule="evenodd"/>');
+var BIconUnlock = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Unlock', '<path fill-rule="evenodd" d="M11.655 9H4.333c-.264 0-.398.068-.471.121a.73.73 0 00-.224.296 1.626 1.626 0 00-.138.59V15c0 .342.076.531.14.635.064.106.151.18.256.237a1.122 1.122 0 00.436.127l.013.001h7.322c.264 0 .398-.068.471-.121a.73.73 0 00.224-.296 1.627 1.627 0 00.138-.59V10c0-.342-.076-.531-.14-.635a.658.658 0 00-.255-.237 1.123 1.123 0 00-.45-.128zm.012-1H4.333C2.5 8 2.5 10 2.5 10v5c0 2 1.833 2 1.833 2h7.334c1.833 0 1.833-2 1.833-2v-5c0-2-1.833-2-1.833-2zM10.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
+var BIconUnlockFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('UnlockFill', '<path d="M2.5 10a2 2 0 012-2h7a2 2 0 012 2v5a2 2 0 01-2 2h-7a2 2 0 01-2-2v-5z"/><path fill-rule="evenodd" d="M10.5 5a3.5 3.5 0 117 0v3h-1V5a2.5 2.5 0 00-5 0v3h-1V5z" clip-rule="evenodd"/>');
+var BIconUpload = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Upload', '<path fill-rule="evenodd" d="M2.5 10a.5.5 0 01.5.5V14a1 1 0 001 1h12a1 1 0 001-1v-3.5a.5.5 0 011 0V14a2 2 0 01-2 2H4a2 2 0 01-2-2v-3.5a.5.5 0 01.5-.5zM7 6.854a.5.5 0 00.707 0L10 4.56l2.293 2.293A.5.5 0 1013 6.146L10.354 3.5a.5.5 0 00-.708 0L7 6.146a.5.5 0 000 .708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 4a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 4z" clip-rule="evenodd"/>');
+var BIconVolumeDown = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeDown', '<path fill-rule="evenodd" d="M10.717 5.55A.5.5 0 0111 6v8a.5.5 0 01-.812.39L7.825 12.5H5.5A.5.5 0 015 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zM10 7.04L8.312 8.39A.5.5 0 018 8.5H6v3h2a.5.5 0 01.312.11L10 12.96V7.04z" clip-rule="evenodd"/><path d="M12.707 13.182A4.486 4.486 0 0014.025 10a4.486 4.486 0 00-1.318-3.182L12 7.525A3.489 3.489 0 0113.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/>');
+var BIconVolumeDownFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeDownFill', '<path fill-rule="evenodd" d="M10.717 5.55A.5.5 0 0111 6v8a.5.5 0 01-.812.39L7.825 12.5H5.5A.5.5 0 015 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06z" clip-rule="evenodd"/><path d="M12.707 13.182A4.486 4.486 0 0014.025 10a4.486 4.486 0 00-1.318-3.182L12 7.525A3.489 3.489 0 0113.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/>');
+var BIconVolumeMute = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeMute', '<path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zM8 7.04L6.312 8.39A.5.5 0 016 8.5H4v3h2a.5.5 0 01.312.11L8 12.96V7.04zm7.854.606a.5.5 0 010 .708l-4 4a.5.5 0 01-.708-.708l4-4a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.146 7.646a.5.5 0 000 .708l4 4a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
+var BIconVolumeMuteFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeMuteFill', '<path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zm7.137 1.596a.5.5 0 010 .708l-4 4a.5.5 0 01-.708-.708l4-4a.5.5 0 01.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M11.146 7.146a.5.5 0 000 .708l4 4a.5.5 0 00.708-.708l-4-4a.5.5 0 00-.708 0z" clip-rule="evenodd"/>');
+var BIconVolumeUp = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeUp', '<path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06zM8 7.04L6.312 8.39A.5.5 0 016 8.5H4v3h2a.5.5 0 01.312.11L8 12.96V7.04z" clip-rule="evenodd"/><path d="M13.536 16.01a8.473 8.473 0 002.49-6.01 8.473 8.473 0 00-2.49-6.01l-.708.707A7.476 7.476 0 0115.025 10c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M12.121 14.596A6.48 6.48 0 0014.025 10a6.48 6.48 0 00-1.904-4.596l-.707.707A5.483 5.483 0 0113.025 10a5.483 5.483 0 01-1.61 3.89l.706.706z"/><path d="M10.707 13.182A4.486 4.486 0 0012.025 10a4.486 4.486 0 00-1.318-3.182L10 7.525A3.489 3.489 0 0111.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/>');
+var BIconVolumeUpFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('VolumeUpFill', '<path d="M13.536 16.01a8.473 8.473 0 002.49-6.01 8.473 8.473 0 00-2.49-6.01l-.708.707A7.476 7.476 0 0115.025 10c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M12.121 14.596A6.48 6.48 0 0014.025 10a6.48 6.48 0 00-1.904-4.596l-.707.707A5.483 5.483 0 0113.025 10a5.483 5.483 0 01-1.61 3.89l.706.706z"/><path d="M10.707 13.182A4.486 4.486 0 0012.025 10a4.486 4.486 0 00-1.318-3.182L10 7.525A3.489 3.489 0 0111.025 10c0 .966-.392 1.841-1.025 2.475l.707.707z"/><path fill-rule="evenodd" d="M8.717 5.55A.5.5 0 019 6v8a.5.5 0 01-.812.39L5.825 12.5H3.5A.5.5 0 013 12V8a.5.5 0 01.5-.5h2.325l2.363-1.89a.5.5 0 01.529-.06z" clip-rule="evenodd"/>');
+var BIconWallet = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Wallet', '<path fill-rule="evenodd" d="M3.5 5a.5.5 0 00-.5.5v2h5a.5.5 0 01.5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 01.5-.5h5v-2a.5.5 0 00-.5-.5h-13zM17 8.5h-4.551a2.678 2.678 0 01-.443 1.042c-.393.546-1.043.958-2.006.958-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 017.551 8.5H3v6a.5.5 0 00.5.5h13a.5.5 0 00.5-.5v-6zm-15-3A1.5 1.5 0 013.5 4h13A1.5 1.5 0 0118 5.5v9a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 012 14.5v-9z" clip-rule="evenodd"/>');
+var BIconWatch = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Watch', '<path fill-rule="evenodd" d="M6 16.333v-1.86A5.985 5.985 0 014 10c0-1.777.772-3.374 2-4.472V3.667C6 2.747 6.746 2 7.667 2h4.666C13.253 2 14 2.746 14 3.667v1.86A5.985 5.985 0 0116 10a5.985 5.985 0 01-2 4.472v1.861c0 .92-.746 1.667-1.667 1.667H7.667C6.747 18 6 17.254 6 16.333zM15 10a5 5 0 10-10 0 5 5 0 0010 0z" clip-rule="evenodd"/><rect width="1" height="2" x="15.5" y="9" rx=".5"/><path fill-rule="evenodd" d="M10 6.5a.5.5 0 01.5.5v3a.5.5 0 01-.5.5H8a.5.5 0 010-1h1.5V7a.5.5 0 01.5-.5z" clip-rule="evenodd"/>');
+var BIconWifi = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Wifi', '<path fill-rule="evenodd" d="M8.858 13.858A1.991 1.991 0 0110 13.5c.425 0 .818.132 1.142.358L10 15l-1.142-1.142z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.731 14.024l.269.269.269-.269a1.506 1.506 0 00-.538 0zm-1.159-.576A2.49 2.49 0 0110 13c.53 0 1.023.165 1.428.448a.5.5 0 01.068.763l-1.143 1.143a.5.5 0 01-.707 0L8.504 14.21a.5.5 0 01.354-.853v.5l-.286-.41zM10 11.5a4.478 4.478 0 00-2.7.9.5.5 0 01-.6-.8c.919-.69 2.062-1.1 3.3-1.1s2.381.41 3.3 1.1a.5.5 0 01-.6.8 4.478 4.478 0 00-2.7-.9zm0-3c-1.833 0-3.51.657-4.814 1.748a.5.5 0 11-.642-.766A8.468 8.468 0 0110 7.5c2.076 0 3.98.745 5.456 1.982a.5.5 0 01-.642.766A7.468 7.468 0 0010 8.5z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M10 5.5c-2.657 0-5.082.986-6.932 2.613a.5.5 0 11-.66-.75A11.458 11.458 0 0110 4.5c2.91 0 5.567 1.08 7.592 2.862a.5.5 0 11-.66.751A10.458 10.458 0 0010 5.5z" clip-rule="evenodd"/>');
+var BIconWindow = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Window', '<path fill-rule="evenodd" d="M16 4H4a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1zM4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M17 8H3V7h14v1z" clip-rule="evenodd"/><path d="M5 5.5a.5.5 0 11-1 0 .5.5 0 011 0zm1.5 0a.5.5 0 11-1 0 .5.5 0 011 0zm1.5 0a.5.5 0 11-1 0 .5.5 0 011 0z"/>');
+var BIconWrench = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('Wrench', '<path fill-rule="evenodd" d="M2.102 4.223A3.004 3.004 0 005 8c.27 0 .532-.036.78-.103l6.342 6.252A3.003 3.003 0 0015 18a3 3 0 10-.851-5.878L7.897 5.781A3.004 3.004 0 004.223 2.1l2.141 2.142L6 6l-1.757.364-2.141-2.141zm13.37 9.019L15 13l-.471.242-.529.026-.287.445-.445.287-.026.529L13 15l.242.471.026.529.445.287.287.445.529.026L15 17l.471-.242.529-.026.287-.445.445-.287.026-.529L17 15l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" clip-rule="evenodd"/>');
+var BIconX = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('X', '<path fill-rule="evenodd" d="M5.646 5.646a.5.5 0 000 .708l8 8a.5.5 0 00.708-.708l-8-8a.5.5 0 00-.708 0z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>');
+var BIconXCircle = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XCircle', '<path fill-rule="evenodd" d="M10 17a7 7 0 100-14 7 7 0 000 14zm0 1a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M12.646 13.354l-6-6 .708-.708 6 6-.708.708z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M7.354 13.354l6-6-.708-.708-6 6 .708.708z" clip-rule="evenodd"/>');
+var BIconXCircleFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XCircleFill', '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7.354 6.646L10 9.293l2.646-2.647a.5.5 0 01.708.708L10.707 10l2.647 2.646a.5.5 0 01-.708.708L10 10.707l-2.646 2.647a.5.5 0 01-.708-.708L9.293 10 6.646 7.354a.5.5 0 11.708-.708z" clip-rule="evenodd"/>');
+var BIconXOctagon = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XOctagon', '<path fill-rule="evenodd" d="M6.54 2.146A.5.5 0 016.893 2h6.214a.5.5 0 01.353.146l4.394 4.394a.5.5 0 01.146.353v6.214a.5.5 0 01-.146.353l-4.394 4.394a.5.5 0 01-.353.146H6.893a.5.5 0 01-.353-.146L2.146 13.46A.5.5 0 012 13.107V6.893a.5.5 0 01.146-.353L6.54 2.146zM7.1 3L3 7.1v5.8L7.1 17h5.8l4.1-4.1V7.1L12.9 3H7.1z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.293 10L6.646 7.354l.708-.708L10 9.293l2.646-2.647.708.708L10.707 10l2.647 2.646-.707.708L10 10.707l-2.646 2.647-.708-.707L9.293 10z" clip-rule="evenodd"/>');
+var BIconXOctagonFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XOctagonFill', '<path fill-rule="evenodd" d="M13.46 2.146A.5.5 0 0013.107 2H6.893a.5.5 0 00-.353.146L2.146 6.54A.5.5 0 002 6.893v6.214a.5.5 0 00.146.353l4.394 4.394a.5.5 0 00.353.146h6.214a.5.5 0 00.353-.146l4.394-4.394a.5.5 0 00.146-.353V6.893a.5.5 0 00-.146-.353L13.46 2.146zm-6.106 4.5L10 9.293l2.646-2.647a.5.5 0 01.708.708L10.707 10l2.647 2.646a.5.5 0 01-.708.708L10 10.707l-2.646 2.647a.5.5 0 01-.708-.708L9.293 10 6.646 7.354a.5.5 0 11.708-.708z" clip-rule="evenodd"/>');
+var BIconXSquare = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XSquare', '<path fill-rule="evenodd" d="M16 3H4a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1zM4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M9.293 10L6.646 7.354l.708-.708L10 9.293l2.646-2.647.708.708L10.707 10l2.647 2.646-.708.708L10 10.707l-2.646 2.647-.708-.707L9.293 10z" clip-rule="evenodd"/>');
+var BIconXSquareFill = /*#__PURE__*/Object(_helpers_make_icon__WEBPACK_IMPORTED_MODULE_0__["makeIcon"])('XSquareFill', '<path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm3.354 4.646L10 9.293l2.646-2.647a.5.5 0 01.708.708L10.707 10l2.647 2.646a.5.5 0 01-.708.708L10 10.707l-2.646 2.647a.5.5 0 01-.708-.708L9.293 10 6.646 7.354a.5.5 0 11.708-.708z" clip-rule="evenodd"/>'); // --- END AUTO-GENERATED FILE ---
 
 /***/ }),
 
@@ -32936,9 +36195,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
  // @vue/component
 
-var BIconstack =
-/*#__PURE__*/
-_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BIconstack = /*#__PURE__*/_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BIconstack',
   functional: true,
   props: _objectSpread({}, _helpers_icon_base__WEBPACK_IMPORTED_MODULE_2__["commonIconProps"]),
@@ -32976,7 +36233,7 @@ __webpack_require__.r(__webpack_exports__);
 // --- BEGIN AUTO-GENERATED FILE ---
 //
 // @IconsVersion: 1.0.0-alpha2
-// @Generated: 2020-02-01T18:38:07.347Z
+// @Generated: 2020-03-14T14:07:22.334Z
 //
 // This file is generated on each build. Do not edit this file!
  // Icon helper component
@@ -32990,9 +36247,7 @@ var iconNames = [// BootstrapVue custom icon component names
 'BIconBlank', // Bootstrap icon component names
 'BIconAlarm', 'BIconAlarmFill', 'BIconAlertCircle', 'BIconAlertCircleFill', 'BIconAlertOctagon', 'BIconAlertOctagonFill', 'BIconAlertSquare', 'BIconAlertSquareFill', 'BIconAlertTriangle', 'BIconAlertTriangleFill', 'BIconArchive', 'BIconArchiveFill', 'BIconArrowBarBottom', 'BIconArrowBarLeft', 'BIconArrowBarRight', 'BIconArrowBarUp', 'BIconArrowClockwise', 'BIconArrowCounterclockwise', 'BIconArrowDown', 'BIconArrowDownLeft', 'BIconArrowDownRight', 'BIconArrowDownShort', 'BIconArrowLeft', 'BIconArrowLeftRight', 'BIconArrowLeftShort', 'BIconArrowRepeat', 'BIconArrowRight', 'BIconArrowRightShort', 'BIconArrowUp', 'BIconArrowUpDown', 'BIconArrowUpLeft', 'BIconArrowUpRight', 'BIconArrowUpShort', 'BIconArrowsAngleContract', 'BIconArrowsAngleExpand', 'BIconArrowsCollapse', 'BIconArrowsExpand', 'BIconArrowsFullscreen', 'BIconAt', 'BIconAward', 'BIconBackspace', 'BIconBackspaceFill', 'BIconBackspaceReverse', 'BIconBackspaceReverseFill', 'BIconBarChart', 'BIconBarChartFill', 'BIconBattery', 'BIconBatteryCharging', 'BIconBatteryFull', 'BIconBell', 'BIconBellFill', 'BIconBlockquoteLeft', 'BIconBlockquoteRight', 'BIconBook', 'BIconBookHalfFill', 'BIconBookmark', 'BIconBookmarkFill', 'BIconBootstrap', 'BIconBootstrapFill', 'BIconBootstrapReboot', 'BIconBoxArrowBottomLeft', 'BIconBoxArrowBottomRight', 'BIconBoxArrowDown', 'BIconBoxArrowLeft', 'BIconBoxArrowRight', 'BIconBoxArrowUp', 'BIconBoxArrowUpLeft', 'BIconBoxArrowUpRight', 'BIconBraces', 'BIconBrightnessFillHigh', 'BIconBrightnessFillLow', 'BIconBrightnessHigh', 'BIconBrightnessLow', 'BIconBrush', 'BIconBucket', 'BIconBucketFill', 'BIconBuilding', 'BIconBullseye', 'BIconCalendar', 'BIconCalendarFill', 'BIconCamera', 'BIconCameraVideo', 'BIconCameraVideoFill', 'BIconCapslock', 'BIconCapslockFill', 'BIconChat', 'BIconChatFill', 'BIconCheck', 'BIconCheckBox', 'BIconCheckCircle', 'BIconChevronCompactDown', 'BIconChevronCompactLeft', 'BIconChevronCompactRight', 'BIconChevronCompactUp', 'BIconChevronDown', 'BIconChevronLeft', 'BIconChevronRight', 'BIconChevronUp', 'BIconCircle', 'BIconCircleFill', 'BIconCircleHalf', 'BIconCircleSlash', 'BIconClock', 'BIconClockFill', 'BIconCloud', 'BIconCloudDownload', 'BIconCloudFill', 'BIconCloudUpload', 'BIconCode', 'BIconCodeSlash', 'BIconColumns', 'BIconColumnsGutters', 'BIconCommand', 'BIconCompass', 'BIconCone', 'BIconConeStriped', 'BIconController', 'BIconCreditCard', 'BIconCursor', 'BIconCursorFill', 'BIconDash', 'BIconDiamond', 'BIconDiamondHalf', 'BIconDisplay', 'BIconDisplayFill', 'BIconDocument', 'BIconDocumentCode', 'BIconDocumentDiff', 'BIconDocumentRichtext', 'BIconDocumentSpreadsheet', 'BIconDocumentText', 'BIconDocuments', 'BIconDocumentsAlt', 'BIconDot', 'BIconDownload', 'BIconEggFried', 'BIconEject', 'BIconEjectFill', 'BIconEnvelope', 'BIconEnvelopeFill', 'BIconEnvelopeOpen', 'BIconEnvelopeOpenFill', 'BIconEye', 'BIconEyeFill', 'BIconEyeSlash', 'BIconEyeSlashFill', 'BIconFilter', 'BIconFlag', 'BIconFlagFill', 'BIconFolder', 'BIconFolderFill', 'BIconFolderSymlink', 'BIconFolderSymlinkFill', 'BIconFonts', 'BIconForward', 'BIconForwardFill', 'BIconGear', 'BIconGearFill', 'BIconGearWide', 'BIconGearWideConnected', 'BIconGeo', 'BIconGraphDown', 'BIconGraphUp', 'BIconGrid', 'BIconGridFill', 'BIconHammer', 'BIconHash', 'BIconHeart', 'BIconHeartFill', 'BIconHouse', 'BIconHouseFill', 'BIconImage', 'BIconImageAlt', 'BIconImageFill', 'BIconImages', 'BIconInbox', 'BIconInboxFill', 'BIconInboxes', 'BIconInboxesFill', 'BIconInfo', 'BIconInfoFill', 'BIconInfoSquare', 'BIconInfoSquareFill', 'BIconJustify', 'BIconJustifyLeft', 'BIconJustifyRight', 'BIconKanban', 'BIconKanbanFill', 'BIconLaptop', 'BIconLayoutSidebar', 'BIconLayoutSidebarReverse', 'BIconLayoutSplit', 'BIconList', 'BIconListCheck', 'BIconListOl', 'BIconListTask', 'BIconListUl', 'BIconLock', 'BIconLockFill', 'BIconMap', 'BIconMic', 'BIconMoon', 'BIconMusicPlayer', 'BIconMusicPlayerFill', 'BIconOption', 'BIconOutlet', 'BIconPause', 'BIconPauseFill', 'BIconPen', 'BIconPencil', 'BIconPeople', 'BIconPeopleFill', 'BIconPerson', 'BIconPersonFill', 'BIconPhone', 'BIconPhoneLandscape', 'BIconPieChart', 'BIconPieChartFill', 'BIconPlay', 'BIconPlayFill', 'BIconPlug', 'BIconPlus', 'BIconPower', 'BIconQuestion', 'BIconQuestionFill', 'BIconQuestionSquare', 'BIconQuestionSquareFill', 'BIconReply', 'BIconReplyAll', 'BIconReplyAllFill', 'BIconReplyFill', 'BIconScrewdriver', 'BIconSearch', 'BIconShield', 'BIconShieldFill', 'BIconShieldLock', 'BIconShieldLockFill', 'BIconShieldShaded', 'BIconShift', 'BIconShiftFill', 'BIconSkipBackward', 'BIconSkipBackwardFill', 'BIconSkipEnd', 'BIconSkipEndFill', 'BIconSkipForward', 'BIconSkipForwardFill', 'BIconSkipStart', 'BIconSkipStartFill', 'BIconSpeaker', 'BIconSquare', 'BIconSquareFill', 'BIconSquareHalf', 'BIconStar', 'BIconStarFill', 'BIconStarHalf', 'BIconStop', 'BIconStopFill', 'BIconStopwatch', 'BIconStopwatchFill', 'BIconSun', 'BIconTable', 'BIconTablet', 'BIconTabletLandscape', 'BIconTag', 'BIconTagFill', 'BIconTerminal', 'BIconTerminalFill', 'BIconTextCenter', 'BIconTextIndentLeft', 'BIconTextIndentRight', 'BIconTextLeft', 'BIconTextRight', 'BIconThreeDots', 'BIconThreeDotsVertical', 'BIconToggleOff', 'BIconToggleOn', 'BIconToggles', 'BIconTools', 'BIconTrash', 'BIconTrashFill', 'BIconTriangle', 'BIconTriangleFill', 'BIconTriangleHalf', 'BIconTrophy', 'BIconTv', 'BIconTvFill', 'BIconType', 'BIconTypeBold', 'BIconTypeH1', 'BIconTypeH2', 'BIconTypeH3', 'BIconTypeItalic', 'BIconTypeStrikethrough', 'BIconTypeUnderline', 'BIconUnlock', 'BIconUnlockFill', 'BIconUpload', 'BIconVolumeDown', 'BIconVolumeDownFill', 'BIconVolumeMute', 'BIconVolumeMuteFill', 'BIconVolumeUp', 'BIconVolumeUpFill', 'BIconWallet', 'BIconWatch', 'BIconWifi', 'BIconWindow', 'BIconWrench', 'BIconX', 'BIconXCircle', 'BIconXCircleFill', 'BIconXOctagon', 'BIconXOctagonFill', 'BIconXSquare', 'BIconXSquareFill']; // Export the icons plugin
 
-var IconsPlugin =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactoryNoConfig"])({
+var IconsPlugin = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactoryNoConfig"])({
   components: {
     // Icon helper component
     BIcon: _icon__WEBPACK_IMPORTED_MODULE_1__["BIcon"],
@@ -33320,9 +36575,7 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactoryNoConfig"])({
 }); // Export the BootstrapVueIcons plugin installer
 // Mainly for the stand-alone bootstrap-vue-icons.xxx.js builds
 
-var BootstrapVueIcons =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactoryNoConfig"])({
+var BootstrapVueIcons = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactoryNoConfig"])({
   plugins: {
     IconsPlugin: IconsPlugin
   }
@@ -33336,7 +36589,7 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactoryNoConfig"])({
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: install, NAME, BVConfigPlugin, BVConfig, BootstrapVue, BVModalPlugin, BVToastPlugin, IconsPlugin, BootstrapVueIcons, BIcon, BIconstack, BIconBlank, BIconAlarm, BIconAlarmFill, BIconAlertCircle, BIconAlertCircleFill, BIconAlertOctagon, BIconAlertOctagonFill, BIconAlertSquare, BIconAlertSquareFill, BIconAlertTriangle, BIconAlertTriangleFill, BIconArchive, BIconArchiveFill, BIconArrowBarBottom, BIconArrowBarLeft, BIconArrowBarRight, BIconArrowBarUp, BIconArrowClockwise, BIconArrowCounterclockwise, BIconArrowDown, BIconArrowDownLeft, BIconArrowDownRight, BIconArrowDownShort, BIconArrowLeft, BIconArrowLeftRight, BIconArrowLeftShort, BIconArrowRepeat, BIconArrowRight, BIconArrowRightShort, BIconArrowUp, BIconArrowUpDown, BIconArrowUpLeft, BIconArrowUpRight, BIconArrowUpShort, BIconArrowsAngleContract, BIconArrowsAngleExpand, BIconArrowsCollapse, BIconArrowsExpand, BIconArrowsFullscreen, BIconAt, BIconAward, BIconBackspace, BIconBackspaceFill, BIconBackspaceReverse, BIconBackspaceReverseFill, BIconBarChart, BIconBarChartFill, BIconBattery, BIconBatteryCharging, BIconBatteryFull, BIconBell, BIconBellFill, BIconBlockquoteLeft, BIconBlockquoteRight, BIconBook, BIconBookHalfFill, BIconBookmark, BIconBookmarkFill, BIconBootstrap, BIconBootstrapFill, BIconBootstrapReboot, BIconBoxArrowBottomLeft, BIconBoxArrowBottomRight, BIconBoxArrowDown, BIconBoxArrowLeft, BIconBoxArrowRight, BIconBoxArrowUp, BIconBoxArrowUpLeft, BIconBoxArrowUpRight, BIconBraces, BIconBrightnessFillHigh, BIconBrightnessFillLow, BIconBrightnessHigh, BIconBrightnessLow, BIconBrush, BIconBucket, BIconBucketFill, BIconBuilding, BIconBullseye, BIconCalendar, BIconCalendarFill, BIconCamera, BIconCameraVideo, BIconCameraVideoFill, BIconCapslock, BIconCapslockFill, BIconChat, BIconChatFill, BIconCheck, BIconCheckBox, BIconCheckCircle, BIconChevronCompactDown, BIconChevronCompactLeft, BIconChevronCompactRight, BIconChevronCompactUp, BIconChevronDown, BIconChevronLeft, BIconChevronRight, BIconChevronUp, BIconCircle, BIconCircleFill, BIconCircleHalf, BIconCircleSlash, BIconClock, BIconClockFill, BIconCloud, BIconCloudDownload, BIconCloudFill, BIconCloudUpload, BIconCode, BIconCodeSlash, BIconColumns, BIconColumnsGutters, BIconCommand, BIconCompass, BIconCone, BIconConeStriped, BIconController, BIconCreditCard, BIconCursor, BIconCursorFill, BIconDash, BIconDiamond, BIconDiamondHalf, BIconDisplay, BIconDisplayFill, BIconDocument, BIconDocumentCode, BIconDocumentDiff, BIconDocumentRichtext, BIconDocumentSpreadsheet, BIconDocumentText, BIconDocuments, BIconDocumentsAlt, BIconDot, BIconDownload, BIconEggFried, BIconEject, BIconEjectFill, BIconEnvelope, BIconEnvelopeFill, BIconEnvelopeOpen, BIconEnvelopeOpenFill, BIconEye, BIconEyeFill, BIconEyeSlash, BIconEyeSlashFill, BIconFilter, BIconFlag, BIconFlagFill, BIconFolder, BIconFolderFill, BIconFolderSymlink, BIconFolderSymlinkFill, BIconFonts, BIconForward, BIconForwardFill, BIconGear, BIconGearFill, BIconGearWide, BIconGearWideConnected, BIconGeo, BIconGraphDown, BIconGraphUp, BIconGrid, BIconGridFill, BIconHammer, BIconHash, BIconHeart, BIconHeartFill, BIconHouse, BIconHouseFill, BIconImage, BIconImageAlt, BIconImageFill, BIconImages, BIconInbox, BIconInboxFill, BIconInboxes, BIconInboxesFill, BIconInfo, BIconInfoFill, BIconInfoSquare, BIconInfoSquareFill, BIconJustify, BIconJustifyLeft, BIconJustifyRight, BIconKanban, BIconKanbanFill, BIconLaptop, BIconLayoutSidebar, BIconLayoutSidebarReverse, BIconLayoutSplit, BIconList, BIconListCheck, BIconListOl, BIconListTask, BIconListUl, BIconLock, BIconLockFill, BIconMap, BIconMic, BIconMoon, BIconMusicPlayer, BIconMusicPlayerFill, BIconOption, BIconOutlet, BIconPause, BIconPauseFill, BIconPen, BIconPencil, BIconPeople, BIconPeopleFill, BIconPerson, BIconPersonFill, BIconPhone, BIconPhoneLandscape, BIconPieChart, BIconPieChartFill, BIconPlay, BIconPlayFill, BIconPlug, BIconPlus, BIconPower, BIconQuestion, BIconQuestionFill, BIconQuestionSquare, BIconQuestionSquareFill, BIconReply, BIconReplyAll, BIconReplyAllFill, BIconReplyFill, BIconScrewdriver, BIconSearch, BIconShield, BIconShieldFill, BIconShieldLock, BIconShieldLockFill, BIconShieldShaded, BIconShift, BIconShiftFill, BIconSkipBackward, BIconSkipBackwardFill, BIconSkipEnd, BIconSkipEndFill, BIconSkipForward, BIconSkipForwardFill, BIconSkipStart, BIconSkipStartFill, BIconSpeaker, BIconSquare, BIconSquareFill, BIconSquareHalf, BIconStar, BIconStarFill, BIconStarHalf, BIconStop, BIconStopFill, BIconStopwatch, BIconStopwatchFill, BIconSun, BIconTable, BIconTablet, BIconTabletLandscape, BIconTag, BIconTagFill, BIconTerminal, BIconTerminalFill, BIconTextCenter, BIconTextIndentLeft, BIconTextIndentRight, BIconTextLeft, BIconTextRight, BIconThreeDots, BIconThreeDotsVertical, BIconToggleOff, BIconToggleOn, BIconToggles, BIconTools, BIconTrash, BIconTrashFill, BIconTriangle, BIconTriangleFill, BIconTriangleHalf, BIconTrophy, BIconTv, BIconTvFill, BIconType, BIconTypeBold, BIconTypeH1, BIconTypeH2, BIconTypeH3, BIconTypeItalic, BIconTypeStrikethrough, BIconTypeUnderline, BIconUnlock, BIconUnlockFill, BIconUpload, BIconVolumeDown, BIconVolumeDownFill, BIconVolumeMute, BIconVolumeMuteFill, BIconVolumeUp, BIconVolumeUpFill, BIconWallet, BIconWatch, BIconWifi, BIconWindow, BIconWrench, BIconX, BIconXCircle, BIconXCircleFill, BIconXOctagon, BIconXOctagonFill, BIconXSquare, BIconXSquareFill, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormTagsPlugin, BFormTags, BFormTag, FormSelectPlugin, BFormSelect, BFormSelectOption, BFormSelectOptionGroup, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, TableLitePlugin, TableSimplePlugin, BTable, BTableLite, BTableSimple, BTbody, BThead, BTfoot, BTr, BTh, BTd, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, VBVisiblePlugin, VBVisible, default */
+/*! exports provided: install, NAME, BVConfigPlugin, BVConfig, BootstrapVue, BVModalPlugin, BVToastPlugin, IconsPlugin, BootstrapVueIcons, BIcon, BIconstack, BIconBlank, BIconAlarm, BIconAlarmFill, BIconAlertCircle, BIconAlertCircleFill, BIconAlertOctagon, BIconAlertOctagonFill, BIconAlertSquare, BIconAlertSquareFill, BIconAlertTriangle, BIconAlertTriangleFill, BIconArchive, BIconArchiveFill, BIconArrowBarBottom, BIconArrowBarLeft, BIconArrowBarRight, BIconArrowBarUp, BIconArrowClockwise, BIconArrowCounterclockwise, BIconArrowDown, BIconArrowDownLeft, BIconArrowDownRight, BIconArrowDownShort, BIconArrowLeft, BIconArrowLeftRight, BIconArrowLeftShort, BIconArrowRepeat, BIconArrowRight, BIconArrowRightShort, BIconArrowUp, BIconArrowUpDown, BIconArrowUpLeft, BIconArrowUpRight, BIconArrowUpShort, BIconArrowsAngleContract, BIconArrowsAngleExpand, BIconArrowsCollapse, BIconArrowsExpand, BIconArrowsFullscreen, BIconAt, BIconAward, BIconBackspace, BIconBackspaceFill, BIconBackspaceReverse, BIconBackspaceReverseFill, BIconBarChart, BIconBarChartFill, BIconBattery, BIconBatteryCharging, BIconBatteryFull, BIconBell, BIconBellFill, BIconBlockquoteLeft, BIconBlockquoteRight, BIconBook, BIconBookHalfFill, BIconBookmark, BIconBookmarkFill, BIconBootstrap, BIconBootstrapFill, BIconBootstrapReboot, BIconBoxArrowBottomLeft, BIconBoxArrowBottomRight, BIconBoxArrowDown, BIconBoxArrowLeft, BIconBoxArrowRight, BIconBoxArrowUp, BIconBoxArrowUpLeft, BIconBoxArrowUpRight, BIconBraces, BIconBrightnessFillHigh, BIconBrightnessFillLow, BIconBrightnessHigh, BIconBrightnessLow, BIconBrush, BIconBucket, BIconBucketFill, BIconBuilding, BIconBullseye, BIconCalendar, BIconCalendarFill, BIconCamera, BIconCameraVideo, BIconCameraVideoFill, BIconCapslock, BIconCapslockFill, BIconChat, BIconChatFill, BIconCheck, BIconCheckBox, BIconCheckCircle, BIconChevronCompactDown, BIconChevronCompactLeft, BIconChevronCompactRight, BIconChevronCompactUp, BIconChevronDown, BIconChevronLeft, BIconChevronRight, BIconChevronUp, BIconCircle, BIconCircleFill, BIconCircleHalf, BIconCircleSlash, BIconClock, BIconClockFill, BIconCloud, BIconCloudDownload, BIconCloudFill, BIconCloudUpload, BIconCode, BIconCodeSlash, BIconColumns, BIconColumnsGutters, BIconCommand, BIconCompass, BIconCone, BIconConeStriped, BIconController, BIconCreditCard, BIconCursor, BIconCursorFill, BIconDash, BIconDiamond, BIconDiamondHalf, BIconDisplay, BIconDisplayFill, BIconDocument, BIconDocumentCode, BIconDocumentDiff, BIconDocumentRichtext, BIconDocumentSpreadsheet, BIconDocumentText, BIconDocuments, BIconDocumentsAlt, BIconDot, BIconDownload, BIconEggFried, BIconEject, BIconEjectFill, BIconEnvelope, BIconEnvelopeFill, BIconEnvelopeOpen, BIconEnvelopeOpenFill, BIconEye, BIconEyeFill, BIconEyeSlash, BIconEyeSlashFill, BIconFilter, BIconFlag, BIconFlagFill, BIconFolder, BIconFolderFill, BIconFolderSymlink, BIconFolderSymlinkFill, BIconFonts, BIconForward, BIconForwardFill, BIconGear, BIconGearFill, BIconGearWide, BIconGearWideConnected, BIconGeo, BIconGraphDown, BIconGraphUp, BIconGrid, BIconGridFill, BIconHammer, BIconHash, BIconHeart, BIconHeartFill, BIconHouse, BIconHouseFill, BIconImage, BIconImageAlt, BIconImageFill, BIconImages, BIconInbox, BIconInboxFill, BIconInboxes, BIconInboxesFill, BIconInfo, BIconInfoFill, BIconInfoSquare, BIconInfoSquareFill, BIconJustify, BIconJustifyLeft, BIconJustifyRight, BIconKanban, BIconKanbanFill, BIconLaptop, BIconLayoutSidebar, BIconLayoutSidebarReverse, BIconLayoutSplit, BIconList, BIconListCheck, BIconListOl, BIconListTask, BIconListUl, BIconLock, BIconLockFill, BIconMap, BIconMic, BIconMoon, BIconMusicPlayer, BIconMusicPlayerFill, BIconOption, BIconOutlet, BIconPause, BIconPauseFill, BIconPen, BIconPencil, BIconPeople, BIconPeopleFill, BIconPerson, BIconPersonFill, BIconPhone, BIconPhoneLandscape, BIconPieChart, BIconPieChartFill, BIconPlay, BIconPlayFill, BIconPlug, BIconPlus, BIconPower, BIconQuestion, BIconQuestionFill, BIconQuestionSquare, BIconQuestionSquareFill, BIconReply, BIconReplyAll, BIconReplyAllFill, BIconReplyFill, BIconScrewdriver, BIconSearch, BIconShield, BIconShieldFill, BIconShieldLock, BIconShieldLockFill, BIconShieldShaded, BIconShift, BIconShiftFill, BIconSkipBackward, BIconSkipBackwardFill, BIconSkipEnd, BIconSkipEndFill, BIconSkipForward, BIconSkipForwardFill, BIconSkipStart, BIconSkipStartFill, BIconSpeaker, BIconSquare, BIconSquareFill, BIconSquareHalf, BIconStar, BIconStarFill, BIconStarHalf, BIconStop, BIconStopFill, BIconStopwatch, BIconStopwatchFill, BIconSun, BIconTable, BIconTablet, BIconTabletLandscape, BIconTag, BIconTagFill, BIconTerminal, BIconTerminalFill, BIconTextCenter, BIconTextIndentLeft, BIconTextIndentRight, BIconTextLeft, BIconTextRight, BIconThreeDots, BIconThreeDotsVertical, BIconToggleOff, BIconToggleOn, BIconToggles, BIconTools, BIconTrash, BIconTrashFill, BIconTriangle, BIconTriangleFill, BIconTriangleHalf, BIconTrophy, BIconTv, BIconTvFill, BIconType, BIconTypeBold, BIconTypeH1, BIconTypeH2, BIconTypeH3, BIconTypeItalic, BIconTypeStrikethrough, BIconTypeUnderline, BIconUnlock, BIconUnlockFill, BIconUpload, BIconVolumeDown, BIconVolumeDownFill, BIconVolumeMute, BIconVolumeMuteFill, BIconVolumeUp, BIconVolumeUpFill, BIconWallet, BIconWatch, BIconWifi, BIconWindow, BIconWrench, BIconX, BIconXCircle, BIconXCircleFill, BIconXOctagon, BIconXOctagonFill, BIconXSquare, BIconXSquareFill, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CalendarPlugin, BCalendar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormDatepickerPlugin, BFormDatepicker, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormTagsPlugin, BFormTags, BFormTag, FormSelectPlugin, BFormSelect, BFormSelectOption, BFormSelectOptionGroup, FormSpinbuttonPlugin, BFormSpinbutton, FormTextareaPlugin, BFormTextarea, FormTimepickerPlugin, BFormTimepicker, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, OverlayPlugin, BOverlay, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, TableLitePlugin, TableSimplePlugin, BTable, BTableLite, BTableSimple, BTbody, BThead, BTfoot, BTr, BTh, BTd, TabsPlugin, BTabs, BTab, TimePlugin, BTime, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, VBHoverPlugin, VBHover, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, VBVisiblePlugin, VBVisible, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34044,411 +37297,453 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_button_toolbar_button_toolbar__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/button-toolbar/button-toolbar */ "./node_modules/bootstrap-vue/esm/components/button-toolbar/button-toolbar.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BButtonToolbar", function() { return _components_button_toolbar_button_toolbar__WEBPACK_IMPORTED_MODULE_23__["BButtonToolbar"]; });
 
-/* harmony import */ var _components_card__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/card */ "./node_modules/bootstrap-vue/esm/components/card/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardPlugin", function() { return _components_card__WEBPACK_IMPORTED_MODULE_24__["CardPlugin"]; });
+/* harmony import */ var _components_calendar__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/calendar */ "./node_modules/bootstrap-vue/esm/components/calendar/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CalendarPlugin", function() { return _components_calendar__WEBPACK_IMPORTED_MODULE_24__["CalendarPlugin"]; });
 
-/* harmony import */ var _components_card_card__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/card/card */ "./node_modules/bootstrap-vue/esm/components/card/card.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCard", function() { return _components_card_card__WEBPACK_IMPORTED_MODULE_25__["BCard"]; });
+/* harmony import */ var _components_calendar_calendar__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/calendar/calendar */ "./node_modules/bootstrap-vue/esm/components/calendar/calendar.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCalendar", function() { return _components_calendar_calendar__WEBPACK_IMPORTED_MODULE_25__["BCalendar"]; });
 
-/* harmony import */ var _components_card_card_body__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/card/card-body */ "./node_modules/bootstrap-vue/esm/components/card/card-body.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardBody", function() { return _components_card_card_body__WEBPACK_IMPORTED_MODULE_26__["BCardBody"]; });
+/* harmony import */ var _components_card__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/card */ "./node_modules/bootstrap-vue/esm/components/card/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CardPlugin", function() { return _components_card__WEBPACK_IMPORTED_MODULE_26__["CardPlugin"]; });
 
-/* harmony import */ var _components_card_card_footer__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/card/card-footer */ "./node_modules/bootstrap-vue/esm/components/card/card-footer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardFooter", function() { return _components_card_card_footer__WEBPACK_IMPORTED_MODULE_27__["BCardFooter"]; });
+/* harmony import */ var _components_card_card__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/card/card */ "./node_modules/bootstrap-vue/esm/components/card/card.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCard", function() { return _components_card_card__WEBPACK_IMPORTED_MODULE_27__["BCard"]; });
 
-/* harmony import */ var _components_card_card_group__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/card/card-group */ "./node_modules/bootstrap-vue/esm/components/card/card-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardGroup", function() { return _components_card_card_group__WEBPACK_IMPORTED_MODULE_28__["BCardGroup"]; });
+/* harmony import */ var _components_card_card_body__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/card/card-body */ "./node_modules/bootstrap-vue/esm/components/card/card-body.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardBody", function() { return _components_card_card_body__WEBPACK_IMPORTED_MODULE_28__["BCardBody"]; });
 
-/* harmony import */ var _components_card_card_header__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/card/card-header */ "./node_modules/bootstrap-vue/esm/components/card/card-header.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardHeader", function() { return _components_card_card_header__WEBPACK_IMPORTED_MODULE_29__["BCardHeader"]; });
+/* harmony import */ var _components_card_card_footer__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/card/card-footer */ "./node_modules/bootstrap-vue/esm/components/card/card-footer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardFooter", function() { return _components_card_card_footer__WEBPACK_IMPORTED_MODULE_29__["BCardFooter"]; });
 
-/* harmony import */ var _components_card_card_img__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/card/card-img */ "./node_modules/bootstrap-vue/esm/components/card/card-img.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardImg", function() { return _components_card_card_img__WEBPACK_IMPORTED_MODULE_30__["BCardImg"]; });
+/* harmony import */ var _components_card_card_group__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/card/card-group */ "./node_modules/bootstrap-vue/esm/components/card/card-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardGroup", function() { return _components_card_card_group__WEBPACK_IMPORTED_MODULE_30__["BCardGroup"]; });
 
-/* harmony import */ var _components_card_card_img_lazy__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/card/card-img-lazy */ "./node_modules/bootstrap-vue/esm/components/card/card-img-lazy.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardImgLazy", function() { return _components_card_card_img_lazy__WEBPACK_IMPORTED_MODULE_31__["BCardImgLazy"]; });
+/* harmony import */ var _components_card_card_header__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/card/card-header */ "./node_modules/bootstrap-vue/esm/components/card/card-header.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardHeader", function() { return _components_card_card_header__WEBPACK_IMPORTED_MODULE_31__["BCardHeader"]; });
 
-/* harmony import */ var _components_card_card_sub_title__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/card/card-sub-title */ "./node_modules/bootstrap-vue/esm/components/card/card-sub-title.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardSubTitle", function() { return _components_card_card_sub_title__WEBPACK_IMPORTED_MODULE_32__["BCardSubTitle"]; });
+/* harmony import */ var _components_card_card_img__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/card/card-img */ "./node_modules/bootstrap-vue/esm/components/card/card-img.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardImg", function() { return _components_card_card_img__WEBPACK_IMPORTED_MODULE_32__["BCardImg"]; });
 
-/* harmony import */ var _components_card_card_text__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/card/card-text */ "./node_modules/bootstrap-vue/esm/components/card/card-text.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardText", function() { return _components_card_card_text__WEBPACK_IMPORTED_MODULE_33__["BCardText"]; });
+/* harmony import */ var _components_card_card_img_lazy__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/card/card-img-lazy */ "./node_modules/bootstrap-vue/esm/components/card/card-img-lazy.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardImgLazy", function() { return _components_card_card_img_lazy__WEBPACK_IMPORTED_MODULE_33__["BCardImgLazy"]; });
 
-/* harmony import */ var _components_card_card_title__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/card/card-title */ "./node_modules/bootstrap-vue/esm/components/card/card-title.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardTitle", function() { return _components_card_card_title__WEBPACK_IMPORTED_MODULE_34__["BCardTitle"]; });
+/* harmony import */ var _components_card_card_sub_title__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/card/card-sub-title */ "./node_modules/bootstrap-vue/esm/components/card/card-sub-title.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardSubTitle", function() { return _components_card_card_sub_title__WEBPACK_IMPORTED_MODULE_34__["BCardSubTitle"]; });
 
-/* harmony import */ var _components_carousel__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/carousel */ "./node_modules/bootstrap-vue/esm/components/carousel/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CarouselPlugin", function() { return _components_carousel__WEBPACK_IMPORTED_MODULE_35__["CarouselPlugin"]; });
+/* harmony import */ var _components_card_card_text__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/card/card-text */ "./node_modules/bootstrap-vue/esm/components/card/card-text.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardText", function() { return _components_card_card_text__WEBPACK_IMPORTED_MODULE_35__["BCardText"]; });
 
-/* harmony import */ var _components_carousel_carousel__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/carousel/carousel */ "./node_modules/bootstrap-vue/esm/components/carousel/carousel.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCarousel", function() { return _components_carousel_carousel__WEBPACK_IMPORTED_MODULE_36__["BCarousel"]; });
+/* harmony import */ var _components_card_card_title__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/card/card-title */ "./node_modules/bootstrap-vue/esm/components/card/card-title.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCardTitle", function() { return _components_card_card_title__WEBPACK_IMPORTED_MODULE_36__["BCardTitle"]; });
 
-/* harmony import */ var _components_carousel_carousel_slide__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/carousel/carousel-slide */ "./node_modules/bootstrap-vue/esm/components/carousel/carousel-slide.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCarouselSlide", function() { return _components_carousel_carousel_slide__WEBPACK_IMPORTED_MODULE_37__["BCarouselSlide"]; });
+/* harmony import */ var _components_carousel__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/carousel */ "./node_modules/bootstrap-vue/esm/components/carousel/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CarouselPlugin", function() { return _components_carousel__WEBPACK_IMPORTED_MODULE_37__["CarouselPlugin"]; });
 
-/* harmony import */ var _components_collapse__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/collapse */ "./node_modules/bootstrap-vue/esm/components/collapse/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CollapsePlugin", function() { return _components_collapse__WEBPACK_IMPORTED_MODULE_38__["CollapsePlugin"]; });
+/* harmony import */ var _components_carousel_carousel__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/carousel/carousel */ "./node_modules/bootstrap-vue/esm/components/carousel/carousel.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCarousel", function() { return _components_carousel_carousel__WEBPACK_IMPORTED_MODULE_38__["BCarousel"]; });
 
-/* harmony import */ var _components_collapse_collapse__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/collapse/collapse */ "./node_modules/bootstrap-vue/esm/components/collapse/collapse.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCollapse", function() { return _components_collapse_collapse__WEBPACK_IMPORTED_MODULE_39__["BCollapse"]; });
+/* harmony import */ var _components_carousel_carousel_slide__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/carousel/carousel-slide */ "./node_modules/bootstrap-vue/esm/components/carousel/carousel-slide.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCarouselSlide", function() { return _components_carousel_carousel_slide__WEBPACK_IMPORTED_MODULE_39__["BCarouselSlide"]; });
 
-/* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/dropdown */ "./node_modules/bootstrap-vue/esm/components/dropdown/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DropdownPlugin", function() { return _components_dropdown__WEBPACK_IMPORTED_MODULE_40__["DropdownPlugin"]; });
+/* harmony import */ var _components_collapse__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/collapse */ "./node_modules/bootstrap-vue/esm/components/collapse/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CollapsePlugin", function() { return _components_collapse__WEBPACK_IMPORTED_MODULE_40__["CollapsePlugin"]; });
 
-/* harmony import */ var _components_dropdown_dropdown__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/dropdown/dropdown */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdown", function() { return _components_dropdown_dropdown__WEBPACK_IMPORTED_MODULE_41__["BDropdown"]; });
+/* harmony import */ var _components_collapse_collapse__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/collapse/collapse */ "./node_modules/bootstrap-vue/esm/components/collapse/collapse.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCollapse", function() { return _components_collapse_collapse__WEBPACK_IMPORTED_MODULE_41__["BCollapse"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_item__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/dropdown/dropdown-item */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-item.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownItem", function() { return _components_dropdown_dropdown_item__WEBPACK_IMPORTED_MODULE_42__["BDropdownItem"]; });
+/* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/dropdown */ "./node_modules/bootstrap-vue/esm/components/dropdown/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DropdownPlugin", function() { return _components_dropdown__WEBPACK_IMPORTED_MODULE_42__["DropdownPlugin"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_item_button__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/dropdown/dropdown-item-button */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-item-button.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownItemButton", function() { return _components_dropdown_dropdown_item_button__WEBPACK_IMPORTED_MODULE_43__["BDropdownItemButton"]; });
+/* harmony import */ var _components_dropdown_dropdown__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/dropdown/dropdown */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdown", function() { return _components_dropdown_dropdown__WEBPACK_IMPORTED_MODULE_43__["BDropdown"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_divider__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/dropdown/dropdown-divider */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-divider.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownDivider", function() { return _components_dropdown_dropdown_divider__WEBPACK_IMPORTED_MODULE_44__["BDropdownDivider"]; });
+/* harmony import */ var _components_dropdown_dropdown_item__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/dropdown/dropdown-item */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-item.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownItem", function() { return _components_dropdown_dropdown_item__WEBPACK_IMPORTED_MODULE_44__["BDropdownItem"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_form__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/dropdown/dropdown-form */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-form.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownForm", function() { return _components_dropdown_dropdown_form__WEBPACK_IMPORTED_MODULE_45__["BDropdownForm"]; });
+/* harmony import */ var _components_dropdown_dropdown_item_button__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/dropdown/dropdown-item-button */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-item-button.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownItemButton", function() { return _components_dropdown_dropdown_item_button__WEBPACK_IMPORTED_MODULE_45__["BDropdownItemButton"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_group__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dropdown/dropdown-group */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownGroup", function() { return _components_dropdown_dropdown_group__WEBPACK_IMPORTED_MODULE_46__["BDropdownGroup"]; });
+/* harmony import */ var _components_dropdown_dropdown_divider__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/dropdown/dropdown-divider */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-divider.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownDivider", function() { return _components_dropdown_dropdown_divider__WEBPACK_IMPORTED_MODULE_46__["BDropdownDivider"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_header__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./components/dropdown/dropdown-header */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-header.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownHeader", function() { return _components_dropdown_dropdown_header__WEBPACK_IMPORTED_MODULE_47__["BDropdownHeader"]; });
+/* harmony import */ var _components_dropdown_dropdown_form__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./components/dropdown/dropdown-form */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-form.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownForm", function() { return _components_dropdown_dropdown_form__WEBPACK_IMPORTED_MODULE_47__["BDropdownForm"]; });
 
-/* harmony import */ var _components_dropdown_dropdown_text__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/dropdown/dropdown-text */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-text.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownText", function() { return _components_dropdown_dropdown_text__WEBPACK_IMPORTED_MODULE_48__["BDropdownText"]; });
+/* harmony import */ var _components_dropdown_dropdown_group__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/dropdown/dropdown-group */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownGroup", function() { return _components_dropdown_dropdown_group__WEBPACK_IMPORTED_MODULE_48__["BDropdownGroup"]; });
 
-/* harmony import */ var _components_embed__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/embed */ "./node_modules/bootstrap-vue/esm/components/embed/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmbedPlugin", function() { return _components_embed__WEBPACK_IMPORTED_MODULE_49__["EmbedPlugin"]; });
+/* harmony import */ var _components_dropdown_dropdown_header__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./components/dropdown/dropdown-header */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-header.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownHeader", function() { return _components_dropdown_dropdown_header__WEBPACK_IMPORTED_MODULE_49__["BDropdownHeader"]; });
 
-/* harmony import */ var _components_embed_embed__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/embed/embed */ "./node_modules/bootstrap-vue/esm/components/embed/embed.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BEmbed", function() { return _components_embed_embed__WEBPACK_IMPORTED_MODULE_50__["BEmbed"]; });
+/* harmony import */ var _components_dropdown_dropdown_text__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/dropdown/dropdown-text */ "./node_modules/bootstrap-vue/esm/components/dropdown/dropdown-text.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BDropdownText", function() { return _components_dropdown_dropdown_text__WEBPACK_IMPORTED_MODULE_50__["BDropdownText"]; });
 
-/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/form */ "./node_modules/bootstrap-vue/esm/components/form/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormPlugin", function() { return _components_form__WEBPACK_IMPORTED_MODULE_51__["FormPlugin"]; });
+/* harmony import */ var _components_embed__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/embed */ "./node_modules/bootstrap-vue/esm/components/embed/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmbedPlugin", function() { return _components_embed__WEBPACK_IMPORTED_MODULE_51__["EmbedPlugin"]; });
 
-/* harmony import */ var _components_form_form__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/form/form */ "./node_modules/bootstrap-vue/esm/components/form/form.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BForm", function() { return _components_form_form__WEBPACK_IMPORTED_MODULE_52__["BForm"]; });
+/* harmony import */ var _components_embed_embed__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/embed/embed */ "./node_modules/bootstrap-vue/esm/components/embed/embed.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BEmbed", function() { return _components_embed_embed__WEBPACK_IMPORTED_MODULE_52__["BEmbed"]; });
 
-/* harmony import */ var _components_form_form_datalist__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/form/form-datalist */ "./node_modules/bootstrap-vue/esm/components/form/form-datalist.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormDatalist", function() { return _components_form_form_datalist__WEBPACK_IMPORTED_MODULE_53__["BFormDatalist"]; });
+/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/form */ "./node_modules/bootstrap-vue/esm/components/form/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormPlugin", function() { return _components_form__WEBPACK_IMPORTED_MODULE_53__["FormPlugin"]; });
 
-/* harmony import */ var _components_form_form_text__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/form/form-text */ "./node_modules/bootstrap-vue/esm/components/form/form-text.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormText", function() { return _components_form_form_text__WEBPACK_IMPORTED_MODULE_54__["BFormText"]; });
+/* harmony import */ var _components_form_form__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/form/form */ "./node_modules/bootstrap-vue/esm/components/form/form.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BForm", function() { return _components_form_form__WEBPACK_IMPORTED_MODULE_54__["BForm"]; });
 
-/* harmony import */ var _components_form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/form/form-invalid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-invalid-feedback.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormInvalidFeedback", function() { return _components_form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_55__["BFormInvalidFeedback"]; });
+/* harmony import */ var _components_form_form_datalist__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/form/form-datalist */ "./node_modules/bootstrap-vue/esm/components/form/form-datalist.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormDatalist", function() { return _components_form_form_datalist__WEBPACK_IMPORTED_MODULE_55__["BFormDatalist"]; });
 
-/* harmony import */ var _components_form_form_valid_feedback__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./components/form/form-valid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-valid-feedback.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormValidFeedback", function() { return _components_form_form_valid_feedback__WEBPACK_IMPORTED_MODULE_56__["BFormValidFeedback"]; });
+/* harmony import */ var _components_form_form_text__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./components/form/form-text */ "./node_modules/bootstrap-vue/esm/components/form/form-text.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormText", function() { return _components_form_form_text__WEBPACK_IMPORTED_MODULE_56__["BFormText"]; });
 
-/* harmony import */ var _components_form_checkbox__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./components/form-checkbox */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormCheckboxPlugin", function() { return _components_form_checkbox__WEBPACK_IMPORTED_MODULE_57__["FormCheckboxPlugin"]; });
+/* harmony import */ var _components_form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./components/form/form-invalid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-invalid-feedback.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormInvalidFeedback", function() { return _components_form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_57__["BFormInvalidFeedback"]; });
 
-/* harmony import */ var _components_form_checkbox_form_checkbox__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./components/form-checkbox/form-checkbox */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/form-checkbox.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormCheckbox", function() { return _components_form_checkbox_form_checkbox__WEBPACK_IMPORTED_MODULE_58__["BFormCheckbox"]; });
+/* harmony import */ var _components_form_form_valid_feedback__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./components/form/form-valid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-valid-feedback.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormValidFeedback", function() { return _components_form_form_valid_feedback__WEBPACK_IMPORTED_MODULE_58__["BFormValidFeedback"]; });
 
-/* harmony import */ var _components_form_checkbox_form_checkbox_group__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./components/form-checkbox/form-checkbox-group */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/form-checkbox-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormCheckboxGroup", function() { return _components_form_checkbox_form_checkbox_group__WEBPACK_IMPORTED_MODULE_59__["BFormCheckboxGroup"]; });
+/* harmony import */ var _components_form_checkbox__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./components/form-checkbox */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormCheckboxPlugin", function() { return _components_form_checkbox__WEBPACK_IMPORTED_MODULE_59__["FormCheckboxPlugin"]; });
 
-/* harmony import */ var _components_form_file__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./components/form-file */ "./node_modules/bootstrap-vue/esm/components/form-file/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormFilePlugin", function() { return _components_form_file__WEBPACK_IMPORTED_MODULE_60__["FormFilePlugin"]; });
+/* harmony import */ var _components_form_checkbox_form_checkbox__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./components/form-checkbox/form-checkbox */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/form-checkbox.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormCheckbox", function() { return _components_form_checkbox_form_checkbox__WEBPACK_IMPORTED_MODULE_60__["BFormCheckbox"]; });
 
-/* harmony import */ var _components_form_file_form_file__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./components/form-file/form-file */ "./node_modules/bootstrap-vue/esm/components/form-file/form-file.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormFile", function() { return _components_form_file_form_file__WEBPACK_IMPORTED_MODULE_61__["BFormFile"]; });
+/* harmony import */ var _components_form_checkbox_form_checkbox_group__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./components/form-checkbox/form-checkbox-group */ "./node_modules/bootstrap-vue/esm/components/form-checkbox/form-checkbox-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormCheckboxGroup", function() { return _components_form_checkbox_form_checkbox_group__WEBPACK_IMPORTED_MODULE_61__["BFormCheckboxGroup"]; });
 
-/* harmony import */ var _components_form_group__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./components/form-group */ "./node_modules/bootstrap-vue/esm/components/form-group/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormGroupPlugin", function() { return _components_form_group__WEBPACK_IMPORTED_MODULE_62__["FormGroupPlugin"]; });
+/* harmony import */ var _components_form_datepicker__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./components/form-datepicker */ "./node_modules/bootstrap-vue/esm/components/form-datepicker/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormDatepickerPlugin", function() { return _components_form_datepicker__WEBPACK_IMPORTED_MODULE_62__["FormDatepickerPlugin"]; });
 
-/* harmony import */ var _components_form_group_form_group__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./components/form-group/form-group */ "./node_modules/bootstrap-vue/esm/components/form-group/form-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormGroup", function() { return _components_form_group_form_group__WEBPACK_IMPORTED_MODULE_63__["BFormGroup"]; });
+/* harmony import */ var _components_form_datepicker_form_datepicker__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./components/form-datepicker/form-datepicker */ "./node_modules/bootstrap-vue/esm/components/form-datepicker/form-datepicker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormDatepicker", function() { return _components_form_datepicker_form_datepicker__WEBPACK_IMPORTED_MODULE_63__["BFormDatepicker"]; });
 
-/* harmony import */ var _components_form_input__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./components/form-input */ "./node_modules/bootstrap-vue/esm/components/form-input/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormInputPlugin", function() { return _components_form_input__WEBPACK_IMPORTED_MODULE_64__["FormInputPlugin"]; });
+/* harmony import */ var _components_form_file__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./components/form-file */ "./node_modules/bootstrap-vue/esm/components/form-file/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormFilePlugin", function() { return _components_form_file__WEBPACK_IMPORTED_MODULE_64__["FormFilePlugin"]; });
 
-/* harmony import */ var _components_form_input_form_input__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./components/form-input/form-input */ "./node_modules/bootstrap-vue/esm/components/form-input/form-input.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormInput", function() { return _components_form_input_form_input__WEBPACK_IMPORTED_MODULE_65__["BFormInput"]; });
+/* harmony import */ var _components_form_file_form_file__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./components/form-file/form-file */ "./node_modules/bootstrap-vue/esm/components/form-file/form-file.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormFile", function() { return _components_form_file_form_file__WEBPACK_IMPORTED_MODULE_65__["BFormFile"]; });
 
-/* harmony import */ var _components_form_radio__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./components/form-radio */ "./node_modules/bootstrap-vue/esm/components/form-radio/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormRadioPlugin", function() { return _components_form_radio__WEBPACK_IMPORTED_MODULE_66__["FormRadioPlugin"]; });
+/* harmony import */ var _components_form_group__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./components/form-group */ "./node_modules/bootstrap-vue/esm/components/form-group/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormGroupPlugin", function() { return _components_form_group__WEBPACK_IMPORTED_MODULE_66__["FormGroupPlugin"]; });
 
-/* harmony import */ var _components_form_radio_form_radio__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./components/form-radio/form-radio */ "./node_modules/bootstrap-vue/esm/components/form-radio/form-radio.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormRadio", function() { return _components_form_radio_form_radio__WEBPACK_IMPORTED_MODULE_67__["BFormRadio"]; });
+/* harmony import */ var _components_form_group_form_group__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./components/form-group/form-group */ "./node_modules/bootstrap-vue/esm/components/form-group/form-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormGroup", function() { return _components_form_group_form_group__WEBPACK_IMPORTED_MODULE_67__["BFormGroup"]; });
 
-/* harmony import */ var _components_form_radio_form_radio_group__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./components/form-radio/form-radio-group */ "./node_modules/bootstrap-vue/esm/components/form-radio/form-radio-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormRadioGroup", function() { return _components_form_radio_form_radio_group__WEBPACK_IMPORTED_MODULE_68__["BFormRadioGroup"]; });
+/* harmony import */ var _components_form_input__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./components/form-input */ "./node_modules/bootstrap-vue/esm/components/form-input/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormInputPlugin", function() { return _components_form_input__WEBPACK_IMPORTED_MODULE_68__["FormInputPlugin"]; });
 
-/* harmony import */ var _components_form_tags__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./components/form-tags */ "./node_modules/bootstrap-vue/esm/components/form-tags/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormTagsPlugin", function() { return _components_form_tags__WEBPACK_IMPORTED_MODULE_69__["FormTagsPlugin"]; });
+/* harmony import */ var _components_form_input_form_input__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./components/form-input/form-input */ "./node_modules/bootstrap-vue/esm/components/form-input/form-input.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormInput", function() { return _components_form_input_form_input__WEBPACK_IMPORTED_MODULE_69__["BFormInput"]; });
 
-/* harmony import */ var _components_form_tags_form_tags__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./components/form-tags/form-tags */ "./node_modules/bootstrap-vue/esm/components/form-tags/form-tags.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTags", function() { return _components_form_tags_form_tags__WEBPACK_IMPORTED_MODULE_70__["BFormTags"]; });
+/* harmony import */ var _components_form_radio__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./components/form-radio */ "./node_modules/bootstrap-vue/esm/components/form-radio/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormRadioPlugin", function() { return _components_form_radio__WEBPACK_IMPORTED_MODULE_70__["FormRadioPlugin"]; });
 
-/* harmony import */ var _components_form_tags_form_tag__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./components/form-tags/form-tag */ "./node_modules/bootstrap-vue/esm/components/form-tags/form-tag.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTag", function() { return _components_form_tags_form_tag__WEBPACK_IMPORTED_MODULE_71__["BFormTag"]; });
+/* harmony import */ var _components_form_radio_form_radio__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./components/form-radio/form-radio */ "./node_modules/bootstrap-vue/esm/components/form-radio/form-radio.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormRadio", function() { return _components_form_radio_form_radio__WEBPACK_IMPORTED_MODULE_71__["BFormRadio"]; });
 
-/* harmony import */ var _components_form_select__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./components/form-select */ "./node_modules/bootstrap-vue/esm/components/form-select/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormSelectPlugin", function() { return _components_form_select__WEBPACK_IMPORTED_MODULE_72__["FormSelectPlugin"]; });
+/* harmony import */ var _components_form_radio_form_radio_group__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./components/form-radio/form-radio-group */ "./node_modules/bootstrap-vue/esm/components/form-radio/form-radio-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormRadioGroup", function() { return _components_form_radio_form_radio_group__WEBPACK_IMPORTED_MODULE_72__["BFormRadioGroup"]; });
 
-/* harmony import */ var _components_form_select_form_select__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./components/form-select/form-select */ "./node_modules/bootstrap-vue/esm/components/form-select/form-select.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSelect", function() { return _components_form_select_form_select__WEBPACK_IMPORTED_MODULE_73__["BFormSelect"]; });
+/* harmony import */ var _components_form_tags__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./components/form-tags */ "./node_modules/bootstrap-vue/esm/components/form-tags/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormTagsPlugin", function() { return _components_form_tags__WEBPACK_IMPORTED_MODULE_73__["FormTagsPlugin"]; });
 
-/* harmony import */ var _components_form_select_form_select_option__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./components/form-select/form-select-option */ "./node_modules/bootstrap-vue/esm/components/form-select/form-select-option.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSelectOption", function() { return _components_form_select_form_select_option__WEBPACK_IMPORTED_MODULE_74__["BFormSelectOption"]; });
+/* harmony import */ var _components_form_tags_form_tags__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./components/form-tags/form-tags */ "./node_modules/bootstrap-vue/esm/components/form-tags/form-tags.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTags", function() { return _components_form_tags_form_tags__WEBPACK_IMPORTED_MODULE_74__["BFormTags"]; });
 
-/* harmony import */ var _components_form_select_form_select_option_group__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./components/form-select/form-select-option-group */ "./node_modules/bootstrap-vue/esm/components/form-select/form-select-option-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSelectOptionGroup", function() { return _components_form_select_form_select_option_group__WEBPACK_IMPORTED_MODULE_75__["BFormSelectOptionGroup"]; });
+/* harmony import */ var _components_form_tags_form_tag__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./components/form-tags/form-tag */ "./node_modules/bootstrap-vue/esm/components/form-tags/form-tag.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTag", function() { return _components_form_tags_form_tag__WEBPACK_IMPORTED_MODULE_75__["BFormTag"]; });
 
-/* harmony import */ var _components_form_textarea__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./components/form-textarea */ "./node_modules/bootstrap-vue/esm/components/form-textarea/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormTextareaPlugin", function() { return _components_form_textarea__WEBPACK_IMPORTED_MODULE_76__["FormTextareaPlugin"]; });
+/* harmony import */ var _components_form_select__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./components/form-select */ "./node_modules/bootstrap-vue/esm/components/form-select/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormSelectPlugin", function() { return _components_form_select__WEBPACK_IMPORTED_MODULE_76__["FormSelectPlugin"]; });
 
-/* harmony import */ var _components_form_textarea_form_textarea__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./components/form-textarea/form-textarea */ "./node_modules/bootstrap-vue/esm/components/form-textarea/form-textarea.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTextarea", function() { return _components_form_textarea_form_textarea__WEBPACK_IMPORTED_MODULE_77__["BFormTextarea"]; });
+/* harmony import */ var _components_form_select_form_select__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./components/form-select/form-select */ "./node_modules/bootstrap-vue/esm/components/form-select/form-select.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSelect", function() { return _components_form_select_form_select__WEBPACK_IMPORTED_MODULE_77__["BFormSelect"]; });
 
-/* harmony import */ var _components_image__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./components/image */ "./node_modules/bootstrap-vue/esm/components/image/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImagePlugin", function() { return _components_image__WEBPACK_IMPORTED_MODULE_78__["ImagePlugin"]; });
+/* harmony import */ var _components_form_select_form_select_option__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./components/form-select/form-select-option */ "./node_modules/bootstrap-vue/esm/components/form-select/form-select-option.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSelectOption", function() { return _components_form_select_form_select_option__WEBPACK_IMPORTED_MODULE_78__["BFormSelectOption"]; });
 
-/* harmony import */ var _components_image_img__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./components/image/img */ "./node_modules/bootstrap-vue/esm/components/image/img.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BImg", function() { return _components_image_img__WEBPACK_IMPORTED_MODULE_79__["BImg"]; });
+/* harmony import */ var _components_form_select_form_select_option_group__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./components/form-select/form-select-option-group */ "./node_modules/bootstrap-vue/esm/components/form-select/form-select-option-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSelectOptionGroup", function() { return _components_form_select_form_select_option_group__WEBPACK_IMPORTED_MODULE_79__["BFormSelectOptionGroup"]; });
 
-/* harmony import */ var _components_image_img_lazy__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./components/image/img-lazy */ "./node_modules/bootstrap-vue/esm/components/image/img-lazy.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BImgLazy", function() { return _components_image_img_lazy__WEBPACK_IMPORTED_MODULE_80__["BImgLazy"]; });
+/* harmony import */ var _components_form_spinbutton__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./components/form-spinbutton */ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormSpinbuttonPlugin", function() { return _components_form_spinbutton__WEBPACK_IMPORTED_MODULE_80__["FormSpinbuttonPlugin"]; });
 
-/* harmony import */ var _components_input_group__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./components/input-group */ "./node_modules/bootstrap-vue/esm/components/input-group/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InputGroupPlugin", function() { return _components_input_group__WEBPACK_IMPORTED_MODULE_81__["InputGroupPlugin"]; });
+/* harmony import */ var _components_form_spinbutton_form_spinbutton__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./components/form-spinbutton/form-spinbutton */ "./node_modules/bootstrap-vue/esm/components/form-spinbutton/form-spinbutton.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormSpinbutton", function() { return _components_form_spinbutton_form_spinbutton__WEBPACK_IMPORTED_MODULE_81__["BFormSpinbutton"]; });
 
-/* harmony import */ var _components_input_group_input_group__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./components/input-group/input-group */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroup", function() { return _components_input_group_input_group__WEBPACK_IMPORTED_MODULE_82__["BInputGroup"]; });
+/* harmony import */ var _components_form_textarea__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./components/form-textarea */ "./node_modules/bootstrap-vue/esm/components/form-textarea/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormTextareaPlugin", function() { return _components_form_textarea__WEBPACK_IMPORTED_MODULE_82__["FormTextareaPlugin"]; });
 
-/* harmony import */ var _components_input_group_input_group_addon__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./components/input-group/input-group-addon */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-addon.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupAddon", function() { return _components_input_group_input_group_addon__WEBPACK_IMPORTED_MODULE_83__["BInputGroupAddon"]; });
+/* harmony import */ var _components_form_textarea_form_textarea__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./components/form-textarea/form-textarea */ "./node_modules/bootstrap-vue/esm/components/form-textarea/form-textarea.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTextarea", function() { return _components_form_textarea_form_textarea__WEBPACK_IMPORTED_MODULE_83__["BFormTextarea"]; });
 
-/* harmony import */ var _components_input_group_input_group_append__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./components/input-group/input-group-append */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-append.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupAppend", function() { return _components_input_group_input_group_append__WEBPACK_IMPORTED_MODULE_84__["BInputGroupAppend"]; });
+/* harmony import */ var _components_form_timepicker__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./components/form-timepicker */ "./node_modules/bootstrap-vue/esm/components/form-timepicker/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FormTimepickerPlugin", function() { return _components_form_timepicker__WEBPACK_IMPORTED_MODULE_84__["FormTimepickerPlugin"]; });
 
-/* harmony import */ var _components_input_group_input_group_prepend__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./components/input-group/input-group-prepend */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-prepend.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupPrepend", function() { return _components_input_group_input_group_prepend__WEBPACK_IMPORTED_MODULE_85__["BInputGroupPrepend"]; });
+/* harmony import */ var _components_form_timepicker_form_timepicker__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./components/form-timepicker/form-timepicker */ "./node_modules/bootstrap-vue/esm/components/form-timepicker/form-timepicker.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormTimepicker", function() { return _components_form_timepicker_form_timepicker__WEBPACK_IMPORTED_MODULE_85__["BFormTimepicker"]; });
 
-/* harmony import */ var _components_input_group_input_group_text__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./components/input-group/input-group-text */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-text.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupText", function() { return _components_input_group_input_group_text__WEBPACK_IMPORTED_MODULE_86__["BInputGroupText"]; });
+/* harmony import */ var _components_image__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./components/image */ "./node_modules/bootstrap-vue/esm/components/image/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ImagePlugin", function() { return _components_image__WEBPACK_IMPORTED_MODULE_86__["ImagePlugin"]; });
 
-/* harmony import */ var _components_jumbotron__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./components/jumbotron */ "./node_modules/bootstrap-vue/esm/components/jumbotron/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "JumbotronPlugin", function() { return _components_jumbotron__WEBPACK_IMPORTED_MODULE_87__["JumbotronPlugin"]; });
+/* harmony import */ var _components_image_img__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./components/image/img */ "./node_modules/bootstrap-vue/esm/components/image/img.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BImg", function() { return _components_image_img__WEBPACK_IMPORTED_MODULE_87__["BImg"]; });
 
-/* harmony import */ var _components_jumbotron_jumbotron__WEBPACK_IMPORTED_MODULE_88__ = __webpack_require__(/*! ./components/jumbotron/jumbotron */ "./node_modules/bootstrap-vue/esm/components/jumbotron/jumbotron.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BJumbotron", function() { return _components_jumbotron_jumbotron__WEBPACK_IMPORTED_MODULE_88__["BJumbotron"]; });
+/* harmony import */ var _components_image_img_lazy__WEBPACK_IMPORTED_MODULE_88__ = __webpack_require__(/*! ./components/image/img-lazy */ "./node_modules/bootstrap-vue/esm/components/image/img-lazy.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BImgLazy", function() { return _components_image_img_lazy__WEBPACK_IMPORTED_MODULE_88__["BImgLazy"]; });
 
-/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_89__ = __webpack_require__(/*! ./components/layout */ "./node_modules/bootstrap-vue/esm/components/layout/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayoutPlugin", function() { return _components_layout__WEBPACK_IMPORTED_MODULE_89__["LayoutPlugin"]; });
+/* harmony import */ var _components_input_group__WEBPACK_IMPORTED_MODULE_89__ = __webpack_require__(/*! ./components/input-group */ "./node_modules/bootstrap-vue/esm/components/input-group/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InputGroupPlugin", function() { return _components_input_group__WEBPACK_IMPORTED_MODULE_89__["InputGroupPlugin"]; });
 
-/* harmony import */ var _components_layout_container__WEBPACK_IMPORTED_MODULE_90__ = __webpack_require__(/*! ./components/layout/container */ "./node_modules/bootstrap-vue/esm/components/layout/container.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BContainer", function() { return _components_layout_container__WEBPACK_IMPORTED_MODULE_90__["BContainer"]; });
+/* harmony import */ var _components_input_group_input_group__WEBPACK_IMPORTED_MODULE_90__ = __webpack_require__(/*! ./components/input-group/input-group */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroup", function() { return _components_input_group_input_group__WEBPACK_IMPORTED_MODULE_90__["BInputGroup"]; });
 
-/* harmony import */ var _components_layout_row__WEBPACK_IMPORTED_MODULE_91__ = __webpack_require__(/*! ./components/layout/row */ "./node_modules/bootstrap-vue/esm/components/layout/row.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BRow", function() { return _components_layout_row__WEBPACK_IMPORTED_MODULE_91__["BRow"]; });
+/* harmony import */ var _components_input_group_input_group_addon__WEBPACK_IMPORTED_MODULE_91__ = __webpack_require__(/*! ./components/input-group/input-group-addon */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-addon.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupAddon", function() { return _components_input_group_input_group_addon__WEBPACK_IMPORTED_MODULE_91__["BInputGroupAddon"]; });
 
-/* harmony import */ var _components_layout_col__WEBPACK_IMPORTED_MODULE_92__ = __webpack_require__(/*! ./components/layout/col */ "./node_modules/bootstrap-vue/esm/components/layout/col.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCol", function() { return _components_layout_col__WEBPACK_IMPORTED_MODULE_92__["BCol"]; });
+/* harmony import */ var _components_input_group_input_group_append__WEBPACK_IMPORTED_MODULE_92__ = __webpack_require__(/*! ./components/input-group/input-group-append */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-append.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupAppend", function() { return _components_input_group_input_group_append__WEBPACK_IMPORTED_MODULE_92__["BInputGroupAppend"]; });
 
-/* harmony import */ var _components_layout_form_row__WEBPACK_IMPORTED_MODULE_93__ = __webpack_require__(/*! ./components/layout/form-row */ "./node_modules/bootstrap-vue/esm/components/layout/form-row.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormRow", function() { return _components_layout_form_row__WEBPACK_IMPORTED_MODULE_93__["BFormRow"]; });
+/* harmony import */ var _components_input_group_input_group_prepend__WEBPACK_IMPORTED_MODULE_93__ = __webpack_require__(/*! ./components/input-group/input-group-prepend */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-prepend.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupPrepend", function() { return _components_input_group_input_group_prepend__WEBPACK_IMPORTED_MODULE_93__["BInputGroupPrepend"]; });
 
-/* harmony import */ var _components_link__WEBPACK_IMPORTED_MODULE_94__ = __webpack_require__(/*! ./components/link */ "./node_modules/bootstrap-vue/esm/components/link/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LinkPlugin", function() { return _components_link__WEBPACK_IMPORTED_MODULE_94__["LinkPlugin"]; });
+/* harmony import */ var _components_input_group_input_group_text__WEBPACK_IMPORTED_MODULE_94__ = __webpack_require__(/*! ./components/input-group/input-group-text */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-text.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BInputGroupText", function() { return _components_input_group_input_group_text__WEBPACK_IMPORTED_MODULE_94__["BInputGroupText"]; });
 
-/* harmony import */ var _components_link_link__WEBPACK_IMPORTED_MODULE_95__ = __webpack_require__(/*! ./components/link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BLink", function() { return _components_link_link__WEBPACK_IMPORTED_MODULE_95__["BLink"]; });
+/* harmony import */ var _components_jumbotron__WEBPACK_IMPORTED_MODULE_95__ = __webpack_require__(/*! ./components/jumbotron */ "./node_modules/bootstrap-vue/esm/components/jumbotron/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "JumbotronPlugin", function() { return _components_jumbotron__WEBPACK_IMPORTED_MODULE_95__["JumbotronPlugin"]; });
 
-/* harmony import */ var _components_list_group__WEBPACK_IMPORTED_MODULE_96__ = __webpack_require__(/*! ./components/list-group */ "./node_modules/bootstrap-vue/esm/components/list-group/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ListGroupPlugin", function() { return _components_list_group__WEBPACK_IMPORTED_MODULE_96__["ListGroupPlugin"]; });
+/* harmony import */ var _components_jumbotron_jumbotron__WEBPACK_IMPORTED_MODULE_96__ = __webpack_require__(/*! ./components/jumbotron/jumbotron */ "./node_modules/bootstrap-vue/esm/components/jumbotron/jumbotron.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BJumbotron", function() { return _components_jumbotron_jumbotron__WEBPACK_IMPORTED_MODULE_96__["BJumbotron"]; });
 
-/* harmony import */ var _components_list_group_list_group__WEBPACK_IMPORTED_MODULE_97__ = __webpack_require__(/*! ./components/list-group/list-group */ "./node_modules/bootstrap-vue/esm/components/list-group/list-group.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BListGroup", function() { return _components_list_group_list_group__WEBPACK_IMPORTED_MODULE_97__["BListGroup"]; });
+/* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_97__ = __webpack_require__(/*! ./components/layout */ "./node_modules/bootstrap-vue/esm/components/layout/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LayoutPlugin", function() { return _components_layout__WEBPACK_IMPORTED_MODULE_97__["LayoutPlugin"]; });
 
-/* harmony import */ var _components_list_group_list_group_item__WEBPACK_IMPORTED_MODULE_98__ = __webpack_require__(/*! ./components/list-group/list-group-item */ "./node_modules/bootstrap-vue/esm/components/list-group/list-group-item.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BListGroupItem", function() { return _components_list_group_list_group_item__WEBPACK_IMPORTED_MODULE_98__["BListGroupItem"]; });
+/* harmony import */ var _components_layout_container__WEBPACK_IMPORTED_MODULE_98__ = __webpack_require__(/*! ./components/layout/container */ "./node_modules/bootstrap-vue/esm/components/layout/container.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BContainer", function() { return _components_layout_container__WEBPACK_IMPORTED_MODULE_98__["BContainer"]; });
 
-/* harmony import */ var _components_media__WEBPACK_IMPORTED_MODULE_99__ = __webpack_require__(/*! ./components/media */ "./node_modules/bootstrap-vue/esm/components/media/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediaPlugin", function() { return _components_media__WEBPACK_IMPORTED_MODULE_99__["MediaPlugin"]; });
+/* harmony import */ var _components_layout_row__WEBPACK_IMPORTED_MODULE_99__ = __webpack_require__(/*! ./components/layout/row */ "./node_modules/bootstrap-vue/esm/components/layout/row.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BRow", function() { return _components_layout_row__WEBPACK_IMPORTED_MODULE_99__["BRow"]; });
 
-/* harmony import */ var _components_media_media__WEBPACK_IMPORTED_MODULE_100__ = __webpack_require__(/*! ./components/media/media */ "./node_modules/bootstrap-vue/esm/components/media/media.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BMedia", function() { return _components_media_media__WEBPACK_IMPORTED_MODULE_100__["BMedia"]; });
+/* harmony import */ var _components_layout_col__WEBPACK_IMPORTED_MODULE_100__ = __webpack_require__(/*! ./components/layout/col */ "./node_modules/bootstrap-vue/esm/components/layout/col.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BCol", function() { return _components_layout_col__WEBPACK_IMPORTED_MODULE_100__["BCol"]; });
 
-/* harmony import */ var _components_media_media_aside__WEBPACK_IMPORTED_MODULE_101__ = __webpack_require__(/*! ./components/media/media-aside */ "./node_modules/bootstrap-vue/esm/components/media/media-aside.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BMediaAside", function() { return _components_media_media_aside__WEBPACK_IMPORTED_MODULE_101__["BMediaAside"]; });
+/* harmony import */ var _components_layout_form_row__WEBPACK_IMPORTED_MODULE_101__ = __webpack_require__(/*! ./components/layout/form-row */ "./node_modules/bootstrap-vue/esm/components/layout/form-row.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BFormRow", function() { return _components_layout_form_row__WEBPACK_IMPORTED_MODULE_101__["BFormRow"]; });
 
-/* harmony import */ var _components_media_media_body__WEBPACK_IMPORTED_MODULE_102__ = __webpack_require__(/*! ./components/media/media-body */ "./node_modules/bootstrap-vue/esm/components/media/media-body.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BMediaBody", function() { return _components_media_media_body__WEBPACK_IMPORTED_MODULE_102__["BMediaBody"]; });
+/* harmony import */ var _components_link__WEBPACK_IMPORTED_MODULE_102__ = __webpack_require__(/*! ./components/link */ "./node_modules/bootstrap-vue/esm/components/link/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LinkPlugin", function() { return _components_link__WEBPACK_IMPORTED_MODULE_102__["LinkPlugin"]; });
 
-/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_103__ = __webpack_require__(/*! ./components/modal */ "./node_modules/bootstrap-vue/esm/components/modal/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ModalPlugin", function() { return _components_modal__WEBPACK_IMPORTED_MODULE_103__["ModalPlugin"]; });
+/* harmony import */ var _components_link_link__WEBPACK_IMPORTED_MODULE_103__ = __webpack_require__(/*! ./components/link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BLink", function() { return _components_link_link__WEBPACK_IMPORTED_MODULE_103__["BLink"]; });
 
-/* harmony import */ var _components_modal_modal__WEBPACK_IMPORTED_MODULE_104__ = __webpack_require__(/*! ./components/modal/modal */ "./node_modules/bootstrap-vue/esm/components/modal/modal.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BModal", function() { return _components_modal_modal__WEBPACK_IMPORTED_MODULE_104__["BModal"]; });
+/* harmony import */ var _components_list_group__WEBPACK_IMPORTED_MODULE_104__ = __webpack_require__(/*! ./components/list-group */ "./node_modules/bootstrap-vue/esm/components/list-group/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ListGroupPlugin", function() { return _components_list_group__WEBPACK_IMPORTED_MODULE_104__["ListGroupPlugin"]; });
 
-/* harmony import */ var _components_nav__WEBPACK_IMPORTED_MODULE_105__ = __webpack_require__(/*! ./components/nav */ "./node_modules/bootstrap-vue/esm/components/nav/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavPlugin", function() { return _components_nav__WEBPACK_IMPORTED_MODULE_105__["NavPlugin"]; });
+/* harmony import */ var _components_list_group_list_group__WEBPACK_IMPORTED_MODULE_105__ = __webpack_require__(/*! ./components/list-group/list-group */ "./node_modules/bootstrap-vue/esm/components/list-group/list-group.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BListGroup", function() { return _components_list_group_list_group__WEBPACK_IMPORTED_MODULE_105__["BListGroup"]; });
 
-/* harmony import */ var _components_nav_nav__WEBPACK_IMPORTED_MODULE_106__ = __webpack_require__(/*! ./components/nav/nav */ "./node_modules/bootstrap-vue/esm/components/nav/nav.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNav", function() { return _components_nav_nav__WEBPACK_IMPORTED_MODULE_106__["BNav"]; });
+/* harmony import */ var _components_list_group_list_group_item__WEBPACK_IMPORTED_MODULE_106__ = __webpack_require__(/*! ./components/list-group/list-group-item */ "./node_modules/bootstrap-vue/esm/components/list-group/list-group-item.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BListGroupItem", function() { return _components_list_group_list_group_item__WEBPACK_IMPORTED_MODULE_106__["BListGroupItem"]; });
 
-/* harmony import */ var _components_nav_nav_form__WEBPACK_IMPORTED_MODULE_107__ = __webpack_require__(/*! ./components/nav/nav-form */ "./node_modules/bootstrap-vue/esm/components/nav/nav-form.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavForm", function() { return _components_nav_nav_form__WEBPACK_IMPORTED_MODULE_107__["BNavForm"]; });
+/* harmony import */ var _components_media__WEBPACK_IMPORTED_MODULE_107__ = __webpack_require__(/*! ./components/media */ "./node_modules/bootstrap-vue/esm/components/media/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MediaPlugin", function() { return _components_media__WEBPACK_IMPORTED_MODULE_107__["MediaPlugin"]; });
 
-/* harmony import */ var _components_nav_nav_item__WEBPACK_IMPORTED_MODULE_108__ = __webpack_require__(/*! ./components/nav/nav-item */ "./node_modules/bootstrap-vue/esm/components/nav/nav-item.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavItem", function() { return _components_nav_nav_item__WEBPACK_IMPORTED_MODULE_108__["BNavItem"]; });
+/* harmony import */ var _components_media_media__WEBPACK_IMPORTED_MODULE_108__ = __webpack_require__(/*! ./components/media/media */ "./node_modules/bootstrap-vue/esm/components/media/media.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BMedia", function() { return _components_media_media__WEBPACK_IMPORTED_MODULE_108__["BMedia"]; });
 
-/* harmony import */ var _components_nav_nav_item_dropdown__WEBPACK_IMPORTED_MODULE_109__ = __webpack_require__(/*! ./components/nav/nav-item-dropdown */ "./node_modules/bootstrap-vue/esm/components/nav/nav-item-dropdown.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavItemDropdown", function() { return _components_nav_nav_item_dropdown__WEBPACK_IMPORTED_MODULE_109__["BNavItemDropdown"]; });
+/* harmony import */ var _components_media_media_aside__WEBPACK_IMPORTED_MODULE_109__ = __webpack_require__(/*! ./components/media/media-aside */ "./node_modules/bootstrap-vue/esm/components/media/media-aside.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BMediaAside", function() { return _components_media_media_aside__WEBPACK_IMPORTED_MODULE_109__["BMediaAside"]; });
 
-/* harmony import */ var _components_nav_nav_text__WEBPACK_IMPORTED_MODULE_110__ = __webpack_require__(/*! ./components/nav/nav-text */ "./node_modules/bootstrap-vue/esm/components/nav/nav-text.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavText", function() { return _components_nav_nav_text__WEBPACK_IMPORTED_MODULE_110__["BNavText"]; });
+/* harmony import */ var _components_media_media_body__WEBPACK_IMPORTED_MODULE_110__ = __webpack_require__(/*! ./components/media/media-body */ "./node_modules/bootstrap-vue/esm/components/media/media-body.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BMediaBody", function() { return _components_media_media_body__WEBPACK_IMPORTED_MODULE_110__["BMediaBody"]; });
 
-/* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_111__ = __webpack_require__(/*! ./components/navbar */ "./node_modules/bootstrap-vue/esm/components/navbar/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavbarPlugin", function() { return _components_navbar__WEBPACK_IMPORTED_MODULE_111__["NavbarPlugin"]; });
+/* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_111__ = __webpack_require__(/*! ./components/modal */ "./node_modules/bootstrap-vue/esm/components/modal/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ModalPlugin", function() { return _components_modal__WEBPACK_IMPORTED_MODULE_111__["ModalPlugin"]; });
 
-/* harmony import */ var _components_navbar_navbar__WEBPACK_IMPORTED_MODULE_112__ = __webpack_require__(/*! ./components/navbar/navbar */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbar", function() { return _components_navbar_navbar__WEBPACK_IMPORTED_MODULE_112__["BNavbar"]; });
+/* harmony import */ var _components_modal_modal__WEBPACK_IMPORTED_MODULE_112__ = __webpack_require__(/*! ./components/modal/modal */ "./node_modules/bootstrap-vue/esm/components/modal/modal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BModal", function() { return _components_modal_modal__WEBPACK_IMPORTED_MODULE_112__["BModal"]; });
 
-/* harmony import */ var _components_navbar_navbar_brand__WEBPACK_IMPORTED_MODULE_113__ = __webpack_require__(/*! ./components/navbar/navbar-brand */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar-brand.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbarBrand", function() { return _components_navbar_navbar_brand__WEBPACK_IMPORTED_MODULE_113__["BNavbarBrand"]; });
+/* harmony import */ var _components_nav__WEBPACK_IMPORTED_MODULE_113__ = __webpack_require__(/*! ./components/nav */ "./node_modules/bootstrap-vue/esm/components/nav/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavPlugin", function() { return _components_nav__WEBPACK_IMPORTED_MODULE_113__["NavPlugin"]; });
 
-/* harmony import */ var _components_navbar_navbar_nav__WEBPACK_IMPORTED_MODULE_114__ = __webpack_require__(/*! ./components/navbar/navbar-nav */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar-nav.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbarNav", function() { return _components_navbar_navbar_nav__WEBPACK_IMPORTED_MODULE_114__["BNavbarNav"]; });
+/* harmony import */ var _components_nav_nav__WEBPACK_IMPORTED_MODULE_114__ = __webpack_require__(/*! ./components/nav/nav */ "./node_modules/bootstrap-vue/esm/components/nav/nav.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNav", function() { return _components_nav_nav__WEBPACK_IMPORTED_MODULE_114__["BNav"]; });
 
-/* harmony import */ var _components_navbar_navbar_toggle__WEBPACK_IMPORTED_MODULE_115__ = __webpack_require__(/*! ./components/navbar/navbar-toggle */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar-toggle.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbarToggle", function() { return _components_navbar_navbar_toggle__WEBPACK_IMPORTED_MODULE_115__["BNavbarToggle"]; });
+/* harmony import */ var _components_nav_nav_form__WEBPACK_IMPORTED_MODULE_115__ = __webpack_require__(/*! ./components/nav/nav-form */ "./node_modules/bootstrap-vue/esm/components/nav/nav-form.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavForm", function() { return _components_nav_nav_form__WEBPACK_IMPORTED_MODULE_115__["BNavForm"]; });
 
-/* harmony import */ var _components_pagination__WEBPACK_IMPORTED_MODULE_116__ = __webpack_require__(/*! ./components/pagination */ "./node_modules/bootstrap-vue/esm/components/pagination/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PaginationPlugin", function() { return _components_pagination__WEBPACK_IMPORTED_MODULE_116__["PaginationPlugin"]; });
+/* harmony import */ var _components_nav_nav_item__WEBPACK_IMPORTED_MODULE_116__ = __webpack_require__(/*! ./components/nav/nav-item */ "./node_modules/bootstrap-vue/esm/components/nav/nav-item.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavItem", function() { return _components_nav_nav_item__WEBPACK_IMPORTED_MODULE_116__["BNavItem"]; });
 
-/* harmony import */ var _components_pagination_pagination__WEBPACK_IMPORTED_MODULE_117__ = __webpack_require__(/*! ./components/pagination/pagination */ "./node_modules/bootstrap-vue/esm/components/pagination/pagination.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BPagination", function() { return _components_pagination_pagination__WEBPACK_IMPORTED_MODULE_117__["BPagination"]; });
+/* harmony import */ var _components_nav_nav_item_dropdown__WEBPACK_IMPORTED_MODULE_117__ = __webpack_require__(/*! ./components/nav/nav-item-dropdown */ "./node_modules/bootstrap-vue/esm/components/nav/nav-item-dropdown.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavItemDropdown", function() { return _components_nav_nav_item_dropdown__WEBPACK_IMPORTED_MODULE_117__["BNavItemDropdown"]; });
 
-/* harmony import */ var _components_pagination_nav__WEBPACK_IMPORTED_MODULE_118__ = __webpack_require__(/*! ./components/pagination-nav */ "./node_modules/bootstrap-vue/esm/components/pagination-nav/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PaginationNavPlugin", function() { return _components_pagination_nav__WEBPACK_IMPORTED_MODULE_118__["PaginationNavPlugin"]; });
+/* harmony import */ var _components_nav_nav_text__WEBPACK_IMPORTED_MODULE_118__ = __webpack_require__(/*! ./components/nav/nav-text */ "./node_modules/bootstrap-vue/esm/components/nav/nav-text.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavText", function() { return _components_nav_nav_text__WEBPACK_IMPORTED_MODULE_118__["BNavText"]; });
 
-/* harmony import */ var _components_pagination_nav_pagination_nav__WEBPACK_IMPORTED_MODULE_119__ = __webpack_require__(/*! ./components/pagination-nav/pagination-nav */ "./node_modules/bootstrap-vue/esm/components/pagination-nav/pagination-nav.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BPaginationNav", function() { return _components_pagination_nav_pagination_nav__WEBPACK_IMPORTED_MODULE_119__["BPaginationNav"]; });
+/* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_119__ = __webpack_require__(/*! ./components/navbar */ "./node_modules/bootstrap-vue/esm/components/navbar/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavbarPlugin", function() { return _components_navbar__WEBPACK_IMPORTED_MODULE_119__["NavbarPlugin"]; });
 
-/* harmony import */ var _components_popover__WEBPACK_IMPORTED_MODULE_120__ = __webpack_require__(/*! ./components/popover */ "./node_modules/bootstrap-vue/esm/components/popover/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PopoverPlugin", function() { return _components_popover__WEBPACK_IMPORTED_MODULE_120__["PopoverPlugin"]; });
+/* harmony import */ var _components_navbar_navbar__WEBPACK_IMPORTED_MODULE_120__ = __webpack_require__(/*! ./components/navbar/navbar */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbar", function() { return _components_navbar_navbar__WEBPACK_IMPORTED_MODULE_120__["BNavbar"]; });
 
-/* harmony import */ var _components_popover_popover__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./components/popover/popover */ "./node_modules/bootstrap-vue/esm/components/popover/popover.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BPopover", function() { return _components_popover_popover__WEBPACK_IMPORTED_MODULE_121__["BPopover"]; });
+/* harmony import */ var _components_navbar_navbar_brand__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./components/navbar/navbar-brand */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar-brand.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbarBrand", function() { return _components_navbar_navbar_brand__WEBPACK_IMPORTED_MODULE_121__["BNavbarBrand"]; });
 
-/* harmony import */ var _components_progress__WEBPACK_IMPORTED_MODULE_122__ = __webpack_require__(/*! ./components/progress */ "./node_modules/bootstrap-vue/esm/components/progress/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProgressPlugin", function() { return _components_progress__WEBPACK_IMPORTED_MODULE_122__["ProgressPlugin"]; });
+/* harmony import */ var _components_navbar_navbar_nav__WEBPACK_IMPORTED_MODULE_122__ = __webpack_require__(/*! ./components/navbar/navbar-nav */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar-nav.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbarNav", function() { return _components_navbar_navbar_nav__WEBPACK_IMPORTED_MODULE_122__["BNavbarNav"]; });
 
-/* harmony import */ var _components_progress_progress__WEBPACK_IMPORTED_MODULE_123__ = __webpack_require__(/*! ./components/progress/progress */ "./node_modules/bootstrap-vue/esm/components/progress/progress.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BProgress", function() { return _components_progress_progress__WEBPACK_IMPORTED_MODULE_123__["BProgress"]; });
+/* harmony import */ var _components_navbar_navbar_toggle__WEBPACK_IMPORTED_MODULE_123__ = __webpack_require__(/*! ./components/navbar/navbar-toggle */ "./node_modules/bootstrap-vue/esm/components/navbar/navbar-toggle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BNavbarToggle", function() { return _components_navbar_navbar_toggle__WEBPACK_IMPORTED_MODULE_123__["BNavbarToggle"]; });
 
-/* harmony import */ var _components_progress_progress_bar__WEBPACK_IMPORTED_MODULE_124__ = __webpack_require__(/*! ./components/progress/progress-bar */ "./node_modules/bootstrap-vue/esm/components/progress/progress-bar.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BProgressBar", function() { return _components_progress_progress_bar__WEBPACK_IMPORTED_MODULE_124__["BProgressBar"]; });
+/* harmony import */ var _components_overlay__WEBPACK_IMPORTED_MODULE_124__ = __webpack_require__(/*! ./components/overlay */ "./node_modules/bootstrap-vue/esm/components/overlay/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "OverlayPlugin", function() { return _components_overlay__WEBPACK_IMPORTED_MODULE_124__["OverlayPlugin"]; });
 
-/* harmony import */ var _components_spinner__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./components/spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpinnerPlugin", function() { return _components_spinner__WEBPACK_IMPORTED_MODULE_125__["SpinnerPlugin"]; });
+/* harmony import */ var _components_overlay_overlay__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./components/overlay/overlay */ "./node_modules/bootstrap-vue/esm/components/overlay/overlay.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BOverlay", function() { return _components_overlay_overlay__WEBPACK_IMPORTED_MODULE_125__["BOverlay"]; });
 
-/* harmony import */ var _components_spinner_spinner__WEBPACK_IMPORTED_MODULE_126__ = __webpack_require__(/*! ./components/spinner/spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/spinner.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BSpinner", function() { return _components_spinner_spinner__WEBPACK_IMPORTED_MODULE_126__["BSpinner"]; });
+/* harmony import */ var _components_pagination__WEBPACK_IMPORTED_MODULE_126__ = __webpack_require__(/*! ./components/pagination */ "./node_modules/bootstrap-vue/esm/components/pagination/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PaginationPlugin", function() { return _components_pagination__WEBPACK_IMPORTED_MODULE_126__["PaginationPlugin"]; });
 
-/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./components/table */ "./node_modules/bootstrap-vue/esm/components/table/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TablePlugin", function() { return _components_table__WEBPACK_IMPORTED_MODULE_127__["TablePlugin"]; });
+/* harmony import */ var _components_pagination_pagination__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./components/pagination/pagination */ "./node_modules/bootstrap-vue/esm/components/pagination/pagination.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BPagination", function() { return _components_pagination_pagination__WEBPACK_IMPORTED_MODULE_127__["BPagination"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TableLitePlugin", function() { return _components_table__WEBPACK_IMPORTED_MODULE_127__["TableLitePlugin"]; });
+/* harmony import */ var _components_pagination_nav__WEBPACK_IMPORTED_MODULE_128__ = __webpack_require__(/*! ./components/pagination-nav */ "./node_modules/bootstrap-vue/esm/components/pagination-nav/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PaginationNavPlugin", function() { return _components_pagination_nav__WEBPACK_IMPORTED_MODULE_128__["PaginationNavPlugin"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TableSimplePlugin", function() { return _components_table__WEBPACK_IMPORTED_MODULE_127__["TableSimplePlugin"]; });
+/* harmony import */ var _components_pagination_nav_pagination_nav__WEBPACK_IMPORTED_MODULE_129__ = __webpack_require__(/*! ./components/pagination-nav/pagination-nav */ "./node_modules/bootstrap-vue/esm/components/pagination-nav/pagination-nav.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BPaginationNav", function() { return _components_pagination_nav_pagination_nav__WEBPACK_IMPORTED_MODULE_129__["BPaginationNav"]; });
 
-/* harmony import */ var _components_table_table__WEBPACK_IMPORTED_MODULE_128__ = __webpack_require__(/*! ./components/table/table */ "./node_modules/bootstrap-vue/esm/components/table/table.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTable", function() { return _components_table_table__WEBPACK_IMPORTED_MODULE_128__["BTable"]; });
+/* harmony import */ var _components_popover__WEBPACK_IMPORTED_MODULE_130__ = __webpack_require__(/*! ./components/popover */ "./node_modules/bootstrap-vue/esm/components/popover/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PopoverPlugin", function() { return _components_popover__WEBPACK_IMPORTED_MODULE_130__["PopoverPlugin"]; });
 
-/* harmony import */ var _components_table_table_lite__WEBPACK_IMPORTED_MODULE_129__ = __webpack_require__(/*! ./components/table/table-lite */ "./node_modules/bootstrap-vue/esm/components/table/table-lite.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTableLite", function() { return _components_table_table_lite__WEBPACK_IMPORTED_MODULE_129__["BTableLite"]; });
+/* harmony import */ var _components_popover_popover__WEBPACK_IMPORTED_MODULE_131__ = __webpack_require__(/*! ./components/popover/popover */ "./node_modules/bootstrap-vue/esm/components/popover/popover.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BPopover", function() { return _components_popover_popover__WEBPACK_IMPORTED_MODULE_131__["BPopover"]; });
 
-/* harmony import */ var _components_table_table_simple__WEBPACK_IMPORTED_MODULE_130__ = __webpack_require__(/*! ./components/table/table-simple */ "./node_modules/bootstrap-vue/esm/components/table/table-simple.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTableSimple", function() { return _components_table_table_simple__WEBPACK_IMPORTED_MODULE_130__["BTableSimple"]; });
+/* harmony import */ var _components_progress__WEBPACK_IMPORTED_MODULE_132__ = __webpack_require__(/*! ./components/progress */ "./node_modules/bootstrap-vue/esm/components/progress/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProgressPlugin", function() { return _components_progress__WEBPACK_IMPORTED_MODULE_132__["ProgressPlugin"]; });
 
-/* harmony import */ var _components_table_tbody__WEBPACK_IMPORTED_MODULE_131__ = __webpack_require__(/*! ./components/table/tbody */ "./node_modules/bootstrap-vue/esm/components/table/tbody.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTbody", function() { return _components_table_tbody__WEBPACK_IMPORTED_MODULE_131__["BTbody"]; });
+/* harmony import */ var _components_progress_progress__WEBPACK_IMPORTED_MODULE_133__ = __webpack_require__(/*! ./components/progress/progress */ "./node_modules/bootstrap-vue/esm/components/progress/progress.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BProgress", function() { return _components_progress_progress__WEBPACK_IMPORTED_MODULE_133__["BProgress"]; });
 
-/* harmony import */ var _components_table_thead__WEBPACK_IMPORTED_MODULE_132__ = __webpack_require__(/*! ./components/table/thead */ "./node_modules/bootstrap-vue/esm/components/table/thead.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BThead", function() { return _components_table_thead__WEBPACK_IMPORTED_MODULE_132__["BThead"]; });
+/* harmony import */ var _components_progress_progress_bar__WEBPACK_IMPORTED_MODULE_134__ = __webpack_require__(/*! ./components/progress/progress-bar */ "./node_modules/bootstrap-vue/esm/components/progress/progress-bar.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BProgressBar", function() { return _components_progress_progress_bar__WEBPACK_IMPORTED_MODULE_134__["BProgressBar"]; });
 
-/* harmony import */ var _components_table_tfoot__WEBPACK_IMPORTED_MODULE_133__ = __webpack_require__(/*! ./components/table/tfoot */ "./node_modules/bootstrap-vue/esm/components/table/tfoot.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTfoot", function() { return _components_table_tfoot__WEBPACK_IMPORTED_MODULE_133__["BTfoot"]; });
+/* harmony import */ var _components_spinner__WEBPACK_IMPORTED_MODULE_135__ = __webpack_require__(/*! ./components/spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SpinnerPlugin", function() { return _components_spinner__WEBPACK_IMPORTED_MODULE_135__["SpinnerPlugin"]; });
 
-/* harmony import */ var _components_table_tr__WEBPACK_IMPORTED_MODULE_134__ = __webpack_require__(/*! ./components/table/tr */ "./node_modules/bootstrap-vue/esm/components/table/tr.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTr", function() { return _components_table_tr__WEBPACK_IMPORTED_MODULE_134__["BTr"]; });
+/* harmony import */ var _components_spinner_spinner__WEBPACK_IMPORTED_MODULE_136__ = __webpack_require__(/*! ./components/spinner/spinner */ "./node_modules/bootstrap-vue/esm/components/spinner/spinner.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BSpinner", function() { return _components_spinner_spinner__WEBPACK_IMPORTED_MODULE_136__["BSpinner"]; });
 
-/* harmony import */ var _components_table_th__WEBPACK_IMPORTED_MODULE_135__ = __webpack_require__(/*! ./components/table/th */ "./node_modules/bootstrap-vue/esm/components/table/th.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTh", function() { return _components_table_th__WEBPACK_IMPORTED_MODULE_135__["BTh"]; });
+/* harmony import */ var _components_table__WEBPACK_IMPORTED_MODULE_137__ = __webpack_require__(/*! ./components/table */ "./node_modules/bootstrap-vue/esm/components/table/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TablePlugin", function() { return _components_table__WEBPACK_IMPORTED_MODULE_137__["TablePlugin"]; });
 
-/* harmony import */ var _components_table_td__WEBPACK_IMPORTED_MODULE_136__ = __webpack_require__(/*! ./components/table/td */ "./node_modules/bootstrap-vue/esm/components/table/td.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTd", function() { return _components_table_td__WEBPACK_IMPORTED_MODULE_136__["BTd"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TableLitePlugin", function() { return _components_table__WEBPACK_IMPORTED_MODULE_137__["TableLitePlugin"]; });
 
-/* harmony import */ var _components_tabs__WEBPACK_IMPORTED_MODULE_137__ = __webpack_require__(/*! ./components/tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TabsPlugin", function() { return _components_tabs__WEBPACK_IMPORTED_MODULE_137__["TabsPlugin"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TableSimplePlugin", function() { return _components_table__WEBPACK_IMPORTED_MODULE_137__["TableSimplePlugin"]; });
 
-/* harmony import */ var _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_138__ = __webpack_require__(/*! ./components/tabs/tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/tabs.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTabs", function() { return _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_138__["BTabs"]; });
+/* harmony import */ var _components_table_table__WEBPACK_IMPORTED_MODULE_138__ = __webpack_require__(/*! ./components/table/table */ "./node_modules/bootstrap-vue/esm/components/table/table.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTable", function() { return _components_table_table__WEBPACK_IMPORTED_MODULE_138__["BTable"]; });
 
-/* harmony import */ var _components_tabs_tab__WEBPACK_IMPORTED_MODULE_139__ = __webpack_require__(/*! ./components/tabs/tab */ "./node_modules/bootstrap-vue/esm/components/tabs/tab.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTab", function() { return _components_tabs_tab__WEBPACK_IMPORTED_MODULE_139__["BTab"]; });
+/* harmony import */ var _components_table_table_lite__WEBPACK_IMPORTED_MODULE_139__ = __webpack_require__(/*! ./components/table/table-lite */ "./node_modules/bootstrap-vue/esm/components/table/table-lite.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTableLite", function() { return _components_table_table_lite__WEBPACK_IMPORTED_MODULE_139__["BTableLite"]; });
 
-/* harmony import */ var _components_toast__WEBPACK_IMPORTED_MODULE_140__ = __webpack_require__(/*! ./components/toast */ "./node_modules/bootstrap-vue/esm/components/toast/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToastPlugin", function() { return _components_toast__WEBPACK_IMPORTED_MODULE_140__["ToastPlugin"]; });
+/* harmony import */ var _components_table_table_simple__WEBPACK_IMPORTED_MODULE_140__ = __webpack_require__(/*! ./components/table/table-simple */ "./node_modules/bootstrap-vue/esm/components/table/table-simple.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTableSimple", function() { return _components_table_table_simple__WEBPACK_IMPORTED_MODULE_140__["BTableSimple"]; });
 
-/* harmony import */ var _components_toast_toast__WEBPACK_IMPORTED_MODULE_141__ = __webpack_require__(/*! ./components/toast/toast */ "./node_modules/bootstrap-vue/esm/components/toast/toast.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BToast", function() { return _components_toast_toast__WEBPACK_IMPORTED_MODULE_141__["BToast"]; });
+/* harmony import */ var _components_table_tbody__WEBPACK_IMPORTED_MODULE_141__ = __webpack_require__(/*! ./components/table/tbody */ "./node_modules/bootstrap-vue/esm/components/table/tbody.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTbody", function() { return _components_table_tbody__WEBPACK_IMPORTED_MODULE_141__["BTbody"]; });
 
-/* harmony import */ var _components_toast_toaster__WEBPACK_IMPORTED_MODULE_142__ = __webpack_require__(/*! ./components/toast/toaster */ "./node_modules/bootstrap-vue/esm/components/toast/toaster.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BToaster", function() { return _components_toast_toaster__WEBPACK_IMPORTED_MODULE_142__["BToaster"]; });
+/* harmony import */ var _components_table_thead__WEBPACK_IMPORTED_MODULE_142__ = __webpack_require__(/*! ./components/table/thead */ "./node_modules/bootstrap-vue/esm/components/table/thead.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BThead", function() { return _components_table_thead__WEBPACK_IMPORTED_MODULE_142__["BThead"]; });
 
-/* harmony import */ var _components_tooltip__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./components/tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TooltipPlugin", function() { return _components_tooltip__WEBPACK_IMPORTED_MODULE_143__["TooltipPlugin"]; });
+/* harmony import */ var _components_table_tfoot__WEBPACK_IMPORTED_MODULE_143__ = __webpack_require__(/*! ./components/table/tfoot */ "./node_modules/bootstrap-vue/esm/components/table/tfoot.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTfoot", function() { return _components_table_tfoot__WEBPACK_IMPORTED_MODULE_143__["BTfoot"]; });
 
-/* harmony import */ var _components_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./components/tooltip/tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/tooltip.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTooltip", function() { return _components_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_144__["BTooltip"]; });
+/* harmony import */ var _components_table_tr__WEBPACK_IMPORTED_MODULE_144__ = __webpack_require__(/*! ./components/table/tr */ "./node_modules/bootstrap-vue/esm/components/table/tr.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTr", function() { return _components_table_tr__WEBPACK_IMPORTED_MODULE_144__["BTr"]; });
 
-/* harmony import */ var _directives_modal__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./directives/modal */ "./node_modules/bootstrap-vue/esm/directives/modal/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBModalPlugin", function() { return _directives_modal__WEBPACK_IMPORTED_MODULE_145__["VBModalPlugin"]; });
+/* harmony import */ var _components_table_th__WEBPACK_IMPORTED_MODULE_145__ = __webpack_require__(/*! ./components/table/th */ "./node_modules/bootstrap-vue/esm/components/table/th.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTh", function() { return _components_table_th__WEBPACK_IMPORTED_MODULE_145__["BTh"]; });
 
-/* harmony import */ var _directives_modal_modal__WEBPACK_IMPORTED_MODULE_146__ = __webpack_require__(/*! ./directives/modal/modal */ "./node_modules/bootstrap-vue/esm/directives/modal/modal.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBModal", function() { return _directives_modal_modal__WEBPACK_IMPORTED_MODULE_146__["VBModal"]; });
+/* harmony import */ var _components_table_td__WEBPACK_IMPORTED_MODULE_146__ = __webpack_require__(/*! ./components/table/td */ "./node_modules/bootstrap-vue/esm/components/table/td.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTd", function() { return _components_table_td__WEBPACK_IMPORTED_MODULE_146__["BTd"]; });
 
-/* harmony import */ var _directives_popover__WEBPACK_IMPORTED_MODULE_147__ = __webpack_require__(/*! ./directives/popover */ "./node_modules/bootstrap-vue/esm/directives/popover/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBPopoverPlugin", function() { return _directives_popover__WEBPACK_IMPORTED_MODULE_147__["VBPopoverPlugin"]; });
+/* harmony import */ var _components_tabs__WEBPACK_IMPORTED_MODULE_147__ = __webpack_require__(/*! ./components/tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TabsPlugin", function() { return _components_tabs__WEBPACK_IMPORTED_MODULE_147__["TabsPlugin"]; });
 
-/* harmony import */ var _directives_popover_popover__WEBPACK_IMPORTED_MODULE_148__ = __webpack_require__(/*! ./directives/popover/popover */ "./node_modules/bootstrap-vue/esm/directives/popover/popover.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBPopover", function() { return _directives_popover_popover__WEBPACK_IMPORTED_MODULE_148__["VBPopover"]; });
+/* harmony import */ var _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_148__ = __webpack_require__(/*! ./components/tabs/tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/tabs.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTabs", function() { return _components_tabs_tabs__WEBPACK_IMPORTED_MODULE_148__["BTabs"]; });
 
-/* harmony import */ var _directives_scrollspy__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./directives/scrollspy */ "./node_modules/bootstrap-vue/esm/directives/scrollspy/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBScrollspyPlugin", function() { return _directives_scrollspy__WEBPACK_IMPORTED_MODULE_149__["VBScrollspyPlugin"]; });
+/* harmony import */ var _components_tabs_tab__WEBPACK_IMPORTED_MODULE_149__ = __webpack_require__(/*! ./components/tabs/tab */ "./node_modules/bootstrap-vue/esm/components/tabs/tab.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTab", function() { return _components_tabs_tab__WEBPACK_IMPORTED_MODULE_149__["BTab"]; });
 
-/* harmony import */ var _directives_scrollspy_scrollspy__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./directives/scrollspy/scrollspy */ "./node_modules/bootstrap-vue/esm/directives/scrollspy/scrollspy.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBScrollspy", function() { return _directives_scrollspy_scrollspy__WEBPACK_IMPORTED_MODULE_150__["VBScrollspy"]; });
+/* harmony import */ var _components_time__WEBPACK_IMPORTED_MODULE_150__ = __webpack_require__(/*! ./components/time */ "./node_modules/bootstrap-vue/esm/components/time/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TimePlugin", function() { return _components_time__WEBPACK_IMPORTED_MODULE_150__["TimePlugin"]; });
 
-/* harmony import */ var _directives_toggle__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! ./directives/toggle */ "./node_modules/bootstrap-vue/esm/directives/toggle/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTogglePlugin", function() { return _directives_toggle__WEBPACK_IMPORTED_MODULE_151__["VBTogglePlugin"]; });
+/* harmony import */ var _components_time_time__WEBPACK_IMPORTED_MODULE_151__ = __webpack_require__(/*! ./components/time/time */ "./node_modules/bootstrap-vue/esm/components/time/time.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTime", function() { return _components_time_time__WEBPACK_IMPORTED_MODULE_151__["BTime"]; });
 
-/* harmony import */ var _directives_toggle_toggle__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! ./directives/toggle/toggle */ "./node_modules/bootstrap-vue/esm/directives/toggle/toggle.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBToggle", function() { return _directives_toggle_toggle__WEBPACK_IMPORTED_MODULE_152__["VBToggle"]; });
+/* harmony import */ var _components_toast__WEBPACK_IMPORTED_MODULE_152__ = __webpack_require__(/*! ./components/toast */ "./node_modules/bootstrap-vue/esm/components/toast/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToastPlugin", function() { return _components_toast__WEBPACK_IMPORTED_MODULE_152__["ToastPlugin"]; });
 
-/* harmony import */ var _directives_tooltip__WEBPACK_IMPORTED_MODULE_153__ = __webpack_require__(/*! ./directives/tooltip */ "./node_modules/bootstrap-vue/esm/directives/tooltip/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTooltipPlugin", function() { return _directives_tooltip__WEBPACK_IMPORTED_MODULE_153__["VBTooltipPlugin"]; });
+/* harmony import */ var _components_toast_toast__WEBPACK_IMPORTED_MODULE_153__ = __webpack_require__(/*! ./components/toast/toast */ "./node_modules/bootstrap-vue/esm/components/toast/toast.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BToast", function() { return _components_toast_toast__WEBPACK_IMPORTED_MODULE_153__["BToast"]; });
 
-/* harmony import */ var _directives_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_154__ = __webpack_require__(/*! ./directives/tooltip/tooltip */ "./node_modules/bootstrap-vue/esm/directives/tooltip/tooltip.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTooltip", function() { return _directives_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_154__["VBTooltip"]; });
+/* harmony import */ var _components_toast_toaster__WEBPACK_IMPORTED_MODULE_154__ = __webpack_require__(/*! ./components/toast/toaster */ "./node_modules/bootstrap-vue/esm/components/toast/toaster.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BToaster", function() { return _components_toast_toaster__WEBPACK_IMPORTED_MODULE_154__["BToaster"]; });
 
-/* harmony import */ var _directives_visible__WEBPACK_IMPORTED_MODULE_155__ = __webpack_require__(/*! ./directives/visible */ "./node_modules/bootstrap-vue/esm/directives/visible/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBVisiblePlugin", function() { return _directives_visible__WEBPACK_IMPORTED_MODULE_155__["VBVisiblePlugin"]; });
+/* harmony import */ var _components_tooltip__WEBPACK_IMPORTED_MODULE_155__ = __webpack_require__(/*! ./components/tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TooltipPlugin", function() { return _components_tooltip__WEBPACK_IMPORTED_MODULE_155__["TooltipPlugin"]; });
 
-/* harmony import */ var _directives_visible_visible__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./directives/visible/visible */ "./node_modules/bootstrap-vue/esm/directives/visible/visible.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBVisible", function() { return _directives_visible_visible__WEBPACK_IMPORTED_MODULE_156__["VBVisible"]; });
+/* harmony import */ var _components_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_156__ = __webpack_require__(/*! ./components/tooltip/tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/tooltip.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTooltip", function() { return _components_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_156__["BTooltip"]; });
+
+/* harmony import */ var _directives_hover__WEBPACK_IMPORTED_MODULE_157__ = __webpack_require__(/*! ./directives/hover */ "./node_modules/bootstrap-vue/esm/directives/hover/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBHoverPlugin", function() { return _directives_hover__WEBPACK_IMPORTED_MODULE_157__["VBHoverPlugin"]; });
+
+/* harmony import */ var _directives_hover_hover__WEBPACK_IMPORTED_MODULE_158__ = __webpack_require__(/*! ./directives/hover/hover */ "./node_modules/bootstrap-vue/esm/directives/hover/hover.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBHover", function() { return _directives_hover_hover__WEBPACK_IMPORTED_MODULE_158__["VBHover"]; });
+
+/* harmony import */ var _directives_modal__WEBPACK_IMPORTED_MODULE_159__ = __webpack_require__(/*! ./directives/modal */ "./node_modules/bootstrap-vue/esm/directives/modal/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBModalPlugin", function() { return _directives_modal__WEBPACK_IMPORTED_MODULE_159__["VBModalPlugin"]; });
+
+/* harmony import */ var _directives_modal_modal__WEBPACK_IMPORTED_MODULE_160__ = __webpack_require__(/*! ./directives/modal/modal */ "./node_modules/bootstrap-vue/esm/directives/modal/modal.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBModal", function() { return _directives_modal_modal__WEBPACK_IMPORTED_MODULE_160__["VBModal"]; });
+
+/* harmony import */ var _directives_popover__WEBPACK_IMPORTED_MODULE_161__ = __webpack_require__(/*! ./directives/popover */ "./node_modules/bootstrap-vue/esm/directives/popover/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBPopoverPlugin", function() { return _directives_popover__WEBPACK_IMPORTED_MODULE_161__["VBPopoverPlugin"]; });
+
+/* harmony import */ var _directives_popover_popover__WEBPACK_IMPORTED_MODULE_162__ = __webpack_require__(/*! ./directives/popover/popover */ "./node_modules/bootstrap-vue/esm/directives/popover/popover.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBPopover", function() { return _directives_popover_popover__WEBPACK_IMPORTED_MODULE_162__["VBPopover"]; });
+
+/* harmony import */ var _directives_scrollspy__WEBPACK_IMPORTED_MODULE_163__ = __webpack_require__(/*! ./directives/scrollspy */ "./node_modules/bootstrap-vue/esm/directives/scrollspy/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBScrollspyPlugin", function() { return _directives_scrollspy__WEBPACK_IMPORTED_MODULE_163__["VBScrollspyPlugin"]; });
+
+/* harmony import */ var _directives_scrollspy_scrollspy__WEBPACK_IMPORTED_MODULE_164__ = __webpack_require__(/*! ./directives/scrollspy/scrollspy */ "./node_modules/bootstrap-vue/esm/directives/scrollspy/scrollspy.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBScrollspy", function() { return _directives_scrollspy_scrollspy__WEBPACK_IMPORTED_MODULE_164__["VBScrollspy"]; });
+
+/* harmony import */ var _directives_toggle__WEBPACK_IMPORTED_MODULE_165__ = __webpack_require__(/*! ./directives/toggle */ "./node_modules/bootstrap-vue/esm/directives/toggle/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTogglePlugin", function() { return _directives_toggle__WEBPACK_IMPORTED_MODULE_165__["VBTogglePlugin"]; });
+
+/* harmony import */ var _directives_toggle_toggle__WEBPACK_IMPORTED_MODULE_166__ = __webpack_require__(/*! ./directives/toggle/toggle */ "./node_modules/bootstrap-vue/esm/directives/toggle/toggle.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBToggle", function() { return _directives_toggle_toggle__WEBPACK_IMPORTED_MODULE_166__["VBToggle"]; });
+
+/* harmony import */ var _directives_tooltip__WEBPACK_IMPORTED_MODULE_167__ = __webpack_require__(/*! ./directives/tooltip */ "./node_modules/bootstrap-vue/esm/directives/tooltip/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTooltipPlugin", function() { return _directives_tooltip__WEBPACK_IMPORTED_MODULE_167__["VBTooltipPlugin"]; });
+
+/* harmony import */ var _directives_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_168__ = __webpack_require__(/*! ./directives/tooltip/tooltip */ "./node_modules/bootstrap-vue/esm/directives/tooltip/tooltip.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTooltip", function() { return _directives_tooltip_tooltip__WEBPACK_IMPORTED_MODULE_168__["VBTooltip"]; });
+
+/* harmony import */ var _directives_visible__WEBPACK_IMPORTED_MODULE_169__ = __webpack_require__(/*! ./directives/visible */ "./node_modules/bootstrap-vue/esm/directives/visible/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBVisiblePlugin", function() { return _directives_visible__WEBPACK_IMPORTED_MODULE_169__["VBVisiblePlugin"]; });
+
+/* harmony import */ var _directives_visible_visible__WEBPACK_IMPORTED_MODULE_170__ = __webpack_require__(/*! ./directives/visible/visible */ "./node_modules/bootstrap-vue/esm/directives/visible/visible.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBVisible", function() { return _directives_visible_visible__WEBPACK_IMPORTED_MODULE_170__["VBVisible"]; });
 
 /*!
- * BootstrapVue 2.4.0
+ * BootstrapVue 2.7.0
  *
  * @link https://bootstrap-vue.js.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
@@ -34462,18 +37757,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAME = 'BootstrapVue'; // --- BootstrapVue installer ---
 
-var install =
-/*#__PURE__*/
-Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["installFactory"])({
+var install = /*#__PURE__*/Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["installFactory"])({
   plugins: {
     componentsPlugin: _components__WEBPACK_IMPORTED_MODULE_1__["componentsPlugin"],
     directivesPlugin: _directives__WEBPACK_IMPORTED_MODULE_2__["directivesPlugin"]
   }
 }); // --- BootstrapVue plugin ---
 
-var BootstrapVue =
-/*#__PURE__*/
-{
+var BootstrapVue = /*#__PURE__*/{
   install: install,
   NAME: NAME
 }; // --- Named exports for BvConfigPlugin ---
@@ -34519,6 +37810,9 @@ var BootstrapVue =
  // export * from './components/button-toolbar'
 
 
+ // export * from './components/calendar'
+
+
  // export * from './components/card'
 
 
@@ -34562,6 +37856,9 @@ var BootstrapVue =
 
 
 
+ // export * from './components/form-datepicker'
+
+
  // export * from './components/form-file'
 
 
@@ -34584,7 +37881,13 @@ var BootstrapVue =
 
 
 
+ // export * from './components/form-spinbutton'
+
+
  // export * from './components/form-textarea'
+
+
+ // export * from './components/form-timepicker'
 
 
  // export * from './components/image'
@@ -34635,6 +37938,9 @@ var BootstrapVue =
 
 
 
+ // export * from './components/overlay'
+
+
  // export * from './components/pagination'
 
 
@@ -34666,6 +37972,9 @@ var BootstrapVue =
 
 
 
+ // export * from './components/time'
+
+
  // export * from './components/toast'
 
 
@@ -34680,7 +37989,10 @@ var BootstrapVue =
 // Webpack v5 fixes the optimizations with re-export of re-exports so this
 // can be reverted back to `export * from './scrollspy'` when Webpack v5 is released
 // https://github.com/webpack/webpack/pull/9203 (available in Webpack v5.0.0-alpha.15)
-// export * from './directives/modal'
+// export * from './directives/hover'
+
+
+ // export * from './directives/modal'
 
 
  // export * from './directives/popover'
@@ -34747,11 +38059,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
 
-var eventOptions = {
-  passive: true,
-  capture: false
-}; // @vue/component
+ // @vue/component
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -34762,10 +38072,10 @@ var eventOptions = {
   watch: {
     listenForClickOut: function listenForClickOut(newValue, oldValue) {
       if (newValue !== oldValue) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOff"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, eventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, _utils_events__WEBPACK_IMPORTED_MODULE_1__["EVENT_OPTIONS_NO_CAPTURE"]);
 
         if (newValue) {
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOn"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, eventOptions);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, _utils_events__WEBPACK_IMPORTED_MODULE_1__["EVENT_OPTIONS_NO_CAPTURE"]);
         }
       }
     }
@@ -34785,13 +38095,13 @@ var eventOptions = {
     }
 
     if (this.listenForClickOut) {
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOn"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, eventOptions);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, _utils_events__WEBPACK_IMPORTED_MODULE_1__["EVENT_OPTIONS_NO_CAPTURE"]);
     }
   },
   beforeDestroy: function beforeDestroy()
   /* istanbul ignore next */
   {
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOff"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, eventOptions);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(this.clickOutElement, this.clickOutEventName, this._clickOutHandler, _utils_events__WEBPACK_IMPORTED_MODULE_1__["EVENT_OPTIONS_NO_CAPTURE"]);
   },
   methods: {
     isClickOut: function isClickOut(evt) {
@@ -34811,11 +38121,12 @@ var eventOptions = {
 /*!***********************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/mixins/dropdown.js ***!
   \***********************************************************/
-/*! exports provided: default */
+/*! exports provided: commonProps, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "commonProps", function() { return commonProps; });
 /* harmony import */ var popper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js");
 /* harmony import */ var _utils_key_codes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/key-codes */ "./node_modules/bootstrap-vue/esm/utils/key-codes.js");
 /* harmony import */ var _utils_bv_event_class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/bv-event.class */ "./node_modules/bootstrap-vue/esm/utils/bv-event.class.js");
@@ -34876,6 +38187,48 @@ var AttachmentMap = {
   LEFT: 'left-start',
   // Dropleft right align
   LEFTEND: 'left-end'
+};
+var commonProps = {
+  dropup: {
+    // place on top if possible
+    type: Boolean,
+    default: false
+  },
+  dropright: {
+    // place right if possible
+    type: Boolean,
+    default: false
+  },
+  dropleft: {
+    // place left if possible
+    type: Boolean,
+    default: false
+  },
+  right: {
+    // Right align menu (default is left align)
+    type: Boolean,
+    default: false
+  },
+  offset: {
+    // Number of pixels to offset menu, or a CSS unit value (i.e. 1px, 1rem, etc)
+    type: [Number, String],
+    default: 0
+  },
+  noFlip: {
+    // Disable auto-flipping of menu from bottom<=>top
+    type: Boolean,
+    default: false
+  },
+  popperOpts: {
+    // type: Object,
+    default: function _default() {}
+  },
+  boundary: {
+    // String: `scrollParent`, `window` or `viewport`
+    // HTMLElement: HTML Element reference
+    type: [String, _utils_safe_types__WEBPACK_IMPORTED_MODULE_5__["HTMLElement"]],
+    default: 'scrollParent'
+  }
 }; // @vue/component
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -34890,66 +38243,12 @@ var AttachmentMap = {
       default: null
     }
   },
-  props: {
+  props: _objectSpread({
     disabled: {
       type: Boolean,
       default: false
-    },
-    text: {
-      // Button label
-      type: String,
-      default: ''
-    },
-    html: {
-      // Button label
-      type: String
-    },
-    dropup: {
-      // place on top if possible
-      type: Boolean,
-      default: false
-    },
-    dropright: {
-      // place right if possible
-      type: Boolean,
-      default: false
-    },
-    dropleft: {
-      // place left if possible
-      type: Boolean,
-      default: false
-    },
-    right: {
-      // Right align menu (default is left align)
-      type: Boolean,
-      default: false
-    },
-    offset: {
-      // Number of pixels to offset menu, or a CSS unit value (i.e. 1px, 1rem, etc)
-      type: [Number, String],
-      default: 0
-    },
-    noFlip: {
-      // Disable auto-flipping of menu from bottom<=>top
-      type: Boolean,
-      default: false
-    },
-    lazy: {
-      // If true, only render menu contents when open
-      type: Boolean,
-      default: false
-    },
-    popperOpts: {
-      // type: Object,
-      default: function _default() {}
-    },
-    boundary: {
-      // String: `scrollParent`, `window` or `viewport`
-      // HTMLElement: HTML Element reference
-      type: [String, _utils_safe_types__WEBPACK_IMPORTED_MODULE_5__["HTMLElement"]],
-      default: 'scrollParent'
     }
-  },
+  }, commonProps),
   data: function data() {
     return {
       visible: false,
@@ -35094,6 +38393,15 @@ var AttachmentMap = {
       }
 
       this.$_popper = null;
+    },
+    updatePopper: function updatePopper()
+    /* istanbul ignore next: not easy to test */
+    {
+      // Instructs popper to re-computes the dropdown position
+      // usefull if the content changes size
+      try {
+        this.$_popper.scheduleUpdate();
+      } catch (_unused) {}
     },
     getPopperConfig: function getPopperConfig() {
       var placement = AttachmentMap.BOTTOM;
@@ -35320,7 +38628,9 @@ var AttachmentMap = {
       return filterVisibles(Object(_utils_dom__WEBPACK_IMPORTED_MODULE_3__["selectAll"])(Selector.ITEM_SELECTOR, this.$refs.menu));
     },
     focusMenu: function focusMenu() {
-      this.$refs.menu.focus && this.$refs.menu.focus();
+      try {
+        this.$refs.menu.focus();
+      } catch (_unused2) {}
     },
     focusToggler: function focusToggler() {
       var _this4 = this;
@@ -35347,12 +38657,8 @@ var AttachmentMap = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-
-var eventOptions = {
-  passive: true,
-  capture: false
-}; // @vue/component
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
+ // @vue/component
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -35363,10 +38669,10 @@ var eventOptions = {
   watch: {
     listenForFocusIn: function listenForFocusIn(newValue, oldValue) {
       if (newValue !== oldValue) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOff"])(this.focusInElement, 'focusin', this._focusInHandler, eventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_0__["eventOff"])(this.focusInElement, 'focusin', this._focusInHandler, _utils_events__WEBPACK_IMPORTED_MODULE_0__["EVENT_OPTIONS_NO_CAPTURE"]);
 
         if (newValue) {
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOn"])(this.focusInElement, 'focusin', this._focusInHandler, eventOptions);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_0__["eventOn"])(this.focusInElement, 'focusin', this._focusInHandler, _utils_events__WEBPACK_IMPORTED_MODULE_0__["EVENT_OPTIONS_NO_CAPTURE"]);
         }
       }
     }
@@ -35381,13 +38687,13 @@ var eventOptions = {
     }
 
     if (this.listenForFocusIn) {
-      Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOn"])(this.focusInElement, 'focusin', this._focusInHandler, eventOptions);
+      Object(_utils_events__WEBPACK_IMPORTED_MODULE_0__["eventOn"])(this.focusInElement, 'focusin', this._focusInHandler, _utils_events__WEBPACK_IMPORTED_MODULE_0__["EVENT_OPTIONS_NO_CAPTURE"]);
     }
   },
   beforeDestroy: function beforeDestroy()
   /* istanbul ignore next */
   {
-    Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["eventOff"])(this.focusInElement, 'focusin', this._focusInHandler, eventOptions);
+    Object(_utils_events__WEBPACK_IMPORTED_MODULE_0__["eventOff"])(this.focusInElement, 'focusin', this._focusInHandler, _utils_events__WEBPACK_IMPORTED_MODULE_0__["EVENT_OPTIONS_NO_CAPTURE"]);
   },
   methods: {
     _focusInHandler: function _focusInHandler(evt) {
@@ -35599,10 +38905,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    checked: function checked(newVal, oldVal) {
+    checked: function checked(newVal) {
       this.localChecked = newVal;
     },
-    localChecked: function localChecked(newVal, oldVal) {
+    localChecked: function localChecked(newVal) {
       this.$emit('input', newVal);
     }
   },
@@ -35789,7 +39095,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   watch: {
-    checked: function checked(newVal, oldVal) {
+    checked: function checked(newVal) {
       this.computedLocalChecked = newVal;
     }
   },
@@ -36286,7 +39592,7 @@ __webpack_require__.r(__webpack_exports__);
 
         /* istanbul ignore next: hard to test */
         var $input = this.$refs.input;
-        /* istanbul ignore if: hard to test outof sync value */
+        /* istanbul ignore if: hard to test out of sync value */
 
         if ($input && value !== $input.value) {
           $input.value = value;
@@ -36296,6 +39602,7 @@ __webpack_require__.r(__webpack_exports__);
     onInput: function onInput(evt) {
       // `evt.target.composing` is set by Vue
       // https://github.com/vuejs/vue/blob/dev/src/platforms/web/runtime/directives/model.js
+      // TODO: Is this needed now with the latest Vue?
 
       /* istanbul ignore if: hard to test composition events */
       if (evt.target.composing) {
@@ -36318,14 +39625,6 @@ __webpack_require__.r(__webpack_exports__);
       this.$emit('input', formattedValue);
     },
     onChange: function onChange(evt) {
-      // `evt.target.composing` is set by Vue
-      // https://github.com/vuejs/vue/blob/dev/src/platforms/web/runtime/directives/model.js
-
-      /* istanbul ignore if: hard to test composition events */
-      if (evt.target.composing) {
-        return;
-      }
-
       var value = evt.target.value;
       var formattedValue = this.formatValue(value, evt); // Exit when the `formatter` function strictly returned `false`
       // or prevented the input event
@@ -36621,8 +39920,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
-/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 
@@ -36630,10 +39929,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var eventOptions = {
-  passive: true,
-  capture: false
-};
 var PROP = '$_bv_documentHandlers_'; // @vue/component
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -36641,7 +39936,7 @@ var PROP = '$_bv_documentHandlers_'; // @vue/component
     var _this = this;
 
     /* istanbul ignore next */
-    if (!_utils_env__WEBPACK_IMPORTED_MODULE_2__["isBrowser"]) {
+    if (!_utils_env__WEBPACK_IMPORTED_MODULE_1__["isBrowser"]) {
       return;
     } // Declare non-reactive property
     // Object of arrays, keyed by event name,
@@ -36661,7 +39956,7 @@ var PROP = '$_bv_documentHandlers_'; // @vue/component
       Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["keys"])(items).forEach(function (evtName) {
         var handlers = items[evtName] || [];
         handlers.forEach(function (handler) {
-          return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(document, evtName, handler, eventOptions);
+          return Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(document, evtName, handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
         });
       });
     });
@@ -36676,13 +39971,13 @@ var PROP = '$_bv_documentHandlers_'; // @vue/component
 
         if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_0__["arrayIncludes"])(this[PROP][evtName], handler)) {
           this[PROP][evtName].push(handler);
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(document, evtName, handler, eventOptions);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(document, evtName, handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
         }
       }
     },
     listenOffDocument: function listenOffDocument(evtName, handler) {
       if (this[PROP] && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(evtName) && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(handler)) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(document, evtName, handler, eventOptions);
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(document, evtName, handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
         this[PROP][evtName] = (this[PROP][evtName] || []).filter(function (h) {
           return h !== handler;
         });
@@ -36794,8 +40089,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
-/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
-/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _utils_env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _utils_events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 
@@ -36803,10 +40098,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var eventOptions = {
-  passive: true,
-  capture: false
-};
 var PROP = '$_bv_windowHandlers_'; // @vue/component
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -36817,7 +40108,7 @@ var PROP = '$_bv_windowHandlers_'; // @vue/component
     this[PROP] = {};
   },
   beforeDestroy: function beforeDestroy() {
-    if (_utils_env__WEBPACK_IMPORTED_MODULE_2__["isBrowser"]) {
+    if (_utils_env__WEBPACK_IMPORTED_MODULE_1__["isBrowser"]) {
       var items = this[PROP]; // Immediately delete this[PROP] to prevent the
       // listenOn/Off methods from running (which may occur
       // due to requestAnimationFrame delays)
@@ -36827,7 +40118,7 @@ var PROP = '$_bv_windowHandlers_'; // @vue/component
       Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["keys"])(items).forEach(function (evtName) {
         var handlers = items[evtName] || [];
         handlers.forEach(function (handler) {
-          return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(window, evtName, handler, eventOptions);
+          return Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(window, evtName, handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
         });
       });
     }
@@ -36837,18 +40128,18 @@ var PROP = '$_bv_windowHandlers_'; // @vue/component
       on ? this.listenOnWindow(evtName, handler) : this.listenOffWindow(evtName, handler);
     },
     listenOnWindow: function listenOnWindow(evtName, handler) {
-      if (_utils_env__WEBPACK_IMPORTED_MODULE_2__["isBrowser"] && this[PROP] && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(evtName) && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(handler)) {
+      if (_utils_env__WEBPACK_IMPORTED_MODULE_1__["isBrowser"] && this[PROP] && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(evtName) && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(handler)) {
         this[PROP][evtName] = this[PROP][evtName] || [];
 
         if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_0__["arrayIncludes"])(this[PROP][evtName], handler)) {
           this[PROP][evtName].push(handler);
-          Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(window, evtName, handler, eventOptions);
+          Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOn"])(window, evtName, handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
         }
       }
     },
     listenOffWindow: function listenOffWindow(evtName, handler) {
-      if (_utils_env__WEBPACK_IMPORTED_MODULE_2__["isBrowser"] && this[PROP] && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(evtName) && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(handler)) {
-        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(window, evtName, handler, eventOptions);
+      if (_utils_env__WEBPACK_IMPORTED_MODULE_1__["isBrowser"] && this[PROP] && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isString"])(evtName) && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(handler)) {
+        Object(_utils_events__WEBPACK_IMPORTED_MODULE_2__["eventOff"])(window, evtName, handler, _utils_events__WEBPACK_IMPORTED_MODULE_2__["EVENT_OPTIONS_NO_CAPTURE"]);
         this[PROP][evtName] = (this[PROP][evtName] || []).filter(function (h) {
           return h !== handler;
         });
@@ -37303,6 +40594,12 @@ var props = {
     handleKeyNav: function handleKeyNav(evt) {
       var keyCode = evt.keyCode,
           shiftKey = evt.shiftKey;
+      /* istanbul ignore if */
+
+      if (this.isNav) {
+        // We disable left/right keyboard navigation in `<b-pagination-nav>`
+        return;
+      }
 
       if (keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_0__["default"].LEFT || keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_0__["default"].UP) {
         evt.preventDefault();
@@ -37314,7 +40611,7 @@ var props = {
     },
     getButtons: function getButtons() {
       // Return only buttons that are visible
-      return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["selectAll"])('a.page-link', this.$el).filter(function (btn) {
+      return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["selectAll"])('button.page-link, a.page-link', this.$el).filter(function (btn) {
         return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["isVisible"])(btn);
       });
     },
@@ -37409,52 +40706,59 @@ var props = {
         showFirstDots = _this$paginationParam2.showFirstDots,
         showLastDots = _this$paginationParam2.showLastDots;
     var currentPage = this.computedCurrentPage;
-    var fill = this.align === 'fill'; // Helper function and flag
+    var fill = this.align === 'fill'; // Used to control what type of aria attributes are rendered and wrapper
 
-    var isActivePage = function isActivePage(pageNum) {
-      return pageNum === currentPage;
+    var isNav = this.isNav; // Helper function and flag
+
+    var isActivePage = function isActivePage(pageNumber) {
+      return pageNumber === currentPage;
     };
 
     var noCurrentPage = this.currentPage < 1; // Factory function for prev/next/first/last buttons
 
     var makeEndBtn = function makeEndBtn(linkTo, ariaLabel, btnSlot, btnText, btnClass, pageTest, key) {
       var isDisabled = disabled || isActivePage(pageTest) || noCurrentPage || linkTo < 1 || linkTo > numberOfPages;
-      var pageNum = linkTo < 1 ? 1 : linkTo > numberOfPages ? numberOfPages : linkTo;
+      var pageNumber = linkTo < 1 ? 1 : linkTo > numberOfPages ? numberOfPages : linkTo;
       var scope = {
         disabled: isDisabled,
-        page: pageNum,
-        index: pageNum - 1
+        page: pageNumber,
+        index: pageNumber - 1
       };
-      var btnContent = _this7.normalizeSlot(btnSlot, scope) || Object(_utils_string__WEBPACK_IMPORTED_MODULE_5__["toString"])(btnText) || h();
-      var inner = h(isDisabled ? 'span' : _components_link_link__WEBPACK_IMPORTED_MODULE_8__["BLink"], {
+      var $btnContent = _this7.normalizeSlot(btnSlot, scope) || Object(_utils_string__WEBPACK_IMPORTED_MODULE_5__["toString"])(btnText) || h();
+      var $inner = h(isDisabled ? 'span' : isNav ? _components_link_link__WEBPACK_IMPORTED_MODULE_8__["BLink"] : 'button', {
         staticClass: 'page-link',
-        props: isDisabled ? {} : _this7.linkProps(linkTo),
+        class: {
+          'flex-grow-1': !isNav && !isDisabled && fill
+        },
+        props: isDisabled || !isNav ? {} : _this7.linkProps(linkTo),
         attrs: {
-          role: 'menuitem',
-          tabindex: isDisabled ? null : '-1',
+          role: isNav ? null : 'menuitem',
+          type: isNav || isDisabled ? null : 'button',
+          tabindex: isDisabled || isNav ? null : '-1',
           'aria-label': ariaLabel,
           'aria-controls': _this7.ariaControls || null,
           'aria-disabled': isDisabled ? 'true' : null
         },
         on: isDisabled ? {} : {
-          click: function click(evt) {
+          '!click': function click(evt) {
             _this7.onClick(linkTo, evt);
           },
           keydown: onSpaceKey
         }
-      }, [btnContent]);
+      }, [$btnContent]);
       return h('li', {
         key: key,
         staticClass: 'page-item',
         class: [{
           disabled: isDisabled,
-          'flex-fill': fill
+          'flex-fill': fill,
+          'd-flex': fill && !isNav && !isDisabled
         }, btnClass],
         attrs: {
-          role: 'presentation',
+          role: isNav ? null : 'presentation',
           'aria-hidden': isDisabled ? 'true' : null
         }
-      }, [inner]);
+      }, [$inner]);
     }; // Ellipsis factory
 
 
@@ -37477,15 +40781,17 @@ var props = {
 
       var tabIndex = disabled ? null : active || noCurrentPage && idx === 0 ? '0' : '-1';
       var attrs = {
-        role: 'menuitemradio',
+        role: isNav ? null : 'menuitemradio',
+        type: isNav || disabled ? null : 'button',
         'aria-disabled': disabled ? 'true' : null,
         'aria-controls': _this7.ariaControls || null,
         'aria-label': Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isFunction"])(_this7.labelPage) ? _this7.labelPage(page.number) : "".concat(_this7.labelPage, " ").concat(page.number),
-        'aria-checked': active ? 'true' : 'false',
+        'aria-checked': isNav ? null : active ? 'true' : 'false',
+        'aria-current': isNav && active ? 'page' : null,
         'aria-posinset': page.number,
         'aria-setsize': numberOfPages,
-        // ARIA "roving tabindex" method
-        tabindex: tabIndex
+        // ARIA "roving tabindex" method (except in isNav mode)
+        tabindex: isNav ? null : tabIndex
       };
       var btnContent = Object(_utils_string__WEBPACK_IMPORTED_MODULE_5__["toString"])(_this7.makePage(page.number));
       var scope = {
@@ -37495,12 +40801,15 @@ var props = {
         active: active,
         disabled: disabled
       };
-      var inner = h(disabled ? 'span' : _components_link_link__WEBPACK_IMPORTED_MODULE_8__["BLink"], {
-        props: disabled ? {} : _this7.linkProps(page.number),
+      var $inner = h(disabled ? 'span' : isNav ? _components_link_link__WEBPACK_IMPORTED_MODULE_8__["BLink"] : 'button', {
+        props: disabled || !isNav ? {} : _this7.linkProps(page.number),
         staticClass: 'page-link',
+        class: {
+          'flex-grow-1': !isNav && !disabled && fill
+        },
         attrs: attrs,
         on: disabled ? {} : {
-          click: function click(evt) {
+          '!click': function click(evt) {
             _this7.onClick(page.number, evt);
           },
           keydown: onSpaceKey
@@ -37512,12 +40821,13 @@ var props = {
         class: [{
           disabled: disabled,
           active: active,
-          'flex-fill': fill
+          'flex-fill': fill,
+          'd-flex': fill && !isNav && !disabled
         }, page.classes, _this7.pageClass],
         attrs: {
-          role: 'presentation'
+          role: isNav ? null : 'presentation'
         }
-      }, [inner]);
+      }, [$inner]);
     }; // Goto first page button
     // Don't render button when `hideGotoEndButtons` or `firstNumber` is set
 
@@ -37565,20 +40875,22 @@ var props = {
       staticClass: 'pagination',
       class: ['b-pagination', this.btnSize, this.alignment, this.styleClass],
       attrs: {
-        role: 'menubar',
+        role: isNav ? null : 'menubar',
         'aria-disabled': disabled ? 'true' : 'false',
-        'aria-label': this.ariaLabel || null
+        'aria-label': isNav ? null : this.ariaLabel || null
       },
-      on: {
+      // We disable keyboard left/right nav when `<b-pagination-nav>`
+      on: isNav ? {} : {
         keydown: this.handleKeyNav
       }
     }, buttons); // If we are `<b-pagination-nav>`, wrap in `<nav>` wrapper
 
-    if (this.isNav) {
+    if (isNav) {
       return h('nav', {
         attrs: {
           'aria-disabled': disabled ? 'true' : null,
-          'aria-hidden': disabled ? 'true' : 'false'
+          'aria-hidden': disabled ? 'true' : 'false',
+          'aria-label': isNav ? this.ariaLabel || null : null
         }
       }, [$pagination]);
     }
@@ -37716,9 +41028,7 @@ var TRANSITION_HANDLERS = {
   afterLeave: onAfterLeave
 }; // @vue/component
 
-var BVCollapse =
-/*#__PURE__*/
-_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BVCollapse = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BVCollapse',
   functional: true,
   props: {
@@ -37764,9 +41074,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 
-var BvEvent =
-/*#__PURE__*/
-function () {
+var BvEvent = /*#__PURE__*/function () {
   function BvEvent(type) {
     var eventInit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
@@ -37835,6 +41143,319 @@ function () {
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-vue/esm/utils/bv-form-btn-label-control.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/bv-form-btn-label-control.js ***!
+  \***************************************************************************/
+/*! exports provided: dropdownProps, BVFormBtnLabelControl */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dropdownProps", function() { return dropdownProps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BVFormBtnLabelControl", function() { return BVFormBtnLabelControl; });
+/* harmony import */ var _vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+/* harmony import */ var _mixins_dropdown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/dropdown */ "./node_modules/bootstrap-vue/esm/mixins/dropdown.js");
+/* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _directives_hover_hover__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../directives/hover/hover */ "./node_modules/bootstrap-vue/esm/directives/hover/hover.js");
+/* harmony import */ var _icons_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../icons/icons */ "./node_modules/bootstrap-vue/esm/icons/icons.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+// Private component used by `b-form-datepicker` and `b-form-timepicker`
+//
+
+
+
+
+
+
+ // Re-export common dropdown props used for convenience
+
+var dropdownProps = _mixins_dropdown__WEBPACK_IMPORTED_MODULE_2__["commonProps"]; // @vue/component
+
+var BVFormBtnLabelControl = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: 'BVFormBtnLabelControl',
+  directives: {
+    BHover: _directives_hover_hover__WEBPACK_IMPORTED_MODULE_5__["VBHover"]
+  },
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_3__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"]],
+  props: {
+    value: {
+      // This is the value placed on the hidden input
+      type: String,
+      default: ''
+    },
+    formattedValue: {
+      // This is the value shown in the label
+      // Defaults back to `value`
+      type: String // default: null
+
+    },
+    placeholder: {
+      // This is the value placed on the hidden input when no value selected
+      type: String // default: null
+
+    },
+    labelSelected: {
+      // Value placed in sr-only span inside label when value is present
+      type: String // default: null
+
+    },
+    state: {
+      // Tri-state prop: `true`, `false`, or `null`
+      type: Boolean,
+      // We must explicitly default to `null` here otherwise
+      // Vue coerces `undefined` into Boolean `false`
+      default: null
+    },
+    size: {
+      type: String // default: null
+
+    },
+    name: {
+      type: String // default: null
+
+    },
+    form: {
+      type: String // default: null
+
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    required: {
+      type: Boolean,
+      default: false
+    },
+    lang: {
+      type: String // default: null
+
+    },
+    rtl: {
+      // Tri-state prop: `true`, `false` or `null`
+      type: Boolean,
+      // We must explicitly default to `null` here otherwise
+      // Vue coerces `undefined` into Boolean `false`
+      default: null
+    },
+    buttonOnly: {
+      // When true, renders a btn-group wrapper and visually hides the label
+      type: Boolean,
+      default: false
+    },
+    buttonVariant: {
+      // Applicable in button mode only
+      type: String,
+      default: 'secondary'
+    },
+    menuClass: {
+      // Extra classes to apply to the `dropdown-menu` div
+      type: [String, Array, Object] // default: null
+
+    }
+  },
+  data: function data() {
+    return {
+      isHovered: false,
+      hasFocus: false
+    };
+  },
+  computed: {
+    idButton: function idButton() {
+      return this.safeId();
+    },
+    idLabel: function idLabel() {
+      return this.safeId('_value_');
+    },
+    idMenu: function idMenu() {
+      return this.safeId('_dialog_');
+    },
+    idWrapper: function idWrapper() {
+      return this.safeId('_outer_');
+    },
+    computedDir: function computedDir() {
+      return this.rtl === true ? 'rtl' : this.rtl === false ? 'ltr' : null;
+    }
+  },
+  methods: {
+    focus: function focus() {
+      if (!this.disabled) {
+        try {
+          this.$refs.toggle.focus();
+        } catch (_unused) {}
+      }
+    },
+    blur: function blur() {
+      if (!this.disabled) {
+        try {
+          this.$refs.toggle.blur();
+        } catch (_unused2) {}
+      }
+    },
+    setFocus: function setFocus(evt) {
+      this.hasFocus = evt.type === 'focus';
+    },
+    handleHover: function handleHover(hovered) {
+      this.isHovered = hovered;
+    },
+    stopEvent: function stopEvent(evt)
+    /* istanbul ignore next */
+    {
+      evt.stopPropagation();
+    }
+  },
+  render: function render(h) {
+    var _class, _class2, _ref;
+
+    var idButton = this.idButton;
+    var idLabel = this.idLabel;
+    var idMenu = this.idMenu;
+    var idWrapper = this.idWrapper;
+    var disabled = this.disabled;
+    var readonly = this.readonly;
+    var required = this.required;
+    var isHovered = this.isHovered;
+    var hasFocus = this.hasFocus;
+    var state = this.state;
+    var visible = this.visible;
+    var size = this.size;
+    var value = Object(_string__WEBPACK_IMPORTED_MODULE_1__["toString"])(this.value) || '';
+    var labelSelected = this.labelSelected;
+    var buttonOnly = !!this.buttonOnly;
+    var buttonVariant = this.buttonVariant;
+    var btnScope = {
+      isHovered: isHovered,
+      hasFocus: hasFocus,
+      state: state,
+      opened: visible
+    };
+    var $button = h('button', {
+      ref: 'toggle',
+      staticClass: 'btn',
+      class: (_class = {}, _defineProperty(_class, "btn-".concat(buttonVariant), buttonOnly), _defineProperty(_class, "btn-".concat(size), !!size), _defineProperty(_class, 'border-0', !buttonOnly), _defineProperty(_class, 'h-auto', !buttonOnly), _defineProperty(_class, 'py-0', !buttonOnly), _defineProperty(_class, 'dropdown-toggle', buttonOnly), _defineProperty(_class, 'dropdown-toggle-no-caret', buttonOnly), _class),
+      attrs: {
+        id: idButton,
+        type: 'button',
+        disabled: disabled,
+        'aria-haspopup': 'dialog',
+        'aria-expanded': visible ? 'true' : 'false',
+        'aria-invalid': state === false || required && !value ? 'true' : null,
+        'aria-required': required ? 'true' : null
+      },
+      directives: [{
+        name: 'b-hover',
+        value: this.handleHover
+      }],
+      on: {
+        mousedown: this.onMousedown,
+        click: this.toggle,
+        keydown: this.toggle,
+        // Handle ENTER, SPACE and DOWN
+        '!focus': this.setFocus,
+        '!blur': this.setFocus
+      }
+    }, [this.hasNormalizedSlot('button-content') ? this.normalizeSlot('button-content', btnScope) : h(_icons_icons__WEBPACK_IMPORTED_MODULE_6__["BIconChevronDown"], {
+      props: {
+        scale: 1.25
+      }
+    })]); // Hidden input
+
+    var $hidden = h();
+
+    if (this.name && !disabled) {
+      $hidden = h('input', {
+        attrs: {
+          type: 'hidden',
+          name: this.name || null,
+          form: this.form || null,
+          value: value
+        }
+      });
+    } // Dropdown content
+
+
+    var $menu = h('div', {
+      ref: 'menu',
+      staticClass: 'dropdown-menu p-2',
+      class: [this.menuClass, {
+        show: visible,
+        'dropdown-menu-right': this.right
+      }],
+      attrs: {
+        id: idMenu,
+        role: 'dialog',
+        tabindex: '-1',
+        'aria-modal': 'false',
+        'aria-labelledby': idLabel
+      },
+      on: {
+        keydown: this.onKeydown // Handle ESC
+
+      }
+    }, [this.normalizeSlot('default', {
+      opened: visible
+    })]); // Value label
+
+    var $label = h('label', {
+      staticClass: 'form-control text-break text-wrap border-0 bg-transparent h-auto pl-1 m-0',
+      class: (_class2 = {
+        // Hidden in button only mode
+        'sr-only': buttonOnly,
+        // Mute the text if showing the placeholder
+        'text-muted': !value
+      }, _defineProperty(_class2, "form-control-".concat(size), !!size), _defineProperty(_class2, 'is-invalid', state === false), _defineProperty(_class2, 'is-valid', state === true), _class2),
+      attrs: {
+        id: idLabel,
+        for: idButton,
+        'aria-invalid': state === false || required && !value ? 'true' : null,
+        'aria-required': required ? 'true' : null
+      },
+      directives: [{
+        name: 'b-hover',
+        value: this.handleHover
+      }],
+      on: {
+        // Disable bubbling of the click event to
+        // prevent menu from closing and re-opening
+        '!click': this.stopEvent
+      }
+    }, [value ? this.formattedValue || value : this.placeholder || '', // Add the selected label for screen readers when a value is provided
+    value && labelSelected ? h('bdi', {
+      staticClass: 'sr-only'
+    }, labelSelected) : '']); // Return the custom form control wrapper
+
+    return h('div', {
+      staticClass: 'dropdown',
+      class: [this.directionClass, (_ref = {
+        'btn-group': buttonOnly,
+        'b-form-btn-label-control': !buttonOnly,
+        'form-control': !buttonOnly
+      }, _defineProperty(_ref, "form-control-".concat(size), !!size && !buttonOnly), _defineProperty(_ref, 'd-flex', !buttonOnly), _defineProperty(_ref, 'p-0', !buttonOnly), _defineProperty(_ref, 'h-auto', !buttonOnly), _defineProperty(_ref, 'align-items-stretch', !buttonOnly), _defineProperty(_ref, "focus", hasFocus && !buttonOnly), _defineProperty(_ref, "show", visible), _defineProperty(_ref, 'is-valid', state === true), _defineProperty(_ref, 'is-invalid', state === false), _ref)],
+      attrs: {
+        id: idWrapper,
+        role: buttonOnly ? null : 'group',
+        lang: this.lang || null,
+        dir: this.computedDir,
+        'aria-disabled': disabled,
+        'aria-readonly': readonly && !disabled,
+        'aria-labelledby': idLabel,
+        'aria-invalid': state === false || required && !value ? 'true' : null,
+        'aria-required': required ? 'true' : null
+      }
+    }, [$button, $hidden, $menu, $label]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/esm/utils/bv-transition.js":
 /*!***************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/utils/bv-transition.js ***!
@@ -37875,11 +41496,10 @@ var NO_FADE_PROPS = {
 var FADE_PROPS = _objectSpread({}, NO_FADE_PROPS, {
   enterActiveClass: 'fade',
   leaveActiveClass: 'fade'
-});
+}); // @vue/component
 
-var BVTransition =
-/*#__PURE__*/
-_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+
+var BVTransition = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BVTransition',
   functional: true,
   props: {
@@ -37908,7 +41528,6 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   render: function render(h, _ref) {
     var children = _ref.children,
         data = _ref.data,
-        listeners = _ref.listeners,
         props = _ref.props;
     var transProps = props.transProps;
 
@@ -38060,6 +41679,20 @@ __webpack_require__.r(__webpack_exports__);
     textVariant: null,
     ariaLabel: 'Close'
   },
+  BCalendar: {
+    // BFormDate will choose these first if not provided in BFormDate section
+    labelPrevYear: 'Previous year',
+    labelPrevMonth: 'Previous month',
+    labelCurrentMonth: 'Current month',
+    labelNextMonth: 'Next month',
+    labelNextYear: 'Next year',
+    labelToday: 'Today',
+    labelSelected: 'Selected date',
+    labelNoDateSelected: 'No date selected',
+    labelCalendar: 'Calendar',
+    labelNav: 'Calendar navigation',
+    labelHelp: 'Use cursor keys to navigate calendar dates'
+  },
   BCardSubTitle: {
     // `<b-card>` and `<b-card-body>` also inherit this prop
     subTitleTextVariant: 'muted'
@@ -38075,6 +41708,24 @@ __webpack_require__.r(__webpack_exports__);
     size: null,
     variant: 'secondary',
     splitVariant: null
+  },
+  BFormDatepicker: {
+    // BFormDatepicker will choose from BCalendar first if not provided here
+    labelPrevYear: null,
+    labelPrevMonth: null,
+    labelCurrentMonth: null,
+    labelNextMonth: null,
+    labelNextYear: null,
+    labelToday: null,
+    labelSelected: null,
+    labelNoDateSelected: null,
+    labelCalendar: null,
+    labelNav: null,
+    labelHelp: null,
+    // These props are specific to BFormDatepicker
+    labelTodayButton: 'Select today',
+    labelResetButton: 'Reset',
+    labelCloseButton: 'Close'
   },
   BFormFile: {
     browseText: 'Browse',
@@ -38093,10 +41744,33 @@ __webpack_require__.r(__webpack_exports__);
     invalidTagText: 'Invalid tag(s)',
     placeholder: 'Add tag...',
     tagRemoveLabel: 'Remove tag',
+    tagRemovedLabel: 'Tag removed',
     tagVariant: 'secondary'
   },
   BFormText: {
     textVariant: 'muted'
+  },
+  BFormTimepicker: {
+    // Fallback to BTime
+    labelNoTimeSelected: null,
+    labelSelected: null,
+    labelHours: null,
+    labelMinutes: null,
+    labelSeconds: null,
+    labelAmpm: null,
+    labelAm: null,
+    labelPm: null,
+    // Fallback to BTime then BFormSpinbutton
+    labelDecrement: null,
+    labelIncrement: null,
+    // These props are specific to BFormTimepicker
+    labelNowButton: 'Select now',
+    labelResetButton: 'Reset',
+    labelCloseButton: 'Close'
+  },
+  BFormSpinbutton: {
+    labelDecrement: 'Decrement',
+    labelIncrement: 'Increment'
   },
   BImg: {
     blankColor: 'transparent'
@@ -38167,6 +41841,20 @@ __webpack_require__.r(__webpack_exports__);
     headVariant: null,
     footVariant: null
   },
+  BTime: {
+    labelNoTimeSelected: 'No time selected',
+    labelSelected: 'Selected time',
+    labelHours: 'Hours',
+    labelMinutes: 'Minutes',
+    labelSeconds: 'Seconds',
+    labelAmpm: 'AM/PM',
+    // It would be nice to be able to get these from Intl.DateTimeFormat somehow
+    labelAm: 'AM',
+    labelPm: 'PM',
+    // The following inherit from BFormSpinbutton if not provided
+    labelIncrement: null,
+    labelDecrement: null
+  },
   BToast: {
     toaster: 'b-toaster-top-right',
     autoHideDelay: 5000,
@@ -38226,9 +41914,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var NAME = 'BvConfig';
 var PROP_NAME = '$bvConfig'; // Config manager class
 
-var BvConfig =
-/*#__PURE__*/
-function () {
+var BvConfig = /*#__PURE__*/function () {
   function BvConfig() {
     _classCallCheck(this, BvConfig);
 
@@ -38512,11 +42198,191 @@ var copyProps = function copyProps(props) {
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-vue/esm/utils/date.js":
+/*!******************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/date.js ***!
+  \******************************************************/
+/*! exports provided: createDate, parseYMD, formatYMD, resolveLocale, createDateFormatter, datesEqual, firstDateOfMonth, lastDateOfMonth, oneMonthAgo, oneMonthAhead, oneYearAgo, oneYearAhead, constrainDate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDate", function() { return createDate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseYMD", function() { return parseYMD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatYMD", function() { return formatYMD; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resolveLocale", function() { return resolveLocale; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createDateFormatter", function() { return createDateFormatter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "datesEqual", function() { return datesEqual; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "firstDateOfMonth", function() { return firstDateOfMonth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lastDateOfMonth", function() { return lastDateOfMonth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oneMonthAgo", function() { return oneMonthAgo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oneMonthAhead", function() { return oneMonthAhead; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oneYearAgo", function() { return oneYearAgo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oneYearAhead", function() { return oneYearAhead; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "constrainDate", function() { return constrainDate; });
+/* harmony import */ var _identity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
+/* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _number__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./number */ "./node_modules/bootstrap-vue/esm/utils/number.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+// Date utility functions
+
+
+
+ // --- Constants ---
+
+var RX_DATE = /^\d+-\d+-\d+$/; // --- Date utility methods ---
+// Create or clone a date (`new Date(...)` shortcut)
+
+var createDate = function createDate() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return _construct(Date, args);
+}; // Parse a date sting, or Date object, into a Date object (with no time information)
+
+var parseYMD = function parseYMD(date) {
+  if (Object(_inspect__WEBPACK_IMPORTED_MODULE_2__["isString"])(date) && RX_DATE.test(date.trim())) {
+    var _date$split$map = date.split('-').map(_number__WEBPACK_IMPORTED_MODULE_3__["toInteger"]),
+        _date$split$map2 = _slicedToArray(_date$split$map, 3),
+        year = _date$split$map2[0],
+        month = _date$split$map2[1],
+        day = _date$split$map2[2];
+
+    return createDate(year, month - 1, day);
+  } else if (Object(_inspect__WEBPACK_IMPORTED_MODULE_2__["isDate"])(date)) {
+    return createDate(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
+  return null;
+}; // Format a date object as `YYYY-MM-DD` format
+
+var formatYMD = function formatYMD(date) {
+  date = parseYMD(date);
+
+  if (!date) {
+    return null;
+  }
+
+  var year = date.getFullYear();
+  var month = "0".concat(date.getMonth() + 1).slice(-2);
+  var day = "0".concat(date.getDate()).slice(-2);
+  return "".concat(year, "-").concat(month, "-").concat(day);
+}; // Given a locale (or locales), resolve the browser available locale
+
+var resolveLocale = function resolveLocale(locales)
+/* istanbul ignore next */
+{
+  var calendar = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'gregory';
+  locales = Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(locales).filter(_identity__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  var fmt = new Intl.DateTimeFormat(locales, {
+    calendar: calendar
+  });
+  return fmt.resolvedOptions().locale;
+}; // Create a `Intl.DateTimeFormat` formatter function
+
+var createDateFormatter = function createDateFormatter(locale, options)
+/* istanbul ignore next */
+{
+  var dtf = new Intl.DateTimeFormat(locale, options);
+  return dtf.format;
+}; // Determine if two dates are the same date (ignoring time portion)
+
+var datesEqual = function datesEqual(date1, date2) {
+  // Returns true of the date portion of two date objects are equal
+  // We don't compare the time portion
+  return formatYMD(date1) === formatYMD(date2);
+}; // --- Date "math" utility methods (for BCalendar component mainly) ---
+
+var firstDateOfMonth = function firstDateOfMonth(date) {
+  date = createDate(date);
+  date.setDate(1);
+  return date;
+};
+var lastDateOfMonth = function lastDateOfMonth(date) {
+  date = createDate(date);
+  date.setMonth(date.getMonth() + 1);
+  date.setDate(0);
+  return date;
+};
+var oneMonthAgo = function oneMonthAgo(date) {
+  date = createDate(date);
+  var month = date.getMonth();
+  date.setMonth(month - 1);
+
+  if (date.getMonth() === month) {
+    date.setDate(0);
+  }
+
+  return date;
+};
+var oneMonthAhead = function oneMonthAhead(date) {
+  date = createDate(date);
+  var month = date.getMonth();
+  date.setMonth(month + 1);
+
+  if (date.getMonth() === (month + 2) % 12) {
+    date.setDate(0);
+  }
+
+  return date;
+};
+var oneYearAgo = function oneYearAgo(date) {
+  date = createDate(date);
+  var month = date.getMonth();
+  date.setMonth(month - 12);
+
+  if (date.getMonth() !== month) {
+    date.setDate(0);
+  }
+
+  return date;
+};
+var oneYearAhead = function oneYearAhead(date) {
+  date = createDate(date);
+  var month = date.getMonth();
+  date.setMonth(month + 12);
+
+  if (date.getMonth() !== month) {
+    date.setDate(0);
+  }
+
+  return date;
+}; // Helper function to constrain a date between two values
+// Always returns a `Date` object or `null` if no date passed
+
+var constrainDate = function constrainDate(date) {
+  var min = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var max = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  // Ensure values are `Date` objects (or `null`)
+  date = parseYMD(date);
+  min = parseYMD(min) || date;
+  max = parseYMD(max) || date; // Return a new `Date` object (or `null`)
+
+  return date ? date < min ? min : date > max ? max : date : null;
+};
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/esm/utils/dom.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/utils/dom.js ***!
   \*****************************************************/
-/*! exports provided: matchesEl, closestEl, requestAF, MutationObs, parseEventOptions, eventOn, eventOff, removeNode, isElement, isVisible, isDisabled, reflow, selectAll, select, matches, closest, contains, getById, addClass, removeClass, hasClass, setAttr, removeAttr, getAttr, hasAttr, getBCR, getCS, getSel, offset, position */
+/*! exports provided: matchesEl, closestEl, requestAF, MutationObs, removeNode, isElement, isVisible, isDisabled, reflow, selectAll, select, matches, closest, contains, getById, addClass, removeClass, hasClass, setAttr, removeAttr, getAttr, hasAttr, getBCR, getCS, getSel, offset, position */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38525,9 +42391,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closestEl", function() { return closestEl; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAF", function() { return requestAF; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MutationObs", function() { return MutationObs; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseEventOptions", function() { return parseEventOptions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventOn", function() { return eventOn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventOff", function() { return eventOff; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeNode", function() { return removeNode; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isElement", function() { return isElement; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isVisible", function() { return isVisible; });
@@ -38594,32 +42457,7 @@ function (cb) {
   return setTimeout(cb, 16);
 };
 var MutationObs = w.MutationObserver || w.WebKitMutationObserver || w.MozMutationObserver || null; // --- Utils ---
-// Normalize event options based on support of passive option
-// Exported only for testing purposes
-
-var parseEventOptions = function parseEventOptions(options) {
-  /* istanbul ignore else: can't test in JSDOM, as it supports passive */
-  if (_env__WEBPACK_IMPORTED_MODULE_1__["hasPassiveEventSupport"]) {
-    return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isObject"])(options) ? options : {
-      useCapture: !!options || false
-    };
-  } else {
-    // Need to translate to actual Boolean value
-    return !!(Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isObject"])(options) ? options.useCapture : options);
-  }
-}; // Attach an event listener to an element
-
-var eventOn = function eventOn(el, evtName, handler, options) {
-  if (el && el.addEventListener) {
-    el.addEventListener(evtName, handler, parseEventOptions(options));
-  }
-}; // Remove an event listener from an element
-
-var eventOff = function eventOff(el, evtName, handler, options) {
-  if (el && el.removeEventListener) {
-    el.removeEventListener(evtName, handler, parseEventOptions(options));
-  }
-}; // Remove a node from DOM
+// Remove a node from DOM
 
 var removeNode = function removeNode(el) {
   return el && el.parentNode && el.parentNode.removeChild(el);
@@ -38925,6 +42763,73 @@ var getNoWarn = function getNoWarn() {
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-vue/esm/utils/events.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/events.js ***!
+  \********************************************************/
+/*! exports provided: EVENT_OPTIONS_PASSIVE, EVENT_OPTIONS_NO_CAPTURE, parseEventOptions, eventOn, eventOff, eventOnOff */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVENT_OPTIONS_PASSIVE", function() { return EVENT_OPTIONS_PASSIVE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EVENT_OPTIONS_NO_CAPTURE", function() { return EVENT_OPTIONS_NO_CAPTURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parseEventOptions", function() { return parseEventOptions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventOn", function() { return eventOn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventOff", function() { return eventOff; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eventOnOff", function() { return eventOnOff; });
+/* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
+/* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+
+ // --- Constants ---
+
+var EVENT_OPTIONS_PASSIVE = {
+  passive: true
+};
+var EVENT_OPTIONS_NO_CAPTURE = {
+  passive: true,
+  capture: false
+}; // --- Utils ---
+// Normalize event options based on support of passive option
+// Exported only for testing purposes
+
+var parseEventOptions = function parseEventOptions(options) {
+  /* istanbul ignore else: can't test in JSDOM, as it supports passive */
+  if (_env__WEBPACK_IMPORTED_MODULE_0__["hasPassiveEventSupport"]) {
+    return Object(_inspect__WEBPACK_IMPORTED_MODULE_1__["isObject"])(options) ? options : {
+      capture: !!options || false
+    };
+  } else {
+    // Need to translate to actual Boolean value
+    return !!(Object(_inspect__WEBPACK_IMPORTED_MODULE_1__["isObject"])(options) ? options.capture : options);
+  }
+}; // Attach an event listener to an element
+
+var eventOn = function eventOn(el, evtName, handler, options) {
+  if (el && el.addEventListener) {
+    el.addEventListener(evtName, handler, parseEventOptions(options));
+  }
+}; // Remove an event listener from an element
+
+var eventOff = function eventOff(el, evtName, handler, options) {
+  if (el && el.removeEventListener) {
+    el.removeEventListener(evtName, handler, parseEventOptions(options));
+  }
+}; // Utility method to add/remove a event listener based on first argument (boolean)
+// It passes all other arguments to the `eventOn()` or `eventOff` method
+
+var eventOnOff = function eventOnOff(on) {
+  var method = on ? eventOn : eventOff;
+
+  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  method.apply(void 0, args);
+};
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-vue/esm/utils/get-scope-id.js":
 /*!**************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/utils/get-scope-id.js ***!
@@ -39193,6 +43098,38 @@ var KEY_CODES = Object(_object__WEBPACK_IMPORTED_MODULE_0__["freeze"])({
   DELETE: 46
 });
 /* harmony default export */ __webpack_exports__["default"] = (KEY_CODES);
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/utils/locale.js":
+/*!********************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/utils/locale.js ***!
+  \********************************************************/
+/*! exports provided: isLocaleRTL */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isLocaleRTL", function() { return isLocaleRTL; });
+/* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
+/* harmony import */ var _string__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./string */ "./node_modules/bootstrap-vue/esm/utils/string.js");
+// Localization utilities
+
+ // Languages that are RTL
+
+var RTL_LANGS = ['ar', 'az', 'ckb', 'fa', 'he', 'ks', 'lrc', 'mzn', 'ps', 'sd', 'te', 'ug', 'ur', 'yi'].map(function (locale) {
+  return locale.toLowerCase();
+}); // Precompile RegExpr
+
+var RX_STRIP_MODS = /-u-.+/; // Returns true if the locale is RTL
+
+var isLocaleRTL = function isLocaleRTL(locale) {
+  // Determines if the locale is RTL (only single locale supported)
+  var parts = Object(_string__WEBPACK_IMPORTED_MODULE_1__["toString"])(locale).toLowerCase().replace(RX_STRIP_MODS, '').split('-');
+  var locale1 = parts.slice(0, 2).join('-');
+  var locale2 = parts[0];
+  return Object(_array__WEBPACK_IMPORTED_MODULE_0__["arrayIncludes"])(RTL_LANGS, locale1) || Object(_array__WEBPACK_IMPORTED_MODULE_0__["arrayIncludes"])(RTL_LANGS, locale2);
+};
 
 /***/ }),
 
@@ -39643,11 +43580,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  * Observe a DOM element changes, falls back to eventListener mode
  * @param {Element} el The DOM element to observe
  * @param {Function} callback callback to be called on change
- * @param {object} [opts={childList: true, subtree: true}] observe options
+ * @param {object} [options={childList: true, subtree: true}] observe options
  * @see http://stackoverflow.com/questions/3219758
  */
 
-var observeDom = function observeDom(el, callback, opts)
+var observeDom = function observeDom(el, callback, options)
 /* istanbul ignore next: difficult to test in JSDOM */
 {
   // Handle cases where we might be passed a Vue instance
@@ -39702,7 +43639,7 @@ var observeDom = function observeDom(el, callback, opts)
   obs.observe(el, _objectSpread({
     childList: true,
     subtree: true
-  }, opts)); // We return a reference to the observer so that `obs.disconnect()`
+  }, options)); // We return a reference to the observer so that `obs.disconnect()`
   // can be called if necessary
   // To reduce overhead when the root element is hidden
 
@@ -39846,8 +43783,6 @@ var installFactoryNoConfig = function installFactoryNoConfig() {
       plugins = _ref2.plugins;
 
   var install = function install(Vue) {
-    var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
     if (install.installed) {
       /* istanbul ignore next */
       return;
@@ -39870,10 +43805,10 @@ var installFactoryNoConfig = function installFactoryNoConfig() {
  */
 
 var pluginFactory = function pluginFactory() {
-  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var extend = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return _objectSpread({}, extend, {
-    install: installFactory(opts)
+    install: installFactory(options)
   });
 };
 /**
@@ -39883,10 +43818,10 @@ var pluginFactory = function pluginFactory() {
  */
 
 var pluginFactoryNoConfig = function pluginFactoryNoConfig() {
-  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var extend = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return _objectSpread({}, extend, {
-    install: installFactoryNoConfig(opts)
+    install: installFactoryNoConfig(options)
   });
 };
 /**
@@ -40229,9 +44164,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
  */
 
 var w = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? window : {};
-var Element = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.Element :
-/*#__PURE__*/
-function (_Object) {
+var Element = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.Element : /*#__PURE__*/function (_Object) {
   _inherits(Element, _Object);
 
   function Element() {
@@ -40241,10 +44174,8 @@ function (_Object) {
   }
 
   return Element;
-}(_wrapNativeSuper(Object));
-var HTMLElement = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.HTMLElement :
-/*#__PURE__*/
-function (_Element) {
+}( /*#__PURE__*/_wrapNativeSuper(Object));
+var HTMLElement = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.HTMLElement : /*#__PURE__*/function (_Element) {
   _inherits(HTMLElement, _Element);
 
   function HTMLElement() {
@@ -40255,9 +44186,7 @@ function (_Element) {
 
   return HTMLElement;
 }(Element);
-var SVGElement = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.SVGElement :
-/*#__PURE__*/
-function (_Element2) {
+var SVGElement = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.SVGElement : /*#__PURE__*/function (_Element2) {
   _inherits(SVGElement, _Element2);
 
   function SVGElement() {
@@ -40268,9 +44197,7 @@ function (_Element2) {
 
   return SVGElement;
 }(Element);
-var File = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.File :
-/*#__PURE__*/
-function (_Object2) {
+var File = _env__WEBPACK_IMPORTED_MODULE_0__["hasWindowSupport"] ? w.File : /*#__PURE__*/function (_Object2) {
   _inherits(File, _Object2);
 
   function File() {
@@ -40280,7 +44207,7 @@ function (_Object2) {
   }
 
   return File;
-}(_wrapNativeSuper(Object));
+}( /*#__PURE__*/_wrapNativeSuper(Object));
 
 /***/ }),
 
@@ -40498,7 +44425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "unbindTargets", function() { return unbindTargets; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getTargets", function() { return getTargets; });
 /* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
-/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ "./node_modules/bootstrap-vue/esm/utils/events.js");
 
 
 var allListenTypes = {
@@ -40532,7 +44459,7 @@ var bindTargets = function bindTargets(vnode, binding, listenTypes, fn) {
 
   Object(_object__WEBPACK_IMPORTED_MODULE_0__["keys"])(allListenTypes).forEach(function (type) {
     if (listenTypes[type] || binding.modifiers[type]) {
-      Object(_dom__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(vnode.elm, type, listener);
+      Object(_events__WEBPACK_IMPORTED_MODULE_1__["eventOn"])(vnode.elm, type, listener);
       var boundListeners = vnode.elm[BVBoundListeners] || {};
       boundListeners[type] = boundListeners[type] || [];
       boundListeners[type].push(listener);
@@ -40550,7 +44477,7 @@ var unbindTargets = function unbindTargets(vnode, binding, listenTypes) {
 
       if (boundListeners) {
         boundListeners.forEach(function (listener) {
-          return Object(_dom__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(vnode.elm, type, listener);
+          return Object(_events__WEBPACK_IMPORTED_MODULE_1__["eventOff"])(vnode.elm, type, listener);
         });
         delete vnode.elm[BVBoundListeners][type];
       }
@@ -40602,9 +44529,7 @@ __webpack_require__.r(__webpack_exports__);
 // Supports only a single root element
 // @vue/component
 
-var BTransporterTargetSingle =
-/*#__PURE__*/
-_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTransporterTargetSingle = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   // As an abstract component, it doesn't appear in the $parent chain of
   // components, which means the next parent of any component rendered inside
   // of this one will be the parent from which is was portal'd
@@ -40641,9 +44566,7 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 }); // This component has no root element, so only a single VNode is allowed
 // @vue/component
 
-var BTransporterSingle =
-/*#__PURE__*/
-_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+var BTransporterSingle = /*#__PURE__*/_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTransporterSingle',
   mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_7__["default"]],
   props: {
@@ -61792,7 +65715,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "required_if", function() { return required_if; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "size", function() { return size; });
 /**
-  * vee-validate v3.2.4
+  * vee-validate v3.2.5
   * (c) 2020 Abdelrahman Awad
   * @license MIT
   */
@@ -62505,7 +66428,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /**
-  * vee-validate v3.2.4
+  * vee-validate v3.2.5
   * (c) 2020 Abdelrahman Awad
   * @license MIT
   */
@@ -64445,7 +68368,7 @@ function withValidation(component, mapProps) {
     return hoc;
 }
 
-var version = '3.2.4';
+var version = '3.2.5';
 
 
 
@@ -64647,6 +68570,77 @@ var render = function() {
                     expression: "status"
                   }
                 }),
+                _vm._v(" "),
+                _c("b-form-invalid-feedback", [_vm._v(_vm._s(errors[0]))])
+              ],
+              1
+            )
+          ]
+        }
+      }
+    ])
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputs/RCDatePicker.vue?vue&type=template&id=06c2ddd8&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/inputs/RCDatePicker.vue?vue&type=template&id=06c2ddd8& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("ValidationProvider", {
+    ref: "validationProvider",
+    attrs: { vid: _vm.vid, name: _vm.$attrs.name, rules: _vm.rules, slim: "" },
+    scopedSlots: _vm._u([
+      {
+        key: "default",
+        fn: function(ref) {
+          var errors = ref.errors
+          return [
+            _c(
+              "b-form-group",
+              {
+                attrs: {
+                  id: _vm.formGroupID,
+                  description: _vm.description,
+                  label: _vm.label,
+                  "label-for": _vm.$attrs.id
+                }
+              },
+              [
+                _c(
+                  "b-form-datepicker",
+                  _vm._b(
+                    {
+                      attrs: { state: errors[0] ? false : null },
+                      model: {
+                        value: _vm.value,
+                        callback: function($$v) {
+                          _vm.value = $$v
+                        },
+                        expression: "value"
+                      }
+                    },
+                    "b-form-datepicker",
+                    _vm.$attrs,
+                    false
+                  )
+                ),
                 _vm._v(" "),
                 _c("b-form-invalid-feedback", [_vm._v(_vm._s(errors[0]))])
               ],
@@ -77279,15 +81273,18 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var _components_inputs_RCSelect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/inputs/RCSelect */ "./resources/js/components/inputs/RCSelect.vue");
-/* harmony import */ var _components_inputs_RCInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/inputs/RCInput */ "./resources/js/components/inputs/RCInput.vue");
-/* harmony import */ var _components_inputs_RCCheckbox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/inputs/RCCheckbox */ "./resources/js/components/inputs/RCCheckbox.vue");
-/* harmony import */ var _components_RCAlert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/RCAlert */ "./resources/js/components/RCAlert.vue");
-/* harmony import */ var _components_inputs_RCSelectLocation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/inputs/RCSelectLocation */ "./resources/js/components/inputs/RCSelectLocation.vue");
-/* harmony import */ var _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/inputs/RCSelectCity */ "./resources/js/components/inputs/RCSelectCity.vue");
-/* harmony import */ var _components_inputs_RCRadio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/inputs/RCRadio */ "./resources/js/components/inputs/RCRadio.vue");
-/* harmony import */ var _components_forms_RCForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/forms/RCForm */ "./resources/js/components/forms/RCForm.vue");
+/* harmony import */ var _components_inputs_RCDatePicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/inputs/RCDatePicker */ "./resources/js/components/inputs/RCDatePicker.vue");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var _components_inputs_RCSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/inputs/RCSelect */ "./resources/js/components/inputs/RCSelect.vue");
+/* harmony import */ var _components_inputs_RCInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/inputs/RCInput */ "./resources/js/components/inputs/RCInput.vue");
+/* harmony import */ var _components_inputs_RCCheckbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/inputs/RCCheckbox */ "./resources/js/components/inputs/RCCheckbox.vue");
+/* harmony import */ var _components_RCAlert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/RCAlert */ "./resources/js/components/RCAlert.vue");
+/* harmony import */ var _components_inputs_RCSelectLocation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/inputs/RCSelectLocation */ "./resources/js/components/inputs/RCSelectLocation.vue");
+/* harmony import */ var _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/inputs/RCSelectCity */ "./resources/js/components/inputs/RCSelectCity.vue");
+/* harmony import */ var _components_inputs_RCRadio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/inputs/RCRadio */ "./resources/js/components/inputs/RCRadio.vue");
+/* harmony import */ var _components_forms_RCForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/forms/RCForm */ "./resources/js/components/forms/RCForm.vue");
+
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./font-awesome */ "./resources/js/font-awesome.js");
@@ -77298,7 +81295,7 @@ __webpack_require__(/*! ./vee-validate */ "./resources/js/vee-validate.js"); //r
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // Bootstrap-vue
 
 
-Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]); // Custom components
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]); // Custom components
 
 
 
@@ -77307,16 +81304,17 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]); // Custom compon
 
 
 
-Vue.component('rc-select', _components_inputs_RCSelect__WEBPACK_IMPORTED_MODULE_1__["default"]);
-Vue.component('rc-input', _components_inputs_RCInput__WEBPACK_IMPORTED_MODULE_2__["default"]);
-Vue.component('rc-checkbox', _components_inputs_RCCheckbox__WEBPACK_IMPORTED_MODULE_3__["default"]);
-Vue.component("rc-alert", _components_RCAlert__WEBPACK_IMPORTED_MODULE_4__["default"]);
-Vue.component('rc-select-location', _components_inputs_RCSelectLocation__WEBPACK_IMPORTED_MODULE_5__["default"]);
-Vue.component('rc-select-city', _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_6__["default"]);
-Vue.component('rc-radio', _components_inputs_RCRadio__WEBPACK_IMPORTED_MODULE_7__["default"]); // Custom forms
+Vue.component('rc-select', _components_inputs_RCSelect__WEBPACK_IMPORTED_MODULE_2__["default"]);
+Vue.component('rc-input', _components_inputs_RCInput__WEBPACK_IMPORTED_MODULE_3__["default"]);
+Vue.component('rc-checkbox', _components_inputs_RCCheckbox__WEBPACK_IMPORTED_MODULE_4__["default"]);
+Vue.component("rc-alert", _components_RCAlert__WEBPACK_IMPORTED_MODULE_5__["default"]);
+Vue.component('rc-select-location', _components_inputs_RCSelectLocation__WEBPACK_IMPORTED_MODULE_6__["default"]);
+Vue.component('rc-select-city', _components_inputs_RCSelectCity__WEBPACK_IMPORTED_MODULE_7__["default"]);
+Vue.component('rc-radio', _components_inputs_RCRadio__WEBPACK_IMPORTED_MODULE_8__["default"]);
+Vue.component('rc-date-picker', _components_inputs_RCDatePicker__WEBPACK_IMPORTED_MODULE_0__["default"]); // Custom forms
 
 
-Vue.component('rc-form', _components_forms_RCForm__WEBPACK_IMPORTED_MODULE_8__["default"]);
+Vue.component('rc-form', _components_forms_RCForm__WEBPACK_IMPORTED_MODULE_9__["default"]);
 Vue.prototype.$eventHub = new Vue();
 var app = new Vue({
   el: '#app'
@@ -77558,6 +81556,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RCCheckbox_vue_vue_type_template_id_70f96582___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RCCheckbox_vue_vue_type_template_id_70f96582___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/inputs/RCDatePicker.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/inputs/RCDatePicker.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RCDatePicker_vue_vue_type_template_id_06c2ddd8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RCDatePicker.vue?vue&type=template&id=06c2ddd8& */ "./resources/js/components/inputs/RCDatePicker.vue?vue&type=template&id=06c2ddd8&");
+/* harmony import */ var _RCDatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RCDatePicker.vue?vue&type=script&lang=js& */ "./resources/js/components/inputs/RCDatePicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RCDatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RCDatePicker_vue_vue_type_template_id_06c2ddd8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RCDatePicker_vue_vue_type_template_id_06c2ddd8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/inputs/RCDatePicker.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/inputs/RCDatePicker.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/inputs/RCDatePicker.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RCDatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RCDatePicker.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputs/RCDatePicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RCDatePicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/inputs/RCDatePicker.vue?vue&type=template&id=06c2ddd8&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/inputs/RCDatePicker.vue?vue&type=template&id=06c2ddd8& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RCDatePicker_vue_vue_type_template_id_06c2ddd8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RCDatePicker.vue?vue&type=template&id=06c2ddd8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/inputs/RCDatePicker.vue?vue&type=template&id=06c2ddd8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RCDatePicker_vue_vue_type_template_id_06c2ddd8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RCDatePicker_vue_vue_type_template_id_06c2ddd8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

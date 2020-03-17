@@ -32,29 +32,39 @@
                 placeholder="Nombre Completo"
         ></rc-input>
     </div>
-    <div class="form-group col-md-5">
-        <rc-radio
-                rules="required"
-                name="radioGenero"
-                id="opMujer"
-                label="{{ __('Género') }}"
-                text="{{ __('Mujer') }}"
-                value="Mujer"
-        ></rc-radio>
-        <rc-radio
-                rules="required"
-                name="radioGenero"
-                id="opHombre"
-                text="{{ __('Hombre') }}"
-                value="Hombre"
-        ></rc-radio>
-        <rc-radio
-                rules="required"
-                name="radioGenero"
-                id="opOtro"
-                text="{{ __('Prefiero no decirlo') }}"
-                value="Prefiero no decirlo"
-        ></rc-radio>
+    <div class="form-row col-md-5">
+        <div class="form-group mb-1 col-md-12">
+            <label>Género</label>
+        </div>
+        <div class="form-group mb-1 col-md-3">
+            <rc-radio
+                    rules="required"
+                    name="radioGenero"
+                    id="opMujer"
+                    text="{{ __('Mujer') }}"
+                    value="Mujer"
+            ></rc-radio>
+        </div>
+        <div class="form-group mb-1 col-md-3">
+            <rc-radio
+                    rules="required"
+                    name="radioGenero"
+                    id="opHombre"
+                    label=""
+                    text="{{ __('Hombre') }}"
+                    value="Hombre"
+            ></rc-radio>
+        </div>
+        <div class="form-group mb-1 col-md-6">
+            <rc-radio
+                    rules="required"
+                    name="radioGenero"
+                    id="opOtro"
+                    label=""
+                    text="{{ __('Prefiero no decirlo') }}"
+                    value="Prefiero no decirlo"
+            ></rc-radio>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -138,11 +148,17 @@
         <h4>Datos de Nacimiento</h4>
     </div>
     <div class="form-group col-md-3">
-        <rc-input
-                type="text"
-                initial-value=""
+        <rc-date-picker
+                name="fecha_nacimiento"
+                id="fecha_nacimiento"
                 label="{{ __('Fecha de nacimiento') }}"
-        ></rc-input>
+                @error('fecha_nacimiento')
+                error="{{ $message }}"
+                @enderror
+                placeholder="{{ __('Fecha de nacimiento') }}"
+                initial-value=""
+        >
+        </rc-date-picker>
     </div>
     <div class="form-group col-md-3">
         <rc-input

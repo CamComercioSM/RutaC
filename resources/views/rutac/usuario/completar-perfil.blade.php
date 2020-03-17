@@ -3,26 +3,30 @@
 @section('title','RutaC | Completar perfil')
 
 @section('content')
-<section class="content-header">
-	<h1 class="one">
-		Completa tu perfil
-	</h1>
-</section>
-<div class="container">
-    <div class="row justify-content">
-        <div class="col-md-12">
-            <div id="datos-usuario" class="show">
-                @include('rutac.usuario.forms.__dato_usuario')
-            </div>
-            <div id="datos-empresas" class="hidden">
-                @include('rutac.usuario.forms.datos-empresas')
-            </div>
-            <div id="datos-emprendimientos" class="hidden">
-                @include('rutac.usuario.forms.datos-emprendimientos')
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h4>Completa tu perfil</h4>
+                    </div>
+                    <div class="card-body">
+                        <rc-form
+                                action="{{ action('UserController@guardarPerfil') }}"
+                                method="post"
+                        >
+                            @include('rutac.usuario.forms.__datos_usuario')
+                            <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Guardar') }}
+                                </button>
+                            </div>
+                        </rc-form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
 @section('style')
