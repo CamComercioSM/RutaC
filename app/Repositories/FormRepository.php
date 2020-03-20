@@ -74,7 +74,8 @@ class FormRepository
             'Indígenas',
             'Afrocolombianos',
             'Raizales',
-            'Otro'
+            'Otro',
+            'Ninguno'
         ]);
     }
 

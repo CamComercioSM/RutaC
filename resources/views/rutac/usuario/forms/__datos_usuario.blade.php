@@ -204,7 +204,6 @@
         <rc-select
                 name="nivel_estudios"
                 id="nivel_estudios"
-                rules="required|numeric"
                 @error('nivel_estudios')
                 error="{{ $message }}"
                 @enderror
@@ -220,7 +219,6 @@
         <rc-select
                 name="profesion"
                 id="profesion"
-                rules="required|numeric"
                 @error('profesion')
                 error="{{ $message }}"
                 @enderror
@@ -236,7 +234,6 @@
         <rc-select
                 name="cargo"
                 id="cargo"
-                rules="required|numeric"
                 @error('cargo')
                 error="{{ $message }}"
                 @enderror
@@ -252,7 +249,6 @@
         <rc-select
                 name="remuneracion"
                 id="remuneracion"
-                rules="required|numeric"
                 @error('remuneracion')
                 error="{{ $message }}"
                 @enderror
@@ -268,7 +264,6 @@
         <rc-select
                 name="grupo_etnico"
                 id="grupo_etnico"
-                rules="required|numeric"
                 @error('grupo_etnico')
                 error="{{ $message }}"
                 @enderror

@@ -82,7 +82,7 @@
                 this.$refs.validationProvider.setErrors([this.error]);
             },
             getCities: function(){
-                axios.get('https://rutadecrecimiento.com/public/buscar_municipios/'+this.value, {})
+                axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/'+this.value, {})
                 .then(function (response) {
                     EventBus.$emit('cities', response.data);
                 });
