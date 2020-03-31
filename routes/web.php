@@ -244,7 +244,7 @@ Route::group(['middleware' => 'user'],function(){
     |---------------------------------------------------------------------------------------
     */
 	Route::get('/mi-perfil', 'UserController@miPerfil')->name('usuario.mi-perfil')->middleware('entidad');
-    Route::get('/completar-perfil', 'UserController@showFormCompletarPerfil')->name('completar-perfil')->middleware('entidad');
+    Route::get('/completar-perfil', 'UserController@showFormCompletarPerfil')->name('completar-perfil');
     Route::post('/completar-perfil', 'UserController@guardarPerfil');
     Route::post('/actualizar-password', 'UserController@actualizarPassword');
     Route::get('/reenviar-codigo', 'UserController@reenviarCodigo');
