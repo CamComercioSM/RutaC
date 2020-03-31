@@ -29,7 +29,7 @@ class DepartamentosComposer
                 ->departamentos
                 ->getAvailableCachedDepartamentosList()
                 ->map(function ($item) {
-                    return ['value' => $item->id_departamento, 'text' => $item->departamento];
+                    return ['value' => $item->departamento, 'text' => $item->departamento];
                 })
         );
     }

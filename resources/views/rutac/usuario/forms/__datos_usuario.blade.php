@@ -10,7 +10,7 @@
                 name="numero_documento"
                 id="formENumeroDocumento"
                 type="text"
-                initial-value="{{$usuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$usuario->dato_usuarioIDENTIFICACION}}"
+                initial-value="{{ $usuario->dato_usuarioTIPO_IDENTIFICACION }} - {{ $usuario->dato_usuarioIDENTIFICACION }}"
                 label="{{ __('Documento de identidad') }}"
                 autocomplete="off"
                 placeholder="No. Documento"
@@ -26,7 +26,7 @@
                 @error('nombre_completo')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{$usuario->dato_usuarioNOMBRES}} {{$usuario->dato_usuarioAPELLIDOS}}"
+                initial-value="{{ $usuario->dato_usuarioNOMBRES }} {{ $usuario->dato_usuarioAPELLIDOS }}"
                 label="{{ __('Nombre Completo') }}"
                 autocomplete="off"
                 placeholder="Nombre Completo"
@@ -84,11 +84,11 @@
         <rc-select-location
                 name="departamento_residencia"
                 id="departamento_residencia"
-                rules="required|numeric"
+                rules="required"
                 @error('departamento_residencia')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('departamento_residencia') }}"
+                initial-value="{{ old('departamento_residencia', $usuario->dato_usuarioDEPARTAMENTO_RESIDENCIA) }}"
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }}"
@@ -100,11 +100,11 @@
         <rc-select-city
                 name="municipio_residencia"
                 id="municipio_residencia"
-                rules="required|numeric"
+                rules="required"
                 @error('municipio_residencia')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('municipio_residencia') }}"
+                initial-value="{{ old('municipio_residencia', $usuario->dato_usuarioMUNICIPIO_RESIDENCIA) }}"
                 placeholder="{{ __('Municipio de residencia') }}"
                 label="{{ __('Municipio') }}"
         >
@@ -120,7 +120,7 @@
                 @error('direccion')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{$usuario->dato_usuarioDIRECCION}}"
+                initial-value="{{ $usuario->dato_usuarioDIRECCION }}"
                 label="{{ __('Dirección') }}"
                 autocomplete="off"
                 placeholder="Digite su dirección"
@@ -155,8 +155,8 @@
                 @error('fecha_nacimiento')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('fecha_nacimiento', $usuario->dato_usuarioFECHA_NACIMIENTO) }}"
                 placeholder="{{ __('Fecha de nacimiento') }}"
-                initial-value=""
         >
         </rc-date-picker>
     </div>
@@ -173,11 +173,11 @@
         <rc-select-location
                 name="departamento_nacimiento"
                 id="departamento_nacimiento"
-                rules="required|numeric"
+                rules="required"
                 @error('departamento_nacimiento')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('departamento_nacimiento') }}"
+                initial-value="{{ old('departamento_nacimiento', $usuario->dato_usuarioDEPARTAMENTO_NACIMIENTO) }}"
                 placeholder="{{ __('Departamento de nacimiento') }}"
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }}"
@@ -189,11 +189,11 @@
         <rc-select-city
                 name="municipio_nacimiento"
                 id="municipio_nacimiento"
-                rules="required|numeric"
+                rules="required"
                 @error('municipio_nacimiento')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('municipio_nacimiento') }}"
+                initial-value="{{ old('municipio_nacimiento', $usuario->dato_usuarioMUNICIPIO_NACIMIENTO) }}"
                 placeholder="{{ __('Municipio de nacimiento') }}"
                 label="{{ __('Municipio') }}"
         >
@@ -204,11 +204,10 @@
         <rc-select
                 name="nivel_estudios"
                 id="nivel_estudios"
-                rules="required|numeric"
                 @error('nivel_estudios')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('tipo_documento') }}"
+                initial-value="{{ old('nivel_estudios', $usuario->dato_usuarioNIVEL_ESTUDIO) }}"
                 placeholder="{{ __('Nivel de estudios') }}"
                 :options="{{ $nivelEstudio->toJson() }}"
                 label="{{ __('Nivel de estudios') }}"
@@ -220,11 +219,10 @@
         <rc-select
                 name="profesion"
                 id="profesion"
-                rules="required|numeric"
                 @error('profesion')
                 error="{{ $message }}"
                 @enderror
-                initial-value=""
+                initial-value="{{ old('profesion', $usuario->dato_usuarioPROFESION_OCUPACION) }}"
                 placeholder="{{ __('Profesión') }}"
                 :options="{{ $profesion->toJson() }}"
                 label="{{ __('Profesión') }}"
@@ -236,11 +234,10 @@
         <rc-select
                 name="cargo"
                 id="cargo"
-                rules="required|numeric"
                 @error('cargo')
                 error="{{ $message }}"
                 @enderror
-                initial-value=""
+                initial-value="{{ old('cargo', $usuario->dato_usuarioCARGO) }}"
                 placeholder="{{ __('Cargo') }}"
                 :options="{{ $cargo->toJson() }}"
                 label="{{ __('Cargo') }}"
@@ -252,11 +249,10 @@
         <rc-select
                 name="remuneracion"
                 id="remuneracion"
-                rules="required|numeric"
                 @error('remuneracion')
                 error="{{ $message }}"
                 @enderror
-                initial-value=""
+                initial-value="{{ old('remuneracion', $usuario->dato_usuarioREMUNERACION) }}"
                 placeholder="{{ __('Remuneración') }}"
                 :options="{{ $remuneracion->toJson() }}"
                 label="{{ __('Remuneración') }}"
@@ -268,11 +264,10 @@
         <rc-select
                 name="grupo_etnico"
                 id="grupo_etnico"
-                rules="required|numeric"
                 @error('grupo_etnico')
                 error="{{ $message }}"
                 @enderror
-                initial-value=""
+                initial-value="{{ old('grupo_etnico', $usuario->dato_usuarioGRUPO_ETNICO) }}"
                 placeholder="{{ __('Grupo Étnico') }}"
                 :options="{{ $grupo_etnico->toJson() }}"
                 label="{{ __('Grupo Étnico') }}"

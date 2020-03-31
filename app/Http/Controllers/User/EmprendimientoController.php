@@ -63,6 +63,8 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',','',$request->input('remuneracion_emprendedor'))) ? str_replace(',','',$request->input('remuneracion_emprendedor')) : 0;
         $emprendimiento->save();
 
+        $request->session()->put('tiene_entidad', '1');
+
         return redirect()->route('home', $emprendimiento)->with([
             'success' => __('Emprendimiento creado correctamente'),
         ]);

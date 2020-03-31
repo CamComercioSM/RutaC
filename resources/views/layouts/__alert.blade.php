@@ -10,6 +10,12 @@
     </rc-alert>
 @endif
 
+@if(session()->has('error'))
+    <rc-alert variant="danger" dismiss="0">
+        <p>{{ session('error') }}</p>
+    </rc-alert>
+@endif
+
 @if ($errors->any())
     <rc-alert variant="danger" dismiss="0">
         <p>{{ __('Ha ocurrido un error.') }}</p>

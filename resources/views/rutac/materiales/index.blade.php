@@ -1,4 +1,4 @@
-@extends('administrador.app')
+@extends('rutac.app')
 
 @section('title','RutaC | Materiales de ayuda')
 

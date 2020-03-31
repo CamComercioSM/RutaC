@@ -19,9 +19,9 @@
                     :state="errors[0] ? false : null"
             >
                 <template v-slot:first v-if="placeholder">
-                    <b-form-select-option :value="null" disabled>{{ placeholder }}</b-form-select-option>
+                    <b-form-select-option :value="null" disabled> {{ placeholder }} </b-form-select-option>
                 </template>
-                <option v-for="city in cities" v-bind:value="city.id_municipio" >{{ city.municipio }}</option>
+                <option v-for="city in cities" v-bind:value="city.municipio" >{{ city.municipio }}</option>
             </b-form-select>
             <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
         </b-form-group>
@@ -80,12 +80,14 @@
             },
             clear: function(){
                 this.cities = [];
+                this.selected = '';
             }
         },
         created() {
             if (this.initialValue) {
                 this.value = this.initialValue;
             }
+            console.log(this.initialValue);
             let vm = this;
             EventBus.$on('cities', function (data) {
                 vm.cities = data;

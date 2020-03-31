@@ -74,12 +74,13 @@ class FormRepository
             'Indígenas',
             'Afrocolombianos',
             'Raizales',
-            'Otro'
+            'Otro',
+            'Ninguno'
         ]);
     }
 
     public static function idiomas(){
-        return [
+        return collect([
             'Alemán',
             'Arabe',
             'Catalan',
@@ -96,15 +97,17 @@ class FormRepository
             'Portugués',
             'Ruso',
             'Turco'
-        ];
+        ]);
     }
 
     public static function departamentos(){
         return Departamento::select('id_departamento','departamento')->get();
     }
 
-    public function municipios($departamento){
-        return Municipio::where('departamento_id',$departamento)->select('id_municipio','municipio')->get();
+    public function municipios($departamento_name){
+        $departamento = Departamento::where('departamento', $departamento_name)->first();
+
+        return Municipio::where('departamento_id',$departamento->id_departamento)->select('id_municipio','municipio')->get();
     }
 
     public function tipoEmpresas(){

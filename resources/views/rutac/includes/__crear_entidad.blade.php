@@ -7,7 +7,7 @@
                     <b-button variant="primary" href="{{ route('user.emprendimientos.create') }}">
                         Crear una Empresa
                     </b-button>
-                    <b-button variant="primary" href="{{ action('RutaController@showFormAgregarEmprendimiento') }}">
+                    <b-button variant="primary" href="{{ action('User\EmprendimientoController@create') }}">
                         Crear un Emprendimiento
                     </b-button>
                 </b-jumbotron>
