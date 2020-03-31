@@ -76,7 +76,7 @@
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
         >
-        </rc-select-location>re
+        </rc-select-location>
     </div>
 
     <div class="form-group col-md-6">
