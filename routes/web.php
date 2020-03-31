@@ -181,8 +181,8 @@ Route::group(['middleware' => 'user'],function(){
 	Route::get('/ver-ruta/{ruta}', 'RutaController@verRuta')->middleware('entidad');
 	Route::get('marcar-estacion/{estacion}/{ruta}', 'RutaController@marcarEstacion');
 
-	Route::get('iniciar-ruta/agregar-emprendimiento', 'RutaController@showFormAgregarEmprendimiento')->name('agregar-emprendimiento');
-	Route::post('iniciar-ruta/agregar-emprendimiento', 'RutaController@agregarEmprendimiento');
+	//Route::get('iniciar-ruta/agregar-emprendimiento', 'RutaController@showFormAgregarEmprendimiento')->name('agregar-emprendimiento');
+	//Route::post('iniciar-ruta/agregar-emprendimiento', 'RutaController@agregarEmprendimiento');
 
 	Route::get('iniciar-ruta/agregar-empresa', 'RutaController@showFormAgregarEmpresa');
 	Route::post('iniciar-ruta/agregar-empresa', 'RutaController@agregarEmpresa');
@@ -202,10 +202,13 @@ Route::group(['middleware' => 'user'],function(){
     | Emprendimientos Routes
     |---------------------------------------------------------------------------------------
     */
-    Route::get('emprendimiento/{emprendimiento}', 'EmprendimientoController@index')->middleware('entidad');
+    //Route::get('emprendimiento/{emprendimiento}', 'EmprendimientoController@index');
     Route::post('emprendimiento/{emprendimiento}/editar', 'EmprendimientoController@editarEmprendimiento');
     Route::post('emprendimiento/{emprendimiento}/eliminar', 'EmprendimientoController@eliminarEmprendimiento');
     Route::get('emprendimiento/{emprendimiento}/actualizar-datos/', 'EmprendimientoController@showFormActualizarEmprendimiento');
+
+    Route::get('emprendimiento/agregar-emprendimiento', 'User\EmprendimientoController@create')->name('agregar-emprendimiento');
+    Route::post('emprendimiento/agregar-emprendimiento', 'User\EmprendimientoController@store')->name('guardar-emprendimiento');
 
     /*
     |---------------------------------------------------------------------------------------

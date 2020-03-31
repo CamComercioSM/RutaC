@@ -70,13 +70,15 @@ class UserController extends Controller
 
     public function showFormCompletarPerfil(){
         $usuario = Auth::user()->datoUsuario;
-        $empresas = Auth::user()->empresas->first();
-        $emprendimientos = Auth::user()->emprendimientos->first();
-        $repositoryDepartamentos = $this->repository->departamentos();
-        $repository = $this->repository;
+        //$empresas = Auth::user()->empresas->first();
+        //$emprendimientos = Auth::user()->emprendimientos->first();
+        //$repositoryDepartamentos = $this->repository->departamentos();
+        //$repository = $this->repository;
         $from = "perfil";
 
-        return view('rutac.usuario.completar-perfil',compact('usuario','repositoryDepartamentos','repository','empresas','emprendimientos','from'));
+        //dd($usuario);
+
+        return view('rutac.usuario.completar-perfil',compact('usuario','from'));
     }
 
     public function guardarPerfil(Request $request){
@@ -98,16 +100,16 @@ class UserController extends Controller
         $datoUsuario = DatoUsuario::where('dato_usuarioID',Auth::user()->dato_usuarioID)->first();
         $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->input('nombre_completo');
         $datoUsuario->dato_usuarioDIRECCION = $request->input('direccion');
-        $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $this->obtenerDepartamento($request->input('departamento_residencia'));
+        $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $request->input('departamento_residencia');
         if($request->input('municipio_residencia')){
-            $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $this->obtenerMunicipio($request->input('municipio_residencia'));
+            $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $request->input('municipio_residencia');
         }
         $datoUsuario->dato_usuarioTELEFONO = $request->input('telefono');
         $datoUsuario->dato_usuarioSEXO = $request->input('genero');
         $datoUsuario->dato_usuarioFECHA_NACIMIENTO = $request->input('fecha_nacimiento');
-        $datoUsuario->dato_usuarioDEPARTAMENTO_NACIMIENTO = $this->obtenerDepartamento($request->input('departamento_nacimiento'));
+        $datoUsuario->dato_usuarioDEPARTAMENTO_NACIMIENTO = $request->input('departamento_nacimiento');
         if($request->input('municipio_nacimiento')){
-            $datoUsuario->dato_usuarioMUNICIPIO_NACIMIENTO = $this->obtenerMunicipio($request->input('municipio_nacimiento'));
+            $datoUsuario->dato_usuarioMUNICIPIO_NACIMIENTO = $request->input('municipio_nacimiento');
         }
         $datoUsuario->dato_usuarioNIVEL_ESTUDIO = $request->input('nivel_estudios');
         $datoUsuario->dato_usuarioPROFESION_OCUPACION = $request->input('profesion');
@@ -119,6 +121,10 @@ class UserController extends Controller
             $datoUsuario->dato_usuarioIDIOMAS = $this->obtenerIdiomas($request->input('idiomas'));
         }
         $datoUsuario->save();
+
+        $usuario = User::where('usuarioID',Auth::user()->dato_usuarioID)->first();
+        $usuario->perfilCompleto = 'Si';
+        $usuario->save();
 
         return redirect()->route('home')->with([
             'success' => __('Datos actualizados correctamente'),

@@ -38,19 +38,17 @@
     </div>
 
     <div class="form-group col-md-6">
-        <rc-input
-                rules="date_format:dd/MM/yyyy"
+        <rc-date-picker
                 name="inicio_actividades"
                 id="inicio_actividades"
-                type="text"
+                label="{{ __('Fecha de inicio de actividades') }}"
                 @error('inicio_actividades')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('inicio_actividades') }}"
-                autocomplete="off"
-                placeholder="Digite la fecha de inicio de actividades"
-                label="Fecha de inicio de actividades"
-        ></rc-input>
+                placeholder="{{ __('Digite la fecha de inicio de actividades') }}"
+        >
+        </rc-date-picker>
     </div>
 
     <div class="form-group col-md-6">

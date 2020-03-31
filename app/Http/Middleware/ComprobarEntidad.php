@@ -21,6 +21,10 @@ class ComprobarEntidad
     {
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
 
+        if($usuario->perfilCompleto == 'No'){
+            return redirect('completar-perfil');
+        }
+
         if($usuario->empresas->count() > 0){
             $request->session()->put('tiene_entidad', '1');
             return $next($request);

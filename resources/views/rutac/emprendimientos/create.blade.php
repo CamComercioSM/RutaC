@@ -22,7 +22,7 @@
 
                     <div class="card-body">
                         <rc-form
-                                action="{{ route('user.emprendimientos.store') }}"
+                                action="{{ route('guardar-emprendimiento') }}"
                                 method="post"
                         >
                             @include('rutac.emprendimientos.__form')
