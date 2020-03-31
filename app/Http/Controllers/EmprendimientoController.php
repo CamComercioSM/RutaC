@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEmprendimiento;
 use Auth;
 use App\Models\User;
 use App\Models\Emprendimiento;
@@ -106,8 +107,7 @@ class EmprendimientoController extends Controller
         }
     }
 
-    public function guardarEmprendimiento(Request $request){
-       
+    public function guardarEmprendimiento(StoreEmprendimiento $request){
         $emprendimiento = Emprendimiento::where('emprendimientoID',$request->emprendimientoID)->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
         
         if($emprendimiento){
@@ -152,8 +152,13 @@ class EmprendimientoController extends Controller
                     dd("There was an error. Error: ".dd(config("custom_exceptions.".$e->getCode())));
                 }
             }
-            $request->session()->flash("message_error", "Hubo un error, intente nuevamente");
-            return back();
+            //$request->session()->flash("message_error", "Hubo un error, intente nuevamente");
+            //return back();
+
+            return redirect()->route('agregar-emprendimiento')->with([
+                'success' => __('issuers.messages.created'),
+            ]);
+
         }
 
     }

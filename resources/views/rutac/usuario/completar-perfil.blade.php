@@ -1,28 +1,32 @@
-@extends('rutac.layouts.width')
+@extends('layouts.app')
 
 @section('title','RutaC | Completar perfil')
 
 @section('content')
-<section class="content-header">
-	<h1 class="one">
-		Completa tu perfil
-	</h1>
-</section>
-<section class="content">
-    <div class="row container">
-    	<div class="box col-xs-12 col-md-offset-1">
-    		<div id="datos-usuario" class="show">
-    		    @include('rutac.usuario.forms.datos-usuario')
-    		</div>
-    		<div id="datos-empresas" class="hidden">    
-    		    @include('rutac.usuario.forms.datos-empresas')
-    		</div>
-    		<div id="datos-emprendimientos" class="hidden">
-    		    @include('rutac.usuario.forms.datos-emprendimientos')
-    		</div>
-    	</div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h4>Completa tu perfil</h4>
+                    </div>
+                    <div class="card-body">
+                        <rc-form
+                                action="{{ action('UserController@guardarPerfil') }}"
+                                method="post"
+                        >
+                            @include('rutac.usuario.forms.__datos_usuario')
+                            <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Guardar') }}
+                                </button>
+                            </div>
+                        </rc-form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
 
 @endsection
 @section('style')

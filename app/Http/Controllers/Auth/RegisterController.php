@@ -9,7 +9,8 @@ use App\Models\DatoUsuario;
 use App\Models\Departamento;
 use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
-use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Repositories\FormRepository;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
@@ -61,16 +64,59 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            
-        ]);
+        $rules = [];
+        $rules["nombres"] = 'required|max:255';
+        $rules["apellidos"] = 'required|max:255';
+        $rules["numero_documento"] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
+        $rules["departamento_residencia"] = 'required';
+        $rules["municipio_residencia"] = 'required';
+        $rules["direccion"] = 'required|max:255';
+        $rules["correo_electronico"] = 'email|unique:usuarios,usuarioEMAIL|max:255';
+        $rules["telefono"] = 'required|numeric';
+        $rules["password"] = 'required|min:6';
+        $rules["repetir_password"] = 'same:password';
+        $rules["tipo_documento"] = 'required';
+        $rules["termino_y_condiciones_de_uso"] = 'required|accepted';
+
+        $messages = [];
+        if (config('app.env') == 'production') {
+            $rules["g-recaptcha-response"] = 'required|recaptcha';
+
+            $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+            $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
+        }
+
+        return Validator::make($data, $rules, $messages);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function register(Request $request)
+    {
+        $valid = $this->validator($request->all());
+
+        if ($valid->fails()) {
+            return back()
+            ->withErrors($valid->errors())
+                ->withInput();
+        }
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+            ?: redirect($this->redirectPath());
     }
 
     /**
      * Muestra el formulario de registro de emprendimientos
      *
-     * @param array $data - Array de los datos del registro
-     * @return \App\User - Datos del usuario registrado
+     * @return Factory|View
      */
     public function showRegistrationForm(){
         $repository = $this->repository;
@@ -82,29 +128,19 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
         try{
             $usuario = DB::transaction(function() use($data){
-                $hayCambios = false;
-                $datos_consulta = json_decode($data['datos_consulta'], true);
-                if($datos_consulta){
-                    $hayCambios = $this->verificarCambios($data,$datos_consulta);
-                }
-                
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Datos Usuario y lo guarda
                 |---------------------------------------------------------------------------------------
                 */
-                if (strpos($data['tipo_documento'], '-') !== false) {
-                    $tipo_doc = explode("-", $data['tipo_documento']);
-                    $tipo_documento = $tipo_doc[1];
-                }else{
-                    $tipo_documento = $data['tipo_documento'];
-                }
+                $tipo_documento = $this->normalizarTipoDocumento($data);
+
                 $datoUsuario = new DatoUsuario;
                 $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
                 $datoUsuario->dato_usuarioNOMBRES = $data['nombres'];
@@ -128,42 +164,14 @@ class RegisterController extends Controller
                 $nuevoUsuario->password = bcrypt($data['password']);
                 $nuevoUsuario->dato_usuarioID = $datoUsuarioID;
                 $nuevoUsuario->confirmation_code = Str::random(25);
-                if($hayCambios){
-                    $nuevoUsuario->update_code = Str::random(25);
-                }
+
                 $nuevoUsuario->save();
                 $usuarioID = $nuevoUsuario->usuarioID;
 
-                if($data['radio'] == '1'){
-                    $emprendimiento = new Emprendimiento;
-                    $emprendimiento->USUARIOS_usuarioID = $usuarioID;
-                    $emprendimiento->emprendimientoNOMBRE = $data['nombre_emprendimiento'];
-                    $emprendimiento->emprendimientoDESCRIPCION = $data['descripcion_emprendimiento'];
-                    $emprendimiento->save();
-                }
-
-                if($data['radio'] == '2'){
-                    $empresa = new Empresa;
-                    $empresa->USUARIOS_usuarioID = $usuarioID;
-                    $empresa->empresaNIT = $data['nit'];
-                    $empresa->empresaRAZON_SOCIAL = $data['nombre_empresa'];
-                    $empresa->save();
-                }
-                
                 $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
                 Mail::send(new RutaCMail($nuevoUsuario, 'registro_usuario'));
-                if($hayCambios){
-                    $nuevoUsuario->personaNOMBRES = $data['nombres'];
-                    $nuevoUsuario->personaAPELLIDOS = $data['apellidos'];
-                    $nuevoUsuario->ciudadRESIDENCIA = $this->obtenerMunicipio($data['municipio_residencia']);
-                    $nuevoUsuario->direccionDOMICILIO = $data['direccion'];
-                    $nuevoUsuario->telefonoCELULAR = $data['telefono'];
-                    $nuevoUsuario->personasCorreoPRINCIPAL = $data['correo_electronico'];
-                    Mail::send(new RutaCMail($nuevoUsuario, 'actualizacion_datos'));
-                }
-                
-                return $nuevoUsuario;
 
+                return $nuevoUsuario;
             });
 
             if($usuario){
@@ -172,72 +180,24 @@ class RegisterController extends Controller
 
         }catch(\Exception $e){
             Log::error($e);
-            dd("There was an error creating your account. Error: ".dd(config("custom_exceptions.".$e->getCode())));
         }
+        return null;
     }
 
-    /**
-     * Valida los datos del registro de usuario
-     *
-     * @param  array $data
-     * @return Json $data
-     */
-    public function validate_register(Request $request)
-    {        
-        //$regex = '/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/';
-        $rules = [];
-        $messages = [];
-
-        if($request->radio == '1'){
-            $rules["nombre_emprendimiento"] = 'required|max:255';
-            $rules["descripcion_emprendimiento"] = 'required|max:255';
-        }
-        if($request->radio == '2'){
-            $rules["nombre_empresa"] = 'required|max:255';
-            $rules["nit"] = 'required|unique:empresas,empresaNIT|max:255';
-        }
-        $rules["nombres"] = 'required|max:255';
-        $rules["apellidos"] = 'required|max:255';
-        $rules["numero_documento"] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
-        $rules["departamento_residencia"] = 'required';
-        $rules["municipio_residencia"] = 'required';
-        $rules["direccion"] = 'required|max:255';
-        $rules["correo_electronico"] = 'email|unique:usuarios,usuarioEMAIL|max:255';
-        $rules["telefono"] = 'required|numeric';
-        $rules["password"] = 'required|min:6';
-        $rules["repetir_password"] = 'same:password';
-        $rules["tipo_documento"] = 'required';
-        $rules["g-recaptcha-response"] = 'required|recaptcha';
-
-        $messages["g-recaptcha-response.required"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
-        $messages["g-recaptcha-response.recaptcha"] = 'No ha seleccionado el Captcha de seguridad o es invalido';
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-        
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
+    public function normalizarTipoDocumento($data)
+    {
+        if (strpos($data['tipo_documento'], '-') !== false) {
+            $tipo_doc = explode("-", $data['tipo_documento']);
+            $tipo_documento = $tipo_doc[1];
         }else{
-            if($data['status'] != 'Errors'){
-                if($request->termino_y_condiciones_de_uso == 0){
-                    $data['message'] = "Debe aceptar los Términos y condiciones para continuar";
-                    $data['status'] = 'Agreement Error';
-                }
-                else{
-                    $data['status'] = 'Ok';
-                }
-            }
+            $tipo_documento = $data['tipo_documento'];
         }
-        
-        return json_encode($data);
+
+        return $tipo_documento;
     }
 
-    public function obtenerDepartamento($departamento){
+    public function obtenerDepartamento($departamento)
+    {
         $departamento = Departamento::where('id_departamento',$departamento)->select('departamento')->first();
         if($departamento){
             return $departamento->departamento;    
@@ -245,7 +205,9 @@ class RegisterController extends Controller
         return "";
         
     }
-    public function obtenerMunicipio($municipio){
+
+    public function obtenerMunicipio($municipio)
+    {
         $municipio = Municipio::where('id_municipio',$municipio)->select('municipio')->first();
         if($municipio){
             return $municipio->municipio;    
@@ -253,7 +215,8 @@ class RegisterController extends Controller
         return "";
     }
     
-    public function verificarCambios($data,$datos_consulta){
+    public function verificarCambios($data,$datos_consulta)
+    {
         Log::info($data['nombres']."==".$datos_consulta['personaNOMBRES']);
         if($data['nombres'] != $datos_consulta['personaNOMBRES']){
             return true;

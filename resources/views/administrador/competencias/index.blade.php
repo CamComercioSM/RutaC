@@ -1,53 +1,56 @@
 @extends('administrador.index')
 @section('title','RutaC | Competencias')
 @section('content')
-<section class="content-header">
-    <div class="row">
-        <div class="col-sm-8">
-            <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-competencia"><i class="fa fa-file-o"></i> Agregar competencia </a>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5></h5>
+                        <div>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-competencia"><i class="fa fa-file-o"></i> Agregar competencia </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('Competencia #') }}</th>
+                                    <th>{{ __('Nombre') }}</th>
+                                    <th>{{ __('Estado') }}</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($competencias as $key=> $competencia)
+                                    <tr>
+                                        <td class="text-center">{{$key+1}}</td>
+                                        <td class="text-left">{{$competencia->competenciaNOMBRE}}</td>
+                                        <td class="text-center">{{$competencia->competenciaESTADO}}</td>
+                                        <th class="text-center">
+                                            @if($competencia->competenciaNOMBRE != 'Ninguno')
+                                                <a class="btn btn-warning btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-competencia" onclick="editarCompetenciaS('{{$competencia->competenciaID}}','{{$competencia->competenciaNOMBRE}}','{{$competencia->competenciaNOMBRE}}');return false;">Editar</a>
+                                                @if($competencia->competenciaESTADO == 'Activo')
+                                                    <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-competencia" onclick="eliminarCompetenciaS('{{$competencia->competenciaID}}');return false;">Eliminar</a>
+                                                @endif
+                                                @if($competencia->competenciaESTADO == 'Inactivo')
+                                                    <a class="btn btn-success btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-activar-competencia" onclick="activarCompetenciaS('{{$competencia->competenciaID}}');return false;">Activar</a>
+                                                @endif
+                                            @endif
+                                        </th>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<table class="table table-bordered table-hover tabla-sistema">
-						<thead>
-							<tr>
-                                <th class="text-center" style="width: 120px">Competencia #</th>
-								<th class="text-center">Competencias</th>
-								<th class="text-center">Estado</th>
-                                <th class="text-center" style="width: 150px"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($competencias as $key=> $competencia)
-							<tr>
-								<td class="text-center">{{$key+1}}</td>
-								<td class="text-left">{{$competencia->competenciaNOMBRE}}</td>
-								<td class="text-center">{{$competencia->competenciaESTADO}}</td>
-                                <th class="text-center">
-                                    @if($competencia->competenciaNOMBRE != 'Ninguno')
-                                    <a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-competencia" onclick="editarCompetenciaS('{{$competencia->competenciaID}}','{{$competencia->competenciaNOMBRE}}','{{$competencia->competenciaNOMBRE}}');return false;">Editar</a>
-                                    @if($competencia->competenciaESTADO == 'Activo')
-                                    <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-competencia" onclick="eliminarCompetenciaS('{{$competencia->competenciaID}}');return false;">Eliminar</a>
-                                    @endif
-                                    @if($competencia->competenciaESTADO == 'Inactivo')
-                                    <a class="btn btn-success btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-activar-competencia" onclick="activarCompetenciaS('{{$competencia->competenciaID}}');return false;">Activar</a>
-                                    @endif
-                                    @endif
-                                </th>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 @endsection
 @section('style')
 <style>

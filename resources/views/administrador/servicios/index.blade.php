@@ -1,45 +1,48 @@
 @extends('administrador.index')
 @section('title','RutaC | Servicios')
 @section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-8">
-			<a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-servicio"><i class="fa fa-file-o"></i> Agregar servicio </a>
-		</div>
-	</div>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<table class="table table-bordered table-hover tabla-sistema">
-						<thead>
-							<tr>
-								<th class="text-center">Servicio #</th>
-								<th class="text-center">Nombre servicio</th>
-								<th class="text-center" style="width: 220px"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($servicios as $key=> $servicio)
-							<tr>
-								<td class="text-center">{{$key+1}}</td>
-								<td class="text-left">{{$servicio->servicio_ccsmNOMBRE}}</td>
-								<td class="text-center">
-									<a class="btn bg-purple btn-xs" href="{{$servicio->servicio_ccsmURL}}" target="_blank">Ver Servicio</a>
-									<a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-servicio" onclick="editarServicioS('{{$servicio->servicio_ccsmID}}','{{$servicio->servicio_ccsmNOMBRE}}','{{$servicio->servicio_ccsmURL}}');return false;">Editar</a>
-			                        <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-servicio" onclick="eliminarServicioS('{{$servicio->servicio_ccsmID}}');return false;">Eliminar</a>
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5></h5>
+                        <div>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-servicio"><i class="fa fa-file-o"></i> Agregar servicio </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('Servicio #') }}</th>
+                                    <th>{{ __('Nombre servicio') }}</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($servicios as $key=> $servicio)
+                                    <tr>
+                                        <td class="text-center">{{$key+1}}</td>
+                                        <td class="text-left">{{$servicio->servicio_ccsmNOMBRE}}</td>
+                                        <td class="text-center">
+                                            <a class="btn bg-primary btn-sm" href="{{$servicio->servicio_ccsmURL}}" target="_blank">Ver Servicio</a>
+                                            <a class="btn btn-warning btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-servicio" onclick="editarServicioS('{{$servicio->servicio_ccsmID}}','{{$servicio->servicio_ccsmNOMBRE}}','{{$servicio->servicio_ccsmURL}}');return false;">Editar</a>
+                                            <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-servicio" onclick="eliminarServicioS('{{$servicio->servicio_ccsmID}}');return false;">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer')
 

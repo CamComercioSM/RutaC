@@ -1,55 +1,68 @@
 @extends('administrador.index')
 @section('title','RutaC | Mi perfil')
 @section('content')
-<section class="content-header">
+    <div class="container">
+        <div class="row justify-content-left">
+            <div class="col-md-6">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5>Actualizar contraseña</h5>
+                    </div>
+                    <div class="card-body">
+                        <rc-form
+                                action="{{ action('Admin\UsuarioController@actualizarPassword') }}"
+                                method="post"
+                        >
+                        @csrf
 
-</section>
-<section class="content">
-    <div class="row">
-        <div class="col-md-6">
-        	<div class="box box-primary">
-                <div class="box-header with-border">
-                	Actualizar contraseña
-                </div>
-                <div class="box-body">
-                	<form id="actualizarPassword" action="{{ action('Admin\UsuarioController@actualizarPassword') }}" role="form" method="post">
-	                	{!! csrf_field() !!}
-	                    <div class="row">
-	                        <div class="col-xs-12">
-	                            <label for="anterior_clave">Contraseña anterior</label>
-	                            <div class="form-group has-feedback">
-	                                <input type="password" id="anterior_clave" name="anterior_clave" class="form-control" placeholder="Contraseña anterior" value="">
-	                                <span class="form-control-feedback glyphicon" id="alert_error_anterior_clave"></span>
-	                                <span class="text-danger" id="error_anterior_clave"></span>
-	                            </div>
-	                        </div>
-	                        <div class="col-xs-12">
-	                            <label for="nueva_clave">Nueva contraseña</label>
-	                            <div class="form-group has-feedback">
-	                                <input type="password" id="nueva_clave" name="nueva_clave" class="form-control" placeholder="Nueva contraseña" value="">
-	                                <span class="form-control-feedback glyphicon" id="alert_error_nueva_clave"></span>
-	                                <span class="text-danger" id="error_nueva_clave"></span>
-	                            </div>
-	                        </div>
-	                        <div class="col-xs-12">
-	                            <label for="repetir_clave">Confirmar contraseña</label>
-	                            <div class="form-group has-feedback">
-	                                <input type="password" id="repetir_clave" name="repetir_clave" class="form-control" placeholder="Confirmar contraseña" value="">
-	                                <span class="form-control-feedback glyphicon" id="alert_error_repetir_clave"></span>
-	                                <span class="text-danger" id="error_repetir_clave"></span>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </form>
-                </div>
-                <div class="box-footer text-right">
-                	<span id="message-error-update" style="margin-top: 5px;"></span>
-                	<button type="button" id="actualizar-password" class="btn btn-primary ">Actualizar contraseña</button>
+                            <rc-input
+                                    rules="required|min:6"
+                                    name="anterior_clave"
+                                    id="anterior_clave"
+                                    type="password"
+                                    @error('anterior_clave')
+                                    error="{{ $message }}"
+                                    @enderror
+                                    autocomplete="off"
+                                    placeholder="Contraseña anterior"
+                            ></rc-input>
+
+                            <rc-input
+                                    rules="required|min:6"
+                                    name="nueva_clave"
+                                    id="nueva_clave"
+                                    type="password"
+                                    @error('nueva_clave')
+                                    error="{{ $message }}"
+                                    @enderror
+                                    autocomplete="off"
+                                    placeholder="Nueva contraseña"
+                            ></rc-input>
+
+                            <rc-input
+                                    rules="required|min:6|confirmed:nueva_clave"
+                                    name="repetir_clave"
+                                    id="repetir_clave"
+                                    type="password"
+                                    @error('repetir_clave')
+                                    error="{{ $message }}"
+                                    @enderror
+                                    autocomplete="off"
+                                    placeholder="Confirmar contraseña"
+                            ></rc-input>
+
+                            <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Cambiar contraseña') }}
+                                </button>
+                            </div>
+
+                        </rc-form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
 @endsection
 @section('footer')
 <script type="text/javascript">

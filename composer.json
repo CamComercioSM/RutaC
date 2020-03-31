@@ -15,7 +15,8 @@
         "myclabs/php-enum": "^1.7.4",
         "phpoffice/phpspreadsheet": "^1.10",
         "spatie/laravel-translatable": "^4.2",
-        "symfony/options-resolver": "^5.0"
+        "symfony/options-resolver": "^5.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

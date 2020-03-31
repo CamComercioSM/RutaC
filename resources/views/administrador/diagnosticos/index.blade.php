@@ -1,52 +1,54 @@
 @extends('administrador.index')
 @section('title','RutaC | Diagnósticos')
 @section('content')
-<section class="content-header">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('Tipo de Diagnóstico') }}</th>
+                                    <th>{{ __('Estado') }}</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($tipoDiagnosticos as $key=> $tipo)
+                                    <tr>
+                                        <td class="text-left">
+                                            {{$tipo->tipo_diagnosticoNOMBRE}}
+                                            <hr>
+                                            @foreach($tipo->seccionesDiagnosticos as $key=> $seccion)
+                                                <a class="btn @if($seccion->seccion_preguntaESTADO == 'Activo') btn-primary @else btn-info @endif btn-xs" href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $tipo->tipo_diagnosticoID,'seccion'=> $seccion->seccion_preguntaID])}}" style="margin: 5px;" @if($seccion->seccion_preguntaESTADO == 'Inactivo') data-toggle="tooltip" title="Sección inactiva" @endif>
+                                                    {{$seccion->seccion_preguntaNOMBRE}}
+                                                </a>
+                                            @endforeach
+                                        </td>
+                                        <td class="text-left">{{$tipo->tipo_diagnosticoESTADO}}</td>
+                                        <td class="text-center">
+                                            <a class="btn btn-warning btn-sm" href="{{action('Admin\DiagnosticoController@showFormEditar', ['diagnostico'=> $tipo->tipo_diagnosticoID ])}}" style="width:100px;">
+                                                Editar
+                                            </a>
+                                            <div class="btn-group btn-group-sm">
+                                                <b-button v-b-modal.modal-agregar-seccion variant="primary">Agregar seccion</b-button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<table class="table table-bordered table-hover">
-						<thead>
-							<tr>
-								<th class="text-center" style="width: 600px">Tipo de Diagnóstico</th>
-								<th class="text-center">Estado</th>
-                                <th class="text-center"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($tipoDiagnosticos as $key=> $tipo)
-							<tr>
-								<td class="text-left">
-									{{$tipo->tipo_diagnosticoNOMBRE}}
-									<hr>
-									@foreach($tipo->seccionesDiagnosticos as $key=> $seccion)
-									<a class="btn @if($seccion->seccion_preguntaESTADO == 'Activo') btn-primary @else btn-info @endif btn-xs" href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $tipo->tipo_diagnosticoID,'seccion'=> $seccion->seccion_preguntaID])}}" style="margin: 5px;" @if($seccion->seccion_preguntaESTADO == 'Inactivo') data-toggle="tooltip" title="Sección inactiva" @endif>
-			                            {{$seccion->seccion_preguntaNOMBRE}} 
-			                        </a>
-									@endforeach
-								</td>
-								<td class="text-left">{{$tipo->tipo_diagnosticoESTADO}}</td>
-								<td class="text-center">
-									<a class="btn btn-warning btn-sm" href="{{action('Admin\DiagnosticoController@showFormEditar', ['diagnostico'=> $tipo->tipo_diagnosticoID ])}}" style="width:100px;">
-			                            Editar
-			                        </a>
-			                        <a class="btn btn-primary btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-seccion" onclick="agregarSeccionS('{{$tipo->tipo_diagnosticoID}}');return false;">
-			                        	Agregar Sección
-			                        </a>
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    @include('administrador.diagnosticos.modals.__agregar_seccion')
+
 @endsection
 @section('style')
 <style>

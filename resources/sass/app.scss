@@ -1,0 +1,29 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,600");
+
+@import "variables";
+@import '~bootstrap/scss/bootstrap';
+//@import "~vue-select/src/scss/vue-select";
+@import "custom";
+@import "utilities";
+@import "bootstrap-vue";
+@import "balloon-css";
+
+// Vue Cloak
+[v-cloak] {
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.custom-file-input:lang(es) ~ .custom-file-label::after {
+    content: 'Seleccionar';
+}
+
+.main-content{
+    background: #fff;
+    padding: 15px;
+}

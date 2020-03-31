@@ -2,17 +2,30 @@
 
 @section('title','RutaC | Agregar empresa')
 
-@section('content')
-<section class="content-header">
-	<h1>
-		Agregar empresa
-	</h1>
-</section>
-<section class="content">
-	<div class="box">
-        @include('rutac.usuario.forms.datos-empresas')
+@section('app-content')
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <h1>Agregar empresa</h1>
+            </div>
+        </div>
     </div>
-</section>
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <rc-form
+                        action="{{ action('EmpresaController@guardarEmpresa') }}"
+                        method="post"
+                >
+                    @include('rutac.empresas.forms.__agregar_empresa')
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary" type="submit">
+                            {{ __('Crear empresa') }}
+                        </button>
+                    </div>
+                </rc-form>
+        </div>
+    </div>
 
 @endsection
 @section('style')

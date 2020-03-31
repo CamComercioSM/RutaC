@@ -1,49 +1,51 @@
 @extends('administrador.index')
 @section('title','RutaC | Documentos')
 @section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-8">
-			<a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-taller"><i class="fa fa-file-o"></i> Agregar taller </a>
-		</div>
-	</div>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<table class="table table-bordered table-hover tabla-sistema">
-						<thead>
-							<tr>
-								<th class="text-center">Taller #</th>
-								<th class="text-center">Nombre taller</th>
-                                <th class="text-center">URL inscripción</th>
-								<th class="text-center" style="width: 150px"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($talleres as $key=> $taller)
-							<tr>
-								<td class="text-center">{{$key+1}}</td>
-								<td class="text-left">{{$taller->tallerNOMBRE}}</td>
-								<td class="text-left"><a href="{{$taller->tallerURL}}" target="_blank">{{$taller->tallerNOMBRE}}</a></td>
-								<td class="text-center">
-									<a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-taller" onclick="editarTallerS('{{$taller->tallerID}}','{{$taller->tallerNOMBRE}}','{{$taller->tallerURL}}');return false;">Editar</a>
-			                        <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-taller" onclick="eliminarTallerS('{{$taller->tallerID}}');return false;">Eliminar</a>
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5></h5>
+                        <div>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-taller"><i class="fa fa-file-o"></i> Agregar taller </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('Taller #') }}</th>
+                                    <th>{{ __('Nombre taller') }}</th>
+                                    <th>{{ __('URL inscripción') }}</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($talleres as $key=> $taller)
+                                    <tr>
+                                        <td class="text-center">{{$key+1}}</td>
+                                        <td class="text-left">{{$taller->tallerNOMBRE}}</td>
+                                        <td class="text-left"><a href="{{$taller->tallerURL}}" target="_blank">{{$taller->tallerNOMBRE}}</a></td>
+                                        <td class="text-center">
+                                            <a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-taller" onclick="editarTallerS('{{$taller->tallerID}}','{{$taller->tallerNOMBRE}}','{{$taller->tallerURL}}');return false;">Editar</a>
+                                            <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-taller" onclick="eliminarTallerS('{{$taller->tallerID}}');return false;">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer')
-
 <div class="modal fade" id="modal-agregar-taller">
     <div class="modal-dialog">
         <form id="agregarTaller" action="" role="form" method="post">

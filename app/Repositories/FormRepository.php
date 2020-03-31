@@ -22,25 +22,25 @@ class FormRepository
     }
     
     public function estado(){
-        return [
+        return collect([
             'Activo'=>'Activo',
             'Inactivo'=>'Inactivo'
-        ];
+        ]);
     }
 
-    public static function nivelEstudios(){
-        return [
+    public function nivelEstudios(){
+        return collect([
             'Básica Primaria',
             'Básica Secundaria',
             'Técnica',
             'Tecnólogo',
             'Pre grado',
             'Pos grado'
-        ];
+        ]);
     }
 
-    public static function cargo(){
-        return [
+    public function cargo(){
+        return collect([
             'Gerente',
             'Administrador',
             'Coordinador',
@@ -50,11 +50,11 @@ class FormRepository
             'Representante legal',
             'Auxiliar',
             'Varios'
-        ];
+        ]);
     }
 
-    public static function remuneracion(){
-        return [
+    public function remuneracion(){
+        return collect([
             'Menos de $700.000',
             'Más de $700.000',
             'Más de $1.000.000',
@@ -65,21 +65,22 @@ class FormRepository
             'Más de $10.000.000',
             'Más de $15.000.000',
             'Prefiero no decirlo'
-        ];
+        ]);
     }
 
-    public static function grupoEtnico(){
-        return [
+    public function grupoEtnico(){
+        return collect([
             'Rrom (Gitanos)',
             'Indígenas',
             'Afrocolombianos',
             'Raizales',
-            'Otro'
-        ];
+            'Otro',
+            'Ninguno'
+        ]);
     }
 
     public static function idiomas(){
-        return [
+        return collect([
             'Alemán',
             'Arabe',
             'Catalan',
@@ -96,19 +97,21 @@ class FormRepository
             'Portugués',
             'Ruso',
             'Turco'
-        ];
+        ]);
     }
 
     public static function departamentos(){
         return Departamento::select('id_departamento','departamento')->get();
     }
 
-    public function municipios($departamento){
-        return Municipio::where('departamento_id',$departamento)->select('id_municipio','municipio')->get();
+    public function municipios($departamento_name){
+        $departamento = Departamento::where('departamento', $departamento_name)->first();
+
+        return Municipio::where('departamento_id',$departamento->id_departamento)->select('id_municipio','municipio')->get();
     }
 
-    public static function tipoEmpresas(){
-        return [
+    public function tipoEmpresas(){
+        return collect([
             'Persona natural comerciante',
             'Empresa unipersonal',
             'Sociedades por Acciones Simplificadas (S.A.S)',
@@ -119,7 +122,7 @@ class FormRepository
             'Sociedad en Comandita por Acciones (S.C.A.)',
             'Empresa Asociativa de Trabajo (E.A.T.)',
             'Sociedades Agrarias de Transformación (S.A.T)'
-        ];
+        ]);
     }
 
     public function redesSociales(){
@@ -139,16 +142,16 @@ class FormRepository
         ];
     }
 
-    public static function activosTotales(){
-         return [
+    public function activosTotales(){
+         return collect([
             'Inferior a 500 SMMLV',
             'Entre 501 y 5.000 SMMLV',
             'Entre 5.001 y 30.000 SMMLV'
-        ];
+        ]);
     }
 
     public static function profesion(){
-        return [
+        return collect([
             '2111'=>'Físicos y Astrónomos',
             '2112'=>'Meteorólogos',
             '2114'=>'Geólogos  y Geofísicos',
@@ -474,7 +477,7 @@ class FormRepository
             '9333'=>' Bracero, coteros , estibadores de embarcaciones aéreas, marítimas y/o fluviales',
             '9611'=>'Recolectores de basura y material reciclable',
             '9613'=>'Barrenderos y afines'
-        ];
+        ]);
 
     }
 

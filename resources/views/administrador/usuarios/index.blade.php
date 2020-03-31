@@ -1,84 +1,87 @@
 @extends('administrador.index')
 @section('title','RutaC | Rutas')
 @section('content')
-<section class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#usuarios-rutac" data-toggle="tab">Usuarios RutaC</a></li>
-                    <li><a href="#usuarios-admin" data-toggle="tab">Usuarios Administradores</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="active tab-pane" id="usuarios-rutac">
-                        <div class="text-right form-group">
-                            <a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarUsuarios') }}"><i class="fa fa-file-excel-o"></i> Exportar Usuarios</a>
-                        </div>
-                        <table class="table table-bordered table-hover tabla-sistema">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">Documento</th>
-                                    <th class="text-center">Nombre Completo</th>
-                                    <th class="text-center">Correo</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($usuarios as $key=> $usuario)
-                                <tr>
-                                    <td class="text-center">{{$key+1}}</td>
-                                    <td class="text-left">{{$usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$usuario->datoUsuario->dato_usuarioIDENTIFICACION}}</td>
-                                    <td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
-                                    <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary btn-xs" href="{{action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ])}}" style="width:50px;">Ver</a>
-                                        <button type="button" data-toggle="modal" data-target="#modal-reset-password" class="btn btn-primary btn-xs">Restablecer Clave</button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="usuarios-admin">
-                        <div class="text-right form-group">
-                            <a class="btn btn-sm btn-primary" href="{{ action('Admin\UsuarioController@crearUsuario') }}">Crear usuario</a>
-                        </div>
-                        <table class="table table-bordered table-hover tabla-sistema">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">Nombre Administrador</th>
-                                    <th class="text-center">Correo</th>
-                                    <th class="text-center" ></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($administradores as $key=> $usuario)
-                                <tr>
-                                    <td class="text-center">{{$key+1}}</td>
-                                    <td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
-                                    <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
-                                    <td class="text-center">
-                                        @if($usuario->usuarioID != Auth::user()->usuarioID)
-                                        <a class="btn btn-warning btn-xs" href="">
-                                            Editar
-                                        </a>
-                                        <a class="btn btn-danger btn-xs" onclick="eliminarUsuario('{{$usuario->usuarioID}}');return false;" href="javascript:void(0)">
-                                            Eliminar
-                                        </a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <div>
+                    <b-card no-body>
+                        <b-tabs card>
+                            <b-tab title="Usuarios Ruta C" active>
+                                <b-card-text>
+                                    <div class="text-right form-group">
+                                        <a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarUsuarios') }}"><i class="fa fa-file-excel-o"></i> Exportar Usuarios</a>
+                                    </div>
+                                    <div class="table-responsive-lg">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>{{ __('#') }}</th>
+                                                <th>{{ __('Documento') }}</th>
+                                                <th>{{ __('Nombre Completo') }}</th>
+                                                <th>{{ __('Correo') }}</th>
+                                                <th class="text-right"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($usuarios as $key=> $usuario)
+                                                <tr>
+                                                    <td class="text-center">{{$key+1}}</td>
+                                                    <td class="text-left">{{$usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$usuario->datoUsuario->dato_usuarioIDENTIFICACION}}</td>
+                                                    <td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
+                                                    <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
+                                                    <td class="text-center">
+                                                        <a class="btn btn-primary btn-sm" href="{{action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ])}}" style="width:50px;">Ver</a>
+                                                        <button type="button" data-toggle="modal" data-target="#modal-reset-password" class="btn btn-primary btn-sm">Restablecer Clave</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </b-card-text>
+                            </b-tab>
+                            <b-tab title="Administradores">
+                                <b-card-text>
+                                    <div class="table-responsive-lg">
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>{{ __('#') }}</th>
+                                                <th>{{ __('Nombre Administrador') }}</th>
+                                                <th>{{ __('Correo') }}</th>
+                                                <th class="text-right"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($administradores as $key=> $usuario)
+                                                <tr>
+                                                    <td class="text-center">{{$key+1}}</td>
+                                                    <td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
+                                                    <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
+                                                    <td class="text-center">
+                                                        @if($usuario->usuarioID != Auth::user()->usuarioID)
+                                                            <a class="btn btn-warning btn-sm" href="">
+                                                                Editar
+                                                            </a>
+                                                            <a class="btn btn-danger btn-sm" onclick="eliminarUsuario('{{$usuario->usuarioID}}');return false;" href="javascript:void(0)">
+                                                                Eliminar
+                                                            </a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </b-card-text>
+                            </b-tab>
+                        </b-tabs>
+                    </b-card>
                 </div>
             </div>
         </div>
     </div>
-</section>
 @endsection
 @section('footer')
 

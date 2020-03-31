@@ -94,7 +94,7 @@ class RutaController extends Controller
     /**
      * Muestra la vista de "iniciar ruta"
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function iniciarRuta()
     {
@@ -109,7 +109,33 @@ class RutaController extends Controller
                     }])->get();
         $diagnosticoEmprendimientoEstado = TipoDiagnostico::where('tipo_diagnosticoID','1')->select('tipo_diagnosticoESTADO')->first();
 
-        return view('rutac.rutas.iniciar-ruta',compact('emprendimientos','empresas','diagnosticoEmpresaEstado','diagnosticoEmprendimientoEstado'));
+        $data = [];
+        $n = 0;
+
+        foreach ($empresas as $key => $empresa){
+            $data[$n]['id'] = $empresa->empresaID;
+            $data[$n]['nombre'] = $empresa->empresaRAZON_SOCIAL;
+            $data[$n]['tipo'] = "Empresa";
+            $n++;
+        }
+
+        foreach ($emprendimientos as $key => $emprendimiento){
+            $data[$n]['id'] = $emprendimiento->emprendimientoID;
+            $data[$n]['nombre'] = $emprendimiento->emprendimientoNOMBRE;
+            $data[$n]['tipo'] = "Emprendimiento";
+            $n++;
+        }
+
+        return view(
+            'rutac.rutas.rutas',
+            compact(
+                'emprendimientos',
+                'empresas',
+                'diagnosticoEmpresaEstado',
+                'diagnosticoEmprendimientoEstado',
+                'data'
+            )
+        );
     }
 
     public function verRuta($ruta, Request $request){
@@ -212,16 +238,12 @@ class RutaController extends Controller
     /**
      * Muestra la vista de "agregar emprendimiento" (formulario)
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showFormAgregarEmprendimiento(Request $request)
     {
-        if(Auth::user()->confirmed){
-            $from = "crear";
-            return view('rutac.rutas.agregar-emprendimiento',compact('from'));
-        }
-        $request->session()->flash("message_error", "Hubo un error, tu cuenta aún no ha sido verificada");
-        return redirect()->action('RutaController@iniciarRuta');
+        $from = "crear";
+        return view('rutac.rutas.agregar-emprendimiento',compact('from'));
     }
 
     /**
@@ -266,19 +288,15 @@ class RutaController extends Controller
     /**
      * Agrega la empresa
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showFormAgregarEmpresa(Request $request)
     {
-        if(Auth::user()->confirmed){
-            $usuario = Auth::user()->datoUsuario;
-            $repository = $this->repository;
-            $repositoryDepartamentos = $this->repository->departamentos();
-            $from = "crear";
-            return view('rutac.rutas.agregar-empresa',compact('from','repository','repositoryDepartamentos','usuario'));
-        }
-        $request->session()->flash("message_error", "Hubo un error, tu cuenta aún no ha sido verificada");
-        return redirect()->action('RutaController@iniciarRuta');
+        $usuario = Auth::user()->datoUsuario;
+        $repository = $this->repository;
+        $repositoryDepartamentos = $this->repository->departamentos();
+        $from = "crear";
+        return view('rutac.rutas.agregar-empresa',compact('from','repository','repositoryDepartamentos','usuario'));
     }
 
     /**

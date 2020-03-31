@@ -1,46 +1,49 @@
 @extends('administrador.index')
 @section('title','RutaC | Videos')
 @section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-8">
-			<a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-video"><i class="fa fa-video-camera"></i> Agregar vídeo </a>
-		</div>
-	</div>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<table class="table table-bordered table-hover tabla-sistema">
-						<thead>
-							<tr>
-								<th class="text-center">Vídeo #</th>
-								<th class="text-center">Título Vídeo</th>
-                                <th class="text-center">URL Vídeo</th>
-								<th class="text-center" style="width: 150px"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($videos as $key=> $video)
-							<tr>
-								<td class="text-center">{{$key+1}}</td>
-								<td class="text-left">{{$video->material_ayudaNOMBRE}}</td>
-								<td class="text-left"><a href="{{$video->material_ayudaURL}}" target="_blank">{{$video->material_ayudaURL}}</a></td>
-								<td class="text-center">
-									<a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-video" onclick="editarVideoS('{{$video->material_ayudaID}}','{{$video->material_ayudaNOMBRE}}','{{$video->material_ayudaURL}}');return false;">Editar</a>
-			                        <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-video" onclick="eliminarVideoS('{{$video->material_ayudaID}}');return false;">Eliminar</a>
-								</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5></h5>
+                        <div>
+                            <div class="btn-group btn-group-sm">
+                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-video"><i class="fa fa-video-camera"></i> Agregar vídeo </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-lg">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>{{ __('Vídeo #	') }}</th>
+                                    <th>{{ __('Título Vídeo') }}</th>
+                                    <th>{{ __('URL Vídeo') }}</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($videos as $key=> $video)
+                                    <tr>
+                                        <td class="text-center">{{$key+1}}</td>
+                                        <td class="text-left">{{$video->material_ayudaNOMBRE}}</td>
+                                        <td class="text-left"><a href="{{$video->material_ayudaURL}}" target="_blank">{{$video->material_ayudaURL}}</a></td>
+                                        <td class="text-center">
+                                            <a class="btn btn-warning btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-video" onclick="editarVideoS('{{$video->material_ayudaID}}','{{$video->material_ayudaNOMBRE}}','{{$video->material_ayudaURL}}');return false;">Editar</a>
+                                            <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-video" onclick="eliminarVideoS('{{$video->material_ayudaID}}');return false;">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer')
 

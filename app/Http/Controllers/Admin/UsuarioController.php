@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use Auth;
 use App\Models\User;
 use App\Models\Municipio;
@@ -49,27 +48,25 @@ class UsuarioController extends Controller
         $rules['repetir_clave'] = 'required|same:nueva_clave';
         
         $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
+
         if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
+
+            return redirect()->route('admin.usuarios.perfil', [$request->idTipoDiagnostico])
+                ->withErrors(__('Ocurrió un error'));
+        } else {
             if (Auth::attempt(['usuarioID' => Auth::user()->usuarioID, 'password' => $request->anterior_clave])) {
                 DB::table('usuarios')
-                        ->where('usuarioID', Auth::user()->usuarioID)
-                        ->update(['password' => bcrypt($request->input('nueva_clave'))]);
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Contraseña guardada correctamente';
+                    ->where('usuarioID', Auth::user()->usuarioID)
+                    ->update(['password' => bcrypt($request->input('nueva_clave'))]);
+
+                return redirect()->route('admin.usuarios.perfil', [$request->idTipoDiagnostico])
+                    ->withSuccess(__('Contraseña cambiada correctamente'));
             }else{
-                $data['status'] = 'Error';
-                $data['mensaje'] = 'Las contraseñas no coinciden';
+
+                return redirect()->route('admin.usuarios.perfil', [$request->idTipoDiagnostico])
+                    ->withErrors(__('Ocurrió un error'));
             }
         }
-        return json_encode($data);
     }
     
     public function crearAdministrador(Request $request){

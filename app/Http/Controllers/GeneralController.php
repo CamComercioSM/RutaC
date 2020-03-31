@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Auth;
 use App\Models\Taller;
 use App\Models\Empresa;
@@ -345,5 +346,25 @@ class GeneralController extends Controller
             }
         }
         return $sumar;        
+    }
+
+    /**
+     * Comprueba el usuario tiene registrado alguna empresa o emprendimiento
+     *
+     * @return boolean
+     */
+    public function comprobarEntidad()
+    {
+        $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
+
+        if($usuario->empresas->count() > 0){
+            return true;
+        }
+
+        if($usuario->emprendimientos->count() > 0){
+            return true;
+        }
+
+        return false;
     }
 }

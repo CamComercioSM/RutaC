@@ -141,6 +141,7 @@ class LoginController extends Controller
         if($user->perfilCompleto == 'No'){
             return redirect('completar-perfil');
         }
+
         return redirect('home');
     }
 

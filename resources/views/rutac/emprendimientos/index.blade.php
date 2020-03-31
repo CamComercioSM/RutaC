@@ -96,12 +96,14 @@
                                                             <tr>
                                                                 <td colspan="2" class="text-center"><b>COMPETENCIAS</b></td>
                                                             </tr>
-                                                            @foreach($diagnostico->competencias as $key=> $competencia)
+                                                            @forelse($diagnostico->competencias as $competencia)
                                                             <tr>
                                                                 <td class="text-center"><b>{{$competencia->resultado_preguntaCOMPETENCIA}}</b></td>
                                                                 <td class="text-center" style="width: 50px">{{number_format($competencia->promedio * 100, 2)}}%</td>
                                                             </tr>
-                                                            @endforeach
+                                                            @empty
+                                                                <tr></tr>
+                                                            @endforelse
                                                         </table>
                                                     </div>
                                                 </div>
