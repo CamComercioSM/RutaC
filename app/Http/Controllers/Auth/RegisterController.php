@@ -147,8 +147,8 @@ class RegisterController extends Controller
                 $datoUsuario->dato_usuarioAPELLIDOS = $data['apellidos'];
                 $datoUsuario->dato_usuarioTIPO_IDENTIFICACION = $tipo_documento;
                 $datoUsuario->dato_usuarioIDENTIFICACION = $data['numero_documento'];
-                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $this->obtenerDepartamento($data['departamento_residencia']);
-                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $this->obtenerMunicipio($data['municipio_residencia']);
+                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $data['departamento_residencia'];
+                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $data['municipio_residencia'];
                 $datoUsuario->dato_usuarioDIRECCION = $data['direccion'];
                 $datoUsuario->dato_usuarioTELEFONO = $data['telefono'];
                 $datoUsuario->save();

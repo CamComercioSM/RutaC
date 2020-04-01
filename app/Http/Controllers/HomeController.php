@@ -27,13 +27,18 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function index()
     {
         $tieneEntidad = $this->gController->comprobarEntidad();
 
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
+
+        if($usuario->perfilCompleto == 'No'){
+            return redirect('completar-perfil');
+        }
+
         $rutasEmpresas = [];
         //return $usuario;
         if($usuario->empresas->count() > 0){

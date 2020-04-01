@@ -37,7 +37,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <rc-date-picker
                 name="inicio_actividades"
                 id="inicio_actividades"
@@ -51,7 +51,7 @@
         </rc-date-picker>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="numeric"
                 name="ingresos_ventas"
@@ -67,7 +67,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="numeric"
                 name="remuneracion_emprendedor"
