@@ -69,24 +69,23 @@
     </div>
 
     <div class="form-group col-md-3">
-        <rc-input
-                rules="date_format:dd/MM/yyyy"
+        <rc-date-picker
+                rules="required"
                 name="fecha_constitucion"
                 id="fecha_constitucion"
-                type="text"
+                label="{{ __('Fecha de constitución') }}"
                 @error('fecha_constitucion')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('fecha_constitucion') }}"
-                autocomplete="off"
-                placeholder="Digite la Fecha de constitución"
-                label="Fecha de constitución"
-        ></rc-input>
+                placeholder="{{ __('Digite la Fecha de constitución') }}"
+        >
+        </rc-date-picker>
     </div>
 
     <div class="form-group col-md-6">
         <rc-input
-                rules=""
+                rules="required"
                 name="representante_legal"
                 id="representante_legal"
                 type="text"
@@ -113,7 +112,7 @@
         <rc-select-location
                 name="departamento_empresa"
                 id="departamento_empresa"
-                rules="numeric"
+                rules="required"
                 @error('departamento_empresa')
                 error="{{ $message }}"
                 @enderror
@@ -129,7 +128,7 @@
         <rc-select-city
                 name="municipio_empresa"
                 id="municipio_empresa"
-                rules="numeric"
+                rules="required"
                 @error('municipio_empresa')
                 error="{{ $message }}"
                 @enderror
@@ -142,7 +141,7 @@
 
     <div class="form-group col-md-12">
         <rc-input
-                rules="min:3|max:200"
+                rules="min:3|max:200|required"
                 name="direccion_empresa"
                 id="direccion_empresa"
                 type="text"
@@ -153,6 +152,38 @@
                 autocomplete="off"
                 placeholder="Digite dirección de la empresa"
                 label="Dirección de la empresa"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-6">
+        <rc-input
+                rules="required|email"
+                name="correo_electronico"
+                id="correo_electronico"
+                type="text"
+                @error('correo_electronico')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('correo_electronico') }}"
+                autocomplete="off"
+                placeholder="Digite correo electrónico"
+                label="Correo electrónico de la empresa"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-6">
+        <rc-input
+                rules=""
+                name="pagina_web"
+                id="pagina_web"
+                type="text"
+                @error('pagina_web')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('pagina_web') }}"
+                autocomplete="off"
+                placeholder="Digite página web"
+                label="Página web de la empresa"
         ></rc-input>
     </div>
 
@@ -192,7 +223,7 @@
         <rc-select
                 name="rangos_activos"
                 id="rangos_activos"
-                rules="numeric"
+                rules=""
                 @error('rangos_activos')
                 error="{{ $message }}"
                 @enderror
@@ -202,38 +233,6 @@
                 :options="{{ $activos->toJson() }}"
         >
         </rc-select>
-    </div>
-
-    <div class="form-group col-md-6">
-        <rc-input
-                rules="email"
-                name="correo_electronico"
-                id="correo_electronico"
-                type="text"
-                @error('correo_electronico')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('correo_electronico') }}"
-                autocomplete="off"
-                placeholder="Digite correo electrónico"
-                label="Correo electrónico de la empresa"
-        ></rc-input>
-    </div>
-
-    <div class="form-group col-md-6">
-        <rc-input
-                rules="url"
-                name="pagina_web"
-                id="pagina_web"
-                type="text"
-                @error('pagina_web')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('pagina_web') }}"
-                autocomplete="off"
-                placeholder="Digite página web"
-                label="Página web de la empresa"
-        ></rc-input>
     </div>
 
     <div class="form-group col-md-3">
@@ -308,7 +307,7 @@
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="max:15"
+                rules="max:15|required_if:nombre_contacto_cial"
                 name="telefono_contacto_cial"
                 id="telefono_contacto_cial"
                 type="text"
@@ -324,7 +323,7 @@
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="email"
+                rules="email|required_if:nombre_contacto_cial"
                 name="correo_contacto_cial"
                 id="correo_contacto_cial"
                 type="text"
@@ -363,7 +362,7 @@
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="max:15"
+                rules="max:15|required_if:nombre_contacto_th"
                 name="telefono_contacto_th"
                 id="telefono_contacto_th"
                 type="text"
@@ -379,7 +378,7 @@
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="email"
+                rules="email|required_if:nombre_contacto_th"
                 name="correo_contacto_th"
                 id="correo_contacto_th"
                 type="text"

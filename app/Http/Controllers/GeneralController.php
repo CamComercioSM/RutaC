@@ -353,15 +353,17 @@ class GeneralController extends Controller
      *
      * @return boolean
      */
-    public function comprobarEntidad()
+    public function comprobarEntidad(Request $request)
     {
         $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
 
         if($usuario->empresas->count() > 0){
+            $request->session()->put('tiene_entidad', '1');
             return true;
         }
 
         if($usuario->emprendimientos->count() > 0){
+            $request->session()->put('tiene_entidad', '1');
             return true;
         }
 
