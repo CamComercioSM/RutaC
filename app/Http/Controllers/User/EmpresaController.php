@@ -70,12 +70,12 @@ class EmpresaController extends Controller
         $empresa->empresaRANGOS_ACTIVOS = $request->rangos_activos;
         $empresa->empresaCORREO_ELECTRONICO = $request->correo_electronico;
         $empresa->empresaSITIO_WEB = $request->pagina_web;
-        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->cuenta_facebook,$request->cuenta_twitter,$request->cuenta_instagram);
-        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->nombre_contacto_cial,$request->telefono_contacto_cial,$request->correo_contacto_cial);
-        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->nombre_contacto_th,$request->telefono_contacto_th,$request->correo_contacto_th);
+        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->cuenta_facebook, $request->cuenta_twitter, $request->cuenta_instagram);
+        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->nombre_contacto_cial, $request->telefono_contacto_cial, $request->correo_contacto_cial);
+        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->nombre_contacto_th, $request->telefono_contacto_th, $request->correo_contacto_th);
         $empresa->save();
 
-        return redirect()->route('home')->with([
+        return redirect()->route('user.empresas.show', $empresa)->with([
             'success' => __('Empresa creada correctamente'),
         ]);
     }
@@ -89,13 +89,14 @@ class EmpresaController extends Controller
     public function show(Empresa $empresa)
     {
         $empresa = $empresa
-        ->with(["diagnosticosAll" => function($query){
+        ->with(["diagnosticosAll" => function ($query) {
             $query->latest();
-        }],'ruta')->where(function ($query) {
+        }], 'ruta')->where(function ($query) {
             $query->where('empresaESTADO', 'Activo')
                 ->orWhere('empresaESTADO', 'En Proceso')
                 ->orWhere('empresaESTADO', 'Finalizado');
-        })->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
+        })->where('empresaID', $empresa->empresaID)
+            ->where('USUARIOS_usuarioID', Auth::user()->usuarioID)->first();
 
         $empresa->facebook = "";
         $empresa->twitter = "";
@@ -103,7 +104,7 @@ class EmpresaController extends Controller
         $redesSociales = explode("-", $empresa->empresaREDES_SOCIALES);
         foreach ($redesSociales as $key => $redSocial) {
             $red = explode(":", $redSocial);
-            switch($red[0]){
+            switch ($red[0]) {
                 case "fb":
                     $empresa->facebook = $red[1];
                     break;
@@ -122,7 +123,7 @@ class EmpresaController extends Controller
         $contactoCial = explode("-", $empresa->empresaCONTACTO_COMERCIAL);
         foreach ($contactoCial as $key => $contacto) {
             $cCial = explode(":", $contacto);
-            switch($cCial[0]){
+            switch ($cCial[0]) {
                 case "nombre":
                     $empresa->nombreContactoCial = $cCial[1];
                     break;
@@ -141,7 +142,7 @@ class EmpresaController extends Controller
         $contactoTH = explode("-", $empresa->empresaCONTACTO_TALENTO_HUMANO);
         foreach ($contactoTH as $key => $contacto) {
             $cTH = explode(":", $contacto);
-            switch($cTH[0]){
+            switch ($cTH[0]) {
                 case "nombre":
                     $empresa->nombreContactoTH = $cTH[1];
                     break;
@@ -160,18 +161,18 @@ class EmpresaController extends Controller
 
         foreach ($empresa->diagnosticosAll as $keyD => $diagnostico) {
             $competencias = DB::table('resultados_seccion')
-                ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
-                ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID',$diagnostico->diagnosticoID)
+                ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID')
+                ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)
                 ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
-                ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
+                ->select('resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
                 ->get();
 
             $empresa->diagnosticosAll[$keyD]['competencias'] = $competencias;
         }
         $from = 'editar';
-        $historial = $this->gController->comprobarHistorial('empresa',$empresa->empresaID);
-        $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID','2')->select('tipo_diagnosticoESTADO')->first();
-        return view('rutac.empresas.show',compact('empresa','usuario','competencias','historial','diagnosticoEmpresaEstado'));
+        $historial = $this->gController->comprobarHistorial('empresa', $empresa->empresaID);
+        $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID', '2')->select('tipo_diagnosticoESTADO')->first();
+        return view('rutac.empresas.show', compact('empresa', 'usuario', 'competencias', 'historial', 'diagnosticoEmpresaEstado'));
     }
 
     /**
@@ -208,60 +209,64 @@ class EmpresaController extends Controller
         //
     }
 
-    public function redesSociales($facebook,$twitter,$instagram){
+    public function redesSociales($facebook, $twitter, $instagram)
+    {
         $redesSociales="";
-        if(isset($facebook)){
+        if (isset($facebook)) {
             $redesSociales = "fb:".$facebook;
         }
-        if(isset($twitter)){
-            if($redesSociales==""){
+        if (isset($twitter)) {
+            if ($redesSociales=="") {
                 $redesSociales = "tw:".$twitter;
-            }else{
+            } else {
                 $redesSociales = $redesSociales."-tw:".$twitter;
             }
         }
-        if(isset($instagram)){
-            if($redesSociales==""){
+        if (isset($instagram)) {
+            if ($redesSociales=="") {
                 $redesSociales = "ig:".$instagram;
-            }else{
+            } else {
                 $redesSociales = $redesSociales."-ig:".$instagram;
             }
         }
         return $redesSociales;
     }
 
-    public function contactoEmpresa($nombre,$telefono,$correo){
+    public function contactoEmpresa($nombre, $telefono, $correo)
+    {
         $contacto="";
-        if(isset($nombre)){
+        if (isset($nombre)) {
             $contacto = "nombre:".$nombre;
         }
-        if(isset($telefono)){
-            if($contacto==""){
+        if (isset($telefono)) {
+            if ($contacto=="") {
                 $contacto = "telefono:".$telefono;
-            }else{
+            } else {
                 $contacto = $contacto."-telefono:".$telefono;
             }
         }
-        if(isset($correo)){
-            if($contacto==""){
+        if (isset($correo)) {
+            if ($contacto=="") {
                 $contacto = "correo:".$correo;
-            }else{
+            } else {
                 $contacto = $contacto."-correo:".$correo;
             }
         }
         return $contacto;
     }
 
-    public function obtenerDepartamento($departamento){
-        $departamento = Departamento::where('id_departamento',$departamento)->select('departamento')->first();
-        if($departamento){
+    public function obtenerDepartamento($departamento)
+    {
+        $departamento = Departamento::where('id_departamento', $departamento)->select('departamento')->first();
+        if ($departamento) {
             return $departamento->departamento;
         }
         return "";
     }
-    public function obtenerMunicipio($municipio){
-        $municipio = Municipio::where('id_municipio',$municipio)->select('municipio')->first();
-        if($municipio){
+    public function obtenerMunicipio($municipio)
+    {
+        $municipio = Municipio::where('id_municipio', $municipio)->select('municipio')->first();
+        if ($municipio) {
             return $municipio->municipio;
         }
         return "";

@@ -340,7 +340,7 @@
             <hr>
             <div class='_1'>Lo Sentimos,</div>
             <div class='_2'>la página que está buscando no se pudo encontrar.</div>
-            <a class='btn' href='{{ action("HomeController@index") }}'>Regresar</a>
+            <a class='btn' href='{{ route('user.home') }}'>Regresar</a>
         </div>
     </div>
 

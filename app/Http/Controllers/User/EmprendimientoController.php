@@ -65,7 +65,7 @@ class EmprendimientoController extends Controller
 
         $request->session()->put('tiene_entidad', '1');
 
-        return redirect()->route('home', $emprendimiento)->with([
+        return redirect()->route('user.emprendimientos.show', $emprendimiento)->with([
             'success' => __('Emprendimiento creado correctamente'),
         ]);
     }
@@ -85,7 +85,8 @@ class EmprendimientoController extends Controller
                 $query->where('emprendimientoESTADO', 'Activo')
                     ->orWhere('emprendimientoESTADO', 'En Proceso')
                     ->orWhere('emprendimientoESTADO', 'Finalizado');
-            })->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
+            })->where('emprendimientoID', $emprendimiento->emprendimientoID)
+            ->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
 
         $competencias = [];
         foreach ($emprendimiento->diagnosticosAll as $keyD => $diagnostico) {

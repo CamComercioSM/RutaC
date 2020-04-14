@@ -6,17 +6,17 @@
     "type": "project",
     "require": {
         "php": "^7.2",
+        "ext-json": "*",
         "fideloper/proxy": "^4.0",
         "friendsofphp/php-cs-fixer": "^2.15",
         "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "^6",
         "laravel/tinker": "~1.0",
         "maatwebsite/excel": "^3.1",
-        "myclabs/php-enum": "^1.7.4",
+        "myclabs/php-enum": "^1.7",
         "phpoffice/phpspreadsheet": "^1.10",
         "spatie/laravel-translatable": "^4.2",
-        "symfony/options-resolver": "^5.0",
-        "ext-json": "*"
+        "symfony/options-resolver": "^5.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -15,7 +15,8 @@
                     <i class="fas fa-eye fa-2x"></i>
                 </a>
             @endif
-            <a href="#" class="btn btn-link" title="{{ __('Iniciar diagnostico') }}">
+            <a href="{{ url('user/diagnosticos/iniciar', [$row['tipo'], $row['id']]) }}"
+               class="btn btn-link" title="{{ __('Iniciar diagnostico') }}">
                 <i class="fas fa-flag-checkered fa-2x"></i>
             </a>
 

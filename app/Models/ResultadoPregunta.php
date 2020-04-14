@@ -15,10 +15,14 @@ class ResultadoPregunta extends Model
      * @var array
      */
     /*protected $hidden = [
-        
+
     ];*/
     protected $hidden = [
         'created_at', 'updated_at',
     ];
 
+    public function respuestas()
+    {
+        return $this->hasMany('App\Models\Respuesta', 'PREGUNTAS_preguntaID', 'resultado_preguntaPREGUNTAID');
+    }
 }

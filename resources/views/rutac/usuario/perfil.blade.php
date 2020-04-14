@@ -7,7 +7,7 @@
     @if(Auth::user()->confirmed != 1)
     <div class="callout callout-warning">
         <h4>Tu cuenta aún no ha sido verificada, para verficarla debes ir a tu bandeja de correo electrónico buscar el correo de Bienvenido a Ruta C y darle clic al enlace que allí aparece.</h4>
-        <a class="btn btn-primary btn-sm" href="{{ action('UserController@reenviarCodigo') }}"> Reenvía el código</a>
+        <a class="btn btn-primary btn-sm" href="{{ url('reenviar_codigo') }}"> Reenvía el código</a>
     </div>
     @endif
 	<div class="nav-tabs-custom">

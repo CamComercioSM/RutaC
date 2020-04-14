@@ -13,7 +13,7 @@
                         </div>
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group btn-group-sm">
-                                <a href="{{ route('ruta.iniciar-ruta') }}" class="btn btn-secondary">
+                                <a href="{{ route('user.ruta.iniciar-ruta') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
                                 </a>
                             </div>

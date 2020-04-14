@@ -30,6 +30,7 @@
     "dependencies": {
         "balloon-css": "^1.0.4",
         "bootstrap-vue": "^2.5.0",
-        "vee-validate": "^3.2.5"
+        "vee-validate": "^3.2.5",
+        "vue-stepper-component": "^1.0.0"
     }
 }

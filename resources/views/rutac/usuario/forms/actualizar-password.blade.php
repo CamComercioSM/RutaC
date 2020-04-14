@@ -1,4 +1,4 @@
-<form id="formActualizarPassword" action="{{ action('UserController@actualizarPassword') }}" method="post">
+<form id="formActualizarPassword" action="{{ url('actualizar_password') }}" method="post">
     {!! csrf_field() !!}
 	<div class="box-header with-border">
 		<h4>Actualizar contraseña</h4>

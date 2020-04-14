@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'user/home';
 
     /**
      * Create a new controller instance.
@@ -142,7 +142,7 @@ class LoginController extends Controller
             return redirect('completar-perfil');
         }
 
-        return redirect('home');
+        return redirect('user/home');
     }
 
     /**

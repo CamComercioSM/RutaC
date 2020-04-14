@@ -1,4 +1,4 @@
-<form id="formGuardarPerfil" action="{{ action('UserController@guardarPerfil') }}" method="post">
+<form id="formGuardarPerfil" action="{{ url('guardarPerfil') }}" method="post">
     {!! csrf_field() !!}
 	<div class="box-header with-border">
 		<h4>Datos de Usuario</h4>
