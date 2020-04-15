@@ -86,6 +86,7 @@
                 id="departamento_residencia"
                 rules="required"
                 from-url="{{ route('url.municipios') }}"
+                destiny="cities"
                 @error('departamento_residencia')
                 error="{{ $message }}"
                 @enderror
@@ -176,6 +177,7 @@
                 id="departamento_nacimiento"
                 rules="required"
                 from-url="{{ route('url.municipios') }}"
+                destiny="cities2"
                 @error('departamento_nacimiento')
                 error="{{ $message }}"
                 @enderror
@@ -188,7 +190,7 @@
     </div>
 
     <div class="form-group col-md-3">
-        <rc-select-city
+        <rc-select-city-2
                 name="municipio_nacimiento"
                 id="municipio_nacimiento"
                 rules="required"
@@ -199,7 +201,7 @@
                 placeholder="{{ __('Municipio de nacimiento') }}"
                 label="{{ __('Municipio') }}"
         >
-        </rc-select-city>
+        </rc-select-city-2>
     </div>
 
     <div class="form-group col-md-3">

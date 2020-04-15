@@ -17,11 +17,11 @@
                     v-bind="$attrs"
                     v-model="value"
                     :state="errors[0] ? false : null"
-                    @change='getCities()'
             >
                 <template v-slot:first v-if="placeholder">
-                    <b-form-select-option :value="null" disabled>{{ placeholder }}</b-form-select-option>
+                    <b-form-select-option :value="null" disabled> {{ placeholder }} </b-form-select-option>
                 </template>
+                <option v-for="city in cities2" v-bind:value="city.municipio" >{{ city.municipio }}</option>
             </b-form-select>
             <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
         </b-form-group>
@@ -58,17 +58,8 @@
             initialValue:{
                 default: null,
             },
-            fromUrl:{
-                default: null,
-            },
-            destiny:{
-                default: null,
-            },
             placeholder: {
                 type: String,
-                default: null
-            },
-            subSelect: {
                 default: null
             }
         },
@@ -80,36 +71,27 @@
         data: function() {
             return {
                 value: null,
-                cities: '',
-                url: '',
-                destino: ''
+                cities2: [],
             }
         },
         methods: {
             addError(error) {
                 this.$refs.validationProvider.setErrors([this.error]);
             },
-            getCities: function(){
-                if(!this.value) {
-                    this.value = this.initialValue;
-                    this.url = this.fromUrl;
-                    this.destino = this.destiny;
-                }
-                let vm = this;
-
-                axios.get(this.url+'/'+this.value, {})
-                .then(function (response) {
-                    EventBus.$emit(vm.destino, response.data);
-                });
+            clear: function(){
+                this.cities2 = [];
+                this.selected = '';
             }
         },
         created() {
             if (this.initialValue) {
                 this.value = this.initialValue;
-                this.url = this.fromUrl;
-                this.destino = this.destiny;
-                this.getCities();
             }
+            console.log(this.initialValue);
+            let vm = this;
+            EventBus.$on('cities2', function (data) {
+                vm.cities2 = data;
+            })
         },
         mounted() {
             if (this.error) {

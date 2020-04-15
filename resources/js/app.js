@@ -19,6 +19,7 @@ import RCCheckbox from "./components/inputs/RCCheckbox";
 import RCAlert from "./components/RCAlert";
 import RCSelectLocation from "./components/inputs/RCSelectLocation";
 import RCSelectCity from "./components/inputs/RCSelectCity";
+import RCSelectCity2 from "./components/inputs/RCSelectCity2";
 import RCRadio from "./components/inputs/RCRadio";
 import RCTag from "./components/inputs/RCTag";
 
@@ -28,6 +29,7 @@ Vue.component('rc-checkbox', RCCheckbox);
 Vue.component("rc-alert", RCAlert);
 Vue.component('rc-select-location', RCSelectLocation);
 Vue.component('rc-select-city', RCSelectCity);
+Vue.component('rc-select-city-2', RCSelectCity2);
 Vue.component('rc-radio', RCRadio);
 Vue.component('rc-date-picker', RCDatePicker);
 Vue.component('rc-tag', RCTag);
