@@ -69,6 +69,7 @@
                 name="departamento_residencia"
                 id="departamento_residencia"
                 rules="required"
+                from-url="{{ route('url.municipios') }}"
                 @error('departamento_residencia')
                 error="{{ $message }}"
                 @enderror

@@ -113,6 +113,7 @@
                 name="departamento_empresa"
                 id="departamento_empresa"
                 rules="required"
+                from-url="{{ route('url.municipios') }}"
                 @error('departamento_empresa')
                 error="{{ $message }}"
                 @enderror
