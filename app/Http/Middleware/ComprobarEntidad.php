@@ -2,9 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\GeneralController;
 use App\Models\User;
-use App\Repositories\FormRepository;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,23 +17,23 @@ class ComprobarEntidad
      */
     public function handle($request, Closure $next)
     {
-        $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
+        $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('empresas', 'emprendimientos')->first();
 
-        if($usuario->perfilCompleto == 'No'){
-            return redirect('completar-perfil');
+        if ($usuario->perfilCompleto == 'No') {
+            return redirect('user.completar-perfil');
         }
 
-        if($usuario->empresas->count() > 0){
+        if ($usuario->empresas->count() > 0) {
             $request->session()->put('tiene_entidad', '1');
             return $next($request);
         }
 
-        if($usuario->emprendimientos->count() > 0){
+        if ($usuario->emprendimientos->count() > 0) {
             $request->session()->put('tiene_entidad', '1');
             return $next($request);
         }
 
         $request->session()->put('tiene_entidad', '0');
-        return redirect('/home');
+        return redirect('user.home');
     }
 }

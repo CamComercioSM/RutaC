@@ -145,7 +145,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/export/rutas', 'Admin\ExportController@exportarRutas');
 
     Route::get('admin/logout', 'Auth\LoginController@logout');
-
 });
 
 /* RutaC routes */
@@ -157,10 +156,7 @@ Route::namespace('User')
 
 Route::get('logout', 'Auth\LoginController@logout');
 
-Route::group(['middleware' => 'user'],function(){
-
-
-
+Route::group(['middleware' => 'user'], function () {
 });
 
     /*
@@ -169,6 +165,6 @@ Route::group(['middleware' => 'user'],function(){
     |---------------------------------------------------------------------------------------
     */
     Route::get('buscar_municipios/{departamento}', 'PublicController@buscarMunicipios')->name('municipios');
-    Route::get('404',['as'=>'404','uses'=>'ErrorHandlerController@errorCode404']);
-    Route::get('405',['as'=>'405','uses'=>'ErrorHandlerController@errorCode405']);
-    Route::get('500',['as'=>'500','uses'=>'ErrorHandlerController@errorCode500']);
+    Route::get('404', ['as'=>'404','uses'=>'ErrorHandlerController@errorCode404']);
+    Route::get('405', ['as'=>'405','uses'=>'ErrorHandlerController@errorCode405']);
+    Route::get('500', ['as'=>'500','uses'=>'ErrorHandlerController@errorCode500']);

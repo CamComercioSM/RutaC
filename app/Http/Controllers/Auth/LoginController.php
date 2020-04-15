@@ -40,12 +40,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     * @throws ValidationException
      */
     public function login(Request $request)
     {
@@ -75,8 +76,9 @@ class LoginController extends Controller
     /**
      * Validate the user login request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return void
+     * @throws ValidationException
      */
     protected function validateLogin(Request $request)
     {
@@ -95,7 +97,8 @@ class LoginController extends Controller
     protected function attemptLogin(Request $request)
     {
         return $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember')
+            $this->credentials($request),
+            $request->filled('remember')
         );
     }
 
@@ -114,7 +117,7 @@ class LoginController extends Controller
      * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function sendLoginResponse(Request $request)
     {
@@ -135,11 +138,11 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if($user->tipoUsuario == 'Admin'){
+        if ($user->tipoUsuario == 'Admin') {
             return redirect('admin');
         }
-        if($user->perfilCompleto == 'No'){
-            return redirect('completar-perfil');
+        if ($user->perfilCompleto == 'No') {
+            return redirect('user/completar-perfil');
         }
 
         return redirect('user/home');
