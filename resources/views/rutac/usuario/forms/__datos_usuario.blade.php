@@ -85,8 +85,6 @@
                 name="departamento_residencia"
                 id="departamento_residencia"
                 rules="required"
-                from-url="{{ route('url.municipios') }}"
-                destiny="cities"
                 @error('departamento_residencia')
                 error="{{ $message }}"
                 @enderror
@@ -172,12 +170,10 @@
     </div>
 
     <div class="form-group col-md-3">
-        <rc-select-location
+        <rc-select-location-2
                 name="departamento_nacimiento"
                 id="departamento_nacimiento"
                 rules="required"
-                from-url="{{ route('url.municipios') }}"
-                destiny="cities2"
                 @error('departamento_nacimiento')
                 error="{{ $message }}"
                 @enderror
@@ -186,7 +182,7 @@
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }}"
         >
-        </rc-select-location>
+        </rc-select-location-2>
     </div>
 
     <div class="form-group col-md-3">

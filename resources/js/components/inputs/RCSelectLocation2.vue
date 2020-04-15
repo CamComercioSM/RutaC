@@ -74,7 +74,7 @@
         data: function() {
             return {
                 value: null,
-                cities: ''
+                cities2: ''
             }
         },
         methods: {
@@ -87,9 +87,9 @@
                 }
 
                 axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/'+this.value, {})
-                .then(function (response) {
-                    EventBus.$emit('cities', response.data);
-                });
+                    .then(function (response) {
+                        EventBus.$emit('cities2', response.data);
+                    });
             }
         },
         created() {
