@@ -7644,7 +7644,6 @@ __webpack_require__.r(__webpack_exports__);
       this.value = this.initialValue;
     }
 
-    console.log(this.initialValue);
     var vm = this;
     _event_bus_js__WEBPACK_IMPORTED_MODULE_1__["default"].$on('cities', function (data) {
       vm.cities = data;
@@ -7728,6 +7727,9 @@ __webpack_require__.r(__webpack_exports__);
     initialValue: {
       "default": null
     },
+    fromUrl: {
+      "default": null
+    },
     placeholder: {
       type: String,
       "default": null
@@ -7744,7 +7746,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       value: null,
-      cities: ''
+      cities: '',
+      url: ''
     };
   },
   methods: {
@@ -7754,9 +7757,10 @@ __webpack_require__.r(__webpack_exports__);
     getCities: function getCities() {
       if (!this.value) {
         this.value = this.initialValue;
+        this.url = this.fromUrl;
       }
 
-      axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/' + this.value, {}).then(function (response) {
+      axios.get(this.url + '/' + this.value, {}).then(function (response) {
         _event_bus_js__WEBPACK_IMPORTED_MODULE_1__["default"].$emit('cities', response.data);
       });
     }
@@ -7764,6 +7768,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     if (this.initialValue) {
       this.value = this.initialValue;
+      this.url = this.fromUrl;
       this.getCities();
     }
   },
