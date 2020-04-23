@@ -15,7 +15,7 @@
                                 action="{{ route('password.email') }}"
                                 method="post"
                         >
-
+                            @csrf
                             <div class="row justify-content-center">
                                 <div class="form-group col-md-6">
                                     <rc-input
