@@ -12,7 +12,7 @@
                                     style="max-width: 20rem;"
                                     class="mb-2"
                                 >
-                                    <iframe class="box-center" width="100%" src="https://www.youtube.com/watch?v={{$video->material_ayudaCODIGO}}" frameborder="0" allowfullscreen></iframe>
+                                    <iframe class="box-center" width="100%" src="https://www.youtube.com/embed/{{$video->material_ayudaCODIGO}}" frameborder="0" allowfullscreen></iframe>
                                 </b-card>
                             </div>
                             @if($n % 3 == 0)
