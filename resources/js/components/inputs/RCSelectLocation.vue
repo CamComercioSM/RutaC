@@ -86,7 +86,7 @@
                     this.value = this.initialValue;
                 }
 
-                axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/'+this.value, {})
+                axios.get('https://rutadecrecimiento.com/public/buscar_municipios/'+this.value, {})
                 .then(function (response) {
                     EventBus.$emit('cities', response.data);
                 });
