@@ -23,6 +23,7 @@ import RCSelectCity from "./components/inputs/RCSelectCity";
 import RCSelectCity2 from "./components/inputs/RCSelectCity2";
 import RCRadio from "./components/inputs/RCRadio";
 import RCTag from "./components/inputs/RCTag";
+import RCInputMoney from "./components/inputs/RCInputMoney";
 
 Vue.component('rc-select', RCSelect);
 Vue.component('rc-input', RCInput);
@@ -36,6 +37,7 @@ Vue.component('rc-radio', RCRadio);
 Vue.component('rc-date-picker', RCDatePicker);
 Vue.component('rc-tag', RCTag);
 Vue.component('rc-stepper', RCStepper);
+Vue.component('rc-input-money', RCInputMoney);
 
 // Custom forms
 import RCForm from "./components/forms/RCForm";

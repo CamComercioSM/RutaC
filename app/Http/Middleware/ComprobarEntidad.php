@@ -20,7 +20,7 @@ class ComprobarEntidad
         $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('empresas', 'emprendimientos')->first();
 
         if ($usuario->perfilCompleto == 'No') {
-            return redirect('user.completar-perfil');
+            return redirect()->route('user.completar-perfil');
         }
 
         if ($usuario->empresas->count() > 0) {
@@ -34,6 +34,6 @@ class ComprobarEntidad
         }
 
         $request->session()->put('tiene_entidad', '0');
-        return redirect('user.home');
+        return redirect()->route('user.home');
     }
 }

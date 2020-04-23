@@ -59,8 +59,8 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoNOMBRE = $request->input('nombre_emprendimiento');
         $emprendimiento->emprendimientoDESCRIPCION = $request->input('descripcion_emprendimiento');
         $emprendimiento->emprendimientoINICIOACTIVIDADES = $request->input('inicio_actividades');
-        $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',','',$request->input('ingresos_ventas'))) ? str_replace(',','',$request->input('ingresos_ventas')) : 0;
-        $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',','',$request->input('remuneracion_emprendedor'))) ? str_replace(',','',$request->input('remuneracion_emprendedor')) : 0;
+        $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
+        $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
         $emprendimiento->save();
 
         $request->session()->put('tiene_entidad', '1');
@@ -79,29 +79,29 @@ class EmprendimientoController extends Controller
     public function show(Emprendimiento $emprendimiento)
     {
         $emprendimiento = $emprendimiento
-            ->with(["diagnosticosAll" => function($query){
+            ->with(["diagnosticosAll" => function ($query) {
                 $query->latest();
-            }],'ruta')->where(function ($query) {
+            }], 'ruta')->where(function ($query) {
                 $query->where('emprendimientoESTADO', 'Activo')
                     ->orWhere('emprendimientoESTADO', 'En Proceso')
                     ->orWhere('emprendimientoESTADO', 'Finalizado');
             })->where('emprendimientoID', $emprendimiento->emprendimientoID)
-            ->where('USUARIOS_usuarioID',Auth::user()->usuarioID)->first();
+            ->where('USUARIOS_usuarioID', Auth::user()->usuarioID)->first();
 
         $competencias = [];
         foreach ($emprendimiento->diagnosticosAll as $keyD => $diagnostico) {
             $competencias = DB::table('resultados_seccion')
-                ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
-                ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID',$diagnostico->diagnosticoID)
+                ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID')
+                ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)
                 ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
-                ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
+                ->select('resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
                 ->get();
             $emprendimiento->diagnosticosAll[$keyD]['competencias'] = $competencias;
         }
         $from = 'editar';
-        $historial = $this->gController->comprobarHistorial('emprendimiento',$emprendimiento->emprendimientoID);
-        $diagnosticoEmprendimientoEstado = TipoDiagnostico::where('tipo_diagnosticoID','1')->select('tipo_diagnosticoESTADO')->first();
-        return view('rutac.emprendimientos.show',compact('emprendimiento','from','competencias','historial'));
+        $historial = $this->gController->comprobarHistorial('emprendimiento', $emprendimiento->emprendimientoID);
+        $diagnosticoEmprendimientoEstado = TipoDiagnostico::where('tipo_diagnosticoID', '1')->select('tipo_diagnosticoESTADO')->first();
+        return view('rutac.emprendimientos.show', compact('emprendimiento', 'from', 'competencias', 'historial'));
     }
 
     /**

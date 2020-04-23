@@ -4,7 +4,7 @@
             <div>
                 <b-jumbotron header="Bienvenido">
                     <p>Debe crear una de las siguientes opciones:</p>
-                    <b-button variant="primary" href="{{ route('user.emprendimientos.create') }}">
+                    <b-button variant="primary" href="{{ action('User\EmpresaController@create') }}">
                         Crear una Empresa
                     </b-button>
                     <b-button variant="primary" href="{{ action('User\EmprendimientoController@create') }}">

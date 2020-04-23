@@ -33,37 +33,20 @@
         ></rc-input>
     </div>
     <div class="form-row col-md-5">
-        <div class="form-group mb-1 col-md-12">
-            <label>Género</label>
-        </div>
-        <div class="form-group mb-1 col-md-3">
-            <rc-radio
+        <div class="form-group col-md-12">
+            <rc-select
+                    name="genero"
+                    id="genero"
                     rules="required"
-                    name="radioGenero"
-                    id="opMujer"
-                    text="{{ __('Mujer') }}"
-                    value="Mujer"
-            ></rc-radio>
-        </div>
-        <div class="form-group mb-1 col-md-3">
-            <rc-radio
-                    rules="required"
-                    name="radioGenero"
-                    id="opHombre"
-                    label=""
-                    text="{{ __('Hombre') }}"
-                    value="Hombre"
-            ></rc-radio>
-        </div>
-        <div class="form-group mb-1 col-md-6">
-            <rc-radio
-                    rules="required"
-                    name="radioGenero"
-                    id="opOtro"
-                    label=""
-                    text="{{ __('Prefiero no decirlo') }}"
-                    value="Prefiero no decirlo"
-            ></rc-radio>
+                    @error('remuneracion')
+                    error="{{ $message }}"
+                    @enderror
+                    initial-value="{{ old('genero', $usuario->dato_usuarioREMUNERACION) }}"
+                    placeholder="{{ __('Género') }}"
+                    :options="{{ $genero->toJson() }}"
+                    label="{{ __('Género') }}"
+            >
+            </rc-select>
         </div>
     </div>
 </div>

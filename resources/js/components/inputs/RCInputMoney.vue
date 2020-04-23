@@ -10,19 +10,15 @@
         <b-form-group
                 :id="formGroupID"
                 :description="description"
+                :label="label"
                 :label-for="$attrs.id"
         >
-            <b-form-checkbox
-                :vid="vid"
-                v-model="value"
-                :name="$attrs.name"
-                :rules="rules"
-                value="true"
-                unchecked-value="false"
-                :state="errors[0] ? false : null"
-            >
-            {{ label }} <br> {{ errors[0] }}
-            </b-form-checkbox>
+            <b-form-input
+                    v-bind="$attrs"
+                    v-model="value"
+                    :state="errors[0] ? false : null"
+                    @change="formatCurrency(value)"
+            />
             <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
         </b-form-group>
     </ValidationProvider>
@@ -55,7 +51,7 @@
                 default: null,
             },
             initialValue:{
-                default: false,
+                default: null,
             }
         },
         computed: {
@@ -63,14 +59,21 @@
                 return 'fieldset-for-' + this.$attrs.id;
             }
         },
-        data() {
+        data: function() {
             return {
-                status: 'false'
+                value: null,
             }
         },
         methods: {
             addError(error) {
                 this.$refs.validationProvider.setErrors([this.error]);
+            },
+            formatNumber(n) {
+                return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            },
+            formatCurrency(n) {
+                let num = parseFloat(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+                document.getElementById(this.$attrs.id).childNodes[1].childNodes[0].value = num;
             }
         },
         created() {
@@ -81,5 +84,5 @@
                 this.addError(this.error);
             }
         }
-    }
+    };
 </script>

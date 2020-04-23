@@ -52,8 +52,7 @@
     </div>
 
     <div class="form-group col-md-4">
-        <rc-input
-                rules="numeric"
+        <rc-input-money
                 name="ingresos_ventas"
                 id="ingresos_ventas"
                 type="text"
@@ -64,12 +63,11 @@
                 autocomplete="off"
                 placeholder="Digite los ingresos por ventas"
                 label="Ingresos por ventas de los últimos meses"
-        ></rc-input>
+        ></rc-input-money>
     </div>
 
     <div class="form-group col-md-4">
-        <rc-input
-                rules="numeric"
+        <rc-input-money
                 name="remuneracion_emprendedor"
                 id="remuneracion_emprendedor"
                 type="text"
@@ -80,6 +78,6 @@
                 autocomplete="off"
                 placeholder="Digite la remuneración que recibe el emprendedor"
                 label="Remuneración del emprendedor"
-        ></rc-input>
+        ></rc-input-money>
     </div>
 </div>

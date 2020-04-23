@@ -15,10 +15,10 @@
         >
             <b-form-radio
                     :vid="vid"
-                    v-model="status"
+                    v-model="value"
                     :name="$attrs.name"
                     :rules="rules"
-                    v-slot="{ errors }"
+                    :state="errors[0] ? false : null"
                     value=""
             >
                 {{ text }}

@@ -26,37 +26,42 @@ class PublicController extends Controller
      *
      * @return array
      */
-    public function buscarMunicipios($departamento){
+    public function buscarMunicipios($departamento)
+    {
         $repository = $this->repository->municipios($departamento);
         return $repository;
     }
     
-    public function getDocumento($file){
+    public function getDocumento($file)
+    {
         $full_path = storage_path(env('PATH_DOCUMENTO').'/'.$file);
         return response()->download($full_path);
     }
     
-    public function verify($code, Request $request){
-        if(Auth::user()){
+    public function verify($code, Request $request)
+    {
+        if (Auth::user()) {
             $user = User::where('confirmation_code', $code)->first();
-            if (! $user)
+            if (! $user) {
                 return redirect('/');
+            }
 
             $user->confirmed = 1;
             $user->confirmation_code = null;
             $user->save();
 
-            if(Auth::user()->usuarioID == $user->usuarioID){
+            if (Auth::user()->usuarioID == $user->usuarioID) {
                 $request->session()->flash("message_success", "El correo fue verificado exitosamente");
                 return redirect('/home');
-            }else{
+            } else {
                 Auth::logout();
                 return view('rutac.verificado');
             }
-        }else{
+        } else {
             $user = User::where('confirmation_code', $code)->first();
-            if (! $user)
+            if (! $user) {
                 return redirect('/');
+            }
 
             $user->confirmed = 1;
             $user->confirmation_code = null;
@@ -66,11 +71,13 @@ class PublicController extends Controller
         }
     }
     
-    public function actualizarDatos($code, Request $request){
-        if(Auth::user()){
+    public function actualizarDatos($code, Request $request)
+    {
+        if (Auth::user()) {
             $user = User::where('update_code', $code)->with('datoUsuario')->first();
-            if (! $user)
+            if (! $user) {
                 return redirect('/');
+            }
 
             $user->update_code = null;
             $user->save();
@@ -83,18 +90,19 @@ class PublicController extends Controller
             $direccion  = $user->datoUsuario->dato_usuarioDIRECCION;
             $telefono  = $user->datoUsuario->dato_usuarioTELEFONO;
             $correo_electronico  = $user->usuarioEMAIL;
-            if(Auth::user()->usuarioID == $user->usuarioID){
+            if (Auth::user()->usuarioID == $user->usuarioID) {
                 $request->session()->flash("message_success", "Los datos fueron actualizados correctamente");
                 return redirect('/home');
-            }else{
+            } else {
                 Auth::logout();
                 
-                return view('rutac.actualizado',compact("tipoIdentificacion","identificacion","nombres","apellidos","municipio_residencia","direccion","telefono","correo_electronico"));
+                return view('rutac.actualizado', compact("tipoIdentificacion", "identificacion", "nombres", "apellidos", "municipio_residencia", "direccion", "telefono", "correo_electronico"));
             }
-        }else{
+        } else {
             $user = User::where('update_code', $code)->first();
-            if (! $user)
+            if (! $user) {
                 return redirect('/');
+            }
 
             $user->update_code = null;
             $user->save();
@@ -107,16 +115,18 @@ class PublicController extends Controller
             $direccion  = $user->datoUsuario->dato_usuarioDIRECCION;
             $telefono  = $user->datoUsuario->dato_usuarioTELEFONO;
             $correo_electronico  = $user->usuarioEMAIL;
-            return view('rutac.actualizado',compact("tipoIdentificacion","identificacion","nombres","apellidos","municipio_residencia","direccion","telefono","correo_electronico"));
+            return view('rutac.actualizado', compact("tipoIdentificacion", "identificacion", "nombres", "apellidos", "municipio_residencia", "direccion", "telefono", "correo_electronico"));
         }
     }
 
-    public function nuevoRegistro(){
+    public function nuevoRegistro()
+    {
         return view('rutac.nuevo-registro');
     }
     
-    public function obtenerTipoIdentificacion($tipoIdentificacion){
-        switch($tipoIdentificacion){
+    public function obtenerTipoIdentificacion($tipoIdentificacion)
+    {
+        switch ($tipoIdentificacion) {
             case 'CC':
                 return '1';
             break;

@@ -8,6 +8,7 @@ use App\Http\View\Composers\DocumentTypesComposer;
 use App\Http\View\Composers\EstadoComposer;
 use App\Http\View\Composers\EstudiosComposer;
 use App\Http\View\Composers\EtnicoComposer;
+use App\Http\View\Composers\GeneroComposer;
 use App\Http\View\Composers\IdiomasComposer;
 use App\Http\View\Composers\ProfesionComposer;
 use App\Http\View\Composers\RangosActivosComposer;
@@ -35,32 +36,35 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['auth.register'],DocumentTypesComposer::class);
+        View::composer(['auth.register'], DocumentTypesComposer::class);
 
         View::composer(
             [
                 'auth.register',
                 'rutac.usuario.forms.__datos_usuario',
                 'rutac.empresas.__form'
-            ],DepartamentosComposer::class
+            ],
+            DepartamentosComposer::class
         );
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'],EstudiosComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], EstudiosComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'],ProfesionComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], ProfesionComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'],RemuneracionComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], RemuneracionComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'],EtnicoComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], EtnicoComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'],CargoComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], CargoComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'],IdiomasComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], GeneroComposer::class);
 
-        View::composer(['rutac.empresas.__form'],TiposEmpresaComposer::class);
+        View::composer(['rutac.usuario.forms.__datos_usuario'], IdiomasComposer::class);
 
-        View::composer(['rutac.empresas.__form'],RangosActivosComposer::class);
+        View::composer(['rutac.empresas.__form'], TiposEmpresaComposer::class);
 
-        View::composer(['administrador.diagnosticos.partials.__editar_diagnostico'],EstadoComposer::class);
+        View::composer(['rutac.empresas.__form'], RangosActivosComposer::class);
+
+        View::composer(['administrador.diagnosticos.partials.__editar_diagnostico'], EstadoComposer::class);
     }
 }

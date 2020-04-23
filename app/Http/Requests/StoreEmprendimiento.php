@@ -28,8 +28,8 @@ class StoreEmprendimiento extends FormRequest
             'nombre_emprendimiento' => 'required|min:5|max:200',
             'descripcion_emprendimiento' => 'required|min:5|max:200',
             'inicio_actividades' => 'nullable|date_format:Y-m-d|before:'. date('Y-m-d'),
-            'ingresos_ventas' => 'nullable|numeric',
-            'remuneracion_emprendedor' => 'nullable|numeric'
+            'ingresos_ventas' => 'nullable',
+            'remuneracion_emprendedor' => 'nullable'
         ];
     }
 }

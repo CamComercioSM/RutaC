@@ -42,7 +42,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user/home';
     private $repository;
 
     /**
@@ -118,10 +118,11 @@ class RegisterController extends Controller
      *
      * @return Factory|View
      */
-    public function showRegistrationForm(){
+    public function showRegistrationForm()
+    {
         $repository = $this->repository;
         $repositoryDepartamentos = $this->repository->departamentos();
-        return view('auth.register',compact('repository','repositoryDepartamentos'));
+        return view('auth.register', compact('repository', 'repositoryDepartamentos'));
     }
 
     /**
@@ -132,8 +133,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        try{
-            $usuario = DB::transaction(function() use($data){
+        try {
+            $usuario = DB::transaction(function () use ($data) {
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Datos Usuario y lo guarda
@@ -174,11 +175,10 @@ class RegisterController extends Controller
                 return $nuevoUsuario;
             });
 
-            if($usuario){
+            if ($usuario) {
                 return $usuario;
             }
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e);
         }
         return null;
@@ -189,7 +189,7 @@ class RegisterController extends Controller
         if (strpos($data['tipo_documento'], '-') !== false) {
             $tipo_doc = explode("-", $data['tipo_documento']);
             $tipo_documento = $tipo_doc[1];
-        }else{
+        } else {
             $tipo_documento = $data['tipo_documento'];
         }
 
@@ -198,47 +198,46 @@ class RegisterController extends Controller
 
     public function obtenerDepartamento($departamento)
     {
-        $departamento = Departamento::where('id_departamento',$departamento)->select('departamento')->first();
-        if($departamento){
-            return $departamento->departamento;    
+        $departamento = Departamento::where('id_departamento', $departamento)->select('departamento')->first();
+        if ($departamento) {
+            return $departamento->departamento;
         }
         return "";
-        
     }
 
     public function obtenerMunicipio($municipio)
     {
-        $municipio = Municipio::where('id_municipio',$municipio)->select('municipio')->first();
-        if($municipio){
-            return $municipio->municipio;    
+        $municipio = Municipio::where('id_municipio', $municipio)->select('municipio')->first();
+        if ($municipio) {
+            return $municipio->municipio;
         }
         return "";
     }
     
-    public function verificarCambios($data,$datos_consulta)
+    public function verificarCambios($data, $datos_consulta)
     {
         Log::info($data['nombres']."==".$datos_consulta['personaNOMBRES']);
-        if($data['nombres'] != $datos_consulta['personaNOMBRES']){
+        if ($data['nombres'] != $datos_consulta['personaNOMBRES']) {
             return true;
         }
         Log::info($data['apellidos']."==".$datos_consulta['personaAPELLIDOS']);
-        if($data['apellidos'] != $datos_consulta['personaAPELLIDOS']){
+        if ($data['apellidos'] != $datos_consulta['personaAPELLIDOS']) {
             return true;
         }
         Log::info($this->obtenerMunicipio($data['municipio_residencia'])."==".$datos_consulta['ciudadRESIDENCIA']);
-        if($this->obtenerMunicipio($data['municipio_residencia']) == $datos_consulta['ciudadRESIDENCIA']){
+        if ($this->obtenerMunicipio($data['municipio_residencia']) == $datos_consulta['ciudadRESIDENCIA']) {
             return true;
         }
         Log::info($data['direccion']."==".$datos_consulta['direccionDOMICILIO']);
-        if($data['direccion'] != $datos_consulta['direccionDOMICILIO']){
+        if ($data['direccion'] != $datos_consulta['direccionDOMICILIO']) {
             return true;
         }
         Log::info($data['telefono']."==".$datos_consulta['telefonoCELULAR']);
-        if($data['telefono'] != $datos_consulta['telefonoCELULAR']){
+        if ($data['telefono'] != $datos_consulta['telefonoCELULAR']) {
             return true;
         }
         Log::info($data['correo_electronico']."==".$datos_consulta['personasCorreoPRINCIPAL']);
-        if($data['correo_electronico'] != $datos_consulta['personasCorreoPRINCIPAL']){
+        if ($data['correo_electronico'] != $datos_consulta['personasCorreoPRINCIPAL']) {
             return true;
         }
         return false;

@@ -7,28 +7,30 @@
  */
 
 namespace App\Repositories;
+
 use App\Models\Municipio;
 use App\Models\Departamento;
 
-
 class FormRepository
 {
-
-    public function tipoDocumentos(){
+    public function tipoDocumentos()
+    {
         return [
             'CC'=>'Cédula de ciudadanía',
             'CE'=>'Cédula de extranjería'
         ];
     }
     
-    public function estado(){
+    public function estado()
+    {
         return collect([
             'Activo'=>'Activo',
             'Inactivo'=>'Inactivo'
         ]);
     }
 
-    public function nivelEstudios(){
+    public function nivelEstudios()
+    {
         return collect([
             'Básica Primaria',
             'Básica Secundaria',
@@ -39,7 +41,8 @@ class FormRepository
         ]);
     }
 
-    public function cargo(){
+    public function cargo()
+    {
         return collect([
             'Gerente',
             'Administrador',
@@ -53,7 +56,8 @@ class FormRepository
         ]);
     }
 
-    public function remuneracion(){
+    public function remuneracion()
+    {
         return collect([
             'Menos de $700.000',
             'Más de $700.000',
@@ -68,7 +72,8 @@ class FormRepository
         ]);
     }
 
-    public function grupoEtnico(){
+    public function grupoEtnico()
+    {
         return collect([
             'Rrom (Gitanos)',
             'Indígenas',
@@ -79,7 +84,8 @@ class FormRepository
         ]);
     }
 
-    public static function idiomas(){
+    public static function idiomas()
+    {
         return collect([
             'Alemán',
             'Arabe',
@@ -100,17 +106,20 @@ class FormRepository
         ]);
     }
 
-    public static function departamentos(){
-        return Departamento::select('id_departamento','departamento')->get();
+    public static function departamentos()
+    {
+        return Departamento::select('id_departamento', 'departamento')->get();
     }
 
-    public function municipios($departamento_name){
+    public function municipios($departamento_name)
+    {
         $departamento = Departamento::where('departamento', $departamento_name)->first();
 
-        return Municipio::where('departamento_id',$departamento->id_departamento)->select('id_municipio','municipio')->get();
+        return Municipio::where('departamento_id', $departamento->id_departamento)->select('id_municipio', 'municipio')->get();
     }
 
-    public function tipoEmpresas(){
+    public function tipoEmpresas()
+    {
         return collect([
             'Persona natural comerciante',
             'Empresa unipersonal',
@@ -125,16 +134,18 @@ class FormRepository
         ]);
     }
 
-    public function redesSociales(){
-         return [
+    public function redesSociales()
+    {
+        return [
             'Facebook',
             'Twitter',
             'Instagram'
         ];
     }
 
-    public function numeroTrabajadores(){
-         return [
+    public function numeroTrabajadores()
+    {
+        return [
             'Seleccione una opción',
             'No superior a los 10 trabajadores',
             'Entre 11 y 50 trabajadores',
@@ -142,15 +153,26 @@ class FormRepository
         ];
     }
 
-    public function activosTotales(){
-         return collect([
+    public function activosTotales()
+    {
+        return collect([
             'Inferior a 500 SMMLV',
             'Entre 501 y 5.000 SMMLV',
             'Entre 5.001 y 30.000 SMMLV'
         ]);
     }
 
-    public static function profesion(){
+    public function genero()
+    {
+        return collect([
+            'Hombre',
+            'Mujer',
+            'Prefiero no decirlo'
+        ]);
+    }
+
+    public static function profesion()
+    {
         return collect([
             '2111'=>'Físicos y Astrónomos',
             '2112'=>'Meteorólogos',
@@ -478,14 +500,5 @@ class FormRepository
             '9611'=>'Recolectores de basura y material reciclable',
             '9613'=>'Barrenderos y afines'
         ]);
-
     }
-
-
-
-
-
-    
-
-
 }

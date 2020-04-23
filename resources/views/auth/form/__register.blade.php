@@ -34,7 +34,7 @@
 <div class="row">
     <div class="form-group col-md-6">
         <rc-input
-                rules="required|alpha|min:3|max:50"
+                rules="required|alpha_spaces|min:3|max:50"
                 name="nombres"
                 id="formENombres"
                 type="text"
@@ -49,7 +49,7 @@
 
     <div class="form-group col-md-6">
         <rc-input
-                rules="required|alpha|min:3|max:50"
+                rules="required|alpha_spaces|min:3|max:50"
                 name="apellidos"
                 id="formEApellidos"
                 type="text"
@@ -180,6 +180,7 @@
                 @error('termino_y_condiciones_de_uso')
                 error="{{ $message }}"
                 @enderror
+                initial-value="{{ old('termino_y_condiciones_de_uso') }}"
         ></rc-checkbox>
     </div>
 </div>

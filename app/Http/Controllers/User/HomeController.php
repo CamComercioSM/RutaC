@@ -32,18 +32,18 @@ class HomeController extends Controller
     {
         $tieneEntidad = $this->gController->comprobarEntidad($request);
 
-        $usuario = User::where('usuarioID',Auth::user()->usuarioID)->with('empresas','emprendimientos')->first();
+        $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('empresas', 'emprendimientos')->first();
 
-        if($usuario->perfilCompleto == 'No'){
-            return redirect('completar-perfil');
+        if ($usuario->perfilCompleto == 'No') {
+            return redirect()->route('user.completar-perfil')->withSuccess(__('Building created successfully!'));
         }
 
         $rutasEmpresas = [];
         //return $usuario;
-        if($usuario->empresas->count() > 0){
+        if ($usuario->empresas->count() > 0) {
             foreach ($usuario->empresas as $key => $empresa) {
-                if(isset($empresa->diagnosticos->ruta)){
-                    if($empresa->diagnosticos->ruta->rutaESTADO == 'En Proceso'){
+                if (isset($empresa->diagnosticos->ruta)) {
+                    if ($empresa->diagnosticos->ruta->rutaESTADO == 'En Proceso') {
                         $rutasEmpresas[$key] = $empresa->diagnosticos->ruta;
                         $rutasEmpresas[$key]['tipo_diagnostico'] = $empresa->diagnosticos->tipoDiagnostico->tipo_diagnosticoNOMBRE;
                         $rutasEmpresas[$key]['nombre_e'] = $empresa->empresaRAZON_SOCIAL;
@@ -55,10 +55,10 @@ class HomeController extends Controller
         }
 
         $rutasEmprendimientos = [];
-        if($usuario->emprendimientos->count() > 0){
+        if ($usuario->emprendimientos->count() > 0) {
             foreach ($usuario->emprendimientos as $key => $emprendimiento) {
-                if(isset($emprendimiento->diagnosticos->ruta)){
-                    if($emprendimiento->diagnosticos->ruta->rutaESTADO == 'En Proceso'){
+                if (isset($emprendimiento->diagnosticos->ruta)) {
+                    if ($emprendimiento->diagnosticos->ruta->rutaESTADO == 'En Proceso') {
                         $rutasEmprendimientos[$key] = $emprendimiento->diagnosticos->ruta;
                         $rutasEmprendimientos[$key]['tipo_diagnostico'] = $emprendimiento->diagnosticos->tipoDiagnostico->tipo_diagnosticoNOMBRE;
                         $rutasEmprendimientos[$key]['nombre_e'] = $emprendimiento->emprendimientoNOMBRE;
@@ -70,20 +70,18 @@ class HomeController extends Controller
         }
 
         $rutas = [];
-        if(!empty($rutasEmpresas) && !empty($rutasEmprendimientos)){
-            $rutas = array_merge($rutasEmpresas,$rutasEmprendimientos);
-        }else{
-            if(!empty($rutasEmpresas)){
+        if (!empty($rutasEmpresas) && !empty($rutasEmprendimientos)) {
+            $rutas = array_merge($rutasEmpresas, $rutasEmprendimientos);
+        } else {
+            if (!empty($rutasEmpresas)) {
                 $rutas = $rutasEmpresas;
             }
-            if(!empty($rutasEmprendimientos)){
+            if (!empty($rutasEmprendimientos)) {
                 $rutas = $rutasEmprendimientos;
             }
         }
         $emprendelo = $this->gController->comprobarEmprendelo();
 
-        return view('rutac.home',compact('rutas','emprendelo', 'tieneEntidad'));
+        return view('rutac.home', compact('rutas', 'emprendelo', 'tieneEntidad'));
     }
-
-
 }
