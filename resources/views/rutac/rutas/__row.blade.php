@@ -19,6 +19,11 @@
                class="btn btn-link" title="{{ __('Iniciar diagnostico') }}">
                 <i class="fas fa-flag-checkered fa-2x"></i>
             </a>
+            @if($row['diagnostico'])
+                <a href="{{ url('user/diagnosticos/resultados', $row['diagnostico']) }}" class="btn btn-link" title="{{ __('Ver Último Resultado') }}">
+                    <i class="fas fa-chart-area fa-2x"></i>
+                </a>
+            @endif
 
 
         </div>

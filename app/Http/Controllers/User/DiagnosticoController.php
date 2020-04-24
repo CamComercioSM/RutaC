@@ -10,8 +10,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Diagnostico;
 use App\Models\Emprendimiento;
 use App\Models\Empresa;
+use App\Models\Pregunta;
+use App\Models\Respuesta;
 use App\Models\ResultadoPregunta;
 use App\Models\ResultadoSeccion;
+use App\Models\RetroDiagnostico;
+use App\Models\RetroSeccion;
+use App\Models\SeccionPregunta;
 use App\Repositories\PreguntasRepository;
 use App\Repositories\SeccionPreguntaRepository;
 use Carbon\Carbon;
@@ -98,9 +103,9 @@ class DiagnosticoController extends Controller
             $diagnostico->save();
 
             if (!count($this->seccionesPregunta->obtenerSecciones($tipoDiagnostico)) > 0) {
-                DB::rollback();
+                DB::commit();
 
-                throw new RutaCException(__('Error creando el diagnóstico. Obteniendo secciones'), Carbon::now()->timestamp);
+                return $diagnostico;
             }
 
             foreach ($this->seccionesPregunta->obtenerSecciones($tipoDiagnostico) as $seccion) {
@@ -119,7 +124,7 @@ class DiagnosticoController extends Controller
 
                 foreach ($this->preguntas->obtenerPreguntasSeccion($seccion->seccion_preguntaID) as $pregunta) {
                     $resultadoPregunta = new ResultadoPregunta;
-                    $resultadoPregunta->RESULTADOS_SECCION_resultado_seccionID = $pregunta->SECCIONES_PREGUNTAS_seccion_pregunta;
+                    $resultadoPregunta->RESULTADOS_SECCION_resultado_seccionID = $resultadoSeccion->resultado_seccionID;
                     $resultadoPregunta->resultado_preguntaPREGUNTAID = $pregunta->preguntaID;
                     $resultadoPregunta->resultado_preguntaENUNCIADO_PREGUNTA = $pregunta->preguntaENUNCIADO;
                     $resultadoPregunta->resultado_preguntaORDEN = $pregunta->preguntaORDEN;
@@ -174,12 +179,101 @@ class DiagnosticoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param \Illuminate\Http\Request $request
+     * @return RedirectResponse
+     * @throws RutaCException
      */
     public function store(Request $request)
     {
-        //
+        $preguntas = $request->input('pregunta');
+        $seccion = ResultadoSeccion::where('resultado_seccionID', $request->input('seccion'))->first();
+        $seccionCumplimiento = 0;
+        $diagnostico = Diagnostico::where('diagnosticoID', $seccion->DIAGNOSTICOS_diagnosticoID)->first();
+
+        if (!is_array($preguntas) || !$seccion || !$diagnostico) {
+            throw new RutaCException(__('Ocurrió un error guardando el diagnóstico'), Carbon::now()->timestamp);
+        }
+
+        $preguntasResulestas = count($preguntas);
+        $resPreguntas = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID', $seccion->resultado_seccionID)->count();
+        if ($preguntasResulestas != $resPreguntas) {
+            return redirect()->action('User\DiagnosticoController@respondQuestions', $request->input('seccion'))->with([
+                'error' => __('Debe contestar todas las preguntas'),
+            ]);
+        }
+
+        try {
+            DB::beginTransaction();
+            foreach ($preguntas as $key => $pregunta) {
+                $resultado = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID', $seccion->resultado_seccionID)
+                    ->where('resultado_preguntaPREGUNTAID', $key)->first();
+                $respuesta = Respuesta::where('respuestaID', $pregunta)->first();
+                $pregunta = Pregunta::where('preguntaID', $respuesta->PREGUNTAS_preguntaID)->first();
+
+                $resultado->resultado_preguntaPRESENTACION = $respuesta->respuestaPRESENTACION;
+                $resultado->resultado_preguntaCUMPLIMIENTO = $respuesta->respuestaCUMPLIMIENTO * $pregunta->preguntaPESO;
+                $resultado->resultado_preguntaCOMPETENCIA = $pregunta->COMPETENCIAS_competenciaID;
+                $resultado->resultado_preguntaFEEDBACK = $respuesta->respuestaFEEDBACK;
+                $resultado->resultado_preguntaESTADO = 'Respondida';
+                $resultado->save();
+
+                $seccionCumplimiento = $seccionCumplimiento + $resultado->resultado_preguntaCUMPLIMIENTO;
+            }
+
+            $feedbackSeccion = $this->consultarRetroSeccion($seccion->seccionID, $seccionCumplimiento);
+            $seccion->diagnostico_seccionRESULTADO = $seccionCumplimiento;
+            $seccion->diagnostico_seccionNIVEL = $feedbackSeccion->retro_seccionNIVEL;
+            $seccion->diagnostico_seccionMENSAJE_FEEDBACK = $feedbackSeccion->retro_seccionMENSAJE;
+            $seccion->diagnostico_seccionESTADO = 'Finalizado';
+            $seccion->save();
+
+            if ($this->verificarDiagnosticoFinalizado($seccion->DIAGNOSTICOS_diagnosticoID) == 0) {
+                $secciones = ResultadoSeccion::where('DIAGNOSTICOS_diagnosticoID', $seccion->DIAGNOSTICOS_diagnosticoID)
+                    ->with('seccion')
+                    ->get();
+
+                $diagnosticoCumplimiento = 0;
+                foreach ($secciones as $sec) {
+                    $diagnosticoCumplimiento = $diagnosticoCumplimiento + (($sec->diagnostico_seccionPESO * $sec->diagnostico_seccionRESULTADO)/100);
+                }
+
+                $feedbackDiagnostico = $this->consultarRetroDiagnostico($diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID, $diagnosticoCumplimiento);
+                $diagnostico->diagnosticoRESULTADO = $diagnosticoCumplimiento;
+                $diagnostico->diagnosticoNIVEL = $feedbackDiagnostico->retro_tipo_diagnosticoNIVEL;
+                $diagnostico->diagnosticoMENSAJE = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje;
+                $diagnostico->diagnosticoESTADO = 'Finalizado';
+                $diagnostico->save();
+            }
+
+            DB::commit();
+
+            return redirect()->route('user.diagnosticos.show', $diagnostico)->with([
+                'success' => __('Diagnóstico guardado correctamente'),
+            ]);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error(Carbon::now()->timestamp." => ". $e);
+            throw new RutaCException(__('Error guardando el diagnóstico'), Carbon::now()->timestamp);
+        }
+    }
+
+    public function consultarRetroSeccion($seccionPregunta, $seccionCumplimiento)
+    {
+        return RetroSeccion::where('SECCIONES_PREGUNTAS_seccion_pregunta', $seccionPregunta)
+            ->where('retro_seccionRango', '<=', $seccionCumplimiento)->orderBy('retro_seccionRango', 'desc')->first();
+    }
+
+    public function consultarRetroDiagnostico($diagnostico, $diagnosticoCumplimiento)
+    {
+        return RetroDiagnostico::where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', $diagnostico)
+            ->where('retro_tipo_diagnosticoRANGO', '<=', $diagnosticoCumplimiento)->orderBy('retro_tipo_diagnosticoRANGO', 'desc')->first();
+    }
+
+    public function verificarDiagnosticoFinalizado($diagnosticoID)
+    {
+        return ResultadoSeccion::where('DIAGNOSTICOS_diagnosticoID', $diagnosticoID)
+            ->where('diagnostico_seccionESTADO', '<>', EstadosDiagnostico::FINALIZADO)->count();
     }
 
     /**
@@ -194,8 +288,6 @@ class DiagnosticoController extends Controller
             ->where('diagnosticoID', $diagnostico->diagnosticoID)
             ->with('resultadoSeccion')
             ->first();
-
-        //dd($diagnostico);
 
         return view('rutac.diagnosticos.show', compact('diagnostico'));
     }
@@ -232,5 +324,38 @@ class DiagnosticoController extends Controller
         $seccion = ResultadoSeccion::where('resultado_seccionID', $seccion)->with('resultadoPregunta')->first();
 
         return view('rutac.diagnosticos.responder', compact('seccion'));
+    }
+
+    public function getResultados(Diagnostico $diagnostico)
+    {
+        $diagnostico->load('tipoDiagnostico');
+
+        $usuario = [];
+        $actividad = [];
+        if ($diagnostico->EMPRESAS_empresaID) {
+            $diagnostico->load('empresa');
+            $usuario['nombre'] = $diagnostico->empresa->usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO;
+            $usuario['email'] = $diagnostico->empresa->usuario->usuarioEMAIL;
+            $usuario['identificacion'] = $diagnostico->empresa->usuario->datoUsuario->dato_usuarioIDENTIFICACION;
+            $usuario['telefono'] = $diagnostico->empresa->usuario->datoUsuario->dato_usuarioTELEFONO;
+
+            $actividad['nombre'] = $diagnostico->empresa->empresaRAZON_SOCIAL;
+            $actividad['tipo'] = 'empresa';
+            $actividad['nit'] = $diagnostico->empresa->empresaNIT;
+        }
+        if ($diagnostico->EMPRENDIMIENTOS_emprendimientoID) {
+            $diagnostico->load('emprendimiento');
+
+            $usuario['nombre'] = $diagnostico->emprendimiento->usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO;
+            $usuario['email'] = $diagnostico->emprendimiento->usuario->usuarioEMAIL;
+            $usuario['identificacion'] = $diagnostico->emprendimiento->usuario->datoUsuario->dato_usuarioIDENTIFICACION;
+            $usuario['telefono'] = $diagnostico->emprendimiento->usuario->datoUsuario->dato_usuarioTELEFONO;
+
+            $actividad['nombre'] = $diagnostico->emprendimiento->emprendimientoNOMBRE;
+            $actividad['tipo'] = 'emprendimiento';
+            $actividad['actividades'] = $diagnostico->emprendimiento->emprendimientoINICIOACTIVIDADES;
+        }
+
+        return view('rutac.diagnosticos.resultado.index', compact('diagnostico', 'usuario', 'actividad'));
     }
 }

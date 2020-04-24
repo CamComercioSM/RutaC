@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Constants\EstadosDiagnostico;
+use App\Constants\TipoNegocio;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Mail\RutaCMail;
@@ -29,7 +31,7 @@ class RutaController extends Controller
      *
      * @return void
      */
-    public function __construct(GeneralController $gController,FormRepository $repository)
+    public function __construct(GeneralController $gController, FormRepository $repository)
     {
         $this->middleware('user');
         $this->gController = $gController;
@@ -39,17 +41,17 @@ class RutaController extends Controller
     /**
      * Muestra la vista de "mis rutas"
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $usuario = User::with('empresas','emprendimientos')->first();
+        $usuario = User::with('empresas', 'emprendimientos')->first();
         $rutasEmpresas = [];
         //return $usuario;
-        if($usuario->empresas->count() > 0){
+        if ($usuario->empresas->count() > 0) {
             foreach ($usuario->empresas as $key => $empresa) {
-                if(isset($empresa->diagnosticos->ruta)){
-                    if($empresa->diagnosticos->ruta->rutaESTADO == 'En Proceso'){
+                if (isset($empresa->diagnosticos->ruta)) {
+                    if ($empresa->diagnosticos->ruta->rutaESTADO == 'En Proceso') {
                         $rutasEmpresas[$key] = $empresa->diagnosticos->ruta;
                         $rutasEmpresas[$key]['tipo_diagnostico'] = $empresa->diagnosticos->tipoDiagnostico->tipo_diagnosticoNOMBRE;
                         $rutasEmpresas[$key]['nombre_e'] = $empresa->empresaRAZON_SOCIAL;
@@ -61,10 +63,10 @@ class RutaController extends Controller
         }
 
         $rutasEmprendimientos = [];
-        if($usuario->emprendimientos->count() > 0){
+        if ($usuario->emprendimientos->count() > 0) {
             foreach ($usuario->emprendimientos as $key => $emprendimiento) {
-                if(isset($emprendimiento->diagnosticos->ruta)){
-                    if($emprendimiento->diagnosticos->ruta->rutaESTADO == 'En Proceso'){
+                if (isset($emprendimiento->diagnosticos->ruta)) {
+                    if ($emprendimiento->diagnosticos->ruta->rutaESTADO == 'En Proceso') {
                         $rutasEmprendimientos[$key] = $emprendimiento->diagnosticos->ruta;
                         $rutasEmprendimientos[$key]['tipo_diagnostico'] = $emprendimiento->diagnosticos->tipoDiagnostico->tipo_diagnosticoNOMBRE;
                         $rutasEmprendimientos[$key]['nombre_e'] = $emprendimiento->emprendimientoNOMBRE;
@@ -76,18 +78,18 @@ class RutaController extends Controller
         }
 
         $rutas = [];
-        if(!empty($rutasEmpresas) && !empty($rutasEmprendimientos)){
-            $rutas = array_merge($rutasEmpresas,$rutasEmprendimientos);
-        }else{
-            if(!empty($rutasEmpresas)){
+        if (!empty($rutasEmpresas) && !empty($rutasEmprendimientos)) {
+            $rutas = array_merge($rutasEmpresas, $rutasEmprendimientos);
+        } else {
+            if (!empty($rutasEmpresas)) {
                 $rutas = $rutasEmpresas;
             }
-            if(!empty($rutasEmprendimientos)){
+            if (!empty($rutasEmprendimientos)) {
                 $rutas = $rutasEmprendimientos;
             }
         }
 
-        return view('rutac.rutas.index',compact('rutas'));
+        return view('rutac.rutas.index', compact('rutas'));
     }
 
     /**
@@ -97,31 +99,33 @@ class RutaController extends Controller
      */
     public function iniciarRuta()
     {
-        $empresas = Empresa::where('USUARIOS_usuarioID',Auth::user()->usuarioID)->where('empresaESTADO', 'Activo')
-            ->with(["diagnosticosAll" => function($query){
+        $empresas = Empresa::where('USUARIOS_usuarioID', Auth::user()->usuarioID)->where('empresaESTADO', 'Activo')
+            ->with(["diagnosticosAll" => function ($query) {
                 $query->latest();
             }])->get();
-        $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID','2')->select('tipo_diagnosticoESTADO')->first();
-        $emprendimientos = Emprendimiento::where('USUARIOS_usuarioID',Auth::user()->usuarioID)
-            ->where('emprendimientoESTADO', 'Activo')->with(["diagnosticosAll" => function($query){
+        $diagnosticoEmpresaEstado = TipoDiagnostico::where('tipo_diagnosticoID', '2')->select('tipo_diagnosticoESTADO')->first();
+        $emprendimientos = Emprendimiento::where('USUARIOS_usuarioID', Auth::user()->usuarioID)
+            ->where('emprendimientoESTADO', 'Activo')->with(["diagnosticosAll" => function ($query) {
                 $query->latest();
             }])->get();
-        $diagnosticoEmprendimientoEstado = TipoDiagnostico::where('tipo_diagnosticoID','1')->select('tipo_diagnosticoESTADO')->first();
+        $diagnosticoEmprendimientoEstado = TipoDiagnostico::where('tipo_diagnosticoID', '1')->select('tipo_diagnosticoESTADO')->first();
 
         $data = [];
         $n = 0;
 
-        foreach ($empresas as $key => $empresa){
+        foreach ($empresas as $key => $empresa) {
             $data[$n]['id'] = $empresa->empresaID;
             $data[$n]['nombre'] = $empresa->empresaRAZON_SOCIAL;
             $data[$n]['tipo'] = "Empresa";
+            $data[$n]['diagnostico'] = $this->obtenerUltimoDiagnosticoFinalizado("Empresa", $empresa->empresaID);
             $n++;
         }
 
-        foreach ($emprendimientos as $key => $emprendimiento){
+        foreach ($emprendimientos as $key => $emprendimiento) {
             $data[$n]['id'] = $emprendimiento->emprendimientoID;
             $data[$n]['nombre'] = $emprendimiento->emprendimientoNOMBRE;
             $data[$n]['tipo'] = "Emprendimiento";
+            $data[$n]['diagnostico'] = $this->obtenerUltimoDiagnosticoFinalizado("Emprendimiento", $emprendimiento->emprendimientoID);
             $n++;
         }
 
@@ -137,67 +141,84 @@ class RutaController extends Controller
         );
     }
 
-    public function verRuta($ruta, Request $request){
+    public function obtenerUltimoDiagnosticoFinalizado(string $tipo, string $id)
+    {
+        $tipoNegocio = $this->getTipoNegocio($tipo);
+
+        return Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::FINALIZADO)->first();
+    }
+
+    public function getTipoNegocio(string $tipo)
+    {
+        if ($tipo == TipoNegocio::EMPRESA) {
+            return 'EMPRESAS_empresaID';
+        } else {
+            return 'EMPRENDIMIENTOS_emprendimientoID';
+        }
+    }
+
+    public function verRuta($ruta, Request $request)
+    {
         $isEmpresa = "";
         $isEmprendimiento = "";
 
-        $ruta = Ruta::where('rutaID',$ruta)->with('estaciones')->first();
+        $ruta = Ruta::where('rutaID', $ruta)->with('estaciones')->first();
 
-        if($ruta){
-            if(count($ruta->estaciones) > 0){
-                $diagnostico = Diagnostico::where('diagnosticoID',$ruta->DIAGNOSTICOS_diagnosticoID)->first();
-                if($diagnostico->EMPRESAS_empresaID != null){
+        if ($ruta) {
+            if (count($ruta->estaciones) > 0) {
+                $diagnostico = Diagnostico::where('diagnosticoID', $ruta->DIAGNOSTICOS_diagnosticoID)->first();
+                if ($diagnostico->EMPRESAS_empresaID != null) {
                     $unidad = 'empresa';
                     $unidadID = $diagnostico->EMPRESAS_empresaID;
                     $isEmpresa = $this->gController->comprobarEmpresa($diagnostico->EMPRESAS_empresaID);
                 }
 
-                if($diagnostico->EMPRENDIMIENTOS_emprendimientoID != null){
+                if ($diagnostico->EMPRENDIMIENTOS_emprendimientoID != null) {
                     $unidad = 'emprendimiento';
                     $unidadID = $diagnostico->EMPRENDIMIENTOS_emprendimientoID;
                     $isEmprendimiento = $this->gController->comprobarEmprendimiento($diagnostico->EMPRENDIMIENTOS_emprendimientoID);
                 }
 
-                if($isEmpresa || $isEmprendimiento){
-                    $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
+                if ($isEmpresa || $isEmprendimiento) {
+                    $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
                     $ruta->save();
 
                     foreach ($ruta->estaciones as $key => $estacion) {
                         $ruta->estaciones[$key]['options'] = "";
-                        if($estacion->TALLERES_tallerID){
+                        if ($estacion->TALLERES_tallerID) {
                             $ruta->estaciones[$key]['text'] = "Asistir al taller: ";
                             $ruta->estaciones[$key]['boton'] = "Más información";
                             $ruta->estaciones[$key]['url'] = "#";
                         }
-                        $resultadoPA = ResultadoPreguntaAyuda::where('EstacionAyudaID',$estacion->estacionID)->with('resultadoPregunta')->first();
+                        $resultadoPA = ResultadoPreguntaAyuda::where('EstacionAyudaID', $estacion->estacionID)->with('resultadoPregunta')->first();
                         $ruta->estaciones[$key]['competencia'] = "";
-                        if(isset($resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA)){
+                        if (isset($resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA)) {
                             $ruta->estaciones[$key]['competencia'] = '- '.$resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA;
                         }
 
-                        if($estacion->MATERIALES_AYUDA_material_ayudaID){
+                        if ($estacion->MATERIALES_AYUDA_material_ayudaID) {
                             $tipoMaterial = $this->gController->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
 
-                            if($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video'){
+                            if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video') {
                                 $ruta->estaciones[$key]['text'] = "Ver el vídeo: ";
                                 $ruta->estaciones[$key]['boton'] = "Ver vídeo";
                                 $ruta->estaciones[$key]['url'] = $tipoMaterial->material_ayudaCODIGO;
                                 $ruta->estaciones[$key]['options'] = "modal";
                             }
-                            if($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento'){
+                            if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento') {
                                 $ruta->estaciones[$key]['text'] = "Ver el documento: ";
                                 $ruta->estaciones[$key]['boton'] = "Ver documento";
                                 $ruta->estaciones[$key]['url'] = "#";
                             }
                         }
-                        if($estacion->SERVICIOS_CCSM_servicio_ccsmID){
+                        if ($estacion->SERVICIOS_CCSM_servicio_ccsmID) {
                             $ruta->estaciones[$key]['text'] = "Adquirir el servicio de: ";
                             $ruta->estaciones[$key]['boton'] = "Más información";
                             $ruta->estaciones[$key]['url'] = "#";
                         }
                     }
-                    $iniciarRuta = $this->gController->comprobarIniciarRuta($unidad,$unidadID);
-                    return view('rutac.rutas.ver-ruta',compact('ruta','unidad','unidadID','iniciarRuta'));
+                    $iniciarRuta = $this->gController->comprobarIniciarRuta($unidad, $unidadID);
+                    return view('rutac.rutas.ver-ruta', compact('ruta', 'unidad', 'unidadID', 'iniciarRuta'));
                 }
             }
         }
@@ -206,29 +227,29 @@ class RutaController extends Controller
         return redirect()->action('RutaController@iniciarRuta');
     }
 
-    public function marcarEstacion($estacion,$ruta){
-        $estacion = Estacion::where('estacionID',$estacion)->where('RUTAS_rutaID',$ruta)->first();
+    public function marcarEstacion($estacion, $ruta)
+    {
+        $estacion = Estacion::where('estacionID', $estacion)->where('RUTAS_rutaID', $ruta)->first();
 
         $data = [];
         $data['status'] = '';
-        if($estacion){
+        if ($estacion) {
             $estacion->estacionCUMPLIMIENTO = 'Si';
             $estacion->save();
-            $ruta = Ruta::where('rutaID',$ruta)->with('estaciones','estaciones')->first();
-            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
+            $ruta = Ruta::where('rutaID', $ruta)->with('estaciones', 'estaciones')->first();
+            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
             $ruta->save();
 
             $data['status'] = 'OK';
-            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100;
-            $data['cumplimiento'] = number_format($cumplimiento,2);
-            if($cumplimiento == 100){
+            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100;
+            $data['cumplimiento'] = number_format($cumplimiento, 2);
+            if ($cumplimiento == 100) {
                 $ruta->rutaESTADO = 'Finalizado';
                 $ruta->save();
 
                 Mail::send(new RutaCMail(Auth::user(), 'ruta_completa'));
             }
-
-        }else{
+        } else {
             $data['status'] = 'ERROR';
         }
         return json_encode($data);
@@ -242,7 +263,7 @@ class RutaController extends Controller
     public function showFormAgregarEmprendimiento(Request $request)
     {
         $from = "crear";
-        return view('rutac.rutas.agregar-emprendimiento',compact('from'));
+        return view('rutac.rutas.agregar-emprendimiento', compact('from'));
     }
 
     /**
@@ -253,10 +274,8 @@ class RutaController extends Controller
      */
     public function agregarEmprendimiento(Request $request)
     {
-
-        try{
-
-            $emprendimiento = DB::transaction(function() use($request){
+        try {
+            $emprendimiento = DB::transaction(function () use ($request) {
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Usuario y lo guarda
@@ -267,19 +286,15 @@ class RutaController extends Controller
                 $nuevo_emprendimiento->emprendimientoNOMBRE = $request->nombre_emprendimiento;
                 $nuevo_emprendimiento->emprendimientoDESCRIPCION = $request->descripcion_emprendimiento;
                 $nuevo_emprendimiento->emprendimientoINICIOACTIVIDADES = $request->inicio_actividades;
-                $nuevo_emprendimiento->emprendimientoINGRESOS = str_replace(',','',$request->ingresos_ventas);
-                $nuevo_emprendimiento->emprendimientoREMUNERACION = str_replace(',','',$request->remuneracion_emprendedor);
+                $nuevo_emprendimiento->emprendimientoINGRESOS = str_replace(',', '', $request->ingresos_ventas);
+                $nuevo_emprendimiento->emprendimientoREMUNERACION = str_replace(',', '', $request->remuneracion_emprendedor);
                 $nuevo_emprendimiento->save();
-
-
-
             });
             return redirect()->action('RutaController@iniciarRuta');
-
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e);
             dd("There was an error creating your account. Error: ".dd(config("custom_exceptions.".$e->getCode())));
-            session()->flash('success_error','Ocurrió un error agregando el emprendimiento, intente nuevamente');
+            session()->flash('success_error', 'Ocurrió un error agregando el emprendimiento, intente nuevamente');
             return back();
         }
     }
@@ -295,7 +310,7 @@ class RutaController extends Controller
         $repository = $this->repository;
         $repositoryDepartamentos = $this->repository->departamentos();
         $from = "crear";
-        return view('rutac.rutas.agregar-empresa',compact('from','repository','repositoryDepartamentos','usuario'));
+        return view('rutac.rutas.agregar-empresa', compact('from', 'repository', 'repositoryDepartamentos', 'usuario'));
     }
 
     /**
@@ -308,6 +323,4 @@ class RutaController extends Controller
     {
         return view('rutac.rutas.agregar-emprendimiento');
     }
-
-
 }

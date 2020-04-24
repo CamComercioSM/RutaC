@@ -20,37 +20,49 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div>
-                            <b-card no-body>
-                                <b-tabs card vertical nav-wrapper-class="w-25">
-                                    @foreach($seccion->resultadoPregunta as $key => $pregunta)
-                                    <b-tab
-                                            title="Pregunta # {{ $key+1 }}"
-                                            @if($pregunta->resultado_preguntaESTADO == 'Respondida')
-                                            title-link-class="font-weight-bold text-uppercase text-success"
-                                            @endif
-                                            content-class="mt-3"
-                                    >
-                                        <b-card-text>
-                                            <h3>{{ $pregunta->resultado_preguntaENUNCIADO_PREGUNTA }}</h3>
-                                            @foreach($pregunta->respuestas as $key=> $respuesta)
-                                                <div>
-                                                    <b-form-group>
-                                                        <b-form-radio
-                                                                name="pregunta_{{$respuesta->PREGUNTAS_preguntaID}}"
-                                                                id="r_{{$respuesta->respuestaID}}"
-                                                                value="{{$respuesta->respuestaID}}">
-                                                            {{$respuesta->respuestaPRESENTACION}}
-                                                        </b-form-radio>
-                                                    </b-form-group>
-                                                </div>
-                                            @endforeach
-                                        </b-card-text>
-                                    </b-tab>
-                                    @endforeach
-                                </b-tabs>
-                            </b-card>
-                        </div>
+                        <rc-form
+                                action="{{ route('user.diagnosticos.store') }}"
+                                method="post"
+                        >
+                            @csrf
+                            <input type="hidden" name="seccion" value="{{ $seccion->resultado_seccionID }}">
+                            <div>
+                                <b-card no-body>
+                                    <b-tabs card vertical nav-wrapper-class="w-25">
+                                        @foreach($seccion->resultadoPregunta as $key1 => $pregunta)
+                                        <b-tab
+                                                title="Pregunta # {{ $key1+1 }}"
+                                                @if($pregunta->resultado_preguntaESTADO == 'Respondida')
+                                                title-link-class="font-weight-bold text-uppercase text-success"
+                                                @endif
+                                                content-class="mt-3"
+                                        >
+                                            <b-card-text>
+                                                <h3>{{ $pregunta->resultado_preguntaENUNCIADO_PREGUNTA }}</h3>
+                                                @foreach($pregunta->respuestas as $key2 => $respuesta)
+                                                    <div>
+                                                        <b-form-group>
+                                                            <b-form-radio
+                                                                    name="pregunta[{{ $respuesta->PREGUNTAS_preguntaID }}]"
+                                                                    id="r_{{$respuesta->respuestaID}}"
+                                                                    value="{{$respuesta->respuestaID}}">
+                                                                {{$respuesta->respuestaPRESENTACION}}
+                                                            </b-form-radio>
+                                                        </b-form-group>
+                                                    </div>
+                                                @endforeach
+                                            </b-card-text>
+                                        </b-tab>
+                                        @endforeach
+                                    </b-tabs>
+                                </b-card>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Guardar') }}
+                                </button>
+                            </div>
+                        </rc-form>
                     </div>
                 </div>
             </div>

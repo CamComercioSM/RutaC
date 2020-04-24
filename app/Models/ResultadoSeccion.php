@@ -30,4 +30,9 @@ class ResultadoSeccion extends Model
             'RESULTADOS_SECCION_resultado_seccionID'
         )->with('respuestas');
     }
+
+    public function seccion()
+    {
+        return $this->belongsTo('App\Models\SeccionPregunta', 'seccionID');
+    }
 }

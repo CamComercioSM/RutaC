@@ -6,7 +6,10 @@ Route::resource('empresas', 'EmpresaController');
 
 Route::resource('diagnosticos', 'DiagnosticoController');
 Route::get('diagnosticos/iniciar/{tipo}/{id}', 'DiagnosticoController@iniciar');
-Route::get('diagnosticos/seccion/{id}', 'DiagnosticoController@respondQuestions');
+Route::get('diagnosticos/seccion/{id}', 'DiagnosticoController@respondQuestions')->name('diganostico.seccion');
+Route::get('diagnosticos/resultados/{diagnostico}', 'DiagnosticoController@getResultados')->name('diganostico.resultados');
+
+
 
 /*
     |---------------------------------------------------------------------------------------

@@ -16,13 +16,18 @@
                                 <a href="{{ route('user.ruta.iniciar-ruta') }}" class="btn btn-outline-secondary">
                                     <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
                                 </a>
+                                @if ($diagnostico->diagnosticoESTADO == 'Finalizado')
+                                <a href="{{ route('user.diganostico.resultados', $diagnostico) }}" class="btn btn-success">
+                                    <i class="fas fa-eye"></i> {{ __('Ver Resultados') }}
+                                </a>
+                                @endif
                             </div>
                         </div>
                     </div>
 
                     <div class="card-body">
                         <b-card-group deck>
-                            @foreach($diagnostico->resultadoSeccion as $key => $resultadoSeccion)
+                            @forelse($diagnostico->resultadoSeccion as $key => $resultadoSeccion)
                             <b-card
                                     border-variant="primary"
                                     header="{{ $resultadoSeccion->resultado_seccionNOMBRE }}"
@@ -44,7 +49,11 @@
                                 @if((((2 * $key) % 3) == 1))
                                     <div class="col-md-12"><br></div>
                                 @endif
-                            @endforeach
+                            @empty
+                                <div class="col-md-12">
+                                    <h2 class="text-center">En construcción</h2>
+                                </div>
+                            @endforelse
                         </b-card-group>
                     </div>
                 </div>
