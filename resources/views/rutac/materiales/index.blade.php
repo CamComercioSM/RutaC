@@ -4,35 +4,32 @@
 
 @section('app-content')
 	<div class="container">
-		<div class="row justify-content">
+		<div class="row justify-content-center">
 			<div class="col-md-12">
-				<h1>Materiales de ayuda</h1>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row justify-content">
-			<div class="col-md-12">
-				<div>
-					<b-card no-body>
-						<b-tabs card>
-							<b-tab title="Videos" active>
-								<b-card-text>
-									@include('rutac.materiales.__videos')
-								</b-card-text>
-							</b-tab>
-							<b-tab title="Documentos">
-								<b-card-text>
-									@include('rutac.materiales.__documentos')
-								</b-card-text>
-							</b-tab>
-						</b-tabs>
-					</b-card>
+				<div class="card card-default">
+					<div class="card-header d-flex justify-content-between">
+						<h4>Materiales de ayuda</h4>
+					</div>
+					<div class="card-body" style="padding: 0px;">
+						<b-card no-body>
+							<b-tabs card>
+								<b-tab title="Videos" active>
+									<b-card-text>
+										@include('rutac.materiales.__videos')
+									</b-card-text>
+								</b-tab>
+								<b-tab title="Documentos">
+									<b-card-text>
+										@include('rutac.materiales.__documentos')
+									</b-card-text>
+								</b-tab>
+							</b-tabs>
+						</b-card>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 @endsection
 @section('app-scripts')
 <script type="text/javascript">

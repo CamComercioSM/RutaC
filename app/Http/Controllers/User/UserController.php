@@ -133,38 +133,31 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'anterior_password' => 'required',
-            'nuevo_password' => 'required',
-            'repetir_password'    => 'required'
+            'nuevo_password' => 'required|min:6',
+            'repetir_password'    => 'required|same:nuevo_password'
         ]);
 
         if ($validator->fails()) {
-            $request->session()->flash("tab_active", "actualizar-password");
-            $request->session()->flash("message_error", "Digite todos los datos");
-            return back();
+
+            return redirect()->route('user.usuario.mi-perfil')->with([
+                'error' => __('Ocurrió un error en los datos. Intente nuevamente'),
+            ]);
         }
 
         if (Auth::attempt(['usuarioID' => Auth::user()->usuarioID, 'password' => $request->anterior_password])) {
-            if ($request->input('nuevo_password') == $request->input('repetir_password')) {
-                if (strlen($request->input('nuevo_password'))>=8) {
-                    DB::table('usuarios')
-                        ->where('usuarioID', Auth::user()->usuarioID)
-                        ->update(['password' => bcrypt($request->input('nuevo_password'))]);
-                    $request->session()->flash("message_success", "Contraseña guardada correctamente");
-                    return back();
-                } else {
-                    $request->session()->flash("tab_active", "actualizar-password");
-                    $request->session()->flash("message_error", "La contraseña debe tener al menos 8 caracteres");
-                    return back();
-                }
-            } else {
-                $request->session()->flash("tab_active", "actualizar-password");
-                $request->session()->flash("message_error", "Las contraseñas no coinciden");
-                return back();
-            }
+            DB::table('usuarios')
+                ->where('usuarioID', Auth::user()->usuarioID)
+                ->update(['password' => bcrypt($request->input('nuevo_password'))]);
+            $request->session()->flash("message_success", "Contraseña guardada correctamente");
+
+            return redirect()->route('user.usuario.mi-perfil')->with([
+                'success' => __('Contraseña actualizada correctamente'),
+            ]);
         } else {
-            $request->session()->flash("tab_active", "actualizar-password");
-            $request->session()->flash("message_error", "La contraseña no coincide");
-            return back();
+
+            return redirect()->route('user.usuario.mi-perfil')->with([
+                'error' => __('Ocurrió un error actualizando la contraseña. Intente nuevamente'),
+            ]);
         }
     }
 
