@@ -32,7 +32,7 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/user/home';
 
     /**
      * Create a new controller instance.
@@ -111,7 +111,8 @@ class ResetPasswordController extends Controller
         return [
             'token' => 'required',
             'usuarioEMAIL' => 'required|email',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'same:password',
         ];
     }
 
@@ -171,6 +172,24 @@ class ResetPasswordController extends Controller
     {
         return redirect($this->redirectPath())
                             ->with('status', trans($response));
+    }
+
+    protected function redirectPath()
+    {
+        if (method_exists($this, 'redirectTo')) {
+            return $this->redirectTo();
+        }
+
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+    }
+
+    protected function redirectTo()
+    {
+        if (Auth::user()->tipoUsuario == 'Admin') {
+            return '/admin';
+        } else {
+            return '/user/home';
+        }
     }
 
     /**

@@ -1,69 +1,76 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Restablecer Contraseña</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
-                        {{ csrf_field() }}
-
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group{{ $errors->has('usuarioEMAIL') ? ' has-error' : '' }}">
-                            <label for="usuarioEMAIL" class="col-md-4 control-label">Correo electrónico</label>
-
-                            <div class="col-md-6">
-                                <input id="usuarioEMAIL" type="email" class="form-control" name="usuarioEMAIL" value="{{ $usuarioEMAIL or old('usuarioEMAIL') }}" required autofocus>
-
-                                @if ($errors->has('usuarioEMAIL'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('usuarioEMAIL') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="flex-grow-1">
+                            @include('layouts.__alert')
                         </div>
+                        <h3 class="login-box-msg text-center">Restablecer Contraseña</h3>
+                        <hr>
+                        <rc-form
+                                action="{{ route('password.request') }}"
+                                method="post"
+                        >
+                            @csrf
+                            <input type="hidden" name="token" value="{{ $token }}">
+                            <div class="row justify-content-center">
+                                <div class="form-group col-md-6 offset-md-1">
+                                    <rc-input
+                                            rules="required|email|max:255"
+                                            name="usuarioEMAIL"
+                                            id="usuarioEMAIL"
+                                            type="email"
+                                            @error('usuarioEMAIL')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ old('usuarioEMAIL') }}"
+                                            autocomplete="off"
+                                            placeholder="Correo electrónico"
+                                    ></rc-input>
+                                </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
+                                <div class="form-group col-md-6 offset-md-1">
+                                    <rc-input
+                                            rules="required|min:6"
+                                            name="password"
+                                            id="password"
+                                            type="password"
+                                            @error('password')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            autocomplete="off"
+                                            placeholder="Contraseña"
+                                    ></rc-input>
+                                </div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+                                <div class="form-group col-md-6 offset-md-1">
+                                    <rc-input
+                                            rules="required|min:6"
+                                            name="password_confirmation"
+                                            id="password_confirmation"
+                                            type="password"
+                                            @error('password_confirmation')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            autocomplete="off"
+                                            placeholder="Contraseña"
+                                    ></rc-input>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirmar contraseña</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Restablecer contraseña
+                            <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Restablecer contraseña') }}
                                 </button>
                             </div>
-                        </div>
-                    </form>
+                        </rc-form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

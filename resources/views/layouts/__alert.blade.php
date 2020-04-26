@@ -10,6 +10,12 @@
     </rc-alert>
 @endif
 
+@if(session()->has('status'))
+    <rc-alert variant="info" dismiss="0">
+        <p>{{ session('status') }}</p>
+    </rc-alert>
+@endif
+
 @if(session()->has('error'))
     <rc-alert variant="danger" dismiss="0">
         <p>{{ session('error') }}</p>
