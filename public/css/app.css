@@ -11028,10 +11028,7 @@ a.text-dark:focus {
 .nav-link {
   display: flex;
   align-items: center;
-  padding-top: 5px;
-  padding-right: 0;
-  padding-bottom: 5px;
-  padding-left: 0;
+  padding: 10px;
   font-size: 1rem;
   font-weight: 600;
   color: #49545a;
@@ -14113,5 +14110,9 @@ button[aria-label][data-balloon-pos] {
 .main-content {
   background: #fff;
   padding: 15px;
+}
+
+.dashboard-tabs {
+  margin-right: 1rem !important;
 }
 

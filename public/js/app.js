@@ -7968,7 +7968,7 @@ __webpack_require__.r(__webpack_exports__);
         this.value = this.initialValue;
       }
 
-      axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/' + this.value, {}).then(function (response) {
+      axios.get('https://rutadecrecimiento.com/public/buscar_municipios/' + this.value, {}).then(function (response) {
         _event_bus_js__WEBPACK_IMPORTED_MODULE_1__["default"].$emit('cities', response.data);
       });
     }
@@ -8085,7 +8085,7 @@ __webpack_require__.r(__webpack_exports__);
         this.value = this.initialValue;
       }
 
-      axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/' + this.value, {}).then(function (response) {
+      axios.get('https://rutadecrecimiento.com/public/buscar_municipios/' + this.value, {}).then(function (response) {
         _event_bus_js__WEBPACK_IMPORTED_MODULE_1__["default"].$emit('cities2', response.data);
       });
     }

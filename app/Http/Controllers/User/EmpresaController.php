@@ -178,24 +178,101 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Empresa $empresa
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Empresa $empresa)
     {
-        //
+        $empresa->facebook = "";
+        $empresa->twitter = "";
+        $empresa->instagram = "";
+        $redesSociales = explode("-", $empresa->empresaREDES_SOCIALES);
+        foreach ($redesSociales as $key => $redSocial) {
+            $red = explode(":", $redSocial);
+            switch ($red[0]) {
+                case "fb":
+                    $empresa->facebook = $red[1];
+                    break;
+                case "tw":
+                    $empresa->twitter = $red[1];
+                    break;
+                case "ig":
+                    $empresa->instagram = $red[1];
+                    break;
+            }
+        }
+
+        $empresa->nombreContactoCial = "";
+        $empresa->correoContactoCial = "";
+        $empresa->telefonoContactoCial = "";
+        $contactoCial = explode("-", $empresa->empresaCONTACTO_COMERCIAL);
+        foreach ($contactoCial as $key => $contacto) {
+            $cCial = explode(":", $contacto);
+            switch ($cCial[0]) {
+                case "nombre":
+                    $empresa->nombreContactoCial = $cCial[1];
+                    break;
+                case "correo":
+                    $empresa->correoContactoCial = $cCial[1];
+                    break;
+                case "telefono":
+                    $empresa->telefonoContactoCial = $cCial[1];
+                    break;
+            }
+        }
+
+        $empresa->nombreContactoTH = "";
+        $empresa->correoContactoTH = "";
+        $empresa->telefonoContactoTH = "";
+        $contactoTH = explode("-", $empresa->empresaCONTACTO_TALENTO_HUMANO);
+        foreach ($contactoTH as $key => $contacto) {
+            $cTH = explode(":", $contacto);
+            switch ($cTH[0]) {
+                case "nombre":
+                    $empresa->nombreContactoTH = $cTH[1];
+                    break;
+                case "correo":
+                    $empresa->correoContactoTH = $cTH[1];
+                    break;
+                case "telefono":
+                    $empresa->telefonoContactoTH = $cTH[1];
+                    break;
+            }
+        }
+
+        return response()->view('rutac.empresas.edit', compact('empresa'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param Empresa $empresa
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Empresa $empresa)
     {
-        //
+        $empresa->empresaNIT = $request->nit;
+        $empresa->empresaMATRICULA_MERCANTIL = $request->matricula_mercantil;
+        $empresa->empresaRAZON_SOCIAL = $request->razon_social;
+        $empresa->empresaORGANIZACION_JURIDICA = $request->organizacion_juridica;
+        $empresa->empresaFECHA_CONSTITUCION = $request->fecha_constitucion;
+        $empresa->empresaDEPARTAMENTO_EMPRESA = $this->obtenerDepartamento($request->departamento_empresa);
+        $empresa->empresaMUNICIPIO_EMPRESA = isset($request->municipio_empresa) ? $municipio = $this->obtenerMunicipio($request->municipio_empresa) : $empresa->empresaMUNICIPIO_EMPRESA;
+        $empresa->empresaDIRECCION_FISICA = $request->direccion_empresa;
+        $empresa->empresaEMPLEADOS_FIJOS = $request->empleados_fijos;
+        $empresa->empresaEMPLEADOS_TEMPORALES = $request->empleados_temporales;
+        $empresa->empresaRANGOS_ACTIVOS = $request->rangos_activos;
+        $empresa->empresaCORREO_ELECTRONICO = $request->correo_electronico;
+        $empresa->empresaSITIO_WEB = $request->pagina_web;
+        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->cuenta_facebook, $request->cuenta_twitter, $request->cuenta_instagram);
+        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->nombre_contacto_cial, $request->telefono_contacto_cial, $request->correo_contacto_cial);
+        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->nombre_contacto_th, $request->telefono_contacto_th, $request->correo_contacto_th);
+        $empresa->save();
+
+        return redirect()->route('user.empresas.show', $empresa)->with([
+            'success' => __('Empresa actualizada correctamente'),
+        ]);
     }
 
     /**

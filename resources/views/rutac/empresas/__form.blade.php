@@ -13,7 +13,7 @@
                 @error('nit')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('nit') }}"
+                initial-value="{{ old('nit', $empresa->empresaNIT) }}"
                 autocomplete="off"
                 placeholder="Digite el nit de la empresa"
                 label="Nit de la empresa"
@@ -29,7 +29,7 @@
                 @error('matricula_mercantil')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('matricula_mercantil') }}"
+                initial-value="{{ old('matricula_mercantil', $empresa->empresaMATRICULA_MERCANTIL) }}"
                 autocomplete="off"
                 placeholder="Digite la matrícula mercantil"
                 label="Matrícula mercantil"
@@ -45,7 +45,7 @@
                 @error('razon_social')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('razon_social') }}"
+                initial-value="{{ old('razon_social', $empresa->empresaRAZON_SOCIAL) }}"
                 autocomplete="off"
                 placeholder="Digite la razón social"
                 label="Razón social"
@@ -60,7 +60,7 @@
                 @error('organizacion_juridica')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('organizacion_juridica') }}"
+                initial-value="{{ old('organizacion_juridica', $empresa->empresaORGANIZACION_JURIDICA) }}"
                 placeholder="Seleccione Organización Juridica"
                 label="{{ __('Organización Juridica') }}"
                 :options="{{ $tipos->toJson() }}"
@@ -77,7 +77,7 @@
                 @error('fecha_constitucion')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('fecha_constitucion') }}"
+                initial-value="{{ old('fecha_constitucion', $empresa->empresaFECHA_CONSTITUCION) }}"
                 placeholder="{{ __('Digite la Fecha de constitución') }}"
         >
         </rc-date-picker>
@@ -92,7 +92,7 @@
                 @error('representante_legal')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('representante_legal') }}"
+                initial-value="{{ old('representante_legal', $empresa->empresaREPRESENTANTE_LEGAL) }}"
                 autocomplete="off"
                 placeholder="Digite representante legal"
                 label="Representante legal"
@@ -117,7 +117,7 @@
                 @error('departamento_empresa')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('departamento_empresa') }}"
+                initial-value="{{ old('departamento_empresa', $empresa->empresaDEPARTAMENTO_EMPRESA) }}"
                 placeholder="{{ __('Seleccione un departamento') }}"
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }}"
@@ -133,7 +133,7 @@
                 @error('municipio_empresa')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('municipio_empresa') }}"
+                initial-value="{{ old('municipio_empresa', $empresa->empresaMUNICIPIO_EMPRESA) }}"
                 placeholder="{{ __('Seleccione un municipio') }}"
                 label="{{ __('Municipio') }}"
         >
@@ -149,7 +149,7 @@
                 @error('direccion_empresa')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('direccion_empresa') }}"
+                initial-value="{{ old('direccion_empresa', $empresa->empresaDIRECCION_FISICA) }}"
                 autocomplete="off"
                 placeholder="Digite dirección de la empresa"
                 label="Dirección de la empresa"
@@ -165,7 +165,7 @@
                 @error('correo_electronico')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('correo_electronico') }}"
+                initial-value="{{ old('correo_electronico', $empresa->empresaCORREO_ELECTRONICO) }}"
                 autocomplete="off"
                 placeholder="Digite correo electrónico"
                 label="Correo electrónico de la empresa"
@@ -181,7 +181,7 @@
                 @error('pagina_web')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('pagina_web') }}"
+                initial-value="{{ old('pagina_web', $empresa->empresaSITIO_WEB) }}"
                 autocomplete="off"
                 placeholder="Digite página web"
                 label="Página web de la empresa"
@@ -197,7 +197,7 @@
                 @error('empleados_fijos')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('empleados_fijos') }}"
+                initial-value="{{ old('empleados_fijos', $empresa->empresaEMPLEADOS_FIJOS) }}"
                 autocomplete="off"
                 placeholder="Digite el número de empleados fijos"
                 label="Empleados fijos"
@@ -213,7 +213,7 @@
                 @error('empleados_temporales')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('empleados_temporales') }}"
+                initial-value="{{ old('empleados_temporales', $empresa->empresaEMPLEADOS_TEMPORALES) }}"
                 autocomplete="off"
                 placeholder="Digite el número de empleados temporales"
                 label="Empleados temporales"
@@ -228,7 +228,7 @@
                 @error('rangos_activos')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('rangos_activos') }}"
+                initial-value="{{ old('rangos_activos', $empresa->empresaRANGOS_ACTIVOS) }}"
                 placeholder="Seleccione rango de activos"
                 label="{{ __('Rango de activos') }}"
                 :options="{{ $activos->toJson() }}"
@@ -245,7 +245,7 @@
                 @error('cuenta_facebook')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('cuenta_facebook') }}"
+                initial-value="{{ old('cuenta_facebook', $empresa->facebook) }}"
                 autocomplete="off"
                 placeholder="Digite cuenta de facebook"
                 label="Cuenta de facebook"
@@ -261,7 +261,7 @@
                 @error('cuenta_twitter')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('cuenta_twitter') }}"
+                initial-value="{{ old('cuenta_twitter', $empresa->twitter) }}"
                 autocomplete="off"
                 placeholder="Digite cuenta de twitter"
                 label="Cuenta de twitter"
@@ -277,7 +277,7 @@
                 @error('cuenta_instagram')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('cuenta_instagram') }}"
+                initial-value="{{ old('cuenta_instagram', $empresa->instagram) }}"
                 autocomplete="off"
                 placeholder="Digite cuenta de instagram"
                 label="Cuenta de instagram"
@@ -299,7 +299,7 @@
                 @error('nombre_contacto_cial')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('nombre_contacto_cial') }}"
+                initial-value="{{ old('nombre_contacto_cial', $empresa->nombreContactoCial) }}"
                 autocomplete="off"
                 placeholder="Digite nombre de la persona contacto comercial"
                 label="Nombre contacto comercial"
@@ -315,7 +315,7 @@
                 @error('telefono_contacto_cial')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('telefono_contacto_cial') }}"
+                initial-value="{{ old('telefono_contacto_cial', $empresa->telefonoContactoCial) }}"
                 autocomplete="off"
                 placeholder="Digite teléfono de contacto comercial"
                 label="Teléfono contacto comercial"
@@ -331,7 +331,7 @@
                 @error('correo_contacto_cial')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('correo_contacto_cial') }}"
+                initial-value="{{ old('correo_contacto_cial', $empresa->correoContactoCial) }}"
                 autocomplete="off"
                 placeholder="Digite correo electrónico contacto comercial"
                 label="Correo electrónico contacto comercial"
@@ -354,7 +354,7 @@
                 @error('nombre_contacto_th')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('nombre_contacto_th') }}"
+                initial-value="{{ old('nombre_contacto_th', $empresa->nombreContactoTH) }}"
                 autocomplete="off"
                 placeholder="Digite nombre de la persona contacto talento humano"
                 label="Nombre contacto talento humano"
@@ -370,7 +370,7 @@
                 @error('telefono_contacto_th')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('telefono_contacto_th') }}"
+                initial-value="{{ old('telefono_contacto_th', $empresa->telefonoContactoTH) }}"
                 autocomplete="off"
                 placeholder="Digite teléfono de contacto talento humano"
                 label="Teléfono contacto talento humano"
@@ -386,7 +386,7 @@
                 @error('correo_contacto_th')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('correo_contacto_th') }}"
+                initial-value="{{ old('correo_contacto_th', $empresa->correoContactoTH) }}"
                 autocomplete="off"
                 placeholder="Digite correo electrónico contacto talento humano"
                 label="Correo electrónico contacto talento humano"

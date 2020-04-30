@@ -5,11 +5,22 @@
 @section('app-content')
     <div class="container">
         <div class="row justify-content">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="card card-default">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-between align-content-center">
                             <h5>{{$empresa->empresaRAZON_SOCIAL}}</h5>
+                        </div>
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group btn-group-sm">
+                                <a class="p-1" href="{{ route('user.empresas.edit', $empresa) }}">
+                                    <i class="fas fa-edit text-warning"></i>
+                                </a>
+
+                                <a class="p-1" href="#">
+                                    <i class="fas fa-trash text-danger"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -66,7 +77,7 @@
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="card card-default">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-between align-content-center">
@@ -76,14 +87,6 @@
                             <div class="btn-group btn-group-sm">
                                 <a href="{{ route('user.ruta.iniciar-ruta') }}" class="btn btn-outline-secondary">
                                     <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
-                                </a>
-
-                                <a href="#" class="btn btn-outline-warning">
-                                    <i class="fas fa-edit"></i> {{ __('Editar') }}
-                                </a>
-
-                                <a href="#" class="btn btn-outline-danger">
-                                    <i class="fas fa-edit"></i> {{ __('Eliminar') }}
                                 </a>
                             </div>
                         </div>
