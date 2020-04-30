@@ -8,6 +8,7 @@ use App\Http\View\Composers\DocumentTypesComposer;
 use App\Http\View\Composers\EstadoComposer;
 use App\Http\View\Composers\EstudiosComposer;
 use App\Http\View\Composers\EtnicoComposer;
+use App\Http\View\Composers\IdiomasComposer;
 use App\Http\View\Composers\ProfesionComposer;
 use App\Http\View\Composers\RangosActivosComposer;
 use App\Http\View\Composers\RemuneracionComposer;
@@ -53,6 +54,8 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['rutac.usuario.forms.__datos_usuario'],EtnicoComposer::class);
 
         View::composer(['rutac.usuario.forms.__datos_usuario'],CargoComposer::class);
+
+        View::composer(['rutac.usuario.forms.__datos_usuario'],IdiomasComposer::class);
 
         View::composer(['rutac.empresas.__form'],TiposEmpresaComposer::class);
 

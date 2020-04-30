@@ -68,7 +68,7 @@
         <rc-select-location
                 name="departamento_residencia"
                 id="departamento_residencia"
-                rules="required|numeric"
+                rules="required"
                 @error('departamento_residencia')
                 error="{{ $message }}"
                 @enderror
@@ -76,14 +76,14 @@
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
         >
-        </rc-select-location>
+        </rc-select-location>re
     </div>
 
     <div class="form-group col-md-6">
         <rc-select-city
                 name="municipio_residencia"
                 id="municipio_residencia"
-                rules="required|numeric"
+                rules="required"
                 @error('municipio_residencia')
                 error="{{ $message }}"
                 @enderror

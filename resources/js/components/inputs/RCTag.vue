@@ -13,16 +13,32 @@
                 :label="label"
                 :label-for="$attrs.id"
         >
-            <b-form-select
-                    v-bind="$attrs"
-                    v-model="value"
-                    :state="errors[0] ? false : null"
-                    @change='getCities()'
-            >
-                <template v-slot:first v-if="placeholder">
-                    <b-form-select-option :value="null" disabled>{{ placeholder }}</b-form-select-option>
+
+            <b-form-tags v-bind="$attrs" v-model="value" size="lg" add-on-change no-outer-focus class="mb-2">
+                <template v-slot="{ tags, inputAttrs, inputHandlers, disabled, removeTag }">
+                    <ul v-if="tags.length > 0" class="list-inline d-inline-block mb-2">
+                        <li v-for="tag in tags" :key="tag" class="list-inline-item">
+                            <b-form-tag
+                                    @remove="removeTag(tag)"
+                                    :disabled="disabled"
+                                    :state="errors[0] ? false : null"
+                                    class="mb-2"
+                            >{{ tag }}</b-form-tag>
+                        </li>
+                    </ul>
+                    <b-form-select
+                            v-bind="inputAttrs"
+                            v-on="inputHandlers"
+                            :disabled="disabled || availableOptions.length === 0"
+                            :options="availableOptions"
+                    >
+                        <template v-slot:first v-if="placeholder">
+                            <option value="" disabled>{{ placeholder }}</option>
+                        </template>
+                    </b-form-select>
                 </template>
-            </b-form-select>
+            </b-form-tags>
+
             <b-form-invalid-feedback>{{ errors[0] }}</b-form-invalid-feedback>
         </b-form-group>
     </ValidationProvider>
@@ -30,7 +46,6 @@
 
 <script>
     import { ValidationProvider } from "vee-validate";
-    import EventBus from './event-bus.js';
 
     export default {
         components: {
@@ -56,46 +71,42 @@
                 default: null,
             },
             initialValue:{
+                type: Array,
                 default: null,
             },
             placeholder: {
                 type: String,
                 default: null
             },
-            subSelect: {
-                default: null
+            options: {
+                type: Array,
+                default: null,
             }
+
         },
         computed: {
             formGroupID: function() {
                 return 'fieldset-for-' + this.$attrs.id;
+            },
+            availableOptions() {
+                if(this.value == null){
+                    return this.options;
+                }
+                return this.options.filter(opt => this.value.indexOf(opt) === -1);
             }
         },
         data: function() {
             return {
-                value: null,
-                cities: ''
+                value: []
             }
         },
         methods: {
             addError(error) {
                 this.$refs.validationProvider.setErrors([this.error]);
             },
-            getCities: function(){
-                if(!this.value) {
-                    this.value = this.initialValue;
-                }
-                axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/'+this.value, {})
-                .then(function (response) {
-                    EventBus.$emit('cities', response.data);
-                });
-            }
         },
         created() {
-            if (this.initialValue) {
-                this.value = this.initialValue;
-                this.getCities();
-            }
+            this.value = this.initialValue;
         },
         mounted() {
             if (this.error) {
