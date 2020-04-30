@@ -6,7 +6,7 @@
     </div>
     <div class="form-group col-md-3">
         <rc-input
-                rules="required"
+                rules="required|numeric"
                 name="nit"
                 id="nit"
                 type="text"
@@ -22,7 +22,7 @@
 
     <div class="form-group col-md-3">
         <rc-input
-                rules="required"
+                rules="required|numeric"
                 name="matricula_mercantil"
                 id="matricula_mercantil"
                 type="text"
