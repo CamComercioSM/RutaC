@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','RutaC | Registrar | Cámara de Comercio de Santa Marta para el Magdalena')
+
 <style>
     .register-box{
         width: 600px!important;

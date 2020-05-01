@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','RutaC | Inicio de sesión | Cámara de Comercio de Santa Marta para el Magdalena')
+
 @section('content')
     <div class="container">
         <div class="row justify-content">
