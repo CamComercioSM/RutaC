@@ -56,6 +56,7 @@
     </div>
     <div class="form-group col-md-3">
         <rc-input
+                id="pais_residencia"
                 type="text"
                 initial-value="Colombia"
                 label="{{ __('País') }}"
@@ -146,6 +147,7 @@
     </div>
     <div class="form-group col-md-3">
         <rc-input
+                id="pais_nacimiento"
                 type="text"
                 initial-value="Colombia"
                 label="{{ __('País') }}"
@@ -181,6 +183,7 @@
                 initial-value="{{ old('municipio_nacimiento', $usuario->dato_usuarioMUNICIPIO_NACIMIENTO) }}"
                 placeholder="{{ __('Municipio de nacimiento') }}"
                 label="{{ __('Municipio') }}"
+                disabled
         >
         </rc-select-city-2>
     </div>

@@ -87,7 +87,6 @@
             if (this.initialValue) {
                 this.value = this.initialValue;
             }
-            console.log(this.initialValue);
             let vm = this;
             EventBus.$on('cities2', function (data) {
                 vm.cities2 = data;

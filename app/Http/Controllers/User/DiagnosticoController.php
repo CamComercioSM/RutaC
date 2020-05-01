@@ -53,7 +53,7 @@ class DiagnosticoController extends Controller
     public function iniciar($tipo, $id)
     {
         if (!in_array($tipo, TipoNegocio::supported())) {
-            throw new RutaCException(__('Negocio no sopportado'), Carbon::now()->timestamp);
+            throw new RutaCException('user.ruta.iniciar-ruta', __('Negocio no sopportado'), Carbon::now()->timestamp);
         }
 
         $tipoNegocio = $this->getTipoNegocio($tipo);
@@ -119,7 +119,7 @@ class DiagnosticoController extends Controller
                 if (!count($this->preguntas->obtenerPreguntasSeccion($tipoDiagnostico)) > 0) {
                     DB::rollback();
 
-                    throw new RutaCException(__('Error creando el diagnóstico. Obteniendo preguntas'), Carbon::now()->timestamp);
+                    throw new RutaCException('user.ruta.iniciar-ruta', __('Error creando el diagnóstico. Obteniendo preguntas'), Carbon::now()->timestamp);
                 }
 
                 foreach ($this->preguntas->obtenerPreguntasSeccion($seccion->seccion_preguntaID) as $pregunta) {
@@ -138,7 +138,7 @@ class DiagnosticoController extends Controller
             DB::rollback();
 
             Log::error(Carbon::now()->timestamp." => ". $e);
-            throw new RutaCException(__('Error creando el diagnóstico'), Carbon::now()->timestamp);
+            throw new RutaCException('user.ruta.iniciar-ruta', __('Error creando el diagnóstico'), Carbon::now()->timestamp);
         }
     }
 
@@ -191,7 +191,7 @@ class DiagnosticoController extends Controller
         $diagnostico = Diagnostico::where('diagnosticoID', $seccion->DIAGNOSTICOS_diagnosticoID)->first();
 
         if (!is_array($preguntas) || !$seccion || !$diagnostico) {
-            throw new RutaCException(__('Ocurrió un error guardando el diagnóstico'), Carbon::now()->timestamp);
+            throw new RutaCException('user.ruta.iniciar-ruta', __('Ocurrió un error guardando el diagnóstico'), Carbon::now()->timestamp);
         }
 
         $preguntasResulestas = count($preguntas);
@@ -254,7 +254,7 @@ class DiagnosticoController extends Controller
             DB::rollback();
 
             Log::error(Carbon::now()->timestamp." => ". $e);
-            throw new RutaCException(__('Error guardando el diagnóstico'), Carbon::now()->timestamp);
+            throw new RutaCException('user.ruta.iniciar-ruta', __('Error guardando el diagnóstico'), Carbon::now()->timestamp);
         }
     }
 

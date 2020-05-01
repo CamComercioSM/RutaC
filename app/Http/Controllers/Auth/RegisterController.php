@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Exceptions\RutaCException;
+use App\Helpers\DocumentType;
 use App\Models\User;
-use App\Models\Empresa;
 use App\Models\Municipio;
 use App\Models\DatoUsuario;
 use App\Models\Departamento;
-use App\Models\Emprendimiento;
 use App\Mail\RutaCMail;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -105,7 +106,7 @@ class RegisterController extends Controller
                 ->withInput();
         }
 
-        event(new Registered($user = $this->create($request->all())));
+        event(new Registered($user = $this->create($request)));
 
         $this->guard()->login($user);
 
@@ -128,30 +129,31 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param Request $request
      * @return User
+     * @throws RutaCException
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
         try {
-            $usuario = DB::transaction(function () use ($data) {
+            $usuario = DB::transaction(function () use ($request) {
                 /*
                 |---------------------------------------------------------------------------------------
                 | Asigna datos al modelo Datos Usuario y lo guarda
                 |---------------------------------------------------------------------------------------
                 */
-                $tipo_documento = $this->normalizarTipoDocumento($data);
-
+                //$tipo_documento = $this->normalizarTipoDocumento($request);
                 $datoUsuario = new DatoUsuario;
-                $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
-                $datoUsuario->dato_usuarioNOMBRES = $data['nombres'];
-                $datoUsuario->dato_usuarioAPELLIDOS = $data['apellidos'];
-                $datoUsuario->dato_usuarioTIPO_IDENTIFICACION = $tipo_documento;
-                $datoUsuario->dato_usuarioIDENTIFICACION = $data['numero_documento'];
-                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $data['departamento_residencia'];
-                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $data['municipio_residencia'];
-                $datoUsuario->dato_usuarioDIRECCION = $data['direccion'];
-                $datoUsuario->dato_usuarioTELEFONO = $data['telefono'];
+                $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->input('nombres').' '.$request->input('apellidos');
+                $datoUsuario->dato_usuarioNOMBRES = $request->input('nombres');
+                $datoUsuario->dato_usuarioAPELLIDOS = $request->input('apellidos');
+                $datoUsuario->dato_usuarioTIPO_IDENTIFICACION = DocumentType::getDocumentType($request->input('tipo_documento'));
+                $datoUsuario->dato_usuarioIDENTIFICACION = $request->input('numero_documento');
+                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $request->input('departamento_residencia');
+                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $request->input('municipio_residencia');
+                $datoUsuario->dato_usuarioDIRECCION = $request->input('direccion');
+                $datoUsuario->dato_usuarioTELEFONO = $request->input('telefono');
+
                 $datoUsuario->save();
                 $datoUsuarioID = $datoUsuario->dato_usuarioID;
 
@@ -161,15 +163,15 @@ class RegisterController extends Controller
                 |---------------------------------------------------------------------------------------
                 */
                 $nuevoUsuario = new User;
-                $nuevoUsuario->usuarioEMAIL = $data['correo_electronico'];
-                $nuevoUsuario->password = bcrypt($data['password']);
+                $nuevoUsuario->usuarioEMAIL = $request->input('correo_electronico');
+                $nuevoUsuario->password = bcrypt($request->input('password'));
                 $nuevoUsuario->dato_usuarioID = $datoUsuarioID;
                 $nuevoUsuario->confirmation_code = Str::random(25);
 
                 $nuevoUsuario->save();
                 $usuarioID = $nuevoUsuario->usuarioID;
 
-                $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $data['nombres'].' '.$data['apellidos'];
+                $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->input('nombres').' '.$request->input('apellidos');
                 Mail::send(new RutaCMail($nuevoUsuario, 'registro_usuario'));
 
                 return $nuevoUsuario;
@@ -180,8 +182,9 @@ class RegisterController extends Controller
             }
         } catch (\Exception $e) {
             Log::error($e);
+            throw new RutaCException('register', __('Ocurrió un error al registrarse'), Carbon::now()->timestamp);
         }
-        return null;
+        throw new RutaCException('register', __('Ocurrió un error al registrarse'), Carbon::now()->timestamp);
     }
 
     public function normalizarTipoDocumento($data)

@@ -84,10 +84,10 @@
             getCities: function(){
                 if(!this.value) {
                     this.value = this.initialValue;
+                    document.getElementById(this.subSelect).childNodes[1].childNodes[0].disabled = true;
                 }
-                document.getElementById(this.subSelect).childNodes[1].childNodes[0].disabled = true;
-                let dependencia = this.subSelect;
 
+                let dependencia = this.subSelect;
                 axios.get('https://rutadecrecimiento.com/public/buscar_municipios/'+this.value, {})
                 .then(function (response) {
                     EventBus.$emit('cities', response.data);

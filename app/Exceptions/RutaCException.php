@@ -9,12 +9,14 @@ use Throwable;
 class RutaCException extends Exception
 {
     protected $code;
+    protected $route;
     protected $message;
 
-    public function __construct($message = "", $code = 0, Throwable $previous = null)
+    public function __construct($route, $message = "", $code = 0, Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
         $this->code = $code;
+        $this->route = $route;
         $this->message = $message;
     }
 
@@ -22,7 +24,7 @@ class RutaCException extends Exception
     {
         Log::error($this->code." => ".$this->message);
 
-        return redirect()->route('user.ruta.iniciar-ruta')->with([
+        return redirect()->route($this->route)->with([
             'error' => __('Ocurrió un error. ['.$this->code.']'),
         ]);
     }
