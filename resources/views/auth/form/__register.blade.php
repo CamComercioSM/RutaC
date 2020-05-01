@@ -76,6 +76,7 @@
                 initial-value="{{ old('departamento_residencia') }}"
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
+                sub-select="municipio_residencia"
         >
         </rc-select-location>
     </div>
@@ -90,6 +91,7 @@
                 @enderror
                 initial-value="{{ old('municipio_residencia') }}"
                 placeholder="{{ __('Municipio de residencia') }}"
+                disabled
         >
         </rc-select-city>
     </div>

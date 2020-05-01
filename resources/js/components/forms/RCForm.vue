@@ -14,6 +14,7 @@
         },
         methods: {
             onSubmit () {
+                document.getElementById('loading').style.visibility = 'visible';
                 this.$refs.form.submit();
             }
         }

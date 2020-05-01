@@ -75,6 +75,7 @@
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }}"
+                sub-select="municipio_residencia"
         >
         </rc-select-location>
     </div>
@@ -164,6 +165,7 @@
                 placeholder="{{ __('Departamento de nacimiento') }}"
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }}"
+                sub-select="municipio_nacimiento"
         >
         </rc-select-location-2>
     </div>
