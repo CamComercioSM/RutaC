@@ -1,6 +1,5 @@
 import RCDatePicker from "./components/inputs/RCDatePicker";
 import RCStepper from "./components/stepper/RCStepper";
-import LoadScript from 'vue-plugin-load-script';
 
 require('./bootstrap');
 require('./font-awesome');
@@ -12,7 +11,6 @@ window.Vue = require('vue');
 // Bootstrap-vue
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
-Vue.use(LoadScript);
 
 // Custom components
 import RCSelect from "./components/inputs/RCSelect";
