@@ -1,5 +1,6 @@
 import RCDatePicker from "./components/inputs/RCDatePicker";
 import RCStepper from "./components/stepper/RCStepper";
+import LoadScript from 'vue-plugin-load-script';
 
 require('./bootstrap');
 require('./font-awesome');
@@ -11,6 +12,7 @@ window.Vue = require('vue');
 // Bootstrap-vue
 import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
+Vue.use(LoadScript);
 
 // Custom components
 import RCSelect from "./components/inputs/RCSelect";
@@ -24,6 +26,7 @@ import RCSelectCity2 from "./components/inputs/RCSelectCity2";
 import RCRadio from "./components/inputs/RCRadio";
 import RCTag from "./components/inputs/RCTag";
 import RCInputMoney from "./components/inputs/RCInputMoney";
+import RCVideo from "./components/parts/RCVideo";
 
 Vue.component('rc-select', RCSelect);
 Vue.component('rc-input', RCInput);
@@ -38,6 +41,7 @@ Vue.component('rc-date-picker', RCDatePicker);
 Vue.component('rc-tag', RCTag);
 Vue.component('rc-stepper', RCStepper);
 Vue.component('rc-input-money', RCInputMoney);
+Vue.component('rc-video', RCVideo);
 
 // Custom forms
 import RCForm from "./components/forms/RCForm";
