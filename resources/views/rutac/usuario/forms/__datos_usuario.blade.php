@@ -41,7 +41,7 @@
                     @error('remuneracion')
                     error="{{ $message }}"
                     @enderror
-                    initial-value="{{ old('genero', $usuario->dato_usuarioREMUNERACION) }}"
+                    initial-value="{{ old('genero', $usuario->dato_usuarioSEXO) }}"
                     placeholder="{{ __('Género') }}"
                     :options="{{ $genero->toJson() }}"
                     label="{{ __('Género') }}"
