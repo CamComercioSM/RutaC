@@ -88,7 +88,7 @@
                 }
 
                 let dependencia = this.subSelect;
-                axios.get('http://localhost/innovando/RutaC/public/buscar_municipios/'+this.value, {})
+                axios.get('https://rutadecrecimiento.com/public/buscar_municipios/'+this.value, {})
                     .then(function (response) {
                         EventBus.$emit('cities2', response.data);
                         document.getElementById(dependencia).childNodes[1].childNodes[0].disabled = false;
