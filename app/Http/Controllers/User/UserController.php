@@ -112,7 +112,7 @@ class UserController extends Controller
         $datoUsuario->dato_usuarioNIVEL_ESTUDIO = $request->input('nivel_estudios');
         $datoUsuario->dato_usuarioPROFESION_OCUPACION = $request->input('profesion');
         $datoUsuario->dato_usuarioCARGO = $request->input('cargo');
-        $datoUsuario->dato_usuarioREMUNERACION = $request->input('remuneracion');
+        //$datoUsuario->dato_usuarioREMUNERACION = $request->input('remuneracion');
         $datoUsuario->dato_usuarioGRUPO_ETNICO = $request->input('grupo_etnico');
         $datoUsuario->dato_usuarioDISCAPACIDAD = $request->input('discapacidad');
         if ($request->input('idiomas')) {

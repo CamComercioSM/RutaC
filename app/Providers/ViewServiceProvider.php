@@ -51,8 +51,6 @@ class ViewServiceProvider extends ServiceProvider
 
         View::composer(['rutac.usuario.forms.__datos_usuario'], ProfesionComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], RemuneracionComposer::class);
-
         View::composer(['rutac.usuario.forms.__datos_usuario'], EtnicoComposer::class);
 
         View::composer(['rutac.usuario.forms.__datos_usuario'], CargoComposer::class);

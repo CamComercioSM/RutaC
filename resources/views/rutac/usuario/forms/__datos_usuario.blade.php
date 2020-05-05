@@ -1,5 +1,5 @@
 @csrf
-<div class="col-md-12"><br></div>
+<p class="text-right pb-0 mb-0"><i class="icon fa fa-info-circle text-warning"></i> Los campos con * son obligatorios</p>
 <div class="row">
     <div class="form-group col-md-12">
         <h4>Datos de Usuario</h4>
@@ -11,7 +11,7 @@
                 id="formENumeroDocumento"
                 type="text"
                 initial-value="{{ $usuario->dato_usuarioTIPO_IDENTIFICACION }} - {{ $usuario->dato_usuarioIDENTIFICACION }}"
-                label="{{ __('Documento de identidad') }}"
+                label="{{ __('Documento de identidad *') }}"
                 autocomplete="off"
                 placeholder="No. Documento"
                 disabled
@@ -27,7 +27,7 @@
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ $usuario->dato_usuarioNOMBRES }} {{ $usuario->dato_usuarioAPELLIDOS }}"
-                label="{{ __('Nombre Completo') }}"
+                label="{{ __('Nombre Completo') }} *"
                 autocomplete="off"
                 placeholder="Nombre Completo"
         ></rc-input>
@@ -44,7 +44,7 @@
                     initial-value="{{ old('genero', $usuario->dato_usuarioSEXO) }}"
                     placeholder="{{ __('Género') }}"
                     :options="{{ $genero->toJson() }}"
-                    label="{{ __('Género') }}"
+                    label="{{ __('Género') }} *"
             >
             </rc-select>
         </div>
@@ -75,7 +75,7 @@
                 initial-value="{{ old('departamento_residencia', $usuario->dato_usuarioDEPARTAMENTO_RESIDENCIA) }}"
                 placeholder="{{ __('Departamento de residencia') }}"
                 :options="{{ $departamentos->toJson() }}"
-                label="{{ __('Departamento') }}"
+                label="{{ __('Departamento') }} *"
                 sub-select="municipio_residencia"
         >
         </rc-select-location>
@@ -91,7 +91,7 @@
                 @enderror
                 initial-value="{{ old('municipio_residencia', $usuario->dato_usuarioMUNICIPIO_RESIDENCIA) }}"
                 placeholder="{{ __('Municipio de residencia') }}"
-                label="{{ __('Municipio') }}"
+                label="{{ __('Municipio') }} *"
         >
         </rc-select-city>
     </div>
@@ -106,7 +106,7 @@
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ $usuario->dato_usuarioDIRECCION }}"
-                label="{{ __('Dirección') }}"
+                label="{{ __('Dirección') }} *"
                 autocomplete="off"
                 placeholder="Digite su dirección"
         ></rc-input>
@@ -122,7 +122,7 @@
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{$usuario->dato_usuarioTELEFONO}}"
-                label="{{ __('Telefóno') }}"
+                label="{{ __('Telefóno') }} *"
                 autocomplete="off"
                 placeholder="Digite su telefóno"
         ></rc-input>
@@ -229,21 +229,6 @@
                 placeholder="{{ __('Cargo') }}"
                 :options="{{ $cargo->toJson() }}"
                 label="{{ __('Cargo') }}"
-        >
-        </rc-select>
-    </div>
-
-    <div class="form-group col-md-3">
-        <rc-select
-                name="remuneracion"
-                id="remuneracion"
-                @error('remuneracion')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('remuneracion', $usuario->dato_usuarioREMUNERACION) }}"
-                placeholder="{{ __('Remuneración') }}"
-                :options="{{ $remuneracion->toJson() }}"
-                label="{{ __('Remuneración') }}"
         >
         </rc-select>
     </div>
