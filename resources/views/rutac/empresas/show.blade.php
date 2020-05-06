@@ -50,13 +50,19 @@
                                 <strong>Redes sociales </strong><br>
                                 <div class="text-center">
                                     @if($empresa->facebook)
-                                        <a href="https://www.facebook.com/{{$empresa->facebook}}" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+                                        <a class="p-1" href="https://www.facebook.com/{{$empresa->facebook}}">
+                                            <i class="fas fa-facebook"></i>
+                                        </a>
                                     @endif
                                     @if($empresa->instagram)
-                                        <a href="https://www.instagram.com/{{$empresa->instagram}}" target="_blank" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
+                                        <a class="p-1" href="https://www.instagram.com/{{$empresa->facebook}}">
+                                            <i class="fas fa-instagram"></i>
+                                        </a>
                                     @endif
                                     @if($empresa->twitter)
-                                        <a href="https://www.twitter.com/{{$empresa->twitter}}" target="_blank" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a class="p-1" href="https://www.twitter.com/{{$empresa->facebook}}">
+                                            <i class="fas fa-instagram"></i>
+                                        </a>
                                     @endif
                                     @if(!$empresa->facebook && !$empresa->instagram && !$empresa->twitter)
                                         <p class="text-muted" style="margin-bottom: 0px;">No posee redes registradas</p>
