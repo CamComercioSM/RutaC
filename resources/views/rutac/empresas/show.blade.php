@@ -17,9 +17,9 @@
                                     <i class="fas fa-edit text-warning"></i>
                                 </a>
 
-                                <a class="p-1" href="#">
-                                    <i class="fas fa-trash text-danger"></i>
-                                </a>
+                                <button type="button" class="btn btn-link text-danger" data-route="{{ route('user.empresas.destroy', $empresa) }}" data-toggle="modal" data-target="#confirmDeleteModal" title="{{ __('Eliminar') }}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -106,3 +106,9 @@
         </div>
     </div>
 @endsection
+@push('modals')
+    @include('layouts.modals.__confirm_delete')
+@endpush
+@push('scripts')
+    <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
+@endpush

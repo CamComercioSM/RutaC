@@ -30,6 +30,7 @@
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
 </head>
 <body>
+    @stack('modals')
     <div id="app">
         <div id="loading" class="loading">Loading&#8230;</div>
         @include('layouts.nav.__top')
