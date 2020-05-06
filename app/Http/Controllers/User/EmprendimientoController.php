@@ -65,7 +65,7 @@ class EmprendimientoController extends Controller
 
         $request->session()->put('tiene_entidad', '1');
 
-        return redirect()->route('user.emprendimientos.show', $emprendimiento)->with([
+        return redirect()->route('user.ruta.iniciar-ruta')->with([
             'success' => __('Emprendimiento creado correctamente'),
         ]);
     }

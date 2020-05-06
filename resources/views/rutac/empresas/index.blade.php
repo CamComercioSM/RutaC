@@ -17,8 +17,8 @@
 
                     <p class="text-muted text-center">Nit. {{$empresa->empresaNIT}}</p>
 
-                    <strong>Matrícula mercantil</strong>
-                    <p class="text-muted">{{$empresa->empresaMATRICULA_MERCANTIL}}</p>
+                    <!--<strong>Matrícula mercantil</strong>
+                    <p class="text-muted">{{$empresa->empresaMATRICULA_MERCANTIL}}</p>-->
                     <hr>
 
                     <strong>Organización jurídica</strong>

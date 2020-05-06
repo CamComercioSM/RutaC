@@ -17,7 +17,7 @@
                 initial-value="{{ old('nombre_emprendimiento') }}"
                 autocomplete="off"
                 placeholder="Digite el nombre del emprendimiento"
-                label="Nombre del emprendimiento"
+                label="Nombre del emprendimiento *"
         ></rc-input>
     </div>
 
@@ -33,7 +33,7 @@
                 initial-value="{{ old('descripcion_emprendimiento') }}"
                 autocomplete="off"
                 placeholder="Agregue una descipción de lo que hace el emprendimiento"
-                label="Descripción del emprendimiento"
+                label="Descripción del emprendimiento *"
         ></rc-input>
     </div>
 

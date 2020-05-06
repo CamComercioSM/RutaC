@@ -9,23 +9,23 @@
                 rules="required|numeric"
                 name="nit"
                 id="nit"
-                type="text"
+                type="number"
                 @error('nit')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('nit', $empresa->empresaNIT) }}"
                 autocomplete="off"
                 placeholder="Digite el nit de la empresa"
-                label="Nit de la empresa"
+                label="Nit de la empresa *"
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
-        <rc-input
+    <!-- <div class="form-group col-md-3">
+       <rc-input
                 rules="required|numeric"
                 name="matricula_mercantil"
                 id="matricula_mercantil"
-                type="text"
+                type="hidden"
                 @error('matricula_mercantil')
                 error="{{ $message }}"
                 @enderror
@@ -34,8 +34,8 @@
                 placeholder="Digite la matrícula mercantil"
                 label="Matrícula mercantil"
         ></rc-input>
-    </div>
-
+    </div>-->
+    <input type="hidden" value="12345" id="matricula_mercantil" name="matricula_mercantil" class="form-control" placeholder="Matricula mercantil" >
     <div class="form-group col-md-6">
         <rc-input
                 rules="required|min:3|max:200"
@@ -48,7 +48,7 @@
                 initial-value="{{ old('razon_social', $empresa->empresaRAZON_SOCIAL) }}"
                 autocomplete="off"
                 placeholder="Digite la razón social"
-                label="Razón social"
+                label="Razón social *"
         ></rc-input>
     </div>
 
@@ -62,7 +62,7 @@
                 @enderror
                 initial-value="{{ old('organizacion_juridica', $empresa->empresaORGANIZACION_JURIDICA) }}"
                 placeholder="Seleccione Organización Juridica"
-                label="{{ __('Organización Juridica') }}"
+                label="{{ __('Organización Juridica') }} *"
                 :options="{{ $tipos->toJson() }}"
         >
         </rc-select>
@@ -78,7 +78,7 @@
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('fecha_constitucion', $empresa->empresaFECHA_CONSTITUCION) }}"
-                placeholder="{{ __('Digite la Fecha de constitución') }}"
+                placeholder="{{ __('Digite la Fecha de constitución') }} *"
         >
         </rc-date-picker>
     </div>
@@ -95,7 +95,7 @@
                 initial-value="{{ old('representante_legal', $empresa->empresaREPRESENTANTE_LEGAL) }}"
                 autocomplete="off"
                 placeholder="Digite representante legal"
-                label="Representante legal"
+                label="Representante legal *"
         ></rc-input>
     </div>
 
@@ -120,7 +120,7 @@
                 initial-value="{{ old('departamento_empresa', $empresa->empresaDEPARTAMENTO_EMPRESA) }}"
                 placeholder="{{ __('Seleccione un departamento') }}"
                 :options="{{ $departamentos->toJson() }}"
-                label="{{ __('Departamento') }}"
+                label="{{ __('Departamento') }} *"
         >
         </rc-select-location>
     </div>
@@ -135,7 +135,7 @@
                 @enderror
                 initial-value="{{ old('municipio_empresa', $empresa->empresaMUNICIPIO_EMPRESA) }}"
                 placeholder="{{ __('Seleccione un municipio') }}"
-                label="{{ __('Municipio') }}"
+                label="{{ __('Municipio')}} *"
         >
         </rc-select-city>
     </div>
@@ -152,7 +152,7 @@
                 initial-value="{{ old('direccion_empresa', $empresa->empresaDIRECCION_FISICA) }}"
                 autocomplete="off"
                 placeholder="Digite dirección de la empresa"
-                label="Dirección de la empresa"
+                label="Dirección de la empresa *"
         ></rc-input>
     </div>
 
@@ -168,7 +168,7 @@
                 initial-value="{{ old('correo_electronico', $empresa->empresaCORREO_ELECTRONICO) }}"
                 autocomplete="off"
                 placeholder="Digite correo electrónico"
-                label="Correo electrónico de la empresa"
+                label="Correo electrónico de la empresa *"
         ></rc-input>
     </div>
 

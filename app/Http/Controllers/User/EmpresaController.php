@@ -75,7 +75,7 @@ class EmpresaController extends Controller
         $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->nombre_contacto_th, $request->telefono_contacto_th, $request->correo_contacto_th);
         $empresa->save();
 
-        return redirect()->route('user.empresas.show', $empresa)->with([
+        return redirect()->route('user.ruta.iniciar-ruta')->with([
             'success' => __('Empresa creada correctamente'),
         ]);
     }

@@ -13,7 +13,7 @@
 		    <div class="col-xs-3">
 		        <label for="matricula_mercantil">Matricula mercantil</label>
 		        <div class="form-group has-feedback">
-		            <input type="text" id="matricula_mercantil" name="matricula_mercantil" class="form-control" placeholder="Matricula mercantil" value="{{$empresa->empresaMATRICULA_MERCANTIL}}">
+		            <input type="hidden" value="12345" id="matricula_mercantil" name="matricula_mercantil" class="form-control" placeholder="Matricula mercantil" >
 		            <span class="form-control-feedback glyphicon" id="alert_error_matricula_mercantil"></span>
 		            <span class="text-danger" id="error_matricula_mercantil"></span>
 		        </div>
