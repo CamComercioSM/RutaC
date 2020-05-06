@@ -10,12 +10,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Diagnostico;
 use App\Models\Emprendimiento;
 use App\Models\Empresa;
+use App\Models\Estacion;
+use App\Models\Material;
 use App\Models\Pregunta;
 use App\Models\Respuesta;
 use App\Models\ResultadoPregunta;
+use App\Models\ResultadoPreguntaAyuda;
 use App\Models\ResultadoSeccion;
 use App\Models\RetroDiagnostico;
 use App\Models\RetroSeccion;
+use App\Models\Ruta;
 use App\Models\SeccionPregunta;
 use App\Repositories\PreguntasRepository;
 use App\Repositories\SeccionPreguntaRepository;
@@ -204,10 +208,12 @@ class DiagnosticoController extends Controller
 
         try {
             DB::beginTransaction();
+            $ruta = $this->guardarRuta($diagnostico);
+
             foreach ($preguntas as $key => $pregunta) {
                 $resultado = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID', $seccion->resultado_seccionID)
                     ->where('resultado_preguntaPREGUNTAID', $key)->first();
-                $respuesta = Respuesta::where('respuestaID', $pregunta)->first();
+                $respuesta = Respuesta::where('respuestaID', $pregunta)->with('servicio', 'material')->first();
                 $pregunta = Pregunta::where('preguntaID', $respuesta->PREGUNTAS_preguntaID)->first();
 
                 $resultado->resultado_preguntaPRESENTACION = $respuesta->respuestaPRESENTACION;
@@ -216,6 +222,14 @@ class DiagnosticoController extends Controller
                 $resultado->resultado_preguntaFEEDBACK = $respuesta->respuestaFEEDBACK;
                 $resultado->resultado_preguntaESTADO = 'Respondida';
                 $resultado->save();
+
+                if (count($respuesta->servicio) > 0) {
+                    $this->guardarEstacionesServicios($ruta, $respuesta);
+                }
+
+                if (count($respuesta->material) > 0) {
+                    $this->guardarEstacionesMateriales($ruta, $respuesta);
+                }
 
                 $seccionCumplimiento = $seccionCumplimiento + $resultado->resultado_preguntaCUMPLIMIENTO;
             }
@@ -328,7 +342,7 @@ class DiagnosticoController extends Controller
 
     public function getResultados(Diagnostico $diagnostico)
     {
-        $diagnostico->load('tipoDiagnostico');
+        $diagnostico->load('tipoDiagnostico', 'ruta');
 
         $usuario = [];
         $actividad = [];
@@ -356,6 +370,88 @@ class DiagnosticoController extends Controller
             $actividad['actividades'] = $diagnostico->emprendimiento->emprendimientoINICIOACTIVIDADES;
         }
 
-        return view('rutac.diagnosticos.resultado.index', compact('diagnostico', 'usuario', 'actividad'));
+        $estaciones = $this->parsearEstaciones($diagnostico->ruta);
+
+        return view('rutac.diagnosticos.resultado.index', compact('diagnostico', 'usuario', 'actividad', 'estaciones'));
+    }
+
+    public function guardarRuta(Diagnostico $diagnostico)
+    {
+        $ruta = new Ruta();
+        $ruta->DIAGNOSTICOS_diagnosticoID = $diagnostico->diagnosticoID;
+        $ruta->rutaNOMBRE = $diagnostico->diagnosticoNOMBRE;
+        $ruta->rutaCUMPLIMIENTO = '0.00';
+        $ruta->save();
+
+        return $ruta;
+    }
+
+    public function guardarEstacionesServicios(Ruta $ruta, Respuesta $respuesta)
+    {
+        foreach ($respuesta->servicio as $servicio) {
+            $estacion = new Estacion();
+            $estacion->RUTAS_rutaID = $ruta->rutaID;
+            $estacion->SERVICIOS_CCSM_servicio_ccsmID = $servicio->SERVICIOS_CCSM_servicio_ccsmID;
+            $estacion->estacionNOMBRE = $servicio->servicioAsociado->servicio_ccsmNOMBRE;
+            $estacion->save();
+        }
+    }
+
+    public function guardarEstacionesMateriales(Ruta $ruta, Respuesta $respuesta)
+    {
+        foreach ($respuesta->material as $material) {
+            $estacion = new Estacion();
+            $estacion->RUTAS_rutaID = $ruta->rutaID;
+            $estacion->MATERIALES_AYUDA_material_ayudaID = $material->MATERIALES_AYUDA_material_ayudaID;
+            $estacion->estacionNOMBRE = $material->materialAsociado->material_ayudaNOMBRE;
+            $estacion->save();
+        }
+    }
+
+    public function parsearEstaciones($ruta)
+    {
+        $opciones = [];
+        foreach ($ruta->estaciones as $key => $estacion) {
+            /*if($estacion->TALLERES_tallerID){
+                $opciones[$key]['text'] = "Asistir al taller: ";
+                $opciones[$key]['boton'] = "Más información";
+                $opciones[$key]['url'] = "#";
+            }*/
+            $resultadoPA = ResultadoPreguntaAyuda::where('EstacionAyudaID', $estacion->estacionID)->with('resultadoPregunta')->first();
+            $opciones[$key]['competencia'] = "";
+            if (isset($resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA)) {
+                $opciones[$key]['competencia'] = '- '.$resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA;
+            }
+            $opciones[$key]['nombre'] = $estacion->estacionNOMBRE;
+
+            if ($estacion->MATERIALES_AYUDA_material_ayudaID) {
+                $tipoMaterial = $this->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
+
+                if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video') {
+                    $opciones[$key]['text'] = "Ver el vídeo: ";
+                    $opciones[$key]['boton'] = "Ver vídeo";
+                    $opciones[$key]['url'] = $tipoMaterial->material_ayudaCODIGO;
+                    $opciones[$key]['options'] = "modal";
+                }
+                if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento') {
+                    $opciones[$key]['text'] = "Ver el documento: ";
+                    $opciones[$key]['boton'] = "Ver documento";
+                    $opciones[$key]['url'] = "#";
+                }
+            }
+            if ($estacion->SERVICIOS_CCSM_servicio_ccsmID) {
+                $opciones[$key]['text'] = "Adquirir el servicio de: ";
+                $opciones[$key]['boton'] = "Más información";
+                $opciones[$key]['url'] = "#";
+            }
+        }
+
+        return $opciones;
+    }
+
+    public function obtenerTipoMaterial($material)
+    {
+        $tipoMaterial = Material::where('material_ayudaID', $material)->first();
+        return $tipoMaterial;
     }
 }

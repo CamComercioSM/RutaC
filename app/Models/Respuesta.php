@@ -17,11 +17,11 @@ class Respuesta extends Model
 
     public function servicio()
     {
-        return $this->hasMany('App\Models\ServicioRespuesta','RESPUESTAS_respuestaID');
+        return $this->hasMany('App\Models\ServicioRespuesta', 'RESPUESTAS_respuestaID')->with('servicioAsociado');
     }
 
     public function material()
     {
-        return $this->hasMany('App\Models\ServicioRespuesta','RESPUESTAS_respuestaID');
+        return $this->hasMany('App\Models\MaterialRespuesta', 'RESPUESTAS_respuestaID')->with('materialAsociado');
     }
 }

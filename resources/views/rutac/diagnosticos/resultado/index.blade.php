@@ -131,7 +131,8 @@
                                             <h3 class="text-center titulo-feed"><b>Ahora estás aquí</b></h3>
                                         </template>
                                         <b-card-text>
-
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla tempor turpis vitae tempus.
+                                            Fusce dignissim fermentum ex eget ultricies. Vestibulum pulvinar velit vitae massa fermentum, at commodo felis mollis.
                                         </b-card-text>
                                     </b-card>
                                     <hr>
@@ -140,7 +141,8 @@
                                             <h3 class="text-center titulo-feed"><b>A partir de ahora necesitas</b></h3>
                                         </template>
                                         <b-card-text>
-
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla tempor turpis vitae tempus.
+                                            Fusce dignissim fermentum ex eget ultricies. Vestibulum pulvinar velit vitae massa fermentum, at commodo felis mollis.
                                         </b-card-text>
                                     </b-card>
                                     <hr>
@@ -149,7 +151,19 @@
                                             <h3 class="text-center titulo-feed"><b>Para lograrlo necesitas</b></h3>
                                         </template>
                                         <b-card-text>
-
+                                            <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm btn-primary">
+                                                {{ __('Realizar Ruta') }}
+                                            </a>
+                                            <hr>
+                                            <ul class="timeline timeline-inverse">
+                                                <!-- *********************************************************** -->
+                                                @foreach($estaciones as $key=> $estacion)
+                                                    <li>
+                                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                                    </li>
+                                            @endforeach
+                                            <!-- *********************************************************** -->
+                                            </ul>
                                         </b-card-text>
                                     </b-card>
                                 </b-card-text>

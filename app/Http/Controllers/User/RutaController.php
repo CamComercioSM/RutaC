@@ -11,6 +11,7 @@ use App\Models\Diagnostico;
 use App\Models\Emprendimiento;
 use App\Models\Empresa;
 use App\Models\Estacion;
+use App\Models\Material;
 use App\Models\ResultadoPreguntaAyuda;
 use App\Models\Ruta;
 use App\Models\TipoDiagnostico;
@@ -322,5 +323,61 @@ class RutaController extends Controller
     public function agregarEmpresa(Request $request)
     {
         return view('rutac.rutas.agregar-emprendimiento');
+    }
+
+    public function show(Ruta $ruta)
+    {
+        $ruta->load('estaciones');
+        $estaciones = $this->parsearEstaciones($ruta);
+
+
+        return view('rutac.rutas.rutas.show', compact('ruta', 'estaciones'));
+    }
+
+    public function parsearEstaciones($ruta)
+    {
+        $opciones = [];
+        foreach ($ruta->estaciones as $key => $estacion) {
+            /*if($estacion->TALLERES_tallerID){
+                $opciones[$key]['text'] = "Asistir al taller: ";
+                $opciones[$key]['boton'] = "Más información";
+                $opciones[$key]['url'] = "#";
+            }*/
+            $resultadoPA = ResultadoPreguntaAyuda::where('EstacionAyudaID', $estacion->estacionID)->with('resultadoPregunta')->first();
+            $opciones[$key]['competencia'] = "";
+            if (isset($resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA)) {
+                $opciones[$key]['competencia'] = '- '.$resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA;
+            }
+            $opciones[$key]['nombre'] = $estacion->estacionNOMBRE;
+
+            if ($estacion->MATERIALES_AYUDA_material_ayudaID) {
+                $tipoMaterial = $this->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
+
+                if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video') {
+                    $opciones[$key]['text'] = "Ver el vídeo: ";
+                    $opciones[$key]['boton'] = "Ver vídeo";
+                    $opciones[$key]['url'] = $tipoMaterial->material_ayudaCODIGO;
+                    $opciones[$key]['options'] = "modal";
+                }
+                if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento') {
+                    $opciones[$key]['text'] = "Ver el documento: ";
+                    $opciones[$key]['boton'] = "Ver documento";
+                    $opciones[$key]['url'] = "#";
+                }
+            }
+            if ($estacion->SERVICIOS_CCSM_servicio_ccsmID) {
+                $opciones[$key]['text'] = "Adquirir el servicio de: ";
+                $opciones[$key]['boton'] = "Más información";
+                $opciones[$key]['url'] = "#";
+            }
+        }
+
+        return $opciones;
+    }
+
+    public function obtenerTipoMaterial($material)
+    {
+        $tipoMaterial = Material::where('material_ayudaID', $material)->first();
+        return $tipoMaterial;
     }
 }
