@@ -1,5 +1,5 @@
 @csrf
-<div class="col-md-12"><br></div>
+<p class="text-right pb-0 mb-0"><i class="icon fa fa-info-circle text-warning"></i> Los campos con * son obligatorios</p>
 <div class="row">
     <div class="form-group col-md-12">
         <h4>Complete el siguiente formulario para registrar la empresa.</h4>
