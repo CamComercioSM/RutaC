@@ -14,7 +14,7 @@
                 @error('nombre_emprendimiento')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('nombre_emprendimiento') }}"
+                initial-value="{{ old('nombre_emprendimiento', $emprendimiento->emprendimientoNOMBRE) }}"
                 autocomplete="off"
                 placeholder="Digite el nombre del emprendimiento"
                 label="Nombre del emprendimiento *"
@@ -30,7 +30,7 @@
                 @error('descripcion_emprendimiento')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('descripcion_emprendimiento') }}"
+                initial-value="{{ old('descripcion_emprendimiento', $emprendimiento->emprendimientoDESCRIPCION) }}"
                 autocomplete="off"
                 placeholder="Agregue una descipción de lo que hace el emprendimiento"
                 label="Descripción del emprendimiento *"
@@ -45,7 +45,7 @@
                 @error('inicio_actividades')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('inicio_actividades') }}"
+                initial-value="{{ old('inicio_actividades', $emprendimiento->emprendimientoINICIOACTIVIDADES) }}"
                 placeholder="{{ __('Digite la fecha de inicio de actividades') }}"
         >
         </rc-date-picker>
@@ -59,7 +59,7 @@
                 @error('ingresos_ventas')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('ingresos_ventas') }}"
+                initial-value="{{ old('ingresos_ventas', $emprendimiento->emprendimientoINGRESOS) }}"
                 autocomplete="off"
                 placeholder="Digite los ingresos por ventas"
                 label="Ingresos por ventas de los últimos meses"
@@ -74,7 +74,7 @@
                 @error('remuneracion_emprendedor')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('remuneracion_emprendedor') }}"
+                initial-value="{{ old('remuneracion_emprendedor', $emprendimiento->emprendimientoREMUNERACION) }}"
                 autocomplete="off"
                 placeholder="Digite la remuneración que recibe el emprendedor"
                 label="Remuneración del emprendedor"

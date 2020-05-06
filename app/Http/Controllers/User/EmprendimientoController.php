@@ -107,24 +107,34 @@ class EmprendimientoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Emprendimiento  $emprendimiento
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Emprendimiento $emprendimiento)
     {
-        //
+        return response()->view('rutac.emprendimientos.edit', compact('emprendimiento'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Emprendimiento  $emprendimiento
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Emprendimiento $emprendimiento)
     {
-        //
+        $emprendimiento->USUARIOS_usuarioID = Auth::user()->usuarioID;
+        $emprendimiento->emprendimientoNOMBRE = $request->input('nombre_emprendimiento');
+        $emprendimiento->emprendimientoDESCRIPCION = $request->input('descripcion_emprendimiento');
+        $emprendimiento->emprendimientoINICIOACTIVIDADES = $request->input('inicio_actividades');
+        $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
+        $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
+        $emprendimiento->save();
+
+        return redirect()->route('user.ruta.iniciar-ruta')->with([
+            'success' => __('Emprendimiento actualizado correctamente'),
+        ]);
     }
 
     /**
