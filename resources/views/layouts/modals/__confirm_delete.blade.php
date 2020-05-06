@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <p>{{ __('¡Esta acción no se puede deshacer!') }}</p>
                 <form id="deleteForm" action="" method="post">
-                    @method('POST')
+                    @method('DELETE')
                     @csrf()
                 </form>
             </div>

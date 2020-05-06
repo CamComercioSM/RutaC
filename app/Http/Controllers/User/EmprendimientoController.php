@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Constants\Estado;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\StoreEmprendimiento;
@@ -140,11 +141,16 @@ class EmprendimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Emprendimiento $emprendimiento
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Emprendimiento $emprendimiento)
     {
-        //
+        $emprendimiento->emprendimientoESTADO = Estado::INACTIVO;
+        $emprendimiento->save();
+
+        return redirect()->route('user.ruta.iniciar-ruta')->with([
+            'success' => __('Emprendimiento eliminado correctamente'),
+        ]);
     }
 }
