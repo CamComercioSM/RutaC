@@ -48,20 +48,20 @@
 
                                 <a href="http://{{$empresa->empresaSITIO_WEB}}" target="_blank">{{$empresa->empresaSITIO_WEB}}</a><br>
                                 <strong>Redes sociales </strong><br>
-                                <div class="text-center">
+                                <div class="text-center pt-1 pb-1">
                                     @if($empresa->facebook)
                                         <a class="p-1" href="https://www.facebook.com/{{$empresa->facebook}}">
-                                            <i class="fas fa-facebook"></i>
+                                            <i class="fab fa-facebook fa-2x"></i>
                                         </a>
                                     @endif
                                     @if($empresa->instagram)
                                         <a class="p-1" href="https://www.instagram.com/{{$empresa->facebook}}">
-                                            <i class="fas fa-instagram"></i>
+                                            <i class="fab fa-instagram fa-2x"></i>
                                         </a>
                                     @endif
                                     @if($empresa->twitter)
                                         <a class="p-1" href="https://www.twitter.com/{{$empresa->facebook}}">
-                                            <i class="fas fa-instagram"></i>
+                                            <i class="fab fa-twitter fa-2x"></i>
                                         </a>
                                     @endif
                                     @if(!$empresa->facebook && !$empresa->instagram && !$empresa->twitter)

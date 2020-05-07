@@ -21,11 +21,34 @@
             <div class="box-body">
                 <h5>La siguiente es la ruta que debes seguir para el fortalecimiento y crecimiento de su idea o negocio</h5>
                 <hr>
-                <ul class="timeline timeline-inverse">
+                <ul class="ml-0 pl-0">
                     <!-- *********************************************************** -->
                     @foreach($estaciones as $key=> $estacion)
-                        <li>
-                            {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                        <li class="pt-1 pb-1" style="list-style: none;">
+                            @if($estacion['estacionCUMPLIMIENTO'] == 'Si')
+                                <i class="fas fa-check-circle text-success mr-2"></i>
+                            @else
+                                <i class="fas fa-exclamation-triangle text-warning mr-2"></i>
+                            @endif
+                            @if($estacion['tipo'] == 'video')
+                                    <button
+                                            type="button"
+                                            class="btn btn-sm btn-outline-primary"
+                                            data-route="{{ $estacion['url'] }}"
+                                            data-toggle="modal"
+                                            data-target="#videoEstacion"
+                                            title="{{ __('Ver vídeo') }}">
+                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                    </button>
+                            @endif
+                            @if($estacion['tipo'] == 'material')
+                                    {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                            @endif
+                            @if($estacion['tipo'] == 'servicio')
+                                    <a href="#" class="btn btn-sm btn-outline-primary">
+                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                    </a>
+                            @endif
                         </li>
                     @endforeach
                 <!-- *********************************************************** -->
@@ -34,3 +57,9 @@
         </div>
     </div>
 @endsection
+@push('modals')
+    @include('layouts.modals.__show_video')
+@endpush
+@push('scripts')
+    <script src="{{ asset(mix('js/load-video.js')) }}"></script>
+@endpush
