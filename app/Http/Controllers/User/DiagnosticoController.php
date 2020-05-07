@@ -61,7 +61,10 @@ class DiagnosticoController extends Controller
         }
 
         $tipoNegocio = $this->getTipoNegocio($tipo);
-
+        if ($this->tieneRutaActiva($tipoNegocio, $id)) {
+            dd("Tiene Ruta Activa");
+        }
+        dd("123");
         $activos = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::ACTIVO)->count();
         $proceso = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::EN_PROCESO)->count();
         $finalizado = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::FINALIZADO)->count();
@@ -406,6 +409,24 @@ class DiagnosticoController extends Controller
             $estacion->estacionNOMBRE = $material->materialAsociado->material_ayudaNOMBRE;
             $estacion->save();
         }
+    }
+
+    public function tieneRutaActiva($tipoNegocio, $id)
+    {
+        $diagnosticos = Diagnostico::where($tipoNegocio, $id)->get();
+
+        foreach ($diagnosticos as $diagnostico) {
+            $ruta = Ruta::where('DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)
+                ->orWhere('rutaESTADO', 'Activo')
+                ->orWhere('rutaESTADO', 'En Proceso')
+                ->first();
+            dd($ruta);
+            if ($ruta) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function parsearEstaciones($ruta)

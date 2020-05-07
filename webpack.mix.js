@@ -13,6 +13,7 @@ let mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/delete-modal', 'public/js')
+    .js('resources/js/ruta-activa', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
     .extract();
 

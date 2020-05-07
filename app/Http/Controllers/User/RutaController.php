@@ -119,6 +119,8 @@ class RutaController extends Controller
             $data[$n]['nombre'] = $empresa->empresaRAZON_SOCIAL;
             $data[$n]['tipo'] = "Empresa";
             $data[$n]['diagnostico'] = $this->obtenerUltimoDiagnosticoFinalizado("Empresa", $empresa->empresaID);
+            $data[$n]['ruta_activa'] = $this->tieneRutaActiva("EMPRESAS_empresaID", $empresa->empresaID);
+
             $n++;
         }
 
@@ -127,6 +129,7 @@ class RutaController extends Controller
             $data[$n]['nombre'] = $emprendimiento->emprendimientoNOMBRE;
             $data[$n]['tipo'] = "Emprendimiento";
             $data[$n]['diagnostico'] = $this->obtenerUltimoDiagnosticoFinalizado("Emprendimiento", $emprendimiento->emprendimientoID);
+            $data[$n]['ruta_activa'] = $this->tieneRutaActiva("EMPRENDIMIENTOS_emprendimientoID", $emprendimiento->emprendimientoID);
             $n++;
         }
 
@@ -332,6 +335,25 @@ class RutaController extends Controller
 
 
         return view('rutac.rutas.rutas.show', compact('ruta', 'estaciones'));
+    }
+
+    public function tieneRutaActiva($tipoNegocio, $id)
+    {
+        $diagnosticos = Diagnostico::where($tipoNegocio, $id)->get();
+
+        foreach ($diagnosticos as $diagnostico) {
+            $ruta = Ruta::where('DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)
+                ->where(function ($q) {
+                    $q->where('rutaESTADO', 'Activo')->orWhere('rutaESTADO', 'En Proceso');
+                })
+                ->first();
+
+            if ($ruta) {
+                return $ruta;
+            }
+        }
+
+        return "";
     }
 
     public function parsearEstaciones($ruta)
