@@ -61,10 +61,7 @@ class DiagnosticoController extends Controller
         }
 
         $tipoNegocio = $this->getTipoNegocio($tipo);
-        if ($this->tieneRutaActiva($tipoNegocio, $id)) {
-            dd("Tiene Ruta Activa");
-        }
-        dd("123");
+
         $activos = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::ACTIVO)->count();
         $proceso = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::EN_PROCESO)->count();
         $finalizado = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::FINALIZADO)->count();
@@ -420,7 +417,7 @@ class DiagnosticoController extends Controller
                 ->orWhere('rutaESTADO', 'Activo')
                 ->orWhere('rutaESTADO', 'En Proceso')
                 ->first();
-            dd($ruta);
+
             if ($ruta) {
                 return true;
             }
