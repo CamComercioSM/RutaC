@@ -40,7 +40,7 @@
                                             data-toggle="modal"
                                             data-target="#videoEstacion"
                                             title="{{ __('Ver vídeo') }}">
-                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }} {{ $estacion['estacionCUMPLIMIENTO'] }}
+                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
                                     </button>
                             @endif
                             @if($estacion['tipo'] == 'material')

@@ -377,6 +377,16 @@ class DiagnosticoController extends Controller
 
     public function guardarRuta(Diagnostico $diagnostico)
     {
+        $ruta = Ruta::where('DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)
+            ->where(function ($q) {
+                $q->where('rutaESTADO', 'Activo')->orWhere('rutaESTADO', 'En Proceso');
+            })
+            ->first();
+
+        if ($ruta) {
+            return $ruta;
+        }
+
         $ruta = new Ruta();
         $ruta->DIAGNOSTICOS_diagnosticoID = $diagnostico->diagnosticoID;
         $ruta->rutaNOMBRE = $diagnostico->diagnosticoNOMBRE;
@@ -389,22 +399,28 @@ class DiagnosticoController extends Controller
     public function guardarEstacionesServicios(Ruta $ruta, Respuesta $respuesta)
     {
         foreach ($respuesta->servicio as $servicio) {
-            $estacion = new Estacion();
-            $estacion->RUTAS_rutaID = $ruta->rutaID;
-            $estacion->SERVICIOS_CCSM_servicio_ccsmID = $servicio->SERVICIOS_CCSM_servicio_ccsmID;
-            $estacion->estacionNOMBRE = $servicio->servicioAsociado->servicio_ccsmNOMBRE;
-            $estacion->save();
+            $estacion = Estacion::where('RUTAS_rutaID', $ruta->rutaID)->where('SERVICIOS_CCSM_servicio_ccsmID', $servicio->SERVICIOS_CCSM_servicio_ccsmID)->first();
+            if (!$estacion) {
+                $estacion = new Estacion();
+                $estacion->RUTAS_rutaID = $ruta->rutaID;
+                $estacion->SERVICIOS_CCSM_servicio_ccsmID = $servicio->SERVICIOS_CCSM_servicio_ccsmID;
+                $estacion->estacionNOMBRE = $servicio->servicioAsociado->servicio_ccsmNOMBRE;
+                $estacion->save();
+            }
         }
     }
 
     public function guardarEstacionesMateriales(Ruta $ruta, Respuesta $respuesta)
     {
         foreach ($respuesta->material as $material) {
-            $estacion = new Estacion();
-            $estacion->RUTAS_rutaID = $ruta->rutaID;
-            $estacion->MATERIALES_AYUDA_material_ayudaID = $material->MATERIALES_AYUDA_material_ayudaID;
-            $estacion->estacionNOMBRE = $material->materialAsociado->material_ayudaNOMBRE;
-            $estacion->save();
+            $estacion = Estacion::where('RUTAS_rutaID', $ruta->rutaID)->where('MATERIALES_AYUDA_material_ayudaID', $material->MATERIALES_AYUDA_material_ayudaID)->first();
+            if (!$estacion) {
+                $estacion = new Estacion();
+                $estacion->RUTAS_rutaID = $ruta->rutaID;
+                $estacion->MATERIALES_AYUDA_material_ayudaID = $material->MATERIALES_AYUDA_material_ayudaID;
+                $estacion->estacionNOMBRE = $material->materialAsociado->material_ayudaNOMBRE;
+                $estacion->save();
+            }
         }
     }
 
