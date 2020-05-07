@@ -446,11 +446,6 @@ class DiagnosticoController extends Controller
     {
         $opciones = [];
         foreach ($ruta->estaciones as $key => $estacion) {
-            /*if($estacion->TALLERES_tallerID){
-                $opciones[$key]['text'] = "Asistir al taller: ";
-                $opciones[$key]['boton'] = "Más información";
-                $opciones[$key]['url'] = "#";
-            }*/
             $resultadoPA = ResultadoPreguntaAyuda::where('EstacionAyudaID', $estacion->estacionID)->with('resultadoPregunta')->first();
             $opciones[$key]['competencia'] = "";
             if (isset($resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA)) {
