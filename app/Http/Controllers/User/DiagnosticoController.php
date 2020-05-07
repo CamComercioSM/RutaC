@@ -457,6 +457,8 @@ class DiagnosticoController extends Controller
                 $opciones[$key]['competencia'] = '- '.$resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA;
             }
             $opciones[$key]['nombre'] = $estacion->estacionNOMBRE;
+            $opciones[$key]['estacionCUMPLIMIENTO'] = $estacion->estacionCUMPLIMIENTO;
+            $opciones[$key]['estacionID'] = $estacion->estacionID;
 
             if ($estacion->MATERIALES_AYUDA_material_ayudaID) {
                 $tipoMaterial = $this->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
@@ -466,17 +468,20 @@ class DiagnosticoController extends Controller
                     $opciones[$key]['boton'] = "Ver vídeo";
                     $opciones[$key]['url'] = $tipoMaterial->material_ayudaCODIGO;
                     $opciones[$key]['options'] = "modal";
+                    $opciones[$key]['tipo'] = "video";
                 }
                 if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento') {
                     $opciones[$key]['text'] = "Ver el documento: ";
                     $opciones[$key]['boton'] = "Ver documento";
                     $opciones[$key]['url'] = "#";
+                    $opciones[$key]['tipo'] = "material";
                 }
             }
             if ($estacion->SERVICIOS_CCSM_servicio_ccsmID) {
                 $opciones[$key]['text'] = "Adquirir el servicio de: ";
                 $opciones[$key]['boton'] = "Más información";
                 $opciones[$key]['url'] = "#";
+                $opciones[$key]['tipo'] = "servicio";
             }
         }
 
