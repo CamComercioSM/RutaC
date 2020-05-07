@@ -28,7 +28,7 @@
                             @if($estacion['estacionCUMPLIMIENTO'] == 'Si')
                                 <i class="fas fa-check-circle text-success mr-2"></i>
                             @else
-                                <i class="fas fa-exclamation-triangle text-warning mr-2"></i>
+                                <span id="icCumplimiento-{{ $estacion['estacionID'] }}"><i class="fas fa-exclamation-triangle text-warning mr-2"></i></span>
                             @endif
                             @if($estacion['tipo'] == 'video')
                                     <button
@@ -40,7 +40,7 @@
                                             data-toggle="modal"
                                             data-target="#videoEstacion"
                                             title="{{ __('Ver vídeo') }}">
-                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }} {{ $estacion['estacionCUMPLIMIENTO'] }}
                                     </button>
                             @endif
                             @if($estacion['tipo'] == 'material')
