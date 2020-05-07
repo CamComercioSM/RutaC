@@ -35,6 +35,8 @@
                                             type="button"
                                             class="btn btn-sm btn-outline-primary"
                                             data-route="{{ $estacion['url'] }}"
+                                            data-estacion="{{ $estacion['estacionID'] }}"
+                                            data-ruta="{{ $ruta->rutaID }}"
                                             data-toggle="modal"
                                             data-target="#videoEstacion"
                                             title="{{ __('Ver vídeo') }}">

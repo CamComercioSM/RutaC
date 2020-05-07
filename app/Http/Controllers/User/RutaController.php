@@ -371,6 +371,7 @@ class RutaController extends Controller
             }
             $opciones[$key]['nombre'] = $estacion->estacionNOMBRE;
             $opciones[$key]['estacionCUMPLIMIENTO'] = $estacion->estacionCUMPLIMIENTO;
+            $opciones[$key]['estacionID'] = $estacion->estacionID;
 
             if ($estacion->MATERIALES_AYUDA_material_ayudaID) {
                 $tipoMaterial = $this->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
