@@ -121,6 +121,7 @@
                 placeholder="{{ __('Seleccione un departamento') }}"
                 :options="{{ $departamentos->toJson() }}"
                 label="{{ __('Departamento') }} *"
+                sub-select="municipio_empresa"
         >
         </rc-select-location>
     </div>
@@ -136,6 +137,7 @@
                 initial-value="{{ old('municipio_empresa', $empresa->empresaMUNICIPIO_EMPRESA) }}"
                 placeholder="{{ __('Seleccione un municipio') }}"
                 label="{{ __('Municipio')}} *"
+                disabled
         >
         </rc-select-city>
     </div>
