@@ -21,7 +21,8 @@ class Emprendimiento extends Model
     }
     public function diagnosticosAll()
     {
-        return $this->hasMany('App\Models\Diagnostico', 'EMPRENDIMIENTOS_emprendimientoID')->with('resultadoSeccion', 'ruta');
+        return $this->hasMany('App\Models\Diagnostico', 'EMPRENDIMIENTOS_emprendimientoID')
+            ->with('resultadoSeccion', 'ruta', 'tipoDiagnostico');
     }
     public function usuario()
     {

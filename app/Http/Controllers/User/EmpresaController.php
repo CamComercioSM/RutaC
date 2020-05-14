@@ -45,6 +45,10 @@ class EmpresaController extends Controller
      */
     public function create(Empresa $empresa)
     {
+        $empresa->load('diagnosticos');
+
+        dd($empresa);
+
         return view('rutac.empresas.create', compact('empresa'));
     }
 

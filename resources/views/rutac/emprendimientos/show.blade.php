@@ -66,7 +66,70 @@
                     </div>
 
                     <div class="card-body">
+                        <b-card title="{{ $emprendimiento->diagnosticosAll[0]->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $emprendimiento->diagnosticosAll[0]->diagnosticoFECHA }}" class="bg-white">
+                            <b-card-text>
+                                <div class="row">
+                                    <div class="col">
+                                        <b>{{ __('Resultado') }}: </b>{{ $emprendimiento->diagnosticosAll[0]->diagnosticoRESULTADO }}
+                                    </div>
+                                    <div class="col">
+                                        <b>{{ __('Nivel') }}: </b>{{ $emprendimiento->diagnosticosAll[0]->diagnosticoNIVEL }}
+                                    </div>
+                                    <div class="col">
+                                        <b>{{ __('Estado') }}: </b>{{ $emprendimiento->diagnosticosAll[0]->diagnosticoESTADO }}
+                                    </div>
+                                </div>
+                            </b-card-text>
 
+                            <b-card-text>
+                                <b>Feedback: </b>
+                                {{ $emprendimiento->diagnosticosAll[0]->diagnosticoMENSAJE }}
+                            </b-card-text>
+
+                            <b-button variant="primary" size="sm" class="w-25"  href="{{ url('user/diagnosticos/resultados', $emprendimiento->diagnosticosAll[0]) }}">
+                                <i class="fas fa-chart-area"></i> Ver Resultados
+                            </b-button>
+                            <b-button variant="info" size="sm" class="w-25" href="{{ url('user/rutas', $emprendimiento->diagnosticosAll[0]->ruta) }}">
+                                <i class="fas fa-signal"></i> Ver Ruta
+                            </b-button>
+                        </b-card>
+
+                        <b-button v-b-toggle.collapse-2 block size="sm" variant="outline-primary" class="m-1">Diagnósticos anteriores</b-button>
+                        <b-collapse id="collapse-2">
+                        @forelse($emprendimiento->diagnosticosAll as $key => $diagnostico)
+                            @if ($key > 0)
+                                <b-card title="{{ $diagnostico->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $diagnostico->diagnosticoFECHA }}" class="bg-white">
+                                    <b-card-text>
+                                        <div class="row">
+                                            <div class="col">
+                                                <b>{{ __('Resultado') }}: </b>{{ $diagnostico->diagnosticoRESULTADO }}
+                                            </div>
+                                            <div class="col">
+                                                <b>{{ __('Nivel') }}: </b>{{ $diagnostico->diagnosticoNIVEL }}
+                                            </div>
+                                            <div class="col">
+                                                <b>{{ __('Estado') }}: </b>{{ $diagnostico->diagnosticoESTADO }}
+                                            </div>
+                                        </div>
+                                    </b-card-text>
+
+                                    <b-card-text>
+                                        <b>Feedback: </b>
+                                        {{ $diagnostico->diagnosticoMENSAJE }}
+                                    </b-card-text>
+
+                                    <b-button variant="primary" size="sm" class="w-25"  href="{{ url('user/diagnosticos/resultados', $diagnostico) }}">
+                                        <i class="fas fa-chart-area"></i> Ver Resultados
+                                    </b-button>
+                                    <b-button variant="info" size="sm" class="w-25" href="{{ url('user/rutas', $diagnostico->ruta) }}">
+                                        <i class="fas fa-signal"></i> Ver Ruta
+                                    </b-button>
+                                </b-card>
+                            @endif
+                        @empty
+
+                        @endforelse
+                        </b-collapse>
                     </div>
                 </div>
             </div>
