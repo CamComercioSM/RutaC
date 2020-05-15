@@ -47,8 +47,6 @@ class EmpresaController extends Controller
     {
         $empresa->load('diagnosticos');
 
-        dd($empresa);
-
         return view('rutac.empresas.create', compact('empresa'));
     }
 
