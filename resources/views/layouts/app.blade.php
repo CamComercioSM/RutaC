@@ -32,6 +32,7 @@
 <body>
     @stack('modals')
     <div id="app">
+        @stack('v-modals')
         <div id="loading" class="loading">Loading&#8230;</div>
         @include('layouts.nav.__top')
 

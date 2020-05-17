@@ -1,6 +1,6 @@
-@extends('administrador.index')
+@extends('administrador.app')
 
-@section('content')
+@section('app-content')
 <section class="content-header">
 	<div class="row">
 		<div class="col-sm-6">
@@ -8,7 +8,7 @@
 			<a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-pregunta"> Agregar pregunta </a>
 		</div>
 		<div class="col-sm-6 text-right">
-			<a class="btn btn-primary" href="{{action('Admin\DiagnosticoController@index')}}"><i class="fa fa-arrow-left"></i> Volver</a>
+			<a class="btn btn-primary" href="{{ route('admin.diagnosticos.index') }}"><i class="fas fa-arrow-left"></i> Volver</a>
 		</div>
 	</div>
 </section>

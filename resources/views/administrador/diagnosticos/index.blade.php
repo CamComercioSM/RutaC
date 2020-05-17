@@ -1,6 +1,8 @@
-@extends('administrador.index')
+@extends('administrador.app')
+
 @section('title','RutaC | Diagnósticos')
-@section('content')
+
+@section('app-content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -22,19 +24,56 @@
                                             {{$tipo->tipo_diagnosticoNOMBRE}}
                                             <hr>
                                             @foreach($tipo->seccionesDiagnosticos as $key=> $seccion)
-                                                <a class="btn @if($seccion->seccion_preguntaESTADO == 'Activo') btn-primary @else btn-info @endif btn-xs" href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $tipo->tipo_diagnosticoID,'seccion'=> $seccion->seccion_preguntaID])}}" style="margin: 5px;" @if($seccion->seccion_preguntaESTADO == 'Inactivo') data-toggle="tooltip" title="Sección inactiva" @endif>
+                                                <a class="btn @if($seccion->seccion_preguntaESTADO == 'Activo') btn-primary @else btn-secondary @endif btn-sm" href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $tipo->tipo_diagnosticoID,'seccion'=> $seccion->seccion_preguntaID])}}" style="margin: 5px;" @if($seccion->seccion_preguntaESTADO == 'Inactivo') aria-label="Sección inactiva" data-balloon-pos="up" @endif>
                                                     {{$seccion->seccion_preguntaNOMBRE}}
                                                 </a>
                                             @endforeach
                                         </td>
-                                        <td class="text-left">{{$tipo->tipo_diagnosticoESTADO}}</td>
-                                        <td class="text-center">
-                                            <a class="btn btn-warning btn-sm" href="{{action('Admin\DiagnosticoController@showFormEditar', ['diagnostico'=> $tipo->tipo_diagnosticoID ])}}" style="width:100px;">
-                                                Editar
-                                            </a>
-                                            <div class="btn-group btn-group-sm">
-                                                <b-button v-b-modal.modal-agregar-seccion variant="primary">Agregar seccion</b-button>
+                                        <td class="text-left">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                @if($tipo->isEnabled())
+                                                    <span class="badge badge-pill badge-success">
+                                                        {{$tipo->tipo_diagnosticoESTADO}} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{$tipo->tipo_diagnosticoESTADO}} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                @endif
                                             </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a class="p-1" href="{{ route('admin.diagnosticos.edit', $tipo) }}"
+                                               aria-label="Editar tipo de diagnóstico" data-balloon-pos="up">
+                                                <i class="fas fa-edit text-warning"></i>
+                                            </a>
+                                            @if ($tipo->seccionesDiagnosticos->sum('seccion_preguntaPESO') < 100)
+                                            <a class="p-1" href="{{ route('admin.diagnosticos.secciones.create', $tipo) }}"
+                                               aria-label="Agregar sección" data-balloon-pos="up">
+                                                <i class="fas fa-plus-circle text-primary"></i>
+                                            </a>
+                                            @endif
+                                            <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Otras opciones" right no-caret>
+                                                <template v-slot:button-content>
+                                                    <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                </template>
+                                                <b-dropdown-form
+                                                        action="{{ route('admin.diagnosticos.toggle', $tipo) }}"
+                                                        method="post"
+                                                        class="d-none"
+                                                        id="toggleForm{{ $tipo->tipo_diagnosticoID }}">
+                                                    @csrf
+                                                </b-dropdown-form>
+                                                <b-dropdown-item-button
+                                                        onclick="event.preventDefault(); document.getElementById('toggleForm{{ $tipo->tipo_diagnosticoID }}').submit();"
+                                                >
+                                                    @if($tipo->isEnabled())
+                                                        <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Inactivar') }}
+                                                    @else
+                                                        <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Activar') }}
+                                                    @endif
+                                                </b-dropdown-item-button>
+                                            </b-dropdown>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -46,10 +85,11 @@
             </div>
         </div>
     </div>
-
-    @include('administrador.diagnosticos.modals.__agregar_seccion')
-
 @endsection
+@push('v-modals')
+    @include('administrador.diagnosticos.modals.__agregar_seccion')
+@endpush
+
 @section('style')
 <style>
 	hr{
@@ -57,112 +97,4 @@
     	margin-bottom: 5px;
 	}
 </style>
-@endsection
-@section('footer')
-<div class="modal fade" id="modal-agregar-seccion">
-    <div class="modal-dialog">
-        <form id="agregarSeccion" action="" role="form" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Agregar Sección</h4>
-                </div>
-                <div class="modal-body">
-                    {!! csrf_field() !!}
-                    <input name="tipo_diagnosticoID" id="tipo_diagnosticoID" type="hidden" value="">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="nombre_seccion">Nombre de sección:</label>
-                            <div class="form-group has-feedback">
-                                <input type="text" name="nombre_seccion" class="form-control" placeholder="Nombre de la sección" value="">
-                                <span class="text-danger" id="error_nombre_seccion"></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="peso_seccion">Peso:</label>
-                            <div class="form-group has-feedback">
-                                <input type="text" name="peso_seccion" class="form-control" placeholder="Peso" value="">
-                                <span class="text-danger" id="error_peso_seccion"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-                    <button type="button" id="agregar-seccion" class="btn btn-primary">Agregar Seccion</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<script>
-	$('#agregar-seccion').click(function(){
-        var values = getValuesAgregarSeccion();
-        agregarSeccion(values);
-    });
-    function getValuesAgregarSeccion(){
-        var values = new Object;        
-        var inputs = $("#agregarSeccion").find('input, textarea');  
-        for(var i = 0; i< inputs.length; i++){
-            name = $(inputs[i]).attr('name');
-            value = $(inputs[i]).val();
-            values[name] = value;
-            $("input[name='"+name+"'], textarea[name='"+name+"']").parents().eq(0).removeClass('has-error');            
-            $("#error_"+name).html('');
-        }
-        return values;
-    }
-    function agregarSeccion(values){
-        $('.capa').css("visibility", "visible");
-        $('#agregar-seccion').attr("disabled", true);
-        $('#message-error').html('');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            url: "{{url('admin/diagnosticos/seccion/agregar-seccion') }}",
-            dataType: 'json',
-            type: 'post',
-            data: values,
-            success: function(data){
-                console.log(data);
-                if(data.status == 'Ok'){
-                    alert(data.mensaje);
-                    window.location.href = ""
-                }
-                if(data.status == 'Errors'){
-                    for(var key in data.errors){
-                        $("#error_"+key).html("");
-                        $("#alert_error_"+key).removeClass('general-error-color');
-                        if(data.errors[key] != ""){                            
-                            $("input[name='"+key+"'], select[name='"+key+"'], textarea[name='"+key+"']").parents().eq(0).addClass('has-error');
-                            $("#error_"+key).html(data.errors[key]);
-                            $("#alert_error_"+key).addClass('general-error-color');
-                        }
-                    }
-                    $('.capa').css("visibility", "hidden");
-                    $('#agregar-seccion').attr("disabled", false);
-                }
-                if(data.status == 'Error'){
-                    alert(data.mensaje);
-                    $('.capa').css("visibility", "hidden");
-                    $('#agregar-seccion').attr("disabled", false);
-                }
-            },
-            error: function(xhr, data, error){
-                alert('Ocurrió un error');
-                $('.capa').css("visibility", "hidden");
-                $('#agregar-seccion').attr("disabled", false);
-            }
-        });
-    }
-    function agregarSeccionS(seccionID){
-    	console.log(seccionID);
-        $('#tipo_diagnosticoID').val(seccionID);
-    }
-</script>
 @endsection

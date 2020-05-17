@@ -9,19 +9,31 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($tipoDiagnostico->retroDiagnostico as $key=> $feedback)
+        @foreach($diagnostico->retroDiagnostico->sortBy('retro_tipo_diagnosticoRANGO') as $key=> $feedback)
             <tr>
                 <td class="text-left">{{$feedback->retro_tipo_diagnosticoNIVEL}}</td>
                 <td class="text-left">{{$feedback->retro_tipo_diagnosticoRANGO}}</td>
                 <td class="text-left">{{$feedback->retro_tipo_diagnosticoMensaje}}</td>
-                <td class="text-center">
-                    <div class="btn-group btn-group-sm">
-                        <b-button v-b-modal.modal-editar-feedback variant="warning">Editar</b-button>
-                    </div>
-                    <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-feedback" onclick="eliminarFeedbackS('{{$feedback->retro_tipo_diagnosticoID}}');return false;">Eliminar</a>
+                <td class="text-center" style="width:10%;padding: 0.75rem 0.25rem;">
+                    <a class="p-1" href="{{ route('admin.diagnosticos.feedback.edit', [$diagnostico, $feedback]) }}"
+                       aria-label="Editar tipo de diagnóstico" data-balloon-pos="up">
+                        <i class="fas fa-edit text-warning"></i>
+                    </a>
+                    <button type="button" class="btn btn-link text-danger p-1"
+                            data-route="{{ route('admin.diagnosticos.feedback.destroy', [$diagnostico, $feedback]) }}"
+                            data-toggle="modal"
+                            data-target="#confirmDeleteModal" title="{{ __('Eliminar') }}">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
 </div>
+@push('modals')
+    @include('layouts.modals.__confirm_delete')
+@endpush
+@push('scripts')
+    <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
+@endpush

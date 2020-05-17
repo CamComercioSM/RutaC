@@ -1,16 +1,16 @@
 @csrf
-<input name="idTipoDiagnostico" type="hidden" value="{{$tipoDiagnostico->tipo_diagnosticoID}}">
+<input name="idTipoDiagnostico" type="hidden" value="{{$diagnostico->tipo_diagnosticoID}}">
 <div class="row">
     <div class="col-lg-6">
         <rc-input
                 rules="required|max:255"
-                name="nombreEmprendimiento"
-                id="nombreEmprendimiento"
+                name="nombre"
+                id="nombre"
                 type="text"
-                @error('nombreEmprendimiento')
+                @error('nombre')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{$tipoDiagnostico->tipo_diagnosticoNOMBRE}}"
+                initial-value="{{$diagnostico->tipo_diagnosticoNOMBRE}}"
                 autocomplete="off"
                 placeholder="Nombre tipo diagnóstico"
                 label="Nombre tipo diagnóstico"
@@ -25,7 +25,7 @@
                     @error('estado')
                     error="{{ $message }}"
                     @enderror
-                    initial-value="{{$tipoDiagnostico->tipo_diagnosticoESTADO}}"
+                    initial-value="{{$diagnostico->tipo_diagnosticoESTADO}}"
                     label="Estado"
                     placeholder="{{ __('Escoja una opción') }}"
                     :options="{{ $estados->toJson() }}"

@@ -1,102 +1,115 @@
 <?php
 
-Route::group(['middleware' => 'admin'], function () {
-    Route::get('admin', 'Admin\AdminController@index')->name('admin.index');
-    Route::get('admin/documento/{file}', 'PublicController@getDocumento');
+Route::resource('diagnosticos', 'TipoDiagnosticoController');
+Route::post('diagnosticos/{diagnostico}/toggle')->uses('TipoDiagnosticoController@toggle')->name('diagnosticos.toggle');
+//Route::get('diagnosticos/{diagnostico}/feedbackForm')->uses('TipoDiagnosticoController@feedbackForm')->name('diagnosticos.feedback-form');
+//Route::post('diagnosticos/{diagnostico}/feedback')->uses('TipoDiagnosticoController@feedback')->name('diagnosticos.feedback');
 
-    Route::get('admin/rutas', 'Admin\RutasController@index')->name('admin.rutas.index');
-    Route::get('admin/todas-rutas', 'Admin\RutasController@todasRutas');
-    Route::get('admin/rutas/revisar/{ruta}', 'Admin\RutasController@revisarRuta');
-    Route::get('admin/marcar-estacion/{estacion}/{ruta}', 'Admin\RutasController@marcarEstacion');
-    Route::get('admin/desmarcar-estacion/{estacion}/{ruta}', 'Admin\RutasController@desmarcarEstacion');
+Route::resource('diagnosticos.secciones', 'SeccionPreguntaController');
 
-    Route::get('admin/diagnosticos', 'Admin\DiagnosticoController@index')->name('admin.diagnosticos.index');
-    Route::get('admin/diagnosticos/editar/{diagnostico}', 'Admin\DiagnosticoController@showFormEditar');
+Route::resource('diagnosticos.feedback', 'DiagnosticoFeedbackController');
 
-    Route::post('admin/diagnosticos/agregar-feedback', 'Admin\DiagnosticoController@agregarFeedback');
-    Route::post('admin/diagnosticos/editar-feedback', 'Admin\DiagnosticoController@editarFeedback');
-    Route::post('admin/diagnosticos/eliminar-feedback', 'Admin\DiagnosticoController@eliminarFeedback');
 
-    Route::post('admin/diagnosticos/agregar-feedback-seccion', 'Admin\DiagnosticoController@agregarFeedbackSeccion');
-    Route::post('admin/diagnosticos/editar-feedback-seccion', 'Admin\DiagnosticoController@editarFeedbackSeccion');
-    Route::post('admin/diagnosticos/eliminar-feedback-seccion', 'Admin\DiagnosticoController@eliminarFeedbackSeccion');
+//Route::get('diagnosticos/secciones/{seccion}/crear')->uses('SeccionPreguntaController@toggle')->name('diagnosticos.secciones.crear');
 
-    Route::post('admin/diagnosticos/editar/tipo', 'Admin\DiagnosticoController@editarTipoDiagnostico');
-    Route::get('admin/diagnosticos/seccion/{diagnostico}/{seccion}', 'Admin\DiagnosticoController@seccion');
-    Route::get('admin/diagnosticos/seccion/editar-pregunta/{diagnostico}/{seccion}/{pregunta}', 'Admin\DiagnosticoController@editarPregunta');
 
-    Route::post('admin/diagnosticos/seccion/agregar-seccion', 'Admin\DiagnosticoController@agregarSeccion');
-    Route::post('admin/diagnosticos/seccion/editar-seccion', 'Admin\DiagnosticoController@editarSeccion');
-    Route::post('admin/diagnosticos/seccion/editar-pregunta-seccion', 'Admin\DiagnosticoController@editarPreguntaSeccion');
-    Route::post('admin/diagnosticos/seccion/agregar-pregunta', 'Admin\DiagnosticoController@agregarPreguntaSeccion');
-    Route::get('admin/cambiar-orden-pregunta', 'Admin\DiagnosticoController@cambiarOrdenPregunta');
 
-    Route::post('admin/diagnosticos/agregar-respuesta', 'Admin\DiagnosticoController@agregarRespuesta');
-    Route::post('admin/diagnosticos/editar-respuesta', 'Admin\DiagnosticoController@editarRespuesta');
-    Route::post('admin/diagnosticos/eliminar-respuesta', 'Admin\DiagnosticoController@eliminarRespuesta');
+Route::get('', 'AdminController@index')->name('index');
+Route::get('documento/{file}', 'PublicController@getDocumento');
 
-    Route::get('admin/diagnosticos/asignar-material/{respuesta}', 'Admin\DiagnosticoController@asignarMaterialRespuestaView');
-    Route::get('admin/diagnosticos/asignar-servicio/{respuesta}', 'Admin\DiagnosticoController@asignarServicioRespuestaView');
+Route::get('rutas', 'RutasController@index')->name('rutas.index');
+Route::get('todas-rutas', 'RutasController@todasRutas');
+Route::get('rutas/revisar/{ruta}', 'RutasController@revisarRuta');
+Route::get('marcar-estacion/{estacion}/{ruta}', 'RutasController@marcarEstacion');
+Route::get('desmarcar-estacion/{estacion}/{ruta}', 'RutasController@desmarcarEstacion');
 
-    Route::get('admin/diagnosticos/asignar-material-respuesta', 'Admin\DiagnosticoController@asignarMarerialRespuesta');
-    Route::get('admin/diagnosticos/asignar-servicio-respuesta', 'Admin\DiagnosticoController@asignarServicioRespuesta');
+//Route::get('diagnosticos', 'DiagnosticoController@index');
+//Route::get('diagnosticos/editar/{diagnostico}', 'DiagnosticoController@showFormEditar');
 
-    Route::get('admin/diagnostico/ver-historico/{tipo}/{id}', 'Admin\DiagnosticoController@verHistorico');
-    Route::get('admin/diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'Admin\DiagnosticoController@mostrarResultadoAnterior');
-    Route::get('admin/diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'Admin\DiagnosticoController@verResultadoSeccion');
-    Route::get('admin/diagnostico/ver-resultado/{tipo}/{diagnostico}', 'Admin\DiagnosticoController@showResultadosDiagnostico');
+Route::post('diagnosticos/agregar-feedback', 'DiagnosticoController@agregarFeedback');
+Route::post('diagnosticos/editar-feedback', 'DiagnosticoController@editarFeedback');
+Route::post('diagnosticos/eliminar-feedback', 'DiagnosticoController@eliminarFeedback');
 
-    Route::get('admin/videos', 'Admin\VideosController@index')->name('admin.videos.index');
-    Route::post('admin/agregar-video', 'Admin\VideosController@agregarVideo');
-    Route::post('admin/editar-video', 'Admin\VideosController@editarVideo');
-    Route::post('admin/eliminar-video', 'Admin\VideosController@eliminarVideo');
+Route::post('diagnosticos/agregar-feedback-seccion', 'DiagnosticoController@agregarFeedbackSeccion');
+Route::post('diagnosticos/editar-feedback-seccion', 'DiagnosticoController@editarFeedbackSeccion');
+Route::post('diagnosticos/eliminar-feedback-seccion', 'DiagnosticoController@eliminarFeedbackSeccion');
 
-    Route::get('admin/documentos', 'Admin\DocumentosController@index')->name('admin.documentos.index');
-    Route::post('admin/agregar-documento', 'Admin\DocumentosController@agregarDocumento');
-    Route::post('admin/editar-documento', 'Admin\DocumentosController@editarDocumento');
-    Route::post('admin/eliminar-documento', 'Admin\DocumentosController@eliminarDocumento');
+Route::post('diagnosticos/editar/tipo', 'DiagnosticoController@editarTipoDiagnostico');
+Route::get('diagnosticos/seccion/{diagnostico}/{seccion}', 'DiagnosticoController@seccion');
+Route::get('diagnosticos/seccion/editar-pregunta/{diagnostico}/{seccion}/{pregunta}', 'DiagnosticoController@editarPregunta');
 
-    Route::get('admin/servicios', 'Admin\ServiciosController@index')->name('admin.servicios.index');
-    Route::post('admin/agregar-servicio', 'Admin\ServiciosController@agregarServicio');
-    Route::post('admin/editar-servicio', 'Admin\ServiciosController@editarServicio');
-    Route::post('admin/eliminar-servicio', 'Admin\ServiciosController@eliminarServicio');
+Route::post('diagnosticos/seccion/agregar-seccion', 'DiagnosticoController@agregarSeccion');
+Route::post('diagnosticos/seccion/editar-seccion', 'DiagnosticoController@editarSeccion');
+Route::post('diagnosticos/seccion/editar-pregunta-seccion', 'DiagnosticoController@editarPreguntaSeccion');
+Route::post('diagnosticos/seccion/agregar-pregunta', 'DiagnosticoController@agregarPreguntaSeccion');
+Route::get('cambiar-orden-pregunta', 'DiagnosticoController@cambiarOrdenPregunta');
 
-    Route::get('admin/talleres', 'Admin\TalleresController@index')->name('admin.talleres.index');
-    Route::post('admin/agregar-taller', 'Admin\TalleresController@agregarTaller');
-    Route::post('admin/editar-taller', 'Admin\TalleresController@editarTaller');
-    Route::post('admin/eliminar-taller', 'Admin\TalleresController@eliminarTaller');
+Route::post('diagnosticos/agregar-respuesta', 'DiagnosticoController@agregarRespuesta');
+Route::post('diagnosticos/editar-respuesta', 'DiagnosticoController@editarRespuesta');
+Route::post('diagnosticos/eliminar-respuesta', 'DiagnosticoController@eliminarRespuesta');
 
-    Route::get('admin/competencias', 'Admin\CompetenciaController@index')->name('admin.competencias.index');
-    Route::post('admin/agregar-competencia', 'Admin\CompetenciaController@agregarCompetencia');
-    Route::post('admin/editar-competencia', 'Admin\CompetenciaController@editarCompetencia');
-    Route::post('admin/eliminar-competencia', 'Admin\CompetenciaController@eliminarCompetencia');
-    Route::post('admin/activar-competencia', 'Admin\CompetenciaController@activarCompetencia');
+Route::get('diagnosticos/asignar-material/{respuesta}', 'DiagnosticoController@asignarMaterialRespuestaView');
+Route::get('diagnosticos/asignar-servicio/{respuesta}', 'DiagnosticoController@asignarServicioRespuestaView');
 
-    Route::get('admin/usuario', 'Admin\UsuarioController@index')->name('admin.usuarios.perfil');
-    Route::get('admin/usuarios', 'Admin\UsuarioController@usuariosAdmin')->name('admin.usuarios.index');
-    Route::get('admin/crear-usuario', 'Admin\UsuarioController@crearUsuario');
-    Route::post('admin/actualizar-password', 'Admin\UsuarioController@actualizarPassword');
-    Route::post('admin/crear-administrador', 'Admin\UsuarioController@crearAdministrador');
-    Route::get('admin/eliminar-usuario/{usuarioID}', 'Admin\UsuarioController@eliminarUsuario');
+Route::get('diagnosticos/asignar-material-respuesta', 'DiagnosticoController@asignarMarerialRespuesta');
+Route::get('diagnosticos/asignar-servicio-respuesta', 'DiagnosticoController@asignarServicioRespuesta');
 
-    Route::post('admin/usuario/reset-password', 'Admin\UsuarioController@resetPassword');
+Route::get('diagnostico/ver-historico/{tipo}/{id}', 'DiagnosticoController@verHistorico');
+Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior');
+Route::get('diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'DiagnosticoController@verResultadoSeccion');
+Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico');
 
-    Route::get('admin/usuario/{usuarioID}', 'Admin\UsuarioController@verUsuario');
-    Route::post('admin/usuario-guardar', 'Admin\UsuarioController@guardarPerfil');
 
-    Route::get('admin/empresas', 'Admin\EmpresaController@index')->name('admin.empresas.index');
-    Route::get('admin/empresa/{empresaID}', 'Admin\EmpresaController@verEmpresa');
-    Route::post('admin/empresa/{empresaID}/editar', 'Admin\EmpresaController@editarEmpresa');
 
-    Route::get('admin/emprendimientos', 'Admin\EmprendimientoController@index')->name('admin.emprendimientos.index');
-    Route::get('admin/emprendimiento/{emprendimientoID}', 'Admin\EmprendimientoController@verEmprendimiento');
-    Route::post('emprendimiento/{emprendimientoID}/editar', 'Admin\EmprendimientoController@editarEmprendimiento');
+Route::get('videos', 'VideosController@index')->name('videos.index');
+Route::post('agregar-video', 'VideosController@agregarVideo');
+Route::post('editar-video', 'VideosController@editarVideo');
+Route::post('eliminar-video', 'VideosController@eliminarVideo');
 
-    Route::get('admin/export/usuarios', 'Admin\ExportController@exportarUsuarios');
-    Route::get('admin/export/empresas', 'Admin\ExportController@exportarEmpresas');
-    Route::get('admin/export/emprendimientos', 'Admin\ExportController@exportarEmprendimientos');
-    Route::get('admin/export/rutas', 'Admin\ExportController@exportarRutas');
+Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
+Route::post('agregar-documento', 'DocumentosController@agregarDocumento');
+Route::post('editar-documento', 'DocumentosController@editarDocumento');
+Route::post('eliminar-documento', 'DocumentosController@eliminarDocumento');
 
-    Route::get('admin/logout', 'Auth\LoginController@logout');
+Route::get('servicios', 'ServiciosController@index')->name('servicios.index');
+Route::post('agregar-servicio', 'ServiciosController@agregarServicio');
+Route::post('editar-servicio', 'ServiciosController@editarServicio');
+Route::post('eliminar-servicio', 'ServiciosController@eliminarServicio');
 
-});
+Route::get('talleres', 'TalleresController@index')->name('talleres.index');
+Route::post('agregar-taller', 'TalleresController@agregarTaller');
+Route::post('editar-taller', 'TalleresController@editarTaller');
+Route::post('eliminar-taller', 'TalleresController@eliminarTaller');
+
+Route::get('competencias', 'CompetenciaController@index')->name('competencias.index');
+Route::post('agregar-competencia', 'CompetenciaController@agregarCompetencia');
+Route::post('editar-competencia', 'CompetenciaController@editarCompetencia');
+Route::post('eliminar-competencia', 'CompetenciaController@eliminarCompetencia');
+Route::post('activar-competencia', 'CompetenciaController@activarCompetencia');
+
+Route::get('usuario', 'UsuarioController@index')->name('usuarios.perfil');
+Route::get('usuarios', 'UsuarioController@usuariosAdmin')->name('usuarios.index');
+Route::get('crear-usuario', 'UsuarioController@crearUsuario');
+Route::post('actualizar-password', 'UsuarioController@actualizarPassword');
+Route::post('crear-administrador', 'UsuarioController@crearAdministrador');
+Route::get('eliminar-usuario/{usuarioID}', 'UsuarioController@eliminarUsuario');
+
+Route::post('usuario/reset-password', 'UsuarioController@resetPassword');
+
+Route::get('usuario/{usuarioID}', 'UsuarioController@verUsuario');
+Route::post('usuario-guardar', 'UsuarioController@guardarPerfil');
+
+Route::get('empresas', 'EmpresaController@index')->name('empresas.index');
+Route::get('empresa/{empresaID}', 'EmpresaController@verEmpresa');
+Route::post('empresa/{empresaID}/editar', 'EmpresaController@editarEmpresa');
+
+Route::get('emprendimientos', 'EmprendimientoController@index')->name('emprendimientos.index');
+Route::get('emprendimiento/{emprendimientoID}', 'EmprendimientoController@verEmprendimiento');
+Route::post('emprendimiento/{emprendimientoID}/editar', 'EmprendimientoController@editarEmprendimiento');
+
+Route::get('export/usuarios', 'ExportController@exportarUsuarios');
+Route::get('export/empresas', 'ExportController@exportarEmpresas');
+Route::get('export/emprendimientos', 'ExportController@exportarEmprendimientos');
+Route::get('export/rutas', 'ExportController@exportarRutas');
+
+Route::get('logout', 'Auth\LoginController@logout');

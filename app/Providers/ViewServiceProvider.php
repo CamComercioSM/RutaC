@@ -63,6 +63,12 @@ class ViewServiceProvider extends ServiceProvider
 
         View::composer(['rutac.empresas.__form'], RangosActivosComposer::class);
 
-        View::composer(['administrador.diagnosticos.partials.__editar_diagnostico'], EstadoComposer::class);
+        View::composer(
+            [
+                'administrador.diagnosticos.partials.__editar_diagnostico',
+                'administrador.diagnosticos.feedback.__form',
+            ],
+            EstadoComposer::class
+        );
     }
 }

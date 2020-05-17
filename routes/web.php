@@ -47,7 +47,7 @@ Route::get('/', 'HomeController@index');
 |---------------------------------------------------------------------------------------
 */
 /* Admin routes */
-Route::group(['middleware' => 'admin'], function () {
+/*Route::group(['middleware' => 'admin'], function () {
     Route::get('admin', 'Admin\AdminController@index')->name('admin.index');
     Route::get('admin/documento/{file}', 'PublicController@getDocumento');
 
@@ -145,7 +145,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/export/rutas', 'Admin\ExportController@exportarRutas');
 
     Route::get('admin/logout', 'Auth\LoginController@logout');
-});
+});*/
+Route::namespace('Admin')
+    ->prefix('admin')
+    ->as('admin.')
+    ->middleware(['auth','admin'])
+    ->group(base_path('routes/admin/web.php'));
+
+
 
 /* RutaC routes */
 Route::namespace('User')
