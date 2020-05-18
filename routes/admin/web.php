@@ -2,8 +2,6 @@
 
 Route::resource('diagnosticos', 'TipoDiagnosticoController');
 Route::post('diagnosticos/{diagnostico}/toggle')->uses('TipoDiagnosticoController@toggle')->name('diagnosticos.toggle');
-//Route::get('diagnosticos/{diagnostico}/feedbackForm')->uses('TipoDiagnosticoController@feedbackForm')->name('diagnosticos.feedback-form');
-//Route::post('diagnosticos/{diagnostico}/feedback')->uses('TipoDiagnosticoController@feedback')->name('diagnosticos.feedback');
 
 Route::resource('diagnosticos.secciones', 'SeccionPreguntaController');
 
@@ -59,33 +57,22 @@ Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoCo
 Route::get('diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'DiagnosticoController@verResultadoSeccion');
 Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico');
 
-
-
-Route::get('videos', 'VideosController@index')->name('videos.index');
-Route::post('agregar-video', 'VideosController@agregarVideo');
-Route::post('editar-video', 'VideosController@editarVideo');
-Route::post('eliminar-video', 'VideosController@eliminarVideo');
+Route::resource('videos', 'VideosController');
+Route::post('videos/{video}/toggle')->uses('VideosController@toggle')->name('videos.toggle');
 
 Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
 Route::post('agregar-documento', 'DocumentosController@agregarDocumento');
 Route::post('editar-documento', 'DocumentosController@editarDocumento');
 Route::post('eliminar-documento', 'DocumentosController@eliminarDocumento');
 
-Route::get('servicios', 'ServiciosController@index')->name('servicios.index');
-Route::post('agregar-servicio', 'ServiciosController@agregarServicio');
-Route::post('editar-servicio', 'ServiciosController@editarServicio');
-Route::post('eliminar-servicio', 'ServiciosController@eliminarServicio');
+Route::resource('servicios', 'ServiciosController');
+Route::post('servicios/{servicio}/toggle')->uses('ServiciosController@toggle')->name('servicios.toggle');
 
-Route::get('talleres', 'TalleresController@index')->name('talleres.index');
-Route::post('agregar-taller', 'TalleresController@agregarTaller');
-Route::post('editar-taller', 'TalleresController@editarTaller');
-Route::post('eliminar-taller', 'TalleresController@eliminarTaller');
+Route::resource('taller', 'TalleresController');
+Route::post('taller/{taller}/toggle')->uses('TalleresController@toggle')->name('taller.toggle');
 
-Route::get('competencias', 'CompetenciaController@index')->name('competencias.index');
-Route::post('agregar-competencia', 'CompetenciaController@agregarCompetencia');
-Route::post('editar-competencia', 'CompetenciaController@editarCompetencia');
-Route::post('eliminar-competencia', 'CompetenciaController@eliminarCompetencia');
-Route::post('activar-competencia', 'CompetenciaController@activarCompetencia');
+Route::resource('competencias', 'CompetenciaController');
+Route::post('competencias/{competencia}/toggle')->uses('CompetenciaController@toggle')->name('competencias.toggle');
 
 Route::get('usuario', 'UsuarioController@index')->name('usuarios.perfil');
 Route::get('usuarios', 'UsuarioController@usuariosAdmin')->name('usuarios.index');

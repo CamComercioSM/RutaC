@@ -1,6 +1,6 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Competencias')
-@section('content')
+@section('app-content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -9,7 +9,10 @@
                         <h5></h5>
                         <div>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-competencia"><i class="fa fa-file-o"></i> Agregar competencia </a>
+                                <a class="btn btn-primary" href="{{ route('admin.competencias.create') }}"
+                                   aria-label="Agregar competencia" data-balloon-pos="up">
+                                    <i class="fas fa-plus"></i> Agregar competencia
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -25,20 +28,50 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($competencias as $key=> $competencia)
+                                @foreach($competencias->sortBy('competenciaESTADO') as $key=> $competencia)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-left">{{$competencia->competenciaNOMBRE}}</td>
-                                        <td class="text-center">{{$competencia->competenciaESTADO}}</td>
+                                        <td class="text-center">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                @if($competencia->isEnabled())
+                                                    <span class="badge badge-pill badge-success">
+                                                        {{$competencia->competenciaESTADO}} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{$competencia->competenciaESTADO}} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </td>
                                         <th class="text-center">
-                                            @if($competencia->competenciaNOMBRE != 'Ninguno')
-                                                <a class="btn btn-warning btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-competencia" onclick="editarCompetenciaS('{{$competencia->competenciaID}}','{{$competencia->competenciaNOMBRE}}','{{$competencia->competenciaNOMBRE}}');return false;">Editar</a>
-                                                @if($competencia->competenciaESTADO == 'Activo')
-                                                    <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-competencia" onclick="eliminarCompetenciaS('{{$competencia->competenciaID}}');return false;">Eliminar</a>
-                                                @endif
-                                                @if($competencia->competenciaESTADO == 'Inactivo')
-                                                    <a class="btn btn-success btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-activar-competencia" onclick="activarCompetenciaS('{{$competencia->competenciaID}}');return false;">Activar</a>
-                                                @endif
+                                            @if($key > 0)
+                                                <a class="p-1" href="{{ route('admin.competencias.edit', $competencia) }}"
+                                                   aria-label="Editar competencia" data-balloon-pos="up">
+                                                    <i class="fas fa-edit text-warning"></i>
+                                                </a>
+                                                <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Opciones" right no-caret>
+                                                    <template v-slot:button-content>
+                                                        <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                    </template>
+                                                    <b-dropdown-form
+                                                            action="{{ route('admin.competencias.toggle', $competencia) }}"
+                                                            method="post"
+                                                            class="d-none"
+                                                            id="toggleForm{{ $competencia->competenciaID }}">
+                                                        @csrf
+                                                    </b-dropdown-form>
+                                                    <b-dropdown-item-button
+                                                            onclick="event.preventDefault(); document.getElementById('toggleForm{{ $competencia->competenciaID }}').submit();"
+                                                    >
+                                                        @if($competencia->isEnabled())
+                                                            <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Inactivar') }}
+                                                        @else
+                                                            <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Activar') }}
+                                                        @endif
+                                                    </b-dropdown-item-button>
+                                                </b-dropdown>
                                             @endif
                                         </th>
                                     </tr>

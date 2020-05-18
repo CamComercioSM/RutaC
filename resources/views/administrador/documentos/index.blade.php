@@ -25,7 +25,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($documentos as $key=> $documento)
+                                @forelse($documentos as $key=> $documento)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-left">{{$documento->material_ayudaNOMBRE}}</td>
@@ -37,7 +37,11 @@
                                             <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-documento" onclick="eliminarDocumentoS('{{$documento->material_ayudaID}}');return false;">Eliminar</a>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="4">{{ __('No se encontraron documentos') }}</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>

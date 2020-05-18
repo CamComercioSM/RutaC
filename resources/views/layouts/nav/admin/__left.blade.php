@@ -15,7 +15,7 @@
         @component('components.__nav_item', ['route' => route('admin.servicios.index')])
             <i aria-hidden="true" class="fas fa-fw fa-cubes"></i> {{ __('Servicios CCSM') }}
         @endcomponent
-        @component('components.__nav_item', ['route' => route('admin.talleres.index')])
+        @component('components.__nav_item', ['route' => route('admin.taller.index')])
             <i aria-hidden="true" class="fas fa-fw fa-pencil-alt"></i> {{ __('Talleres') }}
         @endcomponent
         @component('components.__nav_item', ['route' => route('admin.competencias.index')])

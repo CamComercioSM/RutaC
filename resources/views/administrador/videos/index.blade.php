@@ -1,6 +1,8 @@
-@extends('administrador.index')
-@section('title','RutaC | Videos')
-@section('content')
+@extends('administrador.app')
+
+@section('title','RutaC | Vídeos')
+
+@section('app-content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -9,7 +11,10 @@
                         <h5></h5>
                         <div>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-video"><i class="fa fa-video-camera"></i> Agregar vídeo </a>
+                                <a class="btn btn-primary" href="{{ route('admin.videos.create') }}"
+                                   aria-label="Agregar vídeo" data-balloon-pos="up">
+                                    <i class="fas fa-plus"></i> Agregar vídeo
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -20,22 +25,65 @@
                                 <tr>
                                     <th>{{ __('Vídeo #	') }}</th>
                                     <th>{{ __('Título Vídeo') }}</th>
-                                    <th>{{ __('URL Vídeo') }}</th>
-                                    <th class="text-right"></th>
+                                    <th>{{ __('Estado') }}</th>
+                                    <th class="text-right" style="width: 20%"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($videos as $key=> $video)
+                                @forelse($videos->sortBy('material_ayudaESTADO') as $key=> $video)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-left">{{$video->material_ayudaNOMBRE}}</td>
-                                        <td class="text-left"><a href="{{$video->material_ayudaURL}}" target="_blank">{{$video->material_ayudaURL}}</a></td>
+                                        <td class="text-left">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                @if($video->isEnabled())
+                                                    <span class="badge badge-pill badge-success">
+                                                        {{$video->material_ayudaESTADO}} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{$video->material_ayudaESTADO}} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </td>
                                         <td class="text-center">
-                                            <a class="btn btn-warning btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-video" onclick="editarVideoS('{{$video->material_ayudaID}}','{{$video->material_ayudaNOMBRE}}','{{$video->material_ayudaURL}}');return false;">Editar</a>
-                                            <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-video" onclick="eliminarVideoS('{{$video->material_ayudaID}}');return false;">Eliminar</a>
+                                            <a class="p-1" href="{{$video->material_ayudaURL}}" target="_blank"
+                                               aria-label="Ver vídeo" data-balloon-pos="up">
+                                                <i class="fas fa-eye text-primary"></i>
+                                            </a>
+                                            <a class="p-1" href="{{ route('admin.videos.edit', $video) }}"
+                                               aria-label="Editar vídeo" data-balloon-pos="up">
+                                                <i class="fas fa-edit text-warning"></i>
+                                            </a>
+                                            <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Opciones" right no-caret>
+                                                <template v-slot:button-content>
+                                                    <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                </template>
+                                                <b-dropdown-form
+                                                        action="{{ route('admin.videos.toggle', $video) }}"
+                                                        method="post"
+                                                        class="d-none"
+                                                        id="toggleForm{{ $video->tipo_diagnosticoID }}">
+                                                    @csrf
+                                                </b-dropdown-form>
+                                                <b-dropdown-item-button
+                                                        onclick="event.preventDefault(); document.getElementById('toggleForm{{ $video->tipo_diagnosticoID }}').submit();"
+                                                >
+                                                    @if($video->isEnabled())
+                                                        <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Inactivar') }}
+                                                    @else
+                                                        <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Activar') }}
+                                                    @endif
+                                                </b-dropdown-item-button>
+                                            </b-dropdown>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="4">{{ __('No se encontraron vídeos') }}</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>

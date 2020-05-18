@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
+use App\Constants\Estado;
 use App\Models\Taller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class TalleresController extends Controller
@@ -37,128 +36,66 @@ class TalleresController extends Controller
     /**
      * Esta función carga la vista de talleres
      *
-     * @return view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $talleres = Taller::where('tallerESTADO','Activo')->get();
-        return view('administrador.talleres.index',compact('talleres'));
+        $talleres = Taller::get();
+
+        return view('administrador.talleres.index', compact('talleres'));
+    }
+
+    public function create(Taller $taller)
+    {
+        return view('administrador.talleres.create', compact('taller'));
+    }
+
+    public function store(Request $request, Taller $taller)
+    {
+        $taller->tallerNOMBRE = $request->input('nombre');
+        $taller->tallerURL = $request->input('url');
+        $taller->tallerESTADO = Estado::ACTIVO;
+
+        $taller->save();
+
+        return redirect()->route('admin.taller.index')->with([
+            'success' => __('Taller guardado correctamente'),
+        ]);
+    }
+
+    public function edit(Taller $taller)
+    {
+        return view('administrador.talleres.edit', compact('taller'));
+    }
+
+    public function update(Request $request, Taller $taller)
+    {
+        $taller->tallerNOMBRE = $request->input('nombre');
+        $taller->tallerURL = $request->input('url');
+
+        $taller->save();
+
+        return redirect()->route('admin.taller.index')->with([
+            'success' => __('Taller guardado correctamente'),
+        ]);
     }
 
     /**
-     * Esta función agrega un taller
-     *
-     * @param  request
-     * @return json
+     * @param Taller $taller
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function agregarTaller(Request $request){
-        //$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
-
-        $rules = [];
-        $rules['nombre_taller'] = 'required';
-        $rules['url_taller'] = 'required';
-
-        $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            if($data['status'] != 'Errors'){
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Taller agregado correctamente';
-
-                $taller = new Taller;
-                $taller->tallerNOMBRE = $request->nombre_taller;
-                $taller->tallerURL = $request->url_taller;
-                $taller->tallerESTADO = 'Activo';
-                $taller->save();
-            }
+    public function toggle(Taller $taller)
+    {
+        if ($taller->isEnabled()) {
+            $taller->tallerESTADO = Estado::INACTIVO;
+            $message = __('El taller ha sido inactivado correctamente');
+        } else {
+            $taller->tallerESTADO = Estado::ACTIVO;
+            $message = __('El taller ha sido activado correctamente');
         }
-        return json_encode($data);
+
+        $taller->save();
+
+        return redirect()->back()->with(['success' => $message]);
     }
-
-    /**
-     * Esta función edita un taller
-     *
-     * @param  request
-     * @return json
-     */
-    public function editarTaller(Request $request){
-        //$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
-
-        $rules = [];
-        $rules['tallerIDE'] = 'required';
-        $rules['nombre_taller'] = 'required';
-        $rules['url_taller'] = 'required';
-
-        $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            if($data['status'] != 'Errors'){
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Taller editado correctamente';
-
-                $taller = Taller::where('tallerID',$request->tallerIDE)->first();
-                if($taller){
-                    $taller->tallerNOMBRE = $request->nombre_taller;
-                    $taller->tallerURL = $request->url_taller;
-                    $taller->save();
-                }else{
-                    $data['status'] = 'Error';
-                    $data['mensaje'] = 'Error editando el taller';
-                }
-            }
-        }
-        return json_encode($data);
-    }
-
-    /**
-     * Esta función elimina un taller
-     *
-     * @param  request
-     * @return json
-     */
-    public function eliminarTaller(Request $request){
-
-        $rules = [];
-        $rules['tallerID'] = 'required';
-
-        $validator = Validator::make($request->all(), $rules);
-        $data = [];
-        $data['status'] = '';
-        if($validator->fails()){
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
-            }
-        }else{
-            if($data['status'] != 'Errors'){
-                $data['status'] = 'Ok';
-                $data['mensaje'] = 'Taller eliminado correctamente';
-                $taller = Taller::where('tallerID',$request->tallerID)->first();
-                if($taller){
-                    $taller->tallerESTADO = 'Inactivo';
-                    $taller->save();
-                }else{
-                    $data['status'] = 'Error';
-                    $data['mensaje'] = 'Error eliminando el taller';
-                }
-            }
-        }
-        return json_encode($data);
-    }
-
 }

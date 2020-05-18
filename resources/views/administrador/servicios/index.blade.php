@@ -1,6 +1,6 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Servicios')
-@section('content')
+@section('app-content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -9,7 +9,10 @@
                         <h5></h5>
                         <div>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-servicio"><i class="fa fa-file-o"></i> Agregar servicio </a>
+                                <a class="btn btn-primary" href="{{ route('admin.servicios.create') }}"
+                                   aria-label="Agregar servicio" data-balloon-pos="up">
+                                    <i class="fas fa-plus"></i> Agregar servicio
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -20,21 +23,65 @@
                                 <tr>
                                     <th>{{ __('Servicio #') }}</th>
                                     <th>{{ __('Nombre servicio') }}</th>
+                                    <th>{{ __('Estado') }}</th>
                                     <th class="text-right"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($servicios as $key=> $servicio)
+                                @forelse($servicios->sortBy('servicio_ccsmESTADO') as $key=> $servicio)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-left">{{$servicio->servicio_ccsmNOMBRE}}</td>
+                                        <td class="text-left">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                @if($servicio->isEnabled())
+                                                    <span class="badge badge-pill badge-success">
+                                                        {{$servicio->servicio_ccsmESTADO}} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{$servicio->servicio_ccsmESTADO}} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </td>
                                         <td class="text-center">
-                                            <a class="btn bg-primary btn-sm" href="{{$servicio->servicio_ccsmURL}}" target="_blank">Ver Servicio</a>
-                                            <a class="btn btn-warning btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-servicio" onclick="editarServicioS('{{$servicio->servicio_ccsmID}}','{{$servicio->servicio_ccsmNOMBRE}}','{{$servicio->servicio_ccsmURL}}');return false;">Editar</a>
-                                            <a class="btn btn-danger btn-sm" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-servicio" onclick="eliminarServicioS('{{$servicio->servicio_ccsmID}}');return false;">Eliminar</a>
+                                            <a class="p-1" href="{{$servicio->material_ayudaURL}}" target="_blank"
+                                               aria-label="Ver servicio" data-balloon-pos="up">
+                                                <i class="fas fa-eye text-primary"></i>
+                                            </a>
+                                            <a class="p-1" href="{{ route('admin.servicios.edit', $servicio) }}"
+                                               aria-label="Editar servicio" data-balloon-pos="up">
+                                                <i class="fas fa-edit text-warning"></i>
+                                            </a>
+                                            <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Opciones" right no-caret>
+                                                <template v-slot:button-content>
+                                                    <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                </template>
+                                                <b-dropdown-form
+                                                        action="{{ route('admin.servicios.toggle', $servicio) }}"
+                                                        method="post"
+                                                        class="d-none"
+                                                        id="toggleForm{{ $servicio->servicio_ccsmID }}">
+                                                    @csrf
+                                                </b-dropdown-form>
+                                                <b-dropdown-item-button
+                                                        onclick="event.preventDefault(); document.getElementById('toggleForm{{ $servicio->servicio_ccsmID }}').submit();"
+                                                >
+                                                    @if($servicio->isEnabled())
+                                                        <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Inactivar') }}
+                                                    @else
+                                                        <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Activar') }}
+                                                    @endif
+                                                </b-dropdown-item-button>
+                                            </b-dropdown>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="3">{{ __('No se encontraron servicios') }}</td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>

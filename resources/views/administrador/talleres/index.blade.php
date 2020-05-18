@@ -1,6 +1,6 @@
-@extends('administrador.index')
-@section('title','RutaC | Documentos')
-@section('content')
+@extends('administrador.app')
+@section('title','RutaC | Talleres')
+@section('app-content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -9,7 +9,10 @@
                         <h5></h5>
                         <div>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-taller"><i class="fa fa-file-o"></i> Agregar taller </a>
+                                <a class="btn btn-primary" href="{{ route('admin.taller.create') }}"
+                                   aria-label="Agregar taller" data-balloon-pos="up">
+                                    <i class="fas fa-plus"></i> Agregar taller
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -20,19 +23,58 @@
                                 <tr>
                                     <th>{{ __('Taller #') }}</th>
                                     <th>{{ __('Nombre taller') }}</th>
-                                    <th>{{ __('URL inscripción') }}</th>
+                                    <th>{{ __('Estado') }}</th>
                                     <th class="text-right"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($talleres as $key=> $taller)
+                                @foreach($talleres->sortBy('tallerESTADO') as $key=> $taller)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-left">{{$taller->tallerNOMBRE}}</td>
-                                        <td class="text-left"><a href="{{$taller->tallerURL}}" target="_blank">{{$taller->tallerNOMBRE}}</a></td>
+                                        <td class="text-left">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                @if($taller->isEnabled())
+                                                    <span class="badge badge-pill badge-success">
+                                                        {{$taller->tallerESTADO}} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{$taller->tallerESTADO}} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </td>
                                         <td class="text-center">
-                                            <a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-taller" onclick="editarTallerS('{{$taller->tallerID}}','{{$taller->tallerNOMBRE}}','{{$taller->tallerURL}}');return false;">Editar</a>
-                                            <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-taller" onclick="eliminarTallerS('{{$taller->tallerID}}');return false;">Eliminar</a>
+                                            <a class="p-1" href="{{$taller->tallerURL}}" target="_blank"
+                                               aria-label="Ver servicio" data-balloon-pos="up">
+                                                <i class="fas fa-eye text-primary"></i>
+                                            </a>
+                                            <a class="p-1" href="{{ route('admin.taller.edit', $taller) }}"
+                                               aria-label="Editar servicio" data-balloon-pos="up">
+                                                <i class="fas fa-edit text-warning"></i>
+                                            </a>
+                                            <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Opciones" right no-caret>
+                                                <template v-slot:button-content>
+                                                    <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                </template>
+                                                <b-dropdown-form
+                                                        action="{{ route('admin.taller.toggle', $taller) }}"
+                                                        method="post"
+                                                        class="d-none"
+                                                        id="toggleForm{{ $taller->tallerID }}">
+                                                    @csrf
+                                                </b-dropdown-form>
+                                                <b-dropdown-item-button
+                                                        onclick="event.preventDefault(); document.getElementById('toggleForm{{ $taller->tallerID }}').submit();"
+                                                >
+                                                    @if($taller->isEnabled())
+                                                        <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Inactivar') }}
+                                                    @else
+                                                        <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Activar') }}
+                                                    @endif
+                                                </b-dropdown-item-button>
+                                            </b-dropdown>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Constants\Estado;
 use Auth;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
@@ -24,15 +25,51 @@ class ServiciosController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $servicios = Servicio::where('servicio_ccsmESTADO','Activo')->get();
-        return view('administrador.servicios.index',compact('servicios'));
+        $servicios = Servicio::get();
+        return view('administrador.servicios.index', compact('servicios'));
+    }
+
+    public function create(Servicio $servicio)
+    {
+        return view('administrador.servicios.create', compact('servicio'));
+    }
+
+    public function store(Request $request, Servicio $servicio)
+    {
+        $servicio->servicio_ccsmNOMBRE = $request->input('nombre');
+        $servicio->servicio_ccsmURL = $request->input('url');
+        $servicio->servicio_ccsmESTADO = Estado::ACTIVO;
+
+        $servicio->save();
+
+        return redirect()->route('admin.servicios.index')->with([
+            'success' => __('Servicio guardado correctamente'),
+        ]);
+    }
+
+    public function edit(Servicio $servicio)
+    {
+        return view('administrador.servicios.edit', compact('servicio'));
+    }
+
+    public function update(Request $request, Servicio $servicio)
+    {
+        $servicio->servicio_ccsmNOMBRE = $request->input('nombre');
+        $servicio->servicio_ccsmURL = $request->input('url');
+
+        $servicio->save();
+
+        return redirect()->route('admin.servicios.index')->with([
+            'success' => __('Servicio actualizado correctamente'),
+        ]);
     }
     
-    public function agregarServicio(Request $request){
+    public function agregarServicio(Request $request)
+    {
         //$regex = '/^(http?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
         $rules = [];
@@ -42,14 +79,14 @@ class ServiciosController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-        if($validator->fails()){
+        if ($validator->fails()) {
             $errors = $validator->errors();
             $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
+            foreach ($rules as $key => $value) {
+                $data['errors'][$key] = $errors->first($key);
             }
-        }else{
-            if($data['status'] != 'Errors'){
+        } else {
+            if ($data['status'] != 'Errors') {
                 $servicio = new Servicio;
                 $servicio->servicio_ccsmNOMBRE = $request->nombre_servicio;
                 $servicio->servicio_ccsmURL = $request->url_servicio;
@@ -62,7 +99,8 @@ class ServiciosController extends Controller
         return json_encode($data);
     }
 
-    public function editarServicio(Request $request){
+    public function editarServicio(Request $request)
+    {
         //$regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
         $rules = [];
@@ -73,23 +111,23 @@ class ServiciosController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-        if($validator->fails()){
+        if ($validator->fails()) {
             $errors = $validator->errors();
             $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
+            foreach ($rules as $key => $value) {
+                $data['errors'][$key] = $errors->first($key);
             }
-        }else{
-            if($data['status'] != 'Errors'){
-                $servicio = Servicio::where('servicio_ccsmID',$request->servicioIDE)->first();
-                if($servicio){
+        } else {
+            if ($data['status'] != 'Errors') {
+                $servicio = Servicio::where('servicio_ccsmID', $request->servicioIDE)->first();
+                if ($servicio) {
                     $data['status'] = 'Ok';
                     $data['mensaje'] = 'Servicio editado correctamente';
 
                     $servicio->servicio_ccsmNOMBRE = $request->nombre_servicio_e;
                     $servicio->servicio_ccsmURL = $request->url_servicio_e;
                     $servicio->save();
-                }else{
+                } else {
                     $data['status'] = 'Error';
                     $data['mensaje'] = 'Ocurrió un error';
                 }
@@ -98,29 +136,30 @@ class ServiciosController extends Controller
         return json_encode($data);
     }
 
-    public function eliminarServicio(Request $request){
+    public function eliminarServicio(Request $request)
+    {
         $rules = [];
         $rules['servicioID'] = 'required';
 
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-        if($validator->fails()){
+        if ($validator->fails()) {
             $errors = $validator->errors();
             $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
+            foreach ($rules as $key => $value) {
+                $data['errors'][$key] = $errors->first($key);
             }
-        }else{
-            if($data['status'] != 'Errors'){
-                $servicio = Servicio::where('servicio_ccsmID',$request->servicioID)->first();
-                if($servicio){
+        } else {
+            if ($data['status'] != 'Errors') {
+                $servicio = Servicio::where('servicio_ccsmID', $request->servicioID)->first();
+                if ($servicio) {
                     $data['status'] = 'Ok';
                     $data['mensaje'] = 'Servicio editado correctamente';
 
                     $servicio->servicio_ccsmESTADO = 'Inactivo';
                     $servicio->save();
-                }else{
+                } else {
                     $data['status'] = 'Error';
                     $data['mensaje'] = 'Ocurrió un error';
                 }
@@ -129,4 +168,22 @@ class ServiciosController extends Controller
         return json_encode($data);
     }
 
+    /**
+     * @param Servicio $servicio
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function toggle(Servicio $servicio)
+    {
+        if ($servicio->isEnabled()) {
+            $servicio->servicio_ccsmESTADO = Estado::INACTIVO;
+            $message = __('El servicio ha sido inactivado correctamente');
+        } else {
+            $servicio->servicio_ccsmESTADO = Estado::ACTIVO;
+            $message = __('El servicio ha sido activado correctamente');
+        }
+
+        $servicio->save();
+
+        return redirect()->back()->with(['success' => $message]);
+    }
 }
