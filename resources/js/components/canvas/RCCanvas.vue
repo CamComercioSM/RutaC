@@ -52,7 +52,9 @@
                 this.ctx.clearRect(0,0,this.vueCanvas.width,this.vueCanvas.height);
                 this.dibularLinea();
                 this.ctx.drawImage(this.sprite, this.ubicacionX, 0, 100, 100, (this.contador)*3, 400-this.contador, 100, 100);
-                if ((this.contador * 3) < this.res) {
+                let result = ((this.res*900)/100);
+
+                if ((this.contador * 3) < result) {
                     this.contador++;
                     this.animacion = this.frame(this.tiempo());
                 }
