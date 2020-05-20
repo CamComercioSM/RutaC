@@ -7,6 +7,7 @@ use App\Constants\EstadosDiagnostico;
 use App\Constants\TipoNegocio;
 use App\Exceptions\RutaCException;
 use App\Http\Controllers\Controller;
+use App\Mail\RutaCMail;
 use App\Models\Diagnostico;
 use App\Models\Emprendimiento;
 use App\Models\Empresa;
@@ -21,6 +22,7 @@ use App\Models\RetroDiagnostico;
 use App\Models\RetroSeccion;
 use App\Models\Ruta;
 use App\Models\SeccionPregunta;
+use App\Models\User;
 use App\Repositories\PreguntasRepository;
 use App\Repositories\SeccionPreguntaRepository;
 use Carbon\Carbon;
@@ -31,6 +33,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class DiagnosticoController extends Controller
@@ -257,6 +260,9 @@ class DiagnosticoController extends Controller
                 $diagnostico->diagnosticoMENSAJE = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje;
                 $diagnostico->diagnosticoESTADO = 'Finalizado';
                 $diagnostico->save();
+
+                $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('datoUsuario')->first();
+                Mail::send(new RutaCMail($usuario, 'fin_diagnostico'));
             }
 
             DB::commit();

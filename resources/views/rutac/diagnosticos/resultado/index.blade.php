@@ -28,7 +28,6 @@
         </div>
 
         <div class="card-body">
-            {{ number_format($diagnostico->diagnosticoRESULTADO,0) }}
             <b-collapse id="collapse-2" :visible="visible" v-cloak>
                 <div class="col-md-12">
                     <b-card-group deck>
