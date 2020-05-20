@@ -28,6 +28,7 @@
         </div>
 
         <div class="card-body">
+            {{ number_format($diagnostico->diagnosticoRESULTADO,0) }}
             <b-collapse id="collapse-2" :visible="visible" v-cloak>
                 <div class="col-md-12">
                     <b-card-group deck>
@@ -119,6 +120,10 @@
                 <br>
                 <div class="col-md-12">
                     <h2 class="text-center titulo-nivel">{{ $diagnostico->diagnosticoNIVEL }}</h2>
+                </div>
+                <br>
+                <div class="col-md-12">
+                    @include('rutac.diagnosticos.include.__animacion')
                 </div>
                 <br>
                 <div class="col-md-12">
