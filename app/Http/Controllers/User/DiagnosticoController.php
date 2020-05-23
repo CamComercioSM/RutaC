@@ -192,7 +192,8 @@ class DiagnosticoController extends Controller
      */
     public function store(Request $request)
     {
-        $preguntas = $request->input('pregunta');
+        $preguntas = (array) json_decode(base64_decode($request->respondData));
+
         $seccion = ResultadoSeccion::where('resultado_seccionID', $request->input('seccion'))->first();
         $seccionCumplimiento = 0;
         $diagnostico = Diagnostico::where('diagnosticoID', $seccion->DIAGNOSTICOS_diagnosticoID)->first();
@@ -343,7 +344,8 @@ class DiagnosticoController extends Controller
     {
         $seccion = ResultadoSeccion::where('resultado_seccionID', $seccion)->with('resultadoPregunta')->first();
 
-        return view('rutac.diagnosticos.responder', compact('seccion'));
+        return view('rutac.diagnosticos.responder-w', compact('seccion'));
+        //return view('rutac.diagnosticos.responder', compact('seccion'));
     }
 
     public function getResultados(Diagnostico $diagnostico)
@@ -446,6 +448,12 @@ class DiagnosticoController extends Controller
         }
 
         return false;
+    }
+
+    public function siguientePregunta(Request $request) {
+
+
+
     }
 
     public function parsearEstaciones($ruta)

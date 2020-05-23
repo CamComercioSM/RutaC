@@ -27,6 +27,7 @@ import RCInputMoney from "./components/inputs/RCInputMoney";
 import RCVideo from "./components/parts/RCVideo";
 import RCTextArea from "./components/inputs/RCTextArea";
 import RCCanvas from "./components/canvas/RCCanvas";
+import RCWizard from "./components/forms/RCWizard";
 
 Vue.component('rc-select', RCSelect);
 Vue.component('rc-input', RCInput);
@@ -44,6 +45,7 @@ Vue.component('rc-input-money', RCInputMoney);
 Vue.component('rc-video', RCVideo);
 Vue.component('rc-text-area', RCTextArea);
 Vue.component('rc-canvas', RCCanvas);
+Vue.component('rc-wizard', RCWizard);
 
 // Custom forms
 import RCForm from "./components/forms/RCForm";
