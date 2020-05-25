@@ -17,3 +17,5 @@ package-lock.json
 /public/js/app.js
 .php_cs.cache
 .htaccess
+/public/css
+/public/js

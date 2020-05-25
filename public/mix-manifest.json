@@ -1,4 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/canvas.js": "/js/canvas.js",
+    "/js/delete-modal.js": "/js/delete-modal.js",
+    "/js/load-video.js": "/js/load-video.js",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/ruta-activa.js": "/js/ruta-activa.js",
+    "/js/vendor.js": "/js/vendor.js"
 }
