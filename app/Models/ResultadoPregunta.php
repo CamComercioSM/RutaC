@@ -23,6 +23,7 @@ class ResultadoPregunta extends Model
 
     public function respuestas()
     {
-        return $this->hasMany('App\Models\Respuesta', 'PREGUNTAS_preguntaID', 'resultado_preguntaPREGUNTAID');
+        return $this->hasMany('App\Models\Respuesta', 'PREGUNTAS_preguntaID', 'resultado_preguntaPREGUNTAID')
+            ->with('dependiente');
     }
 }

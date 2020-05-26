@@ -24,4 +24,9 @@ class Respuesta extends Model
     {
         return $this->hasMany('App\Models\MaterialRespuesta', 'RESPUESTAS_respuestaID')->with('materialAsociado');
     }
+
+    public function dependiente()
+    {
+        return $this->hasOne('App\Models\PreguntaDependiente', 'pregunta_dependienteRESPUESTA');
+    }
 }

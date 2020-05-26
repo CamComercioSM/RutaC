@@ -209,6 +209,7 @@ class DiagnosticoController extends Controller
                 'error' => __('Debe contestar todas las preguntas'),
             ]);
         }
+        //dd($preguntas);
 
         try {
             DB::beginTransaction();
@@ -217,25 +218,36 @@ class DiagnosticoController extends Controller
             foreach ($preguntas as $key => $pregunta) {
                 $resultado = ResultadoPregunta::where('RESULTADOS_SECCION_resultado_seccionID', $seccion->resultado_seccionID)
                     ->where('resultado_preguntaPREGUNTAID', $key)->first();
-                $respuesta = Respuesta::where('respuestaID', $pregunta)->with('servicio', 'material')->first();
-                $pregunta = Pregunta::where('preguntaID', $respuesta->PREGUNTAS_preguntaID)->first();
 
-                $resultado->resultado_preguntaPRESENTACION = $respuesta->respuestaPRESENTACION;
-                $resultado->resultado_preguntaCUMPLIMIENTO = $respuesta->respuestaCUMPLIMIENTO * $pregunta->preguntaPESO;
-                $resultado->resultado_preguntaCOMPETENCIA = $pregunta->COMPETENCIAS_competenciaID;
-                $resultado->resultado_preguntaFEEDBACK = $respuesta->respuestaFEEDBACK;
-                $resultado->resultado_preguntaESTADO = 'Respondida';
-                $resultado->save();
+                if ($pregunta) {
+                    $respuesta = Respuesta::where('respuestaID', $pregunta)->with('servicio', 'material')->first();
+                    $pregunta = Pregunta::where('preguntaID', $respuesta->PREGUNTAS_preguntaID)->first();
 
-                if (count($respuesta->servicio) > 0) {
-                    $this->guardarEstacionesServicios($ruta, $respuesta);
+                    $resultado->resultado_preguntaPRESENTACION = $respuesta->respuestaPRESENTACION;
+                    $resultado->resultado_preguntaCUMPLIMIENTO = $respuesta->respuestaCUMPLIMIENTO * $pregunta->preguntaPESO;
+                    $resultado->resultado_preguntaCOMPETENCIA = $pregunta->COMPETENCIAS_competenciaID;
+                    $resultado->resultado_preguntaFEEDBACK = $respuesta->respuestaFEEDBACK;
+                    $resultado->resultado_preguntaESTADO = 'Respondida';
+                    $resultado->save();
+
+                    if (count($respuesta->servicio) > 0) {
+                        $this->guardarEstacionesServicios($ruta, $respuesta);
+                    }
+
+                    if (count($respuesta->material) > 0) {
+                        $this->guardarEstacionesMateriales($ruta, $respuesta);
+                    }
+
+                    $seccionCumplimiento = $seccionCumplimiento + $resultado->resultado_preguntaCUMPLIMIENTO;
+                    Log::info($resultado->resultado_preguntaCUMPLIMIENTO);
+                } else {
+                    $resultado->resultado_preguntaPRESENTACION = "";
+                    $resultado->resultado_preguntaCUMPLIMIENTO = 0;
+                    $resultado->resultado_preguntaCOMPETENCIA = 1;
+                    $resultado->resultado_preguntaFEEDBACK = "";
+                    $resultado->resultado_preguntaESTADO = 'Respondida';
+                    $resultado->save();
                 }
-
-                if (count($respuesta->material) > 0) {
-                    $this->guardarEstacionesMateriales($ruta, $respuesta);
-                }
-
-                $seccionCumplimiento = $seccionCumplimiento + $resultado->resultado_preguntaCUMPLIMIENTO;
             }
 
             $feedbackSeccion = $this->consultarRetroSeccion($seccion->seccionID, $seccionCumplimiento);
@@ -244,6 +256,9 @@ class DiagnosticoController extends Controller
             $seccion->diagnostico_seccionMENSAJE_FEEDBACK = $feedbackSeccion->retro_seccionMENSAJE;
             $seccion->diagnostico_seccionESTADO = 'Finalizado';
             $seccion->save();
+
+            $diagnostico->diagnosticoESTADO = 'En Proceso';
+            $diagnostico->save();
 
             if ($this->verificarDiagnosticoFinalizado($seccion->DIAGNOSTICOS_diagnosticoID) == 0) {
                 $secciones = ResultadoSeccion::where('DIAGNOSTICOS_diagnosticoID', $seccion->DIAGNOSTICOS_diagnosticoID)
@@ -261,6 +276,9 @@ class DiagnosticoController extends Controller
                 $diagnostico->diagnosticoMENSAJE = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje;
                 $diagnostico->diagnosticoESTADO = 'Finalizado';
                 $diagnostico->save();
+
+                $ruta->rutaESTADO = 'En Proceso';
+                $ruta->save();
 
                 $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('datoUsuario')->first();
                 Mail::send(new RutaCMail($usuario, 'fin_diagnostico'));
@@ -282,7 +300,7 @@ class DiagnosticoController extends Controller
     public function consultarRetroSeccion($seccionPregunta, $seccionCumplimiento)
     {
         return RetroSeccion::where('SECCIONES_PREGUNTAS_seccion_pregunta', $seccionPregunta)
-            ->where('retro_seccionRango', '<=', $seccionCumplimiento)->orderBy('retro_seccionRango', 'desc')->first();
+            ->where('retro_seccionRango', '>', $seccionCumplimiento)->orderBy('retro_seccionRango')->first();
     }
 
     public function consultarRetroDiagnostico($diagnostico, $diagnosticoCumplimiento)
@@ -343,6 +361,8 @@ class DiagnosticoController extends Controller
     public function respondQuestions(int $seccion)
     {
         $seccion = ResultadoSeccion::where('resultado_seccionID', $seccion)->with('resultadoPregunta')->first();
+
+        //dd($seccion);
 
         return view('rutac.diagnosticos.responder-w', compact('seccion'));
         //return view('rutac.diagnosticos.responder', compact('seccion'));
@@ -448,12 +468,6 @@ class DiagnosticoController extends Controller
         }
 
         return false;
-    }
-
-    public function siguientePregunta(Request $request) {
-
-
-
     }
 
     public function parsearEstaciones($ruta)

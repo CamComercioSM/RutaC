@@ -17,7 +17,9 @@ class Pregunta extends Model
 
     public function respuestas()
     {
-        return $this->hasMany('App\Models\Respuesta','PREGUNTAS_preguntaID')->with('servicio','material')->where('respuestaESTADO','Activo');
+        return $this->hasMany('App\Models\Respuesta', 'PREGUNTAS_preguntaID')
+            ->with('servicio', 'material')
+            ->where('respuestaESTADO', 'Activo');
     }
     
     /*
@@ -28,6 +30,6 @@ class Pregunta extends Model
 
     public function respuestasPregunta()
     {
-        return $this->hasMany('App\Models\Respuesta','PREGUNTAS_preguntaID')->where('respuestaESTADO','Activo');
+        return $this->hasMany('App\Models\Respuesta', 'PREGUNTAS_preguntaID')->where('respuestaESTADO', 'Activo');
     }
 }

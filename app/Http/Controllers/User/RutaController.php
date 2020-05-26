@@ -138,8 +138,6 @@ class RutaController extends Controller
             compact(
                 'emprendimientos',
                 'empresas',
-                'diagnosticoEmpresaEstado',
-                'diagnosticoEmprendimientoEstado',
                 'data'
             )
         );
@@ -352,7 +350,7 @@ class RutaController extends Controller
             }
         }
 
-        return "";
+        return null;
     }
 
     public function parsearEstaciones($ruta)
