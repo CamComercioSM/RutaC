@@ -69,18 +69,19 @@
     </div>
 
     <div class="form-group col-md-3">
-        <rc-date-picker
+        <rc-input
                 rules="required"
                 name="fecha_constitucion"
                 id="fecha_constitucion"
-                label="{{ __('Fecha de constitución') }}"
+                type="date"
                 @error('fecha_constitucion')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('fecha_constitucion', $empresa->empresaFECHA_CONSTITUCION) }}"
-                placeholder="{{ __('Digite la Fecha de constitución') }} *"
-        >
-        </rc-date-picker>
+                autocomplete="off"
+                placeholder="{{ __('Digite la Fecha de constitución') }}"
+                label="{{ __('Fecha de constitución') }} *"
+        ></rc-input>
     </div>
 
     <div class="form-group col-md-6">

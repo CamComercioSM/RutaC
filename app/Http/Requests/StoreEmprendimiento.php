@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +28,7 @@ class StoreEmprendimiento extends FormRequest
         return [
             'nombre_emprendimiento' => 'required|min:5|max:200',
             'descripcion_emprendimiento' => 'required|min:5|max:200',
-            'inicio_actividades' => 'nullable|date_format:Y-m-d|before:'. date('Y-m-d'),
+            'inicio_actividades' => 'nullable|date_format:Y-m-d|before:'. Carbon::today()->endOfDay(),
             'ingresos_ventas' => 'nullable',
             'remuneracion_emprendedor' => 'nullable'
         ];

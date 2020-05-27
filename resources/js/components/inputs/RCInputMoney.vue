@@ -72,6 +72,7 @@
                 return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             },
             formatCurrency(n) {
+                n = n.replace(/,/g, "");
                 let num = parseFloat(n).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
                 document.getElementById(this.$attrs.id).childNodes[1].childNodes[0].value = num;
             }

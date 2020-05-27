@@ -38,17 +38,19 @@
     </div>
 
     <div class="form-group col-md-4">
-        <rc-date-picker
+        <rc-input
+                rules="required"
                 name="inicio_actividades"
                 id="inicio_actividades"
-                label="{{ __('Fecha de inicio de actividades') }}"
+                type="date"
                 @error('inicio_actividades')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('inicio_actividades', $emprendimiento->emprendimientoINICIOACTIVIDADES) }}"
+                autocomplete="off"
                 placeholder="{{ __('Digite la fecha de inicio de actividades') }}"
-        >
-        </rc-date-picker>
+                label="{{ __('Fecha de inicio de actividades') }} *"
+        ></rc-input>
     </div>
 
     <div class="form-group col-md-4">
@@ -59,7 +61,7 @@
                 @error('ingresos_ventas')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('ingresos_ventas', $emprendimiento->emprendimientoINGRESOS) }}"
+                initial-value="{{ old('ingresos_ventas', number_format($emprendimiento->emprendimientoINGRESOS, 2)) }}"
                 autocomplete="off"
                 placeholder="Digite los ingresos por ventas"
                 label="Ingresos por ventas de los últimos meses"
@@ -74,7 +76,7 @@
                 @error('remuneracion_emprendedor')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('remuneracion_emprendedor', $emprendimiento->emprendimientoREMUNERACION) }}"
+                initial-value="{{ old('remuneracion_emprendedor', number_format($emprendimiento->emprendimientoREMUNERACION, 2)) }}"
                 autocomplete="off"
                 placeholder="Digite la remuneración que recibe el emprendedor"
                 label="Remuneración del emprendedor"

@@ -38,6 +38,8 @@
                 final: 0,
                 result: {},
                 dependiente: 0,
+                respuestaD: 0,
+                seleccionadoD: 0,
             }
         },
         mounted() {
@@ -45,7 +47,6 @@
             document.getElementById('finalizar').style.display = 'none';
             this.current = JSON.parse(this.initialValue);
             this.final = this.current.length;
-            console.log("From Mounted ");
             this.actual()
         },
         methods: {
@@ -54,7 +55,11 @@
                     document.getElementById("content").innerHTML = this.construir();
                 } else {
                     this.dependiente = 0;
-                    this.saltarPendiente();
+                    if (this.seleccionadoD == this.respuestaD) {
+                        this.saltarPendiente();
+                    } else {
+                        this.actual();
+                    }
                 }
             },
             siguiente() {
@@ -64,7 +69,6 @@
                     this.construirNodo();
                     this.currentQ++;
                     if (this.currentQ < this.final) {
-                        console.log("From Siguiente ");
                         this.actual();
 
                         if (this.currentQ === this.final-1) {
@@ -82,7 +86,6 @@
                 this.construirNodo();
                 this.currentQ++;
                 if (this.currentQ < this.final) {
-                    console.log("From Saltar Siguiente ");
                     this.actual();
 
                     if (this.currentQ === this.final-1) {
@@ -116,6 +119,7 @@
 
                 for(let i = 0; i < ele.length; i++) {
                     if(ele[i].checked) {
+                        this.seleccionadoD = ele[i].value;
                         return ele[i].value;
                     }
                 }
@@ -132,6 +136,7 @@
 
                     if (this.current[this.currentQ].respuestas[i].dependiente) {
                         this.dependiente = this.current[this.currentQ].respuestas[i].dependiente.pregunta_dependienteHIJA;
+                        this.respuestaD = this.current[this.currentQ].respuestas[i].dependiente.pregunta_dependienteRESPUESTA;
                     }
 
                     html = html+"<div class='form-check'>" +
