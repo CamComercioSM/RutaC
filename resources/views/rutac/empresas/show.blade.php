@@ -100,35 +100,45 @@
 
                     <div class="card-body">
                         @if ($empresa->diagnosticosAll->count() > 0)
-                            <b-card title="{{ $empresa->diagnosticosAll[0]->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $empresa->diagnosticosAll[0]->diagnosticoFECHA }}" class="bg-white">
-                                <b-card-text>
-                                    <div class="row">
-                                        <div class="col">
-                                            <b>{{ __('Resultado') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoRESULTADO }}
+                            @if($empresa->diagnosticosAll[0]->diagnosticoESTADO != 'Activo')
+                                <b-card title="{{ $empresa->diagnosticosAll[0]->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $empresa->diagnosticosAll[0]->diagnosticoFECHA }}" class="bg-white">
+                                    <b-card-text>
+                                        <div class="row">
+                                            <div class="col">
+                                                <b>{{ __('Resultado') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoRESULTADO }}
+                                            </div>
+                                            <div class="col">
+                                                <b>{{ __('Nivel') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoNIVEL }}
+                                            </div>
+                                            <div class="col">
+                                                <b>{{ __('Estado') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoESTADO }}
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <b>{{ __('Nivel') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoNIVEL }}
-                                        </div>
-                                        <div class="col">
-                                            <b>{{ __('Estado') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoESTADO }}
-                                        </div>
-                                    </div>
-                                </b-card-text>
+                                    </b-card-text>
 
-                                <b-card-text>
-                                    <b>Feedback: </b>
-                                    {{ $empresa->diagnosticosAll[0]->diagnosticoMENSAJE }}
-                                </b-card-text>
+                                    <b-card-text>
+                                        <b>Feedback: </b>
+                                        {{ $empresa->diagnosticosAll[0]->diagnosticoMENSAJE }}
+                                    </b-card-text>
 
-                                <b-button variant="primary" size="sm" class="w-25"  href="{{ url('user/diagnosticos/resultados', $empresa->diagnosticosAll[0]) }}">
-                                    <i class="fas fa-chart-area"></i> Ver Resultados
+                                    <b-button variant="primary" size="sm" class="w-25"  href="{{ url('user/diagnosticos/resultados', $empresa->diagnosticosAll[0]) }}">
+                                        <i class="fas fa-chart-area"></i> Ver Resultados
+                                    </b-button>
+                                    <b-button variant="info" size="sm" class="w-25" href="{{ url('user/rutas', $empresa->diagnosticosAll[0]->ruta) }}">
+                                        <i class="fas fa-signal"></i> Ver Ruta
+                                    </b-button>
+                                </b-card>
+                            @else
+                                <b-button block size="sm" variant="outline-primary" class="m-1"
+                                    href="{{ url('user/diagnosticos/iniciar', ['Empresa', $empresa->empresaID]) }}"
+                                >Iniciar Diagnóstico
                                 </b-button>
-                                <b-button variant="info" size="sm" class="w-25" href="{{ url('user/rutas', $empresa->diagnosticosAll[0]->ruta) }}">
-                                    <i class="fas fa-signal"></i> Ver Ruta
-                                </b-button>
-                            </b-card>
+                            @endif
                         @else
-                            <b-button block size="sm" variant="outline-primary" class="m-1">Iniciar Diagnóstico</b-button>
+                            <b-button block size="sm" variant="outline-primary" class="m-1"
+                                      href="{{ url('user/diagnosticos/iniciar', ['Empresa', $empresa->empresaID]) }}"
+                            >Iniciar Diagnóstico
+                            </b-button>
                         @endif
 
                         @if ($empresa->diagnosticosAll->count() > 1)
