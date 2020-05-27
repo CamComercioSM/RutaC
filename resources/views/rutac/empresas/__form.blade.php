@@ -20,23 +20,8 @@
         ></rc-input>
     </div>
 
-    <!-- <div class="form-group col-md-3">
-       <rc-input
-                rules="required|numeric"
-                name="matricula_mercantil"
-                id="matricula_mercantil"
-                type="hidden"
-                @error('matricula_mercantil')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('matricula_mercantil', $empresa->empresaMATRICULA_MERCANTIL) }}"
-                autocomplete="off"
-                placeholder="Digite la matrícula mercantil"
-                label="Matrícula mercantil"
-        ></rc-input>
-    </div>-->
     <input type="hidden" value="12345" id="matricula_mercantil" name="matricula_mercantil" class="form-control" placeholder="Matricula mercantil" >
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-9">
         <rc-input
                 rules="required|min:3|max:200"
                 name="razon_social"
@@ -86,7 +71,7 @@
 
     <div class="form-group col-md-6">
         <rc-input
-                rules="required"
+                rules="required|min:3|max:200"
                 name="representante_legal"
                 id="representante_legal"
                 type="text"

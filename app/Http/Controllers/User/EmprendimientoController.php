@@ -6,6 +6,7 @@ use App\Constants\Estado;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\StoreEmprendimiento;
+use App\Http\Requests\UpdateEmprendimiento;
 use App\Models\Emprendimiento;
 use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
@@ -66,7 +67,7 @@ class EmprendimientoController extends Controller
 
         $request->session()->put('tiene_entidad', '1');
 
-        return redirect()->route('user.ruta.iniciar-ruta')->with([
+        return redirect()->route('user.emprendimientos.show', $emprendimiento)->with([
             'success' => __('Emprendimiento creado correctamente'),
         ]);
     }
@@ -119,11 +120,11 @@ class EmprendimientoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Emprendimiento  $emprendimiento
+     * @param StoreEmprendimiento $request
+     * @param Emprendimiento $emprendimiento
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Emprendimiento $emprendimiento)
+    public function update(StoreEmprendimiento $request, Emprendimiento $emprendimiento)
     {
         $emprendimiento->USUARIOS_usuarioID = Auth::user()->usuarioID;
         $emprendimiento->emprendimientoNOMBRE = $request->input('nombre_emprendimiento');
@@ -133,7 +134,7 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
         $emprendimiento->save();
 
-        return redirect()->route('user.ruta.iniciar-ruta')->with([
+        return redirect()->route('user.emprendimientos.show', $emprendimiento)->with([
             'success' => __('Emprendimiento actualizado correctamente'),
         ]);
     }

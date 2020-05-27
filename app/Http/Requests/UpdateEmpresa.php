@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreEmpresa extends FormRequest
+class UpdateEmpresa extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,12 @@ class StoreEmpresa extends FormRequest
      */
     public function rules()
     {
+        $data = $this->route()->originalParameter('empresa');
+
+        //dd($this->route());
+
         return [
-            'nit' => 'required|unique:empresas,empresaNIT',
+            'nit' => 'required|unique:empresas,empresaNIT,' .$data.',empresaID',
             'razon_social' => 'required',
             'organizacion_juridica' => 'required',
             'fecha_constitucion' => 'nullable|date_format:Y-m-d|before:'. Carbon::today()->endOfDay(),

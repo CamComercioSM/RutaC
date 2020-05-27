@@ -6,6 +6,7 @@ use App\Constants\Estado;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\StoreEmpresa;
+use App\Http\Requests\UpdateEmpresa;
 use App\Models\Departamento;
 use App\Models\Empresa;
 use App\Models\Municipio;
@@ -60,25 +61,26 @@ class EmpresaController extends Controller
     public function store(StoreEmpresa $request, Empresa $empresa)
     {
         $empresa->USUARIOS_usuarioID = Auth::user()->usuarioID;
-        $empresa->empresaNIT = $request->nit;
-        $empresa->empresaMATRICULA_MERCANTIL = $request->matricula_mercantil;
-        $empresa->empresaRAZON_SOCIAL = $request->razon_social;
-        $empresa->empresaORGANIZACION_JURIDICA = $request->organizacion_juridica;
-        $empresa->empresaFECHA_CONSTITUCION = $request->fecha_constitucion;
-        $empresa->empresaDEPARTAMENTO_EMPRESA = $this->obtenerDepartamento($request->departamento_empresa);
-        $empresa->empresaMUNICIPIO_EMPRESA = isset($request->municipio_empresa) ? $municipio = $this->obtenerMunicipio($request->municipio_empresa) : $empresa->empresaMUNICIPIO_EMPRESA;
-        $empresa->empresaDIRECCION_FISICA = $request->direccion_empresa;
-        $empresa->empresaEMPLEADOS_FIJOS = $request->empleados_fijos;
-        $empresa->empresaEMPLEADOS_TEMPORALES = $request->empleados_temporales;
-        $empresa->empresaRANGOS_ACTIVOS = $request->rangos_activos;
-        $empresa->empresaCORREO_ELECTRONICO = $request->correo_electronico;
-        $empresa->empresaSITIO_WEB = $request->pagina_web;
-        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->cuenta_facebook, $request->cuenta_twitter, $request->cuenta_instagram);
-        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->nombre_contacto_cial, $request->telefono_contacto_cial, $request->correo_contacto_cial);
-        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->nombre_contacto_th, $request->telefono_contacto_th, $request->correo_contacto_th);
+        $empresa->empresaNIT = $request->input('nit');
+        $empresa->empresaMATRICULA_MERCANTIL = $request->input('matricula_mercantil');
+        $empresa->empresaRAZON_SOCIAL = $request->input('razon_social');
+        $empresa->empresaORGANIZACION_JURIDICA = $request->input('organizacion_juridica');
+        $empresa->empresaFECHA_CONSTITUCION = $request->input('fecha_constitucion');
+        $empresa->empresaREPRESENTANTE_LEGAL = $request->input('representante_legal');
+        $empresa->empresaDEPARTAMENTO_EMPRESA = $request->input('departamento_empresa');
+        $empresa->empresaMUNICIPIO_EMPRESA = $request->input('municipio_empresa');
+        $empresa->empresaDIRECCION_FISICA = $request->input('direccion_empresa');
+        $empresa->empresaEMPLEADOS_FIJOS = $request->input('empleados_fijos');
+        $empresa->empresaEMPLEADOS_TEMPORALES = $request->input('empleados_temporales');
+        $empresa->empresaRANGOS_ACTIVOS = $request->input('rangos_activos');
+        $empresa->empresaCORREO_ELECTRONICO = $request->input('correo_electronico');
+        $empresa->empresaSITIO_WEB = $request->input('pagina_web');
+        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
+        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->input('nombre_contacto_cial'), $request->input('telefono_contacto_cial'), $request->input('correo_contacto_cial'));
+        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->input('nombre_contacto_th'), $request->input('telefono_contacto_th'), $request->input('correo_contacto_th'));
         $empresa->save();
 
-        return redirect()->route('user.ruta.iniciar-ruta')->with([
+        return redirect()->route('user.empresas.show', $empresa)->with([
             'success' => __('Empresa creada correctamente'),
         ]);
     }
@@ -249,28 +251,29 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param UpdateEmpresa $request
      * @param Empresa $empresa
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Empresa $empresa)
+    public function update(UpdateEmpresa $request, Empresa $empresa)
     {
-        $empresa->empresaNIT = $request->nit;
-        $empresa->empresaMATRICULA_MERCANTIL = $request->matricula_mercantil;
-        $empresa->empresaRAZON_SOCIAL = $request->razon_social;
-        $empresa->empresaORGANIZACION_JURIDICA = $request->organizacion_juridica;
-        $empresa->empresaFECHA_CONSTITUCION = $request->fecha_constitucion;
-        $empresa->empresaDEPARTAMENTO_EMPRESA = $this->obtenerDepartamento($request->departamento_empresa);
-        $empresa->empresaMUNICIPIO_EMPRESA = isset($request->municipio_empresa) ? $municipio = $this->obtenerMunicipio($request->municipio_empresa) : $empresa->empresaMUNICIPIO_EMPRESA;
-        $empresa->empresaDIRECCION_FISICA = $request->direccion_empresa;
-        $empresa->empresaEMPLEADOS_FIJOS = $request->empleados_fijos;
-        $empresa->empresaEMPLEADOS_TEMPORALES = $request->empleados_temporales;
-        $empresa->empresaRANGOS_ACTIVOS = $request->rangos_activos;
-        $empresa->empresaCORREO_ELECTRONICO = $request->correo_electronico;
-        $empresa->empresaSITIO_WEB = $request->pagina_web;
-        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->cuenta_facebook, $request->cuenta_twitter, $request->cuenta_instagram);
-        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->nombre_contacto_cial, $request->telefono_contacto_cial, $request->correo_contacto_cial);
-        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->nombre_contacto_th, $request->telefono_contacto_th, $request->correo_contacto_th);
+        $empresa->empresaNIT = $request->input('nit');
+        $empresa->empresaMATRICULA_MERCANTIL = $request->input('matricula_mercantil');
+        $empresa->empresaRAZON_SOCIAL = $request->input('razon_social');
+        $empresa->empresaORGANIZACION_JURIDICA = $request->input('organizacion_juridica');
+        $empresa->empresaFECHA_CONSTITUCION = $request->input('fecha_constitucion');
+        $empresa->empresaREPRESENTANTE_LEGAL = $request->input('representante_legal');
+        $empresa->empresaDEPARTAMENTO_EMPRESA = $request->input('departamento_empresa');
+        $empresa->empresaMUNICIPIO_EMPRESA = $request->input('municipio_empresa');
+        $empresa->empresaDIRECCION_FISICA = $request->input('direccion_empresa');
+        $empresa->empresaEMPLEADOS_FIJOS = $request->input('empleados_fijos');
+        $empresa->empresaEMPLEADOS_TEMPORALES = $request->input('empleados_temporales');
+        $empresa->empresaRANGOS_ACTIVOS = $request->input('rangos_activos');
+        $empresa->empresaCORREO_ELECTRONICO = $request->input('correo_electronico');
+        $empresa->empresaSITIO_WEB = $request->input('pagina_web');
+        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
+        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->input('nombre_contacto_cial'), $request->input('telefono_contacto_cial'), $request->input('correo_contacto_cial'));
+        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->input('nombre_contacto_th'), $request->input('telefono_contacto_th'), $request->input('correo_contacto_th'));
         $empresa->save();
 
         return redirect()->route('user.empresas.show', $empresa)->with([

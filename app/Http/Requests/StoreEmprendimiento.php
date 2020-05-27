@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Carbon\Carbon;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEmprendimiento extends FormRequest
