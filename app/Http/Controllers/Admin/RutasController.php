@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Material;
+use App\Models\ResultadoPreguntaAyuda;
 use Auth;
 use App\Models\Ruta;
 use App\Models\User;
@@ -39,166 +41,197 @@ class RutasController extends Controller
      */
     public function index()
     {
-        $rutas = Ruta::where('rutaESTADO','En Proceso')->orderBY('rutaCUMPLIMIENTO','ASC')->with('diagnostico','estaciones')->get();
+        $rutas = Ruta::where('rutaESTADO', 'En Proceso')->orderBY('rutaCUMPLIMIENTO', 'ASC')->with('diagnostico', 'estaciones')->get();
         foreach ($rutas as $keyR => $ruta) {
             $completadas = 0;
             $total = 0;
             foreach ($ruta->estaciones as $key => $estacion) {
                 $total++;
-                if($estacion->estacionCUMPLIMIENTO == 'Si'){
+                if ($estacion->estacionCUMPLIMIENTO == 'Si') {
                     $completadas++;
                 }
             }
             $rutas[$keyR]['total'] = $total;
             $rutas[$keyR]['completadas'] = $completadas;
 
-            if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRENDIMIENTO')){
-                $rutas[$keyR]['ideaNegocio'] = Emprendimiento::where('emprendimientoID',$ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID)->first();
+            if ($ruta->diagnostico->EMPRESAS_empresaID) {
+                $rutas[$keyR]['ideaNegocio'] = Empresa::where('empresaID', $ruta->diagnostico->EMPRESAS_empresaID)->first();
             }
-            if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRESA')){
-                $rutas[$keyR]['ideaNegocio'] = Empresa::where('empresaID',$ruta->diagnostico->EMPRESAS_empresaID)->first();
+
+            if ($ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID) {
+                $rutas[$keyR]['ideaNegocio'] = Emprendimiento::where('emprendimientoID', $ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID)->first();
             }
-            $rutas[$keyR]['usuario'] = User::where('usuarioID',$ruta->ideaNegocio->USUARIOS_usuarioID)->with('datoUsuario')->first();
-            
+
+            $rutas[$keyR]['usuario'] = User::where('usuarioID', $ruta->ideaNegocio->USUARIOS_usuarioID)->with('datoUsuario')->first();
         }
-        return view('administrador.rutas.index',compact('rutas'));
+        return view('administrador.rutas.index', compact('rutas'));
     }
     
     public function todasRutas()
     {
-        $rutas = Ruta::where('rutaESTADO','En Proceso')->orWhere('rutaESTADO','Finalizado')->orderBY('rutaCUMPLIMIENTO','ASC')->with('diagnostico','estaciones')->get();
+        $rutas = Ruta::where('rutaESTADO', 'En Proceso')->orWhere('rutaESTADO', 'Finalizado')->orderBY('rutaCUMPLIMIENTO', 'ASC')->with('diagnostico', 'estaciones')->get();
         foreach ($rutas as $keyR => $ruta) {
             $completadas = 0;
             $total = 0;
             foreach ($ruta->estaciones as $key => $estacion) {
                 $total++;
-                if($estacion->estacionCUMPLIMIENTO == 'Si'){
+                if ($estacion->estacionCUMPLIMIENTO == 'Si') {
                     $completadas++;
                 }
             }
             $rutas[$keyR]['total'] = $total;
             $rutas[$keyR]['completadas'] = $completadas;
 
-            if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRENDIMIENTO')){
-                $rutas[$keyR]['ideaNegocio'] = Emprendimiento::where('emprendimientoID',$ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID)->first();
+            if ($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRENDIMIENTO')) {
+                $rutas[$keyR]['ideaNegocio'] = Emprendimiento::where('emprendimientoID', $ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID)->first();
             }
-            if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRESA')){
-                $rutas[$keyR]['ideaNegocio'] = Empresa::where('empresaID',$ruta->diagnostico->EMPRESAS_empresaID)->first();
+            if ($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRESA')) {
+                $rutas[$keyR]['ideaNegocio'] = Empresa::where('empresaID', $ruta->diagnostico->EMPRESAS_empresaID)->first();
             }
-            $rutas[$keyR]['usuario'] = User::where('usuarioID',$ruta->ideaNegocio->USUARIOS_usuarioID)->with('datoUsuario')->first();
-            
+            $rutas[$keyR]['usuario'] = User::where('usuarioID', $ruta->ideaNegocio->USUARIOS_usuarioID)->with('datoUsuario')->first();
         }
-        return view('administrador.rutas.todas-rutas',compact('rutas'));
+        return view('administrador.rutas.todas-rutas', compact('rutas'));
     }
 
-    public function revisarRuta($ruta,Request $request){
-        $ruta = Ruta::where('rutaID',$ruta)->with('diagnostico','estaciones')->first();
+    public function revisarRuta($ruta, Request $request)
+    {
+        $ruta = Ruta::where('rutaID', $ruta)->with('diagnostico', 'estaciones')->first();
         
-        if($ruta){
-            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
+        if ($ruta) {
+            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
             $ruta->save();
 
-            foreach ($ruta->estaciones as $key => $estacion) {
-                if($estacion->TALLERES_tallerID){
-                    $ruta->estaciones[$key]['text'] = "Asistir al taller: ";
-                }
-                if($estacion->MATERIALES_AYUDA_material_ayudaID){
-                    $tipoMaterial = $this->gController->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
-
-                    if($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video'){
-                        $ruta->estaciones[$key]['text'] = "Ver el vídeo: ";
-                    }
-                    if($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento'){
-                        $ruta->estaciones[$key]['text'] = "Ver el documento: ";
-                    }
-                }
-                if($estacion->SERVICIOS_CCSM_servicio_ccsmID){
-                    $ruta->estaciones[$key]['text'] = "Adquirir el servicio de: ";
-                }
-            }
-            
-            $competencias = DB::table('resultados_seccion')
-                ->join('resultados_preguntas', 'resultados_preguntas.RESULTADOS_SECCION_resultado_seccionID', '=', 'resultados_seccion.resultado_seccionID' )
-                ->where('resultados_seccion.DIAGNOSTICOS_diagnosticoID',$ruta->diagnostico->diagnosticoID)
-                ->groupBy('resultados_preguntas.resultado_preguntaCOMPETENCIA')
-                ->select( 'resultados_preguntas.resultado_preguntaCOMPETENCIA', DB::raw('AVG(resultados_preguntas.resultado_preguntaCUMPLIMIENTO) AS promedio'))
-                ->get();
+            $estaciones = $this->parsearEstaciones($ruta);
                 
-            return view('administrador.rutas.revisar',compact('ruta','competencias'));
+            return view('administrador.rutas.revisar', compact('ruta', 'estaciones'));
         }
         $request->session()->flash("message_error", "Ruta no existe");
         return redirect()->action('Admin\RutasController@index');
     }
 
-    public function marcarEstacion($estacion,$ruta){
-        $estacion = Estacion::where('estacionID',$estacion)->where('RUTAS_rutaID',$ruta)->first();
+    public function marcarEstacion($estacion, $ruta)
+    {
+        $estacion = Estacion::where('estacionID', $estacion)->where('RUTAS_rutaID', $ruta)->first();
         
         $data = [];
         $data['status'] = '';
-        if($estacion){
+        if ($estacion) {
             $estacion->estacionCUMPLIMIENTO = 'Si';
             $estacion->save();
-            $ruta = Ruta::where('rutaID',$ruta)->with('diagnostico','estaciones')->first();
-            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
+            $ruta = Ruta::where('rutaID', $ruta)->with('diagnostico', 'estaciones')->first();
+            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
             $ruta->save();
 
             $data['status'] = 'OK';
-            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100;
-            $data['cumplimiento'] = number_format($cumplimiento,2);
-            if($cumplimiento == 100){
+            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100;
+            $data['cumplimiento'] = number_format($cumplimiento, 2);
+            if ($cumplimiento == 100) {
                 $ruta->rutaESTADO = 'Finalizado';
                 $ruta->save();
 
-                if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == 1){
-                    $usuario = $this->obtenerUsuario($ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID);
-                    Mail::send(new RutaCMail($usuario, 'ruta_completa'));
-                }
-                if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == 2){
+                if ($ruta->diagnostico->EMPRESAS_empresaID) {
                     $usuario = $this->obtenerUsuario($ruta->diagnostico->EMPRESAS_empresaID);
-                    Mail::send(new RutaCMail($usuario, 'ruta_completa'));
                 }
-            }
 
-        }else{
+                if ($ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID) {
+                    $usuario = $this->obtenerUsuario($ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID);
+                }
+
+                Mail::send(new RutaCMail($usuario, 'ruta_completa'));
+            }
+        } else {
             $data['status'] = 'ERROR';
         }
         return json_encode($data);
     }
     
-    public function desmarcarEstacion($estacion,$ruta){
-        $estacion = Estacion::where('estacionID',$estacion)->where('RUTAS_rutaID',$ruta)->first();
+    public function desmarcarEstacion($estacion, $ruta)
+    {
+        $estacion = Estacion::where('estacionID', $estacion)->where('RUTAS_rutaID', $ruta)->first();
         $data = [];
         $data['status'] = '';
-        if($estacion){
+        if ($estacion) {
             $estacion->estacionCUMPLIMIENTO = 'No';
             $estacion->save();
-            $ruta = Ruta::where('rutaID',$ruta)->with('diagnostico','estaciones')->first();
-            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100,2);
+            $ruta = Ruta::where('rutaID', $ruta)->with('diagnostico', 'estaciones')->first();
+            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
             $ruta->save();
 
             $data['status'] = 'OK';
-            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO','Si')->count() / $ruta->estaciones->count())*100;
-            $data['cumplimiento'] = number_format($cumplimiento,2);
-        }else{
+            $cumplimiento = ($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100;
+            $data['cumplimiento'] = number_format($cumplimiento, 2);
+        } else {
             $data['status'] = 'ERROR';
         }
         return json_encode($data);
     }
 
-    public function obtenerNombreIdeaNegocio($tipo_diagnostico,$id){
-
-        if($tipo_diagnostico == 1){
-            $var = Emprendimiento::where('emprendimientoID',$id)->select('emprendimientoNOMBRE as nombre')->first();
+    public function obtenerNombreIdeaNegocio($tipo_diagnostico, $id)
+    {
+        if ($tipo_diagnostico == 1) {
+            $var = Emprendimiento::where('emprendimientoID', $id)->select('emprendimientoNOMBRE as nombre')->first();
         }
-        if($tipo_diagnostico == 2){
-            $var = Empresa::where('empresaID',$id)->select('empresaRAZON_SOCIAL as nombre')->first();
+        if ($tipo_diagnostico == 2) {
+            $var = Empresa::where('empresaID', $id)->select('empresaRAZON_SOCIAL as nombre')->first();
         }
         return $var->nombre;
     }
 
-    public function obtenerUsuario($usuario){
-        $usuario = User::where('usuarioID',$usuario)->with('datoUsuario')->first();
+    public function obtenerUsuario($usuario)
+    {
+        $usuario = User::where('usuarioID', $usuario)->with('datoUsuario')->first();
         return $usuario;
     }
 
+    public function parsearEstaciones($ruta)
+    {
+        $opciones = [];
+        foreach ($ruta->estaciones as $key => $estacion) {
+            /*if($estacion->TALLERES_tallerID){
+                $opciones[$key]['text'] = "Asistir al taller: ";
+                $opciones[$key]['boton'] = "Más información";
+                $opciones[$key]['url'] = "#";
+            }*/
+            $resultadoPA = ResultadoPreguntaAyuda::where('EstacionAyudaID', $estacion->estacionID)->with('resultadoPregunta')->first();
+            $opciones[$key]['competencia'] = "";
+            if (isset($resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA)) {
+                $opciones[$key]['competencia'] = '- '.$resultadoPA->resultadoPregunta->resultado_preguntaCOMPETENCIA;
+            }
+            $opciones[$key]['nombre'] = $estacion->estacionNOMBRE;
+            $opciones[$key]['estacionCUMPLIMIENTO'] = $estacion->estacionCUMPLIMIENTO;
+            $opciones[$key]['estacionID'] = $estacion->estacionID;
+
+            if ($estacion->MATERIALES_AYUDA_material_ayudaID) {
+                $tipoMaterial = $this->obtenerTipoMaterial($estacion->MATERIALES_AYUDA_material_ayudaID);
+
+                if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Video') {
+                    $opciones[$key]['text'] = "Ver el vídeo: ";
+                    $opciones[$key]['boton'] = "Ver vídeo";
+                    $opciones[$key]['url'] = $tipoMaterial->material_ayudaCODIGO;
+                    $opciones[$key]['options'] = "modal";
+                    $opciones[$key]['tipo'] = "video";
+                }
+                if ($tipoMaterial->TIPOS_MATERIALES_tipo_materialID == 'Documento') {
+                    $opciones[$key]['text'] = "Ver el documento: ";
+                    $opciones[$key]['boton'] = "Ver documento";
+                    $opciones[$key]['url'] = "#";
+                    $opciones[$key]['tipo'] = "material";
+                }
+            }
+            if ($estacion->SERVICIOS_CCSM_servicio_ccsmID) {
+                $opciones[$key]['text'] = "Adquirir el servicio de: ";
+                $opciones[$key]['boton'] = "Más información";
+                $opciones[$key]['url'] = "#";
+                $opciones[$key]['tipo'] = "servicio";
+            }
+        }
+
+        return $opciones;
+    }
+
+    public function obtenerTipoMaterial($material)
+    {
+        $tipoMaterial = Material::where('material_ayudaID', $material)->first();
+        return $tipoMaterial;
+    }
 }

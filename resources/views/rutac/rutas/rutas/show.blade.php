@@ -19,7 +19,15 @@
 
         <div class="card-body">
             <div class="box-body">
-                <h5>La siguiente es la ruta que debes seguir para el fortalecimiento y crecimiento de su idea o negocio</h5>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h5>La siguiente es la ruta que debes seguir para el fortalecimiento y crecimiento de su idea o negocio</h5>
+                    </div>
+                    <div class="col-md-2 text-right pr-lg-3">
+                        <h5>Avance: <span id="cumplimiento">{{$ruta->rutaCUMPLIMIENTO}}%</span></h5>
+                    </div>
+                </div>
+
                 <hr>
                 <ul class="ml-0 pl-0">
                     <!-- *********************************************************** -->
