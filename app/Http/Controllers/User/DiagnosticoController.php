@@ -209,7 +209,6 @@ class DiagnosticoController extends Controller
                 'error' => __('Debe contestar todas las preguntas'),
             ]);
         }
-        //dd($preguntas);
 
         try {
             DB::beginTransaction();
@@ -239,7 +238,7 @@ class DiagnosticoController extends Controller
                     }
 
                     $seccionCumplimiento = $seccionCumplimiento + $resultado->resultado_preguntaCUMPLIMIENTO;
-                    Log::info($resultado->resultado_preguntaCUMPLIMIENTO);
+
                 } else {
                     $resultado->resultado_preguntaPRESENTACION = "";
                     $resultado->resultado_preguntaCUMPLIMIENTO = 0;
@@ -306,7 +305,7 @@ class DiagnosticoController extends Controller
     public function consultarRetroDiagnostico($diagnostico, $diagnosticoCumplimiento)
     {
         return RetroDiagnostico::where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', $diagnostico)
-            ->where('retro_tipo_diagnosticoRANGO', '<=', $diagnosticoCumplimiento)->orderBy('retro_tipo_diagnosticoRANGO', 'desc')->first();
+            ->where('retro_tipo_diagnosticoRANGO', '>', $diagnosticoCumplimiento)->orderBy('retro_tipo_diagnosticoRANGO')->first();
     }
 
     public function verificarDiagnosticoFinalizado($diagnosticoID)
