@@ -112,7 +112,7 @@ class RutasController extends Controller
     public function marcarEstacion($estacion, $ruta)
     {
         $estacion = Estacion::where('estacionID', $estacion)->where('RUTAS_rutaID', $ruta)->first();
-        
+
         $data = [];
         $data['status'] = '';
         if ($estacion) {
@@ -142,7 +142,8 @@ class RutasController extends Controller
         } else {
             $data['status'] = 'ERROR';
         }
-        return json_encode($data);
+
+        return redirect()->back()->with(['success' => 'Se ha marcado como cumple']);
     }
     
     public function desmarcarEstacion($estacion, $ruta)
@@ -163,7 +164,8 @@ class RutasController extends Controller
         } else {
             $data['status'] = 'ERROR';
         }
-        return json_encode($data);
+
+        return redirect()->back()->with(['success' => 'Se ha marcado como no cumple']);
     }
 
     public function obtenerNombreIdeaNegocio($tipo_diagnostico, $id)

@@ -1,6 +1,6 @@
 @extends('rutac.app')
 
-@section('title','RutaC | Materiales de ayuda')
+@section('title','RutaC | Diagnóstico '. $diagnostico->diagnosticoNOMBRE)
 
 @section('app-content')
     <div class="container">

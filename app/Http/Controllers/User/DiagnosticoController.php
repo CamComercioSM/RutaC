@@ -70,7 +70,9 @@ class DiagnosticoController extends Controller
         $finalizado = Diagnostico::where($tipoNegocio, $id)->where('diagnosticoESTADO', EstadosDiagnostico::FINALIZADO)->count();
 
         if (($activos + $proceso) > 0) {
-            $diagnostico = Diagnostico::where($tipoNegocio, $id)->first();
+            $diagnostico = Diagnostico::where($tipoNegocio, $id)
+                ->where('diagnosticoESTADO', EstadosDiagnostico::ACTIVO)
+                ->orWhere('diagnosticoESTADO', EstadosDiagnostico::EN_PROCESO)->first();
         } else {
             switch ($finalizado) {
                 case '0':

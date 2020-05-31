@@ -30,25 +30,67 @@
                         <hr>
                         <ul class="ml-0 pl-0">
                             <!-- *********************************************************** -->
-                            @foreach($estaciones as $key=> $estacion)
-                                <li class="pt-1 pb-1" style="list-style: none;">
-                                    @if($estacion['estacionCUMPLIMIENTO'] == 'Si')
-                                        <i class="fas fa-check-circle text-success mr-2"></i>
-                                    @else
-                                        <span id="icCumplimiento-{{ $estacion['estacionID'] }}"><i class="fas fa-exclamation-triangle text-warning mr-2"></i></span>
-                                    @endif
-                                    <button
-                                            type="button"
-                                            class="btn btn-sm btn-outline-primary"
-                                            data-estacion="{{ $estacion['estacionID'] }}"
-                                            data-ruta="{{ $ruta->rutaID }}"
-                                            data-toggle="modal"
-                                            data-target="#marcarEstacion"
-                                            title="{{ __('Marcar') }}">
-                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
-                                    </button>
-                                </li>
-                            @endforeach
+                            <div class="table-responsive-lg">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        @foreach($estaciones as $key => $estacion)
+                                            <tr>
+                                                <td>{{ $key+1 }}</td>
+                                                <td>
+                                                    @if($estacion['estacionCUMPLIMIENTO'] == 'Si')
+                                                        <span class="badge badge-pill badge-success">
+                                                        {{ __('Si cumple') }} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                    @else
+                                                        <span class="badge badge-pill badge-secondary">
+                                                        {{ __('No cumple') }} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                    @endif
+                                                    {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                                </td>
+                                                <td>
+                                                    @if($ruta->rutaESTADO != 'Finalizado')
+                                                    <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Otras opciones" right no-caret>
+                                                        <template v-slot:button-content>
+                                                            <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                        </template>
+                                                        @if($estacion['estacionCUMPLIMIENTO'] == 'Si')
+                                                            <b-dropdown-form
+                                                                    action="{{ route('admin.desmarcar-estacion', [$estacion['estacionID'], $ruta->rutaID]) }}"
+                                                                    method="post"
+                                                                    class="d-none"
+                                                                    id="toggleForm{{ $estacion['estacionID'] }}">
+                                                                @csrf
+                                                            </b-dropdown-form>
+                                                        @else
+                                                            <b-dropdown-form
+                                                                    action="{{ route('admin.marcar-estacion', [$estacion['estacionID'], $ruta->rutaID]) }}"
+                                                                    method="post"
+                                                                    class="d-none"
+                                                                    id="toggleForm{{ $estacion['estacionID'] }}">
+                                                                @csrf
+                                                            </b-dropdown-form>
+                                                        @endif
+                                                        <b-dropdown-item-button
+                                                                onclick="event.preventDefault(); document.getElementById('toggleForm{{ $estacion['estacionID'] }}').submit();"
+                                                        >
+                                                            @if($estacion['estacionCUMPLIMIENTO'] == 'Si')
+                                                                <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Marcar como no cumple') }}
+                                                            @else
+                                                                <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Marcar como si cumple') }}
+                                                            @endif
+                                                        </b-dropdown-item-button>
+                                                    </b-dropdown>
+                                                    @endif
+                                                </td>
+                                            </tr>
+
+
+
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         <!-- *********************************************************** -->
                         </ul>
                     </div>

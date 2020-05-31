@@ -18,8 +18,8 @@ Route::get('documento/{file}', 'PublicController@getDocumento');
 Route::get('rutas', 'RutasController@index')->name('rutas.index');
 Route::get('todas-rutas', 'RutasController@todasRutas');
 Route::get('rutas/revisar/{ruta}', 'RutasController@revisarRuta');
-Route::get('marcar-estacion/{estacion}/{ruta}', 'RutasController@marcarEstacion');
-Route::get('desmarcar-estacion/{estacion}/{ruta}', 'RutasController@desmarcarEstacion');
+Route::post('marcar-estacion/{estacion}/{ruta}', 'RutasController@marcarEstacion')->name('marcar-estacion');
+Route::post('desmarcar-estacion/{estacion}/{ruta}', 'RutasController@desmarcarEstacion')->name('desmarcar-estacion');
 
 //Route::get('diagnosticos', 'DiagnosticoController@index');
 //Route::get('diagnosticos/editar/{diagnostico}', 'DiagnosticoController@showFormEditar');

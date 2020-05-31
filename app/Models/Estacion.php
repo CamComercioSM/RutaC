@@ -13,4 +13,32 @@ class Estacion extends Model
         'created_at', 'updated_at',
     ];
 
+    public function siCumple()
+    {
+        return $this->estacionCUMPLIMIENTO === 'Si' ? 'Si' : 'No';
+    }
+
+    public function noCumple()
+    {
+        return !$this->siCumple();
+    }
+
+    public function activar(): bool
+    {
+        return $this->update(['estacionCUMPLIMIENTO' => 'Si']);
+    }
+
+    public function desactivar(): bool
+    {
+        return $this->update(['estacionCUMPLIMIENTO' => 'No']);
+    }
+
+    public function toggle(): self
+    {
+        $this->siCumple()
+            ? $this->desactivar()
+            : $this->activar();
+
+        return $this;
+    }
 }
