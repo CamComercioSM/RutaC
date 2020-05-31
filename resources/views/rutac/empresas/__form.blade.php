@@ -4,7 +4,7 @@
     <div class="form-group col-md-12">
         <h4>Complete el siguiente formulario para registrar la empresa.</h4>
     </div>
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="required|numeric"
                 name="nit"
@@ -21,7 +21,7 @@
     </div>
 
     <input type="hidden" value="12345" id="matricula_mercantil" name="matricula_mercantil" class="form-control" placeholder="Matricula mercantil" >
-    <div class="form-group col-md-9">
+    <div class="form-group col-md-8">
         <rc-input
                 rules="required|min:3|max:200"
                 name="razon_social"
@@ -37,7 +37,43 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-row col-md-4">
+        <div class="form-group col-md-12">
+            <rc-select
+                    name="sector"
+                    id="sector"
+                    rules="required"
+                    @error('sector')
+                    error="{{ $message }}"
+                    @enderror
+                    initial-value="{{ old('sector', $empresa->empresaSECTOR) }}"
+                    placeholder="{{ __('Seleccione sector') }}"
+                    :options="{{ $sector->toJson() }}"
+                    label="{{ __('Su actividad está relacionada con el sector') }} *"
+            >
+            </rc-select>
+        </div>
+    </div>
+
+    <div class="form-row col-md-4">
+        <div class="form-group col-md-12">
+            <rc-select
+                    name="registrado"
+                    id="registrado"
+                    rules="required"
+                    @error('registrado')
+                    error="{{ $message }}"
+                    @enderror
+                    initial-value="{{ old('registrado', $empresa->empresaREGISTRADO) }}"
+                    placeholder="{{ __('Seleccione una opción') }}"
+                    :options="{{ $registrado->toJson() }}"
+                    label="{{ __('¿Está registrado en la Cámara de Comercio?') }} *"
+            >
+            </rc-select>
+        </div>
+    </div>
+
+    <div class="form-group col-md-4">
         <rc-select
                 name="organizacion_juridica"
                 id="organizacion_juridica"
@@ -53,7 +89,7 @@
         </rc-select>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="required"
                 name="fecha_constitucion"
@@ -69,7 +105,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-8">
         <rc-input
                 rules="required|min:3|max:200"
                 name="representante_legal"
@@ -85,7 +121,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 type="text"
                 initial-value="Colombia"
@@ -94,7 +130,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-select-location
                 name="departamento_empresa"
                 id="departamento_empresa"
@@ -112,7 +148,7 @@
         </rc-select-location>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-select-city
                 name="municipio_empresa"
                 id="municipio_empresa"
@@ -176,7 +212,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="numeric"
                 name="empleados_fijos"
@@ -192,7 +228,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="numeric"
                 name="empleados_temporales"
@@ -208,7 +244,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-select
                 name="rangos_activos"
                 id="rangos_activos"
@@ -224,7 +260,7 @@
         </rc-select>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="min:3|max:50"
                 name="cuenta_facebook"
@@ -240,7 +276,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="min:3|max:50"
                 name="cuenta_twitter"
@@ -256,7 +292,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
         <rc-input
                 rules="min:3|max:50"
                 name="cuenta_instagram"

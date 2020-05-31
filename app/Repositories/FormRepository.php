@@ -171,6 +171,23 @@ class FormRepository
         ]);
     }
 
+    public function sector()
+    {
+        return collect([
+            'Manufacturero/agroindustrial',
+            'Servicios',
+            'Comercio',
+        ]);
+    }
+
+    public function registradoCamara()
+    {
+        return collect([
+            'Si',
+            'No',
+        ]);
+    }
+
     public static function profesion()
     {
         return collect([

@@ -101,12 +101,14 @@ class DiagnosticoController extends Controller
         try {
             DB::beginTransaction();
 
+            $datos = $this->getDatosNegocio($tipo, $id);
+
             $diagnostico = new Diagnostico;
             $diagnostico[$this->getTipoNegocio($tipo)] = $id;
             $diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $tipoDiagnostico;
             $diagnostico->diagnosticoREALIZADO_POR = Auth::user()->datoUsuario->dato_usuarioNOMBRE_COMPLETO;
             $diagnostico->diagnosticoFECHA = Carbon::now();
-            $diagnostico->diagnosticoNOMBRE = $this->getDatosNegocio($tipo, $id)->nombre;
+            $diagnostico->diagnosticoNOMBRE = $datos->nombre;
             $diagnostico->save();
 
             if (!count($this->seccionesPregunta->obtenerSecciones($tipoDiagnostico)) > 0) {
@@ -123,13 +125,13 @@ class DiagnosticoController extends Controller
                 $resultadoSeccion->diagnostico_seccionPESO = $seccion->seccion_preguntaPESO;
                 $resultadoSeccion->save();
 
-                if (!count($this->preguntas->obtenerPreguntasSeccion($tipoDiagnostico)) > 0) {
+                if (!count($this->preguntas->obtenerPreguntasSeccion($tipoDiagnostico, $datos, $tipo)) > 0) {
                     DB::rollback();
 
                     throw new RutaCException('user.ruta.iniciar-ruta', __('Error creando el diagnóstico. Obteniendo preguntas'), Carbon::now()->timestamp);
                 }
 
-                foreach ($this->preguntas->obtenerPreguntasSeccion($seccion->seccion_preguntaID) as $pregunta) {
+                foreach ($this->preguntas->obtenerPreguntasSeccion($seccion->seccion_preguntaID, $datos, $tipo) as $pregunta) {
                     $resultadoPregunta = new ResultadoPregunta;
                     $resultadoPregunta->RESULTADOS_SECCION_resultado_seccionID = $resultadoSeccion->resultado_seccionID;
                     $resultadoPregunta->resultado_preguntaPREGUNTAID = $pregunta->preguntaID;

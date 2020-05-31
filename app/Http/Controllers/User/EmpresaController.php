@@ -78,6 +78,8 @@ class EmpresaController extends Controller
         $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
         $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->input('nombre_contacto_cial'), $request->input('telefono_contacto_cial'), $request->input('correo_contacto_cial'));
         $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->input('nombre_contacto_th'), $request->input('telefono_contacto_th'), $request->input('correo_contacto_th'));
+        $empresa->empresaSECTOR = $request->input('sector');
+        $empresa->empresaREGISTRADO = $request->input('registrado');
         $empresa->save();
 
         return redirect()->route('user.empresas.show', $empresa)->with([
@@ -274,6 +276,8 @@ class EmpresaController extends Controller
         $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
         $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->input('nombre_contacto_cial'), $request->input('telefono_contacto_cial'), $request->input('correo_contacto_cial'));
         $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->input('nombre_contacto_th'), $request->input('telefono_contacto_th'), $request->input('correo_contacto_th'));
+        $empresa->empresaSECTOR = $request->input('sector');
+        $empresa->empresaREGISTRADO = $request->input('registrado');
         $empresa->save();
 
         return redirect()->route('user.empresas.show', $empresa)->with([

@@ -173,17 +173,22 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-1">
         <rc-checkbox
                 rules="required"
                 name="termino_y_condiciones_de_uso"
                 id="formETerminos"
-                label="He leído y acepto los términos y condiciones de uso"
+                label=""
                 @error('termino_y_condiciones_de_uso')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('termino_y_condiciones_de_uso') }}"
         ></rc-checkbox>
+    </div>
+    <div class="form-group col-md-11">
+        <a type="button" class="btn btn-link" data-toggle="modal" data-target="#terminosCondiciones" title="{{ __('Ver términos') }}" style="padding: 0px;">
+            He leído y acepto los términos y condiciones de uso
+        </a>
     </div>
 </div>
 
@@ -194,3 +199,6 @@
         <span class="text-danger" id="error_g-recaptcha-response"></span>
     </div>
 </div>
+@push('modals')
+    @include('layouts.modals.__terminos')
+@endpush

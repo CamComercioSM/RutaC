@@ -12,7 +12,9 @@ use App\Http\View\Composers\GeneroComposer;
 use App\Http\View\Composers\IdiomasComposer;
 use App\Http\View\Composers\ProfesionComposer;
 use App\Http\View\Composers\RangosActivosComposer;
+use App\Http\View\Composers\RegistroCamara;
 use App\Http\View\Composers\RemuneracionComposer;
+use App\Http\View\Composers\SectorComposer;
 use App\Http\View\Composers\TiposEmpresaComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -70,5 +72,9 @@ class ViewServiceProvider extends ServiceProvider
             ],
             EstadoComposer::class
         );
+
+        View::composer(['rutac.empresas.__form'], RegistroCamara::class);
+
+        View::composer(['rutac.empresas.__form'], SectorComposer::class);
     }
 }
