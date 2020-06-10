@@ -302,14 +302,22 @@ class DiagnosticoController extends Controller
 
     public function consultarRetroSeccion($seccionPregunta, $seccionCumplimiento)
     {
+        $cumplimiento = (int) round($seccionCumplimiento);
+
         return RetroSeccion::where('SECCIONES_PREGUNTAS_seccion_pregunta', $seccionPregunta)
-            ->where('retro_seccionRango', '>=', $seccionCumplimiento)->orderBy('retro_seccionRango')->first();
+            ->where('retro_seccionRango', '>=', $cumplimiento)
+            ->orderBy('retro_seccionRango')
+            ->first();
     }
 
     public function consultarRetroDiagnostico($diagnostico, $diagnosticoCumplimiento)
     {
+        $cumplimiento = (int) round($diagnosticoCumplimiento);
+
         return RetroDiagnostico::where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', $diagnostico)
-            ->where('retro_tipo_diagnosticoRANGO', '>=', $diagnosticoCumplimiento)->orderBy('retro_tipo_diagnosticoRANGO')->first();
+            ->where('retro_tipo_diagnosticoRANGO', '>=', $cumplimiento)
+            ->orderBy('retro_tipo_diagnosticoRANGO')
+            ->first();
     }
 
     public function verificarDiagnosticoFinalizado($diagnosticoID)
