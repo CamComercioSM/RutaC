@@ -277,6 +277,9 @@ class DiagnosticoController extends Controller
                 $diagnostico->diagnosticoRESULTADO = $diagnosticoCumplimiento;
                 $diagnostico->diagnosticoNIVEL = $feedbackDiagnostico->retro_tipo_diagnosticoNIVEL;
                 $diagnostico->diagnosticoMENSAJE = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje;
+                $diagnostico->diagnosticoMENSAJE2 = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje2;
+                $diagnostico->diagnosticoMENSAJE3 = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje3;
+                $diagnostico->diagnosticoMENSAJE4 = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje4;
                 $diagnostico->diagnosticoESTADO = 'Finalizado';
                 $diagnostico->save();
 
@@ -306,7 +309,7 @@ class DiagnosticoController extends Controller
 
         return RetroSeccion::where('SECCIONES_PREGUNTAS_seccion_pregunta', $seccionPregunta)
             ->where('retro_seccionRango', '>=', $cumplimiento)
-            ->orderBy('retro_seccionRango')
+            ->orderBy(DB::raw('ABS(retro_seccionRango)'))
             ->first();
     }
 
@@ -314,10 +317,16 @@ class DiagnosticoController extends Controller
     {
         $cumplimiento = (int) round($diagnosticoCumplimiento);
 
-        return RetroDiagnostico::where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', $diagnostico)
+        Log::info($cumplimiento);
+
+        $retro = RetroDiagnostico::where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', $diagnostico)
             ->where('retro_tipo_diagnosticoRANGO', '>=', $cumplimiento)
-            ->orderBy('retro_tipo_diagnosticoRANGO')
+            ->orderBy(DB::raw('ABS(retro_tipo_diagnosticoRANGO)'))
             ->first();
+
+        Log::info($retro);
+
+        return $retro;
     }
 
     public function verificarDiagnosticoFinalizado($diagnosticoID)

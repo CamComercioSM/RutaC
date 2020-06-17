@@ -124,65 +124,71 @@
                 <div class="col-md-12">
                     @include('rutac.diagnosticos.include.__animacion')
                 </div>
-                <br>
-                <div class="col-md-12">
-                    <div class="col-md-12">
-                        <b-card-group deck>
+
+                <div class="col-md-12 mt-5">
+                    <div class="row">
+                        <div class="col-md-6">
                             <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>Ahora estás aquí</b></h3>
+                                </template>
                                 <b-card-text>
-                                    <b-card title="" header-tag="header" footer-tag="footer">
-                                        <template v-slot:header>
-                                            <h3 class="text-center titulo-feed"><b>Ahora estás aquí</b></h3>
-                                        </template>
-                                        <b-card-text>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla tempor turpis vitae tempus.
-                                            Fusce dignissim fermentum ex eget ultricies. Vestibulum pulvinar velit vitae massa fermentum, at commodo felis mollis.
-                                        </b-card-text>
-                                    </b-card>
-                                    <hr>
-                                    <b-card title="" header-tag="header" footer-tag="footer">
-                                        <template v-slot:header>
-                                            <h3 class="text-center titulo-feed"><b>A partir de ahora necesitas</b></h3>
-                                        </template>
-                                        <b-card-text>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla tempor turpis vitae tempus.
-                                            Fusce dignissim fermentum ex eget ultricies. Vestibulum pulvinar velit vitae massa fermentum, at commodo felis mollis.
-                                        </b-card-text>
-                                    </b-card>
-                                    <hr>
-                                    <b-card title="" header-tag="header" footer-tag="footer">
-                                        <template v-slot:header>
-                                            <h3 class="text-center titulo-feed"><b>Para lograrlo necesitas</b></h3>
-                                        </template>
-                                        <b-card-text>
-                                            <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm btn-primary">
-                                                {{ __('Realizar Ruta') }}
-                                            </a>
-                                            <hr>
-                                            <ul class="timeline timeline-inverse">
-                                                <!-- *********************************************************** -->
-                                                @foreach($estaciones as $key=> $estacion)
-                                                    <li>
-                                                        {{ $estacion['text'] }} {{ $estacion['nombre'] }}
-                                                    </li>
-                                            @endforeach
-                                            <!-- *********************************************************** -->
-                                            </ul>
-                                        </b-card-text>
-                                    </b-card>
+                                    {{ $diagnostico->diagnosticoMENSAJE }}
                                 </b-card-text>
                             </b-card>
-
+                            <hr>
                             <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>A partir de ahora necesitas</b></h3>
+                                </template>
                                 <b-card-text>
+                                    {{ $diagnostico->diagnosticoMENSAJE2 }}
+                                </b-card-text>
+                            </b-card>
+                            <hr>
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>Para lograrlo necesitas</b></h3>
+                                </template>
+                                <b-card-text>
+                                    {{ $diagnostico->diagnosticoMENSAJE4 }}
+                                </b-card-text>
+                            </b-card>
+                        </div>
+                        <div class="col-md-6">
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>¡ATENCIÓN! Debes tener cuidado:</b></h3>
+                                </template>
+                                <b-card-text>
+
                                     <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
                                         <template v-slot:lead>
-                                            {{ $diagnostico->diagnosticoMENSAJE }}
+                                            {{ $diagnostico->diagnosticoMENSAJE3 }}
                                         </template>
                                     </b-jumbotron>
                                 </b-card-text>
                             </b-card>
-                        </b-card-group>
+                            <hr>
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>La ruta que debes seguir:</b></h3>
+                                </template>
+                                <b-card-text>
+                                    <ul class="timeline timeline-inverse">
+                                        @foreach($estaciones as $key=> $estacion)
+                                            <li>
+                                                {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <hr>
+                                    <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm btn-primary float-right">
+                                        {{ __('Realizar Ruta') }}
+                                    </a>
+                                </b-card-text>
+                            </b-card>
+                        </div>
                     </div>
                 </div>
             </b-card-group>

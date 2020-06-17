@@ -39,43 +39,39 @@
     let fotogramasPorSegundo = 50;
 	let velocidad = 0.010;
 
-    window.onload = function() {
-        let resultadoDiv = document.getElementById("resultado").value;
-        resultado = ((resultadoDiv*900)/100);
-        mi_canvas = document.getElementById("lienzo"); 
+    window.onload = function() { 
+        resultadoDiv=document.getElementById("resultado").value;
+        resultado= ((resultadoDiv * 900) / 100);
+        mi_canvas = document.getElementById("lienzo");
         contexto = mi_canvas.getContext("2d"); 
         img_sprite = new Image();  
         img_sprite.src = "../../../img/opcion1.png";
-        img_sprite.addEventListener('load', mostrar_imagen, false); 
-    };
+        img_sprite.addEventListener('load', mostrar_imagen, false);
+    }
     
-    function mostrar_imagen() {
-        if ((contador*3) < resultado) {
-            setTimeout(
-                function() {
-                    requestAnimationFrame(mostrar_imagen);
-                },
-                1000 / fotogramasPorSegundo
-            );
+    function mostrar_imagen() { 
+        if((contador * 3) < resultado) {
+            setTimeout(function() {
+                fx_animar_imagen = requestAnimationFrame(mostrar_imagen);
+            }, 500 / fotogramasPorSegundo);
         }
 
 		contexto.clearRect(0, 0, mi_canvas.width, mi_canvas.height);
 		dibularLinea();
-		contexto.drawImage(img_sprite, 100*cuadro_del_sprite, 0, 100, 100, contador*3, 400-contador, 100, 100);
+		contexto.drawImage(img_sprite, 100*cuadro_del_sprite, 0, 100, 100,contador * 3, 400 - contador, 100, 100);
 		cuadros_por_segundo++;
 		
-		if(cuadros_por_segundo%3 === 0){
+		if(cuadros_por_segundo % 3 == 0) {
             cuadro_del_sprite++;
             y_canvas++;
             contador++;
-            if (cuadro_del_sprite > 5) {
+            if(cuadro_del_sprite > 5) {
                 cuadro_del_sprite = 0;
             }
 		}
 	}
     
     function dibularLinea(){
-        //Montaña
         contexto.setLineDash([]);
         contexto.beginPath();
         contexto.moveTo(0, 500);
@@ -83,59 +79,53 @@
         contexto.lineTo(1000, 200);
         contexto.lineTo(900, 200);
         contexto.strokeStyle = "green";
-
-        //Contorno línea
         contexto.lineWidth = 5;
         contexto.stroke();
 
-        //Relleno linea
         contexto.fillStyle ='rgba(65, 143, 51, 0.8)';
         contexto.fill();
 
-        //Líneas
         contexto.beginPath();
         contexto.setLineDash([4, 5]);
         contexto.strokeStyle = "red";
         contexto.lineWidth = 3;
         contexto.beginPath();
-        contexto.moveTo(200, 500);
-        contexto.lineTo(200, 200);
+        contexto.moveTo(135, 500);
+        contexto.lineTo(135, 200);
         contexto.stroke();
         contexto.beginPath();
-        contexto.moveTo(400, 500);
-        contexto.lineTo(400, 200);
+        contexto.moveTo(275, 500);
+        contexto.lineTo(275, 200);
         contexto.stroke();
         contexto.beginPath();
-        contexto.moveTo(600, 500);
-        contexto.lineTo(600, 200);
+        contexto.moveTo(370, 500);
+        contexto.lineTo(370, 200);
         contexto.stroke();
         contexto.beginPath();
-        contexto.moveTo(800, 500);
-        contexto.lineTo(800, 200);
+        contexto.moveTo(725, 500);
+        contexto.lineTo(725, 200);
         contexto.stroke();
+        contexto.beginPath();
 
-        //Rectángulo
-        contexto.beginPath();
-        contexto.fillStyle="rgba(255, 175, 9, 0.8)";
+        contexto.fillStyle = "rgba(255, 175, 9, 0.8)";
         contexto.fillRect(900, 200, 100, 300);
 
-        //Texto
         contexto.beginPath();
-        contexto.font = "20px Arial";
+        contexto.font = "15px Arial";
         contexto.fillStyle = "black";
-        contexto.fillText("Descubrimiento", 50, 497);
+        contexto.fillText("Descubrimiento", 10, 497);
         contexto.beginPath();
-        contexto.font = "20px Arial";
+        contexto.font = "15px Arial";
         contexto.fillStyle = "black";
-        contexto.fillText("Nacimiento", 250, 497);
+        contexto.fillText("Nacimiento", 170, 497);
         contexto.beginPath();
-        contexto.font = "20px Arial";
+        contexto.font = "15px Arial";
         contexto.fillStyle = "black";
-        contexto.fillText("Crecimiento", 450, 497);
-        contexto.font = "20px Arial";
+        contexto.fillText("Crecimiento", 280, 497);
+        contexto.font = "15px Arial";
         contexto.fillStyle = "black";
-        contexto.fillText("Aceleración", 650, 497);
-        contexto.font = "20px Arial";
+        contexto.fillText("Aceleración", 500, 497);
+        contexto.font = "15px Arial";
         contexto.fillStyle = "black";
         contexto.fillText("Madurez", 850, 497);
     }
