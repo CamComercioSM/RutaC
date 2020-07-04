@@ -1,6 +1,6 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Documentos')
-@section('content')
+@section('app-content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -9,7 +9,10 @@
                         <h5></h5>
                         <div>
                             <div class="btn-group btn-group-sm">
-                                <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-documento"><i class="fa fa-file-o"></i> Agregar documento </a>
+                                <a class="btn btn-primary" href="{{ route('admin.documentos.create') }}"
+                                   aria-label="Agregar vídeo" data-balloon-pos="up">
+                                    <i class="fas fa-plus"></i> Agregar Documento
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -18,23 +21,60 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>{{ __('Documento #') }}</th>
-                                    <th>{{ __('Título documento') }}</th>
-                                    <th>{{ __('URL documento') }}</th>
-                                    <th class="text-right"></th>
+                                    <th>{{ __('Documento #	') }}</th>
+                                    <th>{{ __('Nomde documento') }}</th>
+                                    <th>{{ __('Estado') }}</th>
+                                    <th class="text-right" style="width: 20%"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($documentos as $key=> $documento)
+                                @forelse($documentos->sortBy('material_ayudaESTADO') as $key=> $documento)
                                     <tr>
                                         <td class="text-center">{{$key+1}}</td>
                                         <td class="text-left">{{$documento->material_ayudaNOMBRE}}</td>
                                         <td class="text-left">
-                                            <a href='documento/{{$documento->material_ayudaCODIGO}}'>{{$documento->material_ayudaCODIGO}}</a>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                @if($documento->isEnabled())
+                                                    <span class="badge badge-pill badge-success">
+                                                        {{$documento->material_ayudaESTADO}} <i class="fas fa-fw fa-check-circle"></i>
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-secondary">
+                                                        {{$documento->material_ayudaESTADO}} <i class="fas fa-fw fa-times-circle"></i>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </td>
                                         <td class="text-center">
-                                            <a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-documento" onclick="editarDocumentoS('{{$documento->material_ayudaID}}','{{$documento->material_ayudaNOMBRE}}','{{$documento->material_ayudaURL}}');return false;">Editar</a>
-                                            <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-documento" onclick="eliminarDocumentoS('{{$documento->material_ayudaID}}');return false;">Eliminar</a>
+                                            <a class="p-1" href="{{ route('admin.documentos.download', $documento) }}" target="_blank"
+                                               aria-label="Descargar documento" data-balloon-pos="up">
+                                                <i class="fas fa-download text-primary"></i>
+                                            </a>
+                                            <a class="p-1" href="{{ route('admin.documentos.edit', $documento) }}"
+                                               aria-label="Editar documento" data-balloon-pos="up">
+                                                <i class="fas fa-edit text-warning"></i>
+                                            </a>
+                                            <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Opciones" right no-caret>
+                                                <template v-slot:button-content>
+                                                    <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                </template>
+                                                <b-dropdown-form
+                                                        action="{{ route('admin.documentos.toggle', $documento) }}"
+                                                        method="post"
+                                                        class="d-none"
+                                                        id="toggleForm{{ $documento->material_ayudaID }}">
+                                                    @csrf
+                                                </b-dropdown-form>
+                                                <b-dropdown-item-button
+                                                        onclick="event.preventDefault(); document.getElementById('toggleForm{{ $documento->material_ayudaID }}').submit();"
+                                                >
+                                                    @if($documento->isEnabled())
+                                                        <i class="fas fa-fw fa-toggle-off text-secondary"></i> {{ __('Inactivar') }}
+                                                    @else
+                                                        <i class="fas fa-fw fa-toggle-on text-success"></i> {{ __('Activar') }}
+                                                    @endif
+                                                </b-dropdown-item-button>
+                                            </b-dropdown>
                                         </td>
                                     </tr>
                                 @empty

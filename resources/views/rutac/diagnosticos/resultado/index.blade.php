@@ -152,29 +152,7 @@
                                 </template>
                                 <b-card-text>
                                     {{ $diagnostico->diagnosticoMENSAJE4 }}
-                                </b-card-text>
-                            </b-card>
-                        </div>
-                        <div class="col-md-6">
-                            <b-card title="" header-tag="header" footer-tag="footer">
-                                <template v-slot:header>
-                                    <h3 class="text-center titulo-feed"><b>¡ATENCIÓN! Debes tener cuidado:</b></h3>
-                                </template>
-                                <b-card-text>
-
-                                    <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
-                                        <template v-slot:lead>
-                                            {{ $diagnostico->diagnosticoMENSAJE3 }}
-                                        </template>
-                                    </b-jumbotron>
-                                </b-card-text>
-                            </b-card>
-                            <hr>
-                            <b-card title="" header-tag="header" footer-tag="footer">
-                                <template v-slot:header>
-                                    <h3 class="text-center titulo-feed"><b>La ruta que debes seguir:</b></h3>
-                                </template>
-                                <b-card-text>
+                                    <br>
                                     <ul class="timeline timeline-inverse">
                                         @foreach($estaciones as $key=> $estacion)
                                             <li>
@@ -186,6 +164,20 @@
                                     <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm btn-primary float-right">
                                         {{ __('Realizar Ruta') }}
                                     </a>
+                                </b-card-text>
+                            </b-card>
+                        </div>
+                        <div class="col-md-6">
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>¡ATENCIÓN! Debes tener cuidado:</b></h3>
+                                </template>
+                                <b-card-text>
+                                    <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
+                                        <template v-slot:lead>
+                                            {{ $diagnostico->diagnosticoMENSAJE3 }}
+                                        </template>
+                                    </b-jumbotron>
                                 </b-card-text>
                             </b-card>
                         </div>

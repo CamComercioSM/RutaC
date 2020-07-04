@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Constants\Estado;
+use App\Helpers\CodeYoutube;
 use DB;
 use Auth;
 use App\Models\Material;
@@ -48,6 +50,82 @@ class DocumentosController extends Controller
         $documentos = Material::where('TIPOS_MATERIALES_tipo_materialID', Material::DOCUMENTO)->get();
 
         return view('administrador.documentos.index', compact('documentos'));
+    }
+
+    public function create(Material $documento)
+    {
+        return view('administrador.documentos.create', compact('documento'));
+    }
+
+    public function store(Request $request, Material $documento)
+    {
+        $documento->TIPOS_MATERIALES_tipo_materialID = Material::DOCUMENTO;
+        $documento->material_ayudaNOMBRE = $request->input('nombre');
+        $documento->material_ayudaESTADO = Estado::ACTIVO;
+
+        $files = $request->file('documento');
+        $original_file_name = str_replace(" ", "_", strtolower($files->getClientOriginalName()));
+
+        $fileName = time().'_'.$original_file_name;
+        $files->move(public_path('documents'), $fileName);
+
+        $documento->material_ayudaURL = $fileName;
+        $documento->material_ayudaCODIGO = $fileName;
+        $documento->save();
+
+        return redirect()->route('admin.documentos.index')->with([
+            'success' => __('Documento guardado correctamente'),
+        ]);
+    }
+
+    public function edit(Material $documento)
+    {
+        return view('administrador.documentos.edit', compact('documento'));
+    }
+
+    public function update(Request $request, Material $documento)
+    {
+        $documento->material_ayudaNOMBRE = $request->input('nombre');
+
+        $files = $request->file('documento');
+        $original_file_name = str_replace(" ", "_", strtolower($files->getClientOriginalName()));
+
+        $fileName = time().'_'.$original_file_name;
+        $files->move(public_path('documents'), $fileName);
+
+        $documento->material_ayudaURL = $fileName;
+        $documento->material_ayudaCODIGO = $fileName;
+        $documento->save();
+
+        return redirect()->route('admin.documentos.index')->with([
+            'success' => __('Documento guardado correctamente'),
+        ]);
+    }
+
+    public function toggle(Material $documento)
+    {
+        if ($documento->isEnabled()) {
+            $documento->material_ayudaESTADO = Estado::ELIMINADO;
+            $message = __('El documento ha sido inactivado correctamente');
+        } else {
+            $documento->material_ayudaESTADO = Estado::ACTIVO;
+            $message = __('El documento ha sido activado correctamente');
+        }
+
+        $documento->save();
+
+        return redirect()->back()->with(['success' => $message]);
+    }
+
+    public function downloadDocument(Material $documento)
+    {
+        $filePath = public_path('documents/'.$documento->material_ayudaURL);
+
+        if (isset($filePath) && File::exists($filePath)) {
+            return response()->download($filePath);
+        }
+
+        return redirect()->back()->with('error', 'El documento no existe');
     }
 
     public function agregarDocumento(Request $request)

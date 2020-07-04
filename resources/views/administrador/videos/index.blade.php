@@ -64,7 +64,7 @@
                                                         action="{{ route('admin.videos.toggle', $video) }}"
                                                         method="post"
                                                         class="d-none"
-                                                        id="toggleForm{{ $video->tipo_diagnosticoID }}">
+                                                        id="toggleForm{{ $video->material_ayudaID }}">
                                                     @csrf
                                                 </b-dropdown-form>
                                                 <b-dropdown-item-button

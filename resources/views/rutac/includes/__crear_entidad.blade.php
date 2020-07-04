@@ -3,13 +3,18 @@
         <div class="col-md-12">
             <div>
                 <b-jumbotron header="Bienvenido">
-                    <p>Debe crear una de las siguientes opciones:</p>
+                    <h2>Escoge una de las siguientes opciones:</h2>
                     <b-button variant="primary" href="{{ action('User\EmpresaController@create') }}">
-                        Crear una Empresa
+                        Tengo una Empresa
                     </b-button>
                     <b-button variant="primary" href="{{ action('User\EmprendimientoController@create') }}">
-                        Crear un Emprendimiento
+                        Tengo un Emprendimiento
                     </b-button>
+                    <div class="col-md-12 mt-3">
+                        <i class="icon fa fa-info-circle text-info"></i>
+                        Para el registro en la plataforma se entiende por Empresa aquella que tiene registro mercantil
+                        en Cámara de Comercio, Emprendimiento como aquel que aún no cuenta con este registro mercantil.
+                    </div>
                 </b-jumbotron>
             </div>
         </div>

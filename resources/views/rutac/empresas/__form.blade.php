@@ -40,6 +40,7 @@
     <div class="form-row col-md-4">
         <div class="form-group col-md-12">
             <rc-select
+                    class="pb-0 mb-0"
                     name="sector"
                     id="sector"
                     rules="required"
@@ -52,6 +53,9 @@
                     label="{{ __('Su actividad está relacionada con el sector') }} *"
             >
             </rc-select>
+            <button type="button" class="btn btn-link text-info" data-route="#" data-toggle="modal" data-target="#sector_informacion" title="{{ __('Ver') }}">
+                <i class="icon fa fa-info-circle text-info"></i> Más información
+            </button>
         </div>
     </div>
 

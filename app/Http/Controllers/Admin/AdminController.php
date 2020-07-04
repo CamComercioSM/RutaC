@@ -22,12 +22,11 @@ class AdminController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function index()
     {
-        //return "ADMIN";
-        return view('administrador.index');
+        return redirect()->action('Admin\RutasController@index');
     }
 
 }

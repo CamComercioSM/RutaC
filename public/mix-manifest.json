@@ -5,6 +5,7 @@
     "/js/delete-modal.js": "/js/delete-modal.js",
     "/js/load-video.js": "/js/load-video.js",
     "/js/manifest.js": "/js/manifest.js",
+    "/js/marcar-estacion.js": "/js/marcar-estacion.js",
     "/js/ruta-activa.js": "/js/ruta-activa.js",
     "/js/vendor.js": "/js/vendor.js"
 }

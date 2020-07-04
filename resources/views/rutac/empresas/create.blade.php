@@ -38,3 +38,6 @@
         </div>
     </div>
 @endsection
+@push('modals')
+    @include('layouts.modals.__informacion_sector')
+@endpush

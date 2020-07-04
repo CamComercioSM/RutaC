@@ -82,12 +82,16 @@ class RutasController extends Controller
             $rutas[$keyR]['total'] = $total;
             $rutas[$keyR]['completadas'] = $completadas;
 
-            if ($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRENDIMIENTO')) {
+            Log::info($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID);
+
+            if (isset($ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID)) {
                 $rutas[$keyR]['ideaNegocio'] = Emprendimiento::where('emprendimientoID', $ruta->diagnostico->EMPRENDIMIENTOS_emprendimientoID)->first();
             }
-            if ($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == env('DIAGNOSTICO_EMPRESA')) {
+
+            if (isset($ruta->diagnostico->EMPRESAS_empresaID)) {
                 $rutas[$keyR]['ideaNegocio'] = Empresa::where('empresaID', $ruta->diagnostico->EMPRESAS_empresaID)->first();
             }
+
             $rutas[$keyR]['usuario'] = User::where('usuarioID', $ruta->ideaNegocio->USUARIOS_usuarioID)->with('datoUsuario')->first();
         }
         return view('administrador.rutas.todas-rutas', compact('rutas'));
@@ -98,7 +102,11 @@ class RutasController extends Controller
         $ruta = Ruta::where('rutaID', $ruta)->with('diagnostico', 'estaciones')->first();
         
         if ($ruta) {
-            $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
+            if ($ruta->estaciones->count() > 0) {
+                $ruta->rutaCUMPLIMIENTO = number_format(($ruta->estaciones->where('estacionCUMPLIMIENTO', 'Si')->count() / $ruta->estaciones->count())*100, 2);
+            } else {
+                $ruta->rutaCUMPLIMIENTO = 0;
+            }
             $ruta->save();
 
             $estaciones = $this->parsearEstaciones($ruta);

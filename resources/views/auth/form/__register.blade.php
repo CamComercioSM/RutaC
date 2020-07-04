@@ -183,6 +183,7 @@
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('termino_y_condiciones_de_uso') }}"
+                checked=true
         ></rc-checkbox>
     </div>
     <div class="form-group col-md-11">

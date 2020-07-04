@@ -60,10 +60,14 @@ Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoControl
 Route::resource('videos', 'VideosController');
 Route::post('videos/{video}/toggle')->uses('VideosController@toggle')->name('videos.toggle');
 
-Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
+
+Route::resource('documentos', 'DocumentosController');
+Route::post('documentos/{documento}/toggle')->uses('DocumentosController@toggle')->name('documentos.toggle');
+Route::get('documentos/{documento}/download')->uses('DocumentosController@downloadDocument')->name('documentos.download');
+/*Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
 Route::post('agregar-documento', 'DocumentosController@agregarDocumento');
 Route::post('editar-documento', 'DocumentosController@editarDocumento');
-Route::post('eliminar-documento', 'DocumentosController@eliminarDocumento');
+Route::post('eliminar-documento', 'DocumentosController@eliminarDocumento');*/
 
 Route::resource('servicios', 'ServiciosController');
 Route::post('servicios/{servicio}/toggle')->uses('ServiciosController@toggle')->name('servicios.toggle');

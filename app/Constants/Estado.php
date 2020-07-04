@@ -10,4 +10,5 @@ class Estado
 
     public const ACTIVO = 'Activo';
     public const INACTIVO = 'Inactivo';
+    public const ELIMINADO = 'Eliminado';
 }
