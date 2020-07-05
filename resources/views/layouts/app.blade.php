@@ -26,6 +26,7 @@
     </script>
     <!-- Styles -->
     <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCesbc-22G2mu8IPRuRdmTIV099AeyvJBI&libraries=places&language=en"></script>
     @stack('styles')
 </head>
 <body>

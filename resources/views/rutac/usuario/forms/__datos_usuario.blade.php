@@ -54,62 +54,21 @@
     <div class="form-group col-md-12">
         <h4>Datos de Residencia</h4>
     </div>
-    <div class="form-group col-md-3">
-        <rc-input
-                id="pais_residencia"
-                type="text"
-                initial-value="Colombia"
-                label="{{ __('País') }}"
-                disabled
-        ></rc-input>
-    </div>
-
-    <div class="form-group col-md-3">
-        <rc-select-location
-                name="departamento_residencia"
-                id="departamento_residencia"
-                rules="required"
-                @error('departamento_residencia')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('departamento_residencia', $usuario->dato_usuarioDEPARTAMENTO_RESIDENCIA) }}"
-                placeholder="{{ __('Departamento de residencia') }}"
-                :options="{{ $departamentos->toJson() }}"
-                label="{{ __('Departamento') }} *"
-                sub-select="municipio_residencia"
-        >
-        </rc-select-location>
-    </div>
-
-    <div class="form-group col-md-3">
-        <rc-select-city
-                name="municipio_residencia"
-                id="municipio_residencia"
-                rules="required"
-                @error('municipio_residencia')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('municipio_residencia', $usuario->dato_usuarioMUNICIPIO_RESIDENCIA) }}"
-                placeholder="{{ __('Municipio de residencia') }}"
-                label="{{ __('Municipio') }} *"
-        >
-        </rc-select-city>
-    </div>
-
     <div class="form-group col-md-9">
-        <rc-input
-                rules="required|min:3|max:200"
+        <rc-map-autocomplete
                 name="direccion"
                 id="direccion"
-                type="text"
-                @error('direccion')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ $usuario->dato_usuarioDIRECCION }}"
+                rules="required"
+                initial-value="{{ old('direccion', $usuario->dato_usuarioDIRECCION) }}"
+                value="{{ old('direccion', $usuario->dato_usuarioDIRECCION) }}"
+                types="address"
                 label="{{ __('Dirección') }} *"
-                autocomplete="off"
-                placeholder="Digite su dirección"
-        ></rc-input>
+                key-value="residencia"
+                place-holder="Escriba su dirección completa"
+        ></rc-map-autocomplete>
+        <input id="pais_residencia" name="pais_residencia" type="hidden" value="{{ old('pais_residencia', $usuario->dato_usuarioPAIS_RESIDENCIA) }}">
+        <input id="departamento_residencia" name="departamento_residencia" type="hidden" value="{{ old('departamento_residencia', $usuario->dato_usuarioDEPARTAMENTO_RESIDENCIA) }}">
+        <input id="municipio_residencia" name="municipio_residencia" type="hidden" value="{{ old('municipio_residencia', $usuario->dato_usuarioMUNICIPIO_RESIDENCIA) }}">
     </div>
 
     <div class="form-group col-md-3">
@@ -133,59 +92,32 @@
         <h4>Datos de Nacimiento</h4>
     </div>
     <div class="form-group col-md-3">
-        <rc-date-picker
+        <rc-input
+                rules="required"
                 name="fecha_nacimiento"
                 id="fecha_nacimiento"
-                label="{{ __('Fecha de nacimiento') }}"
+                type="date"
                 @error('fecha_nacimiento')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('fecha_nacimiento', $usuario->dato_usuarioFECHA_NACIMIENTO) }}"
+                autocomplete="off"
                 placeholder="{{ __('Fecha de nacimiento') }}"
-        >
-        </rc-date-picker>
-    </div>
-    <div class="form-group col-md-3">
-        <rc-input
-                id="pais_nacimiento"
-                type="text"
-                initial-value="Colombia"
-                label="{{ __('País') }}"
-                disabled
+                label="{{ __('Fecha de nacimiento') }} *"
         ></rc-input>
     </div>
-
-    <div class="form-group col-md-3">
-        <rc-select-location-2
-                name="departamento_nacimiento"
-                id="departamento_nacimiento"
+    <div class="form-group col-md-9">
+        <rc-map-autocomplete
+                name="lugar_nacimiento"
+                id="lugar_nacimiento"
                 rules="required"
-                @error('departamento_nacimiento')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('departamento_nacimiento', $usuario->dato_usuarioDEPARTAMENTO_NACIMIENTO) }}"
-                placeholder="{{ __('Departamento de nacimiento') }}"
-                :options="{{ $departamentos->toJson() }}"
-                label="{{ __('Departamento') }}"
-                sub-select="municipio_nacimiento"
-        >
-        </rc-select-location-2>
-    </div>
-
-    <div class="form-group col-md-3">
-        <rc-select-city-2
-                name="municipio_nacimiento"
-                id="municipio_nacimiento"
-                rules="required"
-                @error('municipio_nacimiento')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('municipio_nacimiento', $usuario->dato_usuarioMUNICIPIO_NACIMIENTO) }}"
-                placeholder="{{ __('Municipio de nacimiento') }}"
-                label="{{ __('Municipio') }}"
-                disabled
-        >
-        </rc-select-city-2>
+                initial-value="{{ old('lugar_nacimiento', $usuario->dato_usuarioLUGAR_NACIMIENTO) }}"
+                value="{{ old('lugar_nacimiento', $usuario->dato_usuarioLUGAR_NACIMIENTO) }}"
+                types="geocode"
+                label="{{ __('Lugar de nacimiento') }} *"
+                key-value="nacimiento"
+                place-holder="Escriba lugar de nacimiento"
+        ></rc-map-autocomplete>
     </div>
 
     <div class="form-group col-md-3">

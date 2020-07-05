@@ -29,6 +29,7 @@ import RCTextArea from "./components/inputs/RCTextArea";
 import RCCanvas from "./components/canvas/RCCanvas";
 import RCWizard from "./components/forms/RCWizard";
 import RCUploadFile from "./components/files/RCUploadFile";
+import RCMapAutocomplete from "./components/inputs/RCMapAutocomplete";
 
 Vue.component('rc-select', RCSelect);
 Vue.component('rc-input', RCInput);
@@ -48,6 +49,7 @@ Vue.component('rc-text-area', RCTextArea);
 Vue.component('rc-canvas', RCCanvas);
 Vue.component('rc-wizard', RCWizard);
 Vue.component('rc-upload', RCUploadFile);
+Vue.component('rc-map-autocomplete', RCMapAutocomplete);
 
 // Custom forms
 import RCForm from "./components/forms/RCForm";

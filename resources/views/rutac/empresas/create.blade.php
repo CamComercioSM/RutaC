@@ -28,7 +28,7 @@
                             @include('rutac.empresas.__form')
                             <div class="d-flex justify-content-end">
                                 <button class="btn btn-primary" type="submit">
-                                    {{ __('Crear empresa') }}
+                                    {{ __('Registrar empresa') }}
                                 </button>
                             </div>
                         </rc-form>

@@ -22,5 +22,4 @@ class Departamento extends Model
             return $this->get();
         });
     }
-    
 }

@@ -98,17 +98,10 @@ class UserController extends Controller
         $datoUsuario = DatoUsuario::where('dato_usuarioID', Auth::user()->dato_usuarioID)->first();
         $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->input('nombre_completo');
         $datoUsuario->dato_usuarioDIRECCION = $request->input('direccion');
-        $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $request->input('departamento_residencia');
-        if ($request->input('municipio_residencia')) {
-            $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $request->input('municipio_residencia');
-        }
         $datoUsuario->dato_usuarioTELEFONO = $request->input('telefono');
         $datoUsuario->dato_usuarioSEXO = $request->input('genero');
         $datoUsuario->dato_usuarioFECHA_NACIMIENTO = $request->input('fecha_nacimiento');
-        $datoUsuario->dato_usuarioDEPARTAMENTO_NACIMIENTO = $request->input('departamento_nacimiento');
-        if ($request->input('municipio_nacimiento')) {
-            $datoUsuario->dato_usuarioMUNICIPIO_NACIMIENTO = $request->input('municipio_nacimiento');
-        }
+        $datoUsuario->dato_usuarioLUGAR_NACIMIENTO = $request->input('lugar_nacimiento');
         $datoUsuario->dato_usuarioNIVEL_ESTUDIO = $request->input('nivel_estudios');
         $datoUsuario->dato_usuarioPROFESION_OCUPACION = $request->input('profesion');
         $datoUsuario->dato_usuarioCARGO = $request->input('cargo');

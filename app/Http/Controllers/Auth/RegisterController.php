@@ -69,8 +69,6 @@ class RegisterController extends Controller
         $rules["nombres"] = 'required|max:255';
         $rules["apellidos"] = 'required|max:255';
         $rules["numero_documento"] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
-        $rules["departamento_residencia"] = 'required';
-        $rules["municipio_residencia"] = 'required';
         $rules["direccion"] = 'required|max:255';
         $rules["correo_electronico"] = 'email|unique:usuarios,usuarioEMAIL|max:255';
         $rules["telefono"] = 'required|numeric';
@@ -122,8 +120,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $repository = $this->repository;
-        $repositoryDepartamentos = $this->repository->departamentos();
-        return view('auth.register', compact('repository', 'repositoryDepartamentos'));
+        //$repositoryDepartamentos = $this->repository->departamentos();
+        return view('auth.register', compact('repository'));
     }
 
     /**
@@ -149,8 +147,6 @@ class RegisterController extends Controller
                 $datoUsuario->dato_usuarioAPELLIDOS = $request->input('apellidos');
                 $datoUsuario->dato_usuarioTIPO_IDENTIFICACION = DocumentType::getDocumentType($request->input('tipo_documento'));
                 $datoUsuario->dato_usuarioIDENTIFICACION = $request->input('numero_documento');
-                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $request->input('departamento_residencia');
-                $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $request->input('municipio_residencia');
                 $datoUsuario->dato_usuarioDIRECCION = $request->input('direccion');
                 $datoUsuario->dato_usuarioTELEFONO = $request->input('telefono');
 

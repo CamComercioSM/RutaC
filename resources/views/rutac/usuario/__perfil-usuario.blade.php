@@ -16,7 +16,7 @@
         <dd class="col-md-4">@if($usuario->dato_usuarioDISCAPACIDAD) {{$usuario->dato_usuarioDISCAPACIDAD}} @else - @endif</dd>
 
         <dt class="col-md-2">{{ __('Fecha y lugar de nacimiento') }}</dt>
-        <dd class="col-md-4">{{$usuario->dato_usuarioFECHA_NACIMIENTO}} - {{$usuario->dato_usuarioMUNICIPIO_NACIMIENTO}}, {{$usuario->dato_usuarioDEPARTAMENTO_NACIMIENTO}}</dd>
+        <dd class="col-md-4">{{$usuario->dato_usuarioFECHA_NACIMIENTO}} - {{$usuario->dato_usuarioLUGAR_NACIMIENTO}}</dd>
 
         <dt class="col-md-2">{{ __('Idiomas') }}</dt>
         <dd class="col-md-4">{{$usuario->dato_usuarioIDIOMAS}}</dd>

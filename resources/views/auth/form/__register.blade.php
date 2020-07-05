@@ -64,54 +64,23 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-md-6">
-        <rc-select-location
-                name="departamento_residencia"
-                id="departamento_residencia"
-                rules="required"
-                from-url="{{ route('url.municipios') }}"
-                @error('departamento_residencia')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('departamento_residencia') }}"
-                placeholder="{{ __('Departamento de residencia') }}"
-                :options="{{ $departamentos->toJson() }}"
-                sub-select="municipio_residencia"
-        >
-        </rc-select-location>
-    </div>
-
-    <div class="form-group col-md-6">
-        <rc-select-city
-                name="municipio_residencia"
-                id="municipio_residencia"
-                rules="required"
-                @error('municipio_residencia')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('municipio_residencia') }}"
-                placeholder="{{ __('Municipio de residencia') }}"
-                disabled
-        >
-        </rc-select-city>
-    </div>
-</div>
-<div class="row">
     <div class="form-group col-md-12">
-        <rc-input
-                rules="required|max:255"
+        <rc-map-autocomplete
                 name="direccion"
-                id="formEDireccion"
-                type="text"
-                @error('direccion')
-                error="{{ $message }}"
-                @enderror
+                id="direccion"
+                rules="required"
                 initial-value="{{ old('direccion') }}"
-                autocomplete="off"
-                placeholder="Dirección de residencia"
-        ></rc-input>
+                value="{{ old('direccion') }}"
+                types="address"
+                key-value="residencia"
+                place-holder="Escriba su dirección completa"
+        ></rc-map-autocomplete>
+        <input id="pais_residencia" name="pais_residencia" type="hidden" value="{{ old('pais_residencia') }}">
+        <input id="departamento_residencia" name="departamento_residencia" type="hidden" value="{{ old('departamento_residencia') }}">
+        <input id="municipio_residencia" name="municipio_residencia" type="hidden" value="{{ old('municipio_residencia') }}">
     </div>
 </div>
+
 <div class="row">
     <div class="form-group col-md-6">
         <rc-input
