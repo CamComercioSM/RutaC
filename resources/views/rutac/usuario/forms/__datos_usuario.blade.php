@@ -63,12 +63,8 @@
                 value="{{ old('direccion', $usuario->dato_usuarioDIRECCION) }}"
                 types="address"
                 label="{{ __('Dirección') }} *"
-                key-value="residencia"
                 place-holder="Escriba su dirección completa"
         ></rc-map-autocomplete>
-        <input id="pais_residencia" name="pais_residencia" type="hidden" value="{{ old('pais_residencia', $usuario->dato_usuarioPAIS_RESIDENCIA) }}">
-        <input id="departamento_residencia" name="departamento_residencia" type="hidden" value="{{ old('departamento_residencia', $usuario->dato_usuarioDEPARTAMENTO_RESIDENCIA) }}">
-        <input id="municipio_residencia" name="municipio_residencia" type="hidden" value="{{ old('municipio_residencia', $usuario->dato_usuarioMUNICIPIO_RESIDENCIA) }}">
     </div>
 
     <div class="form-group col-md-3">
@@ -115,7 +111,6 @@
                 value="{{ old('lugar_nacimiento', $usuario->dato_usuarioLUGAR_NACIMIENTO) }}"
                 types="geocode"
                 label="{{ __('Lugar de nacimiento') }} *"
-                key-value="nacimiento"
                 place-holder="Escriba lugar de nacimiento"
         ></rc-map-autocomplete>
     </div>

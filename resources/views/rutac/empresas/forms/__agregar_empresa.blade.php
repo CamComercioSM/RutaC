@@ -100,61 +100,17 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-3">
-        <rc-input
-                type="text"
-                initial-value="Colombia"
-                label="{{ __('País') }}"
-                disabled
-        ></rc-input>
-    </div>
-
-    <div class="form-group col-md-3">
-        <rc-select-location
-                name="departamento_empresa"
-                id="departamento_empresa"
-                rules="required|numeric"
-                from-url="{{ route('url.municipios') }}"
-                @error('departamento_empresa')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('departamento_empresa') }}"
-                placeholder="{{ __('Seleccione un departamento') }}"
-                :options="{{ $departamentos->toJson() }}"
-                label="{{ __('Departamento') }}"
-        >
-        </rc-select-location>
-    </div>
-
-    <div class="form-group col-md-3">
-        <rc-select-city
-                name="municipio_empresa"
-                id="municipio_empresa"
-                rules="required|numeric"
-                @error('municipio_empresa')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('municipio_empresa') }}"
-                placeholder="{{ __('Seleccione un municipio') }}"
-                label="{{ __('Municipio') }}"
-        >
-        </rc-select-city>
-    </div>
-
     <div class="form-group col-md-12">
-        <rc-input
-                rules="required"
+        <rc-map-autocomplete
                 name="direccion_empresa"
                 id="direccion_empresa"
-                type="text"
-                @error('direccion_empresa')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('direccion_empresa') }}"
-                autocomplete="off"
-                placeholder="Digite dirección de la empresa"
-                label="Dirección de la empresa"
-        ></rc-input>
+                rules="required"
+                initial-value="{{ old('direccion_empresa', $usuario->dato_usuarioDIRECCION) }}"
+                value="{{ old('direccion_empresa', $usuario->dato_usuarioDIRECCION) }}"
+                types="address"
+                label="{{ __('Dirección') }} *"
+                place-holder="Escriba la dirección de la empresa"
+        ></rc-map-autocomplete>
     </div>
 
     <div class="form-group col-md-3">

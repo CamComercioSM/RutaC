@@ -72,12 +72,8 @@
                 initial-value="{{ old('direccion') }}"
                 value="{{ old('direccion') }}"
                 types="address"
-                key-value="residencia"
                 place-holder="Escriba su dirección completa"
         ></rc-map-autocomplete>
-        <input id="pais_residencia" name="pais_residencia" type="hidden" value="{{ old('pais_residencia') }}">
-        <input id="departamento_residencia" name="departamento_residencia" type="hidden" value="{{ old('departamento_residencia') }}">
-        <input id="municipio_residencia" name="municipio_residencia" type="hidden" value="{{ old('municipio_residencia') }}">
     </div>
 </div>
 

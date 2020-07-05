@@ -51,10 +51,6 @@
                 type: String,
                 default: null
             },
-            keyValue: {
-                type: String,
-                default: null
-            },
             name: {
                 type: String,
                 default: null
@@ -72,7 +68,6 @@
         },
         created() {
             this.value = this.initialValue;
-            this.clave = this.keyValue;
             this.placeholder = this.placeHolder;
         },
         mounted() {
@@ -94,10 +89,6 @@
                 let country = (addressData.country) ? addressData.country : '';
                 let administrative = (addressData.administrative_area_level_1) ? addressData.administrative_area_level_1 : '';
                 let locality = (addressData.locality) ? addressData.locality : '';
-
-                document.getElementById('pais_'+this.clave).value = country;
-                document.getElementById('departamento_'+this.clave).value = administrative;
-                document.getElementById('municipio_'+this.clave).value = locality;
             },
         }
     }

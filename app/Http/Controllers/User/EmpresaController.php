@@ -67,8 +67,6 @@ class EmpresaController extends Controller
         $empresa->empresaORGANIZACION_JURIDICA = $request->input('organizacion_juridica');
         $empresa->empresaFECHA_CONSTITUCION = $request->input('fecha_constitucion');
         $empresa->empresaREPRESENTANTE_LEGAL = $request->input('representante_legal');
-        $empresa->empresaDEPARTAMENTO_EMPRESA = $request->input('departamento_empresa');
-        $empresa->empresaMUNICIPIO_EMPRESA = $request->input('municipio_empresa');
         $empresa->empresaDIRECCION_FISICA = $request->input('direccion_empresa');
         $empresa->empresaEMPLEADOS_FIJOS = $request->input('empleados_fijos');
         $empresa->empresaEMPLEADOS_TEMPORALES = $request->input('empleados_temporales');
@@ -265,8 +263,6 @@ class EmpresaController extends Controller
         $empresa->empresaORGANIZACION_JURIDICA = $request->input('organizacion_juridica');
         $empresa->empresaFECHA_CONSTITUCION = $request->input('fecha_constitucion');
         $empresa->empresaREPRESENTANTE_LEGAL = $request->input('representante_legal');
-        $empresa->empresaDEPARTAMENTO_EMPRESA = $request->input('departamento_empresa');
-        $empresa->empresaMUNICIPIO_EMPRESA = $request->input('municipio_empresa');
         $empresa->empresaDIRECCION_FISICA = $request->input('direccion_empresa');
         $empresa->empresaEMPLEADOS_FIJOS = $request->input('empleados_fijos');
         $empresa->empresaEMPLEADOS_TEMPORALES = $request->input('empleados_temporales');
