@@ -58,7 +58,7 @@
             </button>
         </div>
     </div>
-
+    <!--
     <div class="form-row col-md-4">
         <div class="form-group col-md-12">
             <rc-select
@@ -75,6 +75,21 @@
             >
             </rc-select>
         </div>
+    </div>-->
+
+    <div class="form-row col-md-4">
+        <rc-input
+                    rules="required"
+                    name="registrado"
+                    id="registrado"
+                    type="text"
+                    @error('registrado')
+                    error="{{ $message }}"
+                    @enderror
+                    autocomplete="off"
+                    placeholder="Digite el NIT para validar este dato. "
+                    label="{{ __('¿Está registrado en la Cámara de Comercio?') }} *"
+            ></rc-input>
     </div>
 
     <div class="form-group col-md-4">
@@ -92,7 +107,7 @@
         >
         </rc-select>
     </div>
-
+    <!--
     <div class="form-group col-md-4">
         <rc-input
                 rules="required"
@@ -107,9 +122,9 @@
                 placeholder="{{ __('Digite la Fecha de constitución') }}"
                 label="{{ __('Fecha de constitución') }} *"
         ></rc-input>
-    </div>
+    </div> -->
 
-    <div class="form-group col-md-8">
+    <div class="form-group col-md-6">
         <rc-input
                 rules="required|min:3|max:200"
                 name="representante_legal"
@@ -125,7 +140,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-6">
         <rc-map-autocomplete
                 name="direccion_empresa"
                 id="direccion_empresa"
@@ -136,6 +151,22 @@
                 label="{{ __('Dirección') }} *"
                 place-holder="Escriba la dirección de la empresa"
         ></rc-map-autocomplete>
+    </div>
+
+    <div class="form-group col-md-6">
+        <rc-input
+                rules="max:15|required"
+                name="telefono_empresa"
+                id="telefono_empresa"
+                type="number"
+                @error('telefono_empresa')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('telefono_empresa', $empresa->telefonoContactoCial) }}"
+                autocomplete="off"
+                placeholder="Digite teléfono de la empresa "
+                label="Teléfono de la empresa*"
+        ></rc-input>
     </div>
 
     <div class="form-group col-md-6">
@@ -154,7 +185,7 @@
         ></rc-input>
     </div>
 
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
         <rc-input
                 rules=""
                 name="pagina_web"
@@ -169,7 +200,7 @@
                 label="Página web de la empresa"
         ></rc-input>
     </div>
-
+    <!--
     <div class="form-group col-md-4">
         <rc-input
                 rules="numeric"
@@ -217,7 +248,7 @@
         >
         </rc-select>
     </div>
-
+    -->
     <div class="form-group col-md-4">
         <rc-input
                 rules="min:3|max:50"
@@ -269,12 +300,12 @@
 
 <div class="row">
     <div class="form-group col-md-12">
-        <h4>Contacto Comercial</h4>
+        <h4>Contacto Principal</h4>
     </div>
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="min:3|max:50"
+                rules="min:3|max:50|required"
                 name="nombre_contacto_cial"
                 id="nombre_contacto_cial"
                 type="text"
@@ -283,30 +314,30 @@
                 @enderror
                 initial-value="{{ old('nombre_contacto_cial', $empresa->nombreContactoCial) }}"
                 autocomplete="off"
-                placeholder="Digite nombre de la persona contacto comercial"
-                label="Nombre contacto comercial"
+                placeholder="Digite nombre de la persona "
+                label="Nombre contacto principal *"
         ></rc-input>
     </div>
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="max:15|required_if:nombre_contacto_cial"
+                rules="max:15|required_if:nombre_contacto_cial|required"
                 name="telefono_contacto_cial"
                 id="telefono_contacto_cial"
-                type="text"
+                type="number"
                 @error('telefono_contacto_cial')
                 error="{{ $message }}"
                 @enderror
                 initial-value="{{ old('telefono_contacto_cial', $empresa->telefonoContactoCial) }}"
                 autocomplete="off"
-                placeholder="Digite teléfono de contacto comercial"
-                label="Teléfono contacto comercial"
+                placeholder="Digite teléfono de la persona "
+                label="Teléfono contacto principal *"
         ></rc-input>
     </div>
 
     <div class="form-group col-md-4">
         <rc-input
-                rules="email|required_if:nombre_contacto_cial"
+                rules="email|required_if:nombre_contacto_cial|required"
                 name="correo_contacto_cial"
                 id="correo_contacto_cial"
                 type="text"
@@ -315,13 +346,13 @@
                 @enderror
                 initial-value="{{ old('correo_contacto_cial', $empresa->correoContactoCial) }}"
                 autocomplete="off"
-                placeholder="Digite correo electrónico contacto comercial"
-                label="Correo electrónico contacto comercial"
+                placeholder="Digite correo electrónico de la persona"
+                label="Correo electrónico contacto principal *"
         ></rc-input>
     </div>
 
 </div>
-
+<!--
 <div class="row">
     <div class="form-group col-md-12">
         <h4>Contacto Talento Humano</h4>
@@ -374,4 +405,8 @@
                 label="Correo electrónico contacto talento humano"
         ></rc-input>
     </div>
-</div>
+</div>-->
+
+
+
+

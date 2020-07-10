@@ -34,7 +34,7 @@
 
     <div class="col-lg-12">
         <rc-text-area
-                rules="required|max:255"
+                rules="required|max:500"
                 name="feedback"
                 id="feedback"
                 @error('feedback')
@@ -44,6 +44,41 @@
                 placeholder="Escriba retroalimentación"
                 label="Retroalimentación"
         ></rc-text-area>
-
+    </div>
+    <div class="col-lg-12">
+        <rc-text-area
+                rules="required|max:500"
+                name="feedback2"
+                id="feedback2"
+                @error('feedback2')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('feedback2', $feedback->retro_tipo_diagnosticoMensaje2) }}"
+                placeholder="Escriba retroalimentación"
+        ></rc-text-area>
+    </div>
+    <div class="col-lg-12">
+        <rc-text-area
+                rules="required|max:500"
+                name="feedback3"
+                id="feedback3"
+                @error('feedback3')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('feedback3', $feedback->retro_tipo_diagnosticoMensaje3) }}"
+                placeholder="Escriba retroalimentación"
+        ></rc-text-area>
+    </div>
+    <div class="col-lg-12">
+        <rc-text-area
+                rules="required|max:500"
+                name="feedback4"
+                id="feedback4"
+                @error('feedback4')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('feedback4', $feedback->retro_tipo_diagnosticoMensaje4) }}"
+                placeholder="Escriba retroalimentación"
+        ></rc-text-area>
     </div>
 </div>

@@ -477,7 +477,7 @@ class DiagnosticosController extends Controller
                     }
                     
                     /**
-                    * Se valida si ya todas las secciones fueron evaluadas para obtener el resultado del diagnótico
+                    * Se valida si ya todas las secciones fueron evaluadas para obtener el resultado del diagnóstico
                     * Si es valido se guarda el resultado del diagnóstico y cambia el estado a Finalizado
                     */
                     if($this->gController->calcularResultadoDiagnostico($diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID,$diagnosticoID)){

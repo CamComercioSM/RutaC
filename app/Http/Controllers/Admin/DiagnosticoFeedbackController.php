@@ -46,6 +46,9 @@ class DiagnosticoFeedbackController extends Controller
         $retroDiagnostico->retro_tipo_diagnosticoRANGO = $request->input('rango');
         $retroDiagnostico->retro_tipo_diagnosticoNIVEL = $request->input('nivel');
         $retroDiagnostico->retro_tipo_diagnosticoMensaje = $request->input('feedback');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje2 = $request->input('feedback2');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje3 = $request->input('feedback3');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje4 = $request->input('feedback4');
         $retroDiagnostico->retro_tipo_diagnosticoESTADO = Estado::ACTIVO;
 
         $retroDiagnostico->save();
@@ -94,6 +97,9 @@ class DiagnosticoFeedbackController extends Controller
         $feedback->retro_tipo_diagnosticoRANGO = $request->input('rango');
         $feedback->retro_tipo_diagnosticoNIVEL = $request->input('nivel');
         $feedback->retro_tipo_diagnosticoMensaje = $request->input('feedback');
+        $feedback->retro_tipo_diagnosticoMensaje2 = $request->input('feedback2');
+        $feedback->retro_tipo_diagnosticoMensaje3 = $request->input('feedback3');
+        $feedback->retro_tipo_diagnosticoMensaje4 = $request->input('feedback4');
         $feedback->retro_tipo_diagnosticoESTADO = Estado::ACTIVO;
 
         $feedback->save();

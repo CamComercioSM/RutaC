@@ -36,7 +36,7 @@
                         <div role="tablist">
                             <b-card no-body class="mb-1">
                                 <b-card-header header-tag="header" class="p-1" role="tab">
-                                    <b-button block v-b-toggle.mensajes variant="info">Retroalimentación del diagnótico</b-button>
+                                    <b-button block v-b-toggle.mensajes variant="info">Retroalimentación del diagnóstico</b-button>
                                 </b-card-header>
                                 <b-collapse id="mensajes" accordion="paneles" role="tabpanel">
                                     <b-card-body>

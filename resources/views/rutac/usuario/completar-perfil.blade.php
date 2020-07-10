@@ -16,6 +16,11 @@
                                 method="post"
                         >
                             @include('rutac.usuario.forms.__datos_usuario')
+
+
+                             
+    
+
                             <div class="card-footer d-flex justify-content-end">
                                 <button class="btn btn-primary" type="submit">
                                     {{ __('Guardar') }}
@@ -37,6 +42,7 @@
     }
 
 </style>
+
 @endsection
 @section('footer')
 <div class="control-sidebar-bg"></div>
@@ -63,4 +69,21 @@
         </div>
     </div>
 </div>
+
+
 @endsection
+
+@push('scripts')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+    <script type="text/javascript" >
+        $(document).ready(function() {
+            $("#profesion #profesion" ).select2();
+            /*let style={
+                backgroundColor : "#ddd",
+                padding: '10px'
+            };
+            $("#profesion #profesion" ).css(style);*/
+        });
+    </script>
+@endpush

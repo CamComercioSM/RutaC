@@ -36,7 +36,7 @@
                 label="Descripción del emprendimiento *"
         ></rc-input>
     </div>
-
+<!--
     <div class="form-group col-md-4">
         <rc-input
                 rules="required"
@@ -81,5 +81,5 @@
                 placeholder="Digite la remuneración que recibe el emprendedor"
                 label="Remuneración del emprendedor"
         ></rc-input-money>
-    </div>
+    </div> -->
 </div>

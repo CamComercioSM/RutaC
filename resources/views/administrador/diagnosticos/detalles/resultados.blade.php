@@ -3,106 +3,123 @@
 @section('title','RutaC | Resultado')
 
 @section('content')
-<section class="content-header">
-	<h1>
-		
-	</h1>
-</section>
-<section class="content">
-    <div class="text-right form-group">
-      <a class="btn btn-primary no-print" href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',[$tipo,$diagnostico->diagnosticoID]) }}"><i class="fa fa-arrow-left"></i> Volver</a>
-    </div> 
-    <div class="box">
-    	<div class="box-header with-border">
-    		<h3>DIAGNÓSTICO PARA {{strtoupper($tipo)}} - RUTA C</h3>
-    	</div>
-    	<div class="box-body">
-    	    <div class="col-xs-12">
-    			<p><b>Idea/Emprendimiento: </b> {{$diagnostico->diagnosticoNOMBRE}}</p>
-    		</div>
-    		<br>
-    		<div class="col-xs-7">
-    			<p><b>Fecha del diagnóstico: </b> {{$diagnostico->diagnosticoFECHA}}</p>
-    		</div>
-    		<div class="col-xs-5">
-    			<p><b>Consecutivo: </b> {{ str_pad(strtoupper($diagnostico->diagnosticoID), 5, '0', STR_PAD_LEFT) }}</p>
-    		</div>
-    		<br>
-    		<div class="col-xs-7">
-    			<p><b>Realizado por: </b> {{$diagnostico->diagnosticoREALIZADO_POR}}</p>
-    		</div>
-    		<div class="col-xs-5">
-    			<p><b>Resultado: </b> {{number_format($diagnostico->diagnosticoRESULTADO* 100, 2)}} - <b>Nivel:</b> {{$diagnostico->diagnosticoNIVEL}}</p>
-    		</div>
-    		<br>
-    		<div class="col-xs-12">
-    			<p><b>Idea/Emprendimiento: </b> {{$diagnostico->diagnosticoNOMBRE}}</p>
-    		</div>
-    	</div>
-    </div>
-    <div class="box">
-    	<div class="box-header with-border">
-    		<h3>ANÁLISIS DE CRECIMIENTO</h3>
-    	</div>
-    	<div class="box-body">
-    		<div class="col-xs-12">
-                <canvas id="canvas"></canvas>
+    <div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-end">
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',[$tipo,$diagnostico->diagnosticoID]) }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="box">
+                            <div class="box-header with-border text-center">
+                                <h3>DIAGNÓSTICO PARA {{strtoupper($tipo)}} - RUTA C</h3>
+                            </div>
+                            <hr>
+                            <div class="box-body">
+                                <div class="col-xs-12">
+                                    <p><b>Idea/Emprendimiento: </b> {{$diagnostico->diagnosticoNOMBRE}}</p>
+                                </div>
+                                <br>
+                                <div class="col-xs-7">
+                                    <p><b>Fecha del diagnóstico: </b> {{$diagnostico->diagnosticoFECHA}}</p>
+                                </div>
+                                <div class="col-xs-5">
+                                    <p><b>Consecutivo: </b> {{ str_pad(strtoupper($diagnostico->diagnosticoID), 5, '0', STR_PAD_LEFT) }}</p>
+                                </div>
+                                <br>
+                                <div class="col-xs-7">
+                                    <p><b>Realizado por: </b> {{$diagnostico->diagnosticoREALIZADO_POR}}</p>
+                                </div>
+                                <div class="col-xs-5">
+                                    <p><b>Resultado: </b> {{number_format($diagnostico->diagnosticoRESULTADO* 100, 2)}} - <b>Nivel:</b> {{$diagnostico->diagnosticoNIVEL}}</p>
+                                </div>
+                                <br>
+                                <div class="col-xs-12">
+                                    <p><b>Idea/Emprendimiento: </b> {{$diagnostico->diagnosticoNOMBRE}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <hr>
+                            <div class="box-header with-border text-center">
+                                <h3>ANÁLISIS DE CRECIMIENTO</h3>
+                            </div>
+                            <hr>
+                            <div class="box-body">
+                                <div class="col-xs-12">
+                                    <canvas id="canvas"></canvas>
+                                </div>
+                                @foreach($diagnostico->resultadoSeccion as $key=> $resultado_seccion)
+                                <div class="col-xs-4">
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td class="text-center"><h4><b>{{$resultado_seccion->resultado_seccionNOMBRE}}</b></h4></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2" class="text-center">
+                                                <p>
+                                                {{number_format($resultado_seccion->diagnostico_seccionRESULTADO* 100, 2)}}% - {{$resultado_seccion->diagnostico_seccionNIVEL}}<br>
+                                                {{$resultado_seccion->diagnostico_seccionMENSAJE_FEEDBACK}}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @if($competenciaNombre)
+                        <div class="box">
+                            <hr>
+                            <div class="box-header with-border text-center">
+                                <h3>ANÁLISIS DE COMPETENCIA</h3>
+                            </div>
+                            <hr>
+                            <div class="box-body">
+                                <div class="col-xs-4">
+                                    <table class="table table-bordered table-hover">
+                                        <tr>
+                                            <td colspan="2" class="text-center"><b>COMPETENCIAS</b></td>
+                                        </tr>
+                                        @foreach($competencias as $key=> $competencia)
+                                        <tr>
+                                            <td class="text-center"><b>{{$competencia->resultado_preguntaCOMPETENCIA}}</b></td>
+                                            <td class="text-center" style="width: 50px">{{number_format($competencia->promedio * 100, 2)}}%</td>
+                                        </tr>
+                                        @endforeach
+                                    </table>
+                                </div>
+                                <div class="col-xs-8">
+                                    <canvas id="canvasCompetencias"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                        <div class="box">
+                             <hr>
+                            <div class="box-header with-border text-center">
+                                <h3>ANÁLISIS DE COMPETENCIA</h3>
+                            </div>
+                            <hr>
+                            <div class="box-body">
+                                <p>No se evaluaron competencias</p>
+                            </div>
+                        </div>
+                        @endif
+
+
+                    </div>
+                </div>
             </div>
-            @foreach($diagnostico->resultadoSeccion as $key=> $resultado_seccion)
-            <div class="col-xs-4">
-                <table class="table table-bordered">
-                    <tr>
-                        <td class="text-center"><h4><b>{{$resultado_seccion->resultado_seccionNOMBRE}}</b></h4></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-center">
-                            <p>
-                            {{number_format($resultado_seccion->diagnostico_seccionRESULTADO* 100, 2)}}% - {{$resultado_seccion->diagnostico_seccionNIVEL}}<br>
-                            {{$resultado_seccion->diagnostico_seccionMENSAJE_FEEDBACK}}
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            @endforeach
-    	</div>
-    </div>
-    @if($competenciaNombre)
-    <div class="box">
-        <div class="box-header with-border">
-            <h3>ANÁLISIS DE COMPETENCIA</h3>
-        </div>
-        <div class="box-body">
-            <div class="col-xs-4">
-                <table class="table table-bordered table-hover">
-                    <tr>
-                        <td colspan="2" class="text-center"><b>COMPETENCIAS</b></td>
-                    </tr>
-                    @foreach($competencias as $key=> $competencia)
-                    <tr>
-                        <td class="text-center"><b>{{$competencia->resultado_preguntaCOMPETENCIA}}</b></td>
-                        <td class="text-center" style="width: 50px">{{number_format($competencia->promedio * 100, 2)}}%</td>
-                    </tr>
-                    @endforeach
-                </table>
-            </div>
-            <div class="col-xs-8">
-                <canvas id="canvasCompetencias"></canvas>
-            </div>
         </div>
     </div>
-    @else
-    <div class="box">
-        <div class="box-header with-border">
-            <h3>ANÁLISIS DE COMPETENCIA</h3>
-        </div>
-        <div class="box-body">
-            <p>No se evaluaron competencias</p>
-        </div>
-    </div>
-    @endif
-	
-</section>
 @endsection
 @section('style')
 <style type="text/css">

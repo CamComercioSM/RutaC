@@ -1,137 +1,149 @@
 @extends('administrador.index')
 
 @section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-6">
-			<a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-respuesta"> Agregar respuesta </a>
-		</div>
-		<div class="col-sm-6 text-right">
-			<a class="btn btn-primary" href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $diagnostico,'seccion'=> $seccion])}}"><i class="fa fa-arrow-left"></i> Volver</a>
-		</div>
-	</div>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<div class="box-body">
-					<div class="row">
-						<div class="col-md-12">
-							<form id="editarPregunta" action="" method="post">
-							    {!! csrf_field() !!}
-							    <input name="idPregunta" id="idPregunta" type="hidden" value="{{$preguntas->preguntaID}}">
-							    <div class="box-body">
-								    <div class="row">
-								        <div class="col-xs-12">
-								            <label>Enunciado pregunta</label>
-								            <div class="form-group has-feedback">
-								                <input type="text" id="pregunta" name="pregunta" class="form-control" placeholder="Enunciado de la pregunta" value="{{$preguntas->preguntaENUNCIADO}}">
-								                <span class="text-danger" id="error_pregunta"></span>
-								            </div>
-								        </div>
-								        <div class="col-xs-4">
-								            <label>Competencia</label>
-								            <div class="form-group">
-								            	<select name="competencia" class="form-control">
-								            	@foreach($competencias as $key => $competencia)
-								            	<option value="{{$competencia->competenciaID}}" @if($competencia->competenciaID == $preguntas->COMPETENCIAS_competenciaID) selected @endif>{{$competencia->competenciaNOMBRE}}</option>
-								            	@endforeach
-								            	</select>
-								                <span class="text-danger" id="error_competencia"></span>
-			                                </div>
-								        </div>
-								        <div class="col-xs-4">
-								            <label>Estado</label>
-								            <div class="form-group">
-								                @if($bloqueo_pregunta == '0')
-			                                	<select name="estado" class="form-control">
-				                                	<option value="Activo" @if($preguntas->preguntaESTADO == 'Activo') selected @endif>Activo</option>
-				                                    <option value="Inactivo" @if($preguntas->preguntaESTADO == 'Inactivo') selected @endif>Inactivo</option>
-				                                </select>
-				                                @else
-                                                <p>La pregunta estará inactiva hasta que se agreguen las respuestas</p>
-                                                @endif
-			                                </div>
-								        </div>
-								    </div>
-								</div>
-								<div class="box-footer">
-									<div class="options">
-										<button type="button" id="editar-pregunta" class="btn btn-primary btn-sm">Guardar</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-                            <h3 class="text-center">Respuestas</h3>
+<div class="container">
+        <div class="row justify-content">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-content-center">
+                            <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-respuesta"> Agregar respuesta </a>
                         </div>
-						<div class="col-md-12">
-							<table id="tabla-respuestas" class="table table-bordered table-hover">
-								<thead>
-									<tr>
-										<th class="text-center">Presentación</th>
-		                                <th class="text-center">Cumplimiento</th>
-		                                <th class="text-center">Feedback / Materiales o servicios</th>
-										<th class="text-center" style="width: 130px"></th>
-                                        <th class="text-center" style="width: 130px"></th>
-									</tr>
-								</thead>
-								<tbody>
-									@foreach($preguntas->respuestasPregunta as $key=> $respuesta)
-									<tr>
-										<td class="text-left">{{$respuesta->respuestaPRESENTACION}}</td>
-										<td class="text-left">{{$respuesta->respuestaCUMPLIMIENTO}}</td>
-										<td class="text-left">
-                                            {{$respuesta->respuestaFEEDBACK}}
-                                            @if($respuesta->materiales->count() > 0)
-                                                <hr>
-                                                <label>Materiales:</label>
-                                                @foreach($respuesta->materiales as $key1=> $material)
-                                                <a class="btn btn-primary btn-xs" href="{{$material->materialAsociado->material_ayudaURL}}" style="margin: 5px;" target="_blank">
-                                                    @if($material->materialAsociado->TIPOS_MATERIALES_tipo_materialID == 'Video')
-                                                    <i class="fa fa-video-camera"></i>
-                                                    @endif
-                                                    @if($material->materialAsociado->TIPOS_MATERIALES_tipo_materialID == 'Documento')
-                                                    <i class="fa fa-file"></i>
-                                                    @endif
-                                                    {{$material->materialAsociado->material_ayudaNOMBRE}}
-                                                </a>
-                                                @endforeach
-                                            @endif
-                                            @if($respuesta->servicios->count() > 0)
-                                                <hr>
-                                                <label>Servicios:</label>
-                                                @foreach($respuesta->servicios as $key1=> $servicio)
-                                                <a class="btn btn-primary btn-xs" href="{{$servicio->servicioAsociado->servicio_ccsmURL}}" style="margin: 5px;" target="_blank">
-                                                    {{$servicio->servicioAsociado->servicio_ccsmNOMBRE}}
-                                                </a>
-                                                @endforeach
-                                            @endif
-                                        </td>
-										<td class="text-center">
-                                            <a class="btn bg-purple btn-xs" href="{{action('Admin\DiagnosticoController@asignarMaterialRespuestaView', ['respuesta'=> $respuesta->respuestaID])}}">Asignar Material</a>
-                                            <a class="btn bg-navy btn-xs" href="{{action('Admin\DiagnosticoController@asignarServicioRespuestaView', ['respuesta'=> $respuesta->respuestaID])}}">Asignar Servicio</a>
-                                        </td>
-                                        <td class="text-center">
-                                            
-											<a class="btn btn-warning btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-respuesta" onclick="editarRespuestaS('{{$respuesta->respuestaID}}','{{$respuesta->PREGUNTAS_preguntaID}}','{{$respuesta->respuestaPRESENTACION}}','{{$respuesta->respuestaCUMPLIMIENTO}}','{{$respuesta->respuestaFEEDBACK}}');return false;">Editar</a>
-			                        		<a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-respuesta" onclick="eliminarRespuestaS('{{$respuesta->respuestaID}}','{{$respuesta->PREGUNTAS_preguntaID}}');return false;">Eliminar</a>
-										</td>
+                        <div class="btn-toolbar" role="toolbar">
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $diagnostico,'seccion'=> $seccion])}}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="box box-primary">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <form id="editarPregunta" action="" method="post">
+                                                    {!! csrf_field() !!}
+                                                    <input name="idPregunta" id="idPregunta" type="hidden" value="{{$preguntas->preguntaID}}">
+                                                    <div class="box-body">
+                                                        <div class="row ml-2">
+                                                            <div class="col-xs-12 pr-1">
+                                                                <label>Enunciado pregunta</label>
+                                                                <div class="form-group has-feedback">
+                                                                    <input type="text" id="pregunta" name="pregunta" class="form-control" placeholder="Enunciado de la pregunta" value="{{$preguntas->preguntaENUNCIADO}}">
+                                                                    <span class="text-danger" id="error_pregunta"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4  pr-1">
+                                                                <label>Competencia</label>
+                                                                <div class="form-group">
+                                                                    <select name="competencia" class="form-control">
+                                                                    @foreach($competencias as $key => $competencia)
+                                                                    <option value="{{$competencia->competenciaID}}" @if($competencia->competenciaID == $preguntas->COMPETENCIAS_competenciaID) selected @endif>{{$competencia->competenciaNOMBRE}}</option>
+                                                                    @endforeach
+                                                                    </select>
+                                                                    <span class="text-danger" id="error_competencia"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-4  pr-1">
+                                                                <label>Estado</label>
+                                                                <div class="form-group">
+                                                                    @if($bloqueo_pregunta == '0')
+                                                                    <select name="estado" class="form-control">
+                                                                        <option value="Activo" @if($preguntas->preguntaESTADO == 'Activo') selected @endif>Activo</option>
+                                                                        <option value="Inactivo" @if($preguntas->preguntaESTADO == 'Inactivo') selected @endif>Inactivo</option>
+                                                                    </select>
+                                                                    @else
+                                                                    <p>La pregunta estará inactiva hasta que se agreguen las respuestas</p>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="box-footer">
+                                                        <div class="options ml-2">
+                                                            <button type="button" id="editar-pregunta" class="btn btn-primary btn-sm">Guardar</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3 class="text-center">Respuestas</h3>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <table id="tabla-respuestas" class="table table-bordered table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center">Presentación</th>
+                                                            <th class="text-center">Cumplimiento</th>
+                                                            <th class="text-center">Feedback / Materiales o servicios</th>
+                                                            <th class="text-center" style="width: 130px"></th>
+                                                            <th class="text-center" style="width: 130px"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($preguntas->respuestasPregunta as $key=> $respuesta)
+                                                        <tr>
+                                                            <td class="text-left">{{$respuesta->respuestaPRESENTACION}}</td>
+                                                            <td class="text-left">{{$respuesta->respuestaCUMPLIMIENTO}}</td>
+                                                            <td class="text-left">
+                                                                {{$respuesta->respuestaFEEDBACK}}
+                                                                @if($respuesta->materiales->count() > 0)
+                                                                    <hr>
+                                                                    <label>Materiales:</label>
+                                                                    @foreach($respuesta->materiales as $key1=> $material)
+                                                                    <a class="btn btn-primary btn-xs" href="{{$material->materialAsociado->material_ayudaURL}}" style="margin: 5px;" target="_blank">
+                                                                        @if($material->materialAsociado->TIPOS_MATERIALES_tipo_materialID == 'Video')
+                                                                        <i class="fa fa-video-camera"></i>
+                                                                        @endif
+                                                                        @if($material->materialAsociado->TIPOS_MATERIALES_tipo_materialID == 'Documento')
+                                                                        <i class="fa fa-file"></i>
+                                                                        @endif
+                                                                        {{$material->materialAsociado->material_ayudaNOMBRE}}
+                                                                    </a>
+                                                                    @endforeach
+                                                                @endif
+                                                                @if($respuesta->servicios->count() > 0)
+                                                                    <hr>
+                                                                    <label>Servicios:</label>
+                                                                    @foreach($respuesta->servicios as $key1=> $servicio)
+                                                                    <a class="btn btn-primary btn-xs" href="{{$servicio->servicioAsociado->servicio_ccsmURL}}" style="margin: 5px;" target="_blank">
+                                                                        {{$servicio->servicioAsociado->servicio_ccsmNOMBRE}}
+                                                                    </a>
+                                                                    @endforeach
+                                                                @endif
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a class="btn bg-purple btn-xs" href="{{action('Admin\DiagnosticoController@asignarMaterialRespuestaView', ['respuesta'=> $respuesta->respuestaID])}}">Asignar Material</a>
+                                                                <a class="btn bg-navy btn-xs" href="{{action('Admin\DiagnosticoController@asignarServicioRespuestaView', ['respuesta'=> $respuesta->respuestaID])}}">Asignar Servicio</a>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                
+                                                                <a class="btn btn-warning btn-xs mb-1" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-respuesta" onclick="editarRespuestaS('{{$respuesta->respuestaID}}','{{$respuesta->PREGUNTAS_preguntaID}}','{{$respuesta->respuestaPRESENTACION}}','{{$respuesta->respuestaCUMPLIMIENTO}}','{{$respuesta->respuestaFEEDBACK}}');return false;">Editar</a>
+                                                                <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-respuesta" onclick="eliminarRespuestaS('{{$respuesta->respuestaID}}','{{$respuesta->PREGUNTAS_preguntaID}}');return false;">Eliminar</a>
+                                                            </td>
 
-									</tr>
-									@endforeach
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
 @endsection
 @section('style')
     <style>
