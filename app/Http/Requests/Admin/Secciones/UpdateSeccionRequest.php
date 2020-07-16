@@ -7,7 +7,7 @@ use App\Rules\DoubleUnique;
 use App\Rules\WeightGroup;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSeccionFormRequest extends FormRequest
+class UpdateSeccionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,7 +34,9 @@ class StoreSeccionFormRequest extends FormRequest
                     SeccionPregunta::class,
                     'seccion_preguntaNOMBRE',
                     'TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',
-                    $this->diagnostico->tipo_diagnosticoID
+                    $this->diagnostico->tipo_diagnosticoID,
+                    'seccion_preguntaID',
+                    $this->seccione->seccion_preguntaID
                 ),
             ],
             'peso_seccion' => [
@@ -46,7 +48,9 @@ class StoreSeccionFormRequest extends FormRequest
                     SeccionPregunta::class,
                     'seccion_preguntaPESO',
                     'TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',
-                    $this->diagnostico->tipo_diagnosticoID
+                    $this->diagnostico->tipo_diagnosticoID,
+                    'seccion_preguntaID',
+                    $this->seccione->seccion_preguntaID
                 )
             ],
         ];

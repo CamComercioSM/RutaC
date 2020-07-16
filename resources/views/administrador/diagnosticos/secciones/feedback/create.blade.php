@@ -8,12 +8,12 @@
                         <h5 class="card-title">{{ __('Nuevo Mensaje') }}</h5>
                     </div>
                     <rc-form
-                            action="{{ route('admin.diagnosticos.feedback.store', $diagnostico) }}"
+                            action="{{ route('admin.diagnosticos.secciones.feedback.store', [$diagnostico, $seccione]) }}"
                             method="post"
                     >
                         <div class="card-body">
                             @csrf
-                            @include('administrador.diagnosticos.feedback.__form')
+                            @include('administrador.diagnosticos.secciones.feedback.__form')
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a href="{{ old('redirect', URL::previous()) }}" class="btn btn-secondary btn-sm">

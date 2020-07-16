@@ -14,10 +14,10 @@
                         <div class="card-body">
                             @csrf
                             @method('PATCH')
-                            @include('administrador.diagnosticos.seccion.__form')
+                            @include('administrador.diagnosticos.secciones.__form')
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <a href="{{URL::previous()}}" class="btn btn-secondary btn-sm">
+                            <a href="{{ old('redirect', URL::previous()) }}" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-arrow-left"></i> {{ __('Cancelar') }}
                             </a>
                             <button type="submit" class="btn btn-success btn-sm">

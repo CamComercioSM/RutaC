@@ -24,9 +24,13 @@ class UpdateTipoDiagnosticoRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipo_diagnosticoID' => 'required',
-            'tipo_diagnosticoNOMBRE' => 'required|max:200',
-            'tipo_diagnosticoESTADO' => 'required|in:Activo,Inactivo',
+            'nombre' => [
+                'required',
+                'max:200',
+                'unique:tipos_diagnosticos,tipo_diagnosticoNOMBRE,' .
+                $this->diagnostico->tipo_diagnosticoID .
+                ',tipo_diagnosticoID',
+            ]
         ];
     }
 }

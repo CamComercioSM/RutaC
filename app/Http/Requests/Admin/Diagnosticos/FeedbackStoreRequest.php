@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Admin\Secciones;
+namespace App\Http\Requests\Admin\Diagnosticos;
 
-use App\Models\SeccionPregunta;
+use App\Models\RetroDiagnostico;
 use App\Rules\DoubleUnique;
-use App\Rules\WeightGroup;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSeccionFormRequest extends FormRequest
+class FeedbackStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,28 +26,28 @@ class StoreSeccionFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_seccion' => [
+            'rango' => [
                 'required',
-                'max:200',
                 new DoubleUnique(
-                    SeccionPregunta::class,
-                    'seccion_preguntaNOMBRE',
+                    RetroDiagnostico::class,
+                    'retro_tipo_diagnosticoRANGO',
                     'TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',
                     $this->diagnostico->tipo_diagnosticoID
                 ),
             ],
-            'peso_seccion' => [
-                'bail',
+            'nivel' => [
                 'required',
-                'integer',
-                'max:100',
-                new WeightGroup(
-                    SeccionPregunta::class,
-                    'seccion_preguntaPESO',
+                new DoubleUnique(
+                    RetroDiagnostico::class,
+                    'retro_tipo_diagnosticoNIVEL',
                     'TIPOS_DIAGNOSTICOS_tipo_diagnosticoID',
                     $this->diagnostico->tipo_diagnosticoID
-                )
+                ),
             ],
+            'message_feedback' => 'required|min:3|max:500',
+            'message_feedback2' => 'required|min:3|max:500',
+            'message_feedback3' => 'required|min:3|max:500',
+            'message_feedback4' => 'required|min:3|max:500',
         ];
     }
 }

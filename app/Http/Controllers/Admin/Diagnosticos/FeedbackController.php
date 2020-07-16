@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Diagnosticos;
 
 use App\Constants\Estado;
 use App\Http\Controllers\Controller;
@@ -10,18 +10,8 @@ use App\Models\RetroDiagnostico;
 use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
 
-class DiagnosticoFeedbackController extends Controller
+class FeedbackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -47,28 +37,17 @@ class DiagnosticoFeedbackController extends Controller
         $retroDiagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $diagnostico->tipo_diagnosticoID;
         $retroDiagnostico->retro_tipo_diagnosticoRANGO = $request->input('rango');
         $retroDiagnostico->retro_tipo_diagnosticoNIVEL = $request->input('nivel');
-        $retroDiagnostico->retro_tipo_diagnosticoMensaje = $request->input('feedback');
-        $retroDiagnostico->retro_tipo_diagnosticoMensaje2 = $request->input('feedback2');
-        $retroDiagnostico->retro_tipo_diagnosticoMensaje3 = $request->input('feedback3');
-        $retroDiagnostico->retro_tipo_diagnosticoMensaje4 = $request->input('feedback4');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje = $request->input('message_feedback');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje2 = $request->input('message_feedback2');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje3 = $request->input('message_feedback3');
+        $retroDiagnostico->retro_tipo_diagnosticoMensaje4 = $request->input('message_feedback4');
         $retroDiagnostico->retro_tipo_diagnosticoESTADO = Estado::ACTIVO;
 
         $retroDiagnostico->save();
 
-        return redirect()->route('admin.diagnosticos.edit', $diagnostico)->with([
+        return redirect()->route('admin.diagnosticos.show', $diagnostico)->with([
             'success' => __('Retroalimentación agregada correctamente'),
         ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -81,8 +60,6 @@ class DiagnosticoFeedbackController extends Controller
      */
     public function edit(Request $request, TipoDiagnostico $diagnostico, RetroDiagnostico $feedback)
     {
-        //$retroDiagnostico = RetroDiagnostico::find($feedback);
-
         return view('administrador.diagnosticos.feedback.edit', compact('diagnostico', 'feedback'));
     }
 
@@ -96,18 +73,17 @@ class DiagnosticoFeedbackController extends Controller
      */
     public function update(FeedbackUpdateRequest $request, TipoDiagnostico $diagnostico, RetroDiagnostico $feedback)
     {
-        $feedback->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID = $diagnostico->tipo_diagnosticoID;
         $feedback->retro_tipo_diagnosticoRANGO = $request->input('rango');
         $feedback->retro_tipo_diagnosticoNIVEL = $request->input('nivel');
-        $feedback->retro_tipo_diagnosticoMensaje = $request->input('feedback');
-        $feedback->retro_tipo_diagnosticoMensaje2 = $request->input('feedback2');
-        $feedback->retro_tipo_diagnosticoMensaje3 = $request->input('feedback3');
-        $feedback->retro_tipo_diagnosticoMensaje4 = $request->input('feedback4');
+        $feedback->retro_tipo_diagnosticoMensaje = $request->input('message_feedback');
+        $feedback->retro_tipo_diagnosticoMensaje2 = $request->input('message_feedback2');
+        $feedback->retro_tipo_diagnosticoMensaje3 = $request->input('message_feedback3');
+        $feedback->retro_tipo_diagnosticoMensaje4 = $request->input('message_feedback4');
         $feedback->retro_tipo_diagnosticoESTADO = Estado::ACTIVO;
 
         $feedback->save();
 
-        return redirect()->route('admin.diagnosticos.edit', $diagnostico)->with([
+        return redirect()->route('admin.diagnosticos.show', $diagnostico)->with([
             'success' => __('Retroalimentación actualizado correctamente'),
         ]);
     }
@@ -124,7 +100,7 @@ class DiagnosticoFeedbackController extends Controller
     {
         $feedback->delete();
 
-        return redirect()->route('admin.diagnosticos.edit', $diagnostico)
+        return redirect()->route('admin.diagnosticos.show', $diagnostico)
             ->withSuccess(__('Mensaje eliminado correctamente'));
     }
 }

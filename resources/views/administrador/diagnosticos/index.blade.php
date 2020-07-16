@@ -24,7 +24,13 @@
                                             {{$tipo->tipo_diagnosticoNOMBRE}}
                                             <hr>
                                             @foreach($tipo->seccionesDiagnosticos as $key=> $seccion)
-                                                <a class="btn @if($seccion->seccion_preguntaESTADO == 'Activo') btn-primary @else btn-secondary @endif btn-sm" href="{{action('Admin\DiagnosticoController@seccion', ['diagnostico'=> $tipo->tipo_diagnosticoID,'seccion'=> $seccion->seccion_preguntaID])}}" style="margin: 5px;" @if($seccion->seccion_preguntaESTADO == 'Inactivo') aria-label="Sección inactiva" data-balloon-pos="up" @endif>
+                                                <a class="btn
+                                                    @if($seccion->seccion_preguntaESTADO == 'Activo') btn-primary @else btn-secondary @endif
+                                                    btn-sm"
+                                                    href="{{ route('admin.diagnosticos.secciones.show', [$tipo, $seccion]) }}"
+                                                    style="margin: 5px;" @if($seccion->seccion_preguntaESTADO == 'Inactivo')
+                                                    aria-label="Sección inactiva"
+                                                    data-balloon-pos="up" @endif>
                                                     {{$seccion->seccion_preguntaNOMBRE}}
                                                 </a>
                                             @endforeach
@@ -43,16 +49,10 @@
                                             </div>
                                         </td>
                                         <td class="text-center">
-                                            <a class="p-1" href="{{ route('admin.diagnosticos.edit', $tipo) }}"
+                                            <a class="p-1" href="{{ route('admin.diagnosticos.show', $tipo) }}"
                                                aria-label="Editar tipo de diagnóstico" data-balloon-pos="up">
-                                                <i class="fas fa-edit text-warning"></i>
+                                                <i class="fas fa-eye text-info"></i>
                                             </a>
-                                            @if ($tipo->seccionesDiagnosticos->sum('seccion_preguntaPESO') < 100)
-                                            <a class="p-1" href="{{ route('admin.diagnosticos.secciones.create', $tipo) }}"
-                                               aria-label="Agregar sección" data-balloon-pos="up">
-                                                <i class="fas fa-plus-circle text-primary"></i>
-                                            </a>
-                                            @endif
                                             <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Otras opciones" right no-caret>
                                                 <template v-slot:button-content>
                                                     <i class="fas fa-fw fa-ellipsis-v"></i>

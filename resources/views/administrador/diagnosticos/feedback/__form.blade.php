@@ -1,8 +1,8 @@
-<input name="tipo_diagnosticoID" id="tipo_diagnosticoID" type="hidden" value="{{ $diagnostico->tipo_diagnosticoID }}">
 <div class="row">
+    <input name="redirect" type="hidden" value="{{ old('redirect', URL::previous()) }}">
     <div class="col-lg-6">
         <rc-input
-                rules="required|numeric|max_value:100"
+                rules="required|numeric|min_value:0|max_value:100"
                 name="rango"
                 id="rango"
                 type="text"
@@ -18,7 +18,7 @@
 
     <div class="col-lg-6">
         <rc-input
-                rules="required|max:255"
+                rules="required|min:3|max:80"
                 name="nivel"
                 id="nivel"
                 type="text"
@@ -34,50 +34,50 @@
 
     <div class="col-lg-12">
         <rc-text-area
-                rules="required|max:500"
-                name="feedback"
-                id="feedback"
-                @error('feedback')
+                rules="required|min:3|max:500"
+                name="message_feedback"
+                id="message_feedback"
+                @error('message_feedback')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('feedback', $feedback->retro_tipo_diagnosticoMensaje) }}"
+                initial-value="{{ old('message_feedback', $feedback->retro_tipo_diagnosticoMensaje) }}"
                 placeholder="Escriba retroalimentación"
                 label="Retroalimentación"
         ></rc-text-area>
     </div>
     <div class="col-lg-12">
         <rc-text-area
-                rules="required|max:500"
-                name="feedback2"
-                id="feedback2"
-                @error('feedback2')
+                rules="required|min:3|max:500"
+                name="message_feedback2"
+                id="message_feedback2"
+                @error('message_feedback2')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('feedback2', $feedback->retro_tipo_diagnosticoMensaje2) }}"
+                initial-value="{{ old('message_feedback2', $feedback->retro_tipo_diagnosticoMensaje2) }}"
                 placeholder="Escriba retroalimentación"
         ></rc-text-area>
     </div>
     <div class="col-lg-12">
         <rc-text-area
-                rules="required|max:500"
-                name="feedback3"
-                id="feedback3"
-                @error('feedback3')
+                rules="required|min:3|max:500"
+                name="message_feedback3"
+                id="message_feedback3"
+                @error('message_feedback3')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('feedback3', $feedback->retro_tipo_diagnosticoMensaje3) }}"
+                initial-value="{{ old('message_feedback3', $feedback->retro_tipo_diagnosticoMensaje3) }}"
                 placeholder="Escriba retroalimentación"
         ></rc-text-area>
     </div>
     <div class="col-lg-12">
         <rc-text-area
-                rules="required|max:500"
-                name="feedback4"
-                id="feedback4"
-                @error('feedback4')
+                rules="required|min:3|max:500"
+                name="message_feedback4"
+                id="message_feedback4"
+                @error('message_feedback4')
                 error="{{ $message }}"
                 @enderror
-                initial-value="{{ old('feedback4', $feedback->retro_tipo_diagnosticoMensaje4) }}"
+                initial-value="{{ old('message_feedback4', $feedback->retro_tipo_diagnosticoMensaje4) }}"
                 placeholder="Escriba retroalimentación"
         ></rc-text-area>
     </div>

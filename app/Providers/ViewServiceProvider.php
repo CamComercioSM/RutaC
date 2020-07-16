@@ -69,6 +69,7 @@ class ViewServiceProvider extends ServiceProvider
             [
                 'administrador.diagnosticos.partials.__editar_diagnostico',
                 'administrador.diagnosticos.feedback.__form',
+                'administrador.diagnosticos.seccion-pregunta.__form'
             ],
             EstadoComposer::class
         );

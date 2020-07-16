@@ -2,54 +2,29 @@
 
 namespace App\Models;
 
-use App\Constants\Estado;
-use Illuminate\Database\Eloquent\Builder;
+use App\Concerns\HasEnabledStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class TipoDiagnostico extends Model
 {
+    use HasEnabledStatus;
+
     protected $table = 'tipos_diagnosticos';
     protected $primaryKey = 'tipo_diagnosticoID';
+    protected $estado = 'tipo_diagnosticoESTADO';
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    /*protected $hidden = [
-        'password', 'remember_token',
-    ];*/
     protected $hidden = [
         'created_at', 'updated_at',
     ];
 
-    public function isEnabled(): bool
+    protected function getStatus()
     {
-        return $this->tipo_diagnosticoESTADO === Estado::ACTIVO ? true : false;
-    }
-
-    public function isDisabled(): bool
-    {
-        return ! $this->isEnabled();
-    }
-
-    public function enable(): bool
-    {
-        return $this->update(['tipo_diagnosticoESTADO' => Estado::ACTIVO]);
-    }
-
-    public function disable(): bool
-    {
-        return $this->update(['tipo_diagnosticoESTADO' => Estado::INACTIVO]);
-    }
-
-    public function toggle(): self
-    {
-        $this->isEnabled()
-            ? $this->disable()
-            : $this->enable();
-
-        return $this;
+        return $this->estado;
     }
 
     /*

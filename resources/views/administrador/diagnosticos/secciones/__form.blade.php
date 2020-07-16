@@ -1,4 +1,5 @@
 <div class="row">
+    <input name="redirect" type="hidden" value="{{ old('redirect', URL::previous()) }}">
     <div class="col-lg-6">
         <rc-input
                 rules="required|max:255"
@@ -17,7 +18,7 @@
 
     <div class="col-lg-6">
         <rc-input
-                rules="required|max:255"
+                rules="required|numeric|min_value:1|max_value:100"
                 name="peso_seccion"
                 id="peso_seccion"
                 type="text"

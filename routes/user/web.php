@@ -25,8 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 | Validaciones
 |---------------------------------------------------------------------------------------
 */
-Route::post('validar_datos_emprendimiento', 'ValidacionesController@validarEmprendimiento');
-Route::post('validar_datos_empresa', 'ValidacionesController@validarEmpresa');
+//Route::post('validar_datos_emprendimiento', 'ValidacionesController@validarEmprendimiento');
+//Route::post('validar_datos_empresa', 'ValidacionesController@validarEmpresa');
 
 /*
 |---------------------------------------------------------------------------------------
@@ -64,8 +64,8 @@ Route::post('emprendimiento/{emprendimiento}/editar', 'EmprendimientoController@
 Route::post('emprendimiento/{emprendimiento}/eliminar', 'EmprendimientoController@eliminarEmprendimiento');
 Route::get('emprendimiento/{emprendimiento}/actualizar-datos/', 'EmprendimientoController@showFormActualizarEmprendimiento');
 
-Route::get('emprendimiento/agregar-emprendimiento', 'User\EmprendimientoController@create')->name('agregar-emprendimiento');
-Route::post('emprendimiento/agregar-emprendimiento', 'User\EmprendimientoController@store')->name('guardar-emprendimiento');
+Route::get('emprendimiento/agregar-emprendimiento', 'EmprendimientoController@create')->name('agregar-emprendimiento');
+Route::post('emprendimiento/agregar-emprendimiento', 'EmprendimientoController@store')->name('guardar-emprendimiento');
 
 /*
 |---------------------------------------------------------------------------------------

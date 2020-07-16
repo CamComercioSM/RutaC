@@ -5,15 +5,15 @@
             <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header pb-0">
-                        <h5 class="card-title">{{ __('Nuevo Mensaje') }}</h5>
+                        <h5 class="card-title">{{ __('Nueva Sección') }}</h5>
                     </div>
                     <rc-form
-                            action="{{ route('admin.diagnosticos.feedback.store', $diagnostico) }}"
+                            action="{{ route('admin.diagnosticos.secciones.store', $diagnostico) }}"
                             method="post"
                     >
                         <div class="card-body">
                             @csrf
-                            @include('administrador.diagnosticos.feedback.__form')
+                            @include('administrador.diagnosticos.secciones.__form')
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a href="{{ old('redirect', URL::previous()) }}" class="btn btn-secondary btn-sm">

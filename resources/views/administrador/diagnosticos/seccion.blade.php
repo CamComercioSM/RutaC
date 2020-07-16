@@ -7,12 +7,14 @@
             <div class="card card-default"> 
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-between align-content-center">
-                        <a class="btn btn-primary mr-2" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-feedback"> Agregar feedback </a>
-                        <a class="btn btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-pregunta"> Agregar pregunta </a>
+                        <a class="btn btn-sm btn-primary mr-2" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-feedback"> Agregar feedback </a>
+                        <a class="btn btn-sm btn-primary" href="javascript:void(0)" data-toggle="modal" data-target="#modal-agregar-pregunta"> Agregar pregunta </a>
                     </div>
                     <div class="btn-toolbar" role="toolbar">
                         <div class="btn-group btn-group-sm">
-                            <a class="btn btn-primary" href="{{ route('admin.diagnosticos.index') }}"><i class="fas fa-arrow-left"></i> Volver</a>
+                            <a href="{{ route('admin.diagnosticos.index') }}" class="btn btn-sm btn-secondary">
+                                <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
+                            </a>
                         </div>
                     </div> 
                 </div>
@@ -23,46 +25,18 @@
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12 ">
-                                            <form id="editarSeccion" action="" method="post">
-                                                {!! csrf_field() !!}
-                                                <input name="idSeccion" id="idSeccion" type="hidden" value="{{$seccionPregunta->seccion_preguntaID}}">
-                                                <div class="box-body">
-                                                    <div class="row ml-2">
-                                                        <div class="col-xs-6 pr-1">
-                                                            <label>Nombre sección</label>
-                                                            <div class="form-group has-feedback">
-                                                                <input type="text" id="nombreSeccion" name="nombre_seccion" class="form-control" placeholder="Nombre de la sección" value="{{$seccionPregunta->seccion_preguntaNOMBRE}}">
-                                                                <span class="text-danger" id="error_nombre_seccion"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs- pr-1">
-                                                            <label>Peso</label>
-                                                            <div class="form-group">
-                                                                <input type="text" id="pesoSeccion" name="peso_seccion" class="form-control" placeholder="Peso de la sección" value="{{$seccionPregunta->seccion_preguntaPESO}}">
-                                                                <span class="text-danger" id="error_peso_seccion"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-3 pr-1">
-                                                            <label>Estado</label>
-                                                            <div class="form-group">
-                                                                @if($seccionPregunta->feedback->count() <= 0 || $preguntas <= 0)
-                                                                El estado podrá ser cambiado hasta que agregue feedback y preguntas con sus respuestas
-                                                                @else
-                                                                <select name="estado" class="form-control">
-                                                                    <option value="Activo" @if($seccionPregunta->seccion_preguntaESTADO == 'Activo') selected @endif>Activo</option>
-                                                                    <option value="Inactivo" @if($seccionPregunta->seccion_preguntaESTADO == 'Inactivo') selected @endif>Inactivo</option>
-                                                                </select>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            <rc-form
+                                                    action="#"
+                                                    method="post"
+                                            >
+                                                @method('PATCH')
+                                                @include('administrador.diagnosticos.seccion-pregunta.__form')
+                                                <div class="card-footer d-flex justify-content-end">
+                                                    <button class="btn btn-primary btn-sm" type="submit">
+                                                        {{ __('Guardar') }}
+                                                    </button>
                                                 </div>
-                                                <div class="box-footer">
-                                                    <div class="options ml-2">
-                                                        <button type="button" id="editar-seccion" class="btn btn-primary btn-sm">Guardar</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            </rc-form>
                                         </div>
                                     </div>
                                     <hr>                       
@@ -87,8 +61,21 @@
                                                         <td class="text-left">{{$feedback->retro_seccionRANGO}}</td>
                                                         <td class="text-left">{{$feedback->retro_seccionMENSAJE}}</td>
                                                         <td class="text-center">
+                                                            <a class="p-1" href="#"
+                                                               aria-label="Editar sección" data-balloon-pos="up">
+                                                                <i class="fas fa-edit text-warning"></i>
+                                                            </a>
+                                                            <button type="button" class="btn btn-link text-danger p-1"
+                                                                    data-route="#"
+                                                                    data-toggle="modal"
+                                                                    data-target="#confirmDeleteModal" title="{{ __('Eliminar') }}">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+
+                                                            {{--
                                                             <a class="btn btn-warning btn-xs mb-1" href="javascript:void(0)" data-toggle="modal" data-target="#modal-editar-feedback" onclick="editarFeedbackS('{{$feedback->retro_seccionID}}','{{$feedback->retro_seccionNIVEL}}','{{$feedback->retro_seccionRANGO}}','{{$feedback->retro_seccionMENSAJE}}');return false;">Editar</a>
                                                             <a class="btn btn-danger btn-xs" href="javascript:void(0)" data-toggle="modal" data-target="#modal-eliminar-feedback" onclick="eliminarFeedbackS('{{$feedback->retro_seccionID}}');return false;">Eliminar</a>
+                                                            --}}
                                                         </td>
                                                     </tr>
                                                     @endforeach
@@ -118,7 +105,11 @@
                                                         <td class="text-left">{{$pregunta->preguntaORDEN}}</td>
                                                         <td class="text-left">{{$pregunta->preguntaENUNCIADO}}</td>
                                                         <td class="text-center">
-                                                            <a class="btn @if($pregunta->preguntaESTADO == 'Activo') btn-warning @else btn-info @endif btn-xs" href="{{action('Admin\DiagnosticoController@editarPregunta', ['diagnostico'=> $seccionPregunta->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID,'seccion'=> $seccionPregunta->seccion_preguntaID, 'pregunta'=> $pregunta->preguntaID])}}">Editar</a>
+                                                            <a class="p-1" href="{{action('Admin\DiagnosticoController@editarPregunta', ['diagnostico'=> $seccionPregunta->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID,'seccion'=> $seccionPregunta->seccion_preguntaID, 'pregunta'=> $pregunta->preguntaID])}}"
+                                                               aria-label="Editar sección" data-balloon-pos="up">
+                                                                <i class="fas fa-edit text-warning"></i>
+                                                            </a>
+                                                            {{-- <a class="btn @if($pregunta->preguntaESTADO == 'Activo') btn-warning @else btn-info @endif btn-xs" href="{{action('Admin\DiagnosticoController@editarPregunta', ['diagnostico'=> $seccionPregunta->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID,'seccion'=> $seccionPregunta->seccion_preguntaID, 'pregunta'=> $pregunta->preguntaID])}}">Editar</a> --}}
                                                             @if($pregunta->preguntaORDEN > 1)
                                                             <a id="pregunta_{{$pregunta->preguntaID}}" onclick="cambiarOrden(this)" href="javascript:void(0)" data-pregunta="subir-{{$pregunta->preguntaID}}"> <i class="fa fa-arrow-up" data-toggle="tooltip" title="Subir"></i></a>
                                                             @endif

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Diagnosticos;
 
 use App\Constants\Estado;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Diagnosticos\UpdateTipoDiagnosticoRequest;
 use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
 
-class TipoDiagnosticoController extends Controller
+class DiagnosticoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,22 +46,23 @@ class TipoDiagnosticoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  TipoDiagnostico $diagnostico
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(TipoDiagnostico $diagnostico)
     {
-        //
+        $diagnostico = $diagnostico->with('seccionesDiagnosticos')->first();
+
+        return view('administrador.diagnosticos.show', compact('diagnostico'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Request $request
      * @param TipoDiagnostico $diagnostico
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, TipoDiagnostico $diagnostico)
+    public function edit(TipoDiagnostico $diagnostico)
     {
         return response()->view('administrador.diagnosticos.editar', compact('diagnostico'));
     }
@@ -68,31 +70,19 @@ class TipoDiagnosticoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdateTipoDiagnosticoRequest $request
      * @param TipoDiagnostico $diagnostico
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, TipoDiagnostico $diagnostico)
+    public function update(UpdateTipoDiagnosticoRequest $request, TipoDiagnostico $diagnostico)
     {
         $diagnostico->tipo_diagnosticoNOMBRE = $request->input('nombre');
-        $diagnostico->tipo_diagnosticoESTADO = $request->input('estado');
 
         $diagnostico->save();
 
-        return redirect()->route('admin.diagnosticos.index')->with([
+        return redirect()->route('admin.diagnosticos.show', $diagnostico)->with([
             'success' => __('Diagnóstico actualizado correctamente'),
         ]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     /**

@@ -87,7 +87,6 @@
                     error="{{ $message }}"
                     @enderror
                     autocomplete="off"
-                    placeholder="Digite el NIT para validar este dato. "
                     label="{{ __('¿Está registrado en la Cámara de Comercio?') }} *"
             ></rc-input>
     </div>
@@ -182,6 +181,58 @@
                 autocomplete="off"
                 placeholder="Digite correo electrónico"
                 label="Correo electrónico de la empresa *"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-12">
+        <h4>Contacto Principal</h4>
+    </div>
+
+    <div class="form-group col-md-4">
+        <rc-input
+                rules="min:3|max:50|required"
+                name="nombre_contacto_cial"
+                id="nombre_contacto_cial"
+                type="text"
+                @error('nombre_contacto_cial')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('nombre_contacto_cial', $empresa->nombreContactoCial) }}"
+                autocomplete="off"
+                placeholder="Digite nombre de la persona "
+                label="Nombre contacto principal *"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-4">
+        <rc-input
+                rules="max:15|required_if:nombre_contacto_cial|required"
+                name="telefono_contacto_cial"
+                id="telefono_contacto_cial"
+                type="number"
+                @error('telefono_contacto_cial')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('telefono_contacto_cial', $empresa->telefonoContactoCial) }}"
+                autocomplete="off"
+                placeholder="Digite teléfono de la persona "
+                label="Teléfono contacto principal *"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-4">
+        <rc-input
+                rules="email|required_if:nombre_contacto_cial|required"
+                name="correo_contacto_cial"
+                id="correo_contacto_cial"
+                type="text"
+                @error('correo_contacto_cial')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('correo_contacto_cial', $empresa->correoContactoCial) }}"
+                autocomplete="off"
+                placeholder="Digite correo electrónico de la persona"
+                label="Correo electrónico contacto principal *"
         ></rc-input>
     </div>
 
@@ -299,57 +350,7 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-md-12">
-        <h4>Contacto Principal</h4>
-    </div>
 
-    <div class="form-group col-md-4">
-        <rc-input
-                rules="min:3|max:50|required"
-                name="nombre_contacto_cial"
-                id="nombre_contacto_cial"
-                type="text"
-                @error('nombre_contacto_cial')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('nombre_contacto_cial', $empresa->nombreContactoCial) }}"
-                autocomplete="off"
-                placeholder="Digite nombre de la persona "
-                label="Nombre contacto principal *"
-        ></rc-input>
-    </div>
-
-    <div class="form-group col-md-4">
-        <rc-input
-                rules="max:15|required_if:nombre_contacto_cial|required"
-                name="telefono_contacto_cial"
-                id="telefono_contacto_cial"
-                type="number"
-                @error('telefono_contacto_cial')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('telefono_contacto_cial', $empresa->telefonoContactoCial) }}"
-                autocomplete="off"
-                placeholder="Digite teléfono de la persona "
-                label="Teléfono contacto principal *"
-        ></rc-input>
-    </div>
-
-    <div class="form-group col-md-4">
-        <rc-input
-                rules="email|required_if:nombre_contacto_cial|required"
-                name="correo_contacto_cial"
-                id="correo_contacto_cial"
-                type="text"
-                @error('correo_contacto_cial')
-                error="{{ $message }}"
-                @enderror
-                initial-value="{{ old('correo_contacto_cial', $empresa->correoContactoCial) }}"
-                autocomplete="off"
-                placeholder="Digite correo electrónico de la persona"
-                label="Correo electrónico contacto principal *"
-        ></rc-input>
-    </div>
 
 </div>
 <!--

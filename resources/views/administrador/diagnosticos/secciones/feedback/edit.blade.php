@@ -5,18 +5,19 @@
             <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header pb-0">
-                        <h5 class="card-title">{{ __('Nueva Sección') }}</h5>
+                        <h5 class="card-title">{{ __('Editar Mensaje') }}</h5>
                     </div>
                     <rc-form
-                            action="{{ route('admin.diagnosticos.secciones.store', $diagnostico) }}"
+                            action="{{ route('admin.diagnosticos.secciones.feedback.update', [$diagnostico, $seccione, $feedback]) }}"
                             method="post"
                     >
                         <div class="card-body">
                             @csrf
-                            @include('administrador.diagnosticos.seccion.__form')
+                            @method('PATCH')
+                            @include('administrador.diagnosticos.secciones.feedback.__form')
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <a href="{{ route('admin.diagnosticos.index') }}" class="btn btn-secondary btn-sm">
+                            <a href="{{ old('redirect', URL::previous()) }}" class="btn btn-secondary btn-sm">
                                 <i class="fas fa-arrow-left"></i> {{ __('Cancelar') }}
                             </a>
                             <button type="submit" class="btn btn-success btn-sm">

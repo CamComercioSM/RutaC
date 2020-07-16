@@ -1,19 +1,23 @@
 <?php
 
-Route::resource('diagnosticos', 'TipoDiagnosticoController');
-Route::post('diagnosticos/{diagnostico}/toggle')->uses('TipoDiagnosticoController@toggle')->name('diagnosticos.toggle');
+Route::resource('diagnosticos', 'Diagnosticos\DiagnosticoController');
+Route::post('diagnosticos/{diagnostico}/toggle')->uses('Diagnosticos\DiagnosticoController@toggle')->name('diagnosticos.toggle');
 
-Route::resource('diagnosticos.secciones', 'SeccionPreguntaController');
+Route::resource('diagnosticos.secciones', 'Diagnosticos\SeccionController');
+Route::post('diagnosticos/{diagnostico}/secciones/{seccione}/toggle')->uses('Diagnosticos\SeccionPreguntaController@toggle')->name('diagnosticos.secciones.toggle');
 
-Route::resource('diagnosticos.feedback', 'DiagnosticoFeedbackController');
+Route::resource('diagnosticos.feedback', 'Diagnosticos\FeedbackController')->except('index');
+
+Route::resource('diagnosticos.secciones.feedback', 'Diagnosticos\SeccionFeedbackController')->except(['index, store']);
 
 
-//Route::get('diagnosticos/secciones/{seccion}/crear')->uses('SeccionPreguntaController@toggle')->name('diagnosticos.secciones.crear');
+
+
 
 
 
 Route::get('', 'AdminController@index')->name('index');
-Route::get('documento/{file}', 'PublicController@getDocumento');
+//Route::get('documento/{file}', 'PublicController@getDocumento');
 
 Route::get('rutas', 'RutasController@index')->name('rutas.index');
 Route::get('todas-rutas', 'RutasController@todasRutas');
@@ -33,6 +37,7 @@ Route::post('diagnosticos/editar-feedback-seccion', 'DiagnosticoController@edita
 Route::post('diagnosticos/eliminar-feedback-seccion', 'DiagnosticoController@eliminarFeedbackSeccion');
 
 Route::post('diagnosticos/editar/tipo', 'DiagnosticoController@editarTipoDiagnostico');
+/*
 Route::get('diagnosticos/seccion/{diagnostico}/{seccion}', 'DiagnosticoController@seccion');
 Route::get('diagnosticos/seccion/editar-pregunta/{diagnostico}/{seccion}/{pregunta}', 'DiagnosticoController@editarPregunta');
 
@@ -56,7 +61,7 @@ Route::get('diagnostico/ver-historico/{tipo}/{id}', 'DiagnosticoController@verHi
 Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior');
 Route::get('diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'DiagnosticoController@verResultadoSeccion');
 Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico');
-
+*/
 Route::resource('videos', 'VideosController');
 Route::post('videos/{video}/toggle')->uses('VideosController@toggle')->name('videos.toggle');
 
@@ -103,4 +108,4 @@ Route::get('export/empresas', 'ExportController@exportarEmpresas');
 Route::get('export/emprendimientos', 'ExportController@exportarEmprendimientos');
 Route::get('export/rutas', 'ExportController@exportarRutas');
 
-Route::get('logout', 'Auth\LoginController@logout');
+//Route::get('logout', 'Auth\LoginController@logout');
