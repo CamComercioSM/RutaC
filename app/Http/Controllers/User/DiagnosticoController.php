@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Constants\CTipoDiagnostico;
 use App\Constants\EstadosDiagnostico;
 use App\Constants\TipoNegocio;
+use App\Events\FinDiagnosticoEvent;
 use App\Exceptions\RutaCException;
 use App\Http\Controllers\Controller;
 use App\Mail\RutaCMail;
@@ -287,7 +288,8 @@ class DiagnosticoController extends Controller
                 $ruta->save();
 
                 $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('datoUsuario')->first();
-                Mail::send(new RutaCMail($usuario, 'fin_diagnostico'));
+
+                event(new FinDiagnosticoEvent($usuario, $diagnostico));
             }
 
             DB::commit();
