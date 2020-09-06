@@ -10,6 +10,8 @@ Route::resource('diagnosticos.feedback', 'Diagnosticos\FeedbackController')->exc
 
 Route::resource('diagnosticos.secciones.feedback', 'Diagnosticos\SeccionFeedbackController')->except(['index, store']);
 
+Route::resource('diagnosticos.secciones.pregunta', 'Diagnosticos\SeccionPreguntaController');
+
 
 Route::get('diagnostico/resultado-anterior/emprendimiento/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior.emprendimiento');
 Route::get('diagnostico/resultado-anterior/empresa/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior.empresa');

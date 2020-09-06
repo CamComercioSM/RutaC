@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Secciones\StoreSeccionFormRequest;
 use App\Models\Competencia;
 use App\Models\Diagnostico;
+use App\Models\Pregunta;
 use App\Models\SeccionPregunta;
 use App\Models\TipoDiagnostico;
 use Illuminate\Http\Request;
@@ -108,11 +109,12 @@ class SeccionPreguntaController extends Controller
      * @param Request $request
      * @param TipoDiagnostico $diagnostico
      * @param SeccionPregunta $seccione
+     * @param Pregunta $preguntum
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Request $request, TipoDiagnostico $diagnostico, SeccionPregunta $seccione)
+    public function edit(Request $request, TipoDiagnostico $diagnostico, SeccionPregunta $seccione, Pregunta $preguntum)
     {
-        return view('administrador.diagnosticos.secciones.edit', compact('diagnostico', 'seccione'));
+        return view('administrador.diagnosticos.preguntas.edit', compact('diagnostico', 'seccione', 'preguntum'));
     }
 
     /**
