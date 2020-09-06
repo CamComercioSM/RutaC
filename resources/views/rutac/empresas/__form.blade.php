@@ -79,7 +79,6 @@
 
     <div class="form-row col-md-4">
         <rc-input
-                    rules="required"
                     name="registrado"
                     id="registrado"
                     type="text"

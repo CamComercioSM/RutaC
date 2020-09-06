@@ -20,7 +20,7 @@ class FormRepository
             'CE'=>'Cédula de extranjería'
         ];
     }
-    
+
     public function estado()
     {
         return collect([
@@ -118,7 +118,7 @@ class FormRepository
         return Municipio::where('departamento_id', $departamento->id_departamento)->select('id_municipio', 'municipio')->get();
     }
 
-    public function tipoEmpresas()
+    public static function tipoEmpresas()
     {
         return collect([
             'Persona natural comerciante',
@@ -153,7 +153,7 @@ class FormRepository
         ];
     }
 
-    public function activosTotales()
+    public static function activosTotales()
     {
         return collect([
             'Inferior a 500 SMMLV',

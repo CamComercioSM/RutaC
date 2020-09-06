@@ -6,11 +6,11 @@
         <div class="row justify-content">
             <div class="col-md-12">
                 <div class="card card-default">
-                    <div class="card-header d-flex justify-content-end">                     
+                    <div class="card-header d-flex justify-content-end">
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group btn-group-sm">
 								@if($tipo == 'empresa')
-									<a class="btn btn-primary" href="{{ action('Admin\EmpresaController@verEmpresa',[$unidad]) }}"><i class="fa fa-arrow-left"></i> Volver</a>
+									<a class="btn btn-primary" href="{{ route('admin.empresas.show', $unidad) }}"><i class="fa fa-arrow-left"></i> Volver</a>
 								@endif
 								@if($tipo == 'emprendimiento')
 									<a class="btn btn-primary" href="{{ action('Admin\EmprendimientoController@verEmprendimiento',[$unidad]) }}"><i class="fa fa-arrow-left"></i> Volver</a>
@@ -28,7 +28,7 @@
 								<a class="btn @if($diagnostico->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-lg" href="{{ action('Admin\RutasController@revisarRuta',[$diagnostico->ruta->rutaID]) }}" style="width:200px;">
 									<i class="fa fa-line-chart"></i> Ver Ruta
 								</a>
-								
+
 							</div>
 						@endif
 						<hr>
@@ -60,9 +60,9 @@
 										</div>
 										<div class="box-footer" style="padding: 10px 30px;">
 											<div class="options">
-												@if($seccionPregunta->estadoSeccion == 'Finalizado') 
+												@if($seccionPregunta->estadoSeccion == 'Finalizado')
 													<a href="{{ action('Admin\DiagnosticoController@verResultadoSeccion',[$tipo,$diagnostico->diagnosticoID, $seccionPregunta->seccion_preguntaID]) }}" class="btn btn-success btn-sm"  > Completado </a>
-													
+
 												@else
 													<button class="btn btn-primary btn-sm"> Sin Completar </button>
 												@endif
@@ -75,7 +75,7 @@
 								@endif
 							@endforeach
 						</div>
-						
+
 
                     </div>
                 </div>

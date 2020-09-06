@@ -5,7 +5,7 @@
 <section class="content">
 	<div class="text-right form-group">
 	    @if($tipo == 'empresa')
-		<a class="btn btn-primary" href="{{ action('Admin\EmpresaController@verEmpresa',[$unidad]) }}"><i class="fa fa-arrow-left"></i> Volver</a>
+		<a class="btn btn-primary" href="{{ route('admin.empresas.show', $unidad) }}"><i class="fa fa-arrow-left"></i> Volver</a>
 		@endif
 		@if($tipo == 'emprendimiento')
 		<a class="btn btn-primary" href="{{ action('Admin\EmprendimientoController@verEmprendimiento',[$unidad]) }}"><i class="fa fa-arrow-left"></i> Volver</a>
@@ -234,7 +234,7 @@
 	    barChartCompetencia.Bar(barChartData, barChartOptions)
 
 	});
-	
+
 	function randomColorFactor(){
     	return Math.round(Math.random() * 255);
     };

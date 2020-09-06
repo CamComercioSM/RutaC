@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Constants\Estado;
+use App\Helpers\Misc;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\StoreEmpresa;
@@ -269,9 +270,8 @@ class EmpresaController extends Controller
         $empresa->empresaRANGOS_ACTIVOS = $request->input('rangos_activos');
         $empresa->empresaCORREO_ELECTRONICO = $request->input('correo_electronico');
         $empresa->empresaSITIO_WEB = $request->input('pagina_web');
-        $empresa->empresaREDES_SOCIALES = $this->redesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
-        $empresa->empresaCONTACTO_COMERCIAL = $this->contactoEmpresa($request->input('nombre_contacto_cial'), $request->input('telefono_contacto_cial'), $request->input('correo_contacto_cial'));
-        $empresa->empresaCONTACTO_TALENTO_HUMANO = $this->contactoEmpresa($request->input('nombre_contacto_th'), $request->input('telefono_contacto_th'), $request->input('correo_contacto_th'));
+        $empresa->empresaREDES_SOCIALES = Misc::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
+        $empresa->empresaCONTACTO_COMERCIAL = Misc::contactoEmpresa($request->input('nombre_contacto_cial'), $request->input('telefono_contacto_cial'), $request->input('correo_contacto_cial'));
         $empresa->empresaSECTOR = $request->input('sector');
         $empresa->empresaREGISTRADO = $request->input('registrado');
         $empresa->save();

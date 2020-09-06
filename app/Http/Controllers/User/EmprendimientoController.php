@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Constants\Estado;
-use App\Helpers\Social;
+use App\Helpers\Misc;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\StoreEmprendimiento;
@@ -65,7 +65,7 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
         $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
         $emprendimiento->emprendimientoSITIO_WEB = $request->input('pagina_web');
-        $emprendimiento->emprendimientoREDES_SOCIALES = Social::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
+        $emprendimiento->emprendimientoREDES_SOCIALES = Misc::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
         $emprendimiento->save();
 
         $request->session()->put('tiene_entidad', '1');
@@ -155,7 +155,7 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
         $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
         $emprendimiento->emprendimientoSITIO_WEB = $request->input('pagina_web');
-        $emprendimiento->emprendimientoREDES_SOCIALES = Social::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
+        $emprendimiento->emprendimientoREDES_SOCIALES = Misc::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
         $emprendimiento->save();
 
         return redirect()->route('user.emprendimientos.show', $emprendimiento)->with([

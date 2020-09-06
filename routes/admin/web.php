@@ -12,7 +12,7 @@ Route::resource('diagnosticos.secciones.feedback', 'Diagnosticos\SeccionFeedback
 
 
 Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior');
-
+Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico')->name('ver-resultado');
 
 
 
@@ -60,7 +60,7 @@ Route::get('diagnosticos/asignar-servicio-respuesta', 'DiagnosticoController@asi
 Route::get('diagnostico/ver-historico/{tipo}/{id}', 'DiagnosticoController@verHistorico');
 Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior');
 Route::get('diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'DiagnosticoController@verResultadoSeccion');
-Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico');
+
 */
 Route::resource('videos', 'VideosController');
 Route::post('videos/{video}/toggle')->uses('VideosController@toggle')->name('videos.toggle');
@@ -95,9 +95,11 @@ Route::post('usuario/reset-password', 'UsuarioController@resetPassword');
 Route::get('usuario/{usuarioID}', 'UsuarioController@verUsuario');
 Route::post('usuario-guardar', 'UsuarioController@guardarPerfil');
 
-Route::get('empresas', 'EmpresaController@index')->name('empresas.index');
-Route::get('empresa/{empresaID}', 'EmpresaController@verEmpresa');
-Route::post('empresa/{empresaID}/editar', 'EmpresaController@editarEmpresa');
+
+Route::resource('empresas', 'EmpresaController');
+/*Route::get('empresas', 'EmpresaController@index')->name('empresas.index');
+Route::get('empresa/{empresaID}', 'EmpresaController@verEmpresa')->name('ver-empresa');*/
+Route::post('empresa/{empresaID}/editar', 'EmpresaController@editarEmpresa')->name('editar-empresa');
 
 Route::get('emprendimientos', 'EmprendimientoController@index')->name('emprendimientos.index');
 Route::get('emprendimiento/{emprendimientoID}', 'EmprendimientoController@verEmprendimiento');

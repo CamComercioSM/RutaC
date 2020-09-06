@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class Social
+class Misc
 {
     public static function getRedesSociales($facebook, $twitter, $instagram)
     {
@@ -29,5 +29,28 @@ class Social
         }
 
         return $redesSociales;
+    }
+
+    public static function contactoEmpresa($nombre, $telefono, $correo)
+    {
+        $contacto="";
+        if (isset($nombre)) {
+            $contacto = "nombre:".$nombre;
+        }
+        if (isset($telefono)) {
+            if ($contacto=="") {
+                $contacto = "telefono:".$telefono;
+            } else {
+                $contacto = $contacto."-telefono:".$telefono;
+            }
+        }
+        if (isset($correo)) {
+            if ($contacto=="") {
+                $contacto = "correo:".$correo;
+            } else {
+                $contacto = $contacto."-correo:".$correo;
+            }
+        }
+        return $contacto;
     }
 }

@@ -1,170 +1,147 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Empresa')
-@section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-6"></div>
-		<div class="col-sm-6 text-right">
-			<a class="btn btn-primary" href="{{action('Admin\EmpresaController@index')}}"><i class="fa fa-arrow-left"></i> Volver</a>
-		</div>
-	</div>
-</section>
+@section('app-content')
 <section class="content">
     @if($empresa)
-    <div class="row">
-        <div class="col-md-3">
-            <div class="box box-primary">
-                <div class="box-body box-profile">
-                    <h3 class="profile-username text-center">{{$empresa->empresaRAZON_SOCIAL}}</h3>
-
-                    <p class="text-muted text-center">Nit. {{$empresa->empresaNIT}}</p>
-
-                    <strong>Matrícula mercantil</strong>
-                    <p class="text-muted">{{$empresa->empresaMATRICULA_MERCANTIL}}</p>
-                    <hr>
-
-                    <strong>Organización jurídica</strong>
-                    <p class="text-muted">{{$empresa->empresaORGANIZACION_JURIDICA}}</p>
-                    <hr>
-
-                    <strong>Fecha de constitución</strong>
-                    <p class="text-muted">{{$empresa->empresaFECHA_CONSTITUCION}}</p>
-                    <hr>
-
-                    <strong>Dirección</strong>
-                    <p class="text-muted" style="margin-bottom: 0px;">{{$empresa->empresaDIRECCION_FISICA}}</p>
-                    <p class="text-muted">{{$empresa->empresaDEPARTAMENTO_EMPRESA}} - {{$empresa->empresaMUNICIPIO_EMPRESA}}</p>
-                    <hr>
-
-                    <p class="text-muted" style="margin-bottom: 0px;"><b>Empleados fijos: </b>{{$empresa->empresaEMPLEADOS_FIJOS}}</p>
-                    <p class="text-muted" style="margin-bottom: 0px;"><b>Empleados temporales: </b>{{$empresa->empresaEMPLEADOS_TEMPORALES}}</p>
-                    <p class="text-muted"><b>Rangos activos: </b>{{$empresa->empresaRANGOS_ACTIVOS}}</p>
-                    <hr>
-
-                    <a href="http://{{$empresa->empresaSITIO_WEB}}" target="_blank">{{$empresa->empresaSITIO_WEB}}</a><br>
-                    <strong>Redes sociales </strong><br>
-                    <div class="text-center">
-                        @if($empresa->facebook)
-                        <a href="https://www.facebook.com/{{$empresa->facebook}}" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-                        @endif
-                        @if($empresa->instagram)
-                        <a href="https://www.instagram.com/{{$empresa->instagram}}" target="_blank" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
-                        @endif
-                        @if($empresa->twitter)
-                        <a href="https://www.twitter.com/{{$empresa->twitter}}" target="_blank" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
-                        @endif
-                        @if(!$empresa->facebook && !$empresa->instagram && !$empresa->twitter)
-                        <p class="text-muted" style="margin-bottom: 0px;">No posee redes registradas</p>
-                        @endif
-                        
-                    </div>
-                    <hr>
-
-                    <strong>Contacto comercial</strong>
-                    <p class="text-muted" style="margin-bottom: 0px;">{{$empresa->nombreContactoCial}}</p>
-                    <p class="text-muted">{{$empresa->telefonoContactoCial}} - {{$empresa->correoContactoCial}}</p>
-                    <hr>
-
-                    <strong>Contacto talento humano</strong>
-                    <p class="text-muted" style="margin-bottom: 0px;">{{$empresa->nombreContactoTH}}</p>
-                    <p class="text-muted">{{$empresa->telefonoContactoTH}} - {{$empresa->correoContactoTH}}</p>
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#diagnosticos" data-toggle="tab">Diagnósticos</a></li>
-                    <li><a href="#editar" data-toggle="tab">Editar</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="active tab-pane" id="diagnosticos">
-                        @if(isset($empresa->diagnosticos))
-                            @if($historial > 1)
-                            <div class="text-right" style="padding-top: 10px; padding-right: 12px;">
-                                <a class="btn btn-primary btn-sm" href="{{ action('DiagnosticosController@verHistorico',['empresa',$empresa->empresaID]) }}">
-                                    <i class="fa fa-bar-chart-o"></i> Ver historico de comparación
-                                </a>
+        <div class="container">
+            <div class="row justify-content">
+                <div class="col-md-4">
+                    <div class="card card-default">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-content-center">
+                                <h5>{{$empresa->empresaRAZON_SOCIAL}}</h5>
                             </div>
-                            @endif
-                        @endif
-                        @if($empresa->diagnosticosAll->count() > 0)
-                            <ul class="timeline timeline-inverse">
-                                @foreach($empresa->diagnosticosAll as $key=> $diagnostico)
-                                    @if($diagnostico->diagnosticoESTADO == 'Finalizado')
-                                    <li class="time-label">
-                                        <span class="bg-green">
-                                        Diagnóstico # {{$key}}, realizado: {{$diagnostico->diagnosticoFECHA}}
-                                        </span>
-                                        <div class="pull-right" style="padding-top: 10px; padding-right: 12px;">
-                                            <a class="btn btn-primary btn-sm" href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',['empresa',$diagnostico->diagnosticoID]) }}" style="width:120px;">
-                                                <i class="fa fa-file-text-o"></i> Ver Resultados
+                            <div class="btn-toolbar" role="toolbar">
+                                <div class="btn-group btn-group-sm">
+                                    <a class="p-1" href="{{ route('admin.empresas.edit', $empresa) }}">
+                                        <i class="fas fa-edit text-warning"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content">
+                                <div class="col-md-12">
+                                    <strong>NIT</strong>
+                                    <p class="text-muted">{{$empresa->empresaNIT}}</p>
+
+                                <!-- <strong>Matrícula mercantil</strong>
+                                <p class="text-muted">{{$empresa->empresaMATRICULA_MERCANTIL}}</p>-->
+
+                                    <strong>Organización jurídica</strong>
+                                    <p class="text-muted">{{$empresa->empresaORGANIZACION_JURIDICA}}</p>
+
+                                <!--<strong>Fecha de constitución</strong>
+                                <p class="text-muted">{{$empresa->empresaFECHA_CONSTITUCION}}</p>-->
+
+                                    <strong>Dirección</strong>
+                                    <p class="text-muted" style="margin-bottom: 0px;">{{$empresa->empresaDIRECCION_FISICA}}</p>
+                                    <p class="text-muted">{{$empresa->empresaDEPARTAMENTO_EMPRESA}} - {{$empresa->empresaMUNICIPIO_EMPRESA}}</p>
+
+                                <!--<p class="text-muted" style="margin-bottom: 0px;"><b>Empleados fijos: </b>{{$empresa->empresaEMPLEADOS_FIJOS}}</p>
+                                <p class="text-muted" style="margin-bottom: 0px;"><b>Empleados temporales: </b>{{$empresa->empresaEMPLEADOS_TEMPORALES}}</p>
+                                <p class="text-muted"><b>Rangos activos: </b>{{$empresa->empresaRANGOS_ACTIVOS}}</p>-->
+                                    <strong>Pagina web</strong>
+                                    <p class="text-muted"><a href="http://{{$empresa->empresaSITIO_WEB}}" target="_blank">{{$empresa->empresaSITIO_WEB}}</a></p>
+                                    <strong>Redes sociales </strong><br>
+                                    <div class="text-center">
+                                        @if($empresa->facebook)
+                                            <a href="https://www.facebook.com/{{$empresa->facebook}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #3b5998">
+                                                <i class="fab fa-facebook fa-2x"> </i>
                                             </a>
-                                            <a class="btn @if($diagnostico->ruta->rutaESTADO == 'Finalizado') bg-olive @else btn-warning @endif btn-sm" href="{{ action('Admin\RutasController@revisarRuta',[$diagnostico->ruta->rutaID]) }}" style="width:120px;">
-                                                <i class="fa fa-line-chart"></i> Ver Ruta
+                                        @endif
+                                        @if($empresa->instagram)
+                                            <a href="https://www.instagram.com/{{$empresa->instagram}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #3f729b">
+                                                <i aria-hidden="true" class="fab fa-instagram fa-2x"></i>
                                             </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-file-text-o bg-blue"></i>
-                                        <div class="timeline-item">
-                                            <h3 class="timeline-header"><b>Porcentaje de cumplimiento de la ruta: {{$diagnostico->ruta->rutaCUMPLIMIENTO}}%</b></h3>
-                                            <div class="timeline-body">
-                                                <div class="row">
-                                                    <div class="col-md-7">
-                                                        <table class="table table-bordered table-hover">
-                                                            <tr>
-                                                                <td colspan="2" class="text-center"><b>RESULTADOS</b></td>
-                                                            </tr>
-                                                            @foreach($diagnostico->resultadoSeccion as $key=> $resultado_seccion)
-                                                            <tr>
-                                                                <td class="text-center"><b>{{$resultado_seccion->resultado_seccionNOMBRE}}</b> </td>
-                                                                <td style="width: 135px">{{number_format($resultado_seccion->diagnostico_seccionRESULTADO* 100, 2)}}% - {{$resultado_seccion->diagnostico_seccionNIVEL}} <i class="fa fa-info-circle" data-toggle="tooltip" title="{{$resultado_seccion->diagnostico_seccionMENSAJE_FEEDBACK}}"></i></td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <table class="table table-bordered table-hover">
-                                                            <tr>
-                                                                <td colspan="2" class="text-center"><b>COMPETENCIAS</b></td>
-                                                            </tr>
-                                                            @foreach($diagnostico->competencias as $key=> $competencia)
-                                                            <tr>
-                                                                <td class="text-center"><b>{{$competencia->resultado_preguntaCOMPETENCIA}}</b></td>
-                                                                <td class="text-center" style="width: 50px">{{number_format($competencia->promedio * 100, 2)}}%</td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </table>
-                                                    </div>
-                                                </div>
+                                        @endif
+                                        @if($empresa->twitter)
+                                            <a href="https://www.twitter.com/{{$empresa->twitter}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #00acee">
+                                                <i class="fab fa-twitter fa-2x"> </i>
+                                            </a>
+                                        @endif
+                                        @if(!$empresa->facebook && !$empresa->instagram && !$empresa->twitter)
+                                            <p class="text-muted" style="margin-bottom: 0px;">No posee redes registradas</p>
+                                        @endif
+
+                                    </div>
+
+                                    <strong>Contacto principal</strong>
+                                    <p class="text-muted" style="margin-bottom: 0px;">{{$empresa->nombreContactoCial}}</p>
+                                    <p class="text-muted">{{$empresa->telefonoContactoCial}} - {{$empresa->correoContactoCial}}</p>
+
+                                <!--<strong>Contacto talento humano</strong>
+                                <p class="text-muted" style="margin-bottom: 0px;">{{$empresa->nombreContactoTH}}</p>
+                                <p class="text-muted">{{$empresa->telefonoContactoTH}} - {{$empresa->correoContactoTH}}</p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card card-default">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-content-center">
+                                <h5>Diagnósticos</h5>
+                            </div>
+                            <div class="btn-toolbar" role="toolbar">
+                                <div class="btn-group btn-group-sm">
+                                    <a href="{{ route('admin.empresas.index') }}" class="btn btn-outline-secondary">
+                                        <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            @if ($empresa->diagnosticosAll->count() > 0)
+                                <b-card title="{{ $empresa->diagnosticosAll[0]->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $empresa->diagnosticosAll[0]->diagnosticoFECHA }}" class="bg-white">
+                                    <b-card-text>
+                                        <div class="row">
+                                            <div class="col">
+                                                <b>{{ __('Resultado') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoRESULTADO }}
+                                            </div>
+                                            <div class="col">
+                                                <b>{{ __('Nivel') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoNIVEL }}
+                                            </div>
+                                            <div class="col">
+                                                <b>{{ __('Estado') }}: </b>{{ $empresa->diagnosticosAll[0]->diagnosticoESTADO }}
                                             </div>
                                         </div>
-                                    </li>
+                                    </b-card-text>
+
+                                    <b-card-text>
+                                        <b>Feedback: </b>
+                                        {{ $empresa->diagnosticosAll[0]->diagnosticoMENSAJE }}
+                                    </b-card-text>
+
+                                    @if($empresa->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
+                                        <b-button variant="info" size="sm" class="w-25" href="{{ route('admin.revisar-ruta', ['ruta'=> $empresa->diagnosticosAll[0]->ruta->rutaID ]) }}">
+                                            <i class="fas fa-signal"></i> Ver Ruta
+                                        </b-button>
                                     @endif
-                                @endforeach
-                            </ul>
-                        @else
-                            <h1 class="text-center">No ha comenzado un diagnóstico</h1>
-                        @endif
-                    </div>
-                    <div class="tab-pane" id="editar">
-                        <form id="formGuardarEmpresa" action="{{ action('Admin\EmpresaController@editarEmpresa',[$empresa->empresaID]) }}" method="post">
-                        {!! csrf_field() !!}
-                        @include('layouts.forms.empresa')
-                        </form>
+                                </b-card>
+                            @else
+                                <h3>No ha iniciado diagnosticos</h3>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
     @endif
 </section>
 
 @endsection
+
+@push('modals')
+    @include('layouts.modals.__confirm_delete')
+@endpush
+@push('scripts')
+    <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
+@endpush
+
 @section('style')
 <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
@@ -182,7 +159,7 @@
 <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
 <script type="text/javascript">
-	$("#btn-submit").click(function(){  
+	$("#btn-submit").click(function(){
         $('.capa').css("visibility", "visible");
         $('#btn-submit').attr("disabled", true);
         $("#formGuardarEmpresa").submit();
@@ -206,9 +183,9 @@
             dataType: 'json',
             success: function(data){
                 $.each(data, function (i, item) {
-                    $('#municipio_empresa').append($('<option>', { 
+                    $('#municipio_empresa').append($('<option>', {
                         value: item.id_municipio,
-                        text : item.municipio 
+                        text : item.municipio
                     }));
                 });
                 $('#municipio_empresa').prop('disabled', false);
