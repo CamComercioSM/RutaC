@@ -33,8 +33,28 @@
                                                     <td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
                                                     <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
                                                     <td class="text-center">
-                                                        <a class="btn btn-primary btn-sm" href="{{action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ])}}" style="width:50px;">Ver</a>
-                                                        <button type="button" data-toggle="modal" data-target="#modal-reset-password" class="btn btn-primary btn-sm">Restablecer Clave</button>
+                                                        <a class="p-1" href="{{ action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ]) }}" target="_blank"
+                                                           aria-label="Ver Usuario" data-balloon-pos="up">
+                                                            <i class="fas fa-eye text-primary"></i>
+                                                        </a>
+
+                                                        <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" data-balloon-pos="up-right" aria-label="Opciones" right no-caret>
+                                                            <template v-slot:button-content>
+                                                                <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                            </template>
+                                                            <b-dropdown-form
+                                                                    action="{{ route('admin.usuario.reset-password', $usuario) }}"
+                                                                    method="post"
+                                                                    class="d-none"
+                                                                    id="toggleForm{{ $usuario->usuarioID }}">
+                                                                @csrf
+                                                            </b-dropdown-form>
+                                                            <b-dropdown-item-button
+                                                                    onclick="event.preventDefault(); document.getElementById('toggleForm{{ $usuario->usuarioID }}').submit();"
+                                                            >
+                                                                <i class="fas fa-fw fa-edit text-success"></i> {{ __('Restablecer Clave') }}
+                                                            </b-dropdown-item-button>
+                                                        </b-dropdown>
                                                     </td>
                                                 </tr>
                                             @endforeach

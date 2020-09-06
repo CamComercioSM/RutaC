@@ -36,21 +36,22 @@ class UsuarioController extends Controller
     {
         return view('administrador.perfil.index');
     }
-    
-    public function crearUsuario(){
+
+    public function crearUsuario()
+    {
         return view('administrador.perfil.crear-usuario');
     }
-    
-    public function actualizarPassword(Request $request){
+
+    public function actualizarPassword(Request $request)
+    {
         $rules = [];
         $rules['anterior_clave'] = 'required';
         $rules['nueva_clave'] = 'required|min:8';
         $rules['repetir_clave'] = 'required|same:nueva_clave';
-        
+
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
-
+        if ($validator->fails()) {
             return redirect()->route('admin.usuarios.perfil', [$request->idTipoDiagnostico])
                 ->withErrors(__('Ocurrió un error'));
         } else {
@@ -61,15 +62,15 @@ class UsuarioController extends Controller
 
                 return redirect()->route('admin.usuarios.perfil', [$request->idTipoDiagnostico])
                     ->withSuccess(__('Contraseña cambiada correctamente'));
-            }else{
-
+            } else {
                 return redirect()->route('admin.usuarios.perfil', [$request->idTipoDiagnostico])
                     ->withErrors(__('Ocurrió un error'));
             }
         }
     }
-    
-    public function crearAdministrador(Request $request){
+
+    public function crearAdministrador(Request $request)
+    {
         $rules = [];
         $rules['cedula'] = 'required|unique:datos_usuarios,dato_usuarioIDENTIFICACION|numeric';
         $rules['nombres'] = 'required';
@@ -79,14 +80,13 @@ class UsuarioController extends Controller
         $validator = Validator::make($request->all(), $rules);
         $data = [];
         $data['status'] = '';
-        if($validator->fails()){
+        if ($validator->fails()) {
             $errors = $validator->errors();
             $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
+            foreach ($rules as $key => $value) {
+                $data['errors'][$key] = $errors->first($key);
             }
-        }else{
-            
+        } else {
             $datoUsuario = new DatoUsuario;
             $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->nombres.' '.$request->apellidos;
             $datoUsuario->dato_usuarioNOMBRES = $request->nombres;
@@ -95,7 +95,7 @@ class UsuarioController extends Controller
             $datoUsuario->dato_usuarioIDENTIFICACION = $request->cedula;
             $datoUsuario->save();
             $datoUsuarioID = $datoUsuario->dato_usuarioID;
-            
+
             $password = $this->generateRandomString();
 
             $nuevoUsuario = new User;
@@ -106,17 +106,18 @@ class UsuarioController extends Controller
             $nuevoUsuario->confirmed = '1';
             $nuevoUsuario->password_generated = $password;
             $nuevoUsuario->save();
-            
+
             $nuevoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->nombres.' '.$request->apellidos;
             Mail::send(new RutaCMail($nuevoUsuario, 'nuevo_administrador'));
-            
+
             $data['status'] = 'Ok';
             $data['mensaje'] = 'Administrador creado correctamente';
         }
         return json_encode($data);
     }
 
-    function generateRandomString($length = 10) {
+    public function generateRandomString($length = 10)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -126,43 +127,46 @@ class UsuarioController extends Controller
         Log::info($randomString);
         return $randomString;
     }
-    
+
     /**
      * Esta función muestra los usuarios administrador
      *
      * @return view
      */
-    public function usuariosAdmin(){
-        $usuarios = User::with('datoUsuario')->where('tipoUsuario','Usuario')->where('usuarioESTADO','Activo')->get();
-        $administradores = User::with('datoUsuario')->where('tipoUsuario','Admin')->where('usuarioESTADO','Activo')->get();
-        return view('administrador.usuarios.index',compact('usuarios','administradores'));
+    public function usuariosAdmin()
+    {
+        $usuarios = User::with('datoUsuario')->where('tipoUsuario', 'Usuario')->where('usuarioESTADO', 'Activo')->get();
+        $administradores = User::with('datoUsuario')->where('tipoUsuario', 'Admin')->where('usuarioESTADO', 'Activo')->get();
+        return view('administrador.usuarios.index', compact('usuarios', 'administradores'));
     }
-    
-    public function eliminarUsuario($usuarioID){
-        $usuario = User::where('usuarioID',$usuarioID)->first();
+
+    public function eliminarUsuario($usuarioID)
+    {
+        $usuario = User::where('usuarioID', $usuarioID)->first();
         $data = [];
         $data['status'] = '';
-        if($usuario){
+        if ($usuario) {
             $usuario->usuarioESTADO = 'Inactivo';
             $usuario->save();
             $data['status'] = 'OK';
-        }else{
+        } else {
             $data['status'] = 'ERROR';
         }
         return json_encode($data);
     }
 
-    public function verUsuario($usuarioID,Request $request){
-        $usuario = User::where('usuarioID',$usuarioID)->with('datoUsuario')->first();
-        if($usuario){
-
-            return view('administrador.usuarios.detalle',compact('usuario'));
+    public function verUsuario($usuarioID, Request $request)
+    {
+        $usuario = User::where('usuarioID', $usuarioID)->with('datoUsuario')->first();
+        if ($usuario) {
+            return view('administrador.usuarios.detalle', compact('usuario'));
         }
         $request->session()->flash("message_error", "Usuario no existe");
         return redirect()->action('Admin\UsuarioController@usuariosAdmin');
     }
 
-    public function guardarPerfil(Request $request){
+    public function guardarPerfil(Request $request)
+    {
         $rules = [
 
         ];
@@ -170,26 +174,26 @@ class UsuarioController extends Controller
 
         $data = [];
         $data['status'] = '';
-        if($validator->fails()){
+        if ($validator->fails()) {
             $errors = $validator->errors();
             $data['status'] = 'Errors';
-            foreach($rules as $key => $value){
-                $data['errors'][$key] = $errors->first($key);                              
+            foreach ($rules as $key => $value) {
+                $data['errors'][$key] = $errors->first($key);
             }
-        }else{
-            if($data['status'] != 'Errors'){
-                $datoUsuario = DatoUsuario::where('dato_usuarioID',$request->usuarioID)->first();
+        } else {
+            if ($data['status'] != 'Errors') {
+                $datoUsuario = DatoUsuario::where('dato_usuarioID', $request->usuarioID)->first();
                 $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->nombre_completo;
                 $datoUsuario->dato_usuarioDIRECCION = $request->direccion;
                 $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $this->obtenerDepartamento($request->departamento_residencia);
-                if($request->municipio_residencia){
+                if ($request->municipio_residencia) {
                     $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $this->obtenerMunicipio($request->municipio_residencia);
                 }
                 $datoUsuario->dato_usuarioTELEFONO = $request->telefono;
                 $datoUsuario->dato_usuarioSEXO = $request->genero;
                 $datoUsuario->dato_usuarioFECHA_NACIMIENTO = $request->fecha_nacimiento;
                 $datoUsuario->dato_usuarioDEPARTAMENTO_NACIMIENTO = $this->obtenerDepartamento($request->departamento_nacimiento);
-                if($request->municipio_nacimiento){
+                if ($request->municipio_nacimiento) {
                     $datoUsuario->dato_usuarioMUNICIPIO_NACIMIENTO = $this->obtenerMunicipio($request->municipio_nacimiento);
                 }
                 $datoUsuario->dato_usuarioNIVEL_ESTUDIO = $request->nivel_estudios;
@@ -198,7 +202,7 @@ class UsuarioController extends Controller
                 $datoUsuario->dato_usuarioREMUNERACION = $request->remuneracion;
                 $datoUsuario->dato_usuarioGRUPO_ETNICO = $request->grupo_etnico;
                 $datoUsuario->dato_usuarioDISCAPACIDAD = $request->discapacidad;
-                if($request->idiomas){
+                if ($request->idiomas) {
                     $datoUsuario->dato_usuarioIDIOMAS = $this->obtenerIdiomas($request->idiomas);
                 }
                 $datoUsuario->save();
@@ -206,52 +210,58 @@ class UsuarioController extends Controller
                 $data['status'] = 'Ok';
             }
         }
-        if($data['status'] == 'Ok'){
+        if ($data['status'] == 'Ok') {
             $request->session()->flash("message_success", "Datos actualizados correctamente");
             return back();
         }
         return json_encode($data);
     }
 
-    public function resetPassword(Request $request){
+    public function resetPassword(User $user, Request $request)
+    {
         $request['usuarioEMAIL'] = 'miguel5230@gmail.com';
         (new \App\Http\Controllers\Auth\ForgotPasswordController)->sendResetLinkEmailFromAdmin($request);
 
-        $data = [];
-        $data['mensaje'] = 'Link enviado correctamente';
-        $data['status'] = 'Ok';
-
-        return json_encode($data);
+        return redirect()->back()->with(['success' => 'Se ha enviado un link de restablecimiento de contraseña al correo: '.$request['usuarioEMAIL']]);
     }
 
-    public function obtenerDepartamento($departamento){
-        $departamento = Departamento::where('id_departamento',$departamento)->select('departamento')->first();
-        if($departamento){
-            return $departamento->departamento;    
-        }
-        return "";
-        
+    public function resetPassword1(Request $request)
+    {
+        $request['usuarioEMAIL'] = 'miguel5230@gmail.com';
+        (new \App\Http\Controllers\Auth\ForgotPasswordController)->sendResetLinkEmailFromAdmin($request);
+
+        return redirect()->back()->with(['success' => 'Se ha enviado un link de restablecimiento de contraseña al correo: '.$request['usuarioEMAIL']]);
     }
-    public function obtenerMunicipio($municipio){
-        $municipio = Municipio::where('id_municipio',$municipio)->select('municipio')->first();
-        if($municipio){
-            return $municipio->municipio;    
+
+    public function obtenerDepartamento($departamento)
+    {
+        $departamento = Departamento::where('id_departamento', $departamento)->select('departamento')->first();
+        if ($departamento) {
+            return $departamento->departamento;
         }
         return "";
     }
+    public function obtenerMunicipio($municipio)
+    {
+        $municipio = Municipio::where('id_municipio', $municipio)->select('municipio')->first();
+        if ($municipio) {
+            return $municipio->municipio;
+        }
+        return "";
+    }
 
-    public function obtenerIdiomas($idiomas){
+    public function obtenerIdiomas($idiomas)
+    {
         $sIdiomas = "";
-        if($idiomas){
+        if ($idiomas) {
             foreach ($idiomas as $key => $idioma) {
-                if($sIdiomas==""){
+                if ($sIdiomas=="") {
                     $sIdiomas = $idioma;
-                }else{
+                } else {
                     $sIdiomas = $sIdiomas."-".$idioma;
                 }
             }
         }
         return $sIdiomas;
     }
-
 }

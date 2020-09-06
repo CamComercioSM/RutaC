@@ -91,7 +91,8 @@ Route::post('actualizar-password', 'UsuarioController@actualizarPassword');
 Route::post('crear-administrador', 'UsuarioController@crearAdministrador');
 Route::get('eliminar-usuario/{usuarioID}', 'UsuarioController@eliminarUsuario');
 
-Route::post('usuario/reset-password', 'UsuarioController@resetPassword');
+//Route::post('usuario/reset-password', 'UsuarioController@resetPassword');
+Route::post('usuario/{user}/reset-password', 'UsuarioController@resetPassword')->name('usuario.reset-password');
 
 Route::get('usuario/{usuarioID}', 'UsuarioController@verUsuario');
 Route::post('usuario-guardar', 'UsuarioController@guardarPerfil');
