@@ -33,11 +33,11 @@
 										<td class="text-left">{{$empresa->empresaRAZON_SOCIAL}}</td>
 										<td class="text-left">{{$empresa->usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$empresa->usuario->datoUsuario->dato_usuarioIDENTIFICACION}} - {{$empresa->usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
 										<td class="text-center">
-											<a class="p-1" href="{{ route('admin.empresas.show', $empresa->empresaID) }}"
+											<a class="p-1" href="{{ route('admin.empresas.show', $empresa) }}"
 											   aria-label="Ver Empresa" data-balloon-pos="up">
 												<i class="fas fa-eye text-primary"></i>
 											</a>
-											<a class="p-1" href="{{ route('admin.empresas.edit', $empresa->empresaID) }}"
+											<a class="p-1" href="{{ route('admin.empresas.edit', $empresa) }}"
 											   aria-label="Editar Empresa" data-balloon-pos="up">
 												<i class="fas fa-edit text-warning"></i>
 											</a>

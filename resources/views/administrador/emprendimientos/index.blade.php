@@ -31,7 +31,14 @@
 										<td class="text-left">{{$emprendimiento->emprendimientoNOMBRE}}</td>
 										<td class="text-left">{{$emprendimiento->usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$emprendimiento->usuario->datoUsuario->dato_usuarioIDENTIFICACION}} - {{$emprendimiento->usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
 										<td class="text-center">
-											<a class="btn btn-primary btn-sm" href="{{ route('admin.emprendimientos.show', $emprendimiento) }}" style="width:50px;">Ver</a>
+											<a class="p-1" href="{{ route('admin.emprendimientos.show', $emprendimiento) }}"
+											   aria-label="Ver Emprendimiento" data-balloon-pos="up">
+												<i class="fas fa-eye text-primary"></i>
+											</a>
+											<a class="p-1" href="{{ route('admin.emprendimientos.edit', $emprendimiento) }}"
+											   aria-label="Editar Emprendimiento" data-balloon-pos="up">
+												<i class="fas fa-edit text-warning"></i>
+											</a>
 										</td>
 									</tr>
 								@endforeach

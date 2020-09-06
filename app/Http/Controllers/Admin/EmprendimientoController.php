@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Misc;
+use App\Http\Requests\StoreEmprendimiento;
 use App\Models\Emprendimiento;
 use DB;
 use Log;
@@ -67,6 +69,27 @@ class EmprendimientoController extends Controller
         $historial = $this->gController->comprobarHistorial('emprendimiento', $emprendimiento->emprendimientoID);
 
         return view('administrador.emprendimientos.show', compact('emprendimiento', 'from', 'historial'));
+    }
+
+    public function edit(Emprendimiento $emprendimiento)
+    {
+        return response()->view('administrador.emprendimientos.edit', compact('emprendimiento'));
+    }
+
+    public function update(Request $request, Emprendimiento $emprendimiento)
+    {
+        $emprendimiento->emprendimientoNOMBRE = $request->input('nombre_emprendimiento');
+        $emprendimiento->emprendimientoDESCRIPCION = $request->input('descripcion_emprendimiento');
+        $emprendimiento->emprendimientoINICIOACTIVIDADES = $request->input('inicio_actividades');
+        $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
+        $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
+        $emprendimiento->emprendimientoSITIO_WEB = $request->input('pagina_web');
+        $emprendimiento->emprendimientoREDES_SOCIALES = Misc::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
+        $emprendimiento->save();
+
+        return redirect()->route('admin.emprendimientos.show', $emprendimiento)->with([
+            'success' => __('Emprendimiento actualizado correctamente'),
+        ]);
     }
 
     public function verEmprendimiento($emprendimientoID)

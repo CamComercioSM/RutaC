@@ -168,8 +168,6 @@
                                         @if ($empresa->diagnosticosAll->count() > 1)
                                     </b-collapse>
                                 @endif
-
-
                         </div>
                     </div>
                 </div>

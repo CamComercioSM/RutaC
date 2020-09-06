@@ -9,7 +9,7 @@
                 <div class="card card-default">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <div class="d-flex justify-content-between align-content-center">
-                            <h5>{{ __('Agregar emprendimiento') }}</h5>
+                            <h5>{{ __('Editar emprendimiento') }}</h5>
                         </div>
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group btn-group-sm">
