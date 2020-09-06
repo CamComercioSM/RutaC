@@ -165,58 +165,6 @@ class UsuarioController extends Controller
         return redirect()->action('Admin\UsuarioController@usuariosAdmin');
     }
 
-    public function guardarPerfil(Request $request)
-    {
-        $rules = [
-
-        ];
-        $validator = Validator::make($request->all(), $rules);
-
-        $data = [];
-        $data['status'] = '';
-        if ($validator->fails()) {
-            $errors = $validator->errors();
-            $data['status'] = 'Errors';
-            foreach ($rules as $key => $value) {
-                $data['errors'][$key] = $errors->first($key);
-            }
-        } else {
-            if ($data['status'] != 'Errors') {
-                $datoUsuario = DatoUsuario::where('dato_usuarioID', $request->usuarioID)->first();
-                $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->nombre_completo;
-                $datoUsuario->dato_usuarioDIRECCION = $request->direccion;
-                $datoUsuario->dato_usuarioDEPARTAMENTO_RESIDENCIA = $this->obtenerDepartamento($request->departamento_residencia);
-                if ($request->municipio_residencia) {
-                    $datoUsuario->dato_usuarioMUNICIPIO_RESIDENCIA = $this->obtenerMunicipio($request->municipio_residencia);
-                }
-                $datoUsuario->dato_usuarioTELEFONO = $request->telefono;
-                $datoUsuario->dato_usuarioSEXO = $request->genero;
-                $datoUsuario->dato_usuarioFECHA_NACIMIENTO = $request->fecha_nacimiento;
-                $datoUsuario->dato_usuarioDEPARTAMENTO_NACIMIENTO = $this->obtenerDepartamento($request->departamento_nacimiento);
-                if ($request->municipio_nacimiento) {
-                    $datoUsuario->dato_usuarioMUNICIPIO_NACIMIENTO = $this->obtenerMunicipio($request->municipio_nacimiento);
-                }
-                $datoUsuario->dato_usuarioNIVEL_ESTUDIO = $request->nivel_estudios;
-                $datoUsuario->dato_usuarioPROFESION_OCUPACION = $request->profesion;
-                $datoUsuario->dato_usuarioCARGO = $request->cargo;
-                $datoUsuario->dato_usuarioREMUNERACION = $request->remuneracion;
-                $datoUsuario->dato_usuarioGRUPO_ETNICO = $request->grupo_etnico;
-                $datoUsuario->dato_usuarioDISCAPACIDAD = $request->discapacidad;
-                if ($request->idiomas) {
-                    $datoUsuario->dato_usuarioIDIOMAS = $this->obtenerIdiomas($request->idiomas);
-                }
-                $datoUsuario->save();
-
-                $data['status'] = 'Ok';
-            }
-        }
-        if ($data['status'] == 'Ok') {
-            $request->session()->flash("message_success", "Datos actualizados correctamente");
-            return back();
-        }
-        return json_encode($data);
-    }
-
     public function resetPassword(User $user, Request $request)
     {
         $request['usuarioEMAIL'] = 'miguel5230@gmail.com';
@@ -225,12 +173,29 @@ class UsuarioController extends Controller
         return redirect()->back()->with(['success' => 'Se ha enviado un link de restablecimiento de contraseña al correo: '.$request['usuarioEMAIL']]);
     }
 
-    public function resetPassword1(Request $request)
+    public function guardarPerfil(Request $request, User $usuario)
     {
-        $request['usuarioEMAIL'] = 'miguel5230@gmail.com';
-        (new \App\Http\Controllers\Auth\ForgotPasswordController)->sendResetLinkEmailFromAdmin($request);
+        $datoUsuario = DatoUsuario::where('dato_usuarioID', $usuario->dato_usuarioID)->first();
+        $datoUsuario->dato_usuarioNOMBRE_COMPLETO = $request->input('nombre_completo');
+        $datoUsuario->dato_usuarioDIRECCION = $request->input('direccion');
+        $datoUsuario->dato_usuarioTELEFONO = $request->input('telefono');
+        $datoUsuario->dato_usuarioSEXO = $request->input('genero');
+        $datoUsuario->dato_usuarioFECHA_NACIMIENTO = $request->input('fecha_nacimiento');
+        $datoUsuario->dato_usuarioLUGAR_NACIMIENTO = $request->input('lugar_nacimiento');
+        $datoUsuario->dato_usuarioNIVEL_ESTUDIO = $request->input('nivel_estudios');
+        $datoUsuario->dato_usuarioPROFESION_OCUPACION = $request->input('profesion');
+        $datoUsuario->dato_usuarioCARGO = $request->input('cargo');
+        //$datoUsuario->dato_usuarioREMUNERACION = $request->input('remuneracion');
+        $datoUsuario->dato_usuarioGRUPO_ETNICO = $request->input('grupo_etnico');
+        $datoUsuario->dato_usuarioDISCAPACIDAD = $request->input('discapacidad');
+        if ($request->input('idiomas')) {
+            $datoUsuario->dato_usuarioIDIOMAS = $this->obtenerIdiomas($request->input('idiomas'));
+        }
+        $datoUsuario->save();
 
-        return redirect()->back()->with(['success' => 'Se ha enviado un link de restablecimiento de contraseña al correo: '.$request['usuarioEMAIL']]);
+        return redirect()->route('admin.ver-usuario', $usuario)->with([
+            'success' => __('Datos actualizados correctamente'),
+        ]);
     }
 
     public function obtenerDepartamento($departamento)

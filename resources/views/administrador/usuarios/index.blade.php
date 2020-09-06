@@ -33,7 +33,7 @@
                                                     <td class="text-left">{{$usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
                                                     <td class="text-left">{{$usuario->usuarioEMAIL}}</td>
                                                     <td class="text-center">
-                                                        <a class="p-1" href="{{ action('Admin\UsuarioController@verUsuario', ['usuarioID'=> $usuario->usuarioID ]) }}" target="_blank"
+                                                        <a class="p-1" href="{{ route('admin.ver-usuario', ['usuarioID'=> $usuario->usuarioID ]) }}"
                                                            aria-label="Ver Usuario" data-balloon-pos="up">
                                                             <i class="fas fa-eye text-primary"></i>
                                                         </a>

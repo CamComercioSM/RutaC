@@ -44,26 +44,49 @@ class ViewServiceProvider extends ServiceProvider
             [
                 'auth.register',
                 'rutac.usuario.forms.__datos_usuario',
+                'administrador.usuarios.detalle',
                 'rutac.empresas.__form'
             ],
             DepartamentosComposer::class
         );
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], EstudiosComposer::class);
+        View::composer([
+            'rutac.usuario.forms.__datos_usuario',
+            'administrador.usuarios.detalle'
+        ], EstudiosComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], ProfesionComposer::class);
+        View::composer([
+            'rutac.usuario.forms.__datos_usuario',
+            'administrador.usuarios.detalle'
+        ], ProfesionComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], EtnicoComposer::class);
+        View::composer([
+            'rutac.usuario.forms.__datos_usuario',
+            'administrador.usuarios.detalle'
+        ], EtnicoComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], CargoComposer::class);
+        View::composer([
+            'rutac.usuario.forms.__datos_usuario',
+            'administrador.usuarios.detalle'
+        ], CargoComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], GeneroComposer::class);
+        View::composer([
+            'rutac.usuario.forms.__datos_usuario',
+            'administrador.usuarios.detalle'
+        ], GeneroComposer::class);
 
-        View::composer(['rutac.usuario.forms.__datos_usuario'], IdiomasComposer::class);
+        View::composer([
+            'rutac.usuario.forms.__datos_usuario',
+            'administrador.usuarios.detalle'
+        ], IdiomasComposer::class);
 
-        View::composer(['rutac.empresas.__form'], TiposEmpresaComposer::class);
+        View::composer([
+            'rutac.empresas.__form'
+        ], TiposEmpresaComposer::class);
 
-        View::composer(['rutac.empresas.__form'], RangosActivosComposer::class);
+        View::composer([
+            'rutac.empresas.__form'
+        ], RangosActivosComposer::class);
 
         View::composer(
             [

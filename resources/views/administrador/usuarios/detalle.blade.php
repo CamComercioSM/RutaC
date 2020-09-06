@@ -1,255 +1,213 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Usuarios')
-@section('content')
-<section class="content-header">
-	<div class="row">
-		<div class="col-sm-6"></div>
-		<div class="col-sm-6 text-right">
-			<a class="btn btn-primary" href="{{action('Admin\UsuarioController@usuariosAdmin')}}"><i class="fa fa-arrow-left"></i> Volver</a>
-		</div>
-	</div>
-</section>
-<section class="content">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="box box-primary">
-				<form id="formGuardarPerfil" action="{{ action('Admin\UsuarioController@guardarPerfil') }}" method="post">
-				    {!! csrf_field() !!}
-					<div class="box-header with-border">
-						<h4>Datos de Usuario</h4>
-					</div>
-					<div class="box-body">
-						<div class="row">
-							<input type="hidden" name="usuarioID" id="usuarioID" value="{{$usuario->usuarioID}}">
-						    <div class="col-xs-3">
-						        <label>Documento de identidad</label>
-						        <div class="form-group has-feedback">
-						            <input type="text" class="form-control" placeholder="Documento de identidad" value="{{$usuario->datoUsuario['dato_usuarioTIPO_IDENTIFICACION']}} - {{$usuario->datoUsuario['dato_usuarioIDENTIFICACION']}}" disabled="">
-						        </div>
-						    </div>
-						    <div class="col-xs-4">
-						        <label>Nombre Completo</label>
-						        <div class="form-group has-feedback">
-						            <input type="text" id="nombre_completo" name="nombre_completo" class="form-control" placeholder="Nombre Completo" value="{{$usuario->datoUsuario['dato_usuarioNOMBRE_COMPLETO']}}">
-						            <span class="form-control-feedback glyphicon" id="alert_error_nombre_completo"></span>
-						            <span class="text-danger" id="error_nombre_completo"></span>
-						        </div>
-						    </div>
-						    <div class="col-xs-5">
-						        <label>Género</label>
-						        <div class="form-group has-feedback">
-						        	<input type="hidden" name="genero" id="genero" value="{{$usuario->datoUsuario['dato_usuarioSEXO']}}">
-						            <div class="col-xs-3">
-						                <label id="rMujer">
-						                    <input type="radio" name="radioGenero" id="opMujer" class="minimal" value="Mujer" @if($usuario->datoUsuario['dato_usuarioSEXO'] == 'Mujer') checked @endif > Mujer
-						                </label>
-						            </div>
-						            <div class="col-xs-3">
-						                <label id="rHombre">
-						                    <input type="radio" name="radioGenero" id="opHombre" class="minimal" value="Hombre" @if($usuario->datoUsuario['dato_usuarioSEXO'] == 'Hombre') checked @endif> Hombre
-						                </label>
-						            </div>
-						            <div class="col-xs-6">
-						                <label id="rOtro">
-						                    <input type="radio" name="radioGenero" id="opOtro" class="minimal" value="Prefiero no decirlo" @if($usuario->datoUsuario['dato_usuarioSEXO'] == 'Prefiero no decirlo') checked @endif> Prefiero no decirlo
-						                </label>
-						            </div>
-						        </div>
-						    </div>
-						    <!-- /.col -->
+@section('app-content')
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="card card-default">
+					<div class="card-header d-flex justify-content-between">
+						<h5>Datos de Usuario</h5>
+						<div class="btn-toolbar" role="toolbar">
+							<div class="btn-group btn-group-sm">
+								<a href="{{ route('admin.usuarios.index') }}" class="btn btn-secondary">
+									<i class="fas fa-arrow-left"></i> {{ __('Volver') }}
+								</a>
+							</div>
 						</div>
-						<h4>Datos de residencia</h4><hr>
-						<div class="row">
-							<div class="col-xs-3">
-						        <label>Pais</label>
-						        <div class="form-group has-feedback">
-						            <input type="text" id="pais_residencia" name="pais_residencia" class="form-control" placeholder="Pais" value="Colombia" disabled>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						        <label>Departamento</label>
-						        <div class="form-group has-feedback">
-						            <select name="departamento_residencia" id="departamento_residencia" class="form-control select2" type="text" style="width: 100%;">
-						            	<option value="">Seleccione una opción</option>
-						            	@foreach(Repository::departamentos() as $dept)
-						                	<option value="{{$dept->id_departamento}}" @if($usuario->datoUsuario['dato_usuarioDEPARTAMENTO_RESIDENCIA'] == $dept->departamento) selected @endif>{{$dept->departamento}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						        <label>Municipio</label>
-						        <div class="form-group has-feedback">
-						            <select name="municipio_residencia" id="municipio_residencia" class="form-control select2" type="text" disabled style="width: 100%;">
-						            	@if($usuario->dato_usuarioMUNICIPIO_RESIDENCIA)
-						            		<option value="">{{$usuario->datoUsuario['dato_usuarioMUNICIPIO_RESIDENCIA']}}</option>
-						            	@else
-						            		<option value="">Seleccione una opción</option>
-						            	@endif
-						            </select>
-						        </div>
-						    </div>
+					</div>
+					<div class="card-body">
+                        <rc-form
+                                action="{{ route('admin.guardar-usuario', $usuario) }}"
+                                method="post"
+                        >
+                            @csrf
+                            <p class="text-right pb-0 mb-0"><i class="icon fa fa-info-circle text-warning"></i> Los campos con * son obligatorios</p>
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <rc-input
+                                            rules="required"
+                                            name="numero_documento"
+                                            id="formENumeroDocumento"
+                                            type="text"
+                                            initial-value="{{ $usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION }} - {{ $usuario->datoUsuario->dato_usuarioIDENTIFICACION }}"
+                                            label="{{ __('Documento de identidad *') }}"
+                                            autocomplete="off"
+                                            placeholder="No. Documento"
+                                            disabled
+                                    ></rc-input>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <rc-input
+                                            rules="required|alpha_spaces|min:3|max:50"
+                                            name="nombre_completo"
+                                            id="nombre_completo"
+                                            type="text"
+                                            @error('nombre_completo')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ $usuario->datoUsuario->dato_usuarioNOMBRES }} {{ $usuario->datoUsuario->dato_usuarioAPELLIDOS }}"
+                                            label="{{ __('Nombre Completo') }} *"
+                                            autocomplete="off"
+                                            placeholder="Nombre Completo"
+                                    ></rc-input>
+                                </div>
+                                <div class="form-row col-md-5">
+                                    <div class="form-group col-md-12">
+                                        <rc-select
+                                                name="genero"
+                                                id="genero"
+                                                rules="required"
+                                                @error('remuneracion')
+                                                error="{{ $message }}"
+                                                @enderror
+                                                initial-value="{{ old('genero', $usuario->datoUsuario->dato_usuarioSEXO) }}"
+                                                placeholder="{{ __('Género') }}"
+                                                :options="{{ $genero->toJson() }}"
+                                                label="{{ __('Género') }} *"
+                                        >
+                                        </rc-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <h4>Datos de Residencia</h4>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <rc-map-autocomplete
+                                            name="direccion"
+                                            id="direccion"
+                                            rules="required"
+                                            initial-value="{{ old('direccion', $usuario->datoUsuario->dato_usuarioDIRECCION) }}"
+                                            value="{{ old('direccion', $usuario->datoUsuario->dato_usuarioDIRECCION) }}"
+                                            types="address"
+                                            label="{{ __('Dirección') }} *"
+                                            place-holder="Escriba su dirección completa"
+                                    ></rc-map-autocomplete>
+                                </div>
 
-						</div>
-						<div class="row">
-							<div class="col-xs-9">
-						        <label>Dirección</label>
-						        <div class="form-group has-feedback">
-						            <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Dirección" value="{{$usuario->datoUsuario['dato_usuarioDIRECCION']}}">
-						            <span class="form-control-feedback glyphicon" id="alert_error_direccion"></span>
-						            <span class="text-danger" id="error_direccion"></span>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						        <label>Telefóno</label>
-						        <div class="form-group has-feedback">
-						            <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Telefóno" value="{{$usuario->datoUsuario['dato_usuarioTELEFONO']}}">
-						            <span class="form-control-feedback glyphicon" id="alert_error_telefono"></span>
-						            <span class="text-danger" id="error_telefono"></span>
-						        </div>
-						    </div>
-						</div>
-						<hr>
-						<h4>Datos de Nacimiento</h4><hr>
-						<div class="row">
-							<div class="col-xs-3">
-						        <label>Fecha de nacimiento</label>
-						        <div class="form-group has-feedback">
-						        	<input class="form-control" type="text" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Año-Mes-Día" value="{{$usuario->datoUsuario['dato_usuarioFECHA_NACIMIENTO']}}">
-						    		<span class="form-control-feedback glyphicon" id="alert_error_fecha_nacimiento"></span>
-						            <span class="text-danger" id="error_fecha_nacimiento"></span>
-						        </div>
-						    </div>
-							<div class="col-xs-3">
-						        <label>Pais</label>
-						        <div class="form-group has-feedback">
-						            <input type="text" id="pais_nacimiento" name="pais_nacimiento" class="form-control" placeholder="Pais" value="Colombia" disabled>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						        <label>Departamento</label>
-						        <div class="form-group has-feedback">
-						            <select name="departamento_nacimiento" id="departamento_nacimiento" class="form-control select2" type="text" style="width: 100%;">
-						            	<option value="">Seleccione una opción</option>
-						            	@foreach(Repository::departamentos() as $dept)
-						                	<option value="{{$dept->id_departamento}}" @if($usuario->datoUsuario['dato_usuarioDEPARTAMENTO_RESIDENCIA'] == $dept->departamento) selected @endif>{{$dept->departamento}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						        <label>Municipio</label>
-						        <div class="form-group has-feedback">
-						            <select name="municipio_nacimiento" id="municipio_nacimiento" class="form-control select2" type="text" disabled style="width: 100%;">
-						            	@if($usuario->dato_usuarioMUNICIPIO_NACIMIENTO)
-						            		<option value="">{{$usuario->datoUsuario['dato_usuarioMUNICIPIO_NACIMIENTO']}}</option>
-						            	@else
-						            		<option value="">Seleccione una opción</option>
-						            	@endif
-						            </select>
-						        </div>
-						    </div>
+                                <div class="form-group col-md-3">
+                                    <rc-input
+                                            rules="required|max:15"
+                                            name="telefono"
+                                            id="telefono"
+                                            type="text"
+                                            @error('telefono')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{$usuario->datoUsuario->dato_usuarioTELEFONO}}"
+                                            label="{{ __('Telefóno') }} *"
+                                            autocomplete="off"
+                                            placeholder="Digite su telefóno"
+                                    ></rc-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <h4>Datos de Nacimiento</h4>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <rc-input
+                                            rules="required"
+                                            name="fecha_nacimiento"
+                                            id="fecha_nacimiento"
+                                            type="date"
+                                            @error('fecha_nacimiento')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ old('fecha_nacimiento', $usuario->datoUsuario->dato_usuarioFECHA_NACIMIENTO) }}"
+                                            autocomplete="off"
+                                            placeholder="{{ __('Fecha de nacimiento') }}"
+                                            label="{{ __('Fecha de nacimiento') }} *"
+                                    ></rc-input>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <rc-map-autocomplete
+                                            name="lugar_nacimiento"
+                                            id="lugar_nacimiento"
+                                            rules="required"
+                                            initial-value="{{ old('lugar_nacimiento', $usuario->datoUsuario->dato_usuarioLUGAR_NACIMIENTO) }}"
+                                            value="{{ old('lugar_nacimiento', $usuario->datoUsuario->dato_usuarioLUGAR_NACIMIENTO) }}"
+                                            types="geocode"
+                                            label="{{ __('Lugar de nacimiento') }} *"
+                                            place-holder="Escriba lugar de nacimiento"
+                                    ></rc-map-autocomplete>
+                                </div>
 
-						</div>
-						<hr>
-						<div class="row">
-						    <div class="col-xs-3">
-						    	<label>Nivel de estudios</label>
-						        <div class="form-group">
-						        	<select name="nivel_estudios" id="nivel_estudios" class="form-control" type="text">
-						            	<option value="">Seleccione una opción</option>
-						            	@foreach(Repository::nivelEstudios() as $nivel)
-						                	<option value="{{$nivel}}" @if($usuario->datoUsuario['dato_usuarioNIVEL_ESTUDIO'] == $nivel) selected @endif>{{$nivel}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						    	<label>Profesión</label>
-						        <div class="form-group">
-						        	<select name="profesion" id="profesion" class="form-control select2" type="text" style="width: 100%;">
-						            	<option value="">Seleccione una opción</option>
-						            	@foreach(Repository::profesion() as $profesion)
-						                	<option value="{{$profesion}}" @if($usuario->datoUsuario['dato_usuarioPROFESION_OCUPACION'] == $profesion) selected @endif>{{$profesion}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						    	<label>Cargo</label>
-						        <div class="form-group">
-						        	<select name="cargo" id="cargo" class="form-control" type="text">
-						            	<option value="">Seleccione una opción</option>
-						            	@foreach(Repository::cargo() as $cargo)
-						                	<option value="{{$cargo}}" @if($usuario->datoUsuario['dato_usuarioCARGO'] == $cargo) selected @endif>{{$cargo}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						    	<label>Remuneración</label>
-						        <div class="form-group">
-						        	<select name="remuneracion" id="remuneracion" class="form-control" type="text">
-						            	<option value="">Seleccione una opción</option>
-						            	@foreach(Repository::remuneracion() as $remuneracion)
-						                	<option value="{{$remuneracion}}" @if($usuario->datoUsuario['dato_usuarioREMUNERACION'] == $remuneracion) selected @endif>{{$remuneracion}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						</div>
-						<div class="row">
-							<div class="col-xs-3">
-						    	<label>Grupo Étnico</label>
-						        <div class="form-group">
-						        	<select name="grupo_etnico" id="grupo_etnico" class="form-control" type="text">
-						            	<option value="">Ninguno</option>
-						            	@foreach(Repository::grupoEtnico() as $grupoEtnico)
-						                	<option value="{{$grupoEtnico}}" @if($usuario->datoUsuario['dato_usuarioGRUPO_ETNICO'] == $grupoEtnico) selected @endif>{{$grupoEtnico}}</option>
-						                @endforeach
-						            </select>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						    	<label>Discapacidad</label>
-						    	<input type="hidden" name="discapacidad" id="discapacidad" value="{{$usuario->datoUsuario['dato_usuarioDISCAPACIDAD']}}">
-						        <div class="form-group has-feedback">
-						            <label id="rSi">
-						                <input type="radio" name="radioDiscapacidad" class="minimal" value="Si" @if($usuario->datoUsuario['dato_usuarioDISCAPACIDAD'] == 'Si') checked @endif> Si
-						            </label>
-						            <label id="rNo" style="margin-left: 20px;">
-						                <input type="radio" name="radioDiscapacidad" class="minimal" value="No" @if($usuario->datoUsuario['dato_usuarioDISCAPACIDAD'] == 'No') checked @endif> No
-						            </label>
-						        </div>
-						    </div>
-						    <div class="col-xs-3">
-						    	<label>Idiomas</label>
-						        <div class="form-group">
-						        	<select name="idiomas[]" id="idiomas" class="form-control select2" multiple="multiple" data-placeholder="Seleccione una opción" style="width: 100%;">
-						        		@foreach(Repository::idiomas() as $idiomas)
-							        		@php ($siono = 0) @endphp
-							        		@foreach(explode('-', $usuario->datoUsuario['dato_usuarioIDIOMAS']) as $idioma)
-							        			@if($idiomas == $idioma)
-							        				@php ($siono = 1) @endphp
-							        			@endif
-							        		@endforeach
-							        		<option value="{{$idiomas}}" @if($siono == 1) selected @endif>{{$idiomas}}</option>
-							        	@endforeach	
-						        	</select>
-						        </div>
-						    </div>
-						</div>
+                                <div class="form-group col-md-3">
+                                    <rc-select
+                                            name="nivel_estudios"
+                                            id="nivel_estudios"
+                                            @error('nivel_estudios')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ old('nivel_estudios', $usuario->datoUsuario->dato_usuarioNIVEL_ESTUDIO) }}"
+                                            placeholder="{{ __('Nivel de estudios') }}"
+                                            :options="{{ $nivelEstudio->toJson() }}"
+                                            label="{{ __('Nivel de estudios') }}"
+                                    >
+                                    </rc-select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <rc-select
+                                            name="profesion"
+                                            id="profesion"
+                                            @error('profesion')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ old('profesion', $usuario->datoUsuario->dato_usuarioPROFESION_OCUPACION) }}"
+                                            placeholder="{{ __('Profesión') }}"
+                                            :options="{{ $profesion->toJson() }}"
+                                            label="{{ __('Profesión') }}"
+                                    >
+                                    </rc-select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <rc-select
+                                            name="cargo"
+                                            id="cargo"
+                                            @error('cargo')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ old('cargo', $usuario->datoUsuario->dato_usuarioCARGO) }}"
+                                            placeholder="{{ __('Cargo') }}"
+                                            :options="{{ $cargo->toJson() }}"
+                                            label="{{ __('Cargo') }}"
+                                    >
+                                    </rc-select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <rc-select
+                                            name="grupo_etnico"
+                                            id="grupo_etnico"
+                                            @error('grupo_etnico')
+                                            error="{{ $message }}"
+                                            @enderror
+                                            initial-value="{{ old('grupo_etnico', $usuario->datoUsuario->dato_usuarioGRUPO_ETNICO) }}"
+                                            placeholder="{{ __('Grupo Étnico') }}"
+                                            :options="{{ $grupo_etnico->toJson() }}"
+                                            label="{{ __('Grupo Étnico') }}"
+                                    >
+                                    </rc-select>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">
+                                    {{ __('Guardar') }}
+                                </button>
+                            </div>
+                        </rc-form>
 					</div>
-					<div class="box-footer">
-						<div class="options">
-							<button type="button" id="btn-guardar-datos-usuarios" class="btn btn-primary btn-sm">Guardar</button>
-						</div>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
-</section>
+
+
+
 
 @endsection
 @section('style')
@@ -326,9 +284,9 @@
                     placeholder: 'Seleccione una opción'
                 })
                 $.each(data, function (i, item) {
-				    $('#municipio_residencia').append($('<option>', { 
+				    $('#municipio_residencia').append($('<option>', {
 				        value: item.id_municipio,
-				        text : item.municipio 
+				        text : item.municipio
 				    }));
 				});
 				$('#municipio_residencia').prop('disabled', false);
@@ -348,9 +306,9 @@
                     placeholder: 'Seleccione una opción'
                 })
                 $.each(data, function (i, item) {
-				    $('#municipio_nacimiento').append($('<option>', { 
+				    $('#municipio_nacimiento').append($('<option>', {
 				        value: item.id_municipio,
-				        text : item.municipio 
+				        text : item.municipio
 				    }));
 				});
 				$('#municipio_nacimiento').prop('disabled', false);
@@ -371,9 +329,9 @@
         $('#btn-guardar-datos-usuarios').attr("disabled", true);
         var formData = new FormData;
         formData.append("personaTIPOIDENTIFICACION", tipoIdentificacion);
-        formData.append("personaIDENTIFICACION", '{{$usuario->dato_usuarioIDENTIFICACION}}');
-        formData.append("personaNOMBRES", '{{$usuario->dato_usuarioNOMBRES}}');
-        formData.append("personaAPELLIDOS", '{{$usuario->dato_usuarioAPELLIDOS}}');
+        formData.append("personaIDENTIFICACION", '{{$usuario->datoUsuario->dato_usuarioIDENTIFICACION}}');
+        formData.append("personaNOMBRES", '{{$usuario->datoUsuario->dato_usuarioNOMBRES}}');
+        formData.append("personaAPELLIDOS", '{{$usuario->datoUsuario->dato_usuarioAPELLIDOS}}');
         if($("#genero").val()){
             if($("#genero").val() == 'Hombre'){
                 formData.append("personaSEXO", 'MASCULINO');
@@ -394,7 +352,7 @@
 
         guardarUsuario(formData);
         for (var pair of formData.entries()) {
-            console.log(pair[0]+ '---' + pair[1]); 
+            console.log(pair[0]+ '---' + pair[1]);
         }
     });
     function guardarUsuario(formData){
