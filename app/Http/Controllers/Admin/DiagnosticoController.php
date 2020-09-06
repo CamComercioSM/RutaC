@@ -1057,7 +1057,7 @@ class DiagnosticoController extends Controller
 
         $estaciones = Misc::parsearEstaciones($diagnostico->ruta);
 
-        return view('rutac.diagnosticos.resultado.index', compact('diagnostico', 'usuario', 'actividad', 'estaciones'));
+        return view('administrador.diagnosticos.detalles.resultados', compact('diagnostico', 'usuario', 'actividad', 'estaciones'));
     }
 
     /* Otros */
