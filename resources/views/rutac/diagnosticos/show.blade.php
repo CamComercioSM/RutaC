@@ -25,8 +25,12 @@
                         </div>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body mx-auto">
                         <b-card-group deck>
+                            @php
+                                $conteoFinalizadas=0;
+
+                            @endphp
                             @forelse($diagnostico->resultadoSeccion as $key => $resultadoSeccion)
                             <b-card
                                     border-variant="primary"
@@ -34,12 +38,21 @@
                                     header-bg-variant="primary"
                                     header-text-variant="white"
                                     style="max-width: 20rem;"
+                                    class="respuestas"
+
                             >
                                 <b-card-text>
+
+
                                     @if($resultadoSeccion->diagnostico_seccionESTADO == 'Finalizado')
-                                    <p><b>Resultado: </b>{{ $resultadoSeccion->diagnostico_seccionRESULTADO }}</p>
-                                    <p><b>Nivel: </b>{{ $resultadoSeccion->diagnostico_seccionNIVEL }}</p>
-                                    <p><b>Feedback: </b>{{ $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK }}</p>
+
+                                            <p><b>Resultado: </b>{{ $resultadoSeccion->diagnostico_seccionRESULTADO }}</p>
+                                            <p><b>Nivel: </b>{{ $resultadoSeccion->diagnostico_seccionNIVEL }}</p>
+                                            <p><b>Feedback: </b>{{ $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK }}</p>
+                                            @php
+                                                $conteoFinalizadas=$conteoFinalizadas + 1;
+
+                                            @endphp
                                     @endif
                                 </b-card-text>
                                 @if($resultadoSeccion->diagnostico_seccionESTADO != 'Finalizado')
@@ -54,6 +67,43 @@
                                     <h2 class="text-center">En construcción</h2>
                                 </div>
                             @endforelse
+
+                            <rc-form
+                                    action="{{ route('user.diganostico.observaciones', $diagnostico->diagnosticoID) }}"
+                                    method="post"
+                            >
+                                @csrf
+                                <b-card
+                                    border-variant="primary"
+                                    header="Observaciones"
+                                    header-bg-variant="primary"
+                                    header-text-variant="white"
+                                    style="max-width: 50rem; display: none;  "
+                                    id="observacion"
+                                    class="text-center"
+                                >
+                                    <b-card-text>
+                                        <textarea name="observacion" class="p-2" cols="50" rows="7"></textarea>
+
+                                    </b-card-text>
+                                    <b-button size="sm" type="submit"  variant="primary">Guardar</b-button>
+                                </b-card>
+                            </rc-form>
+
+
+                            @if(count($diagnostico->resultadoSeccion)==$conteoFinalizadas)
+                                    @push('scripts')
+                                         <script>
+                                         $('#observacion').css({ display: 'block'});
+                                            $('.respuestas').css({ display: 'none'});
+
+                                         </script>
+                                    @endpush
+                            @endif
+
+
+
+
                         </b-card-group>
                     </div>
                 </div>

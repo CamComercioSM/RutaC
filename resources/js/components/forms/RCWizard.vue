@@ -8,6 +8,7 @@
             <div class="text-right">
                 <span id="noRespond" class="text-danger">Debe contestar la pregunta antes de continuar.</span>
                 <b-button-group class="mt-2">
+                    <b-button variant="info" class="btn-sm" id="anterior" @click="anterior"><i class="fas fa-arrow-left"></i> Anterior</b-button>
                     <b-button variant="info" class="btn-sm" id="siguiente" @click="siguiente">Siguiente <i class="fas fa-arrow-right"></i></b-button>
                     <b-button variant="success" class="btn-sm" id="finalizar" type="submit">Finalizar <i class="fas fa-check"></i></b-button>
                 </b-button-group>
@@ -45,12 +46,14 @@
         mounted() {
             document.getElementById('noRespond').style.display = 'none';
             document.getElementById('finalizar').style.display = 'none';
+            document.getElementById('anterior').style.display = 'none';
             this.current = JSON.parse(this.initialValue);
             this.final = this.current.length;
             this.actual()
         },
         methods: {
             actual() {
+                console.log(this.dependiente);
                 if (this.dependiente === 0) {
                     document.getElementById("content").innerHTML = this.construir();
                 } else {
@@ -65,11 +68,20 @@
             siguiente() {
                 document.getElementById('noRespond').style.display = 'none';
 
+                console.log("SIGUIENTE");
+                console.log(this.currentQ);
+                console.log("--------------------");
                 if (this.seleccionado()) {
                     this.construirNodo();
                     this.currentQ++;
+                    console.log(this.currentQ);
+                    console.log("--------------------");
                     if (this.currentQ < this.final) {
                         this.actual();
+
+                        if (this.currentQ > 0) {
+                            document.getElementById('anterior').style.display = 'block';
+                        }
 
                         if (this.currentQ === this.final-1) {
                             document.getElementById('siguiente').style.display = 'none';
@@ -82,11 +94,46 @@
                     document.getElementById('noRespond').style.display = 'block';
                 }
             },
-            saltarPendiente() {
+            anterior () {
+                document.getElementById('noRespond').style.display = 'none';
+
+                console.log("ANTERIOR");
+                console.log(this.currentQ);
+                console.log("--------------------");
+                this.currentQ--;
+                console.log(this.currentQ+'-'+this.final-1);
+                console.log("--------------------");
                 this.construirNodo();
-                this.currentQ++;
                 if (this.currentQ < this.final) {
                     this.actual();
+
+                    if (this.currentQ === 0) {
+                        document.getElementById('anterior').style.display = 'none';
+                    }
+
+                    if ((this.currentQ >= 0) && (this.currentQ < this.final-1)) {
+                        document.getElementById('siguiente').style.display = 'block';
+                    }
+
+                    if (this.currentQ === this.final-1) {
+                        document.getElementById('siguiente').style.display = 'none';
+                        document.getElementById('finalizar').style.display = 'block';
+                    } else {
+                        document.getElementById('finalizar').style.display = 'none';
+                    }
+                }
+            },
+            saltarPendiente() {
+                this.construirNodo();
+
+                this.currentQ++;
+
+                if (this.currentQ < this.final) {
+                    this.actual();
+
+                    if (this.currentQ > 0) {
+                        document.getElementById('anterior').style.display = 'block';
+                    }
 
                     if (this.currentQ === this.final-1) {
                         document.getElementById('siguiente').style.display = 'none';

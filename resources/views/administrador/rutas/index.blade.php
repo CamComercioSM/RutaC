@@ -1,6 +1,6 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Rutas')
-@section('content')
+@section('app-content')
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-12">
@@ -53,8 +53,9 @@
 										<td class="text-right">{{$ruta->rutaCUMPLIMIENTO}}</td>
 										<td class="text-right">{{$ruta->completadas}}/{{$ruta->total}}</td>
 										<td class="text-center">
-											<a class="btn btn-warning btn-sm" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
-												Revisar
+											<a class="p-1" href="{{ route('admin.revisar-ruta', ['ruta'=> $ruta->rutaID ]) }}"
+											   aria-label="Revisar Ruta" data-balloon-pos="up">
+												<i class="fas fa-check-circle text-warning"></i>
 											</a>
 										</td>
 									</tr>

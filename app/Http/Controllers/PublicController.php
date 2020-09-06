@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\FinDiagnosticoEvent;
+use App\Mail\RutaCMail;
+use App\Models\Diagnostico;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Repositories\FormRepository;
+use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
@@ -20,7 +24,7 @@ class PublicController extends Controller
     {
         $this->repository = $repository;
     }
-    
+
     /**
      * Trae los municipios del departamento
      *
@@ -31,13 +35,13 @@ class PublicController extends Controller
         $repository = $this->repository->municipios($departamento);
         return $repository;
     }
-    
+
     public function getDocumento($file)
     {
         $full_path = storage_path(env('PATH_DOCUMENTO').'/'.$file);
         return response()->download($full_path);
     }
-    
+
     public function verify($code, Request $request)
     {
         if (Auth::user()) {
@@ -70,7 +74,7 @@ class PublicController extends Controller
             return view('rutac.verificado');
         }
     }
-    
+
     public function actualizarDatos($code, Request $request)
     {
         if (Auth::user()) {
@@ -95,7 +99,7 @@ class PublicController extends Controller
                 return redirect('/home');
             } else {
                 Auth::logout();
-                
+
                 return view('rutac.actualizado', compact("tipoIdentificacion", "identificacion", "nombres", "apellidos", "municipio_residencia", "direccion", "telefono", "correo_electronico"));
             }
         } else {
@@ -123,7 +127,7 @@ class PublicController extends Controller
     {
         return view('rutac.nuevo-registro');
     }
-    
+
     public function obtenerTipoIdentificacion($tipoIdentificacion)
     {
         switch ($tipoIdentificacion) {
@@ -148,5 +152,15 @@ class PublicController extends Controller
             default:
                 return 'OTRO';
         }
+    }
+
+    public function enviar()
+    {
+        $usuario = User::where('usuarioID', Auth::user()->usuarioID)->with('datoUsuario')->first();
+        $diagnostico = Diagnostico::where('diagnosticoID', '2')->with('empresa','emprendimiento')->first();
+
+        event(new FinDiagnosticoEvent($usuario, $diagnostico));
+
+        //Mail::send(new RutaCMail($usuario, 'fin_diagnostico'));
     }
 }

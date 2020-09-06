@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Constants\Estado;
+use App\Helpers\Social;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\GeneralController;
 use App\Http\Requests\StoreEmprendimiento;
@@ -63,6 +64,8 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoINICIOACTIVIDADES = $request->input('inicio_actividades');
         $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
         $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
+        $emprendimiento->emprendimientoSITIO_WEB = $request->input('pagina_web');
+        $emprendimiento->emprendimientoREDES_SOCIALES = Social::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
         $emprendimiento->save();
 
         $request->session()->put('tiene_entidad', '1');
@@ -89,6 +92,25 @@ class EmprendimientoController extends Controller
                     ->orWhere('emprendimientoESTADO', 'Finalizado');
             })->where('emprendimientoID', $emprendimiento->emprendimientoID)
             ->where('USUARIOS_usuarioID', Auth::user()->usuarioID)->first();
+
+        $emprendimiento->facebook = "";
+        $emprendimiento->twitter = "";
+        $emprendimiento->instagram = "";
+        $redesSociales = explode("-", $emprendimiento->emprendimientoREDES_SOCIALES);
+        foreach ($redesSociales as $key => $redSocial) {
+            $red = explode(":", $redSocial);
+            switch ($red[0]) {
+                case "fb":
+                    $emprendimiento->facebook = $red[1];
+                    break;
+                case "tw":
+                    $emprendimiento->twitter = $red[1];
+                    break;
+                case "ig":
+                    $emprendimiento->instagram = $red[1];
+                    break;
+            }
+        }
 
         $competencias = [];
         foreach ($emprendimiento->diagnosticosAll as $keyD => $diagnostico) {
@@ -132,6 +154,8 @@ class EmprendimientoController extends Controller
         $emprendimiento->emprendimientoINICIOACTIVIDADES = $request->input('inicio_actividades');
         $emprendimiento->emprendimientoINGRESOS = is_numeric(str_replace(',', '', $request->input('ingresos_ventas'))) ? str_replace(',', '', $request->input('ingresos_ventas')) : 0;
         $emprendimiento->emprendimientoREMUNERACION = is_numeric(str_replace(',', '', $request->input('remuneracion_emprendedor'))) ? str_replace(',', '', $request->input('remuneracion_emprendedor')) : 0;
+        $emprendimiento->emprendimientoSITIO_WEB = $request->input('pagina_web');
+        $emprendimiento->emprendimientoREDES_SOCIALES = Social::getRedesSociales($request->input('cuenta_facebook'), $request->input('cuenta_twitter'), $request->input('cuenta_instagram'));
         $emprendimiento->save();
 
         return redirect()->route('user.emprendimientos.show', $emprendimiento)->with([

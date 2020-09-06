@@ -45,6 +45,32 @@
                                 <strong>Remuneración del emprendedor</strong>
                                 <p class="text-muted">{{ number_format($emprendimiento->emprendimientoREMUNERACION,0) }}</p>
                             </div>
+
+                            <div class="col-md-12">
+                                <strong>Pagina web</strong>
+                                <p class="text-muted"><a href="http://{{$emprendimiento->emprendimientoSITIO_WEB}}" target="_blank">{{$emprendimiento->emprendimientoSITIO_WEB}}</a></p>
+                                <strong>Redes sociales </strong><br>
+                                <div class="text-center">
+                                    @if($emprendimiento->facebook)
+                                        <a href="https://www.facebook.com/{{$emprendimiento->facebook}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #3b5998">
+                                            <i class="fab fa-facebook fa-2x"> </i>
+                                        </a>
+                                    @endif
+                                    @if($emprendimiento->instagram)
+                                        <a href="https://www.instagram.com/{{$emprendimiento->instagram}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #3f729b">
+                                            <i aria-hidden="true" class="fab fa-instagram fa-2x"></i>
+                                        </a>
+                                    @endif
+                                    @if($emprendimiento->twitter)
+                                        <a href="https://www.twitter.com/{{$emprendimiento->twitter}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #00acee">
+                                            <i class="fab fa-twitter fa-2x"> </i>
+                                        </a>
+                                    @endif
+                                    @if(!$emprendimiento->facebook && !$emprendimiento->instagram && !$emprendimiento->twitter)
+                                        <p class="text-muted" style="margin-bottom: 0px;">No posee redes registradas</p>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

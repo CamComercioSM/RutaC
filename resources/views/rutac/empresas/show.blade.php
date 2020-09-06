@@ -45,18 +45,24 @@
                                 <!--<p class="text-muted" style="margin-bottom: 0px;"><b>Empleados fijos: </b>{{$empresa->empresaEMPLEADOS_FIJOS}}</p>
                                 <p class="text-muted" style="margin-bottom: 0px;"><b>Empleados temporales: </b>{{$empresa->empresaEMPLEADOS_TEMPORALES}}</p>
                                 <p class="text-muted"><b>Rangos activos: </b>{{$empresa->empresaRANGOS_ACTIVOS}}</p>-->
-                                <strong>Pagina web</strong> 
+                                <strong>Pagina web</strong>
                                 <p class="text-muted"><a href="http://{{$empresa->empresaSITIO_WEB}}" target="_blank">{{$empresa->empresaSITIO_WEB}}</a></p>
                                 <strong>Redes sociales </strong><br>
                                 <div class="text-center">
                                     @if($empresa->facebook)
-                                        <a href="https://www.facebook.com/{{$empresa->facebook}}" target="_blank" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+                                        <a href="https://www.facebook.com/{{$empresa->facebook}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #3b5998">
+                                            <i class="fab fa-facebook fa-2x"> </i>
+                                        </a>
                                     @endif
                                     @if($empresa->instagram)
-                                        <a href="https://www.instagram.com/{{$empresa->instagram}}" target="_blank" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
+                                        <a href="https://www.instagram.com/{{$empresa->instagram}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #3f729b">
+                                            <i aria-hidden="true" class="fab fa-instagram fa-2x"></i>
+                                        </a>
                                     @endif
                                     @if($empresa->twitter)
-                                        <a href="https://www.twitter.com/{{$empresa->twitter}}" target="_blank" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a href="https://www.twitter.com/{{$empresa->twitter}}" target="_blank" class="btn-floating btn-sm mx-1" style="color: #00acee">
+                                            <i class="fab fa-twitter fa-2x"> </i>
+                                        </a>
                                     @endif
                                     @if(!$empresa->facebook && !$empresa->instagram && !$empresa->twitter)
                                         <p class="text-muted" style="margin-bottom: 0px;">No posee redes registradas</p>
@@ -190,3 +196,9 @@
         </div>
     </div>
 @endsection
+@push('modals')
+    @include('layouts.modals.__confirm_delete')
+@endpush
+@push('scripts')
+    <script src="{{ asset(mix('js/delete-modal.js')) }}"></script>
+@endpush

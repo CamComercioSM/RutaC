@@ -243,7 +243,6 @@ class DiagnosticoController extends Controller
                     }
 
                     $seccionCumplimiento = $seccionCumplimiento + $resultado->resultado_preguntaCUMPLIMIENTO;
-
                 } else {
                     $resultado->resultado_preguntaPRESENTACION = "";
                     $resultado->resultado_preguntaCUMPLIMIENTO = 0;
@@ -283,6 +282,8 @@ class DiagnosticoController extends Controller
                 $diagnostico->diagnosticoMENSAJE4 = $feedbackDiagnostico->retro_tipo_diagnosticoMensaje4;
                 $diagnostico->diagnosticoESTADO = 'Finalizado';
                 $diagnostico->save();
+
+                $diagnostico->load('emprendimiento', 'empresa');
 
                 $ruta->rutaESTADO = 'En Proceso';
                 $ruta->save();
@@ -351,6 +352,14 @@ class DiagnosticoController extends Controller
             ->first();
 
         return view('rutac.diagnosticos.show', compact('diagnostico'));
+    }
+
+    public function observaciones(Request $request, Diagnostico $diagnostico)
+    {
+        $diagnostico->diagnosticoOBSERVACIONES = $request->input('observacion');
+        $diagnostico->save();
+
+        return redirect()->route('user.diganostico.resultados', $diagnostico);
     }
 
     /**

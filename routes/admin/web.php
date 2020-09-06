@@ -11,7 +11,7 @@ Route::resource('diagnosticos.feedback', 'Diagnosticos\FeedbackController')->exc
 Route::resource('diagnosticos.secciones.feedback', 'Diagnosticos\SeccionFeedbackController')->except(['index, store']);
 
 
-
+Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior');
 
 
 
@@ -21,7 +21,7 @@ Route::get('', 'AdminController@index')->name('index');
 
 Route::get('rutas', 'RutasController@index')->name('rutas.index');
 Route::get('todas-rutas', 'RutasController@todasRutas');
-Route::get('rutas/revisar/{ruta}', 'RutasController@revisarRuta');
+Route::get('rutas/revisar/{ruta}', 'RutasController@revisarRuta')->name('revisar-ruta');
 Route::post('marcar-estacion/{estacion}/{ruta}', 'RutasController@marcarEstacion')->name('marcar-estacion');
 Route::post('desmarcar-estacion/{estacion}/{ruta}', 'RutasController@desmarcarEstacion')->name('desmarcar-estacion');
 

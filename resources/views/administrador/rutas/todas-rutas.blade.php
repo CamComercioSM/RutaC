@@ -1,6 +1,6 @@
-@extends('administrador.index')
+@extends('administrador.app')
 @section('title','RutaC | Ver todas las rutas')
-@section('content')
+@section('app-content')
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-12">
@@ -25,7 +25,7 @@
 									<th>{{ __('Usuario') }}</th>
 									<th>{{ __('Cumplimiento') }}</th>
 									<th>{{ __('Completadas/Estaciones') }}</th>
-									<th class="text-right"></th>
+									<th width="100px" class="text-right"></th>
 								</tr>
 								</thead>
 								<tbody>
@@ -54,22 +54,26 @@
 										<td class="text-right">{{$ruta->completadas}}/{{$ruta->total}}</td>
 										<td class="text-center">
 											@if($ruta->rutaESTADO == 'En Proceso')
-												<a class="btn btn-warning btn-sm" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
-													Revisar
+												<a class="p-1" href="{{ route('admin.revisar-ruta', ['ruta'=> $ruta->rutaID ]) }}"
+												   aria-label="Revisar Ruta" data-balloon-pos="up">
+													<i class="fas fa-check-circle text-warning"></i>
 												</a>
 											@else
-												<a class="btn btn-success btn-sm" href="{{action('Admin\RutasController@revisarRuta', ['ruta'=> $ruta->rutaID ])}}">
-													Ver ruta
+												<a class="p-1" href="{{ route('admin.revisar-ruta', ['ruta'=> $ruta->rutaID ]) }}"
+												   aria-label="Ver Ruta" data-balloon-pos="up">
+													<i class="fas fa-check-circle text-success"></i>
 												</a>
 											@endif
 											@if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == '1')
-												<a class="btn btn-primary btn-sm" href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',['emprendimiento',$ruta->diagnostico->diagnosticoID]) }}" style="width:120px;">
-													<i class="fa fa-file-text-o"></i> Ver Resultados
+												<a class="p-1" href="{{ route('admin.resultado-anterior',['emprendimiento',$ruta->diagnostico->diagnosticoID]) }}"
+												   aria-label="Ver Resultados" data-balloon-pos="up">
+													<i class="fas fa-eye text-success"></i>
 												</a>
 											@endif
 											@if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == '2')
-												<a class="btn btn-primary btn-sm" href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',['empresa',$ruta->diagnostico->diagnosticoID]) }}" style="width:120px;">
-													<i class="fa fa-file-text-o"></i> Ver Resultados
+												<a class="p-1" href="{{ route('admin.resultado-anterior',['empresa',$ruta->diagnostico->diagnosticoID]) }}"
+												   aria-label="Ver Resultados" data-balloon-pos="up">
+													<i class="fas fa-eye text-success"></i>
 												</a>
 											@endif
 										</td>

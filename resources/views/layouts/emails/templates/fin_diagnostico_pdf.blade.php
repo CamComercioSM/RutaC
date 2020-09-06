@@ -74,6 +74,20 @@
             font-size: 0.8em;
         }
 
+        #unidad {
+            float: right;
+            margin-bottom: 30px;
+        }
+
+        #unidad span {
+            color: #5D6975;
+            text-align: right;
+            width: 86px;
+            margin-right: 10px;
+            display: inline-block;
+            font-size: 0.8em;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -159,6 +173,17 @@
         <div><span>FECHA:</span> {{ $diagnosticoFECHA }}</div>
         <div><span>RESULTADO:</span> {{ number_format($diagnosticoRESULTADO, 0) }}%</div>
         <div><span>NIVEL:</span> {{ $diagnosticoNIVEL }}</div>
+    </div>
+    <div id="unidad">
+        @if($emprendimiento)
+        <div><span>EMPRENDIMIENTO:</span> {{ $emprendimiento['emprendimientoNOMBRE'] }}</div>
+        <div><span>DESCRIPCIÓN:</span> {{ $emprendimiento['emprendimientoDESCRIPCION'] }}</div>
+        @endif
+        @if($empresa)
+        <div><span>RAZÓN SOCIAL:</span> {{ $empresa['empresaRAZON_SOCIAL'] }}</div>
+        <div><span>ORGANIZACIÓN JURÍDICA:</span> {{ $empresa['empresaORGANIZACION_JURIDICA'] }}</div>
+        <div><span>SECTOR:</span> {{ $empresa['empresaSECTOR'] }}</div>
+        @endif
     </div>
     <table>
         <tbody>

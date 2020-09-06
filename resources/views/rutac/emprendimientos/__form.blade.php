@@ -36,6 +36,70 @@
                 label="Descripción del emprendimiento *"
         ></rc-input>
     </div>
+
+    <div class="form-group col-md-12">
+        <rc-input
+                rules=""
+                name="pagina_web"
+                id="pagina_web"
+                type="text"
+                @error('pagina_web')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('pagina_web', $emprendimiento->emprendimientoSITIO_WEB) }}"
+                autocomplete="off"
+                placeholder="Digite página web"
+                label="Página web de el emprendimiento"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-4">
+        <rc-input
+                rules="min:3|max:50"
+                name="cuenta_facebook"
+                id="cuenta_facebook"
+                type="text"
+                @error('cuenta_facebook')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('cuenta_facebook', $emprendimiento->facebook) }}"
+                autocomplete="off"
+                placeholder="Digite cuenta de facebook"
+                label="Cuenta de facebook"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-4">
+        <rc-input
+                rules="min:3|max:50"
+                name="cuenta_twitter"
+                id="cuenta_twitter"
+                type="text"
+                @error('cuenta_twitter')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('cuenta_twitter', $emprendimiento->twitter) }}"
+                autocomplete="off"
+                placeholder="Digite cuenta de twitter"
+                label="Cuenta de twitter"
+        ></rc-input>
+    </div>
+
+    <div class="form-group col-md-4">
+        <rc-input
+                rules="min:3|max:50"
+                name="cuenta_instagram"
+                id="cuenta_instagram"
+                type="text"
+                @error('cuenta_instagram')
+                error="{{ $message }}"
+                @enderror
+                initial-value="{{ old('cuenta_instagram', $emprendimiento->instagram) }}"
+                autocomplete="off"
+                placeholder="Digite cuenta de instagram"
+                label="Cuenta de instagram"
+        ></rc-input>
+    </div>
 <!--
     <div class="form-group col-md-4">
         <rc-input
