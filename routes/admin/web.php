@@ -11,9 +11,10 @@ Route::resource('diagnosticos.feedback', 'Diagnosticos\FeedbackController')->exc
 Route::resource('diagnosticos.secciones.feedback', 'Diagnosticos\SeccionFeedbackController')->except(['index, store']);
 
 
-Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior');
-Route::get('diagnostico/ver-resultado/{tipo}/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico')->name('ver-resultado');
-
+Route::get('diagnostico/resultado-anterior/emprendimiento/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior.emprendimiento');
+Route::get('diagnostico/resultado-anterior/empresa/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior')->name('resultado-anterior.empresa');
+Route::get('diagnostico/ver-resultado/{diagnostico}', 'DiagnosticoController@showResultadosDiagnostico')->name('ver-resultado');
+Route::get('diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'DiagnosticoController@verResultadoSeccion');
 
 
 Route::get('', 'AdminController@index')->name('index');
@@ -59,7 +60,7 @@ Route::get('diagnosticos/asignar-servicio-respuesta', 'DiagnosticoController@asi
 
 Route::get('diagnostico/ver-historico/{tipo}/{id}', 'DiagnosticoController@verHistorico');
 Route::get('diagnostico/resultado-anterior/{tipo}/{diagnostico}', 'DiagnosticoController@mostrarResultadoAnterior');
-Route::get('diagnostico/resultado/{tipo}/{diagnostico}/{seccion}', 'DiagnosticoController@verResultadoSeccion');
+
 
 */
 Route::resource('videos', 'VideosController');

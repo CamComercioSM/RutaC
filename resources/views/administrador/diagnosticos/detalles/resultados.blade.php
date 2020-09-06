@@ -1,217 +1,200 @@
-@extends('administrador.index')
+@extends('administrador.app')
 
-@section('title','RutaC | Resultado')
+@section('title','RutaC | Resultado diagnóstico')
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content">
-            <div class="col-md-12">
-                <div class="card card-default">
-                    <div class="card-header d-flex justify-content-end">
-                        <div class="btn-toolbar" role="toolbar">
-                            <div class="btn-group btn-group-sm">
-                                <a href="{{ action('Admin\DiagnosticoController@mostrarResultadoAnterior',[$tipo,$diagnostico->diagnosticoID]) }}" class="btn btn-secondary">
-                                    <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="box">
-                            <div class="box-header with-border text-center">
-                                <h3>DIAGNÓSTICO PARA {{strtoupper($tipo)}} - RUTA C</h3>
-                            </div>
-                            <hr>
-                            <div class="box-body">
-                                <div class="col-xs-12">
-                                    <p><b>Idea/Emprendimiento: </b> {{$diagnostico->diagnosticoNOMBRE}}</p>
-                                </div>
-                                <br>
-                                <div class="col-xs-7">
-                                    <p><b>Fecha del diagnóstico: </b> {{$diagnostico->diagnosticoFECHA}}</p>
-                                </div>
-                                <div class="col-xs-5">
-                                    <p><b>Consecutivo: </b> {{ str_pad(strtoupper($diagnostico->diagnosticoID), 5, '0', STR_PAD_LEFT) }}</p>
-                                </div>
-                                <br>
-                                <div class="col-xs-7">
-                                    <p><b>Realizado por: </b> {{$diagnostico->diagnosticoREALIZADO_POR}}</p>
-                                </div>
-                                <div class="col-xs-5">
-                                    <p><b>Resultado: </b> {{number_format($diagnostico->diagnosticoRESULTADO* 100, 2)}} - <b>Nivel:</b> {{$diagnostico->diagnosticoNIVEL}}</p>
-                                </div>
-                                <br>
-                                <div class="col-xs-12">
-                                    <p><b>Idea/Emprendimiento: </b> {{$diagnostico->diagnosticoNOMBRE}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <hr>
-                            <div class="box-header with-border text-center">
-                                <h3>ANÁLISIS DE CRECIMIENTO</h3>
-                            </div>
-                            <hr>
-                            <div class="box-body">
-                                <div class="col-xs-12">
-                                    <canvas id="canvas"></canvas>
-                                </div>
-                                @foreach($diagnostico->resultadoSeccion as $key=> $resultado_seccion)
-                                <div class="col-xs-4">
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <td class="text-center"><h4><b>{{$resultado_seccion->resultado_seccionNOMBRE}}</b></h4></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" class="text-center">
-                                                <p>
-                                                {{number_format($resultado_seccion->diagnostico_seccionRESULTADO* 100, 2)}}% - {{$resultado_seccion->diagnostico_seccionNIVEL}}<br>
-                                                {{$resultado_seccion->diagnostico_seccionMENSAJE_FEEDBACK}}
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @if($competenciaNombre)
-                        <div class="box">
-                            <hr>
-                            <div class="box-header with-border text-center">
-                                <h3>ANÁLISIS DE COMPETENCIA</h3>
-                            </div>
-                            <hr>
-                            <div class="box-body">
-                                <div class="col-xs-4">
-                                    <table class="table table-bordered table-hover">
-                                        <tr>
-                                            <td colspan="2" class="text-center"><b>COMPETENCIAS</b></td>
-                                        </tr>
-                                        @foreach($competencias as $key=> $competencia)
-                                        <tr>
-                                            <td class="text-center"><b>{{$competencia->resultado_preguntaCOMPETENCIA}}</b></td>
-                                            <td class="text-center" style="width: 50px">{{number_format($competencia->promedio * 100, 2)}}%</td>
-                                        </tr>
-                                        @endforeach
-                                    </table>
-                                </div>
-                                <div class="col-xs-8">
-                                    <canvas id="canvasCompetencias"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        @else
-                        <div class="box">
-                             <hr>
-                            <div class="box-header with-border text-center">
-                                <h3>ANÁLISIS DE COMPETENCIA</h3>
-                            </div>
-                            <hr>
-                            <div class="box-body">
-                                <p>No se evaluaron competencias</p>
-                            </div>
-                        </div>
-                        @endif
-
-
-                    </div>
+@section('app-content')
+    <div class="card card-default">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-content-center">
+                <h5>Resultados del diagnóstico</h5>
+            </div>
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group btn-group-sm">
+                    <b-button
+                            class="btn btn-sm ml-3"
+                            type="button"
+                            aria-expanded="false"
+                            v-b-toggle.collapse-2
+                            style="margin-right: 15px"
+                    >
+                        {{ __('Ver Resultados') }}
+                        <i class="fas fa-fw fa-plus"></i>
+                    </b-button>
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
+                    </a>
                 </div>
             </div>
         </div>
+
+        <div class="card-body">
+            <b-collapse id="collapse-2" :visible="visible" v-cloak>
+                <div class="col-md-12">
+                    <b-card-group deck>
+                        @forelse($diagnostico->resultadoSeccion as $key => $resultadoSeccion)
+                            <b-card
+                                    border-variant="primary"
+                                    header="{{ $resultadoSeccion->resultado_seccionNOMBRE }}"
+                                    header-bg-variant="primary"
+                                    header-text-variant="white"
+                                    style="max-width: 20rem;"
+                            >
+                                <b-card-text>
+                                    @if($resultadoSeccion->diagnostico_seccionESTADO == 'Finalizado')
+                                        <p><b>Resultado: </b>{{ $resultadoSeccion->diagnostico_seccionRESULTADO }}</p>
+                                        <p><b>Nivel: </b>{{ $resultadoSeccion->diagnostico_seccionNIVEL }}</p>
+                                        <p><b>Feedback: </b>{{ $resultadoSeccion->diagnostico_seccionMENSAJE_FEEDBACK }}</p>
+                                    @endif
+                                </b-card-text>
+                                @if($resultadoSeccion->diagnostico_seccionESTADO != 'Finalizado')
+                                    <b-button size="sm" href="{{ url('user/diagnosticos/seccion', $resultadoSeccion->resultado_seccionID) }}" variant="primary">Realizar</b-button>
+                                @endif
+                            </b-card>
+                            @if((((2 * $key) % 3) == 1))
+                                <div class="col-md-12"><br></div>
+                            @endif
+                        @empty
+                            <div class="col-md-12">
+                                <h2 class="text-center">En construcción</h2>
+                            </div>
+                        @endforelse
+                    </b-card-group>
+                </div>
+                <br>
+            </b-collapse>
+            <b-card-group deck>
+                <div class="col-md-12">
+                    <b-card-group deck>
+                        <b-card title="" header-tag="header" footer-tag="footer">
+                            <template v-slot:header>
+                                <h6 class="mb-0"><b>Datos de Contacto</b></h6>
+                            </template>
+                            <b-card-text>
+                                <dl class="row">
+                                    <dt class="col-md-4">{{ __('Identificación') }}</dt>
+                                    <dd class="col-md-8">{{ $usuario['identificacion'] }}</dd>
+
+                                    <dt class="col-md-4">{{ __('Nombre') }}</dt>
+                                    <dd class="col-md-8">{{ $usuario['nombre'] }}</dd>
+
+                                    <dt class="col-md-4">{{ __('Correo electrónico') }}</dt>
+                                    <dd class="col-md-8">{{ $usuario['email'] }}</dd>
+
+                                    <dt class="col-md-4">{{ __('Teléfono') }}</dt>
+                                    <dd class="col-md-8">{{ $usuario['telefono'] }}</dd>
+                                </dl>
+                            </b-card-text>
+                        </b-card>
+
+                        <b-card title="" header-tag="header" footer-tag="footer">
+                            <template v-slot:header>
+                                <h6 class="mb-0"><b>Datos de la Actividad</b></h6>
+                            </template>
+                            <b-card-text>
+                                <dl class="row">
+                                    @if($actividad['tipo'] == 'empresa')
+                                        <dt class="col-md-4">{{ __('NIT') }}</dt>
+                                        <dd class="col-md-8">{{ $actividad['nit'] }}</dd>
+
+                                        <dt class="col-md-4">{{ __('Razón Social') }}</dt>
+                                        <dd class="col-md-8">{{ $actividad['nombre'] }}</dd>
+
+                                        <dt class="col-md-4">{{ __('Sector') }}</dt>
+                                        <dd class="col-md-8"></dd>
+                                    @endif
+                                    @if($actividad['tipo'] == 'emprendimiento')
+                                        <dt class="col-md-4">{{ __('Nombre') }}</dt>
+                                        <dd class="col-md-8">{{ $actividad['nombre'] }}</dd>
+
+                                        @isset($actividad['actividades'])
+                                            <dt class="col-md-4">{{ __('Inicio de actividades') }}</dt>
+                                            <dd class="col-md-8">{{ $actividad['actividades'] }}</dd>
+                                        @endisset
+                                    @endif
+                                </dl>
+                            </b-card-text>
+                        </b-card>
+                    </b-card-group>
+                </div>
+                <br>
+                <div class="col-md-12">
+                    <h2 class="text-center titulo-nivel">{{ $diagnostico->diagnosticoNIVEL }}</h2>
+                </div>
+                <br>
+                <div class="col-md-12">
+                    @include('rutac.diagnosticos.include.__animacion')
+                </div>
+
+                <div class="col-md-12 mt-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>Ahora estás aquí</b></h3>
+                                </template>
+                                <b-card-text>
+                                    {{ $diagnostico->diagnosticoMENSAJE }}
+                                </b-card-text>
+                            </b-card>
+                            <hr>
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>A partir de ahora necesitas</b></h3>
+                                </template>
+                                <b-card-text>
+                                    {{ $diagnostico->diagnosticoMENSAJE2 }}
+                                </b-card-text>
+                            </b-card>
+                            <hr>
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>Para lograrlo necesitas</b></h3>
+                                </template>
+                                <b-card-text>
+                                    {{ $diagnostico->diagnosticoMENSAJE4 }}
+                                    <br>
+                                    <ul class="timeline timeline-inverse">
+                                        @foreach($estaciones as $key=> $estacion)
+                                            <li>
+                                                {{ $estacion['text'] }} {{ $estacion['nombre'] }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <hr>
+                                    <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm btn-primary float-right">
+                                        {{ __('Realizar Ruta') }}
+                                    </a>
+                                </b-card-text>
+                            </b-card>
+                        </div>
+                        <div class="col-md-6">
+                            <b-card title="" header-tag="header" footer-tag="footer">
+                                <template v-slot:header>
+                                    <h3 class="text-center titulo-feed"><b>¡ATENCIÓN! Debes tener cuidado:</b></h3>
+                                </template>
+                                <b-card-text>
+                                    <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
+                                        <template v-slot:lead>
+                                            {{ $diagnostico->diagnosticoMENSAJE3 }}
+                                        </template>
+                                    </b-jumbotron>
+                                </b-card-text>
+                            </b-card>
+                        </div>
+                    </div>
+                </div>
+            </b-card-group>
+        </div>
     </div>
 @endsection
-@section('style')
-<style type="text/css">
-	h3{
-		margin-top: 10px;
-	}
-    h5{
-        font-size: 16px;
+<style>
+    .titulo-nivel {
+        background: cornflowerblue;
+        color: white;
+        padding: 10px;
     }
-    
-	p{
-		font-size: 16px;
-	}
-
+    .titulo-feed {
+        color: cornflowerblue;
+        font-family: cursive;
+    }
 </style>
-
-
-@endsection
-@section('footer')
-
-<script src="{{ asset('bower_components/chart.js/Chart.min.js') }}"></script>
-
-<script type="text/javascript">
-	var radarChartData = {
-		labels: {!! json_encode($resultadoNombre) !!},
-		datasets: [
-			{
-				label: "Análisis de Crecimiento",
-				fillColor: "rgba(71,148,233,0.5)",
-				strokeColor: "rgba(0,0,0,0.5)",
-				pointColor: "rgba(0,0,0,0.8)",
-				pointStrokeColor: "#000",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "rgba(209,48,48,1)",
-				data: {!! json_encode($resultadoValor) !!}
-			}
-		]
-	};
-
-    @if($competenciaNombre)
-    var competenciasChartData = {
-        labels: {!! json_encode($competenciaNombre) !!},
-        datasets: [
-            {
-                label: "Competencias",
-                fillColor: "rgba(71,148,233,0.5)",
-				strokeColor: "rgba(0,0,0,0.5)",
-				pointColor: "rgba(0,0,0,0.8)",
-				pointStrokeColor: "#000",
-				pointHighlightFill: "#fff",
-				pointHighlightStroke: "rgba(209,48,48,1)",
-                data: {!! json_encode($competenciaPromedio) !!}
-            }
-        ]
-    };
-    @endif
-
-    var chartOptions = {
-      scale: {
-        ticks: {
-          beginAtZero: true,
-          min: 0,
-          max: 100,
-          stepSize: 20
-        },
-        pointLabels: {
-          fontSize: 18
-        }
-      },
-      legend: {
-        position: 'left'
-      }
-    };
-    
-    Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
-    
-	window.onload = function(){
-		window.myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
-			responsive: true,
-            chartOptions
-		});
-
-        @if($competenciaNombre)
-        window.myRadar = new Chart(document.getElementById("canvasCompetencias").getContext("2d")).Radar(competenciasChartData, {
-            responsive: true,
-            chartOptions
-        });
-        @endif
-	}
-</script>
-
-
-
-@endsection

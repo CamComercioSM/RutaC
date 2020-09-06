@@ -64,18 +64,10 @@
 													<i class="fas fa-check-circle text-success"></i>
 												</a>
 											@endif
-											@if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == '1')
-												<a class="p-1" href="{{ route('admin.resultado-anterior',['emprendimiento',$ruta->diagnostico->diagnosticoID]) }}"
-												   aria-label="Ver Resultados" data-balloon-pos="up">
-													<i class="fas fa-eye text-success"></i>
-												</a>
-											@endif
-											@if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == '2')
-												<a class="p-1" href="{{ route('admin.resultado-anterior',['empresa',$ruta->diagnostico->diagnosticoID]) }}"
-												   aria-label="Ver Resultados" data-balloon-pos="up">
-													<i class="fas fa-eye text-success"></i>
-												</a>
-											@endif
+											<a class="p-1" href="{{ route('admin.ver-resultado', $ruta->diagnostico) }}"
+											   aria-label="Ver Resultados" data-balloon-pos="up">
+												<i class="fas fa-eye text-success"></i>
+											</a>
 										</td>
 									</tr>
 								@endforeach

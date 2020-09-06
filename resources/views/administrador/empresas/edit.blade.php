@@ -13,7 +13,7 @@
                         </div>
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group btn-group-sm">
-                                <a href="{{ route('user.empresas.show', $empresa) }}" class="btn btn-secondary">
+                                <a href="{{ route('admin.empresas.show', $empresa) }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
                                 </a>
                             </div>

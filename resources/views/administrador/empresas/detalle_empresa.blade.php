@@ -115,6 +115,10 @@
                                     </b-card-text>
 
                                     @if($empresa->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
+                                        <b-button variant="primary" size="sm" class="w-25"  href="{{ route('admin.ver-resultado',$empresa->diagnosticosAll[0]) }}">
+                                            <i class="fas fa-chart-area"></i> Ver Resultados
+                                        </b-button>
+
                                         <b-button variant="info" size="sm" class="w-25" href="{{ route('admin.revisar-ruta', ['ruta'=> $empresa->diagnosticosAll[0]->ruta->rutaID ]) }}">
                                             <i class="fas fa-signal"></i> Ver Ruta
                                         </b-button>
@@ -123,6 +127,49 @@
                             @else
                                 <h3>No ha iniciado diagnosticos</h3>
                             @endif
+                            @if ($empresa->diagnosticosAll->count() > 1)
+                                    <b-button v-b-toggle.collapse-2 block size="sm" variant="outline-primary" class="m-1">Diagnósticos anteriores</b-button>
+                                    <b-collapse id="collapse-2">
+                                        @endif
+                                        @forelse($empresa->diagnosticosAll as $key => $diagnostico)
+                                            @if ($key > 0)
+                                                <b-card title="{{ $diagnostico->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $diagnostico->diagnosticoFECHA }}" class="bg-white">
+                                                    <b-card-text>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <b>{{ __('Resultado') }}: </b>{{ $diagnostico->diagnosticoRESULTADO }}
+                                                            </div>
+                                                            <div class="col">
+                                                                <b>{{ __('Nivel') }}: </b>{{ $diagnostico->diagnosticoNIVEL }}
+                                                            </div>
+                                                            <div class="col">
+                                                                <b>{{ __('Estado') }}: </b>{{ $diagnostico->diagnosticoESTADO }}
+                                                            </div>
+                                                        </div>
+                                                    </b-card-text>
+
+                                                    <b-card-text>
+                                                        <b>Feedback: </b>
+                                                        {{ $diagnostico->diagnosticoMENSAJE }}
+                                                    </b-card-text>
+
+                                                    <b-button variant="primary" size="sm" class="w-25"  href="{{ route('admin.ver-resultado', $diagnostico) }}">
+                                                        <i class="fas fa-chart-area"></i> Ver Resultados
+                                                    </b-button>
+
+                                                    <b-button variant="info" size="sm" class="w-25" href="{{ route('admin.revisar-ruta', ['ruta'=> $diagnostico->ruta->rutaID ]) }}">
+                                                        <i class="fas fa-signal"></i> Ver Ruta
+                                                    </b-button>
+                                                </b-card>
+                                            @endif
+                                        @empty
+
+                                        @endforelse
+                                        @if ($empresa->diagnosticosAll->count() > 1)
+                                    </b-collapse>
+                                @endif
+
+
                         </div>
                     </div>
                 </div>

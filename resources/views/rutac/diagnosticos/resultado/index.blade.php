@@ -1,6 +1,6 @@
-@extends('rutac.app')
+@extends('administrador.app')
 
-@section('title','RutaC | Agregar emprendimiento')
+@section('title','RutaC | Resultados')
 
 @section('app-content')
     <div class="card card-default">
@@ -20,6 +20,9 @@
                         {{ __('Ver Resultados') }}
                         <i class="fas fa-fw fa-plus"></i>
                     </b-button>
+                    <a href="{{ route('admin.revisar-ruta', $diagnostico->ruta) }}" class="btn btn-sm mr-2 btn-primary float-right">
+                        <i class="fas fa-chart-line"></i> {{ __('Ver Ruta') }}
+                    </a>
                     <a href="{{ route('user.ruta.iniciar-ruta') }}" class="btn btn-outline-secondary">
                         <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
                     </a>
@@ -160,10 +163,6 @@
                                             </li>
                                         @endforeach
                                     </ul>
-                                    <hr>
-                                    <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm btn-primary float-right">
-                                        {{ __('Realizar Ruta') }}
-                                    </a>
                                 </b-card-text>
                             </b-card>
                         </div>

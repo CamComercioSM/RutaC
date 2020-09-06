@@ -41,7 +41,6 @@
 											@endif
 											@if($ruta->diagnostico->TIPOS_DIAGNOSTICOS_tipo_diagnosticoID == 1)
 												{{$ruta->ideaNegocio->emprendimientoNOMBRE}}<br>
-												Inicio actividades: {{$ruta->ideaNegocio->emprendimientoINICIOACTIVIDADES}}<br>
 											@endif
 										</td>
 										<td class="text-left">
