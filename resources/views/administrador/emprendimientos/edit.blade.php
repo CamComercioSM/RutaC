@@ -1,4 +1,4 @@
-@extends('rutac.app')
+@extends('administrador.app')
 
 @section('title','RutaC | Editar emprendimiento')
 
@@ -13,7 +13,7 @@
                         </div>
                         <div class="btn-toolbar" role="toolbar">
                             <div class="btn-group btn-group-sm">
-                                <a href="{{ route('user.emprendimientos.show', $emprendimiento) }}" class="btn btn-secondary">
+                                <a href="{{ route('admin.emprendimientos.show', $emprendimiento) }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> {{ __('Volver') }}
                                 </a>
                             </div>
@@ -22,7 +22,7 @@
 
                     <div class="card-body">
                         <rc-form
-                                action="{{ route('user.emprendimientos.update', $emprendimiento) }}"
+                                action="{{ route('admin.emprendimientos.update', $emprendimiento) }}"
                                 method="post"
                         >
                             @method('PATCH')

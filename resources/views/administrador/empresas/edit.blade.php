@@ -1,6 +1,6 @@
 @extends('administrador.app')
 
-@section('title','RutaC | Agregar empresa')
+@section('title','RutaC | Editar empresa')
 
 @section('app-content')
     <div class="container">

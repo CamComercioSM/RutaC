@@ -1,6 +1,6 @@
-@extends('administrador.index')
-@section('title','RutaC | Competencias')
-@section('content')
+@extends('administrador.app')
+@section('title','RutaC | Emprendimientos')
+@section('app-content')
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-12">
@@ -9,7 +9,9 @@
 						<h5></h5>
 						<div>
 							<div class="btn-group btn-group-sm">
-								<a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarEmprendimientos') }}"><i class="fa fa-file-excel-o"></i> Exportar Emprendimientos</a>
+								<a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarEmprendimientos') }}">
+									<i class="fas fa-file-excel"></i> Exportar Emprendimientos
+								</a>
 							</div>
 						</div>
 					</div>
@@ -29,7 +31,7 @@
 										<td class="text-left">{{$emprendimiento->emprendimientoNOMBRE}}</td>
 										<td class="text-left">{{$emprendimiento->usuario->datoUsuario->dato_usuarioTIPO_IDENTIFICACION}} - {{$emprendimiento->usuario->datoUsuario->dato_usuarioIDENTIFICACION}} - {{$emprendimiento->usuario->datoUsuario->dato_usuarioNOMBRE_COMPLETO}}</td>
 										<td class="text-center">
-											<a class="btn btn-primary btn-sm" href="{{action('Admin\EmprendimientoController@verEmprendimiento', ['emprendimientoID'=> $emprendimiento->emprendimientoID ])}}" style="width:50px;">Ver</a>
+											<a class="btn btn-primary btn-sm" href="{{ route('admin.emprendimientos.show', $emprendimiento) }}" style="width:50px;">Ver</a>
 										</td>
 									</tr>
 								@endforeach

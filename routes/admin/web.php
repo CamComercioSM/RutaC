@@ -97,13 +97,12 @@ Route::post('usuario-guardar', 'UsuarioController@guardarPerfil');
 
 
 Route::resource('empresas', 'EmpresaController');
-/*Route::get('empresas', 'EmpresaController@index')->name('empresas.index');
-Route::get('empresa/{empresaID}', 'EmpresaController@verEmpresa')->name('ver-empresa');*/
-Route::post('empresa/{empresaID}/editar', 'EmpresaController@editarEmpresa')->name('editar-empresa');
 
-Route::get('emprendimientos', 'EmprendimientoController@index')->name('emprendimientos.index');
+Route::resource('emprendimientos', 'EmprendimientoController');
+
+/*Route::get('emprendimientos', 'EmprendimientoController@index')->name('emprendimientos.index');
 Route::get('emprendimiento/{emprendimientoID}', 'EmprendimientoController@verEmprendimiento');
-Route::post('emprendimiento/{emprendimientoID}/editar', 'EmprendimientoController@editarEmprendimiento');
+Route::post('emprendimiento/{emprendimientoID}/editar', 'EmprendimientoController@editarEmprendimiento');*/
 
 Route::get('export/usuarios', 'ExportController@exportarUsuarios');
 Route::get('export/empresas', 'ExportController@exportarEmpresas');
