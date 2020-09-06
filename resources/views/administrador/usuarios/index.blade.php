@@ -1,6 +1,6 @@
-@extends('administrador.index')
-@section('title','RutaC | Rutas')
-@section('content')
+@extends('administrador.app')
+@section('title','RutaC | Usuarios')
+@section('app-content')
     <div class="container">
         <div class="row justify-content">
             <div class="col-md-12">
@@ -10,7 +10,9 @@
                             <b-tab title="Usuarios Ruta C" active>
                                 <b-card-text>
                                     <div class="text-right form-group">
-                                        <a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarUsuarios') }}"><i class="fa fa-file-excel-o"></i> Exportar Usuarios</a>
+                                        <a class="btn btn-sm btn-success" href="{{ action('Admin\ExportController@exportarUsuarios') }}">
+                                            <i class="fas fa-file-excel"></i> Exportar Usuarios
+                                        </a>
                                     </div>
                                     <div class="table-responsive-lg">
                                         <table class="table table-hover">

@@ -29,7 +29,7 @@ class FormRepository
         ]);
     }
 
-    public function nivelEstudios()
+    public static function nivelEstudios()
     {
         return collect([
             'Básica Primaria',
@@ -41,7 +41,7 @@ class FormRepository
         ]);
     }
 
-    public function cargo()
+    public static function cargo()
     {
         return collect([
             'Gerente',
@@ -56,7 +56,7 @@ class FormRepository
         ]);
     }
 
-    public function remuneracion()
+    public static function remuneracion()
     {
         return collect([
             'Menos de $700.000',
@@ -72,7 +72,7 @@ class FormRepository
         ]);
     }
 
-    public function grupoEtnico()
+    public static function grupoEtnico()
     {
         return collect([
             'Rrom (Gitanos)',
