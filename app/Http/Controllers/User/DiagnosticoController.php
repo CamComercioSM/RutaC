@@ -73,8 +73,10 @@ class DiagnosticoController extends Controller
 
         if (($activos + $proceso) > 0) {
             $diagnostico = Diagnostico::where($tipoNegocio, $id)
-                ->where('diagnosticoESTADO', EstadosDiagnostico::ACTIVO)
-                ->orWhere('diagnosticoESTADO', EstadosDiagnostico::EN_PROCESO)->first();
+                ->where(function($query) {
+                    $query->where('diagnosticoESTADO', EstadosDiagnostico::ACTIVO)
+                        ->orWhere('diagnosticoESTADO', EstadosDiagnostico::EN_PROCESO);
+                })->first();
         } else {
             switch ($finalizado) {
                 case '0':
@@ -500,5 +502,39 @@ class DiagnosticoController extends Controller
         }
 
         return false;
+    }
+
+    /**
+     * @param Diagnostico $diagnostico
+     * @return RedirectResponse
+     * @throws RutaCException
+     */
+    public function restore(Diagnostico $diagnostico)
+    {
+        try {
+            DB::beginTransaction();
+
+            if (($diagnostico->ruta->rutaESTADO == 'En Proceso' || $diagnostico->ruta->rutaESTADO == 'Activo')) {
+                DB::table('estaciones')->where('RUTAS_rutaID', $diagnostico->ruta->rutaID)->delete();
+                DB::table('rutas')->where('rutaID', $diagnostico->ruta->rutaID)->delete();
+
+                $resultados_seccion = DB::table('resultados_seccion')->where('DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)->pluck('resultado_seccionID')->toArray();
+                DB::table('resultados_preguntas')->whereIn('RESULTADOS_SECCION_resultado_seccionID', $resultados_seccion)->delete();
+                DB::table('resultados_seccion')->where('DIAGNOSTICOS_diagnosticoID', $diagnostico->diagnosticoID)->delete();
+                DB::table('diagnosticos')->where('diagnosticoID', $diagnostico->diagnosticoID)->delete();
+                DB::commit();
+
+                return redirect()->back()->with(['success' => __('El diagnóstico ha sido restablecido')]);
+            }
+
+            DB::rollback();
+
+            return redirect()->back()->with(['success' => __('Los diagnósticos con rutas finalizadas no se pueden restaurar')]);
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            Log::error(Carbon::now()->timestamp." => ". $e);
+            throw new RutaCException('user.ruta.iniciar-ruta', __('Error creando el diagnóstico'), Carbon::now()->timestamp);
+        }
     }
 }

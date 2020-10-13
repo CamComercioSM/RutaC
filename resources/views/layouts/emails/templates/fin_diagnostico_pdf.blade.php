@@ -158,6 +158,9 @@
             height: 2cm;
             line-height: 35px;
         }
+        .salto-linea{
+            white-space: pre-line;
+        }
     </style>
 </head>
 <body>
@@ -188,20 +191,20 @@
     <table>
         <tbody>
         <tr>
-            <td class="col1">Ahora estás aquí</td>
-            <td class="desc">{{ $diagnosticoMENSAJE }}</td>
+            <td class="col1 ">Ahora estás aquí</td>
+            <td class="desc salto-linea">{{ $diagnosticoMENSAJE }} </td>
         </tr>
         <tr>
             <td class="col1">A partir de ahora necesitas</td>
-            <td class="col2">{{ $diagnosticoMENSAJE2 }}</td>
+            <td class="col2 salto-linea">{{ $diagnosticoMENSAJE2 }}</td>
         </tr>
         <tr>
             <td class="col1">Para lograrlo necesitas</td>
-            <td class="col2">{{ $diagnosticoMENSAJE4 }}</td>
+            <td class="col2 salto-linea">{{ $diagnosticoMENSAJE4 }}</td>
         </tr>
         <tr>
             <td class="col1">¡ATENCIÓN! Debes tener cuidado:</td>
-            <td class="col2">{{ $diagnosticoMENSAJE3 }}</td>
+            <td class="col2 ">{{ $diagnosticoMENSAJE3 }}</td>
         </tr>
         </tbody>
     </table>

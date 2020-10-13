@@ -93,7 +93,37 @@
                     <div class="card-body">
                         @if ($emprendimiento->diagnosticosAll->count() > 0)
                             @if($emprendimiento->diagnosticosAll[0]->diagnosticoESTADO != 'Activo')
-                                <b-card title="{{ $emprendimiento->diagnosticosAll[0]->tipoDiagnostico->tipo_diagnosticoNOMBRE }}" sub-title="Realizado: {{ $emprendimiento->diagnosticosAll[0]->diagnosticoFECHA }}" class="bg-white">
+                                <b-card class="bg-white">
+
+                                    <template v-slot:header>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h4 class="card-title">{{ $emprendimiento->diagnosticosAll[0]->tipoDiagnostico->tipo_diagnosticoNOMBRE }}</h4>
+                                            <div class="btn-toolbar" role="toolbar">
+                                                <div class="btn-group btn-group-sm">
+                                                    <b-dropdown variant="outline-secondary" class="ml-1" size="sm" class="" lazy="true" right no-caret>
+                                                        <template v-slot:button-content>
+                                                            <i class="fas fa-fw fa-ellipsis-v"></i>
+                                                        </template>
+                                                        <b-dropdown-form
+                                                                action="{{ route('user.diagnostico.restore', $emprendimiento->diagnosticosAll[0]) }}"
+                                                                method="post"
+                                                                class="d-none"
+                                                                id="toggleForm{{ $emprendimiento->diagnosticosAll[0]->id }}">
+                                                            @csrf
+                                                        </b-dropdown-form>
+                                                        <b-dropdown-item-button
+                                                                data-balloon-pos="up-right" aria-label="Está acción no se puede deshacer"
+                                                                onclick="event.preventDefault(); document.getElementById('toggleForm{{ $emprendimiento->diagnosticosAll[0]->id }}').submit();"
+                                                        >
+                                                            <i class="fas fa-fw fa-redo text-warning"></i> {{ __('Restaurar') }}
+                                                        </b-dropdown-item-button>
+                                                    </b-dropdown>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h6 class="card-subtitle text-muted mb-2">Realizado: {{ $emprendimiento->diagnosticosAll[0]->diagnosticoFECHA }}</h6>
+                                    </template>
+
                                     @if($emprendimiento->diagnosticosAll[0]->diagnosticoESTADO == 'Finalizado')
                                         <b-card-text>
                                             <div class="row">
@@ -109,7 +139,7 @@
                                             </div>
                                         </b-card-text>
 
-                                        <b-card-text>
+                                        <b-card-text style="white-space: pre-line; " >
                                             <b>Feedback: </b>
                                             {{ $emprendimiento->diagnosticosAll[0]->diagnosticoMENSAJE }}
                                         </b-card-text>

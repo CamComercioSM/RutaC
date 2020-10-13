@@ -9,6 +9,7 @@ Route::get('diagnosticos/iniciar/{tipo}/{id}', 'DiagnosticoController@iniciar');
 Route::get('diagnosticos/seccion/{id}', 'DiagnosticoController@respondQuestions')->name('diganostico.seccion');
 Route::get('diagnosticos/resultados/{diagnostico}', 'DiagnosticoController@getResultados')->name('diganostico.resultados');
 Route::post('diagnosticos/observaciones/{diagnostico}', 'DiagnosticoController@observaciones')->name('diganostico.observaciones');
+Route::post('diagnosticos/restore/{diagnostico}', 'DiagnosticoController@restore')->name('diagnostico.restore');
 
 Route::resource('rutas', 'RutaController');
 

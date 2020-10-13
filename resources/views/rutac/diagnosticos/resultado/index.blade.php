@@ -1,4 +1,4 @@
-@extends('administrador.app')
+@extends('rutac.app')
 
 @section('title','RutaC | Resultados')
 
@@ -20,7 +20,7 @@
                         {{ __('Ver Resultados') }}
                         <i class="fas fa-fw fa-plus"></i>
                     </b-button>
-                    <a href="{{ route('admin.revisar-ruta', $diagnostico->ruta) }}" class="btn btn-sm mr-2 btn-primary float-right">
+                    <a href="{{ route('user.rutas.show', $diagnostico->ruta) }}" class="btn btn-sm mr-2 btn-primary float-right">
                         <i class="fas fa-chart-line"></i> {{ __('Ver Ruta') }}
                     </a>
                     <a href="{{ route('user.ruta.iniciar-ruta') }}" class="btn btn-outline-secondary">
@@ -135,7 +135,7 @@
                                 <template v-slot:header>
                                     <h3 class="text-center titulo-feed"><b>Ahora estás aquí</b></h3>
                                 </template>
-                                <b-card-text>
+                                <b-card-text class="saltos-linea">
                                     {{ $diagnostico->diagnosticoMENSAJE }}
                                 </b-card-text>
                             </b-card>
@@ -144,7 +144,7 @@
                                 <template v-slot:header>
                                     <h3 class="text-center titulo-feed"><b>A partir de ahora necesitas</b></h3>
                                 </template>
-                                <b-card-text>
+                                <b-card-text class="saltos-linea">
                                     {{ $diagnostico->diagnosticoMENSAJE2 }}
                                 </b-card-text>
                             </b-card>
@@ -153,17 +153,13 @@
                                 <template v-slot:header>
                                     <h3 class="text-center titulo-feed"><b>Para lograrlo necesitas</b></h3>
                                 </template>
-                                <b-card-text>
+                                
+                                <b-card-text class="saltos-linea" >
                                     {{ $diagnostico->diagnosticoMENSAJE4 }}
                                     <br>
-                                    <ul class="timeline timeline-inverse">
-                                        @foreach($estaciones as $key=> $estacion)
-                                            <li>
-                                                {{ $estacion['text'] }} {{ $estacion['nombre'] }}
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                   
                                 </b-card-text>
+                           
                             </b-card>
                         </div>
                         <div class="col-md-6">
@@ -171,7 +167,7 @@
                                 <template v-slot:header>
                                     <h3 class="text-center titulo-feed"><b>¡ATENCIÓN! Debes tener cuidado:</b></h3>
                                 </template>
-                                <b-card-text>
+                                <b-card-text class="saltos-linea">
                                     <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
                                         <template v-slot:lead>
                                             {{ $diagnostico->diagnosticoMENSAJE3 }}
@@ -195,5 +191,8 @@
     .titulo-feed {
         color: cornflowerblue;
         font-family: cursive;
+    }
+    .saltos-linea{
+        white-space: pre-line;
     }
 </style>

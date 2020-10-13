@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Diagnosticos;
 
 use App\Constants\Estado;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Preguntas\UpdatePreguntaRequest;
 use App\Http\Requests\Admin\Secciones\StoreSeccionFormRequest;
 use App\Models\Competencia;
 use App\Models\Diagnostico;
@@ -14,33 +15,6 @@ use Illuminate\Http\Request;
 
 class SeccionPreguntaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function index($diagnostico, Request $request)
-    {
-        $seccion = $request->input('seccion');
-
-        $competencias = Competencia::where('competenciaESTADO', 'Activo')->get();
-        $seccionPregunta = SeccionPregunta::where('seccion_preguntaID', $seccion)->where('TIPOS_DIAGNOSTICOS_tipo_diagnosticoID', $diagnostico)->with('preguntasSeccion', 'feedback')->first();
-        $preguntas = 0;
-        if ($seccionPregunta) {
-            foreach ($seccionPregunta->preguntasSeccion as $key => $pregunta) {
-                $seccionPregunta['preguntasSeccion'][$key]['competencia'] = $this->obtenerCompetencia($pregunta->COMPETENCIAS_competenciaID);
-                if ($pregunta->preguntaESTADO == 'Activo') {
-                    $preguntas = $preguntas + 1;
-                }
-            }
-            return view('administrador.diagnosticos.seccion', compact('seccionPregunta', 'competencias', 'preguntas'));
-        }
-
-        return redirect()->route('admin.diagnosticos.index')->with([
-            'error' => __('Hubo un error, intente nuevamente'),
-        ]);
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -120,20 +94,20 @@ class SeccionPreguntaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param UpdatePreguntaRequest $request
      * @param TipoDiagnostico $diagnostico
      * @param SeccionPregunta $seccione
+     * @param Pregunta $preguntum
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, TipoDiagnostico $diagnostico, SeccionPregunta $seccione)
+    public function update(UpdatePreguntaRequest $request, TipoDiagnostico $diagnostico, SeccionPregunta $seccione, Pregunta $preguntum)
     {
-        $seccione->seccion_preguntaNOMBRE = $request->input('nombre_seccion');
-        $seccione->seccion_preguntaPESO = $request->input('peso_seccion');
-
-        $seccione->save();
+        $preguntum->preguntaPESO = $request->input('pregunta_peso');
+        $preguntum->preguntaENUNCIADO = $request->input('enunciado');
+        $preguntum->save();
 
         return redirect($request->input('redirect'))->with([
-            'success' => __('Sección actualizada correctamente'),
+            'success' => __('Pregunta actualizada correctamente'),
         ]);
     }
 
