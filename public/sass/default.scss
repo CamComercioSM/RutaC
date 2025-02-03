@@ -1,0 +1,174 @@
+.cf:before,
+.cf:after {
+	content: "";
+	display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	zoom: 1;
+}
+
+.f {
+	&l {
+		float: left;
+	}
+
+	&r {
+		float: right;
+	}
+}
+
+.text {
+	&l {
+		text-align: left;
+	}
+
+	&r {
+		text-align: right;
+	}
+
+	&c {
+		text-align: center;
+	}
+
+	&j {
+		text-align: justify;
+	}
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.mayus {
+	text-transform: uppercase;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.box {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.m {
+	&t {
+		&-5 {
+			margin-top: 5px;
+		}
+
+		&-10 {
+			margin-top: 10px;
+		}
+
+		&-20 {
+			margin-top: 20px;
+		}
+
+		&-30 {
+			margin-top: 30px;
+		}
+
+		&-40 {
+			margin-top: 40px;
+		}
+	}
+
+	&l {
+		&-5 {
+			margin-left: 5px;
+		}
+
+		&-10 {
+			margin-left: 10px;
+		}
+
+		&-20 {
+			margin-left: 20px;
+		}
+
+		&-40 {
+			margin-left: 40px;
+		}
+	}
+
+	&b {
+		&-5 {
+			margin-bottom: 5px;
+		}
+
+		&-10 {
+			margin-bottom: 10px;
+		}
+
+		&-20 {
+			margin-bottom: 20px;
+		}
+
+		&-40 {
+			margin-bottom: 40px;
+		}
+	}
+
+	&r {
+		&-5 {
+			margin-right: 5px;
+		}
+
+		&-10 {
+			margin-right: 10px;
+		}
+
+		&-20 {
+			margin-right: 20px;
+		}
+
+		&-40 {
+			margin-right: 40px;
+		}
+	}
+}
+
+.pad- {
+	&10 {
+		padding: 10px;
+	}
+
+	&20 {
+		padding: 20px;
+	}
+}
+
+.block {
+	display: block;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 25px;
+	height: 0;
+
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
